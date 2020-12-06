@@ -1,0 +1,8 @@
+INFILE=$1
+
+if [ -z ${INFILE} ]; then
+    mysql -h aurora-002.cluster-czzdit7hfndz.us-east-2.rds.amazonaws.com -P 3306  -u admin -pPhoebe66 --ssl_mode=DISABLED
+else
+    mysql -h aurora-002.cluster-czzdit7hfndz.us-east-2.rds.amazonaws.com -P 3306  -u admin -pPhoebe66 --ssl_mode=DISABLED < ${INFILE}
+fi
+

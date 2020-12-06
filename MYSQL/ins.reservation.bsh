@@ -1,0 +1,20 @@
+seatnumber=`echo $RANDOM %25 | head -c2`
+seatletter=`head /dev/urandom | tr -dc A-G | head -c1`
+flightno=`echo $RANDOM | head -c2`
+
+mysql -h aurora-002.cluster-czzdit7hfndz.us-east-2.rds.amazonaws.com -P 3306  -u fly1 -pfly1 --ssl_mode=DISABLED --force --verbose <<EQ
+use fly1;
+insert into
+reservation
+(lname , fname , seatno , flightno , dep , arr , reservedate )
+values 
+( (select last_name from employee order by rand() limit 1),
+  (select first_name from employee order by rand() limit 1),
+  '${seatnumber}${seatletter}',
+  (select concat(abbreviation ,${flightno}) from airline order by rand() limit 1 ),
+  (select iata_code from airport order by rand() limit 1),
+  (select iata_code from airport order by rand() limit 1),
+  curdate());
+commit;
+select * from reservation;
+EQ
