@@ -1,7 +1,7 @@
 seatnumber=`echo $RANDOM %25 | head -c2`
 seatletter=`head /dev/urandom | tr -dc A-G | head -c1`
-flightno=`echo $RANDOM | head -c2`
-
+#flightno=`echo $RANDOM | head -c2`
+flightno=`shuf -n 1 ../tmp/currentflightiata`
 #echo ${lname} " : " ${fname} " : " ${flightcarrier} " : " ${flightno}
 
 sqlplus -S 'fly1/fly1@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ora001.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=DATABASE)))' <<EQ
@@ -15,7 +15,8 @@ values
   (select * from (select last_name from employee order by dbms_random.value) where rownum <=1),
   (select * from (select first_name from employee order by dbms_random.value) where rownum <=1),
   '${seatnumber}${seatletter}',
-  (select abbreviation || ${flightno} from (select abbreviation from airline order by dbms_random.value) where rownum <=1),
+--  (select abbreviation || ${flightno} from (select abbreviation from airline order by dbms_random.value) where rownum <=1),
+  '${flightno}',
   (select * from (select iata_code from airport order by dbms_random.value) where rownum <=1),
   (select * from (select iata_code from airport order by dbms_random.value) where rownum <=1),
   sysdate);
