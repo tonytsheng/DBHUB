@@ -44,5 +44,5 @@ cat MAN/manifest.foot >> MAN/manifest.${TIMESTAMP}
 print_msg "Manifest file below"
 cat MAN/manifest.${TIMESTAMP}
 
-rm DAT/flight.${TIMESTAMP}.csv DAT/flight.${TIMESTAMP}.1.csv DAT/insert.${TIMESTAMP}.py 
+rm DAT/flight.${TIMESTAMP}.csv DAT/flight.${TIMESTAMP}.1.csv DAT/insert.${TIMESTAMP}.py MAN/manifest.${TIMESTAMP}
 
