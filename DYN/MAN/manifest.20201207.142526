@@ -1,0 +1,33 @@
+{
+    "fileLocations": [
+        {
+            "URIs": [
+"flight.20201128.213926.1.csv",
+"flight.20201128.214446.1.csv",
+"flight.20201128.csv",
+"flight.20201129.020209.1.csv",
+"flight.20201129.030712.1.csv",
+"flight.20201130.010739.1.csv",
+"flight.20201130.130734.1.csv",
+"flight.20201130.134037.csv",
+"flight.20201202.001751.csv",
+"flight.20201202.131734.csv",
+"flight.20201207.135840.csv",
+"flight.20201207.141054.csv",
+"flight.20201207.141148.csv",
+"flight.20201207.141518.csv",
+"flight.20201207.141546.csv",
+"flight.20201207.141635.csv",
+"flight.20201207.142033.csv",
+"flight.20201207.142500.csv",
+"flight.20201207.142526.csv"
+            ]
+        }
+    ],
+    "globalUploadSettings": {
+       "format": "CSV",
+        "delimiter": ",",
+        "textqualifier": "'",
+        "containsHeader": "false"
+    }
+}

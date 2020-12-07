@@ -1,0 +1,15 @@
+{
+    "fileLocations": [
+        {
+            "URIs": [
+TEMPLATEFILESHERE
+            ]
+        }
+    ],
+    "globalUploadSettings": {
+       "format": "CSV",
+        "delimiter": ",",
+        "textqualifier": "'",
+        "containsHeader": "false"
+    }
+}
