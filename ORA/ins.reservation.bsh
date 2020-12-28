@@ -4,7 +4,14 @@ seatletter=`head /dev/urandom | tr -dc A-G | head -c1`
 flightno=`shuf -n 1 ../BASEDAT/currentflightiata`
 #echo ${lname} " : " ${fname} " : " ${flightcarrier} " : " ${flightno}
 
+<<<<<<< HEAD
 sqlplus -l -S 'fly1/fly1@(DESCRIPTION=(CONNECT_TIMEOUT=10)(ENABLE=broken)(ADDRESS=(PROTOCOL=TCP)(HOST=ora001.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=DATABASE)))' <<EQ
+=======
+# sqlplus with -l - connect only once 
+# trap for connection errors 
+
+sqlplus -S -l 'fly1/fly1@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ora001.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=DATABASE)))' <<EQ
+>>>>>>> 8b1a76d72393b973fec1f033a402ee9f7f982e4e
 whenever oserror exit 9;
 whenever sqlerror exit sql.sqlcode;
 set linesize 200;

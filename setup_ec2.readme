@@ -1,10 +1,10 @@
--- modify inbound rules for security group
-make sure ec2 and database is in the same security group
-then add the right inbound rules in that group - the ones labelled for the database engines
+## modify inbound rules for security group
+# make sure ec2 and database is in the same security group
+# then add the right inbound rules in that group - the ones labelled for the database engines
 https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Scenarios.html
 
-+++ ORA
--- download instant clients and unzip
+## ORA
+## download instant clients and unzip
 sudo su - 
 cd /opt
 mkdir oracle
@@ -12,30 +12,33 @@ cd oracle
 unzip ~/rpms/instantclient-basic-linux.x64-19.9.0.0.0dbru.zip
 unzip ~/rpms/instantclient-sqlplus-linux.x64-19.9.0.0.0dbru.zip
 
--- link library
+## Oracle python connect
+sudo python3 -m pip install cx_Oracle --upgrade
+
+## link library
 [root@ip-172-31-42-171 ~]# cd /usr/lib64
 [root@ip-172-31-42-171 lib64]# ln -sf libnsl.so.2 libnsl.so.1
 
--- set up .bash_profile with env vars
+## set up .bash_profile with env vars
 export ORACLE_HOME=/opt/oracle/instantclient_19_9
 export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9
 export PATH=$ORACLE_HOME:$PATH
 
--- install this rpm
+## install this rpm
 sudo yum install libaio-0.3.112-1.el8.x86_64
 
--- set up tnsnames.ora in $ORACLE_HOME/network/admin
+## set up tnsnames.ora in $ORACLE_HOME/network/admin
 
 sqlplus 'admin/PW@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=dnshostname)(PORT=1521))(CONNECT_DATA=(SID=DATABASE)))'
 
-+++ MySQL
--- download and install
+## MySQL
+## download and install
 sudo yum install mysql80-community-release-el8-1.noarch.rpm
 sudo yum install mysql
 
 mysql -h dnshostname -P 3306 -u admin -p
 
-++ MS Sql Server
+## MS Sql Server
 download and install
 sudo su
 curl https://packages.microsoft.com/config/rhel/8/prod.repo > /etc/yum.repos.d/msprod.repo
@@ -45,13 +48,16 @@ add /opt/mssql-tools/bin/to $PATH in .bash_profile
 
 sudo yum install readline*
 
-++ set ClientAliveInterval 60 in sshd_config
+## set ClientAliveInterval 60 in sshd_config
 sysctl sshd restart
 
-++ zip/unzip
+## zip/unzip
 sudo yum install zip
 
-++ aws cli
+## aws cli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
+
+## bind-utils - host, nslookup
+sudo yum install bind-utils
