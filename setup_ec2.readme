@@ -61,3 +61,5 @@ sudo ./aws/install
 
 ## bind-utils - host, nslookup
 sudo yum install bind-utils
+
+##
