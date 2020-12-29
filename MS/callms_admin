@@ -1,8 +1,8 @@
 INFILE=$1
 
 if [ -z ${INFILE} ]; then
-    sqlcmd -U admin -P`cat ~/.pw` -S sqlserv001.czzdit7hfndz.us-east-2.rds.amazonaws.com
+    sqlcmd -U admin -P`cat ~/.pw` -S msql001.czzdit7hfndz.us-east-2.rds.amazonaws.com
 else
-    sqlcmd -U admin -P`cat ~/.pw` -S sqlserv001.czzdit7hfndz.us-east-2.rds.amazonaws.com -i ${INFILE}
+    sqlcmd -U admin -P`cat ~/.pw` -S msql001.czzdit7hfndz.us-east-2.rds.amazonaws.com -i ${INFILE}
 fi
 
