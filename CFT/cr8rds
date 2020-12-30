@@ -1,0 +1,8 @@
+aws rds create-db-instance \
+    --db-name mysql002 \
+    --db-instance-identifier mysql002 \
+    --db-instance-class db.m5.large \
+    --engine mysql \
+    --master-username admin \
+    --master-user-password "Pass1234" \
+    --allocated-storage 20
