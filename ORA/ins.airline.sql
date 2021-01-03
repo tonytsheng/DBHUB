@@ -6161,3 +6161,4 @@ insert into airline values (21268,'Jetgo Australia','','JG','','Australia','Y');
 insert into airline values (21270,'Air Carnival','','2S','','India','Y');
 insert into airline values (21317,'Svyaz Rossiya','Russian Commuter ','7R','SJM','RussianConnecty','Russia','Y');
 select count(*) from airline;
+exit

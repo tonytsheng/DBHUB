@@ -65,4 +65,4 @@ CREATE TABLE employee
 
 CREATE UNIQUE INDEX emp_emp_id_pk ON employee (employee_id) ;
 alter table employee add constraint employee_pk primary key (employee_id);
-
+exit

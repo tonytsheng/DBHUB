@@ -1,0 +1,8 @@
+aws rds create-db-instance \
+    --db-name octora01 \
+    --db-instance-identifier octora01 \
+    --db-instance-class db.m5.large \
+    --engine oracle-ee \
+    --master-username admin \
+    --master-user-password "Pass1234" \
+    --allocated-storage 20

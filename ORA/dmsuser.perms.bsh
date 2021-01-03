@@ -1,0 +1,8 @@
+
+for r in (select table_name from user_tables)
+loop
+    execute immediate 'grant all on ' || t.table_name || ' dms_user;'
+end loop;
+end;
+/
+exit;

@@ -1496,3 +1496,4 @@ INSERT INTO employee VALUES
         , 110
         );
 select count(*) from employee;
+exit
