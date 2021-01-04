@@ -1,1 +1,2 @@
-aws rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier, .DBInstanceStatus'
+#aws rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier, .DBInstanceStatus'
+aws rds describe-db-instances --output text | grep DBINSTANCES | awk -F' ' '{print $11" "   $12}'

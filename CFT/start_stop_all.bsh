@@ -5,6 +5,6 @@ ACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-instance
 for ins in `aws rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier' | sed s/\"//g `
 do
     echo $ins
-    aws rds ${ACTION} --db-instance-identifier $ins
+    aws rds ${ACTION} --db-instance-identifier $ins --output text
 done
 
