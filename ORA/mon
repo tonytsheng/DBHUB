@@ -1,0 +1,16 @@
+CREDS="admin/Pass1234"
+CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=OCTORA01)))"
+
+while true
+do
+date
+sqlplus -S ${CONNSTR} <<EQ
+set linesize 200
+col username format a20
+col program format a60
+select username ,program from v\$session
+where username like 'DMS%';
+EQ
+sleep 2
+done
+
