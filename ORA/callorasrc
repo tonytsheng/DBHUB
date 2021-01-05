@@ -1,4 +1,3 @@
-set -x
 USER=$1
 INFILE=$2
 
