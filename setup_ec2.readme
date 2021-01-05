@@ -65,3 +65,11 @@ sudo yum install bind-utils
 
 ## wget
 sudo yum install wget
+
+## postgres stuff - not exact but you get the idea
+sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+rpm -qa postgres*
+sudo yum reinstall postgresql11-server-11.8-1PGDG.f30.x86_64
+sudo yum reinstall postgresql11-server-11
+sudo yum reinstall postgresql11
+

@@ -1,6 +1,6 @@
 psql \
    --host=pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com \
    --port=5432 \
-   --username=master \
+   --username=rdsadmin \
    --dbname=fly1
                     

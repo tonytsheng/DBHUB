@@ -1,0 +1,4 @@
+psql  -h pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com -p 5432 -d fly1 -U master <<EQ
+select * from reservation;
+EQ
+

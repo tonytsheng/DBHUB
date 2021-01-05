@@ -1,0 +1,8 @@
+\conninfo
+select * from version();
+\du
+\du+
+\l
+\dt
+\d $table
+\c $newdatabase
