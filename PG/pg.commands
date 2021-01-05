@@ -1,8 +1,9 @@
 \conninfo
 select * from version();
-\du
-\du+
-\l
-\dt
-\d $table
+\du -- list users
+\du+ -- list details about users
+\l -- list databases
+\dt -- list tables
+\d $table --describe table
 \c $newdatabase
+\dn --list schemas

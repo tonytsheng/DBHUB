@@ -1,7 +1,7 @@
 psql \
    --host=pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com \
    --port=5432 \
-   --username=fly1 \
+   --username=co \
    --password \
-   --dbname=fly1
+   --dbname=co
                     
