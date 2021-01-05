@@ -1,0 +1,1114 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="PSQL">
+<style type=text/css> body {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} p {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} table,tr,td {font:10pt Arial,Helvetica,sans-serif; color:Black; background:#F2F3F4; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;} th {font:bold 10pt Arial,Helvetica,sans-serif; color:#425b5e; background:#ffc100; padding:0px 0px 0px 0px;} h1 {font:16pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; border-bottom:1px solid #ffc100; margin-top:0pt; margin-bottom:0pt; padding:0px 0px 0px 0px;-
+} h2 {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:#425b5e; background-color:White; margin-top:4pt; margin-bottom:0pt;} a {font:10pt Arial,Helvetica,sans-serif; color:#663300; background:#ffffff; margin-top:0pt; margin-bottom:0pt; vertical-align:top;} .anchor {position: relative; top: -50px;} .table-content a{font-size:9pt}</style><title>AWS DMS PostgreSQL Support Bundle</title>
+</head>
+<h1 style="font-family:verdana"align="center"><u>DMS PostgreSQL Support Bundle</u></h1>
+<div class="table-content">
+<p style="font-family:verdana"><strong>Contents</strong></p>
+<ol>
+<li><a href="#Overview">Overview</a>
+</li>
+<li><a href="#DatabaseConfiguration">Database Configuration</a>
+<ol>
+<li><a href="#DatabaseConfiguration1">Database Name and Locale</a></li>
+<li><a href="#DatabaseConfiguration2">Database Version</a></li>
+<li><a href="#DatabaseConfiguration3">Operating System version</a></li>
+<li><a href="#DatabaseConfiguration4">Database Host</a></li>
+<li><a href="#DatabaseConfiguration5">RDS / Non-RDS</a></li>
+<li><a href="#DatabaseConfiguration6">Database Parameter Prerequisites</a></li>
+<li><a href="#DatabaseConfiguration7">Replication Slot Details</a></li>
+<li><a href="#DatabaseConfiguration8">Is High Availability set</a></li>
+<li><a href="#DatabaseConfiguration9">Extension Check</a></li>
+</ol>
+</li>
+<li><a href="#SizeDetails">Size Details</a>
+<ol>
+<li><a href="#SizeDetails1">Database size</a></li>
+<li><a href="#SizeDetails2">Schema Size</a></li>
+<li><a href="#SizeDetails3">Total size of migration schema tables</a></li>
+<li><a href="#SizeDetails5">Top objects by size</a></li>
+</ol>
+</li>
+<li><a href="#DatabaseLoad">Database Load</a>
+<ol>
+<li><a href="#DatabaseLoad1">Rate of WAL generation</a></li>
+<li><a href="#DatabaseLoad2">CDC specific Load summary table</a></li>
+</ol>
+</li>
+<li><a href="#Table Load">Table Load</a>
+<ol>
+<li><a href="#TableLoad1">Top Objects by DML Changes</a></li>
+<li><a href="#TableLoad2">Top 25 tables by inserts </a></li>
+<li><a href="#TableLoad3">Top 25 tables by updates </a></li>
+<li><a href="#TableLoad4">Top 25 tables by deletes </a></li>
+</ol>
+</li>
+<li><a href="#TableDetails">Table Details</a>
+<ol>
+<li><a href="#TableDetails1">Existing Materialized Views</a></li>
+<li><a href="#TableDetails2">Object Type count</a></li>
+<li><a href="#TableDetails3">Data Type count</a></li>
+<li><a href="#TableDetails4">Replica Identity details</a></li>
+<li><a href="#TableDetails5">DMS Artifacts</a></li>
+</ol>
+</li>
+<li><a href="#ArchivalInformation">Archival Information</a>
+<ol>
+<li><a href="#ArchivalInformation1">Archive mode and other details</a></li>
+</ol>
+</li>
+<li><a href="#Permissions">Permissions</a>
+<ol>
+<li><a href="#Permissions1">System privileges</a></li>
+<li><a href="#Permissions2">Table Grants</a></li>
+</ol>
+</li>
+<li><a href="#PotentialIssues">Potential Issues</a>
+<ol>
+<li><a href="#PotentialIssues1">Unsupported DataTypes</a></li>
+<li><a href="#PotentialIssues2">Tables with No PK</a></li>
+<li><a href="#PotentialIssues3">TEXT and JSONB columns with NOT NULL set</a></li>
+<li><a href="#PotentialIssues4">Long running sql (more than 10 minutes)</a></li>
+<li><a href="#PotentialIssues5">Tables with triggers</a></li>
+<li><a href="#PotentialIssues6">Database Views</a></li>
+</ol>
+<li><a href="#EndOfReport">End of the report</a></li>
+</li>
+</div>
+<title>AWS DMS Support bundle script for Postgres</title>
+<hr>
+<p id="Overview" class="anchor"></p>
+<h2 style="font-family:verdana">Overview</h2>
+<h5 style="font-family:verdana;list-style-type:none">
+<li>This is the output from the DMS Support script for PostgreSQL.</li>
+<li>Please upload to AWS Support via a Customer Support Case.</li>
+</h5>
+<br>
+ Current Database Time : <b>2021-01-04 21:38:22</b>
+
+<br>
+ Database Startup Time : <b>2021-01-04 16:04:43</b>
+
+<br>
+ Total Active Sessions : <b>1</b>
+
+<br>
+ Total Number of  Sessions : <b>8</b>
+
+<br>
+Schema name being Migrated/Replicated :<b> public</b>
+<br>
+PostgreSQL User Name which DMS will use to connect :<b> master</b>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<p id="DatabaseConfiguration" class="anchor"></p>
+<h2 style="font-family:verdana">Database Configuration</h2>
+<p id="DatabaseConfiguration1" class="anchor"></p>
+<h2>Database Name and Locale:</h2>
+<li><a href="#Top">previous : </a><a href="#Top">top : </a><a href="#DatabaseConfiguration2">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">name</th>
+    <th align="center">encoding</th>
+    <th align="center">locale</th>
+    <th align="center">timezone</th>
+    <th align="center">database_role</th>
+    <th align="center">Maximum Used Transaction IDs</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">fly1</td>
+    <td align="left">UTF8</td>
+    <td align="left">en_US.UTF-8</td>
+    <td align="left">UTC</td>
+    <td align="left">Master</td>
+    <td align="right">3467</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="DatabaseConfiguration2" class="anchor"></p>
+<h2>Database Version :</h2>
+<li><a href="#DatabaseConfiguration1">previous : </a><a href="#Top">top : </a><a href="#DatabaseConfiguration3">next</a></li>
+<br>
+Please check the following documentation for supported database versions. <br>
+<a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html">PostgreSQL Source</a><br>
+<a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.PostgreSQL.html">PostgreSQL Target</a><br>
+<br>
+<b>Note: </b><br>
+<ul>
+<li>For PostgreSQL 10.x, if you use a AWS DMS version earlier than 3.3.1, prepare the PostgreSQL source using <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.v10">the wrapper functions</a>.</li>
+<li>For PostgreSQL 11.x, Use AWS DMS version 3.3.1 or higher.</li>
+<li>For PostgreSQL 12.x, Use AWS DMS version 3.3.3 or higher.</li>
+</ul>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">PostgreSQL Version</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">PostgreSQL 12.4</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="DatabaseConfiguration3" class="anchor"></p>
+<h2>Operating System version</h2>
+<li><a href="#DatabaseConfiguration2">previous : </a><a href="#Top">top : </a><a href="#DatabaseConfiguration4">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Operating System</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">x86_64-pc-linux-gnu, compiled by gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-11), 64-bit</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="DatabaseConfiguration4" class="anchor"></p>
+<h2>Database Host :</h2>
+<li><a href="#DatabaseConfiguration3">previous : </a><a href="#Top">top : </a><a href="#DatabaseConfiguration5">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Database host</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="DatabaseConfiguration5" class="anchor"></p>
+<h2>RDS / Non RDS :</h2>
+<li><a href="#DatabaseConfiguration4">previous : </a><a href="#Top">top : </a><a href="#DatabaseConfiguration6">next</a></li>
+<br>
+Database Type: <b>RDS</b>
+<br>
+<br>
+<p id="DatabaseConfiguration6" class="anchor"></p>
+<h2>Database Parameter Prerequisites :</h2>
+<li><a href="#DatabaseConfiguration5">previous : </a><a href="#Top">top : </a><a href="#DatabaseConfiguration7">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Database Parameter</th>
+    <th align="center">Current Value</th>
+    <th align="center">Required Value</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">idle_in_transaction_session_timeout</td>
+    <td align="left">86400000</td>
+    <td align="left">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_replication_slots</td>
+    <td align="left">10</td>
+    <td align="left">&gt;1</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">max_wal_senders</td>
+    <td align="left">10</td>
+    <td align="left">&gt;1</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">shared_preload_libraries</td>
+    <td align="left">rdsutils,pg_stat_statements</td>
+    <td align="left">&nbsp; </td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_level</td>
+    <td align="left">replica</td>
+    <td align="left">logical</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">wal_sender_timeout</td>
+    <td align="left">30000</td>
+    <td align="left">0</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<b>Note:</b> If the source is RDS or Aurora PostgreSQL, please set rds.logical_replication to 1. As part of applying this parameter, AWS DMS sets parameters wal_level, max_wal_senders, max_replication_slots above.<br>
+<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Replication.Logical.html#AuroraPostgreSQL.Replication.Logical.Configure">Using PostgreSQL Logical Replication with Aurora</a><br>
+<a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.FeatureSupport.LogicalReplication">Logical Replication for PostgreSQL on Amazon RDS</a><br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">rds.logical_replication</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">off</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="DatabaseConfiguration7" class="anchor"></p>
+<h2>Replication Slot Details :</h2>
+<li><a href="#DatabaseConfiguration6">previous : </a><a href="#Top">top : </a><a href="#DatabaseConfiguration8">next</a></li>
+<br>
+<b>Replication Slot</b> (Ignore if no rows returned)<br>
+<br>
+<b>Note:</b> <br>
+<ul>
+<li>Cross check the count of replication slots against max_replication_slots found above. Also useful to find if physical/logical is already configured. Ignore if no rows returned.</li>
+<li>DMS uses PostgreSQL plugin "test_decoding" or "pglogical" for replicating on-going changes (CDC). Need to set shared_preload_libraries to pglogical to create extension pglogical for CDC <a href="#DatabaseConfiguration9">if extension pglogical is available</a>. </li>
+</ul>
+<table border="1">
+  <tr>
+    <th align="center">slot_name_obfuscated</th>
+    <th align="center">plugin</th>
+    <th align="center">slot_type</th>
+    <th align="center">datoid</th>
+    <th align="center">database</th>
+    <th align="center">temporary</th>
+    <th align="center">active</th>
+    <th align="center">active_pid</th>
+    <th align="center">xmin</th>
+    <th align="center">catalog_xmin</th>
+    <th align="center">restart_lsn</th>
+    <th align="center">confirmed_flush_lsn</th>
+  </tr>
+</table>
+
+<br>
+<b>Replication Slot Size</b> (Ignore if no rows returned)<br>
+<br>
+<b>Note:</b> <br>
+<ul>
+<li>If the size of the replication slot becomes an issue to the source database storage when the replication task is stopped or no longer needed, consider dropping the associated slot to release the storage (e.g. <span style="font-style: italic;font-family:Consolas,Monaco;background:#F5F5F5">SELECT pg_drop_replication_slot(slot_name);</span> ). Please note that once the replication slot is dropped, the task will not be able to resume.</li>
+<li>If the column restart_lsn is not seen progressing over time and causes the replication slot size of your RDS postgresql source to grow: <br>
+<ul>
+<li>If the source PostgreSQL does not have sufficient workload to advances restart_lsn, please use the following extra connection attributes in the source PostgreSQL endpoint: <br><span style="font-style: italic;font-family:Consolas,Monaco;background:#F5F5F5">heartbeatEnable=Y;heatbeatFrequency=1</span><br><b>heartbeatEnable:</b> DMS task will create a dummy table "awsdms_heartbeat" in public schema to advance restart_lsn to mitigate the storage issue. <br> <b>heatbeatFrequency:</b> The frequency to advance restart_lsn. Default is 5 minutes.</li>
+<li>The address (LSN) of oldest WAL which still might be required by the consumer of this slot and thus will not be automatically removed during checkpoints. Cross check <a href="#PotentialIssues4">long transactions</a> from <a href="https://www.postgresql.org/docs/11/monitoring-stats.html#PG-STAT-ACTIVITY-VIEW">pg_stat_activity</a> (including the ones in idle state) / <a href="https://www.postgresql.org/docs/11/view-pg-prepared-xacts.html">pg_prepared_xacts</a>, catalog_xmin in <a href="https://www.postgresql.org/docs/11/view-pg-replication-slots.html">pg_replication_slots</a>, and the relevant transactions in PostgreSQL error log; Check if any other consumers use the same replication slot. </li>
+</ul>
+</li>
+</ul>
+<table border="1">
+  <tr>
+    <th align="center">slot_name_obfuscated</th>
+    <th align="center">replicationslotlag</th>
+    <th align="center">active</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="DatabaseConfiguration8" class="anchor"></p>
+<h2>Is High Availability set :</h2>
+<li><a href="#DatabaseConfiguration7">previous : </a><a href="#Top">top : </a><a href="#DatabaseConfiguration9">next</a></li>
+<br>
+<b>Note: </b><br>
+<ul>
+<li>Listing below information from view <a href="https://www.postgresql.org/docs/11/monitoring-stats.html#PG-STAT-REPLICATION-VIEW">pg_stat_replication</a> view for high availability information. One row per WAL sender process, showing statistics about replication to the connected standby server of the sender.</a>.</li>
+<li>The output below only displays data related to the account provided while running this script. Information related to other users and applications is obfuscated.</li>
+</ul>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">User name</th>
+    <th align="center">Application name</th>
+    <th align="center">client_hostname</th>
+    <th align="center">backend_start</th>
+    <th align="center">backend_xmin</th>
+    <th align="center">state</th>
+  </tr>
+</table>
+
+<br>
+<b>If the <a href="#DatabaseConfiguration4">current PostgreSQL database</a> is a master or replica:</b>
+<br>
+<br>
+<b>Note:</b> You cannot use Amazon RDS PostgreSQL Read Replicas for CDC ongoing replication. Refer to <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.RDSPostgreSQL">setting up an Amazon RDS PostgreSQL DB instance as a source</a>. <br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Master/Replica</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">Master</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="DatabaseConfiguration9" class="anchor"></p>
+<h2>Extension Check :</h2>
+<li><a href="#DatabaseConfiguration8">previous : </a><a href="#Top">top : </a><a href="#SizeDetails">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">name</th>
+    <th align="center">default_version</th>
+    <th align="center">installed_version</th>
+    <th align="center">comment</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">pglogical</td>
+    <td align="left">2.3.2</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">PostgreSQL Logical Replication</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<hr>
+<p id="SizeDetails" class="anchor"></p>
+<h2 style="font-family:verdana">Size Details</h2>
+<p id="SizeDetails1" class="anchor"></p>
+<h2>Database size :</h2>
+<li><a href="#DatabaseConfiguration9">previous : </a><a href="#Top">top : </a><a href="#SizeDetails2">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Database Size</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">8953 kB</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="SizeDetails2" class="anchor"></p>
+<h2>Schema Sizes :</h2>
+<li><a href="#SizeDetails1">previous : </a><a href="#Top">top : </a><a href="#SizeDetails3">next</a></li>
+<br>
+<b>Note:</b> This section gives approximate total size of tables in the schema being migrated and compares it to rest of the database.
+<br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Schema Name</th>
+    <th align="center">Total table Size</th>
+    <th align="center">Percentage Size</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">other schemas</td>
+    <td align="left">7464 kB</td>
+    <td align="right">83.37</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">440 kB</td>
+    <td align="right">4.91</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="SizeDetails3" class="anchor"></p>
+<h2>Total size of migration schema tables :</h2>
+<li><a href="#SizeDetails2">previous : </a><a href="#Top">top : </a><a href="#SizeDetails4">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Size</th>
+    <th align="center">Table Type</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">504 kB</td>
+    <td align="left">non-partitioned tables</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="SizeDetails4" class="anchor"></p>
+<h2>Top objects by size :</h2>
+<li><a href="#SizeDetails3">previous : </a><a href="#Top">top : </a><a href="#DatabaseLoad1">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">table_schema</th>
+    <th align="center">table_name</th>
+    <th align="center">row_estimate</th>
+    <th align="center">total</th>
+    <th align="center">index</th>
+    <th align="center">toast</th>
+    <th align="center">table</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">airline</td>
+    <td align="right">1149</td>
+    <td align="left">248 kB</td>
+    <td align="left">128 kB</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">120 kB</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">airport</td>
+    <td align="right">352</td>
+    <td align="left">144 kB</td>
+    <td align="left">80 kB</td>
+    <td align="left">8192 bytes</td>
+    <td align="left">56 kB</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">employee</td>
+    <td align="right">107</td>
+    <td align="left">72 kB</td>
+    <td align="left">32 kB</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">40 kB</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">reservation</td>
+    <td align="right">0</td>
+    <td align="left">40 kB</td>
+    <td align="left">32 kB</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">8192 bytes</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<hr>
+<p id="DatabaseLoad" class="anchor"></p>
+<h2 style="font-family:verdana">Database Load</h2>
+<p id="DatabaseLoad1" class="anchor"></p>
+<h2>Rate of WAL generation:</h2>
+<li><a href="#SizeDetails4">previous : </a><a href="#Top">top : </a><a href="#DatabaseLoad2">next</a></li>
+<br>
+<b>Note:</b> In this section, we find the volume of WAL generated in last 10 minutes. Though this may not paint complete picture considering that
+several factors can impact WAL generation, we are just getting a rough idea. This information may be useful to troubleshoot replication latency issues.
+<br>
+<ul>
+<li>This check is supported for PostgreSQL versions 10.x and above. For PostgreSQL versions 9.x and below please work with AWS Support to find WAL size if needed. </li>
+<li>For RDS or Aurora PostgreSQL check CloudWatch metric <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MonitoringOverview.html#metrics_dimensions">TransactionLogsGeneration</a> (The size of transaction logs generated per second. Units: Bytes/Second) to understand the source workloads.</li>
+</ul>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Volume of WAL generated in last 10 minutes</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">128 MB</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="DatabaseLoad2" class="anchor"></p>
+<h2>CDC specific Load summary table :</h2>
+<li><a href="#DatabaseLoad1">previous : </a><a href="#Top">top : </a><a href="#TableLoad1">next</a></li>
+<br>
+Taking a snapshot of database view PG_STAT_DATABASE because of the important database statistics in it.
+<br> For more information, refer to:
+<a href="https://www.postgresql.org/docs/11/monitoring-stats.html#PG-STAT-DATABASE-VIEW">PG_STAT_DATABASE view</a><br>
+<br>
+<b>PG_STAT_DATABASE</b>
+<table border="1">
+  <tr>
+    <th align="center">datid</th>
+    <th align="center">datname</th>
+    <th align="center">numbackends</th>
+    <th align="center">xact_commit</th>
+    <th align="center">xact_rollback</th>
+    <th align="center">blks_read</th>
+    <th align="center">blks_hit</th>
+    <th align="center">tup_returned</th>
+    <th align="center">tup_fetched</th>
+    <th align="center">tup_inserted</th>
+    <th align="center">tup_updated</th>
+    <th align="center">tup_deleted</th>
+    <th align="center">conflicts</th>
+    <th align="center">temp_files</th>
+    <th align="center">temp_bytes</th>
+    <th align="center">deadlocks</th>
+    <th align="center">checksum_failures</th>
+    <th align="center">checksum_last_failure</th>
+    <th align="center">blk_read_time</th>
+    <th align="center">blk_write_time</th>
+    <th align="center">stats_reset</th>
+  </tr>
+  <tr valign="top">
+    <td align="right">16396</td>
+    <td align="left">fly1</td>
+    <td align="right">1</td>
+    <td align="right">12204</td>
+    <td align="right">905</td>
+    <td align="right">610</td>
+    <td align="right">558190</td>
+    <td align="right">2116027</td>
+    <td align="right">240386</td>
+    <td align="right">4064</td>
+    <td align="right">202</td>
+    <td align="right">597</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="left">&nbsp; </td>
+    <td align="right">1.978</td>
+    <td align="right">0</td>
+    <td align="left">2021-01-04 16:08:31.302487+00</td>
+  </tr>
+</table>
+
+<br>
+<br>
+Taking a snapshot of database view PG_STAT_BGWRITER to gather information related to database checkpoints.
+Needed to troubleshoot replication performance issues.
+<br> For more information, refer to:
+<a href="https://www.postgresql.org/docs/11/monitoring-stats.html#PG-STAT-BGWRITER-VIEW">PG_STAT_BGWRITER view</a><br>
+<br>
+<b>PG_STAT_BGWRITER</b>
+<table border="1">
+  <tr>
+    <th align="center">checkpoints_timed</th>
+    <th align="center">checkpoints_req</th>
+    <th align="center">checkpoint_write_time</th>
+    <th align="center">checkpoint_sync_time</th>
+    <th align="center">buffers_checkpoint</th>
+    <th align="center">buffers_clean</th>
+    <th align="center">maxwritten_clean</th>
+    <th align="center">buffers_backend</th>
+    <th align="center">buffers_backend_fsync</th>
+    <th align="center">buffers_alloc</th>
+    <th align="center">stats_reset</th>
+  </tr>
+  <tr valign="top">
+    <td align="right">66</td>
+    <td align="right">5</td>
+    <td align="right">58154</td>
+    <td align="right">97</td>
+    <td align="right">597</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">373</td>
+    <td align="right">0</td>
+    <td align="right">1581</td>
+    <td align="left">2020-08-14 05:42:43.292376+00</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<hr>
+<p id="Table Load" class="anchor"></p>
+<h2 style="font-family:verdana">Table Load</h2>
+<p id="TableLoad1" class="anchor"></p>
+<h2>Top 25 Objects by total DML Changes :</h2>
+<li><a href="#DatabaseLoad5">previous : </a><a href="#Top">top : </a><a href="#TableLoad2">next</a></li>
+<br>
+<b>Note:</b> DMS being a logical replication tool, we find volume of DML activity here. We also need to know if vacuuming is done regularly for performance reasons.<br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Table name</th>
+    <th align="center"># Inserts</th>
+    <th align="center"># Updates</th>
+    <th align="center"># Deletes</th>
+    <th align="center"># Hot Updates</th>
+    <th align="center">Total changes</th>
+    <th align="center"># Live tuples = # NUM ROWS</th>
+    <th align="center"># Dead tuples</th>
+    <th align="center"># Changes since last analyze</th>
+    <th align="center"># Manual vacuum counts</th>
+    <th align="center"># Auto vacuum counts</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">airline</td>
+    <td align="right">1149</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">1149</td>
+    <td align="right">1149</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">airport</td>
+    <td align="right">352</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">352</td>
+    <td align="right">352</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">employee</td>
+    <td align="right">107</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">107</td>
+    <td align="right">107</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">reservation</td>
+    <td align="right">27</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">27</td>
+    <td align="right">27</td>
+    <td align="right">0</td>
+    <td align="right">27</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="TableLoad2" class="anchor"></p>
+<h2>Top 25 tables by inserts :</h2>
+<li><a href="#TableLoad1">previous : </a><a href="#Top">top : </a><a href="#TableLoad3">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Table name</th>
+    <th align="center"># Inserts</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">airline</td>
+    <td align="right">1149</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">airport</td>
+    <td align="right">352</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">employee</td>
+    <td align="right">107</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">reservation</td>
+    <td align="right">27</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="TableLoad3" class="anchor"></p>
+<h2>Top 25 tables by updates :</h2>
+<li><a href="#DatabaseLoad2">previous : </a><a href="#Top">top : </a><a href="#TableLoad4">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Table name</th>
+    <th align="center"># Updates</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">reservation</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">employee</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">airport</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">airline</td>
+    <td align="right">0</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="TableLoad4" class="anchor"></p>
+<h2>Top 25 tables by deletes :</h2>
+<li><a href="#TableLoad3">previous : </a><a href="#Top">top : </a><a href="TableDetails1">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Table name</th>
+    <th align="center"># Deletes</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">reservation</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">employee</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">airport</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">airline</td>
+    <td align="right">0</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<hr>
+<p id="TableDetails" class="anchor"></p>
+<h2 style="font-family:verdana">Table Details</h2>
+<p id="TableDetails1" class="anchor"></p>
+<h2>Existing Materialized Views :</h2>
+<li><a href="#TableLoad4">previous : </a><a href="#Top">top : </a><a href="#TableDetails2">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">schema_name</th>
+    <th align="center">view_name</th>
+    <th align="center">owner</th>
+    <th align="center">is_populated</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="TableDetails2" class="anchor"></p>
+<h2>Object Type count :</h2>
+<li><a href="#TableDetails1">previous : </a><a href="#Top">top : </a><a href="#TableDetails3">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">schema_name</th>
+    <th align="center">object_type</th>
+    <th align="center">object_count</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">index</td>
+    <td align="right">8</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">sequence</td>
+    <td align="right">2</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">table</td>
+    <td align="right">4</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="TableDetails3" class="anchor"></p>
+<h2>Data Type count :</h2>
+<li><a href="#TableDetails2">previous : </a><a href="#Top">top : </a><a href="#TableDetails4">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">schema</th>
+    <th align="center">Data type</th>
+    <th align="center">count</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">character varying</td>
+    <td align="right">20</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">integer</td>
+    <td align="right">7</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">date</td>
+    <td align="right">2</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">public</td>
+    <td align="left">numeric</td>
+    <td align="right">1</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="TableDetails4" class="anchor"></p>
+<h2>Replica Identity details :</h2>
+<li><a href="#TableDetails3">previous : </a><a href="#Top">top : </a><a href="#TableDetails5">next</a></li>
+<br>
+<b>Note:</b> Replica Identity controls the WAL records for a table being modified. Use REPLICATE IDENTITY FULL carefully for each table as FULL generates an extra amount of WAL that may not be necessary.
+<ul>
+<li>REPLICATE IDENTITY FULL records the old values of all columns in the row. Useful to troubleshoot issues related to missing changes in target.</li>
+<li>Useful to replicate to data-streaming target like AWS Kinesis to reveal the before-image data for the changes made. Check DMS <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.BeforeImage">BeforeImageSettings</a> for details.</li>
+</ul>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">table_name</th>
+    <th align="center">replica_identity</th>
+    <th align="center">Table schema</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="TableDetails5" class="anchor"></p>
+<h2>DMS Artifacts</h2>
+<li><a href="#TableDetails4">previous : </a><a href="#Top">top : </a><a href="#ArchivalInformation1">next</a></li>
+<br>
+<b>Note:</b> DMS creates several objects to capture data definition language (DDL) events, implement <a href="#DatabaseConfiguration7">heartbeat mechanism</a> for advancing restart_lsn, and provide useful migration statistics for migration status. Refer to <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.RDSPostgreSQL.NonMasterUser"> DMS artifacts of a PostgreSQL source</a>, <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.ControlTable.html">DMS control table task settings</a>, and <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Validating.html#CHAP_Validating.Troubleshooting">DMS data validation</a> for details.
+<ul>
+<li>DMS control tables and related objects: awsdms_apply_exceptions, awsdms_history_*, awsdms_status_*, awsdms_suspended_tables_*</li>
+<li>DMS validation table: awsdms_validation_failures_v1</li>
+<li>Source PostgreSQL heartbeat table and related objects: awsdms_heartbeat_*</li>
+<li>DMS artifacts for capturing DDL events: awsdms_ddl_audit_*</li>
+<li>Schema Conversion Tool (SCT) created objects: aws_*</li>
+</ul>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">relname</th>
+    <th align="center">schema_name</th>
+    <th align="center">object_type</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<hr>
+<p id="ArchivalInformation" class="anchor"></p>
+<h2 style="font-family:verdana">Archival Information</h2>
+<p id="ArchivalInformation1" class="anchor"></p>
+<h2>Archive mode and other details :</h2>
+<li><a href="#TableDetails5">previous : </a><a href="#Top">top : </a><a href="#Permissions1">next</a></li>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">archive_mode</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">on</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">wal_level</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">replica</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<hr>
+<p id="Permissions" class="anchor"></p>
+<h2 style="font-family:verdana">Permissions</h2>
+<p id="Permissions1" class="anchor"></p>
+<h2>System privileges :</h2>
+<li><a href="#ArchivalInformation1">previous : </a><a href="#Top">top : </a><a href="#Permissions2">next</a></li>
+<br>
+<b>Note:</b><br>
+<ul>
+<li><b>PostgreSQL source:</b> refer to <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.Prerequisites">PostgreSQL source permissions</a> needed. Additionally, refer to <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.RDSPostgreSQL">RDS or Aurora PostgreSQL permissions</a> needed.</li>
+<li><b>PostgreSQL target:</b> refer to <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.PostgreSQL.html#CHAP_Target.PostgreSQL.Security">minimum PostgreSQL user permissions</a> to run DMS tasks.</li>
+</ul>
+<br>
+<table border="1">
+  <caption>List of roles</caption>
+  <tr>
+    <th align="center">Role name</th>
+    <th align="center">Attributes</th>
+    <th align="center">Member of</th>
+    <th align="center">Description</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">master</td>
+    <td align="left">Create role, Create DB<br />
+Password valid until infinity</td>
+    <td align="left">{rds_superuser}</td>
+    <td align="left">&nbsp; </td>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="Permissions2" class="anchor"></p>
+<h2>Table Grants :</h2>
+<li><a href="#Permissions1">previous : </a><a href="#Top">top : </a><a href="#PotentialIssues">next</a></li>
+<br> For more information, refer to:
+<a href="https://www.postgresql.org/docs/10/sql-grant.html">GRANT on Database Objects</a><br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">relname</th>
+    <th align="center">grantee</th>
+    <th align="center">privileges</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">airline</td>
+    <td align="left">master</td>
+    <td align="left">arwdDxt</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">airport</td>
+    <td align="left">master</td>
+    <td align="left">arwdDxt</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">reservation</td>
+    <td align="left">master</td>
+    <td align="left">arwdDxt</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">employee</td>
+    <td align="left">master</td>
+    <td align="left">arwdDxt</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<hr>
+<p id="PotentialIssues" class="anchor"></p>
+<h2 style="font-family:verdana">Potential Issues</h2>
+<p id="PotentialIssues1" class="anchor"></p>
+<h2>Unsupported data types :</h2>
+<li><a href="#ArchivalInformation1">previous : </a><a href="#Top">top : </a><a href="#PotentialIssues2">next</a></li>
+<br>
+<b>Note: </b> Refer to <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source-PostgreSQL-DataTypes">the default mapping to AWS DMS data types from PostgreSQL source</a> and <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.PostgreSQL.html#CHAP_Target.PostgreSQL.DataTypes">the target PostgreSQL data types mapped from the AWS DMS data types</a>.<br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">schema</th>
+    <th align="center">Data type</th>
+    <th align="center">count</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="PotentialIssues2" class="anchor"></p>
+<h2>Tables with No PK :</h2>
+<li><a href="#PotentialIssues1">previous : </a><a href="#Top">top : </a><a href="#PotentialIssues3">next</a></li>
+<br>
+<b>Note:</b>
+<ul>
+<li>If a table does not have a primary key, AWS DMS ignores DELETE and UPDATE record operations for that table. Refer to <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.Limitations">limitations on using a PostgreSQL database as a source for AWS DMS</a>.</li>
+<li>Primary key or unique key is needed for migrating LOB in a FULL LOAD or CDC tasking using FULL LOB mode. Primary key is also needed for migrating LOB in CDC task using Limited LOB mode. Refer to <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_BestPractices.html#CHAP_BestPractices.LOBS">Best practices for AWS Database Migration Service - Migrating large binary objects (LOBs)</a>.</li>
+<li>Primary key or unique key is needed for using batch apply for improving CDC performance. Refer to <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.ChangeProcessingTuning.html">change processing tuning settings</a>.</li>
+</ul>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">table_schema</th>
+    <th align="center">table_name</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="PotentialIssues3" class="anchor"></p>
+<h2>TEXT and JSONB columns with NOT NULL set :</h2>
+<li><a href="#PotentialIssues2">previous : </a><a href="#Top">top : </a><a href="#PotentialIssues4">next</a></li>
+<br>
+<b>Note:</b> TEXT and JSONB data types are treated as LOB during DMS replication. Full LOB mode comes with penalty of slow performance.
+<br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">Table name</th>
+    <th align="center">Column name</th>
+    <th align="center">Data type</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="PotentialIssues4" class="anchor"></p>
+<h2>Long running sql (more than 10 minutes) :</h2>
+<li><a href="#PotentialIssues3">previous : </a><a href="#Top">top : </a><a href="#PotentialIssues5">next</a></li>
+<br>
+<b>Note:</b><br>
+<ul>
+<li>Cross check with <a href="#DatabaseConfiguration7">Replication Slot Details</a> for long running transactions preventing restart_lsn to advance which result in WAL significant growth.</li>
+<li>Check if any long running transactions that prevent DMS full load and CDC task or CDC-only task to start.</li>
+<li>Long running transactions can result in poor replication performance due to the nature of logical replication used by DMS. </li>
+</ul>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">process id</th>
+    <th align="center">username</th>
+    <th align="center">transaction start</th>
+    <th align="center">runtime</th>
+    <th align="center">wait_event_type</th>
+    <th align="center">state</th>
+    <th align="center">backend_xid</th>
+    <th align="center">backend_xmin</th>
+    <th align="center">backend_type</th>
+    <th align="center">query</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="PotentialIssues5" class="anchor"></p>
+<h2>Tables with triggers :</h2>
+<li><a href="#PotentialIssues4">previous : </a><a href="#Top">top : </a><a href="PotentialIssues6">next</a></li>
+<br>
+<b>Note:</b> Though triggers on source do not have much impact from DMS standpoint, it is important to know if these triggers exist on target or not. For brevity purpose we list only first 10 triggers.
+<br>
+<b>tgenabled:</b> O = trigger fires in "origin" and "local" modes, D = trigger is disabled, R = trigger fires in "replica" mode, A = trigger fires always.
+<br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">table_name</th>
+    <th align="center">tgname</th>
+    <th align="center">tgenabled</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="PotentialIssues6" class="anchor"></p>
+<h2>Database Views :</h2>
+<li><a href="#PotentialIssues5">previous : </a><a href="#Top">top : </a><a href="EndOfReport">next</a></li>
+<br>
+<b>Note:</b> Currently AWS DMS supports only the Full Load for views in PostgreSQL source endpoints.
+<br>
+<br>
+<table border="1">
+  <tr>
+    <th align="center">View</th>
+    <th align="center">Schema</th>
+  </tr>
+</table>
+
+<br>
+<br>
+<p id="EndOfReport"><h2>End of the report</h2></p>
+<li><a href="#PotentialIssues5">previous : </a><a href="#Top">top : </a></li>
