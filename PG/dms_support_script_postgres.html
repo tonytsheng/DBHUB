@@ -86,10 +86,10 @@
 <li>Please upload to AWS Support via a Customer Support Case.</li>
 </h5>
 <br>
- Current Database Time : <b>2021-01-04 21:38:22</b>
+ Current Database Time : <b>2021-01-05 00:25:46</b>
 
 <br>
- Database Startup Time : <b>2021-01-04 16:04:43</b>
+ Database Startup Time : <b>2021-01-05 00:14:21</b>
 
 <br>
  Total Active Sessions : <b>1</b>
@@ -100,7 +100,7 @@
 <br>
 Schema name being Migrated/Replicated :<b> public</b>
 <br>
-PostgreSQL User Name which DMS will use to connect :<b> master</b>
+PostgreSQL User Name which DMS will use to connect :<b> postgresql_dms_user</b>
 <br>
 <br>
 <br>
@@ -127,7 +127,7 @@ PostgreSQL User Name which DMS will use to connect :<b> master</b>
     <td align="left">en_US.UTF-8</td>
     <td align="left">UTC</td>
     <td align="left">Master</td>
-    <td align="right">3467</td>
+    <td align="right">3484</td>
   </tr>
 </table>
 
@@ -501,7 +501,7 @@ several factors can impact WAL generation, we are just getting a rough idea. Thi
     <th align="center">Volume of WAL generated in last 10 minutes</th>
   </tr>
   <tr valign="top">
-    <td align="left">128 MB</td>
+    <td align="left">192 MB</td>
   </tr>
 </table>
 
@@ -544,24 +544,24 @@ Taking a snapshot of database view PG_STAT_DATABASE because of the important dat
     <td align="right">16396</td>
     <td align="left">fly1</td>
     <td align="right">1</td>
-    <td align="right">12204</td>
-    <td align="right">905</td>
-    <td align="right">610</td>
-    <td align="right">558190</td>
-    <td align="right">2116027</td>
-    <td align="right">240386</td>
-    <td align="right">4064</td>
-    <td align="right">202</td>
-    <td align="right">597</td>
+    <td align="right">86</td>
+    <td align="right">1</td>
+    <td align="right">229</td>
+    <td align="right">5129</td>
+    <td align="right">43371</td>
+    <td align="right">1925</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="left">&nbsp; </td>
-    <td align="right">1.978</td>
+    <td align="right">66.293</td>
     <td align="right">0</td>
-    <td align="left">2021-01-04 16:08:31.302487+00</td>
+    <td align="left">2021-01-05 00:18:02.96865+00</td>
   </tr>
 </table>
 
@@ -588,17 +588,17 @@ Needed to troubleshoot replication performance issues.
     <th align="center">stats_reset</th>
   </tr>
   <tr valign="top">
-    <td align="right">66</td>
-    <td align="right">5</td>
-    <td align="right">58154</td>
-    <td align="right">97</td>
-    <td align="right">597</td>
+    <td align="right">2</td>
+    <td align="right">0</td>
+    <td align="right">1282</td>
+    <td align="right">3</td>
+    <td align="right">10</td>
     <td align="right">0</td>
     <td align="right">0</td>
-    <td align="right">373</td>
     <td align="right">0</td>
-    <td align="right">1581</td>
-    <td align="left">2020-08-14 05:42:43.292376+00</td>
+    <td align="right">0</td>
+    <td align="right">773</td>
+    <td align="left">2021-01-04 21:59:42.379976+00</td>
   </tr>
 </table>
 
@@ -628,13 +628,26 @@ Needed to troubleshoot replication performance issues.
     <th align="center"># Auto vacuum counts</th>
   </tr>
   <tr valign="top">
-    <td align="left">airline</td>
-    <td align="right">1149</td>
+    <td align="left">reservation</td>
+    <td align="right">1</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
-    <td align="right">1149</td>
-    <td align="right">1149</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">employee</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
@@ -642,40 +655,27 @@ Needed to troubleshoot replication performance issues.
   </tr>
   <tr valign="top">
     <td align="left">airport</td>
-    <td align="right">352</td>
-    <td align="right">0</td>
-    <td align="right">0</td>
-    <td align="right">0</td>
-    <td align="right">352</td>
-    <td align="right">352</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
-  </tr>
-  <tr valign="top">
-    <td align="left">employee</td>
-    <td align="right">107</td>
     <td align="right">0</td>
     <td align="right">0</td>
-    <td align="right">0</td>
-    <td align="right">107</td>
-    <td align="right">107</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
   </tr>
   <tr valign="top">
-    <td align="left">reservation</td>
-    <td align="right">27</td>
+    <td align="left">airline</td>
     <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
-    <td align="right">27</td>
-    <td align="right">27</td>
     <td align="right">0</td>
-    <td align="right">27</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
     <td align="right">0</td>
     <td align="right">0</td>
   </tr>
@@ -693,20 +693,20 @@ Needed to troubleshoot replication performance issues.
     <th align="center"># Inserts</th>
   </tr>
   <tr valign="top">
-    <td align="left">airline</td>
-    <td align="right">1149</td>
-  </tr>
-  <tr valign="top">
-    <td align="left">airport</td>
-    <td align="right">352</td>
+    <td align="left">reservation</td>
+    <td align="right">1</td>
   </tr>
   <tr valign="top">
     <td align="left">employee</td>
-    <td align="right">107</td>
+    <td align="right">0</td>
   </tr>
   <tr valign="top">
-    <td align="left">reservation</td>
-    <td align="right">27</td>
+    <td align="left">airport</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">airline</td>
+    <td align="right">0</td>
   </tr>
 </table>
 
@@ -945,9 +945,8 @@ Needed to troubleshoot replication performance issues.
     <th align="center">Description</th>
   </tr>
   <tr valign="top">
-    <td align="left">master</td>
-    <td align="left">Create role, Create DB<br />
-Password valid until infinity</td>
+    <td align="left">postgresql_dms_user</td>
+    <td align="left">&nbsp; </td>
     <td align="left">{rds_superuser}</td>
     <td align="left">&nbsp; </td>
   </tr>
@@ -966,26 +965,6 @@ Password valid until infinity</td>
     <th align="center">relname</th>
     <th align="center">grantee</th>
     <th align="center">privileges</th>
-  </tr>
-  <tr valign="top">
-    <td align="left">airline</td>
-    <td align="left">master</td>
-    <td align="left">arwdDxt</td>
-  </tr>
-  <tr valign="top">
-    <td align="left">airport</td>
-    <td align="left">master</td>
-    <td align="left">arwdDxt</td>
-  </tr>
-  <tr valign="top">
-    <td align="left">reservation</td>
-    <td align="left">master</td>
-    <td align="left">arwdDxt</td>
-  </tr>
-  <tr valign="top">
-    <td align="left">employee</td>
-    <td align="left">master</td>
-    <td align="left">arwdDxt</td>
   </tr>
 </table>
 
