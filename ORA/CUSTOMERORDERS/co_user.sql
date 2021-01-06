@@ -5,10 +5,10 @@ grant create session,
       create sequence, 
       create view, 
       create procedure
-  to co 
+  to customer_orders
   identified by "&co_password";
   
-alter user co default tablespace &tbs
+alter user customer_orders default tablespace &tbs
               quota unlimited on &tbs;
 
-alter user co temporary tablespace &ttbs;
+alter user customer_orders temporary tablespace &ttbs;

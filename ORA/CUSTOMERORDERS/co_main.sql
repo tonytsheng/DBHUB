@@ -14,7 +14,7 @@ PROMPT Dropping user
 PROMPT Creating user
 @@co_user &co_password &tbs &ttbs
 
-conn co/&co_password@&connect_string
+conn customer_orders/&co_password@&connect_string
 
 PROMPT Running DDL
 @@co_ddl

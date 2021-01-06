@@ -1,7 +1,7 @@
 USER=$1
 INFILE=$2
 
-CREDS="${USER}/`cat .${USER}`"
+CREDS="${USER}/`cat /home/ec2-user/DBHUB/ORA/.${USER}`"
 CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=OCTORA01)))"
 
 if [ -z ${INFILE} ]; then

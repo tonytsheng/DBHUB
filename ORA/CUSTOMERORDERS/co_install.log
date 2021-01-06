@@ -1,8 +1,8 @@
 Dropping user
-drop user co
+drop user customerorders
           *
 ERROR at line 1:
-ORA-01918: user 'CO' does not exist 
+ORA-01918: user 'CUSTOMERORDERS' does not exist 
 
 
 Creating user

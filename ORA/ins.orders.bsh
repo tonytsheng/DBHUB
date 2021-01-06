@@ -1,4 +1,4 @@
-sqlplus -S -l 'co/coco1212@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=octora01)))' <<EQ
+sqlplus -S -l 'customer_orders/coco1212@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=octora01)))' <<EQ
 whenever oserror exit 9;
 whenever sqlerror exit sql.sqlcode;
 set linesize 200;

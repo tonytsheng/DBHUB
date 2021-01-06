@@ -1,8 +1,8 @@
-select count(*) customer from co.customers;
-select count(*) stores from co.stores;
-select count(*) products from co.products;
-select count(*) orders from co.orders;
-select count(*) shipments from co.shipments;
-select count(*) order_items from co.order_items;
-select count(*) inventory from co.inventory;
+select count(*) customer from customer_orders.customers;
+select count(*) stores from customer_orders.stores;
+select count(*) products from customer_orders.products;
+select count(*) orders from customer_orders.orders;
+select count(*) shipments from customer_orders.shipments;
+select count(*) order_items from customer_orders.order_items;
+select count(*) inventory from customer_orders.inventory;
 
