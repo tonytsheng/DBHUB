@@ -1,0 +1,12 @@
+USER=$1
+DB=$2
+INFILE=$3
+export PGPASSWORD=`cat .${USER}`
+
+if [ -z ${INFILE} ]; then
+    psql --host=pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=${USER} --dbname=${DB}
+else
+    psql --host=pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=${USER} --dbname=${DB} -f ${INFILE}
+fi
+
+                    
