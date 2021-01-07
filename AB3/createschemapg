@@ -1,0 +1,4 @@
+./pgw <<EQ
+create schema customer_orders;
+EQ
+

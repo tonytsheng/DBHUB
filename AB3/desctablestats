@@ -1,0 +1,1 @@
+aws dms describe-table-statistics --replication-task-arn "arn:aws:dms:us-east-2:227623716792:task:HSVLZ47BNLHC7RROIHZQ4G4OJLGCASAU6ZQ4X5Q" --output text

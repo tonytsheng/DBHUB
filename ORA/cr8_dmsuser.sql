@@ -37,6 +37,7 @@ grant SELECT on ALL_LOG_GROUPS to DMSUSER;
 GRANT SELECT on SYS.DBA_REGISTRY to DMSUSER;
 GRANT SELECT on SYS.OBJ$ to DMSUSER;
 GRANT SELECT on DBA_TABLESPACES to DMSUSER;
+GRANT SELECT on DBA_cons_columns to DMSUSER;
 GRANT SELECT on ALL_TAB_PARTITIONS to DMSUSER;
 GRANT SELECT on ALL_ENCRYPTED_COLUMNS to DMSUSER;
 GRANT SELECT ANY TRANSACTION to DMSUSER;
@@ -102,7 +103,18 @@ grant select,insert,update,alter,delete on fly1.airport to DMSUSER;
 grant select,insert,update,alter,delete on fly1.employee to DMSUSER;
 grant select,insert,update,alter,delete on fly1.reservation to DMSUSER;
 
+grant select on SYS.CON$ to dmsuser;
+grant select on SYS.user$ to dmsuser;
+grant select on sys.con$ to dmsuser;
+
 exec rdsadmin.rdsadmin_util.grant_sys_object('V_$ARCHIVED_LOG','DMSUSER','SELECT');
+exec rdsadmin.rdsadmin_util.grant_sys_object('DBA_TAB_COLS','DMSUSER','SELECT');
+exec rdsadmin.rdsadmin_util.grant_sys_object('DBA_OBJECTS','DMSUSER','SELECT');
+exec rdsadmin.rdsadmin_util.grant_sys_object('DBA_CONSTRAINTS','DMSUSER','SELECT');
+exec rdsadmin.rdsadmin_util.grant_sys_object('DBA_CONS_COLUMNS','DMSUSER','SELECT');
+exec rdsadmin.rdsadmin_util.grant_sys_object('SYS.CDEF$','DMSUSER','SELECT');
+exec rdsadmin.rdsadmin_util.grant_sys_object('SYS.USER$','DMSUSER','SELECT');
+exec rdsadmin.rdsadmin_util.grant_sys_object('SYS.CON$','DMSUSER','SELECT');
 exec rdsadmin.rdsadmin_util.grant_sys_object('V_$LOG','DMSUSER','SELECT');
 exec rdsadmin.rdsadmin_util.grant_sys_object('V_$LOGFILE','DMSUSER','SELECT');
 exec rdsadmin.rdsadmin_util.grant_sys_object('V_$DATABASE','DMSUSER','SELECT');
@@ -166,3 +178,4 @@ exec rdsadmin.rdsadmin_util.grant_sys_object('V_$STANDBY_LOG', 'DMSUSER', 'SELEC
 exec rdsadmin.rdsadmin_util.grant_sys_object('ENC$', 'DMSUSER', 'SELECT'); 
 exit
 
+grant execute on sys.dbms_crypto to DMSUSER;

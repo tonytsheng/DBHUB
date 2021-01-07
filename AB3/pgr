@@ -1,0 +1,10 @@
+INFILE=$1
+export PGPASSWORD=`cat /home/ec2-user/DBHUB/PG/.postgres`
+
+if [ -z ${INFILE} ]; then
+    psql --host=aurpg02-instance-1-us-east-2b.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=postgres --dbname=aurpg02
+else
+    psql --host=aurpg02-instance-1-us-east-2b.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=postgres --dbname=aurpg02 -f ${INFILE}
+fi
+
+                    

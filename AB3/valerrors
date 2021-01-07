@@ -1,0 +1,4 @@
+export PGPASSWORD=`cat /home/ec2-user/DBHUB/PG/.postgres`
+psql --host=aurpg02-instance-1.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=postgres --dbname=aurpg02 <<EQ
+select * from awsdms_validation_failures_v1;
+EQ

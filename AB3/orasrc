@@ -1,0 +1,12 @@
+INFILE=$1
+
+CREDS="admin/`cat /home/ec2-user/DBHUB/ORA/.admin`"
+CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=OCTORA01)))"
+
+if [ -z ${INFILE} ]; then
+    sqlplus ${CONNSTR}
+else
+    sqlplus ${CONNSTR} @${INFILE}
+fi
+
+

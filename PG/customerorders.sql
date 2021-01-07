@@ -184,7 +184,23 @@ DROP INDEX IF EXISTS customer_orders.shipments_store_id_i;
 
 -- ------------ Write DROP-VIEW-stage scripts -----------
 
+DROP VIEW IF EXISTS customer_orders.a_product_orders;
+
+
+
 DROP VIEW IF EXISTS customer_orders.customer_order_products;
+
+
+
+DROP VIEW IF EXISTS customer_orders.product_orders;
+
+
+
+DROP VIEW IF EXISTS customer_orders.product_reviews;
+
+
+
+DROP VIEW IF EXISTS customer_orders.store_orders;
 
 
 
@@ -627,6 +643,20 @@ COMMENT ON COLUMN customer_orders.stores.logo_last_updated
 
 -- ------------ Write CREATE-VIEW-stage scripts -----------
 
+CREATE OR REPLACE VIEW customer_orders.a_product_orders (product_name, order_status, total_sales, order_count) AS
+SELECT
+    p.product_name, o.order_status, SUM(oi.quantity * oi.unit_price) AS total_sales, COUNT(*) AS order_count
+    FROM customer_orders.orders AS o
+    JOIN customer_orders.order_items AS oi
+        ON o.order_id = oi.order_id
+    JOIN customer_orders.customers AS c
+        ON o.customer_id = c.customer_id
+    JOIN customer_orders.products AS p
+        ON oi.product_id = p.product_id
+    GROUP BY p.product_name, o.order_status;
+
+
+
 CREATE OR REPLACE VIEW customer_orders.customer_order_products (order_id) AS
 /*
 [9996 - Severity CRITICAL - Transformer error occurred. Please submit report to developers.]
@@ -641,6 +671,87 @@ END;
 
 COMMENT ON view customer_orders.customer_order_products
     IS 'A summary of who placed each order and what they bought';
+
+
+
+CREATE OR REPLACE VIEW customer_orders.product_orders (product_name, order_status, total_sales, order_count) AS
+SELECT
+    p.product_name, o.order_status, SUM(oi.quantity * oi.unit_price) AS total_sales, COUNT(*) AS order_count
+    FROM customer_orders.orders AS o
+    JOIN customer_orders.order_items AS oi
+        ON o.order_id = oi.order_id
+    JOIN customer_orders.customers AS c
+        ON o.customer_id = c.customer_id
+    JOIN customer_orders.products AS p
+        ON oi.product_id = p.product_id
+    GROUP BY p.product_name, o.order_status;
+
+
+COMMENT ON view customer_orders.product_orders
+    IS 'A summary of the state of the orders placed for each product';
+
+
+
+CREATE OR REPLACE VIEW customer_orders.product_reviews (text, error_msg) AS
+SELECT 'CREATE OR REPLACE FORCE VIEW CUSTOMER_ORDERS.PRODUCT_REVIEWS(PRODUCT_NAME, RATING, AVG_RATING, REVIEW) AS 
+select p.product_name, r.rating,
+         round (
+           avg ( r.rating ) over (
+             partition by product_name
+           ),
+           2
+         ) avg_rating,
+         r.review
+  from   products p,
+         json_table (
+           p.product_details, ''$''
+           columns (
+             nested path ''$.reviews[*]''
+             columns (
+               rating integer path ''$.rating'',
+               review varchar2(4000) path ''$.review''
+             )
+           )
+         ) r;'::varchar AS text,'9996 - Severity CRITICAL - Transformer error occurred. Please submit report to developers.
+'::varchar AS error_msg;
+
+
+COMMENT ON view customer_orders.product_reviews
+    IS 'A relational view of the reviews stored in the JSON for each product';
+
+
+
+CREATE OR REPLACE VIEW customer_orders.store_orders (text, error_msg) AS
+SELECT 'CREATE OR REPLACE FORCE VIEW CUSTOMER_ORDERS.STORE_ORDERS(TOTAL, STORE_NAME, ADDRESS, LATITUDE, LONGITUDE, ORDER_STATUS, ORDER_COUNT, TOTAL_SALES) AS 
+select case
+           grouping_id ( store_name, order_status )
+           when 1 then ''STORE TOTAL''
+           when 2 then ''STATUS TOTAL''
+           when 3 then ''GRAND TOTAL''
+         end total,
+         s.store_name,
+         coalesce ( s.web_address, s.physical_address ) address,
+         s.latitude, s.longitude,
+         o.order_status,
+         count ( distinct o.order_id ) order_count,
+         sum ( oi.quantity * oi.unit_price ) total_sales
+  from   stores s
+  join   orders o
+  on     s.store_id = o.store_id
+  join   order_items oi
+  on     o.order_id = oi.order_id
+  group  by grouping sets (
+    ( s.store_name, coalesce ( s.web_address, s.physical_address ), s.latitude, s.longitude ),
+    ( s.store_name, coalesce ( s.web_address, s.physical_address ), s.latitude, s.longitude, o.order_status ),
+    o.order_status,
+    ()
+  );'::varchar AS text,'5340 - Severity CRITICAL - PostgreSQL doesn''t support the GROUPING_ID(<VARIABLE_ARGUMENTS>) function. Use suitable function or create user defined function.
+5578 - Severity CRITICAL - Unable to automatically transform the SELECT statement. Try rewriting the statement.
+'::varchar AS error_msg;
+
+
+COMMENT ON view customer_orders.store_orders
+    IS 'A summary of what was purchased at each location, including summaries each store, order status and overall total';
 
 
 
