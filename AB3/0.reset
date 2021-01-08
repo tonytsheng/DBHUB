@@ -3,3 +3,6 @@ drop schema customer_orders cascade;
 delete from awsdms_validation_failures_v1;
 EQ
 
+./orasrc_co src_validate.sql
+
+./tgt_createschema

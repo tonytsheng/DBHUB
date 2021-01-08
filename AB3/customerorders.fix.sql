@@ -333,7 +333,7 @@ CACHE 20;
 -- ------------ Write CREATE-TABLE-stage scripts -----------
 
 CREATE TABLE customer_orders.customers(
-    customer_id BIGINT NOT NULL,
+    customer_id NUMERIC(38,0)  NOT NULL,
     email_address CHARACTER VARYING(255) NOT NULL,
     full_name CHARACTER VARYING(255) NOT NULL
 )
@@ -360,7 +360,7 @@ COMMENT ON COLUMN customer_orders.customers.full_name
 
 
 CREATE TABLE customer_orders.inventory(
-    inventory_id BIGINT NOT NULL,
+    inventory_id NUMERIC(38,0)  NOT NULL,
     store_id NUMERIC(38,0) NOT NULL,
     product_id NUMERIC(38,0) NOT NULL,
     product_inventory NUMERIC(38,0) NOT NULL
@@ -434,7 +434,7 @@ COMMENT ON COLUMN customer_orders.order_items.shipment_id
 
 
 CREATE TABLE customer_orders.orders(
-    order_id BIGINT NOT NULL,
+    order_id NUMERIC(38,0)  NOT NULL,
     order_datetime TIMESTAMP(6) WITHOUT TIME ZONE NOT NULL,
     customer_id NUMERIC(38,0) NOT NULL,
     order_status CHARACTER VARYING(10) NOT NULL,
@@ -477,7 +477,7 @@ COMMENT ON COLUMN customer_orders.orders.store_id
 
 
 CREATE TABLE customer_orders.products(
-    product_id BIGINT NOT NULL,
+    product_id numeric NOT NULL,
     product_name CHARACTER VARYING(255) NOT NULL,
     unit_price NUMERIC(10,2),
     product_details BYTEA,
@@ -534,7 +534,7 @@ COMMENT ON COLUMN customer_orders.products.image_last_updated
 
 
 CREATE TABLE customer_orders.shipments(
-    shipment_id BIGINT NOT NULL,
+    shipment_id NUMERIC(38,0)  NOT NULL,
     store_id NUMERIC(38,0) NOT NULL,
     customer_id NUMERIC(38,0) NOT NULL,
     delivery_address CHARACTER VARYING(512) NOT NULL,
@@ -575,7 +575,7 @@ DELIVERED - the good have arrived at their destination';
 
 
 CREATE TABLE customer_orders.stores(
-    store_id BIGINT NOT NULL,
+    store_id NUMERIC(38,0) NOT NULL,
     store_name CHARACTER VARYING(255) NOT NULL,
     web_address CHARACTER VARYING(100),
     physical_address CHARACTER VARYING(512),
