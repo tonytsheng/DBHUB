@@ -15,6 +15,7 @@ values
     )
 ;
 commit;
+col order_datetime format a30
 select * from (select * from orders order by order_id desc) where rownum <=5 order by order_id asc ;
 select count(*) from orders;
 EQ
