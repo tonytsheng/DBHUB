@@ -1,0 +1,13 @@
+sed '/^$/d' filename
+
+sed /STRING/<ctrl-v><ctrl-m>STRING/g     # to enter a carriage return before the STRING
+
+:%s/[[:cntrl:]]//g #to get rid of control characters
+
+sed "s/OLD/NEW/g; s/OLD2/NEW2/g" oldfile > newfile #enclose sed in double quotes
+
+#can use # instead of /
+sed "s#oldfqdir#newfqdir#g" oldfile > newfile
+
+# put a comma at the end of each line except for the last line
+sed '$!s/$/,/' file
