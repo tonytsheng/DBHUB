@@ -1,0 +1,32 @@
+# set -x
+BEG_DATE=`date -d '1 hour ago' "+%Y-%m-%d %H:00"`
+END_DATE=`date "+%Y-%m-%d %H:00"`
+
+echo "BEG DATE: ${BEG_DATE}"
+echo "END DATE: ${END_DATE}"
+
+CREDS="admin/`cat /home/ec2-user/DBHUB/ORA/.admin`"
+CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=OCTORA01)))"
+
+sqlplus -S ${CONNSTR} <<EQ | egrep -v '\---|rows|SNAP|^$' | sed 's/ //g' >> /tmp/beg_snap.$$
+select snap_id from dba_hist_snapshot where to_char(begin_interval_time, 'YYYY-MM-DD HH24:MI')='${BEG_DATE}';
+EQ
+BEG_SNAP=`cat /tmp/beg_snap.$$`
+echo "BEG SNAP :: ${BEG_SNAP}"
+rm /tmp/beg_snap.$$
+
+sqlplus -S ${CONNSTR} <<EQ | egrep -v '\---|rows|SNAP|^$' | sed 's/ //g' >> /tmp/end_snap.$$
+select snap_id from dba_hist_snapshot where to_char(begin_interval_time, 'YYYY-MM-DD HH24:MI')='${END_DATE}';
+EQ
+END_SNAP=`cat /tmp/end_snap.$$`
+echo "END SNAP :: ${END_SNAP}"
+rm /tmp/end_snap.$$
+
+sqlplus -S ${CONNSTR} <<EQ | egrep -v '\---|rows|SNAP|^$' | sed 's/ //g' >> /tmp/end_snap.$$
+exec rdsadmin.rdsadmin_diagnostic_util.awr_report(${BEG_SNAP}, ${END_SNAP}, 'TEXT');
+EQ
+
+aws rds download-db-log-file-portion --db-instance-identifier octora01 \
+    --log-file-name trace/awrrpt_${BEG_SNAP}_${END_SNAP}.txt \
+    --output text  \
+    > awrrpt_${BEG_SNAP}_${END_SNAP}.txt

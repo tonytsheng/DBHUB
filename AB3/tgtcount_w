@@ -1,12 +1,12 @@
 export PGPASSWORD=`cat /home/ec2-user/DBHUB/PG/.postgres`
 psql --host=aurpg02-instance-1.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=postgres --dbname=aurpg02 <<EQ
-select count(*) customer from customer_orders.customers;
-select count(*) stores from customer_orders.stores;
-select count(*) products from customer_orders.products;
-select count(*) orders from customer_orders.orders;
-select count(*) shipments from customer_orders.shipments;
-select count(*) order_items from customer_orders.order_items;
-select count(*) inventory from customer_orders.inventory;
+--select count(*) customer from customer_orders.customers;
+--select count(*) stores from customer_orders.stores;
+--select count(*) products from customer_orders.products;
+--select count(*) orders from customer_orders.orders;
+--select count(*) shipments from customer_orders.shipments;
+--select count(*) order_items from customer_orders.order_items;
+--select count(*) inventory from customer_orders.inventory;
 SELECT * FROM (SELECT * FROM customer_orders.orders ORDER BY order_datetime DESC LIMIT 5) a ORDER BY order_datetime ASC;
 select count(*) from customer_orders.orders ;
 EQ
