@@ -1,0 +1,17 @@
+aws pi describe-dimension-keys \
+    --identifier db-SKUYXDDJWDBMOOMXCXOPDTUBWI \
+    --service-type RDS \
+    --start-time 20210114T08:00 \
+    --end-time 20210114T15:00 \
+    --metric db.load.avg \
+    --group-by '{"Group":"db.host"}'
+
+
+aws pi get-resource-metrics \
+    --identifier db-SKUYXDDJWDBMOOMXCXOPDTUBWI \
+    --service-type RDS \
+    --start-time 20210114T08:00 \
+    --end-time 20210114T15:00 \
+    --period-in-seconds 300 --metric db.load.avg --metric-queries file://metric_queries.json
+
+

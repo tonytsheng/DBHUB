@@ -1,0 +1,8 @@
+[
+    {
+        "Metric": "db.load.avg",
+        "GroupBy": {
+            "Group":"db.wait_event"
+        }
+    }
+]

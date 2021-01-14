@@ -1,6 +1,6 @@
 while true
 do
-    WAIT=$(( $RANDOM %25 ));echo $WAIT
+    WAIT=$(( $RANDOM %5 ));echo $WAIT
     EXEC=$(( $RANDOM % 50 )); echo $EXEC
 #    echo "WAIT=${WAIT}"
 #    echo "EXEC=${EXEC}"
