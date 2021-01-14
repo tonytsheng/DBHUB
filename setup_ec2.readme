@@ -87,3 +87,5 @@ postgresql12-server-12.5-1PGDG.rhel8.x86_64  #postgres
 postgresql11-11.10-1PGDG.rhel8.x86_64  #postgres
 postgresql11-libs-11.10-1PGDG.rhel8.x86_64  #postgres
 
+
+##
