@@ -1,0 +1,18 @@
+while true
+do
+    WAIT=`echo $RANDOM %25 | head -c1`
+    EXEC=$(( $RANDOM % 50 )); echo $EXEC
+#    echo "WAIT=${WAIT}"
+#    echo "EXEC=${EXEC}"
+    START=0
+    for (( c=$START; c<=$EXEC; c++ ))
+    do
+#        echo ${c}
+        ./srcinsorders &
+    done
+    for (( n=$START; n<=$WAIT; n++ ))
+    do
+        echo -ne "${n}"'\r'
+        sleep 1
+    done
+done
