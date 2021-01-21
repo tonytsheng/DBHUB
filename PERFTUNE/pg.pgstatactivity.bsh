@@ -1,7 +1,18 @@
+## To be able to have statements saved in pg_stat_statements table for RDS/Aurora postgreSQL, do the following
+## 1 - set parameters:
+## pg_stat_staements.track ALL
+## shared_preload_libraries pg_stat_statements
+## track_activity_query_size 2048
+## reboot
+## login and create the extention:
+## 2 - CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
+
 export PGPASSWORD=Pass1234
 psql --host=pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=master --dbname=fly1 <<EQ
-select * from pg_stat_activity;
-select datname, usename, query_start, query from pg_stat_activity;
+\x
+\echo #----#----#----# 
+\echo #----#----#----# pg_stat_activity ordered by query_start, xact_start
+\echo #----#----#----# 
 SELECT (clock_timestamp() - xact_start) AS xact_age,
        (clock_timestamp() - query_start) AS query_age,
        (clock_timestamp() - state_change) AS change_age,
@@ -14,6 +25,9 @@ FROM pg_stat_activity
 WHERE clock_timestamp() - coalesce(xact_start, query_start) > '00:00:00.1'::interval
 AND pid <> pg_backend_pid() AND state <> 'idle'
 ORDER BY coalesce(xact_start, query_start);
+\echo #----#----#----# 
+\echo #----#----#----# pg_stat_activity and pg_locks
+\echo #----#----#----# 
 SELECT
   COALESCE(l1.relation::regclass::text,l1.locktype) as locked_item,
   w.wait_event_type as waiting_ev_type, w.wait_event as waiting_ev, w.query as waiting_query,
@@ -33,8 +47,17 @@ JOIN pg_locks l2 ON (l1.transactionid = l2.transactionid AND l1.pid != l2.pid)
 JOIN pg_stat_activity l ON l2.pid = l.pid
 WHERE w.wait_event is not null and w.wait_event_type is not null
 ORDER BY l.query_start,w.query_start;
+\echo #----#----#----# 
+\echo #----#----#----# worst 5 pg_stat_activity that is not idle, orderd by runtime
+\echo #----#----#----# 
 select current_timestamp - query_start as runtime, datname, usename, query
     from pg_stat_activity
     where state != 'idle'
-    order by 1 desc;
+    order by 1 desc limit 5;
+\echo #----#----#----# 
+\echo #----#----#----# worst 5 pg_stat_activity ordered by total_time
+\echo #----#----#----# 
+SELECT query, calls, total_time, rows, 100.0 * shared_blks_hit /
+               nullif(shared_blks_hit + shared_blks_read, 0) AS hit_percent
+          FROM pg_stat_statements ORDER BY total_time DESC LIMIT 5;
 EQ
