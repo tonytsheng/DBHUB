@@ -12,6 +12,6 @@ aws pi get-resource-metrics \
     --service-type RDS \
     --start-time 20210114T08:00 \
     --end-time 20210114T15:00 \
-    --period-in-seconds 300 --metric db.load.avg --metric-queries file://metric_queries.json
+    --period-in-seconds 300 --metric db.load.avg --metric-queries file://metric_queries.perfinsights.json
 
 
