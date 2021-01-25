@@ -1,0 +1,16 @@
+
+USER=co
+DB=fly1
+export PGPASSWORD=`cat /home/ec2-user/DBHUB/PG/.co`
+
+psql --host=pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=${USER} --dbname=${DB}<<EQ
+\c co
+select count(*) from orders;
+SELECT * FROM (SELECT * FROM orders ORDER BY order_datetime DESC LIMIT 5) a ORDER BY order_datetime ASC;
+select count(*) from orders;
+SELECT * FROM (SELECT * FROM orders ORDER BY order_datetime DESC LIMIT 5) a ORDER BY order_datetime ASC;
+select count(*) from orders;
+SELECT * FROM (SELECT * FROM orders ORDER BY order_datetime DESC LIMIT 5) a ORDER BY order_datetime ASC;
+EQ
+exit
+

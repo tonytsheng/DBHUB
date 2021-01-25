@@ -1,0 +1,21 @@
+
+USER=co
+DB=fly1
+export PGPASSWORD=`cat /home/ec2-user/DBHUB/PG/.co`
+
+psql --host=pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=${USER} --dbname=${DB}<<EQ
+\c co
+-- \dt
+insert into orders (ORDER_DATETIME,CUSTOMER_ID,STORE_ID,ORDER_STATUS) 
+values 
+(now(), 
+(    select customer_id from customers offset random() * (select count(*) from customers) limit 1 ),
+(    select store_id from stores offset random() * (select count(*) from stores) limit 1 ),
+(    select order_status from orders offset random() * (select count(*) from orders) limit 1 )
+)
+;
+select count(*) from orders;
+SELECT * FROM (SELECT * FROM orders ORDER BY order_datetime DESC LIMIT 5) a ORDER BY order_datetime ASC;
+EQ
+exit
+
