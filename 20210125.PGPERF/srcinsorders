@@ -1,8 +1,8 @@
 USER=postgres
-DB=pg003
+DB=pg100
 export PGPASSWORD=Pass1234
 
-psql --host=pg003.czzdit7hfndz.us-east-2.rds.amazonaws.com --port=5432 --username=${USER} --dbname=${DB}<<EQ
+psql --host=pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com  --port=5432 --username=${USER} --dbname=${DB}<<EQ
 -- \c customer_orders
 -- \dt
 insert into orders (ORDER_DATETIME,CUSTOMER_ID,STORE_ID,ORDER_STATUS) 

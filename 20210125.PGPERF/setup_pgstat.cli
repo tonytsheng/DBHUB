@@ -1,0 +1,45 @@
+# aws rds describe-option-groups --output text
+# engine name = postgres 
+# majorengineversion = 12, 11, 9.6
+# engine name = auror-postgresql 
+# majorengineversion = 11
+
+aws rds create-option-group --option-group-name=ttshengtest --engine-name=postgres --major-engine-version=9.6 --option-group-description=ttshengtest
+
+aws rds describe-option-groups --output text
+
+aws rds describe-option-groups --option-group-name=ttshengtest   --output=text
+
+aws rds describe-option-group-options --engine-name=oracle-ee --output=text
+
+#aws rds add-option-to-option-group --option-group-name ttshengtest --options pg_stat_statements_track=ALL,shared_preload_libraries=pg_stat_statements,track_activity_query_size=2048 --apply-immediately
+
+aws rds add-option-to-option-group \
+    --option-group-name ttshengtest \
+    --options-to-include '[{"OptionSettings":[{"Name":"pg_stat_statements_track","Value":"ALL"},{"Name":"shared_preload_libraries","Value":"pg_stat_statements"}]}]' \
+    --apply-immediately
+
+aws rds add-option-to-option-group \
+    --option-group-name ttshengtest \
+    --options OptionName=pg_stat_statements_track,Value=ALL= \
+    --apply-immediately
+
+# check parameters in the group
+ec2-user@ip-172-31-10-108 20210125.PGPERF]$ aws rds describe-db-parameters --db-parameter-group-name ttshengpg96 --output text | egrep -w 'pg_stat_statements.track|shared_preload_libraries|track_activity_query_size'
+PARAMETERS      NONE,TOP,ALL    immediate       dynamic string  Selects which statements are tracked by pg_stat_statements.     True            pg_stat_statements.track    ALL      user
+PARAMETERS      auto_explain,orafce,pgaudit,pglogical,pg_similarity,pg_stat_statements,pg_hint_plan     pending-reboot  static  list    Lists shared libraries to preload into server.       True            shared_preload_libraries        pg_stat_statements      user
+PARAMETERS      100-102400      pending-reboot  static  integer Sets the size reserved for pg_stat_activity.current_query, in bytes.    True            track_activity_query_size            engine-default
+
+# modify for a specific parameter name
+[ec2-user@ip-172-31-10-108 20210125.PGPERF]$ aws rds modify-db-parameter-group --db-parameter-group-name ttshengpg96 --parameters "ParameterName=track_activity_query_size,ParameterValue=2048,ApplyMethod=pending-reboot"
+{
+    "DBParameterGroupName": "ttshengpg96"
+}
+
+# confirm change in the group - note the pending-reboot status
+[ec2-user@ip-172-31-10-108 20210125.PGPERF]$ aws rds describe-db-parameters --db-parameter-group-name ttshengpg96 --output text | egrep 'pg_stat_statements.track|shared_preload_libraries|track_activity_query_size'
+PARAMETERS      NONE,TOP,ALL    immediate       dynamic string  Selects which statements are tracked by pg_stat_statements.     True            pg_stat_statements.track    ALL      user
+PARAMETERS      0,1     pending-reboot  dynamic boolean Selects whether utility commands are tracked by pg_stat_statements.     True            pg_stat_statements.track_utility             engine-default
+PARAMETERS      auto_explain,orafce,pgaudit,pglogical,pg_similarity,pg_stat_statements,pg_hint_plan     pending-reboot  static  list    Lists shared libraries to preload into server.       True            shared_preload_libraries        pg_stat_statements      user
+PARAMETERS      100-102400      pending-reboot  static  integer Sets the size reserved for pg_stat_activity.current_query, in bytes.    True            track_activity_query_size    2048    user
+
