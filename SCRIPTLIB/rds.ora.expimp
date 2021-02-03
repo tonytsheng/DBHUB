@@ -24,6 +24,7 @@ BEGIN
   DBMS_DATAPUMP.START_JOB(v_hdnl);
 END;
 /
+SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir(p_directory => 'DATA_PUMP_DIR'));
 exit;
 
 -- IMPDP
