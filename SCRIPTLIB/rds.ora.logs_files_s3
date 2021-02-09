@@ -1,0 +1,15 @@
+SQL> SELECT message_text FROM alertlog;
+
+SQL> SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir(p_directory => 'DATA_PUMP_DIR'));
+
+SQL> SELECT rdsadmin.rdsadmin_s3_tasks.upload_to_s3(
+  p_bucket_name    =>  'ttsheng-logs',
+  p_directory_name =>  'DATA_PUMP_DIR')
+AS TASK_ID FROM DUAL;
+  2    3    4
+TASK_ID
+--------------------------------------------------------------------------------
+1612382724403-645
+
+select * from table(RDSADMIN.RDS_FILE_UTIL.LISTDIR('DATA_PUMP_DIR')) order by mtime;
+
