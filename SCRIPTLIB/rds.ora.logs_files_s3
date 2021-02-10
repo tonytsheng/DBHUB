@@ -1,4 +1,5 @@
-SQL> SELECT message_text FROM alertlog;
+set linesize 200
+SELECT originating_timestamp || ' ' || message_text FROM alertlog;
 
 SQL> SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir(p_directory => 'DATA_PUMP_DIR'));
 
