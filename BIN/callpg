@@ -1,0 +1,29 @@
+USER=$1
+PW=$2
+HOST=$3
+DB=$4
+INFILE=$5
+
+usage(){
+    echo "Usage:"
+    echo "callpg USER PW HOST DB "
+    echo "or with an input file:"
+    echo "callpg USER PW HOST DB INFILE"
+    exit 1
+}
+
+if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${HOST} ] || [ -z ${DB} ]; then
+    usage
+    exit 1
+fi
+export PGPASSWORD=${PW}
+
+CONNSTR="--host=${HOST} --port=5432 --username=${USER} --dbname=${DB}"
+
+if [ -z ${INFILE} ]; then
+    psql ${CONNSTR}
+else
+    psql ${CONNSTR} -f ${INFILE}
+fi
+
+
