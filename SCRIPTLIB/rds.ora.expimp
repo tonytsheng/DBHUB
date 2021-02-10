@@ -29,6 +29,7 @@ exit;
 
 -- IMPDP
 select count(*) from FLY1.RESERVATION;
+set serveroutput on;
 DECLARE
   v_hdnl NUMBER;
 BEGIN
@@ -36,21 +37,69 @@ BEGIN
     operation => 'IMPORT',
     job_mode  => 'SCHEMA',
     job_name  => null);
+  dbms_output.put_line (v_hdnl);
   DBMS_DATAPUMP.ADD_FILE(
     handle    => v_hdnl,
     filename  => 'sample.dmp',
     directory => 'DATA_PUMP_DIR',
-    filetype  => dbms_datapump.ku$_file_type_dump_file);
+    filetype  => dbms_datapump.ku$_file_type_dump_file,
+    reusefile => 1);
+  dbms_output.put_line ('after first add file');
   DBMS_DATAPUMP.ADD_FILE(
     handle    => v_hdnl,
     filename  => 'sample_imp.log',
     directory => 'DATA_PUMP_DIR',
     filetype  => dbms_datapump.ku$_file_type_log_file,
     reusefile => 1);
+  dbms_output.put_line ('Post add file');
   DBMS_DATAPUMP.METADATA_FILTER(v_hdnl,'SCHEMA_EXPR','IN (''FLY1'')');
+  dbms_output.put_line ('Post add metadatafilter ');
   DBMS_DATAPUMP.START_JOB(v_hdnl);
 END;
 /
+
+-- SQL_FILE - get ddl from export file
+
+set serveroutput on;
+DECLARE
+  v_hdnl NUMBER;
+BEGIN
+  v_hdnl := DBMS_DATAPUMP.OPEN(
+    operation => 'SQL_FILE',
+    job_mode  => 'FULL',
+    job_name  => null);
+  dbms_output.put_line (v_hdnl);
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'sample.dmp',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_dump_file,
+    reusefile => 1);
+  dbms_output.put_line ('after first add file');
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'sample.sql',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_sql_file,
+    reusefile => 1);
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'sample_imp.log',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_log_file,
+    reusefile => 1);
+  dbms_output.put_line ('Post add file');
+  DBMS_DATAPUMP.METADATA_FILTER(v_hdnl,'SCHEMA_EXPR','IN (''FLY1'')');
+  dbms_output.put_line ('Post add metadatafilter ');
+  DBMS_DATAPUMP.START_JOB(v_hdnl);
+END;
+/
+SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_PUMP_DIR', p_filename  => 'sample.sql'));
+
+
+
+
+
 select count(*) from FLY1.RESERVATION;
 exit;
 
