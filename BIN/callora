@@ -1,0 +1,30 @@
+#set -x
+USER=$1
+PW=$2
+HOST=$3
+SID=$4
+INFILE=$5
+
+usage(){
+    echo "Usage:"
+    echo "callora USER PW HOST SID "
+    echo "or with an input file:"
+    echo "callora USER PW HOST SID INFILE"
+    exit 1
+}
+
+if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${HOST} ] || [ -z ${SID} ]; then
+    usage
+    exit 1
+fi
+ 
+CREDS="${USER}/${PW}"
+CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${HOST})(PORT=1521))(CONNECT_DATA=(SID=${SID})))"
+
+if [ -z ${INFILE} ]; then
+    sqlplus ${CONNSTR}
+else
+    sqlplus ${CONNSTR} @${INFILE}
+fi
+
+
