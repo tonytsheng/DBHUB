@@ -100,12 +100,8 @@ SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_
 SELECT originating_timestamp || ' ' || message_text FROM alertlog
 where originating_timestamp > sysdate-5;
 
-
-C17_ADADS
-tablespace C17_DATA
-
-1816
-
+user - C17_ADADS
+tablespace - C17_DATA
 
 ASIMIS_C17_2010.log
 
