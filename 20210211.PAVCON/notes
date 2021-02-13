@@ -9,6 +9,8 @@ found schema name
 used that in the impdp schema option to load
 
 table already existed from previous run
+** use this
+DBMS_DATAPUMP.SET_PARAMETER(h1,'TABLE_EXISTS_ACTION','REPLACE');
 
 tried to drop table - resource wait
 
