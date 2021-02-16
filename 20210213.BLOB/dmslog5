@@ -1,0 +1,19 @@
+2021-02-16 15:55:10 UTC::@:[22989]:LOG:  skipping missing configuration file "/rdsdbdata/db/postgresql.auto.conf"
+2021-02-16 15:55:10 UTC::@:[23128]:LOG:  skipping missing configuration file "/rdsdbdata/db/postgresql.auto.conf"
+2021-02-16 15:55:10 UTC::@:[23127]:LOG:  skipping missing configuration file "/rdsdbdata/db/postgresql.auto.conf"
+2021-02-16 15:55:10 UTC::@:[23126]:LOG:  skipping missing configuration file "/rdsdbdata/db/postgresql.auto.conf"
+2021-02-16 15:55:10 UTC::@:[23132]:LOG:  skipping missing configuration file "/rdsdbdata/db/postgresql.auto.conf"
+2021-02-16 15:55:10 UTC::@:[22995]:LOG:  skipping missing configuration file "/rdsdbdata/db/postgresql.auto.conf"
+2021-02-16 15:55:10 UTC::@:[23130]:LOG:  skipping missing configuration file "/rdsdbdata/db/postgresql.auto.conf"
+2021-02-16 15:55:10 UTC::@:[23131]:LOG:  skipping missing configuration file "/rdsdbdata/db/postgresql.auto.conf"
+2021-02-16 15:55:10 UTC::@:[22989]:LOG:  skipping missing configuration file "/rdsdbdata/db/postgresql.auto.conf"
+2021-02-16 16:02:31 UTC:172.31.10.218(33086):postgres@aurpg02:[10763]:ERROR:  out of memory
+2021-02-16 16:02:31 UTC:172.31.10.218(33086):postgres@aurpg02:[10763]:DETAIL:  Cannot enlarge string buffer containing 1073741807 bytes by 8192 more bytes.
+2021-02-16 16:02:31 UTC:172.31.10.218(33086):postgres@aurpg02:[10763]:CONTEXT:  COPY stores, line 61
+2021-02-16 16:02:31 UTC:172.31.10.218(33086):postgres@aurpg02:[10763]:STATEMENT:  COPY  "customer_orders"."stores" FROM STDIN WITH DELIMITER ',' CSV NULL 'attNULL' ESCAPE '\'
+
+According to the error message, the offending row at this line number in the file is too large to be imported. 
+COPY uses an internal buffer per row that can only grow to 1GB. It's impossible to import or 
+export larger rows with COPY in existing versions of PostgreSQL (up to and including version 12)
+
+

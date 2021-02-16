@@ -1,0 +1,2 @@
+select store_id, (dbms_lob.getlength(logo))/1024/1024 from customer_orders.stores
+/

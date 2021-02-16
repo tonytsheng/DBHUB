@@ -1,0 +1,105 @@
+dealing with lob data is a pretty common migration pattern
+
+1 - load one single blob into one single row
+used SQLWorkbench to load from a windows machine 
+loaded a zip file into one blob column in one row
+
+2 - used a script to insert into select from
+that row into new rows
+
+3 - populated to 531 rows for 94GB - customer_orders.stores
+. . exported "CUSTOMER_ORDERS"."STORES"                  94.05 GB     531 rows
+
+4 - size of lobs on source
+SQL> select max(dbms_lob.getlength(logo))/1024/1024 as SizeMB from customer_orders.stores;
+
+    SIZEMB
+----------
+841.534516
+
+5 - size of lobs on target
+select max(pg_column_size(customer_orders.stores.logo)) from customer_orders.stores;
+65535 - assuming this is in kb - 
+
+aurpg02=> select max(pg_column_size(customer_orders.stores.logo)) from customer_orders.stores;
+   max
+----------
+ 51200000
+(1 row)
+that is 51MBytes
+
+aurpg02=> select max(pg_column_size(customer_orders.stores.logo)) from customer_orders.stores;
+    max
+-----------
+ 256000000
+(1 row)
+
+
+4 - use DMS to migrate the table
+from oracle to aurora postgres
+unique constraint on stores.name had to be dropped on source and target
+subsecond replication - very fast
+source instance -  oracle rds - db.m5.large
+target instance - aurora postgres - db.r5.large 
+dms instance - t3.medium - 2x4
+size of table - 94G
+number of rows - 531 rows
+bumped up lob max size to 900,000
+replication task out of memory 
+modifying replication instance - takes a little while - 15 mins or so
+bumped up to c5.2xlarge - 8x16 
+
+LOB sizes
+900,000k - 900MB - postgres copy failure
+500,000k = 500MB - postgres copy failure
+50,000k = 50 MB - this works, but lobs are truncated at source
+100,000k = 100 MB - this works, but lobs are truncated at source
+
+02-16T15:19:28:688347 [SOURCE_UNLOAD   ]W:  The value of column 'LOGO' in table 'CUSTOMER_ORDERS.STORES' was truncated to length 512000000  (oracle_endpoint_utils.c:2787)
+
+2021-02-16 18:41:38 UTC:172.31.10.218(36156):postgres@aurpg02:[9861]:ERROR:  out of memory
+2021-02-16 18:41:38 UTC:172.31.10.218(36156):postgres@aurpg02:[9861]:DETAIL:  Cannot enlarge string buffer containing 1073741807 bytes by 8192 more bytes.
+2021-02-16 18:41:38 UTC:172.31.10.218(36156):postgres@aurpg02:[9861]:CONTEXT:  COPY stores, line 61
+2021-02-16 18:41:38 UTC:172.31.10.218(36156):postgres@aurpg02:[9861]:STATEMENT:  COPY  "customer_orders"."stores" FROM STDIN WITH DELIMITER ',' CSV NULL 'attNULL' ESCAPE '\'
+
+target instance - r5.4xlarge - 16x128
+dropped constraints on target
+
+50MB lob
+531 rows
+12m 57s - 239 rows in 13 minutes - 18 rows/minute
+13 26 - 247
+15 27 - 280 - 18 rows/minute
+
+100MB lob
+4m 43s - 64
+5m 13s - 68
+5m 43s - 72 - 12 rows/minute
+6m 13s - 77 - 
+7m 13s - 85 - 12 rows/minute 
+
+250MB lob
+2m 1s - 32
+3m 1s - 36 - 12 rows/minute
+6m 31 - 52 - 8 rows/minute
+7m 1 - 54 - 7.7 rows/min
+
+full lob mode
+chunk size 100MB
+does full 100MB at a time ?
+versus rows at a time
+
+
+
+* notes on autoscaling
+also, rds puts a tight threshold on autoscale
+it grows as you use it but leaves only 1-2% free
+unlike if you self manage
+uses every little bit
+after activity settles down, it leaves 5% free
+
+100G database
+get size of table from export log
+531 rows 94G for the stores table
+
+

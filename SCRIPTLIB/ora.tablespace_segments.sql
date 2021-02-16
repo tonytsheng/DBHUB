@@ -18,6 +18,7 @@ group by tablespace_name) df,
 from dba_segments
 group by tablespace_name) tu
 where df.tablespace_name = tu.tablespace_name ;
+exit
 
 --
 -- Segment Space Usage by Owner
