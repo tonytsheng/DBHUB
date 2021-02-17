@@ -103,3 +103,54 @@ get size of table from export log
 531 rows 94G for the stores table
 
 
+++
+reloaded table with smaller blobs
+126333 rows
+SQL> select max(dbms_lob.getlength(logo))/1024/1024 as SizeMB from customer_orders.stores;
+
+    SIZEMB
+----------
+3.43498325
+
+90% of the rows have a blob of 3M in the logo column
+11 columns, 1 is a blob
+ordinary data types
+126K rows
+replicating just single table
+source instance -  oracle rds - db.m5.large - 2x8
+target instance - aurora postgres - db.r5.4xlarge - 16x128
+dms instance - dms.c5.2xlarge - 8x16
+limited lob size
+5000k max lob size
+
+"CUSTOMER_ORDERS"."STORES"                  421.5 GB  126333 rows
+
+42s - 315
+1m12s - 948
+1m42s - 1059
+2m12s - 1173
+2m42s - 1284 - 416 rows/min
+3m12s - 1398
+3m42s - 1509
+4m12s - 1623 - 405 rows/min
+4m42s - 1734
+5m12s - 1848 - 369 rows/min 
+5m42s - 1959 - 356 rows/min
+6m12s - 2070 - 318 rows/min
+6m42s - 2184 - 
+7m42s - 2409 - 321 rows/min
+11m12s - 3186 - 289 rows/min
+11m42s - 3300 - 286 rows/min
+13m42s - 3747 - 277 rows/min
+16m12s - 4308 - 261 rows/min
+21m42s - 5544 - 257 rows/min
+24m12s - 6105
+30m12s - 7449 - 248 rows/sec
+32m42s - 8007 - 246 rows/sec
+33m42s - 8232
+34m42s - 8454 - 
+35m42s - 8679
+37m42s - 9126
+41m12s - 9912
+42m42s - 10248 - 244 rows/sec
+
