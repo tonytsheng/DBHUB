@@ -7,3 +7,5 @@ select * from version();
 \d $table --describe table
 \c $newdatabase
 \dn --list schemas
+\timing -- turn on timing in session
+

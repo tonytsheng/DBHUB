@@ -145,14 +145,61 @@ limited lob size
 16m12s - 4308 - 261 rows/min
 21m42s - 5544 - 257 rows/min
 24m12s - 6105
-30m12s - 7449 - 248 rows/sec
-32m42s - 8007 - 246 rows/sec
+30m12s - 7449 - 248 rows/min
+32m42s - 8007 - 246 rows/min
 33m42s - 8232
 34m42s - 8454 - 
 35m42s - 8679
 37m42s - 9126
 41m12s - 9912
-42m42s - 10248 - 244 rows/sec
+42m42s - 10248 - 244 rows/min
 6h13m12s - 83889
-6h14m12s - 84111 - 224 rows/sec
-6h17m12s - 84777 - 224 rows/sec
+6h14m12s - 84111 - 224 rows/min
+6h17m12s - 84777 - 224 rows/min
+7h5m42s - 95538
+9h24m25s - 126333 - complete - 223 rows/min
+
+SQL> desc customer_orders.stores
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STORE_ID                                  NOT NULL NUMBER(38)
+ STORE_NAME                                NOT NULL VARCHAR2(255 CHAR)
+ WEB_ADDRESS                                        VARCHAR2(100 CHAR)
+ PHYSICAL_ADDRESS                                   VARCHAR2(512 CHAR)
+ LATITUDE                                           NUMBER
+ LONGITUDE                                          NUMBER
+ LOGO                                               BLOB
+ LOGO_MIME_TYPE                                     VARCHAR2(512 CHAR)
+ LOGO_FILENAME                                      VARCHAR2(512 CHAR)
+ LOGO_CHARSET                                       VARCHAR2(512 CHAR)
+ LOGO_LAST_UPDATED                                  DATE
+
+SQL> select count(*), (dbms_lob.getlength(logo))/1024/1024 as SizeMB from customer_orders.stores group by (dbms_lob.getlength(logo))/1024/1024;
+
+  COUNT(*)     SIZEMB
+---------- ----------
+         1  .06464386
+       678 .079429626
+    125632 3.43498325
+        22          0
+
+
+changed limited lob size to 3500k - 3.5M
+2m21s - 1197 - 478/min
+2m51s - 1311 - 437/min 
+7m51s - 2433 - 304/min
+54m21s - 12858 - 238/min
+1h13m51s - 17235 - 236/min
+2h40m21s - 36597 - 228/min
+3h50m51s - 52320 - 227/min
+4h11m51s - 56985 - 
+4h41m51s - 63648 - 
+5h4m21s - 68649 -  225/min
+
+killed this no real change
+
+#3 - set customer_orders.stores in pg to be unlogged
+aurpg02=> alter table customer_orders.stores set unlogged;
+this took about 10 mins to execute
+
+
