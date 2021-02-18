@@ -153,4 +153,6 @@ limited lob size
 37m42s - 9126
 41m12s - 9912
 42m42s - 10248 - 244 rows/sec
-
+6h13m12s - 83889
+6h14m12s - 84111 - 224 rows/sec
+6h17m12s - 84777 - 224 rows/sec
