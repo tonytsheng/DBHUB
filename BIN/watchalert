@@ -1,0 +1,28 @@
+#set -x
+USER=$1
+PW=$2
+HOST=$3
+SID=$4
+
+usage(){
+    echo "Usage:"
+    echo "watchalert USER PW HOST SID "
+    exit 1
+}
+
+if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${HOST} ] || [ -z ${SID} ]; then
+    usage
+    exit 1
+fi
+ 
+CREDS="${USER}/${PW}"
+CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${HOST})(PORT=1521))(CONNECT_DATA=(SID=${SID})))"
+
+sqlplus -S ${CONNSTR} <<EQ
+set linesize 200
+SELECT originating_timestamp || ' ' || message_text FROM alertlog where originating_timestamp > sysdate-1/24;
+EQ
+
+
+
+

@@ -195,11 +195,57 @@ changed limited lob size to 3500k - 3.5M
 4h11m51s - 56985 - 
 4h41m51s - 63648 - 
 5h4m21s - 68649 -  225/min
-
 killed this no real change
 
 #3 - set customer_orders.stores in pg to be unlogged
 aurpg02=> alter table customer_orders.stores set unlogged;
 this took about 10 mins to execute
+
+2m47s - 1296 - 432/min
+4m17s - 1632 - 408/min
+5m47s - 1968 - 328/min
+8m17s - 2529 - 316
+38m47s - 9354 - 246
+1h35m47s - 22101 - 232/min
+1h41m47s - 23442
+1h57m17s - 26898 - 230/min
+turn on logging on table after migration
+killed this no real improvement
+
+#4 - 
+set this in postgres endpoint maxFileSize=1048576
+logging for target table is off
+2m5s - 1286
+2m35s - 1436
+3m5s - 1586
+3m35s - 1736
+5m5s - 2186 - 
+5m35s - 2336 - 424/min
+6m5s - 2486
+10m5s - 3686
+10m35s - 3836 - 365/min
+11m5s - 3986 - 363/min
+12m35s - 4436 - 
+17m35s - 5861 -  334/min
+22m35s - 7361
+23m5s - 7511 - 326/min
+31m35s - 10000
+1h26m5s - 26036 - 302/min
+1h32m5s - 27836
+3h35m5s - 64211 - 298/min
+3h38m5s - 64961 - 296/min
+3h39m5s - 65411 - 297/min
+4h3m5s - 72311 -  297/min
+4h56m5s - 87911 - 297/min
+5h43m5s - 101711
+5h49m35s - 103661 - 
+5h55m35s - 105386 - 296/min
+6h 5 s - 106736 - 296/min
+6h18m35s - 112211
+7h6m47s - 126333 - 296/min
+
+aurpg02=> alter table customer_orders.stores set logged;
+ALTER TABLE
+Time: 430869.551 ms (07:10.870)
 
 

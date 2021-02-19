@@ -1,0 +1,114 @@
+-- EXPDP
+
+set serveroutput on;
+DECLARE
+  v_hdnl NUMBER;
+BEGIN
+  v_hdnl := DBMS_DATAPUMP.OPEN( operation => 'EXPORT', job_mode => 'SCHEMA', job_name=>null);
+  dbms_output.put_line (v_hdnl);
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'sample.dmp',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_dump_file,
+    reusefile => 1);
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'sample_exp.log',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_log_file,
+    reusefile => 1);
+  dbms_output.put_line ('Post add file');
+  DBMS_DATAPUMP.METADATA_FILTER(v_hdnl,'SCHEMA_EXPR','IN (''FLY1'')');
+  dbms_output.put_line ('Post metadata filter ');
+  DBMS_DATAPUMP.START_JOB(v_hdnl);
+END;
+/
+SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir(p_directory => 'DATA_PUMP_DIR'));
+exit;
+
+-- IMPDP
+select count(*) from FLY1.RESERVATION;
+set serveroutput on;
+DECLARE
+  v_hdnl NUMBER;
+BEGIN
+  v_hdnl := DBMS_DATAPUMP.OPEN(
+    operation => 'IMPORT',
+    job_mode  => 'SCHEMA',
+    job_name  => null);
+  dbms_output.put_line (v_hdnl);
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'ASIMIS_C17_2010.dmp',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_dump_file,
+    reusefile => 1);
+  dbms_output.put_line ('after first add file');
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'ASIMIS_C17_2010.log',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_log_file,
+    reusefile => 1);
+  dbms_output.put_line ('Post add file');
+  DBMS_DATAPUMP.METADATA_FILTER(v_hdnl,'SCHEMA_EXPR','IN (''C17_ADADS'')');
+  dbms_output.put_line ('Post add metadatafilter ');
+  DBMS_DATAPUMP.START_JOB(v_hdnl);
+END;
+/
+
+-- SQL_FILE - get ddl from export file
+
+set serveroutput on;
+DECLARE
+  v_hdnl NUMBER;
+BEGIN
+  v_hdnl := DBMS_DATAPUMP.OPEN(
+    operation => 'SQL_FILE',
+    job_mode  => 'FULL',
+    job_name  => null);
+  dbms_output.put_line (v_hdnl);
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'ASIMIS_C17_2010.dmp',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_dump_file,
+    reusefile => 1);
+  dbms_output.put_line ('after first add file');
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'ASIMIS_C17_2010.sql',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_sql_file,
+    reusefile => 1);
+  DBMS_DATAPUMP.ADD_FILE(
+    handle    => v_hdnl,
+    filename  => 'ASIMIS_C17_2010.log',
+    directory => 'DATA_PUMP_DIR',
+    filetype  => dbms_datapump.ku$_file_type_log_file,
+    reusefile => 1);
+  dbms_output.put_line ('Post add file');
+  dbms_output.put_line ('Post add metadatafilter ');
+  DBMS_DATAPUMP.START_JOB(v_hdnl);
+END;
+/
+
+alter session set nls_date_format = 'MM/DD/YYYY HH24:MI:SS';
+select * from table(RDSADMIN.RDS_FILE_UTIL.LISTDIR('DATA_PUMP_DIR')) order by mtime;
+SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_PUMP_DIR', p_filename  => 'ASIMIS_C17_2010.sql'));
+SELECT originating_timestamp || ' ' || message_text FROM alertlog
+where originating_timestamp > sysdate-5;
+
+user - C17_ADADS
+tablespace - C17_DATA
+
+ASIMIS_C17_2010.log
+
+SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_PUMP_DIR', p_filename  => 'ASIMIS_C17_2010.log'));
+
+create user C17_ADADS identified by C17_ADADS
+default tablespace C17_DATA;
+
+
+
