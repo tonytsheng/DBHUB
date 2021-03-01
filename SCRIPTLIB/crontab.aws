@@ -1,0 +1,10 @@
+#* * * * * /home/ec2-user/DBHUB/CLI/instance_status.bsh >> /home/ec2-user/DBHUB/LOG/instance_status.log 2>&1
+#* * * * * /usr/local/bin/aws rds describe-db-instances >> /home/ec2-user/DBHUB/LOG/instance_status.log 2>&1
+## START RDS Databases
+00 12 * * * /home/ec2-user/DBHUB/CLI/start_stop_all.bsh start >> /home/ec2-user/DBHUB/LOG/instance_status.log 2>&1
+## START Aurora
+10 12 * * * /usr/local/bin/aws rds start-db-cluster --db-cluster-identifier aurpg02 >> /home/ec2-user/DBHUB/LOG/instance_status.log 2>&1
+## STOP RDS Databases
+00 23 * * * /home/ec2-user/DBHUB/CLI/start_stop_all.bsh stop >> /home/ec2-user/DBHUB/LOG/instance_status.log 2>&1
+## STOP Aurora
+10 23 * * * /usr/local/bin/aws rds stop-db-cluster --db-cluster-identifier aurpg02 >> /home/ec2-user/DBHUB/LOG/instance_status.log 2>&1

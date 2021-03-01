@@ -248,4 +248,51 @@ aurpg02=> alter table customer_orders.stores set logged;
 ALTER TABLE
 Time: 430869.551 ms (07:10.870)
 
+target table is logged
+endpoint maxFileSize=4194304
+WriteOPS ~22K
+CPU ~8%
+Free Memory ~32K
+2m49 - 1585 - 
+4m49 - 2185
+8m19 - 3385
+12m49 - 4585 - 352/min
+13m19 - 4885 - 375/min
+15m19 - 5485 - 353/min
+16m19 - 5785
+28m19 - 9385
+33m49s - 10885 - 
+40m19s - 12985 - 320/min
+46m49s - 15085 - 320/min
+1h4m19s - 20185 - 315/min
+1h7m49s - 21385 - 314/min
+1h11m49s - 22585 - 313/min
+1h52m19s - 34585
+1h59m19s - 36985
+2h5m19s - 38785
+2h26m19s - 45085 - 308
+2h41m49s - 49585
+3h7m49s -  57685
+3h21m19s - 61585 - 306
+3h25m49s - 63085 - 307
 
+#5
+db.r5.24xlarge
+96x768 - highest ebs bandwidth
+1m36s - 1285
+4m36s- 2185
+6m36s - 3085 - 514
+10m36s - 4285 - 428
+44m6s - 15385 - 349
+47m6s - 16285
+50m6s - 17485
+1h3m6s - 21685 - 344
+2h4m6s - 45085 - 363
+2h37m6s - 52885 - 336
+3h3036s - 70585 - 336
+this one died for some reason
+
+19m5s - 6985 - 367
+30m35s - 10885 - 362
+1h5s - 20785 - 346
+1h23m5s - 28285
