@@ -1,0 +1,5 @@
+instance=$1
+
+/usr/local/bin/aws rds  reboot-db-instance \
+    --db-instance-identifier ${instance} \
+    --force-failover 

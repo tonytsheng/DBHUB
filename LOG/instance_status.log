@@ -1,0 +1,2316 @@
+20210125.PGPERF
+AB3
+BASEDAT
+BIN
+CLI
+DMS
+DYN
+LOG
+MYSQL
+ORA
+PERFTUNE
+PG
+SCRIPTLIB
+setup_ec2.readme
+SQLSERV
+Z.ARC
+20210125.PGPERF
+AB3
+BASEDAT
+BIN
+CLI
+DMS
+DYN
+LOG
+MYSQL
+ORA
+PERFTUNE
+PG
+SCRIPTLIB
+setup_ec2.readme
+SQLSERV
+Z.ARC
+/home/ec2-user/DBHUB/CLI/instance_status.bsh: line 2: aws: command not found
+/bin/sh: aws: command not found
+/bin/sh: aws: command not found
+/home/ec2-user/DBHUB/CLI/instance_status.bsh: line 2: aws: command not found
+/home/ec2-user/DBHUB/CLI/instance_status.bsh: line 2: aws: command not found
+/bin/sh: aws: command not found
+/bin/sh: aws: command not found
+/home/ec2-user/DBHUB/CLI/instance_status.bsh: line 2: aws: command not found
+/bin/sh: aws: command not found
+/home/ec2-user/DBHUB/CLI/instance_status.bsh: line 2: aws: command not found
+/bin/sh: aws: command not found
+/home/ec2-user/DBHUB/CLI/instance_status.bsh: line 2: /usre/local/bin/aws: No such file or directory
+/bin/sh: aws: command not found
+aurpg02-instance-1 available
+aurpg02-instance-1-us-east-2b available
+octora01 available
+available fly1
+available pg100
+/bin/sh: aws: command not found
+{
+    "DBInstances": [
+        {
+            "DBInstanceIdentifier": "aurpg02-instance-1",
+            "DBInstanceClass": "db.r5.large",
+            "Engine": "aurora-postgresql",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "aurpg02",
+            "Endpoint": {
+                "Address": "aurpg02-instance-1.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 1,
+            "InstanceCreateTime": "2021-01-06T13:30:48.868000+00:00",
+            "PreferredBackupWindow": "10:30-11:00",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg11",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "sat:10:20-sat:10:50",
+            "PendingModifiedValues": {},
+            "MultiAZ": false,
+            "EngineVersion": "11.7",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:aurora-postgresql-11",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": true,
+            "StorageType": "aurora",
+            "DbInstancePort": 0,
+            "DBClusterIdentifier": "aurpg02",
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-JONNJKSW2QKNL3D2FNGMSW3DWI",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-JONNJKSW2QKNL3D2FNGMSW3DWI",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "PromotionTier": 1,
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:aurpg02-instance-1",
+            "IAMDatabaseAuthenticationEnabled": true,
+            "PerformanceInsightsEnabled": true,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "PerformanceInsightsRetentionPeriod": 7,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "aurpg02-instance-1-us-east-2b",
+            "DBInstanceClass": "db.r5.large",
+            "Engine": "aurora-postgresql",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "aurpg02",
+            "Endpoint": {
+                "Address": "aurpg02-instance-1-us-east-2b.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 1,
+            "InstanceCreateTime": "2021-01-06T13:36:43.770000+00:00",
+            "PreferredBackupWindow": "10:30-11:00",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg11",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2b",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "fri:05:03-fri:05:33",
+            "PendingModifiedValues": {},
+            "MultiAZ": false,
+            "EngineVersion": "11.7",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:aurora-postgresql-11",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": true,
+            "StorageType": "aurora",
+            "DbInstancePort": 0,
+            "DBClusterIdentifier": "aurpg02",
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-KR23M32JGLSIKSREWBTKO7PCVM",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-KR23M32JGLSIKSREWBTKO7PCVM",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "PromotionTier": 1,
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:aurpg02-instance-1-us-east-2b",
+            "IAMDatabaseAuthenticationEnabled": true,
+            "PerformanceInsightsEnabled": true,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "PerformanceInsightsRetentionPeriod": 7,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "octora01",
+            "DBInstanceClass": "db.m5.large",
+            "Engine": "oracle-ee",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "admin",
+            "DBName": "OCTORA01",
+            "Endpoint": {
+                "Address": "octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 1521,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 2236,
+            "InstanceCreateTime": "2021-01-03T19:36:32.429000+00:00",
+            "PreferredBackupWindow": "07:34-08:04",
+            "BackupRetentionPeriod": 1,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "default.oracle-ee-19",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "wed:04:34-wed:05:04",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2021-03-01T13:54:35+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "19.0.0.0.ru-2020-10.rur-2020-10.r1",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "bring-your-own-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "ttsheng-s3integration",
+                    "Status": "in-sync"
+                }
+            ],
+            "CharacterSetName": "AL32UTF8",
+            "NcharCharacterSetName": "AL16UTF16",
+            "PubliclyAccessible": true,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": false,
+            "DbiResourceId": "db-SKUYXDDJWDBMOOMXCXOPDTUBWI",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-SKUYXDDJWDBMOOMXCXOPDTUBWI",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:octora01",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "PerformanceInsightsEnabled": false,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DeletionProtection": false,
+            "AssociatedRoles": [
+                {
+                    "RoleArn": "arn:aws:iam::227623716792:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS",
+                    "FeatureName": "S3_INTEGRATION",
+                    "Status": "ACTIVE"
+                },
+                {
+                    "RoleArn": "arn:aws:iam::227623716792:role/ttsheng_role",
+                    "FeatureName": "S3_INTEGRATION",
+                    "Status": "ACTIVE"
+                }
+            ],
+            "MaxAllocatedStorage": 5000,
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "pg002",
+            "DBInstanceClass": "db.m5.xlarge",
+            "Engine": "postgres",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "master",
+            "DBName": "fly1",
+            "Endpoint": {
+                "Address": "pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 20,
+            "InstanceCreateTime": "2021-01-04T16:05:14.709000+00:00",
+            "PreferredBackupWindow": "06:02-06:32",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg12",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default-vpc-376fc65c",
+                "DBSubnetGroupDescription": "Created from the RDS Management Console",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "sun:04:00-sun:04:30",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2021-03-01T13:55:49+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "12.4",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:postgres-12",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": true,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-PGX32KKTMS6KGSTH6WOTPHXI6E",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": true,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-PGX32KKTMS6KGSTH6WOTPHXI6E",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:pg002",
+            "IAMDatabaseAuthenticationEnabled": true,
+            "PerformanceInsightsEnabled": false,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "MaxAllocatedStorage": 1000,
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "pg100",
+            "DBInstanceClass": "db.m5.xlarge",
+            "Engine": "postgres",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "pg100",
+            "Endpoint": {
+                "Address": "pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 20,
+            "InstanceCreateTime": "2021-01-25T19:46:43.162000+00:00",
+            "PreferredBackupWindow": "03:48-04:18",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg96",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2b",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "thu:04:54-thu:05:24",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2021-03-01T13:53:02+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "9.6.20",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:postgres-9-6",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": false,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-TCZ5O2SHCLUCKGT5NS3TF575UM",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": true,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-TCZ5O2SHCLUCKGT5NS3TF575UM",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:pg100",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "PerformanceInsightsEnabled": false,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "MaxAllocatedStorage": 1000,
+            "TagList": []
+        }
+    ]
+}
+{
+    "DBInstances": [
+        {
+            "DBInstanceIdentifier": "aurpg02-instance-1",
+            "DBInstanceClass": "db.r5.large",
+            "Engine": "aurora-postgresql",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "aurpg02",
+            "Endpoint": {
+                "Address": "aurpg02-instance-1.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 1,
+            "InstanceCreateTime": "2021-01-06T13:30:48.868000+00:00",
+            "PreferredBackupWindow": "10:30-11:00",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg11",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "sat:10:20-sat:10:50",
+            "PendingModifiedValues": {},
+            "MultiAZ": false,
+            "EngineVersion": "11.7",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:aurora-postgresql-11",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": true,
+            "StorageType": "aurora",
+            "DbInstancePort": 0,
+            "DBClusterIdentifier": "aurpg02",
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-JONNJKSW2QKNL3D2FNGMSW3DWI",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-JONNJKSW2QKNL3D2FNGMSW3DWI",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "PromotionTier": 1,
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:aurpg02-instance-1",
+            "IAMDatabaseAuthenticationEnabled": true,
+            "PerformanceInsightsEnabled": true,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "PerformanceInsightsRetentionPeriod": 7,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "aurpg02-instance-1-us-east-2b",
+            "DBInstanceClass": "db.r5.large",
+            "Engine": "aurora-postgresql",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "aurpg02",
+            "Endpoint": {
+                "Address": "aurpg02-instance-1-us-east-2b.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 1,
+            "InstanceCreateTime": "2021-01-06T13:36:43.770000+00:00",
+            "PreferredBackupWindow": "10:30-11:00",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg11",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2b",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "fri:05:03-fri:05:33",
+            "PendingModifiedValues": {},
+            "MultiAZ": false,
+            "EngineVersion": "11.7",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:aurora-postgresql-11",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": true,
+            "StorageType": "aurora",
+            "DbInstancePort": 0,
+            "DBClusterIdentifier": "aurpg02",
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-KR23M32JGLSIKSREWBTKO7PCVM",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-KR23M32JGLSIKSREWBTKO7PCVM",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "PromotionTier": 1,
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:aurpg02-instance-1-us-east-2b",
+            "IAMDatabaseAuthenticationEnabled": true,
+            "PerformanceInsightsEnabled": true,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "PerformanceInsightsRetentionPeriod": 7,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "octora01",
+            "DBInstanceClass": "db.m5.large",
+            "Engine": "oracle-ee",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "admin",
+            "DBName": "OCTORA01",
+            "Endpoint": {
+                "Address": "octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 1521,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 2236,
+            "InstanceCreateTime": "2021-01-03T19:36:32.429000+00:00",
+            "PreferredBackupWindow": "07:34-08:04",
+            "BackupRetentionPeriod": 1,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "default.oracle-ee-19",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "wed:04:34-wed:05:04",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2021-03-01T13:54:35+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "19.0.0.0.ru-2020-10.rur-2020-10.r1",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "bring-your-own-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "ttsheng-s3integration",
+                    "Status": "in-sync"
+                }
+            ],
+            "CharacterSetName": "AL32UTF8",
+            "NcharCharacterSetName": "AL16UTF16",
+            "PubliclyAccessible": true,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": false,
+            "DbiResourceId": "db-SKUYXDDJWDBMOOMXCXOPDTUBWI",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-SKUYXDDJWDBMOOMXCXOPDTUBWI",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:octora01",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "PerformanceInsightsEnabled": false,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DeletionProtection": false,
+            "AssociatedRoles": [
+                {
+                    "RoleArn": "arn:aws:iam::227623716792:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS",
+                    "FeatureName": "S3_INTEGRATION",
+                    "Status": "ACTIVE"
+                },
+                {
+                    "RoleArn": "arn:aws:iam::227623716792:role/ttsheng_role",
+                    "FeatureName": "S3_INTEGRATION",
+                    "Status": "ACTIVE"
+                }
+            ],
+            "MaxAllocatedStorage": 5000,
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "pg002",
+            "DBInstanceClass": "db.m5.xlarge",
+            "Engine": "postgres",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "master",
+            "DBName": "fly1",
+            "Endpoint": {
+                "Address": "pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 20,
+            "InstanceCreateTime": "2021-01-04T16:05:14.709000+00:00",
+            "PreferredBackupWindow": "06:02-06:32",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg12",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default-vpc-376fc65c",
+                "DBSubnetGroupDescription": "Created from the RDS Management Console",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "sun:04:00-sun:04:30",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2021-03-01T13:55:49+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "12.4",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:postgres-12",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": true,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-PGX32KKTMS6KGSTH6WOTPHXI6E",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": true,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-PGX32KKTMS6KGSTH6WOTPHXI6E",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:pg002",
+            "IAMDatabaseAuthenticationEnabled": true,
+            "PerformanceInsightsEnabled": false,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "MaxAllocatedStorage": 1000,
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "pg100",
+            "DBInstanceClass": "db.m5.xlarge",
+            "Engine": "postgres",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "pg100",
+            "Endpoint": {
+                "Address": "pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 20,
+            "InstanceCreateTime": "2021-01-25T19:46:43.162000+00:00",
+            "PreferredBackupWindow": "03:48-04:18",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg96",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2b",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "thu:04:54-thu:05:24",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2021-03-01T13:58:02+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "9.6.20",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:postgres-9-6",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": false,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-TCZ5O2SHCLUCKGT5NS3TF575UM",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": true,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-TCZ5O2SHCLUCKGT5NS3TF575UM",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:pg100",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "PerformanceInsightsEnabled": false,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "MaxAllocatedStorage": 1000,
+            "TagList": []
+        }
+    ]
+}
+{
+    "DBInstances": [
+        {
+            "DBInstanceIdentifier": "aurpg02-instance-1",
+            "DBInstanceClass": "db.r5.large",
+            "Engine": "aurora-postgresql",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "aurpg02",
+            "Endpoint": {
+                "Address": "aurpg02-instance-1.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 1,
+            "InstanceCreateTime": "2021-01-06T13:30:48.868000+00:00",
+            "PreferredBackupWindow": "10:30-11:00",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg11",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "sat:10:20-sat:10:50",
+            "PendingModifiedValues": {},
+            "MultiAZ": false,
+            "EngineVersion": "11.7",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:aurora-postgresql-11",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": true,
+            "StorageType": "aurora",
+            "DbInstancePort": 0,
+            "DBClusterIdentifier": "aurpg02",
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-JONNJKSW2QKNL3D2FNGMSW3DWI",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-JONNJKSW2QKNL3D2FNGMSW3DWI",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "PromotionTier": 1,
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:aurpg02-instance-1",
+            "IAMDatabaseAuthenticationEnabled": true,
+            "PerformanceInsightsEnabled": true,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "PerformanceInsightsRetentionPeriod": 7,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "aurpg02-instance-1-us-east-2b",
+            "DBInstanceClass": "db.r5.large",
+            "Engine": "aurora-postgresql",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "aurpg02",
+            "Endpoint": {
+                "Address": "aurpg02-instance-1-us-east-2b.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 1,
+            "InstanceCreateTime": "2021-01-06T13:36:43.770000+00:00",
+            "PreferredBackupWindow": "10:30-11:00",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg11",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2b",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "fri:05:03-fri:05:33",
+            "PendingModifiedValues": {},
+            "MultiAZ": false,
+            "EngineVersion": "11.7",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:aurora-postgresql-11",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": true,
+            "StorageType": "aurora",
+            "DbInstancePort": 0,
+            "DBClusterIdentifier": "aurpg02",
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-KR23M32JGLSIKSREWBTKO7PCVM",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-KR23M32JGLSIKSREWBTKO7PCVM",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "PromotionTier": 1,
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:aurpg02-instance-1-us-east-2b",
+            "IAMDatabaseAuthenticationEnabled": true,
+            "PerformanceInsightsEnabled": true,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "PerformanceInsightsRetentionPeriod": 7,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "octora01",
+            "DBInstanceClass": "db.m5.large",
+            "Engine": "oracle-ee",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "admin",
+            "DBName": "OCTORA01",
+            "Endpoint": {
+                "Address": "octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 1521,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 2236,
+            "InstanceCreateTime": "2021-01-03T19:36:32.429000+00:00",
+            "PreferredBackupWindow": "07:34-08:04",
+            "BackupRetentionPeriod": 1,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "default.oracle-ee-19",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "wed:04:34-wed:05:04",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2021-03-01T13:54:35+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "19.0.0.0.ru-2020-10.rur-2020-10.r1",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "bring-your-own-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "ttsheng-s3integration",
+                    "Status": "in-sync"
+                }
+            ],
+            "CharacterSetName": "AL32UTF8",
+            "NcharCharacterSetName": "AL16UTF16",
+            "PubliclyAccessible": true,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": false,
+            "DbiResourceId": "db-SKUYXDDJWDBMOOMXCXOPDTUBWI",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-SKUYXDDJWDBMOOMXCXOPDTUBWI",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:octora01",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "PerformanceInsightsEnabled": false,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DeletionProtection": false,
+            "AssociatedRoles": [
+                {
+                    "RoleArn": "arn:aws:iam::227623716792:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS",
+                    "FeatureName": "S3_INTEGRATION",
+                    "Status": "ACTIVE"
+                },
+                {
+                    "RoleArn": "arn:aws:iam::227623716792:role/ttsheng_role",
+                    "FeatureName": "S3_INTEGRATION",
+                    "Status": "ACTIVE"
+                }
+            ],
+            "MaxAllocatedStorage": 5000,
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "pg002",
+            "DBInstanceClass": "db.m5.xlarge",
+            "Engine": "postgres",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "master",
+            "DBName": "fly1",
+            "Endpoint": {
+                "Address": "pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 20,
+            "InstanceCreateTime": "2021-01-04T16:05:14.709000+00:00",
+            "PreferredBackupWindow": "06:02-06:32",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg12",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default-vpc-376fc65c",
+                "DBSubnetGroupDescription": "Created from the RDS Management Console",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "sun:04:00-sun:04:30",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2021-03-01T13:55:49+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "12.4",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:postgres-12",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": true,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-PGX32KKTMS6KGSTH6WOTPHXI6E",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": true,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-PGX32KKTMS6KGSTH6WOTPHXI6E",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:pg002",
+            "IAMDatabaseAuthenticationEnabled": true,
+            "PerformanceInsightsEnabled": false,
+            "PerformanceInsightsKMSKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "MaxAllocatedStorage": 1000,
+            "TagList": []
+        },
+        {
+            "DBInstanceIdentifier": "pg100",
+            "DBInstanceClass": "db.m5.xlarge",
+            "Engine": "postgres",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "pg100",
+            "Endpoint": {
+                "Address": "pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z2XHWR1WZ565X2"
+            },
+            "AllocatedStorage": 20,
+            "InstanceCreateTime": "2021-01-25T19:46:43.162000+00:00",
+            "PreferredBackupWindow": "03:48-04:18",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-1edb2361",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "ttshengpg96",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-east-2b",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "default",
+                "DBSubnetGroupDescription": "default",
+                "VpcId": "vpc-376fc65c",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-08cea4c32f941c0c6",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-04d094b09eeba377f",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08661dbc984232327",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-02213df4779ca2d8b",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-013762ac5f92b9848",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-08b1b5a7224b2a781",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-east-2c"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "thu:04:54-thu:05:24",
+            "PendingModifiedValues": {},
+            "LatestRestorableTime": "2021-03-01T13:58:02+00:00",
+            "MultiAZ": false,
+            "EngineVersion": "9.6.20",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:postgres-9-6",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": false,
+            "StorageType": "gp2",
+            "DbInstancePort": 0,
+            "StorageEncrypted": true,
+            "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+            "DbiResourceId": "db-TCZ5O2SHCLUCKGT5NS3TF575UM",
+            "CACertificateIdentifier": "rds-ca-2019",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": true,
+            "MonitoringInterval": 60,
+            "EnhancedMonitoringResourceArn": "arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-TCZ5O2SHCLUCKGT5NS3TF575UM",
+            "MonitoringRoleArn": "arn:aws:iam::227623716792:role/rds-monitoring-role",
+            "DBInstanceArn": "arn:aws:rds:us-east-2:227623716792:db:pg100",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "PerformanceInsightsEnabled": false,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "MaxAllocatedStorage": 1000,
+            "TagList": []
+        }
+    ]
+}
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+DBINSTANCE	2236	True	us-east-2a	1	rds-ca-2019	AL32UTF8	False	arn:aws:rds:us-east-2:227623716792:db:octora01	db.m5.large	octora01	stopping	OCTORA01	0	db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	oracle-ee	19.0.0.0.ru-2020-10.rur-2020-10.r1	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	2021-01-03T19:36:32.429000+00:00	2021-03-01T13:59:35+00:00	bring-your-own-license	admin	5000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	AL16UTF16	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	07:34-08:04	wed:04:34-wed:05:04	True	False	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS	ACTIVE
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/ttsheng_role	ACTIVE
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	ttsheng-s3integration	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg002
+DBINSTANCE	20	True	us-east-2a	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg002	db.m5.xlarge	pg002	stopping	fly1	0	db-PGX32KKTMS6KGSTH6WOTPHXI6E	False	postgres	12.4	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-PGX32KKTMS6KGSTH6WOTPHXI6E	True	2021-01-04T16:05:14.709000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-01T14:00:50+00:00	postgresql-license	master	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	06:02-06:32	sun:04:00-sun:04:30	True	True	gp2
+DBPARAMETERGROUPS	ttshengpg12	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-376fc65c	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg100
+DBINSTANCE	20	True	us-east-2b	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg100	db.m5.xlarge	pg100	stopping	pg100	0	db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	postgres	9.6.20	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	2021-01-25T19:46:43.162000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-01T14:03:02+00:00	postgresql-license	postgres	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	03:48-04:18	thu:04:54-thu:05:24	False	True	gp2
+DBPARAMETERGROUPS	ttshengpg96	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-9-6	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StartDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StartDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+DBINSTANCE	2236	True	us-east-2a	1	rds-ca-2019	AL32UTF8	False	arn:aws:rds:us-east-2:227623716792:db:octora01	db.m5.large	octora01	starting	OCTORA01	0	db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	oracle-ee	19.0.0.0.ru-2020-10.rur-2020-10.r1	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	2021-01-03T19:36:32.429000+00:00	2021-03-01T13:59:35+00:00	bring-your-own-license	admin	5000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	AL16UTF16	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	07:34-08:04	wed:04:34-wed:05:04	True	False	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS	ACTIVE
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/ttsheng_role	ACTIVE
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	ttsheng-s3integration	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg002
+DBINSTANCE	20	True	us-east-2a	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg002	db.m5.xlarge	pg002	starting	fly1	0	db-PGX32KKTMS6KGSTH6WOTPHXI6E	False	postgres	12.4	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-PGX32KKTMS6KGSTH6WOTPHXI6E	True	2021-01-04T16:05:14.709000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-01T14:00:50+00:00	postgresql-license	master	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	06:02-06:32	sun:04:00-sun:04:30	True	True	gp2
+DBPARAMETERGROUPS	ttshengpg12	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-376fc65c	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg100
+DBINSTANCE	20	True	us-east-2b	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg100	db.m5.xlarge	pg100	starting	pg100	0	db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	postgres	9.6.20	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	2021-01-25T19:46:43.162000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-01T14:03:02+00:00	postgresql-license	postgres	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	03:48-04:18	thu:04:54-thu:05:24	False	True	gp2
+DBPARAMETERGROUPS	ttshengpg96	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-9-6	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+{
+    "DBCluster": {
+        "AllocatedStorage": 1,
+        "AvailabilityZones": [
+            "us-east-2a",
+            "us-east-2b",
+            "us-east-2c"
+        ],
+        "BackupRetentionPeriod": 7,
+        "DatabaseName": "aurpg02",
+        "DBClusterIdentifier": "aurpg02",
+        "DBClusterParameterGroup": "default.aurora-postgresql11",
+        "DBSubnetGroup": "default",
+        "Status": "stopped",
+        "EarliestRestorableTime": "2021-02-22T10:38:23.614000+00:00",
+        "Endpoint": "aurpg02.cluster-czzdit7hfndz.us-east-2.rds.amazonaws.com",
+        "ReaderEndpoint": "aurpg02.cluster-ro-czzdit7hfndz.us-east-2.rds.amazonaws.com",
+        "MultiAZ": true,
+        "Engine": "aurora-postgresql",
+        "EngineVersion": "11.7",
+        "LatestRestorableTime": "2021-03-01T14:27:33.463000+00:00",
+        "Port": 5432,
+        "MasterUsername": "postgres",
+        "PreferredBackupWindow": "10:30-11:00",
+        "PreferredMaintenanceWindow": "sat:07:02-sat:07:32",
+        "ReadReplicaIdentifiers": [],
+        "DBClusterMembers": [
+            {
+                "DBInstanceIdentifier": "aurpg02-instance-1",
+                "IsClusterWriter": true,
+                "DBClusterParameterGroupStatus": "in-sync",
+                "PromotionTier": 1
+            },
+            {
+                "DBInstanceIdentifier": "aurpg02-instance-1-us-east-2b",
+                "IsClusterWriter": false,
+                "DBClusterParameterGroupStatus": "in-sync",
+                "PromotionTier": 1
+            }
+        ],
+        "VpcSecurityGroups": [
+            {
+                "VpcSecurityGroupId": "sg-1edb2361",
+                "Status": "active"
+            }
+        ],
+        "HostedZoneId": "Z2XHWR1WZ565X2",
+        "StorageEncrypted": true,
+        "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+        "DbClusterResourceId": "cluster-LNJ2IY5ZEVPTIDDOU7I7RQ733M",
+        "DBClusterArn": "arn:aws:rds:us-east-2:227623716792:cluster:aurpg02",
+        "AssociatedRoles": [],
+        "IAMDatabaseAuthenticationEnabled": true,
+        "ClusterCreateTime": "2021-01-06T13:26:15.794000+00:00",
+        "EnabledCloudwatchLogsExports": [
+            "postgresql"
+        ],
+        "EngineMode": "provisioned",
+        "DeletionProtection": false,
+        "HttpEndpointEnabled": false,
+        "CopyTagsToSnapshot": true,
+        "CrossAccountClone": false,
+        "DomainMemberships": [],
+        "TagList": []
+    }
+}
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+DBINSTANCE	2236	True	us-east-2a	1	rds-ca-2019	AL32UTF8	False	arn:aws:rds:us-east-2:227623716792:db:octora01	db.m5.large	octora01	stopping	OCTORA01	0	db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	oracle-ee	19.0.0.0.ru-2020-10.rur-2020-10.r1	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	2021-01-03T19:36:32.429000+00:00	2021-03-01T22:55:00+00:00	bring-your-own-license	admin	5000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	AL16UTF16	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	07:34-08:04	wed:04:34-wed:05:04	True	False	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS	ACTIVE
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/ttsheng_role	ACTIVE
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	ttsheng-s3integration	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg002
+DBINSTANCE	20	True	us-east-2a	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg002	db.m5.xlarge	pg002	stopping	fly1	0	db-PGX32KKTMS6KGSTH6WOTPHXI6E	False	postgres	12.4	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-PGX32KKTMS6KGSTH6WOTPHXI6E	True	2021-01-04T16:05:14.709000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-01T22:52:55+00:00	postgresql-license	master	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	06:02-06:32	sun:04:00-sun:04:30	True	True	gp2
+DBPARAMETERGROUPS	ttshengpg12	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-376fc65c	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg100
+DBINSTANCE	20	True	us-east-2b	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg100	db.m5.xlarge	pg100	stopping	pg100	0	db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	postgres	9.6.20	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	2021-01-25T19:46:43.162000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-01T22:52:46+00:00	postgresql-license	postgres	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	03:48-04:18	thu:04:54-thu:05:24	False	True	gp2
+DBPARAMETERGROUPS	ttshengpg96	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-9-6	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+{
+    "DBCluster": {
+        "AllocatedStorage": 1,
+        "AvailabilityZones": [
+            "us-east-2a",
+            "us-east-2b",
+            "us-east-2c"
+        ],
+        "BackupRetentionPeriod": 7,
+        "DatabaseName": "aurpg02",
+        "DBClusterIdentifier": "aurpg02",
+        "DBClusterParameterGroup": "default.aurora-postgresql11",
+        "DBSubnetGroup": "default",
+        "Status": "available",
+        "EarliestRestorableTime": "2021-02-22T21:24:44.803000+00:00",
+        "Endpoint": "aurpg02.cluster-czzdit7hfndz.us-east-2.rds.amazonaws.com",
+        "ReaderEndpoint": "aurpg02.cluster-ro-czzdit7hfndz.us-east-2.rds.amazonaws.com",
+        "MultiAZ": true,
+        "Engine": "aurora-postgresql",
+        "EngineVersion": "11.7",
+        "LatestRestorableTime": "2021-03-01T23:07:31.522000+00:00",
+        "Port": 5432,
+        "MasterUsername": "postgres",
+        "PreferredBackupWindow": "10:30-11:00",
+        "PreferredMaintenanceWindow": "sat:07:02-sat:07:32",
+        "ReadReplicaIdentifiers": [],
+        "DBClusterMembers": [
+            {
+                "DBInstanceIdentifier": "aurpg02-instance-1",
+                "IsClusterWriter": true,
+                "DBClusterParameterGroupStatus": "in-sync",
+                "PromotionTier": 1
+            },
+            {
+                "DBInstanceIdentifier": "aurpg02-instance-1-us-east-2b",
+                "IsClusterWriter": false,
+                "DBClusterParameterGroupStatus": "in-sync",
+                "PromotionTier": 1
+            }
+        ],
+        "VpcSecurityGroups": [
+            {
+                "VpcSecurityGroupId": "sg-1edb2361",
+                "Status": "active"
+            }
+        ],
+        "HostedZoneId": "Z2XHWR1WZ565X2",
+        "StorageEncrypted": true,
+        "KmsKeyId": "arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36",
+        "DbClusterResourceId": "cluster-LNJ2IY5ZEVPTIDDOU7I7RQ733M",
+        "DBClusterArn": "arn:aws:rds:us-east-2:227623716792:cluster:aurpg02",
+        "AssociatedRoles": [],
+        "IAMDatabaseAuthenticationEnabled": true,
+        "ClusterCreateTime": "2021-01-06T13:26:15.794000+00:00",
+        "EnabledCloudwatchLogsExports": [
+            "postgresql"
+        ],
+        "EngineMode": "provisioned",
+        "DeletionProtection": false,
+        "HttpEndpointEnabled": false,
+        "CopyTagsToSnapshot": true,
+        "CrossAccountClone": false,
+        "DomainMemberships": [],
+        "TagList": []
+    }
+}

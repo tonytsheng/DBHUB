@@ -1,0 +1,13 @@
+aws rds create-db-snapshot --db-snapshot-identifier ttsheng1 --db-instance-identifier octora01
+
+[ec2-user@ip-172-31-10-108 SCRIPTLIB]$ aws rds describe-db-snapshots --db-instance-identifier octora01  --output text
+DBSNAPSHOTS     20      us-east-2a      octora01        arn:aws:rds:us-east-2:227623716792:snapshot:rds:octora01-2021-02-09-07-44       rds:octora01-2021-02-09-07-44
+   db-SKUYXDDJWDBMOOMXCXOPDTUBWI   False   oracle-ee       19.0.0.0.ru-2020-10.rur-2020-10.r1      False   2021-01-03T19:36:32.429000+00:00        bring-your-own-license  admin   ttsheng-s3integration   100     1521    2021-02-09T07:44:18.374000+00:00        automated       available       gp2     vpc-376fc65c
+DBSNAPSHOTS     20      us-east-2a      octora01        arn:aws:rds:us-east-2:227623716792:snapshot:rds:octora01-2021-02-10-07-44       rds:octora01-2021-02-10-07-44
+   db-SKUYXDDJWDBMOOMXCXOPDTUBWI   False   oracle-ee       19.0.0.0.ru-2020-10.rur-2020-10.r1      False   2021-01-03T19:36:32.429000+00:00        bring-your-own-license  admin   ttsheng-s3integration   100     1521    2021-02-10T07:44:36.161000+00:00        automated       available       gp2     vpc-376fc65c
+DBSNAPSHOTS     20      us-east-2a      octora01        arn:aws:rds:us-east-2:227623716792:snapshot:rds:octora01-2021-02-11-07-44       rds:octora01-2021-02-11-07-44
+   db-SKUYXDDJWDBMOOMXCXOPDTUBWI   False   oracle-ee       19.0.0.0.ru-2020-10.rur-2020-10.r1      False   2021-01-03T19:36:32.429000+00:00        bring-your-own-license  admin   ttsheng-s3integration   100     1521    2021-02-11T07:44:52.847000+00:00        automated       available       gp2     vpc-376fc65c
+DBSNAPSHOTS     20      us-east-2a      octora01        arn:aws:rds:us-east-2:227623716792:snapshot:ttsheng1    ttsheng1        db-SKUYXDDJWDBMOOMXCXOPDTUBWI   False
+   oracle-ee       19.0.0.0.ru-2020-10.rur-2020-10.r1      False   2021-01-03T19:36:32.429000+00:00        bring-your-own-license  admin   ttsheng-s3integration   0
+       1521            manual  creating        gp2     vpc-376fc65c
+
