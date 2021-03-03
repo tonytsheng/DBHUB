@@ -2314,3 +2314,139 @@ VPCSECURITYGROUPS	active	sg-1edb2361
         "TagList": []
     }
 }
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StartDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StartDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+DBINSTANCE	2236	True	us-east-2a	1	rds-ca-2019	AL32UTF8	False	arn:aws:rds:us-east-2:227623716792:db:octora01	db.m5.large	octora01	starting	OCTORA01	0	db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	oracle-ee	19.0.0.0.ru-2020-10.rur-2020-10.r1	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	2021-01-03T19:36:32.429000+00:00	2021-03-01T22:55:00+00:00	bring-your-own-license	admin	5000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	AL16UTF16	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	07:34-08:04	wed:04:34-wed:05:04	True	False	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS	ACTIVE
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/ttsheng_role	ACTIVE
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	ttsheng-s3integration	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg002
+DBINSTANCE	20	True	us-east-2a	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg002	db.m5.xlarge	pg002	starting	fly1	0	db-PGX32KKTMS6KGSTH6WOTPHXI6E	False	postgres	12.4	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-PGX32KKTMS6KGSTH6WOTPHXI6E	True	2021-01-04T16:05:14.709000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-01T22:52:55+00:00	postgresql-license	master	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	06:02-06:32	sun:04:00-sun:04:30	True	True	gp2
+DBPARAMETERGROUPS	ttshengpg12	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-376fc65c	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg100
+DBINSTANCE	20	True	us-east-2b	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg100	db.m5.xlarge	pg100	starting	pg100	0	db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	postgres	9.6.20	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	2021-01-25T19:46:43.162000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-01T22:57:46+00:00	postgresql-license	postgres	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	03:48-04:18	thu:04:54-thu:05:24	False	True	gp2
+DBPARAMETERGROUPS	ttshengpg96	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-9-6	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+DBINSTANCE	2236	True	us-east-2a	1	rds-ca-2019	AL32UTF8	False	arn:aws:rds:us-east-2:227623716792:db:octora01	db.m5.large	octora01	stopping	OCTORA01	0	db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	oracle-ee	19.0.0.0.ru-2020-10.rur-2020-10.r1	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	2021-01-03T19:36:32.429000+00:00	2021-03-02T22:54:15+00:00	bring-your-own-license	admin	5000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	AL16UTF16	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	07:34-08:04	wed:04:34-wed:05:04	True	False	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS	ACTIVE
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/ttsheng_role	ACTIVE
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	ttsheng-s3integration	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg002
+DBINSTANCE	20	True	us-east-2a	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg002	db.m5.xlarge	pg002	stopping	fly1	0	db-PGX32KKTMS6KGSTH6WOTPHXI6E	False	postgres	12.4	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-PGX32KKTMS6KGSTH6WOTPHXI6E	True	2021-01-04T16:05:14.709000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-02T22:51:44+00:00	postgresql-license	master	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	06:02-06:32	sun:04:00-sun:04:30	True	True	gp2
+DBPARAMETERGROUPS	ttshengpg12	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-376fc65c	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg002.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg100
+DBINSTANCE	20	True	us-east-2b	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg100	db.m5.xlarge	pg100	stopping	pg100	0	db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	postgres	9.6.20	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-TCZ5O2SHCLUCKGT5NS3TF575UM	False	2021-01-25T19:46:43.162000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-02T22:57:03+00:00	postgresql-license	postgres	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	False	03:48-04:18	thu:04:54-thu:05:24	False	True	gp2
+DBPARAMETERGROUPS	ttshengpg96	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-9-6	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.

@@ -1,8 +1,0 @@
-INFILE=$1
-
-if [ -z ${INFILE} ]; then
-    sqlcmd -U fly1 -P fly1 -S sqlserv001.czzdit7hfndz.us-east-2.rds.amazonaws.com
-else
-    sqlcmd -U fly1 -P fly1 -S sqlserv001.czzdit7hfndz.us-east-2.rds.amazonaws.com -i ${INFILE}
-fi
-

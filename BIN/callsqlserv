@@ -1,0 +1,28 @@
+#set -x
+USER=$1
+PW=$2
+DB=$3
+INFILE=$4
+
+usage(){
+    echo "Usage:"
+    echo "callsqlserv USER PW DB "
+    echo "or with an input file:"
+    echo "callsqlserv USER PW DB INFILE"
+    exit 1
+}
+
+if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${DB} ] ; then
+    usage
+    exit 1
+fi
+ 
+CONNSTR="-U ${USER} -P ${PW} -S ${DB}"
+
+if [ -z ${INFILE} ]; then
+    sqlcmd ${CONNSTR}
+else
+    sqlcmd ${CONNSTR} -i ${INFILE}
+fi
+
+
