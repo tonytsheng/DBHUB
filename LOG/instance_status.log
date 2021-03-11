@@ -2487,3 +2487,228 @@ OPTIONGROUPMEMBERSHIPS	default:sqlserver-ex-15-00	in-sync
 VPCSECURITYGROUPS	active	sg-1edb2361
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+ora300
+DBINSTANCE	20	False	us-east-2b	7	rds-ca-2019	AL32UTF8	True	arn:aws:rds:us-east-2:227623716792:db:ora300	db.m5.xlarge	ora300	stopping	ORA300	0	db-Z72CFS3DHHFTBOOA2RMKHK25TA	False	oracle-se2	19.0.0.0.ru-2021-01.rur-2021-01.r1	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-Z72CFS3DHHFTBOOA2RMKHK25TA	False	2021-03-04T19:43:14.344000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-04T20:53:57+00:00	license-included	admin	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	True	AL16UTF16	True	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	7	03:46-04:16	sat:07:22-sat:07:52	False	us-east-2a	True	gp2
+DBPARAMETERGROUPS	default.oracle-se2-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-0fd9319ddf6eb6e78	Complete	vpc-0fd9319ddf6eb6e78
+SUBNETS	subnet-053d0c751d9adde38	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-0a0d12b515e94792f	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+ENABLEDCLOUDWATCHLOGSEXPORTS	alert
+ENABLEDCLOUDWATCHLOGSEXPORTS	listener
+ENDPOINT	ora300.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	default:oracle-se2-19	in-sync
+VPCSECURITYGROUPS	active	sg-0fc3a743d09eff0fa
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+ora004
+DBINSTANCE	20	False	us-east-2b	7	rds-ca-2019	AL32UTF8	True	arn:aws:rds:us-east-2:227623716792:db:ora004	db.m5.xlarge	ora004	stopping	ORA004	0	db-IZ7E3AZ5PLG47T6NOL6TJ3L5VE	False	oracle-se2	19.0.0.0.ru-2021-01.rur-2021-01.r1	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-IZ7E3AZ5PLG47T6NOL6TJ3L5VE	False	2021-03-04T21:14:24.463000+00:00	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-03-04T21:54:58+00:00	license-included	admin	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	True	AL16UTF16	True	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	7	10:26-10:56	mon:09:54-mon:10:24	False	us-east-2a	True	gp2
+DBPARAMETERGROUPS	default.oracle-se2-19	in-sync
+DBSUBNETGROUP	privmultiaz	ttsheng2-privsubnetgrp	Complete	vpc-0fd9319ddf6eb6e78
+SUBNETS	subnet-092ff5033946a0b5b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-0a0d12b515e94792f	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+ENABLEDCLOUDWATCHLOGSEXPORTS	alert
+ENABLEDCLOUDWATCHLOGSEXPORTS	listener
+ENDPOINT	ora004.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	default:oracle-se2-19	in-sync
+VPCSECURITYGROUPS	active	sg-0fc3a743d09eff0fa
+ora300
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora300 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+ora004
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora004 is not in available state.
+ora300
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora300 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+ora004
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora004 is not in available state.
+ora300
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora300 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+ora004
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora004 is not in available state.
+ora300
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora300 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+ora004
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora004 is not in available state.
+ora300
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora300 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+ora004
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora004 is not in available state.
+ora300
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora300 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+ora004
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora004 is not in available state.
+ora300
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ora300 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
