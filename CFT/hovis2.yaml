@@ -1,0 +1,368 @@
+Switch to the Accessible Version of Box ›
+All Files
+Recents
+Synced
+Notes
+Trash
+My Collections
+
+Favorites
+
+Drag items here for quick access
+Search Files and Folders
+
+
+Unlock More Storage
+
+
+
+0
+
+
+uac_oracle_rds_read_replica.yaml is selected
+
+Share
+Name
+Updated
+Size
+
+
+
+Details
+Access Stats
+
+Previews
+0
+
+Edits
+0
+
+Comments
+0
+
+Downloads
+0
+View Details
+File Properties
+Description
+Enter a description
+Owner
+Francisco Romero
+Uploader
+Matt Hovis
+Created
+Mar 23, 2021, 10:23 AM
+Modified
+Mar 23, 2021, 10:23 AM
+Size
+8.8 KB
+Hello, tony sheng!
+
+V1
+uac_oracle_rds_read_replica.yaml
+CloudFormation
+·
+Updated Today by Matt Hovis
+
+
+Open
+Download
+
+Share
+✕
+## Todo:
+## Confirm gp2 storage type is acceptable for Prod as it's defaulted
+## Use Existing Subnet Group or provision new? Currently provisioning new
+## Use Existing Security Group or provision new? Currently provisioning new
+## Note: got an error on the PreferredMaintenanceWindow format - investigating
+## MultiAZ setting for the ReadReplica - mimic Prod or set to false?
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Oracle RDS Template'
+Parameters:
+  pEnv:
+    Default: stage
+    Description: Environment 
+    AllowedValues: [stage, prod]
+    Type: String
+  pVPCId:
+    Default: vpc-3d880450
+    Description: VPC - Management-VPC, Stage-VPC
+    AllowedValues: [vpc-3d880450, vpc-c00a0bbb]
+    Type: String
+  pDBName:
+    Default: ORCL
+    Description: The database name
+    Type: String
+    MinLength: '1'
+    MaxLength: '64'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric
+      characters.
+  pDBUser:
+    Default: admin
+    Description: The database admin account username
+    Type: String
+    MinLength: '1'
+    MaxLength: '16'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric
+      characters.
+  pDBPassword:
+    NoEcho: 'true'
+    Description: The alphanumeric database admin account password
+    Type: String
+    MinLength: '8'
+    MaxLength: '41'
+    AllowedPattern: '[a-zA-Z0-9]*'
+    ConstraintDescription: must contain only alphanumeric characters.
+  pDBInstanceClass:
+    Description: The database instance type
+    Type: String
+    Default: db.m5.2xlarge
+    AllowedValues: [db.m5.large, db.m5.2xlarge, db.m5.4xlarge, db.m5.8xlarge, db.m5.12xlarge]
+    ConstraintDescription: must select a valid database instance type.
+  pDBAllocatedStorage:
+    Default: '500'
+    Description: The size of the database (GiB)
+    Type: Number
+    MinValue: '20'
+    MaxValue: '65536'
+    ConstraintDescription: must be between 20 and 65536 GiB.
+  pDBCharacterSet:
+    Default: WE8MSWIN1252
+    Description: The DB Characterset
+    Type: String
+    AllowedValues: [AL32UTF8, WE8MSWIN1252]
+  # Note: Currently provisioning new SubnetGroup and SecurityGroup resources; uncomment below to select existing
+  # pDBSubnetGroupName:
+  #    Description: Retrieve Subnet Group from https://console.aws.amazon.com/rds/home?region=us-east-1#db-subnet-groups-list
+  #    Type: String
+  #    AllowedValues: [rds-subnet-b0b8a6ed]
+  #    Default: rds-subnet-b0b8a6ed
+  # pVPCSecurityGroupId:
+  #    Description: RDS Security Group to controll ingress/egress
+  #    Type: List<AWS::EC2::SecurityGroup::Id>
+  #    #Type: String
+  #    #Default: sg-08f75453e48d5994b
+  pDBName:
+    Default: ORCL
+    Type: String
+  pLicenseModel:
+    Default: bring-your-own-license
+    AllowedValues: [bring-your-own-license, license-included]
+    Type: String
+  pMaxAllocatedStorage:
+    Default: '1000'
+    Type: Number
+  # pPreferredMaintenanceWindow:
+  #    Default: mon:03:00-mon:04:00
+  #    Description: Preferred time for maintenance
+  #    Type: String
+  pReadReplica:
+    Default: false
+    Description: Create read-replica?
+    Type: String
+    AllowedValues: [true, false]
+  pMultiAZ:
+    Default: false
+    Description:  Create as Multi-AZ?
+    Type: String
+    AllowedValues: [true, false]
+  pDeletionProtection:
+    Default: false
+    Description: Enable Deletion Protection?
+    Type: String
+    AllowedValues: [true, false]
+  pAllowMinorUpgrade:
+    Default: false
+    Description: Allow Minor Upgrade?
+    Type: String
+    AllowedValues: [true, false]
+  pBackupRetentionPeriod:
+    Default: 14
+    Description: Backup Retention Period in Days
+    Type: String
+
+Conditions:
+  ReadReplicaCondition:
+    !Equals [true, !Ref pReadReplica]
+
+Metadata:
+  'AWS::CloudFormation::Interface':
+    ParameterGroups:
+      - Label:
+          default: Database Environment
+        Parameters:
+          - pEnv
+      - Label:
+          default: Oracle DB Instance Settings
+        Parameters:
+          - pDBName
+          - pDBUser
+          - pDBPassword
+          - pDBInstanceClass
+          - pDBAllocatedStorage
+          - pDBCharacterSet
+          - pLicenseModel
+          - pMaxAllocatedStorage
+      # Uncomment to specify existing resources
+      # - Label:
+      #     default: Network and Security Settings
+      #   Parameters:
+      #     - pVPCSecurityGroupId
+      #     - pDBSubnetGroupName
+      - Label:
+          default: High Availability and Read-Replica
+        Parameters:
+            - pReadReplica
+            - pMultiAZ
+            - pBackupRetentionPeriod
+            - pDeletionProtection
+            - pAllowMinorUpgrade
+            #- pPreferredMaintenanceWindow
+
+Resources:
+  rPrimaryDB:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBName: !Ref 'pDBName'
+      AllocatedStorage: !Ref 'pDBAllocatedStorage'
+      AllowMajorVersionUpgrade: false
+      AutoMinorVersionUpgrade: !Ref 'pAllowMinorUpgrade'
+      BackupRetentionPeriod: !Ref 'pBackupRetentionPeriod'
+      CharacterSetName: !Ref 'pDBCharacterSet'
+      DBInstanceClass: !Ref 'pDBInstanceClass'
+      DBInstanceIdentifier: !Sub uac-${pEnv}
+      DBName: !Ref 'pDBName'
+      DBParameterGroupName: !Ref 'rRDSParamGroup'
+      #DBSubnetGroupName: !Ref 'pDBSubnetGroupName'
+      DBSubnetGroupName: !Ref 'rOracleSubnetGroup'
+      DeletionProtection: !Ref 'pDeletionProtection'
+      EnableCloudwatchLogsExports:
+        - alert
+        - audit
+        - listener
+        - trace
+      EnablePerformanceInsights: true
+      Engine: oracle-ee
+      EngineVersion: 12.2.0.1.ru-2021-01.rur-2021-01.r1
+      LicenseModel: !Ref 'pLicenseModel'
+      MasterUsername: !Ref 'pDBUser'
+      MasterUserPassword: !Ref 'pDBPassword'
+      MaxAllocatedStorage: !Ref 'pMaxAllocatedStorage'
+      MultiAZ: !Ref 'pMultiAZ'
+      OptionGroupName: !Ref 'rRDSOptionGroup'
+      PerformanceInsightsRetentionPeriod: '7'
+      Port: '1521'
+      # PreferredMaintenanceWindow: pPreferredMaintenanceWindow
+      PubliclyAccessible: false
+      StorageEncrypted: true
+      StorageType: gp2
+      VPCSecurityGroups:
+        #- !Ref pVPCSecurityGroupId
+        - !Ref rOracleSecurityGroup
+  rRDSParamGroup:
+    Type: AWS::RDS::DBParameterGroup
+    Properties:
+      Family: oracle-ee-12.2
+      Description: UAC Oracle 12.2 Parameter Group
+      Parameters:
+        distributed_lock_timeout: '360'
+        max_string_size: EXTENDED
+        open_cursors: 1500
+        parallel_adaptive_multi_user: TRUE
+        processes: 640
+        sessions: 600
+        transactions: 1082
+  rRDSOptionGroup:
+    Type: AWS::RDS::OptionGroup
+    Properties: 
+      EngineName: oracle-ee
+      MajorEngineVersion: "12.2"
+      OptionConfigurations: 
+        - OptionName: NATIVE_NETWORK_ENCRYPTION
+      OptionGroupDescription: UAC Oracle Option Group
+  rReplicaDB:
+    Type: AWS::RDS::DBInstance
+    Condition: ReadReplicaCondition
+    Properties:
+      SourceDBInstanceIdentifier: !Ref 'rPrimaryDB'
+      DBName: !Ref 'pDBName'
+      AllocatedStorage: !Ref 'pDBAllocatedStorage'
+      AllowMajorVersionUpgrade: false
+      AutoMinorVersionUpgrade: !Ref 'pAllowMinorUpgrade'
+      CharacterSetName: !Ref 'pDBCharacterSet'
+      DBInstanceClass: !Ref 'pDBInstanceClass'
+      DBInstanceIdentifier: !Sub ${pEnv}-uac-rr
+      DBName: !Ref 'pDBName'
+      DBParameterGroupName: !Ref 'rRDSParamGroup'
+      #DBSubnetGroupName: !Ref 'pDBSubnetGroupName'
+      DeletionProtection: 'pDeletionProtection'
+      EnableCloudwatchLogsExports:
+        - alert
+        - audit
+        - listener
+        - trace
+      EnablePerformanceInsights: true
+      Engine: oracle-ee
+      EngineVersion: 12.2.0.1.ru-2021-01.rur-2021-01.r1
+      LicenseModel: !Ref 'pLicenseModel'
+      MaxAllocatedStorage: !Ref 'pMaxAllocatedStorage'
+      MultiAZ: !Ref 'pMultiAZ'
+      OptionGroupName: !Ref 'rRDSOptionGroup'
+      PerformanceInsightsRetentionPeriod: '7'
+      Port: '1521'
+      #PreferredMaintenanceWindow: pPreferredMaintenanceWindow
+      PubliclyAccessible: false
+      StorageEncrypted: true
+      StorageType: gp2
+      VPCSecurityGroups:
+        #- !Ref pVPCSecurityGroupId
+        - !Ref rOracleSecurityGroup
+      Tags:
+      - Key: Name
+        Value: Read Replica Database
+  rOracleSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      VpcId: !Ref pVPCId
+      GroupDescription: Security Group for Oracle RDS
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '1521'
+          ToPort: '1521'
+          CidrIp: 172.17.35.156/32
+          Description: STAGE_UACToolSvr
+        # - IpProtocol: tcp
+        #   FromPort: '1521'
+        #   ToPort: '1521'
+        #   SourceSecurityGroupId: 
+        #   Description: SecurityGroup
+  rOracleSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties: 
+      DBSubnetGroupDescription: String
+      DBSubnetGroupName: String
+      SubnetIds: 
+        - subnet-b0b8a6ed
+        - subnet-9c5738f1
+
+Outputs:
+  DBEndPoint:
+    Description: Endpoint 
+    Value: !GetAtt [rPrimaryDB, Endpoint.Address]
+
+
+
+
+Activity
+
+Add Task
+No activity to show
+Comment and @mention people to notify them.
+Comment(optional)
+Write a comment
+
+@mention users to notify them.
+uac_oracle_rds_read_replica.yaml

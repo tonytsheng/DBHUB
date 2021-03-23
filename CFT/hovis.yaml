@@ -1,0 +1,198 @@
+AWSTemplateFormatVersion: '2012-09-09'
+Metadata: 
+  License: Apache-2.0
+Description: 'Oracle RDS Template'
+Parameters:
+  pEnv:
+    Default: stg
+    AllowedValues: [stg, prod]
+    Type: String
+  pDBName:
+    Default: ORCL
+    Description: The database name
+    Type: String
+    MinLength: '1'
+    MaxLength: '64'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric
+      characters.
+  pDBUser:
+    Default: admin
+    Description: The database admin account username
+    Type: String
+    MinLength: '1'
+    MaxLength: '16'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric
+      characters.
+  pDBPassword:
+    NoEcho: 'true'
+    Description: The alphanumeric database admin account password
+    Type: String
+    MinLength: '8'
+    MaxLength: '41'
+    AllowedPattern: '[a-zA-Z0-9]*'
+    ConstraintDescription: must contain only alphanumeric characters.
+  pDBInstanceClass:
+    Description: The database instance type
+    Type: String
+    Default: db.m5.2xlarge
+    AllowedValues: [db.m5.large, db.m5.2xlarge, db.m5.4xlarge, db.m5.8xlarge, db.m5.12xlarge]
+    ConstraintDescription: must select a valid database instance type.
+  pDBAllocatedStorage:
+    Default: '500'
+    Description: The size of the database (GiB)
+    Type: Number
+    MinValue: '20'
+    MaxValue: '65536'
+    ConstraintDescription: must be between 20 and 65536 GiB.
+  pDBCharacterSet:
+    Default: AL32UTF8
+    Description: The DB Characterset
+    Type: String
+    AllowedValues: [AL32UTF8, WE8MSWIN1252]
+  pDBSubnetGroupName: 
+    Default: rds-subnet-b0b8a6ed
+    AllowedValues: [rds-subnet-b0b8a6ed, rds-subnet-group]
+    Type: String
+  pVPCSecurityGroupId:
+    Description: RDS Security Group
+    Default: sg-089b11963fb740808
+    AllowedValues: [sg-089b11963fb740808, sg-0b2241e1f4eb19e5a]
+    Type: String
+  pDBName:
+    Default: ORCL
+    Type: String
+  pLicenseModel:
+    Default: bring-your-own-license
+    AllowedValues: [bring-your-own-license, license-included]
+    Type: String
+  pMaxAllocatedStorage:
+    Default: '1000'
+    Type: Number
+  # pPreferredMaintenanceWindow:
+  #   Default: 'Sun:23:45-Mon:00:15'
+  #   Type: String
+
+
+## Todo:
+## EnableCWLogs
+## Add Condition for read-replica
+## Metadata to format display
+## Fix Preferred MaintenanceWindow
+## Confirm gp2 storage type is acceptable
+## NNE Encryption Types
+## Change DeletionProtection to true once completed
+
+Resources:
+  rPrimaryDB:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBName: !Ref 'pDBName'
+      AllocatedStorage: !Ref 'pDBAllocatedStorage'
+      AllowMajorVersionUpgrade: false
+      AutoMinorVersionUpgrade: false
+      BackupRetentionPeriod: 14
+      CharacterSetName: !Ref 'pDBCharacterSet'
+      DBInstanceClass: !Ref 'pDBInstanceClass'
+      DBInstanceIdentifier: !Sub ${pEnv}-uac2
+      DBName: !Ref 'pDBName'
+      DBParameterGroupName: !Ref 'rRDSParamGroup'
+      #DBSubnetGroupName: !Ref 'pDBSubnetGroupName'
+      DeletionProtection: false
+      #EnableCloudwatchLogsExports:
+      EnablePerformanceInsights: true
+      Engine: oracle-ee
+      EngineVersion: 12.2.0.1.ru-2021-01.rur-2021-01.r1
+      LicenseModel: !Ref 'pLicenseModel'
+      MasterUsername: !Ref 'pDBUser'
+      MasterUserPassword: !Ref 'pDBPassword'
+      MaxAllocatedStorage: !Ref 'pMaxAllocatedStorage'
+      MultiAZ: true
+      OptionGroupName: !Ref 'rRDSOptionGroup'
+      PerformanceInsightsRetentionPeriod: '7'
+      Port: '1521'
+      # PreferredMaintenanceWindow: pPreferredMaintenanceWindow
+      PubliclyAccessible: false
+      StorageEncrypted: true
+      StorageType: gp2
+      VPCSecurityGroups:
+        - !Ref pVPCSecurityGroupId
+  rRDSParamGroup:
+    Type: AWS::RDS::DBParameterGroup
+    Properties:
+      Family: oracle-ee-12.2
+      Description: UAC Oracle 12.2 Parameter Group
+      Parameters:
+        distributed_lock_timeout: '360'
+        max_string_size: EXTENDED
+        open_cursors: 1500
+        parallel_adaptive_multi_user: TRUE
+        processes: 640
+        sessions: 600
+        transactions: 1082
+  rRDSOptionGroup:
+    Type: AWS::RDS::OptionGroup
+    Properties: 
+      EngineName: oracle-ee
+      MajorEngineVersion: "12.2"
+      OptionConfigurations: 
+        - 
+          OptionName: NATIVE_NETWORK_ENCRYPTION
+          # OptionSettings: 
+          #  - Name: SQLNET.ENCRYPTION_SERVER
+          #    Value: REQUESTED
+          #  - Name: SQLNET.CRYPTO_CHECKSUM_SERVER
+          #    Value: REQUESTED
+          #  - Name: SQLNET.ENCRYPTION_TYPES_SERVER
+          #    Value: RC4_256, AES256, AES192, 3DES168, RC4_128, AES128, 3DES112, RC4_56, DES, RC4_40, DES40
+          #  - Name: SQLNET.CRYPTO_CHECKSUM_TYPES_SERVER
+          #    Value: SHA1, MD5
+      OptionGroupDescription: UAC Oracle Option Group
+  rReplicaDB:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      SourceDBInstanceIdentifier: !Ref 'rPrimaryDB'
+      DBName: !Ref 'pDBName'
+      AllocatedStorage: !Ref 'pDBAllocatedStorage'
+      AllowMajorVersionUpgrade: false
+      AutoMinorVersionUpgrade: false
+      BackupRetentionPeriod: 14
+      CharacterSetName: !Ref 'pDBCharacterSet'
+      DBInstanceClass: !Ref 'pDBInstanceClass'
+      DBInstanceIdentifier: !Sub ${pEnv}-uac-rr
+      DBName: !Ref 'pDBName'
+      DBParameterGroupName: !Ref 'rRDSParamGroup'
+      DBSubnetGroupName: !Ref 'pDBSubnetGroupName'
+      DeletionProtection: true
+      #EnableCloudwatchLogsExports:
+      EnablePerformanceInsights: true
+      Engine: oracle-ee
+      EngineVersion: 12.2.0.1.ru-2021-01.rur-2021-01.r1
+      LicenseModel: !Ref 'pLicenseModel'
+      MasterUsername: !Ref 'pDBUser'
+      MasterUserPassword: !Ref 'pDBPassword'
+      MaxAllocatedStorage: !Ref 'pMaxAllocatedStorage'
+      MultiAZ: true
+      OptionGroupName: !Ref 'rRDSOptionGroup'
+      PerformanceInsightsRetentionPeriod: '7'
+      Port: '1521'
+      # PreferredMaintenanceWindow: pPreferredMaintenanceWindow
+      PubliclyAccessible: false
+      StorageEncrypted: true
+      StorageType: gp2
+      VPCSecurityGroups:
+        - !Ref pVPCSecurityGroupId
+      Tags:
+      - Key: Name
+        Value: Read Replica Database
+
+Outputs:
+  DBEndPoint:
+    Description: Endpoint 
+    Value: !GetAtt [rPrimaryDB, Endpoint.Address]
+  # JDBCConnectionString:
+  #   Description: JDBC connection string for the database
+  #   Value: !Join ['', ['jdbc:oracle:thin:@', !GetAtt [MyDB, Endpoint.Address], ':', !GetAtt [
+  #         MyDB, Endpoint.Port], /, !Ref 'DBName']]
+

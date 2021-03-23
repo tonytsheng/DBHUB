@@ -105,3 +105,19 @@ exit;
 
 SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir('DATA_PUMP_DIR')) ORDER BY MTIME;
 SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_PUMP_DIR', p_filename  => 'sample_imp.log'));
+
+-- sample link
+create database link <DB-LINK-NAME> connect to <USERNAME> identified by <PASSWORD> 
+using '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=RDS-END-POINT)(PORT=1521))(CONNECT_DATA=(SID = RDS-DB-SID)))';
+
+-- Move files over a db link
+BEGIN
+DBMS_FILE_TRANSFER.PUT_FILE(
+source_directory_object       => 'DPUMP_DIR',
+source_file_name              => 'EXPDP_SCHEMAS_20210321.DMP',
+destination_directory_object  => 'DATA_PUMP_DIR',
+destination_file_name         => 'EXPDP_SCHEMAS_20210321.DMP', 
+destination_database          => 'LINKNAME' 
+);
+END;
+/
