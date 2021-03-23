@@ -121,3 +121,6 @@ destination_database          => 'LINKNAME'
 );
 END;
 /
+
+-- remove file
+exec utl_file.fremove('DATA_PUMP_DIR','SCHEMANAME.DMP');
