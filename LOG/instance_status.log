@@ -3324,3 +3324,85 @@ uac100
 An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance uac100 is not in available state.
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+nep001
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+octora01
+DBINSTANCE	2236	True	us-east-2a	1	rds-ca-2019	AL32UTF8	False	arn:aws:rds:us-east-2:227623716792:db:octora01	db.m5.large	octora01	stopping	OCTORA01	0	db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	oracle-ee	19.0.0.0.ru-2021-01.rur-2021-01.r2	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-SKUYXDDJWDBMOOMXCXOPDTUBWI	False	2021-01-03T19:36:32.429000+00:00	2021-03-23T21:53:20+00:00	bring-your-own-license	admin	5000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	AL16UTF16	False	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	07:34-08:04	wed:04:34-wed:05:04	True	False	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS	ACTIVE
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::227623716792:role/ttsheng_role	ACTIVE
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	ttsheng-s3integration	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+uac002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance uac002 is not in available state.
+uac003
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance uac003 is not in available state.
+uac100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance uac100 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
+aurpg02-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurpg02-instance-1-us-east-2b
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+nep001
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+octora01
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance octora01 is not in available state.
+pg002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg002 is not in available state.
+pg100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg100 is not in available state.
+sqlsrv001
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlsrv001 is not in available state.
+uac002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance uac002 is not in available state.
+uac003
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance uac003 is not in available state.
+uac100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance uac100 is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
