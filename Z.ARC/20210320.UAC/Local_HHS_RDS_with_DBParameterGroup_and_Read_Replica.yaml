@@ -1,0 +1,353 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Oracle RDS Template'
+Parameters:
+  pEnv:
+    Default: stage
+    Description: Environment 
+    AllowedValues: [stage, prod]
+    Type: String
+  pVPCId:
+    Default: vpc-1c5cbb61
+    Description: VPC - ODSS, MPH
+    AllowedValues: [vpc-0d376a6b35ca190a5, vpc-1c5cbb61]
+    Type: String
+  pDBName:
+    Default: ORCL
+    Description: The database name
+    Type: String
+    MinLength: '1'
+    MaxLength: '64'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric
+      characters.
+  pDBUser:
+    Default: admin
+    Description: The database admin account username
+    Type: String
+    MinLength: '1'
+    MaxLength: '16'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric
+      characters.
+  pDBPassword:
+    NoEcho: 'true'
+    Description: The alphanumeric database admin account password
+    Type: String
+    MinLength: '8'
+    MaxLength: '41'
+    # AllowedPattern: '[a-zA-Z0-9]*'
+    ConstraintDescription: must contain only alphanumeric characters.
+  pDBInstanceClass:
+    Description: The Primary database instance type
+    Type: String
+    Default: db.m5.2xlarge
+    AllowedValues: [db.m5.large, db.m5.2xlarge, db.m5.4xlarge, db.m5.8xlarge, db.m5.12xlarge]
+    ConstraintDescription: must select a valid database instance type.
+  pRRDBInstanceClass:
+    Description: The Read-Replica database instance type
+    Type: String
+    Default: db.m5.2xlarge
+    AllowedValues: [db.m5.large, db.m5.2xlarge, db.m5.4xlarge, db.m5.8xlarge, db.m5.12xlarge]
+    ConstraintDescription: must select a valid database instance type.
+  pDBAllocatedStorage:
+    Default: '300'
+    Description: The size of the database (GiB)
+    Type: Number
+    MinValue: '20'
+    MaxValue: '65536'
+    ConstraintDescription: must be between 20 and 65536 GiB.
+  pDBCharacterSet:
+    Default: WE8MSWIN1252
+    Description: The DB Characterset
+    Type: String
+    AllowedValues: [AL32UTF8, WE8MSWIN1252]
+  # pDBSubnetGroupName:
+  #    Description: Retrieve Subnet Group from https://console.aws.amazon.com/rds/home?region=us-east-1#db-subnet-groups-list
+  #    Type: String
+  #    AllowedValues: [rds-subnet-b0b8a6ed, source-stage-sourceaccount-development-oracleinstancesubnetgroup28186537-15nadkbbxcoc4]
+  #    Default: rds-subnet-b0b8a6ed
+  # pVPCSecurityGroupId:
+  #    Description: RDS Security Group to controll ingress/egress
+  #    Type: List<AWS::EC2::SecurityGroup::Id>
+  #    #Type: String
+  #    #Default: sg-08f75453e48d5994b
+  pDBName:
+    Default: ORCL
+    Type: String
+  pLicenseModel:
+    Default: bring-your-own-license
+    AllowedValues: [bring-your-own-license, license-included]
+    Type: String
+  pMaxAllocatedStorage:
+    Default: '2048'
+    Type: Number
+  # pPreferredMaintenanceWindow:
+  #    Default: mon:03:00-mon:04:00
+  #    Description: Preferred time for maintenance
+  #    Type: String
+  pReadReplica:
+    Default: false
+    Description: Create read-replica?
+    Type: String
+    AllowedValues: [true, false]
+  pMultiAZ:
+    Default: false
+    Description:  Create as Multi-AZ?
+    Type: String
+    AllowedValues: [true, false]
+  pDeletionProtection:
+    Default: false
+    Description: Enable Deletion Protection?
+    Type: String
+    AllowedValues: [true, false]
+  pAllowMinorUpgrade:
+    Default: false
+    Description: Allow Minor Upgrade?
+    Type: String
+    AllowedValues: [true, false]
+  pBackupRetentionPeriod:
+    Default: 14
+    Description: Backup Retention Period in Days
+    Type: String
+
+Conditions:
+  ReadReplicaCondition:
+    !Equals [true, !Ref pReadReplica]
+
+Metadata:
+  'AWS::CloudFormation::Interface':
+    ParameterGroups:
+      - Label:
+          default: Database Environment
+        Parameters:
+          - pVPCId
+          - pEnv
+      - Label:
+          default: Oracle DB Instance Settings
+        Parameters:
+          - pDBName
+          - pDBUser
+          - pDBPassword
+          - pDBInstanceClass
+          - pDBAllocatedStorage
+          - pDBCharacterSet
+          - pLicenseModel
+          - pMaxAllocatedStorage
+      # Uncomment to specify existing resources
+      # - Label:
+      #     default: Network and Security Settings
+      #   Parameters:
+      #     - pVPCSecurityGroupId
+      #     - pDBSubnetGroupName
+      - Label:
+          default: High Availability and Read-Replica
+        Parameters:
+            - pReadReplica
+            - pRRDBInstanceClass
+            - pMultiAZ
+            - pBackupRetentionPeriod
+            - pDeletionProtection
+            - pAllowMinorUpgrade
+            #- pPreferredMaintenanceWindow
+
+Resources:
+  rPrimaryDB:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBName: !Ref 'pDBName'
+      AllocatedStorage: !Ref 'pDBAllocatedStorage'
+      AllowMajorVersionUpgrade: false
+      AssociatedRoles:
+        - FeatureName: S3_INTEGRATION
+          RoleArn: !GetAtt "rRDSS3Role.Arn"
+      AutoMinorVersionUpgrade: !Ref 'pAllowMinorUpgrade'
+      BackupRetentionPeriod: !Ref 'pBackupRetentionPeriod'
+      CharacterSetName: !Ref 'pDBCharacterSet'
+      DBInstanceClass: !Ref 'pDBInstanceClass'
+      DBInstanceIdentifier: !Sub uac-${pEnv}
+      DBName: !Ref 'pDBName'
+      DBParameterGroupName: !Ref 'rRDSParamGroup'
+      #DBSubnetGroupName: !Ref 'pDBSubnetGroupName'
+      DBSubnetGroupName: !Ref 'rOracleSubnetGroup'
+      DeletionProtection: !Ref 'pDeletionProtection'
+      EnableCloudwatchLogsExports:
+        - alert
+        - audit
+        - listener
+        - trace
+      EnablePerformanceInsights: true
+      Engine: oracle-ee
+      EngineVersion: 12.2.0.1.ru-2021-01.rur-2021-01.r1
+      LicenseModel: !Ref 'pLicenseModel'
+      MasterUsername: !Ref 'pDBUser'
+      MasterUserPassword: !Ref 'pDBPassword'
+      MaxAllocatedStorage: !Ref 'pMaxAllocatedStorage'
+      MonitoringInterval: 10
+      MonitoringRoleArn: arn:aws:iam::652001336244:role/rds-monitoring-role
+      MultiAZ: !Ref 'pMultiAZ'
+      OptionGroupName: !Ref 'rRDSOptionGroup'
+      PerformanceInsightsRetentionPeriod: '7'
+      Port: '1521'
+      # PreferredMaintenanceWindow: pPreferredMaintenanceWindow
+      PubliclyAccessible: true
+      StorageEncrypted: true
+      StorageType: gp2
+      VPCSecurityGroups:
+        #- !Ref pVPCSecurityGroupId
+        - !Ref rOracleSecurityGroup
+  rRDSParamGroup:
+    Type: AWS::RDS::DBParameterGroup
+    Properties:
+      Family: oracle-ee-12.2
+      Description: UAC Oracle 12.2 Parameter Group
+      Parameters:
+        distributed_lock_timeout: '360'
+        max_string_size: EXTENDED
+        open_cursors: 1500
+        parallel_adaptive_multi_user: TRUE
+        processes: 640
+        sessions: 600
+        transactions: 1082
+        audit_trail: DB
+  rRDSOptionGroup:
+    Type: AWS::RDS::OptionGroup
+    Properties: 
+      EngineName: oracle-ee
+      MajorEngineVersion: "12.2"
+      OptionConfigurations: 
+        - OptionName: NATIVE_NETWORK_ENCRYPTION
+        - OptionName: Timezone
+          OptionSettings:
+            - Name: TIME_ZONE
+              Value: America/New_York
+        - OptionName: S3_INTEGRATION
+      OptionGroupDescription: UAC Oracle Option Group
+  rReplicaDB:
+    Type: AWS::RDS::DBInstance
+    Condition: ReadReplicaCondition
+    Properties:
+      SourceDBInstanceIdentifier: !Ref 'rPrimaryDB'
+      DBName: !Ref 'pDBName'
+      AllocatedStorage: !Ref 'pDBAllocatedStorage'
+      AllowMajorVersionUpgrade: false
+      AutoMinorVersionUpgrade: !Ref 'pAllowMinorUpgrade'
+      CharacterSetName: !Ref 'pDBCharacterSet'
+      DBInstanceClass: !Ref 'pRRDBInstanceClass'
+      DBInstanceIdentifier: !Sub uac-rr-${pEnv}
+      DBName: !Ref 'pDBName'
+      DBParameterGroupName: !Ref 'rRDSParamGroup'
+      #DBSubnetGroupName: !Ref 'pDBSubnetGroupName'
+      DeletionProtection: !Ref 'pDeletionProtection'
+      EnableCloudwatchLogsExports:
+        - alert
+        - audit
+        - listener
+        - trace
+      EnablePerformanceInsights: true
+      Engine: oracle-ee
+      EngineVersion: 12.2.0.1.ru-2021-01.rur-2021-01.r1
+      LicenseModel: !Ref 'pLicenseModel'
+      MaxAllocatedStorage: !Ref 'pMaxAllocatedStorage'
+      MonitoringInterval: 10
+      MonitoringRoleArn: arn:aws:iam::652001336244:role/rds-monitoring-role
+      MultiAZ: !Ref 'pMultiAZ'
+      OptionGroupName: !Ref 'rRDSOptionGroup'
+      PerformanceInsightsRetentionPeriod: '7'
+      Port: '1521'
+      #PreferredMaintenanceWindow: pPreferredMaintenanceWindow
+      PubliclyAccessible: true
+      StorageEncrypted: true
+      StorageType: gp2
+      VPCSecurityGroups:
+        #- !Ref pVPCSecurityGroupId
+        - !Ref rOracleRRSecurityGroup
+      Tags:
+      - Key: Name
+        Value: Read Replica Database
+  rOracleSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      VpcId: !Ref pVPCId
+      GroupDescription: Security Group for Oracle RDS
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '1521'
+          ToPort: '1521'
+          SourcePrefixListId: pl-4e2ece27
+          Description: IAD
+  rOracleRRSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      VpcId: !Ref pVPCId
+      GroupDescription: Security Group for Oracle RDS Read-Replica
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '1521'
+          ToPort: '1521'
+          SourcePrefixListId: pl-4e2ece27
+          Description: IAD
+  rOracleSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties: 
+      DBSubnetGroupDescription: Oracle Rds Subnet Group
+      DBSubnetGroupName: !Sub oracle-rds-dbsubnet-group-${pEnv}
+      SubnetIds: 
+        - subnet-609c106e
+        - subnet-c93eefe8
+        - subnet-0ffc2b50
+        - subnet-cb9886f5
+        - subnet-72a53f3f
+        - subnet-997fb4ff
+  rS3IntegrationPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+          Sid: s3integration
+          Action:
+            - s3:GetObject
+            - s3:ListBucket
+            - s3:PutObject
+          Effect: Allow
+          Resource: 
+            - !GetAtt rS3Bucket.Arn
+            - !Sub
+              - '${S3Arn}/*'
+              - S3Arn: !GetAtt rS3Bucket.Arn       
+      PolicyName: !Sub ACF-UAC-RDS-S3INTEGRATION-Policy-${pEnv}
+      Roles:
+        - !Ref 'rRDSS3Role'
+  rRDSS3Role:
+    Type: AWS::IAM::Role
+    Properties: 
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          Effect: Allow
+          Principal:
+            Service: rds.amazonaws.com
+          Action:
+            - sts:AssumeRole                   
+      Description: RDS S3 Integration Role
+      RoleName: !Sub rds-s3-integration-role-${pEnv}
+  rS3Bucket:
+    Type: 'AWS::S3::Bucket'
+   # DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub uac-rds-data-${pEnv}-mph
+      BucketEncryption: 
+        ServerSideEncryptionConfiguration: 
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      
+Outputs:
+  DBEndPoint:
+    Description: Endpoint 
+    Value: !GetAtt [rPrimaryDB, Endpoint.Address]
+
