@@ -1,0 +1,8 @@
+## reset
+git reset --hard HEAD
+git pull git@github.com:tonytsheng/DBHUB.git master
+
+## push
+git add . 
+git commit -a #add comments
+git push git@github.com:tonytsheng/DBHUB.git master
