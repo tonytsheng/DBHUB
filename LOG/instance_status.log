@@ -4128,3 +4128,7 @@ An error occurred (InvalidDBInstanceState) when calling the StopDBInstance opera
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurpg02 is not in available state.
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep001 is not in available state.
+
+Unable to locate credentials. You can configure credentials by running "aws configure".
+
+Unable to locate credentials. You can configure credentials by running "aws configure".

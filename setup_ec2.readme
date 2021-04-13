@@ -48,7 +48,7 @@ add /opt/mssql-tools/bin/to $PATH in .bash_profile
 
 sudo yum install readline*
 
-## set ClientAliveInterval 60 in sshd_config
+## set ClientAliveInterval 60 in /etc/ssh/sshd_config
 sysctl sshd restart
 
 ## zip/unzip
