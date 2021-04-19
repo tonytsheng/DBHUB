@@ -1,3 +1,7 @@
+set up git ssh key
+git init 
+git pull git@github.com:tonytsheng/DBHUB.git master
+
 ## modify inbound rules for security group
 # make sure ec2 and database is in the same security group
 # then add the right inbound rules in that group - the ones labelled for the database engines
