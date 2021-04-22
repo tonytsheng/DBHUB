@@ -1,0 +1,11 @@
+curl -X POST \
+    -H 'Content-Type: application/json' \
+    https://nep001.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/loader -d '
+    { 
+      "source" : "s3://ttsheng-neptune-csv/Unsaved/2021/04/22/96d8e2e2-6921-4be4-af7a-2d54218b999c.csv",
+      "format" : "csv",  
+      "iamRoleArn" : "arn:aws:iam::227623716792:role/ttsheng_iam_gluerole"",
+      "region" : "us-east-2", 
+      "failOnError" : "FALSE"
+    }'
+
