@@ -1,53 +1,100 @@
--- Simple passwd-file based example
-CREATE TABLE passwd (
-  user_name             text UNIQUE NOT NULL,
-  pwhash                text,
-  uid                   int  PRIMARY KEY,
-  gid                   int  NOT NULL,
-  real_name             text NOT NULL,
-  home_phone            text,
-  extra_info            text,
-  home_dir              text NOT NULL,
-  shell                 text NOT NULL
-);
+### restrict column access
+#login as postgres
+create user admin with password 'Pass1234';
+create table employee ( empno int, ename text, address text, salary int, account_number text );
+insert into employee values (1, 'john', '2 down str',  20000, 'HDFC-22001' );
+insert into employee values (2, 'clark', '132 south avn',  80000, 'HDFC-23029' );
+insert into employee values (3, 'soojie', 'Down st 17th',  60000, 'ICICI-19022' );
+select * from employee;
 
-CREATE ROLE admin;  -- Administrator
-CREATE ROLE bob;    -- Normal user
-CREATE ROLE alice;  -- Normal user
+revoke SELECT on employee from admin ;
+create view emp_info as select empno, ename, address from employee;
+grant SELECT on emp_info TO admin;
 
--- Populate the table
-INSERT INTO passwd VALUES
-  ('admin','xxx',0,0,'Admin','111-222-3333',null,'/root','/bin/dash');
-INSERT INTO passwd VALUES
-  ('bob','xxx',1,1,'Bob','123-456-7890',null,'/home/bob','/bin/zsh');
-INSERT INTO passwd VALUES
-  ('alice','xxx',2,1,'Alice','098-765-4321',null,'/home/alice','/bin/zsh');
+# connect as admin
+\c pg1001 admin
+select * from employee;
+select * from emp_info;
+select * from emp_info where salary > 200;
 
--- Be sure to enable row level security on the table
-ALTER TABLE passwd ENABLE ROW LEVEL SECURITY;
+### column level encryption
+# connect as admin
+grant select (empno, ename, address,account_number) on employee to admin;
+CREATE EXTENSION pgcrypto;
+TRUNCATE TABLE employee;
+insert into employee values (1, 'john', '2 down str',  20000, pgp_sym_encrypt('HDFC-22001','emp_sec_key'));
+insert into employee values (2, 'clark', '132 south avn',  80000, pgp_sym_encrypt('HDFC-23029', 'emp_sec_key'));
+insert into employee values (3, 'soojie', 'Down st 17th',  60000, pgp_sym_encrypt('ICICI-19022','emp_sec_key'));
+select * from employee;
+revoke SELECT on employee from admin;
+grant select (empno, ename, address,account_number) on employee to admin;
 
--- Create policies
--- Administrator can see all rows and add any rows
-CREATE POLICY admin_all ON passwd TO admin USING (true) WITH CHECK (true);
--- Normal users can view all rows
-CREATE POLICY all_view ON passwd FOR SELECT USING (true);
--- Normal users can update their own records, but
--- limit which shells a normal user is allowed to set
-CREATE POLICY user_mod ON passwd FOR UPDATE
-  USING (current_user = user_name)
-  WITH CHECK (
-    current_user = user_name AND
-    shell IN ('/bin/bash','/bin/sh','/bin/dash','/bin/zsh','/bin/tcsh')
-  );
+\c pg1001 admin
+# return encrypted value
+select empno, ename, address,account_number from employee;
 
--- Allow admin all normal rights
-GRANT SELECT, INSERT, UPDATE, DELETE ON passwd TO admin;
--- Users only get select access on public columns
-GRANT SELECT
-  (user_name, uid, gid, real_name, home_phone, extra_info, home_dir, shell)
-  ON passwd TO public;
--- Allow users to update certain columns
-GRANT UPDATE
-  (pwhash, real_name, home_phone, extra_info, shell)
-  ON passwd TO public;
+# return decrypted value - using the key
+select empno, ename, address,pgp_sym_decrypt(account_number::bytea,'emp_sec_key') from employee;
+
+# cannot return decrypted value - bad key
+select empno, ename, address,pgp_sym_decrypt(account_number::bytea,'random_key') from employee;
+
+
+## row level security
+\c pg1001 postgres
+create table employee ( empno int, ename text, address text, salary int, account_number text );
+insert into employee values (1, 'john', '2 down str',  20000, 'HDFC-22001' );
+insert into employee values (2, 'clark', '132 south avn',  80000, 'HDFC-23029' );
+insert into employee values (3, 'soojie', 'Down st 17th',  60000, 'ICICI-19022' );
+select * from employee;
+
+create user john with password 'Pass1234';
+create user clark with password 'Pass1234';
+create user soojie with password 'Pass1234';
+grant select on employee to john;
+grant select on employee to clark;
+grant select on employee to soojie;
+
+create policy emp_rls_policy on employee for all to public using (ename=current_user);
+alter table employee enable row level security;
+
+\c pg1001 john
+john@pg1001=> select current_user;
+ current_user
+--------------
+ john
+(1 row)
+
+john@pg1001=> select * from employee;
+ empno | ename |  address   | salary | account_number
+-------+-------+------------+--------+----------------
+     1 | john  | 2 down str |  20000 | HDFC-22001
+(1 row)
+
+DROP POLICY emp_rls_policy ON employee;
+ALTER TABLE employee DISABLE ROW LEVEL SECURITY;
+
+## combine row and column level
+revoke SELECT on employee from john;
+grant select (empno, ename, address) on employee to john;
+\c postgres john
+select empno, ename, address from employee;
+
+## using session variables
+postgres=# grant  SELECT on employee to PUBLIC;
+postgres=# DROP POLICY emp_rls_policy ON employee;
+postgres=# CREATE POLICY emp_rls_policy ON employee FOR all TO public USING (ename=current_setting('rls.ename'));
+postgres=# ALTER TABLE employee ENABLE ROW LEVEL SECURITY;
+postgres=# \c postgres john
+postgres=> set rls.ename = 'smith';
+postgres=> select * from employee;
+ empno | ename |   address   | salary | account_number
+-------+-------+-------------+--------+----------------
+     4 | smith | ash dwn str |  85000 | HDFC-22121
+(1 row)
+postgres=> set rls.ename = 'wrong';
+postgres=> select * from employee;
+ empno | ename | address | salary | account_number
+-------+-------+---------+--------+----------------
+(0 rows)
 
