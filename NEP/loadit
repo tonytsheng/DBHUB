@@ -2,10 +2,11 @@ curl -X POST \
     -H 'Content-Type: application/json' \
     https://nep200-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/loader -d '
     { 
-      "source" : "s3://ttsheng-neptune-csv/Unsaved/2021/04/22/438e1933-e01f-4f42-b043-18f27b1a5dc4.csv",
+      "source" : "s3://ttsheng-neptune-csv/Unsaved/2021/04/22/air-routes-latest-nodes.csv",
       "format" : "csv",  
-      "iamRoleArn" : "arn:aws:iam::227623716792:role/ttsheng-nep-s3",
+      "iamRoleArn" : "arn:aws:iam::227623716792:role/ttsheng-neptuneloadfroms3",
       "region" : "us-east-2", 
+      "queueRequest" : "TRUE",
       "failOnError" : "FALSE"
     }'
 

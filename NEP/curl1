@@ -1,0 +1,1 @@
+curl -X POST --data-binary 'query=select ?s ?p ?o where {?s ?p ?o}' https://nep200-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/sparql
