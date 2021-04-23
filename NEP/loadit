@@ -1,6 +1,6 @@
 curl -X POST \
     -H 'Content-Type: application/json' \
-    https://nep001.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/loader -d '
+    https://nep200-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/loader -d '
     { 
       "source" : "s3://ttsheng-neptune-csv/Unsaved/2021/04/22/438e1933-e01f-4f42-b043-18f27b1a5dc4.csv",
       "format" : "csv",  
