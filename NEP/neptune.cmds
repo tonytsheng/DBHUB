@@ -1,0 +1,98 @@
+curl -G https://nep2001-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/loader
+{
+    "status" : "200 OK",
+    "payload" : {
+        "loadIds" : [
+            "33f4a50e-6980-4d70-b876-def749b2002d"
+        ]
+    }
+}[ec2-user@ip-172-31-20-159 NEP]$ curl -G https://nep2001-instance-1.czzdit7hfnd.us-east-2.neptune.amazonaws.com:8182/loader/33f4a50e-6980-4d70-b876-def749b2002d
+{
+    "status" : "200 OK",
+    "payload" : {
+        "feedCount" : [
+            {
+                "LOAD_NOT_STARTED" : 7
+            },
+            {
+                "LOAD_IN_PROGRESS" : 1
+            },
+            {
+                "LOAD_COMPLETED" : 1
+            }
+        ],
+        "overallStatus" : {
+            "fullUri" : "s3://ttsheng-neptune-csv/Unsaved/2021/04/22",
+            "runNumber" : 1,
+            "retryNumber" : 0,
+            "status" : "LOAD_IN_PROGRESS",
+            "totalTimeSpent" : 30,
+            "startTime" : 1619361128,
+            "totalRecords" : 526443,
+            "totalDuplicates" : 0,
+            "parsingErrors" : 0,
+            "datatypeMismatchErrors" : 0,
+            "insertErrors" : 0
+        }
+    }
+}[ec2-user@ip-172-31-20-159 NEP]$ curl -G https://nep2001-instance-1.czzdit7hfnd.us-east-2.neptune.amazonaws.com:8182/loader/33f4a50e-6980-4d70-b876-def749b2002d
+{
+    "status" : "200 OK",
+    "payload" : {
+        "feedCount" : [
+            {
+                "LOAD_NOT_STARTED" : 7
+            },
+            {
+                "LOAD_IN_PROGRESS" : 1
+            },
+            {
+                "LOAD_COMPLETED" : 1
+            }
+        ],
+        "overallStatus" : {
+            "fullUri" : "s3://ttsheng-neptune-csv/Unsaved/2021/04/22",
+            "runNumber" : 1,
+            "retryNumber" : 0,
+            "status" : "LOAD_IN_PROGRESS",
+            "totalTimeSpent" : 36,
+            "startTime" : 1619361128,
+            "totalRecords" : 646443,
+            "totalDuplicates" : 0,
+            "parsingErrors" : 0,
+            "datatypeMismatchErrors" : 0,
+            "insertErrors" : 0
+        }
+    }
+}[ec2-user@ip-172-31-20-159 NEP]$
+[ec2-user@ip-172-31-20-159 NEP]$ curl -G https://nep2001-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/loader/33f4a50e-6980-4d70-b876-def749b2002d
+{
+    "status" : "200 OK",
+    "payload" : {
+        "feedCount" : [
+            {
+                "LOAD_NOT_STARTED" : 7
+            },
+            {
+                "LOAD_IN_PROGRESS" : 1
+            },
+            {
+                "LOAD_COMPLETED" : 1
+            }
+        ],
+        "overallStatus" : {
+            "fullUri" : "s3://ttsheng-neptune-csv/Unsaved/2021/04/22",
+            "runNumber" : 1,
+            "retryNumber" : 0,
+            "status" : "LOAD_IN_PROGRESS",
+            "totalTimeSpent" : 38,
+            "startTime" : 1619361128,
+            "totalRecords" : 676443,
+            "totalDuplicates" : 0,
+            "parsingErrors" : 0,
+            "datatypeMismatchErrors" : 0,
+            "insertErrors" : 0
+        }
+    }
+}[ec2-user@ip-172-31-20-159 NEP]$
+

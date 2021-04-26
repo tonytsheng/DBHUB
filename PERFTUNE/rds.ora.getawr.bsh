@@ -40,8 +40,8 @@ END_DATE=`date "+%Y-%m-%d %H:00"`
 #echo "BEG DATE: ${BEG_DATE}"
 #echo "END DATE: ${END_DATE}"
 
-CREDS="admin/`cat /home/ec2-user/DBHUB/ORA/.admin`"
-CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=OCTORA01)))"
+CREDS="admin/Pass1234"
+CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ora1001.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ora1001)))"
 
 sqlplus -S ${CONNSTR} <<EQ 
 set linesize 200
@@ -59,4 +59,4 @@ sqlplus -S ${CONNSTR} <<EQ
 exec rdsadmin.rdsadmin_diagnostic_util.awr_report(${BEG_SNAP}, ${END_SNAP}, 'TEXT');
 EQ
 
-aws rds download-db-log-file-portion --db-instance-identifier octora01 --log-file-name trace/awrrpt_${BEG_SNAP}_${END_SNAP}.txt  --output text  > awrrpt_${BEG_SNAP}_${END_SNAP}.txt
+aws rds download-db-log-file-portion --db-instance-identifier ora1001 --log-file-name trace/awrrpt_${BEG_SNAP}_${END_SNAP}.txt  --output text  > awrrpt_${BEG_SNAP}_${END_SNAP}.txt
