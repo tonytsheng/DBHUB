@@ -4356,3 +4356,48 @@ An error occurred (InvalidDBInstanceState) when calling the StopDBInstance opera
 pg1001
 
 An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg1001 is not in available state.
+nep2001-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+ora1001
+DBINSTANCE	500	False	us-east-2b	1	rds-ca-2019	AL32UTF8	True	arn:aws:rds:us-east-2:227623716792:db:ora1001	db.m5.xlarge	ora1001	stopping	ORA1001	0	db-PCI3GSKP2AJYW3E2UYZDPOWEFY	False	oracle-ee	19.0.0.0.ru-2020-10.rur-2020-10.r1	False	2021-04-13T13:28:34.099Z	2021-04-26T22:54:40Z	bring-your-own-license	admin	0	False	False	07:34-08:04	wed:04:34-wed:05:04	True	False	gp2
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-376fc65c	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	alert
+ENABLEDCLOUDWATCHLOGSEXPORTS	listener
+ENDPOINT	ora1001.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	default:oracle-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
+pg1001
+DBINSTANCE	20	True	us-east-2b	7	rds-ca-2019	True	arn:aws:rds:us-east-2:227623716792:db:pg1001	db.m5.xlarge	pg1001	stopping	pg1001	0	db-Z3OYRAJ4ITJFWDHLL34B7WMGPY	False	postgres	11.11	arn:aws:logs:us-east-2:227623716792:log-group:RDSOSMetrics:log-stream:db-Z3OYRAJ4ITJFWDHLL34B7WMGPY	False	2021-04-13T14:54:15.642Z	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	2021-04-26T22:56:05Z	postgresql-license	postgres	1000	60	arn:aws:iam::227623716792:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:227623716792:key/d8799ff4-8951-4c19-b253-1c5d2c3a2b36	7	03:02-03:32	wed:07:16-wed:07:46	True	True	gp2
+DBPARAMETERGROUPS	default.postgres11	in-sync
+DBSUBNETGROUP	default	default	Complete	vpc-376fc65c
+SUBNETS	subnet-08cea4c32f941c0c6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-04d094b09eeba377f	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-08661dbc984232327	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-02213df4779ca2d8b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-013762ac5f92b9848	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-08b1b5a7224b2a781	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
+ENDPOINT	pg1001.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-11	in-sync
+VPCSECURITYGROUPS	active	sg-1edb2361
