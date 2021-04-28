@@ -4401,3 +4401,5 @@ ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
 ENDPOINT	pg1001.czzdit7hfndz.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
 OPTIONGROUPMEMBERSHIPS	default:postgres-11	in-sync
 VPCSECURITYGROUPS	active	sg-1edb2361
+Unable to locate credentials. You can configure credentials by running "aws configure".
+/bin/sh: /usr/local/bin/aws: No such file or directory
