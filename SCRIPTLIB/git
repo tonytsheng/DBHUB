@@ -6,3 +6,5 @@ git pull git@github.com:tonytsheng/DBHUB.git master
 git add . 
 git commit -a #add comments
 git push git@github.com:tonytsheng/DBHUB.git master
+
+git config --global core.editor "vim"
