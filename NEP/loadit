@@ -1,10 +1,10 @@
 curl -X POST \
     -H 'Content-Type: application/json' \
-    https://nep2001-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/loader -d '
+https://nep1001.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d '
     { 
-      "source" : "s3://ttsheng-neptune-csv/Unsaved/2021/04/22",
+      "source" : "s3://ttsheng-nepload",
       "format" : "csv",  
-      "iamRoleArn" : "arn:aws:iam::227623716792:role/ttsheng-neptuneloadfroms3",
+      "iamRoleArn" : "arn:aws:iam::070201068661:role/load-neptune-s3",
       "region" : "us-east-2", 
       "queueRequest" : "TRUE",
       "failOnError" : "FALSE"

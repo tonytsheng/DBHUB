@@ -96,8 +96,8 @@ curl -G https://nep2001-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:
     }
 }[ec2-user@ip-172-31-20-159 NEP]$
 
-/home/ec2-user/rpms/apache-tinkerpop-gremlin-console-3.4.8/bin/gremlin.sh
-:remote connect tinkerpop.server /home/ec2-user/rpms/apache-tinkerpop-gremlin-console-3.4.8/conf/neptune-remote.yaml
+/home/ec2-user/rpms/apache-tinkerpop-gremlin-console-3.4.10/bin/gremlin.sh
+:remote connect tinkerpop.server /home/ec2-user/rpms/apache-tinkerpop-gremlin-console-3.4.10/conf/neptune-remote.yaml
 :remote console
 g.V()
 g.E()
