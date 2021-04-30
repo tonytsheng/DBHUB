@@ -9,7 +9,18 @@ const connection = new DriverRemoteConnection(`wss://${process.env.NEPTUNE_ENDPO
 const graph = new Graph();
 const g = graph.traversal().withRemote(connection);
 
+console.log('Vertices');
 g.V().count().next().
+    then(data => {
+        console.log(data);
+        connection.close();
+    }).catch(error => {
+        console.log('ERROR', error);
+        connection.close();
+    });
+
+console.log('Edges');
+g.E().count().next().
     then(data => {
         console.log(data);
         connection.close();

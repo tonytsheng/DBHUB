@@ -1,0 +1,1 @@
+curl -G "https://${NEPTUNE_ENDPOINT}:8182?gremlin=g.V().count()"

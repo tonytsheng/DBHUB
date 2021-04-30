@@ -1,1 +1,2 @@
-curl -X POST -d '{"gremlin":"g.V().limit(1)"}' https://nep200-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/gremlin
+curl -X POST -d '{"gremlin":"g.V()"}' https://${NEPTUNE_ENDPOINT}:8182/gremlin
+#kcurl -X POST -d '{"gremlin":"g.V().limit(1)"}' https://${NEPTUNE_ENDPOINT}:8182/gremlin
