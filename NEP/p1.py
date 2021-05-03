@@ -15,12 +15,40 @@ g = graph.traversal().withRemote(remoteConn)
 #print (ID)
 #for p in g.V(v).properties():
 #   print("key:",p.label, "| value: " ,p.value)
-ORD = g.V().has('code', 'ORD').valueMap(True).next()
-print ('+++ Vertices with all attributes for ORD:', ORD)
-ORD = g.V().has('code', 'ORD').valueMap().next()
-print ('+++ Vertices with all attributes for ORD:', ORD)
-ORD = g.V().count().next()
-print ('+++ Overall Vertices:' , ORD)
 
+result = g.V().has('code', 'ORD').valueMap(True).next()
+print ('+++')
+print ('+++ ORD:', result)
+print ('+++')
+
+result = g.V().has('code', 'BWI').valueMap(True).next()
+print ('+++')
+print ('+++ BWI:', result)
+print ('+++')
+
+result = g.V().count().next()
+print ('+++')
+print ('+++ Overall Vertices:' , result)
+print ('+++')
+
+result = g.V().hasLabel('airport').groupCount().by('country').next()
+print ('+++')
+print ('+++ Airports by Country:', result)
+print ('+++')
+
+result =  g.V().has('code','ORD').out().path().by('code')
+print ('+++')
+print ('+++ TODO does not work Where can I fly to ORD from  :', result)
+print ('+++')
+
+result =  g.V().has('airport','code','ORD').values('city').next()
+print ('+++')
+print ('+++ City :', result)
+print ('+++')
+
+result =  g.V().outE('route').count().next()
+print ('+++')
+print ('+++ Number of routes :', result)
+print ('+++')
 
 remoteConn.close()
