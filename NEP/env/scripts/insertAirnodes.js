@@ -12,20 +12,20 @@ const connection = new DriverRemoteConnection(`wss://${process.env.NEPTUNE_ENDPO
 const graph = new Graph();
 const g = graph.traversal().withRemote(connection);
 
-const createAirport = async (name) => {
-  return g.addV('Airport').property('name', name).next()
+const createUser = async (name) => {
+  return g.addV('name').property('name', name).next()
 }
 
 const createInterest = async (interest) => {
   return g.addV('Interest').property('interest', interest).next()
 }
 
-const raw = fs.readFileSync(path.resolve( __dirname, 'airnodes.json'));
+const raw = fs.readFileSync(path.resolve( __dirname, 'airport-2.json'));
 const vertices = JSON.parse(raw)
 
 const vertexPromises = vertices.map((vertex) => {
   if (vertex.label === 'airport') {
-    return createAirport(vertex.name)
+    return createUser(vertex.name)
   } else if (vertex.label === 'Interest') {
     return createInterest(vertex.name)
   }
