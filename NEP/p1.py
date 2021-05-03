@@ -11,12 +11,16 @@ graph = Graph()
 remoteConn = DriverRemoteConnection('wss://nep1001.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin','g')
 g = graph.traversal().withRemote(remoteConn)
 
-# print(g.V().iterate())
+#ID = g.V().has('code', 'ORD').values('T.id').next()
+#print (ID)
+#for p in g.V(v).properties():
+#   print("key:",p.label, "| value: " ,p.value)
+ORD = g.V().has('code', 'ORD').valueMap(True).next()
+print ('+++ Vertices with all attributes for ORD:', ORD)
+ORD = g.V().has('code', 'ORD').valueMap().next()
+print ('+++ Vertices with all attributes for ORD:', ORD)
+ORD = g.V().count().next()
+print ('+++ Overall Vertices:' , ORD)
 
-#print(g.V().toList())
-
-g.V().label().groupCount()
-
-#[v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10], v[11], v[12], v[13], v[14], v[15], v[16], v[17], v[18], v[19], v[20], v[21], v[22], v[23], v[24], v[25], v[26], v[27], v[28], v[29], v[30], v[31], v[32], v[33]]
 
 remoteConn.close()
