@@ -6,7 +6,6 @@ https://nep1001.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d '
       "format" : "csv",  
       "iamRoleArn" : "arn:aws:iam::070201068661:role/load-neptune-s3",
       "region" : "us-east-2", 
-      "queueRequest" : "TRUE",
       "failOnError" : "FALSE"
     }'
 

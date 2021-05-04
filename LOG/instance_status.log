@@ -4488,3 +4488,20 @@ ENDPOINT	pg1001.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
 OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
 VPCSECURITYGROUPS	active	sg-32a37f4c
 /bin/sh: /usr/local/bin/aws: No such file or directory
+nep1001
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg1001
+DBINSTANCE	100	True	us-east-2b	7	rds-ca-2019	True	False	arn:aws:rds:us-east-2:070201068661:db:pg1001	db.r6g.large	pg1001	stopping	0	db-WZOPORKVCWMWFDC2EI6IPZ2NO4	False	postgres	12.5	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-WZOPORKVCWMWFDC2EI6IPZ2NO4	False	2021-04-27T16:06:02.364Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2021-05-02T22:52:47Z	postgresql-license	postgres	1000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	08:06-08:36	sun:04:28-sun:04:58	False	True	gp2
+DBPARAMETERGROUPS	default.postgres12	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-a40dbacf	Complete	vpc-a40dbacf
+SUBNETS	subnet-c4d4c0be	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-1dde0076	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-c0e4988c	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	pg1001.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-32a37f4c
+/bin/sh: /usr/local/bin/aws: No such file or directory

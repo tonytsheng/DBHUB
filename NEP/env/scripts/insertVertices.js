@@ -20,7 +20,7 @@ const createInterest = async (interest) => {
   return g.addV('Interest').property('interest', interest).next()
 }
 
-const raw = fs.readFileSync(path.resolve( __dirname, 'vertices.json'));
+const raw = fs.readFileSync(path.resolve( __dirname, 'vertices-2.json'));
 const vertices = JSON.parse(raw)
 
 const vertexPromises = vertices.map((vertex) => {
