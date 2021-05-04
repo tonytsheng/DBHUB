@@ -10,6 +10,7 @@ graph = Graph()
 
 remoteConn = DriverRemoteConnection('wss://nep1002.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin','g')
 g = graph.traversal().withRemote(remoteConn)
+
 #ID = g.V().has('code', 'ORD').values('T.id').next()
 #print (ID)
 #for p in g.V(v).properties():
