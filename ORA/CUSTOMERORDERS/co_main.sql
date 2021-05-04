@@ -1,10 +1,15 @@
 set define on 
 set verify off
 
-define co_password = &1
-define connect_string = &2
-define tbs = &3
-define ttbs = &4
+-- define co_password = &1
+-- define connect_string = &2
+-- define tbs = &3
+-- define ttbs = &4
+
+define co_password = Pass1234
+define connect_string = ttsora10
+define tbs = customer_orders
+define ttbs = temp
 
 spool co_install.log
 
