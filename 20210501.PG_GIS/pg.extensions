@@ -1,0 +1,139 @@
+pg102=> select current_user;
+ current_user
+--------------
+ postgres
+(1 row)
+
+# check extensions
+SELECT name, default_version,installed_version
+FROM pg_available_extensions; 
+
+
+pg102=> \dn
+  List of schemas
+  Name  |  Owner
+--------+----------
+ public | postgres
+(1 row)
+
+# create extensions
+pg102=> create extension postgis;
+CREATE EXTENSION
+pg102=> create extension fuzzystrmatch;
+CREATE EXTENSION
+pg102=> create extension postgis_tiger_geocoder;
+CREATE EXTENSION
+pg102=> create extension postgis_topology;
+CREATE EXTENSION
+pg102=> \dn
+    List of schemas
+    Name    |  Owner
+------------+----------
+ public     | postgres
+ tiger      | rdsadmin
+ tiger_data | rdsadmin
+ topology   | rdsadmin
+(4 rows)
+
+# transfer ownership of extensions to rds_superuser
+pg102=> ALTER SCHEMA tiger OWNER TO rds_superuser;
+ALTER SCHEMA
+pg102=> ALTER SCHEMA tiger_data OWNER TO rds_superuser;
+ALTER SCHEMA
+pg102=> ALTER SCHEMA topology OWNER TO rds_superuser;
+ALTER SCHEMA
+pg102=> \dn
+      List of schemas
+    Name    |     Owner
+------------+---------------
+ public     | postgres
+ tiger      | rds_superuser
+ tiger_data | rds_superuser
+ topology   | rds_superuser
+(4 rows)
+
+# transfer ownership of objects to the rds_superuser role
+pg102=> CREATE FUNCTION exec(text) returns text language plpgsql volatile AS $f$ BEGIN EXECUTE $1; RETURN $1; END; $f$;
+CREATE FUNCTION
+pg102=> SELECT exec('ALTER TABLE ' || quote_ident(s.nspname) || '.' || quote_ident(s.relname) || ' OWNER TO rds_superuser;')
+pg102->   FROM (
+pg102(>     SELECT nspname, relname
+pg102(>     FROM pg_class c JOIN pg_namespace n ON (c.relnamespace = n.oid)
+pg102(>     WHERE nspname in ('tiger','topology') AND
+pg102(>     relkind IN ('r','S','v') ORDER BY relkind = 'S')
+pg102-> s;
+                                exec
+--------------------------------------------------------------------
+ ALTER TABLE tiger.street_type_lookup OWNER TO rds_superuser;
+ ALTER TABLE tiger.geocode_settings OWNER TO rds_superuser;
+ ALTER TABLE tiger.geocode_settings_default OWNER TO rds_superuser;
+ ALTER TABLE tiger.direction_lookup OWNER TO rds_superuser;
+ ALTER TABLE tiger.secondary_unit_lookup OWNER TO rds_superuser;
+ ALTER TABLE tiger.state_lookup OWNER TO rds_superuser;
+ ALTER TABLE tiger.place_lookup OWNER TO rds_superuser;
+ ALTER TABLE tiger.county_lookup OWNER TO rds_superuser;
+ ALTER TABLE tiger.countysub_lookup OWNER TO rds_superuser;
+ ALTER TABLE tiger.zip_lookup_all OWNER TO rds_superuser;
+ ALTER TABLE tiger.zip_lookup_base OWNER TO rds_superuser;
+ ALTER TABLE tiger.zip_lookup OWNER TO rds_superuser;
+ ALTER TABLE tiger.edges OWNER TO rds_superuser;
+ ALTER TABLE tiger.addrfeat OWNER TO rds_superuser;
+ ALTER TABLE tiger.faces OWNER TO rds_superuser;
+ ALTER TABLE tiger.featnames OWNER TO rds_superuser;
+ ALTER TABLE tiger.addr OWNER TO rds_superuser;
+ ALTER TABLE tiger.zcta5 OWNER TO rds_superuser;
+ ALTER TABLE tiger.loader_platform OWNER TO rds_superuser;
+ ALTER TABLE tiger.loader_variables OWNER TO rds_superuser;
+ ALTER TABLE tiger.loader_lookuptables OWNER TO rds_superuser;
+ ALTER TABLE tiger.tract OWNER TO rds_superuser;
+ ALTER TABLE tiger.tabblock OWNER TO rds_superuser;
+ ALTER TABLE topology.layer OWNER TO rds_superuser;
+ ALTER TABLE tiger.bg OWNER TO rds_superuser;
+ ALTER TABLE tiger.pagc_gaz OWNER TO rds_superuser;
+ ALTER TABLE tiger.pagc_lex OWNER TO rds_superuser;
+ ALTER TABLE tiger.pagc_rules OWNER TO rds_superuser;
+ ALTER TABLE topology.topology OWNER TO rds_superuser;
+ ALTER TABLE tiger.county OWNER TO rds_superuser;
+ ALTER TABLE tiger.state OWNER TO rds_superuser;
+ ALTER TABLE tiger.place OWNER TO rds_superuser;
+ ALTER TABLE tiger.zip_state OWNER TO rds_superuser;
+ ALTER TABLE tiger.zip_state_loc OWNER TO rds_superuser;
+ ALTER TABLE tiger.cousub OWNER TO rds_superuser;
+ ALTER TABLE tiger.county_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.pagc_gaz_id_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.state_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.addr_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.place_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.tabblock_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.zcta5_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.pagc_rules_id_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.cousub_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.bg_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.edges_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.pagc_lex_id_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.addrfeat_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE topology.topology_id_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.faces_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.tract_gid_seq OWNER TO rds_superuser;
+ ALTER TABLE tiger.featnames_gid_seq OWNER TO rds_superuser;
+(52 rows)
+
+# add tiger to search path
+pg102=>  SET search_path=public,tiger;
+SET
+
+# test select 
+pg102=> SELECT na.address, na.streetname, na.streettypeabbrev, na.zip
+pg102-> FROM normalize_address('1 Devonshire Place, Boston, MA 02109') AS na;
+ address | streetname | streettypeabbrev |  zip
+---------+------------+------------------+-------
+       1 | Devonshire | Pl               | 02109
+(1 row)
+
+# test topology
+pg102=> SELECT topology.createtopology('my_new_topo',26986,0.5);
+ createtopology
+----------------
+              1
+(1 row)
+

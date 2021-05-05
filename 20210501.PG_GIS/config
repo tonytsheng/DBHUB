@@ -1,0 +1,11 @@
++ oracle
+MDSYS schema not installed by default
+create a new custom option group
+add spatial to it
+modify your instance to use new option group
+need auto minor version upgrade enabled
+
+MDSYS is now available
+
+
+
