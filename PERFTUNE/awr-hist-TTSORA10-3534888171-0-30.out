@@ -1,0 +1,685 @@
+~~BEGIN-OS-INFORMATION~~
+STAT_NAME                                                    STAT_VALUE
+------------------------------------------------------------ ------------------------------------------------------------
+AWR_MINER_VER                                                4.0.11.aws.13
+NUM_CPUS                                                     4
+NUM_CPU_CORES                                                2
+NUM_CPU_SOCKETS                                              1
+PHYSICAL_MEMORY_GB                                           15.38
+GLOBAL_CPU_COUNT                                             4
+GLOBAL_CPU_CORE_COUNT                                        2
+GLOBAL_CPU_SOCKET_COUNT                                      1
+PLATFORM_NAME                                                Linux_x86_64-bit
+VERSION                                                      19.0.0.0.0
+DB_NAME                                                      TTSORA10
+DBID                                                         3534888171
+BANNER                                                       Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+INSTANCES                                                    1
+HOSTS                                                        ip-172-31-0-58
+TOTAL_DB_SIZE_GB                                             8
+TOTAL_DATAFILE_SIZE_GB                                       8
+USED_DB_SIZE_GB                                              7
+COUNT_DB_LINKS                                               1
+COUNT_LINES_PLSQL                                            0
+COUNT_SCHEMAS                                                3
+COUNT_PDBS                                                   -1
+COUNT_INDEX                                                  25
+COUNT_LOB                                                    6
+COUNT_SEQUENCE                                               7
+COUNT_TABLE                                                  9
+COUNT_VIEW                                                   5
+DEBUG_statistics_level                                       TYPICAL
+DEBUG_timed_statistics                                       TRUE
+~~END-OS-INFORMATION~~
+
+
+
+~~BEGIN-MEMORY~~
+
+   SNAP_ID INSTANCE_NUMBER        SGA        PGA      TOTAL
+---------- --------------- ---------- ---------- ----------
+         1               1       11.1         .4       11.5
+         2               1       11.1         .4       11.5
+         3               1       11.1         .4       11.5
+         4               1       11.1         .4       11.5
+         5               1       11.1         .4       11.5
+         6               1       11.1         .4       11.5
+         7               1       11.1         .5       11.6
+         8               1       11.1         .6       11.7
+         9               1       11.1         .6       11.7
+        10               1       11.1         .6       11.7
+        11               1       11.1         .6       11.7
+        12               1       11.1         .6       11.7
+        13               1       11.1         .6       11.7
+        14               1       11.1         .6       11.7
+        15               1       11.1         .6       11.7
+        16               1       11.1         .6       11.7
+        17               1       11.1         .6       11.7
+        18               1       11.1         .6       11.7
+        19               1       11.1         .6       11.7
+        20               1       11.1         .6       11.7
+        21               1       11.1         .6       11.7
+        22               1       11.1         .6       11.7
+        23               1       11.1        1.3       12.4
+        24               1       11.1         .4       11.5
+        25               1       11.1         .5       11.6
+        26               1       11.1         .5       11.6
+        27               1       11.1         .5       11.6
+        28               1       11.1         .5       11.6
+        29               1       11.1         .5       11.6
+        30               1       11.1         .5       11.6
+
+~~END-MEMORY~~
+
+
+
+~~BEGIN-SIZE-ON-DISK~~
+
+   SNAP_ID    SIZE_GB
+---------- ----------
+         9       1.45
+        30       6.18
+
+~~END-SIZE-ON-DISK~~
+
+
+
+~~BEGIN-MAIN-METRICS~~
+
+      snap      dur_m end                  inst     os_cpu os_cpu_max  os_cpu_sd db_wait_ratio db_cpu_ratio  cpu_per_s cpu_per_s_max cpu_per_s_sd        aas     aas_sd    aas_max    db_time db_time_sd sql_res_t_cs bkgd_t_per_s   logons_s logons_total     exec_s   hard_p_s  l_reads_s  commits_s  read_mb_s read_mb_s_max  read_iops read_iops_max   read_bks read_bks_direct write_mb_s write_mb_s_max write_iops write_iops_max  write_bks write_bks_direct  redo_mb_s db_block_gets_s db_block_changes_s gc_cr_rec_s gc_cu_rec_s gc_cr_get_cs gc_cu_get_cs gc_bk_corrupted gc_bk_lost    px_sess    se_sess s_blk_r_lat h_cpu_per_s h_cpu_per_s_max h_cpu_per_s_sd cell_io_int_mb cell_io_int_mb_max
+---------- ---------- -------------- ---------- ---------- ---------- ---------- ------------- ------------ ---------- ------------- ------------ ---------- ---------- ---------- ---------- ---------- ------------ ------------ ---------- ------------ ---------- ---------- ---------- ---------- ---------- ------------- ---------- ------------- ---------- --------------- ---------- -------------- ---------- -------------- ---------- ---------------- ---------- --------------- ------------------ ----------- ----------- ------------ ------------ --------------- ---------- ---------- ---------- ----------- ----------- --------------- -------------- -------------- ------------------
+         1         36 21/05/04 14:59          1        1.1       14.1        2.3           3.4         99.6       .014          .325         .054          0         .1         .4        1.5        6.2            0            0         .1           61       24.9        2.3      133.6         .3         .1           1.2        6.7          90.1        3.4               0          0             .5          3           35.1        1.2                0          0            18.1               22.2           0           0            0            0               0          0          0          1           0        .044            .564            .09            9.9               99.9
+         2         61 21/05/04 16:00          1         .7        1.4         .1            .6        100.9       .004           .01         .001          0          0          0         .4         .1            0            0          0         59.6        4.2         .1       28.3          0         .1            .3        4.3          18.5         .3               0          0             .3        1.3            5.9         .7               .1          0            11.8               10.2           0           0            0            0               0          0          0          1           0        .026            .056           .006            5.9                 30
+         3         60 21/05/04 17:00          1         .6        1.5         .1            .6        100.9       .004          .006            0          0          0          0         .4          0            0            0          0           60        2.8          0       15.7          0         .1            .2        4.1           7.9         .1               0          0             .1        1.3            6.2         .4                0          0             5.4                4.9           0           0            0            0               0          0          0          1           0        .026            .062           .006            5.3               15.8
+         4         60 21/05/04 18:00          1         .6        1.1         .1            .6          101       .004          .005            0          0          0          0         .4          0            0            0          0           60        2.5          0       12.7          0         .1            .2        4.1           5.9          0               0          0             .1        1.2            5.4         .3                0          0               4                3.7           0           0            0            0               0          0          0          1           0        .025            .042           .005            5.2               14.1
+         5         59 21/05/04 18:59          1         .6          1         .1            .7        100.8       .004          .005            0          0          0          0         .4          0            0            0          0           60        2.5          0       12.6          0         .1            .1        4.1           5.5          0               0          0             .1        1.3            6.2         .3                0          0             3.8                3.5           0           0            0            0               0          0          0          1           0        .025            .041           .005            5.2               13.5
+         6         61 21/05/04 20:00          1         .6        1.4         .2           1.2        100.3       .005          .038         .004          0          0         .1         .5         .7            0            0          0         60.4        2.9          0       25.2          0         .1            .2        4.1             7          0               0          0             .1        1.3            5.7         .3                0          0             3.6                3.5           0           0            0            0               0          0          0          1           0        .026            .055           .006            5.3                 14
+         7         60 21/05/04 21:00          1        1.1       14.9          2           3.6         97.5        .02          .628         .082          0         .1         .8        2.8       11.6            0            0          0         60.6       22.2        2.9      197.5         .1         .1            .6        4.9            40          1               0         .1            1.7        1.8            7.3        1.5                0          0              63               57.5           0           0            0            0               0          0          0        1.2           0        .045            .594            .08           10.3              106.6
+         8         60 21/05/04 22:00          1         .8          8          1            .6        100.3       .011          .269         .034          0          0         .3        1.1        3.5            0            0          0         60.2       18.6         .3      173.5         .1         .1            .4        4.3          17.4         .2               0          0             .4        1.6             16         .7               .2          0            32.9               25.8           0           0            0            0               0          0          0          1           0        .033            .321           .038            6.5               45.2
+         9         60 21/05/04 23:00          1          4       51.8       10.3           1.2         99.6       .131         2.001         .397         .1         .4          2       14.4       44.3            0            0          0         61.2        152        1.8     1510.4        2.1         .2             3        5.6          75.9        7.2              .8         .1            2.4        5.6           80.5        4.1               .6          0           217.9              237.4           0           0            0            0               0          0          0        1.1           0         .16           2.066           .411           18.3              256.8
+        10         60 21/05/05 00:00          1         .8        1.3         .1            .7        100.2       .007          .009            0          0          0          0         .7          0            0            0          0         61.1        3.3          0       34.2          0         .1            .3        4.1           5.8          0               0          0             .2        1.3            7.4         .6               .1          0            18.6               11.9           0           0            0            0               0          0          0          1           0        .031            .053           .005            5.8                 29
+        11         60 21/05/05 01:00          1         .8        1.1         .1            .6        100.3       .007          .009            0          0          0          0         .7          0            0            0          0         61.1          3          0       14.4          0         .1            .2        4.1           5.7          0               0          0             .1        1.3            6.8         .3                0          0             3.8                3.7           0           0            0            0               0          0          0          1           0        .031            .046           .004            5.3               14.2
+        12         60 21/05/05 02:00          1         .8        1.5         .1            .7        100.1       .007          .008         .001          0          0          0         .7         .1            0            0          0         61.1        3.1          0       14.3          0         .1            .2        4.1           5.8          0               0          0             .1        1.3            6.6         .3                0          0             3.6                3.5           0           0            0            0               0          0          0          1           0        .031            .058           .005            5.3               14.6
+        13         59 21/05/05 02:59          1         .7        3.4         .4            .7        100.6       .006          .007            0          0          0          0         .6          0            0            0          0         61.1       23.8         .2      126.5         .2         .1            .4        4.2           8.1         .1               0          0             .4        2.1           42.5         .9                0          0            26.8               30.6           0           0            0            0               0          0          0          1           0        .029            .135           .015            6.5               48.3
+        14         61 21/05/05 04:00          1         .7        1.2         .1             1        100.1       .006          .012         .001          0          0          0         .6         .1            0            0          0         61.1        3.2         .1         16          0         .1            .2        4.2           6.4          0               0          0             .1        1.3            6.7         .4                0          0             3.9                3.8           0           0            0            0               0          0          0          1           0        .027             .05           .005            5.4               14.8
+        15         60 21/05/05 05:00          1         .7          1         .1             1        100.1       .006          .006            0          0          0          0         .6          0            0            0          0           61        2.8          0       13.2          0         .1            .2        4.2             6          0               0          0             .1        1.3            6.8         .3                0          0             3.4                3.4           0           0            0            0               0          0          0          1           0        .026            .041           .004            5.4               13.5
+        16         60 21/05/05 06:00          1         .7          1         .1            .9        100.2       .005          .006            0          0          0          0         .5          0            0            0          0         61.1        2.8          0       12.7          0         .1            .2        4.2           5.7          0               0          0             .1        1.3            6.7         .3                0          0             3.2                3.2           0           0            0            0               0          0          0          1           0        .026             .04           .004            5.4               13.8
+        17         60 21/05/05 07:00          1         .7        1.1         .1            .9        100.1       .005          .006            0          0          0          0         .5          0            0            0          0         61.1        2.7          0       12.6          0         .1            .2        4.2           5.8          0               0          0             .1        1.2            6.7         .3                0          0             3.2                3.2           0           0            0            0               0          0          0          1           0        .026            .043           .005            5.4               13.9
+        18         60 21/05/05 08:00          1         .7        1.1         .1           1.2         99.9       .005          .006            0          0          0          0         .5          0            0            0          0         61.1        2.7          0       12.3          0         .1            .2        4.2           5.7          0               0          0             .1        1.2            6.9         .3                0          0             3.1                3.1           0           0            0            0               0          0          0          1           0        .026            .043           .004            5.4               14.2
+        19         60 21/05/05 09:00          1         .7        1.3         .1           1.1          100       .005          .006            0          0          0          0         .5          0            0            0          0         61.1        2.7          0         14          0         .1            .2        4.2           5.7          0               0          0             .1        1.3            7.4         .3                0          0             3.1                3.2           0           0            0            0               0          0          0          1           0        .026             .05           .005            5.4               14.4
+        20         60 21/05/05 10:00          1         .7        1.1         .1           1.1          100       .005          .006            0          0          0          0         .5          0            0            0          0         61.1        2.6          0       12.2          0         .1            .2        4.2           5.7          0               0          0             .1        1.3            7.3         .3                0          0             3.4                3.2           0           0            0            0               0          0          0          1           0        .026            .043           .004            5.5               14.6
+        21         59 21/05/05 10:59          1         .7          1         .1           1.5         99.6       .005          .006            0          0          0          0         .5          0            0            0          0         61.1        2.6          0       11.9          0         .1            .3        4.3           7.6          0               0          0             .2        1.3            7.3         .3                0          0             3.1                3.1           0           0            0            0               0          0          0          1           0        .026            .041           .004            5.8                 27
+        22         61 21/05/05 12:00          1         .7          1         .1           1.2         99.8       .005          .006            0          0          0          0         .5          0            0            0          0         61.1        2.6          0       11.6          0         .1            .2        4.3           6.7          0               0          0             .1        1.3            6.9         .3                0          0             2.9                2.9           0           0            0            0               0          0          0          1           0        .026            .041           .004            5.5               13.7
+        23         10 21/05/05 13:10          1       37.2       55.5       13.7           5.1         95.8       .477          .985          .44         .5         .5          1       50.7       46.5            0            1         .4         60.7     2642.3      126.9    20676.1       11.3          3          10.3       36.2         153.3      124.5               4        5.7           15.3      170.2          514.6      128.5              4.5        1.7            7942             9084.1           0           0            0            0               0          0          0        2.5          .1       1.482           2.206           .546          524.5             1285.5
+        24         50 21/05/05 14:00          1        6.1       26.8       10.4           2.6         99.2       .005          .012         .002          0          0          0         .5         .2            0           .2          0         61.1       10.4         .4       71.3          0         .1            .4        4.7          21.9         .6               0         .1            1.7          3           22.9        3.7               .1          0            23.2               22.8           0           0            0            0               0          0          0        1.2           0        .243            1.07           .413           11.6              108.5
+        25         60 21/05/05 15:00          1         .6          1         .1           1.6         99.9       .004          .006            0          0          0          0         .4          0            0            0          0         61.1        3.7         .1       18.8          0         .1            .1        4.3           8.9         .1               0          0             .1        1.3              8         .4                0          0             4.6                  4           0           0            0            0               0          0          0          1           0        .024            .041           .004            5.6               13.8
+        26         60 21/05/05 16:00          1         .6          1         .1             2         99.4       .004          .005            0          0          0          0         .4          0            0            0          0         61.1        2.8          0       14.1          0         .1            .1        4.3           8.1         .1               0          0             .1        1.3              8         .3                0          0             4.2                3.5           0           0            0            0               0          0          0          1           0        .025            .041           .005            5.5               13.4
+        27         60 21/05/05 17:00          1         .6        1.1         .1           1.9         99.6       .004          .005            0          0          0          0         .4          0            0            0          0         61.1        2.7          0       13.5          0         .1            .1        4.3           7.8         .1               0          0             .1        1.3            7.4         .3                0          0             4.1                3.3           0           0            0            0               0          0          0          1           0        .025            .045           .005            5.5                 13
+        28         60 21/05/05 18:00          1         .6        1.2         .1             2         99.4       .004          .005            0          0          0          0         .4          0            0            0          0         61.7        2.7          0       13.7          0         .1            .1        4.3             7          0               0          0             .1        1.3            7.4         .3                0          0             3.9                3.3           0           0            0            0               0          0          0          1           0        .025            .046           .005            5.5               12.9
+        29         60 21/05/05 19:00          1         .6          1         .1           2.1         99.4       .004          .005            0          0          0          0         .4          0            0            0          0         62.1          3          0       17.2          0         .1            .1        4.3           7.2          0               0          0             .1        1.3            7.3         .3                0          0             4.4                3.8           0           0            0            0               0          0          0          1           0        .025            .039           .004            5.5               13.2
+        30         59 21/05/05 19:59          1        4.3       16.3        5.9          20.9           80       .086          .323         .131         .2         .4          1       23.3       37.3            0            0        2.9         61.6      105.3         .1        885        2.8          2           8.6       15.1          47.8      120.3             120        3.9           17.2       16.2          164.8      124.7            119.8          1           208.1               68.2           0           0            0            0               0          0          0          1          .1        .171            .647           .237          353.3             1547.6
+
+~~END-MAIN-METRICS~~
+
+
+
+~~BEGIN-AVERAGE-ACTIVE-SESSIONS~~
+
+   SNAP_ID WAIT_CLASS             AVG_SESS
+---------- -------------------- ----------
+         1 Administrative                0
+         1 Application                   0
+         1 Commit                        0
+         1 Concurrency                   0
+         1 DB CPU                      .01
+         1 Network                       0
+         1 Other                         0
+         1 System I/O                    0
+         1 User I/O                      0
+         2 Administrative                0
+         2 Application                   0
+         2 Commit                        0
+         2 Concurrency                   0
+         2 DB CPU                        0
+         2 Network                       0
+         2 Other                         0
+         2 System I/O                    0
+         2 User I/O                      0
+         3 Administrative                0
+         3 Application                   0
+         3 Commit                        0
+         3 Concurrency                   0
+         3 Configuration                 0
+         3 DB CPU                        0
+         3 Network                       0
+         3 Other                         0
+         3 System I/O                    0
+         3 User I/O                      0
+         4 Administrative                0
+         4 Application                   0
+         4 Commit                        0
+         4 Concurrency                   0
+         4 Configuration                 0
+         4 DB CPU                        0
+         4 Network                       0
+         4 Other                         0
+         4 System I/O                    0
+         4 User I/O                      0
+         5 Administrative                0
+         5 Application                   0
+         5 Commit                        0
+         5 Concurrency                   0
+         5 Configuration                 0
+         5 DB CPU                        0
+         5 Network                       0
+         5 Other                         0
+         5 System I/O                    0
+         5 User I/O                      0
+         6 Administrative                0
+         6 Application                   0
+         6 Commit                        0
+         6 Concurrency                   0
+         6 Configuration                 0
+         6 DB CPU                        0
+         6 Network                       0
+         6 Other                         0
+         6 System I/O                    0
+         6 User I/O                      0
+         7 Administrative                0
+         7 Application                   0
+         7 Commit                        0
+         7 Concurrency                   0
+         7 Configuration                 0
+         7 DB CPU                      .02
+         7 Network                       0
+         7 Other                         0
+         7 System I/O                    0
+         7 User I/O                      0
+         8 Administrative                0
+         8 Application                   0
+         8 Commit                        0
+         8 Concurrency                 .01
+         8 Configuration                 0
+         8 DB CPU                      .03
+         8 Network                       0
+         8 Other                         0
+         8 System I/O                    0
+         8 User I/O                      0
+         9 Administrative                0
+         9 Application                   0
+         9 Commit                        0
+         9 Concurrency                   0
+         9 Configuration                 0
+         9 DB CPU                      .11
+         9 Network                       0
+         9 Other                         0
+         9 System I/O                    0
+         9 User I/O                      0
+        10 Administrative                0
+        10 Application                   0
+        10 Commit                        0
+        10 Concurrency                   0
+        10 Configuration                 0
+        10 DB CPU                      .01
+        10 Network                       0
+        10 Other                         0
+        10 System I/O                    0
+        10 User I/O                      0
+        11 Administrative                0
+        11 Application                   0
+        11 Commit                        0
+        11 Concurrency                   0
+        11 Configuration                 0
+        11 DB CPU                      .01
+        11 Network                       0
+        11 Other                         0
+        11 System I/O                    0
+        11 User I/O                      0
+        12 Administrative                0
+        12 Application                   0
+        12 Commit                        0
+        12 Concurrency                   0
+        12 Configuration                 0
+        12 DB CPU                      .01
+        12 Network                       0
+        12 Other                         0
+        12 System I/O                    0
+        12 User I/O                      0
+        13 Administrative                0
+        13 Application                   0
+        13 Commit                        0
+        13 Concurrency                   0
+        13 Configuration                 0
+        13 DB CPU                      .01
+        13 Network                       0
+        13 Other                         0
+        13 System I/O                    0
+        13 User I/O                      0
+        14 Administrative                0
+        14 Application                   0
+        14 Commit                        0
+        14 Concurrency                   0
+        14 Configuration                 0
+        14 DB CPU                      .01
+        14 Network                       0
+        14 Other                         0
+        14 System I/O                    0
+        14 User I/O                      0
+        15 Administrative                0
+        15 Application                   0
+        15 Commit                        0
+        15 Concurrency                   0
+        15 Configuration                 0
+        15 DB CPU                      .01
+        15 Network                       0
+        15 Other                         0
+        15 System I/O                    0
+        15 User I/O                      0
+        16 Administrative                0
+        16 Application                   0
+        16 Commit                        0
+        16 Concurrency                   0
+        16 Configuration                 0
+        16 DB CPU                      .01
+        16 Network                       0
+        16 Other                         0
+        16 System I/O                    0
+        16 User I/O                      0
+        17 Administrative                0
+        17 Application                   0
+        17 Commit                        0
+        17 Concurrency                   0
+        17 Configuration                 0
+        17 DB CPU                      .01
+        17 Network                       0
+        17 Other                         0
+        17 System I/O                    0
+        17 User I/O                      0
+        18 Administrative                0
+        18 Application                   0
+        18 Commit                        0
+        18 Concurrency                   0
+        18 Configuration                 0
+        18 DB CPU                      .01
+        18 Network                       0
+        18 Other                         0
+        18 System I/O                    0
+        18 User I/O                      0
+        19 Administrative                0
+        19 Application                   0
+        19 Commit                        0
+        19 Concurrency                   0
+        19 Configuration                 0
+        19 DB CPU                      .01
+        19 Network                       0
+        19 Other                         0
+        19 System I/O                    0
+        19 User I/O                      0
+        20 Administrative                0
+        20 Application                   0
+        20 Commit                        0
+        20 Concurrency                   0
+        20 Configuration                 0
+        20 DB CPU                      .01
+        20 Network                       0
+        20 Other                         0
+        20 System I/O                    0
+        20 User I/O                      0
+        21 Administrative                0
+        21 Application                   0
+        21 Commit                        0
+        21 Concurrency                   0
+        21 Configuration                 0
+        21 DB CPU                      .01
+        21 Network                       0
+        21 Other                         0
+        21 System I/O                    0
+        21 User I/O                      0
+        22 Administrative                0
+        22 Application                   0
+        22 Commit                        0
+        22 Concurrency                   0
+        22 Configuration                 0
+        22 DB CPU                      .01
+        22 Network                       0
+        22 Other                         0
+        22 System I/O                    0
+        22 User I/O                      0
+        23 Administrative                0
+        23 Application                   0
+        23 Commit                      .01
+        23 Concurrency                   0
+        23 Configuration                 0
+        23 DB CPU                      .47
+        23 Network                       0
+        23 Other                       .01
+        23 System I/O                    0
+        23 User I/O                    .01
+        24 Administrative                0
+        24 Application                   0
+        24 Commit                        0
+        24 Concurrency                   0
+        24 Configuration                 0
+        24 DB CPU                        0
+        24 Network                       0
+        24 Other                         0
+        24 System I/O                    0
+        24 User I/O                      0
+        25 Administrative                0
+        25 Application                   0
+        25 Commit                        0
+        25 Concurrency                   0
+        25 Configuration                 0
+        25 DB CPU                        0
+        25 Network                       0
+        25 Other                         0
+        25 System I/O                    0
+        25 User I/O                      0
+        26 Administrative                0
+        26 Application                   0
+        26 Commit                        0
+        26 Concurrency                   0
+        26 Configuration                 0
+        26 DB CPU                        0
+        26 Network                       0
+        26 Other                         0
+        26 System I/O                    0
+        26 User I/O                      0
+        27 Administrative                0
+        27 Application                   0
+        27 Commit                        0
+        27 Concurrency                   0
+        27 Configuration                 0
+        27 DB CPU                        0
+        27 Network                       0
+        27 Other                         0
+        27 System I/O                    0
+        27 User I/O                      0
+        28 Administrative                0
+        28 Application                   0
+        28 Commit                        0
+        28 Concurrency                   0
+        28 Configuration                 0
+        28 DB CPU                        0
+        28 Network                       0
+        28 Other                         0
+        28 System I/O                    0
+        28 User I/O                      0
+        29 Administrative                0
+        29 Application                   0
+        29 Commit                        0
+        29 Concurrency                   0
+        29 Configuration                 0
+        29 DB CPU                        0
+        29 Network                       0
+        29 Other                         0
+        29 System I/O                    0
+        29 User I/O                      0
+        30 Administrative                0
+        30 Application                   0
+        30 Commit                      .03
+        30 Concurrency                 .02
+        30 Configuration                 0
+        30 DB CPU                      .09
+        30 Network                       0
+        30 Other                         0
+        30 System I/O                    0
+        30 User I/O                    .02
+
+~~END-AVERAGE-ACTIVE-SESSIONS~~
+
+
+
+~~BEGIN-TOP-N-TIMED-EVENTS~~
+
+   SNAP_ID WAIT_CLASS           EVENT_NAME                                                       PCTDBT TOTAL_TIME_S
+---------- -------------------- ------------------------------------------------------------ ---------- ------------
+         1 DB CPU               DB CPU                                                            69.76     31620725
+         1 Other                control file heartbeat                                             8.82      4000024
+         1 User I/O             db file sequential read                                            6.85      3103363
+         1 System I/O           control file sequential read                                       6.46      2927707
+         1 Other                oracle thread bootstrap                                            4.51      2045011
+         2 DB CPU               DB CPU                                                           101.01     15622077
+         2 System I/O           control file sequential read                                       28.3      4377731
+         2 System I/O           control file parallel write                                       16.83      2602875
+         2 System I/O           db file parallel write                                             2.73       422032
+         2 System I/O           log file parallel write                                            2.49       385594
+         3 DB CPU               DB CPU                                                           100.85     15140361
+         3 System I/O           control file sequential read                                      28.61      4294372
+         3 System I/O           control file parallel write                                       16.91      2539346
+         3 System I/O           db file parallel write                                             2.41       361765
+         3 System I/O           log file parallel write                                            1.71       256270
+         4 DB CPU               DB CPU                                                           100.91     15221375
+         4 System I/O           control file sequential read                                      28.34      4274792
+         4 System I/O           control file parallel write                                       16.66      2512226
+         4 System I/O           db file parallel write                                             2.14       322296
+         4 Other                latch free                                                         1.69       255208
+         5 DB CPU               DB CPU                                                           100.52     15343822
+         5 System I/O           control file sequential read                                      27.77      4239057
+         5 System I/O           control file parallel write                                       16.26      2481708
+         5 System I/O           db file parallel write                                              2.2       335213
+         5 Other                latch free                                                         1.69       258311
+         6 DB CPU               DB CPU                                                            94.91     17772509
+         6 System I/O           control file sequential read                                      23.67      4432248
+         6 System I/O           control file parallel write                                       13.49      2526605
+         6 System I/O           db file parallel write                                             1.83       343148
+         6 System I/O           log file parallel write                                            1.34       251445
+         7 DB CPU               DB CPU                                                            72.36     72427212
+         7 Concurrency          cursor: pin S wait on X                                            9.12      9133689
+         7 System I/O           control file sequential read                                       4.59      4595265
+         7 System I/O           control file parallel write                                        2.52      2520344
+         7 Concurrency          row cache mutex                                                    2.25      2247697
+         8 DB CPU               DB CPU                                                            75.31    105575962
+         8 Concurrency          library cache lock                                                 23.1     32382310
+         8 System I/O           control file sequential read                                       3.21      4498837
+         8 System I/O           control file parallel write                                        1.82      2547308
+         8 System I/O           log file parallel write                                            1.81      2536603
+         9 DB CPU               DB CPU                                                            97.43    406145506
+         9 System I/O           log file parallel write                                            1.99      8275322
+         9 System I/O           control file sequential read                                       1.13      4694881
+         9 System I/O           control file parallel write                                         .62      2571201
+         9 Concurrency          library cache lock                                                   .6      2487147
+        10 DB CPU               DB CPU                                                           100.17     25063623
+        10 System I/O           control file sequential read                                      17.61      4406349
+        10 System I/O           control file parallel write                                       10.09      2525643
+        10 System I/O           db file parallel write                                             1.64       410462
+        10 System I/O           log file parallel write                                            1.18       294381
+        11 DB CPU               DB CPU                                                           100.21     25296984
+        11 System I/O           control file sequential read                                      17.44      4401833
+        11 System I/O           control file parallel write                                        9.92      2503644
+        11 System I/O           db file parallel write                                             1.45       365197
+        11 System I/O           log file parallel write                                             .99       248885
+        12 DB CPU               DB CPU                                                           100.06     24367975
+        12 System I/O           control file sequential read                                      17.32      4218179
+        12 System I/O           control file parallel write                                        9.94      2420602
+        12 System I/O           db file parallel write                                             1.48       359673
+        12 System I/O           log file parallel write                                            1.08       262014
+        13 DB CPU               DB CPU                                                           100.38     20503537
+        13 System I/O           control file sequential read                                       21.1      4310581
+        13 System I/O           control file parallel write                                       12.22      2495323
+        13 System I/O           log file parallel write                                            7.93      1618821
+        13 System I/O           db file parallel write                                             3.06       624773
+        14 DB CPU               DB CPU                                                           100.09     20184898
+        14 System I/O           control file sequential read                                      21.51      4336891
+        14 System I/O           control file parallel write                                       12.82      2584638
+        14 System I/O           db file parallel write                                             1.92       386256
+        14 Other                latch free                                                         1.16       234866
+        15 DB CPU               DB CPU                                                           100.02     19810506
+        15 System I/O           control file sequential read                                      21.68      4294045
+        15 System I/O           control file parallel write                                       12.53      2482802
+        15 System I/O           db file parallel write                                             1.75       347489
+        15 Other                latch free                                                         1.19       235462
+        16 DB CPU               DB CPU                                                            100.1     19772676
+        16 System I/O           control file sequential read                                      21.78      4301793
+        16 System I/O           control file parallel write                                       12.82      2533013
+        16 System I/O           db file parallel write                                             1.76       347005
+        16 Other                latch free                                                         1.23       242675
+        17 DB CPU               DB CPU                                                           100.05     19661724
+        17 System I/O           control file sequential read                                         22      4323738
+        17 System I/O           control file parallel write                                       12.96      2546561
+        17 System I/O           db file parallel write                                             1.82       356861
+        17 Other                latch free                                                         1.16       228903
+        18 DB CPU               DB CPU                                                            99.84     19385419
+        18 System I/O           control file sequential read                                       22.1      4290265
+        18 System I/O           control file parallel write                                       12.79      2483531
+        18 System I/O           db file parallel write                                             1.79       346771
+        18 Other                latch free                                                         1.24       239833
+        19 DB CPU               DB CPU                                                            99.88     19741250
+        19 System I/O           control file sequential read                                       21.4      4229030
+        19 System I/O           control file parallel write                                       12.16      2403433
+        19 System I/O           db file parallel write                                             1.84       362918
+        19 Other                latch free                                                          1.2       237033
+        20 DB CPU               DB CPU                                                            99.95     19616207
+        20 System I/O           control file sequential read                                      21.86      4290254
+        20 System I/O           control file parallel write                                       12.52      2458205
+        20 System I/O           db file parallel write                                             1.94       381316
+        20 Other                latch free                                                         1.38       270855
+        21 DB CPU               DB CPU                                                            99.23     19642581
+        21 System I/O           control file sequential read                                      21.82      4318404
+        21 System I/O           control file parallel write                                       12.33      2441021
+        21 System I/O           db file parallel write                                             1.94       384815
+        21 Other                latch free                                                         1.23       242536
+        22 DB CPU               DB CPU                                                             99.8     19963360
+        22 System I/O           control file sequential read                                      21.54      4309038
+        22 System I/O           control file parallel write                                       11.93      2387326
+        22 System I/O           db file parallel write                                             1.78       355389
+        22 Other                latch free                                                         1.15       230081
+        23 DB CPU               DB CPU                                                             91.1    287668883
+        23 System I/O           log file parallel write                                           15.81     49939795
+        23 User I/O             db file sequential read                                            2.22      7005675
+        23 Configuration        log file switch (checkpoint incomplete)                            1.78      5610868
+        23 System I/O           log file sequential read                                           1.43      4524404
+        24 DB CPU               DB CPU                                                            97.71     13795529
+        24 System I/O           control file sequential read                                      25.69      3627160
+        24 System I/O           log file parallel write                                           14.85      2096229
+        24 System I/O           control file parallel write                                        14.6      2061959
+        24 System I/O           db file parallel write                                             9.96      1406238
+        25 DB CPU               DB CPU                                                            99.84     15161009
+        25 System I/O           control file sequential read                                      28.72      4361088
+        25 System I/O           control file parallel write                                       16.13      2449679
+        25 System I/O           db file parallel write                                             2.78       422149
+        25 System I/O           log file parallel write                                            1.64       249655
+        26 DB CPU               DB CPU                                                            99.16     14693555
+        26 System I/O           control file sequential read                                      29.72      4403649
+        26 System I/O           control file parallel write                                       16.44      2436650
+        26 System I/O           db file parallel write                                             2.44       361724
+        26 Other                latch free                                                         1.64       242877
+        27 DB CPU               DB CPU                                                            99.49     15059287
+        27 System I/O           control file sequential read                                      28.91      4375296
+        27 System I/O           control file parallel write                                       15.69      2374636
+        27 System I/O           db file parallel write                                             2.47       373468
+        27 Other                latch free                                                         1.62       245151
+        28 DB CPU               DB CPU                                                            99.18     15010952
+        28 System I/O           control file sequential read                                      28.71      4344720
+        28 System I/O           control file parallel write                                       15.41      2331800
+        28 System I/O           db file parallel write                                             2.39       361078
+        28 Other                latch free                                                         1.62       244868
+        29 DB CPU               DB CPU                                                            99.22     15312468
+        29 System I/O           control file sequential read                                      29.36      4530836
+        29 System I/O           control file parallel write                                       16.34      2521054
+        29 System I/O           db file parallel write                                             2.36       364851
+        29 Other                latch free                                                         1.62       249390
+        30 DB CPU               DB CPU                                                            37.14    322413368
+        30 Commit               log file sync                                                     13.27    115167940
+        30 User I/O             Disk file operations I/O                                           3.74     32435070
+        30 System I/O           log file parallel write                                            3.64     31578400
+        30 Concurrency          library cache lock                                                 3.36     29153613
+
+~~END-TOP-N-TIMED-EVENTS~~
+
+
+
+~~BEGIN-SYSSTAT~~
+
+   SNAP_ID cell_flash_hits  read_iops    read_mb read_mb_opt cell_int_mb cell_int_ss_mb cell_si_save_mb cell_bytes_elig_mb cell_hcc_bytes_mb
+---------- --------------- ---------- ---------- ----------- ----------- -------------- --------------- ------------------ -----------------
+         1               0        7.7         .1           0          .2              0               0                  0                 0
+         2               0        4.2         .1           0          .1              0               0                  0                 0
+         3               0        4.1         .1           0          .1              0               0                  0                 0
+         4               0        4.1         .1           0          .1              0               0                  0                 0
+         5               0        4.1         .1           0          .1              0               0                  0                 0
+         6               0        4.1         .1           0          .1              0               0                  0                 0
+         7               0        4.9         .1           0          .2              0               0                  0                 0
+         8               0        5.3         .1           0          .2              0               0                  0                 0
+         9               0        4.6         .1           0          .3              0               0                  0                 0
+        10               0        4.1         .1           0          .1              0               0                  0                 0
+        11               0        4.1         .1           0          .1              0               0                  0                 0
+        12               0        4.1         .1           0          .1              0               0                  0                 0
+        13               0        4.2         .1           0          .1              0               0                  0                 0
+        14               0        4.2         .1           0          .1              0               0                  0                 0
+        15               0        4.2         .1           0          .1              0               0                  0                 0
+        16               0        4.2         .1           0          .1              0               0                  0                 0
+        17               0        4.2         .1           0          .1              0               0                  0                 0
+        18               0        4.2         .1           0          .1              0               0                  0                 0
+        19               0        4.2         .1           0          .1              0               0                  0                 0
+        20               0        4.2         .1           0          .1              0               0                  0                 0
+        21               0        4.3         .1           0          .1              0               0                  0                 0
+        22               0        4.3         .1           0          .1              0               0                  0                 0
+        23               0       39.3          3           0         8.7              0               0                  0                 0
+        24               0        4.6         .1           0          .2              0               0                  0                 0
+        25               0        4.3         .1           0          .1              0               0                  0                 0
+        26               0        4.3         .1           0          .1              0               0                  0                 0
+        27               0        4.3         .1           0          .1              0               0                  0                 0
+        28               0        4.3         .1           0          .1              0               0                  0                 0
+        29               0        4.3         .1           0          .1              0               0                  0                 0
+        30               0       15.7        2.1           0         6.2              0               0                  0                 0
+
+~~END-SYSSTAT~~
+
+
+
+~~BEGIN-PERCENT-CPU~~
+
+      DBID   ORDER_BY METRIC               INSTANCE_NUMBER     ON_CPU ON_CPU_AND_RESMGR RESMGR_CPU_QUANTUM BEGIN_INTERVAL_T END_INTERVAL_TIM SNAP_SHOTS       DAYS AVG_SNAPS_PER_DAY
+---------- ---------- -------------------- --------------- ---------- ----------------- ------------------ ---------------- ---------------- ---------- ---------- -----------------
+3534888171          1 Maximum_or_peak                    1         12                12                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          1 Maximum_or_peak                              12                12                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          2 99.99th_percntl                    1         12                12                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          2 99.99th_percntl                              12                12                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          3 99.9th_percentl                    1         12                12                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          3 99.9th_percentl                              12                12                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          4 99th_percentile                    1          5                 5                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          4 99th_percentile                               5                 5                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          5 97th_percentile                    1          3                 3                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          5 97th_percentile                               3                 3                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          6 95th_percentile                    1          2                 2                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          6 95th_percentile                               2                 2                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          7 90th_percentile                    1          2                 2                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          7 90th_percentile                               2                 2                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          8 75th_percentile                    1          1                 1                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          8 75th_percentile                               1                 1                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          9 Median                             1          1                 1                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171          9 Median                                        1                 1                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171         10 Average                            1        1.3               1.3                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+3534888171         10 Average                                     1.3               1.3                  0 2021-05-04 14:23 2021-05-05 20:00         30        1.2              24.3
+
+~~END-PERCENT-CPU~~
+
+
+
+~~BEGIN-PERCENT-IO~
+
+      DBID METRIC               INSTANCE_NUMBER    RW_IOPS     R_IOPS     W_IOPS    RW_MBPS     R_MBPS     W_MBPS BEGIN_INTERVAL_T END_INTERVAL_TIM SNAP_SHOTS       DAYS AVG_SNAPS_PER_DAY
+---------- -------------------- --------------- ---------- ---------- ---------- ---------- ---------- ---------- ---------------- ---------------- ---------- ---------- -----------------
+3534888171 Maximum_or_peak                    1         37         16         22          8          2          5 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 Maximum_or_peak                              37         16         22          8          2          5 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 99.9th_percentl                    1         37         16         22          8          2          5 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 99.9th_percentl                              37         16         22          8          2          5 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 99th_percentile                    1         37         16         22          8          2          5 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 99th_percentile                              37         16         22          8          2          5 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 97th_percentile                    1         37         16         22          8          2          5 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 97th_percentile                              37         16         22          8          2          5 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 95th_percentile                    1         13          5          8          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 95th_percentile                              13          5          8          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 90th_percentile                    1          9          5          4          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 90th_percentile                               9          5          4          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 75th_percentile                    1          6          4          1          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 75th_percentile                               6          4          1          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 Median                             1          6          4          1          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 Median                                        6          4          1          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 Average                            1          7          5          3          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+3534888171 Average                                       7          5          3          0          0          0 2021-05-04 15:00 2021-05-05 20:00         28        1.2              23.2
+
+~~END-PERCENT-IO~~
+
+
