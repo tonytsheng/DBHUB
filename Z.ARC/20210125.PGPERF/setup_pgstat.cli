@@ -3,7 +3,9 @@
 # majorengineversion = 12, 11, 9.6
 # engine name = auror-postgresql 
 # majorengineversion = 11
-
+# can only add an option group for postgresql with aws cli
+# after you add the option group, you can modify it with the console
+#
 aws rds create-option-group --option-group-name=ttshengtest --engine-name=postgres --major-engine-version=9.6 --option-group-description=ttshengtest
 
 aws rds describe-option-groups --output text
@@ -20,7 +22,13 @@ aws rds add-option-to-option-group \
     --apply-immediately
 
 aws rds add-option-to-option-group \
-    --option-group-name ttshengtest \
+    --option-group-name ttshengtest-96 \
+    --options-to-include '[{"OptionSettings":[{"Name":"pg_stat_statements_track","Value":"ALL"},{"Name":"shared_preload_libraries","Value":"pg_stat_statements"}]}]' \
+    --apply-immediately
+
+
+aws rds add-option-to-option-group \
+    --option-group-name ttshengtest-96 \
     --options OptionName=pg_stat_statements_track,Value=ALL= \
     --apply-immediately
 

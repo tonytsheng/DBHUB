@@ -1,2 +1,3 @@
-select store_id, (dbms_lob.getlength(logo))/1024/1024 from customer_orders.stores
+select  (dbms_lob.getlength(logo))/1024/1024 as SizeMB from customer_orders.stores
+where store_id=24
 /

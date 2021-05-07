@@ -95,6 +95,7 @@ postgresql12-server-12.5-1PGDG.rhel8.x86_64  #postgres
 postgresql11-11.10-1PGDG.rhel8.x86_64  #postgres
 postgresql11-libs-11.10-1PGDG.rhel8.x86_64  #postgres
 postgresql10-libs-10.7-2PGDG.rhel7.x86_64.rpm
+postgresql-contrib # postgres benchmark pgbench
 yum install -y https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-latest-x86_64/postgresql10-10.7-2PGDG.rhel7.x86_64.rpm
 sudo yum install -y https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-latest-x86_64/postgresql10-10.7-2PGDG.rhel7.x86_64.rpm
 
