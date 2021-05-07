@@ -441,4 +441,43 @@ select count(bid) from pgbench_branches b[4;11Hwhere not exists[5;17H(select 1
 [?1049h[?1h=[?2004h[1;41r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[41;1H"pg.explain" 9L, 270C[1;1Hpgbench -i -s 5000 -d pg102 -h pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com -p 5432 -U postgres
 
 select count(bid) from pgbench_branches b[4;11Hwhere not exists[5;17H(select 1 from pgbench_accounts a where a.bid=b.bid);[9;1HEXPLAIN SELECT * FROM foo;
-[1m[34m~                                                                                                                            [11;1H~                                                                                                                            [12;1H~                                                                                                                            [13;1H~                                                                                                                            [14;1H~                                                                                                                            [15;1H~                                                                                                                            [16;1H~                                                                                                                            [17;1H~                                                                                                                            [18;1H~                                                                                                                            [19;1H~                                                                                                                            [20;1H~                                                                                                                            [21;1H~                                                                                                                            [22;1H~                                                                                                                            [23;1H~                                                                                                                            [24;1H~                                                                                                                            [25;1H~                                                                                                                            [26;1H~                                                                                                                            [27;1H~                                                                                                                            [28;1H~                
+[1m[34m~                                                                                                                            [11;1H~                                                                                                                            [12;1H~                                                                                                                            [13;1H~                                                                                                                            [14;1H~                                                                                                                            [15;1H~                                                                                                                            [16;1H~                                                                                                                            [17;1H~                                                                                                                            [18;1H~                                                                                                                            [19;1H~                                                                                                                            [20;1H~                                                                                                                            [21;1H~                                                                                                                            [22;1H~                                                                                                                            [23;1H~                                                                                                                            [24;1H~                                                                                                                            [25;1H~                                                                                                                            [26;1H~                                                                                                                            [27;1H~                                                                                                                            [28;1H~                                                                                                                            [29;1H~                                                                                                                            [30;1H~                                                                                                                            [31;1H~                                                                                                                            [32;1H~                                                                                                                            [33;1H~                                                                                                                            [34;1H~                                                                                                                            [35;1H~                                                                                                                            [36;1H~                                                                                                                            [37;1H~                                                                                                                            [38;1H~                                                                                                                            [39;1H~                                                                                                                            [40;1H~                                                                                                                            [1;1H[?25h[?25l[m[41;1H[K[41;1H:[?2004h[?25hwq[?25l[?2004l"pg.explain" 9L, 270C written
+[?2004l[?1l>[?25h[?1049l[01;32m[00m:[01;34m~/DBHUB/PERFTUNE[00m (master) $ git a.. [K[K[K[Kadd  . 
+[01;32m[00m:[01;34m~/DBHUB/PERFTUNE[00m (master) $ git commit -a -m pgperf
+[master d52ddec] pgperf
+ Committer: EC2 Default User <ec2-user@ip-10-0-0-166.us-east-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 100 insertions(+), 1 deletion(-)
+[01;32m[00m:[01;34m~/DBHUB/PERFTUNE[00m (master) $ ps[K[Kpush_db
+bash: push_db: command not found
+[01;32m[00m:[01;34m~/DBHUB/PERFTUNE[00m (master) $ pudh[K[Kshd [K[K_db^C
+[01;32m[00m:[01;34m~/DBHUB/PERFTUNE[00m (master) $ pushdbhub
+bash: pushdbhub: command not found
+[01;32m[00m:[01;34m~/DBHUB/PERFTUNE[00m (master) $ push_dbhub
+bash: push_dbhub: command not found
+[01;32m[00m:[01;34m~/DBHUB/PERFTUNE[00m (master) $ alias
+[01;32m[00m:[01;34m~/DBHUB/PERFTUNE[00m (master) $ cd
+[01;32m[00m:[01;34m~[00m $ ls
+data  DBHUB  environment  node_modules	oradiag_ec2-user  rpms
+[01;32m[00m:[01;34m~[00m $ alias
+[01;32m[00m:[01;34m~[00m $ id
+uid=1000(ec2-user) gid=1000(ec2-user) groups=1000(ec2-user),4(adm),10(wheel),190(systemd-journal),991(docker)
+[01;32m[00m:[01;34m~[00m $ hostname
+ip-10-0-0-166.us-east-2.compute.internal
+[01;32m[00m:[01;34m~[00m $ cd
+[01;32m[00m:[01;34m~[00m $ pwd
+/home/ec2-user
+[01;32m[00m:[01;34m~[00m $ exit
+exit
+
+Script done on 2021-05-07 14:51:52+0000
