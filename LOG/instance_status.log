@@ -4547,3 +4547,15 @@ VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
 An error occurred (InvalidClientTokenId) when calling the DescribeDBInstances operation: The security token included in the request is invalid.
 
 An error occurred (InvalidClientTokenId) when calling the StopDBCluster operation: The security token included in the request is invalid.
+
+An error occurred (InvalidClientTokenId) when calling the DescribeDBInstances operation: The security token included in the request is invalid.
+
+An error occurred (InvalidClientTokenId) when calling the StopDBCluster operation: The security token included in the request is invalid.
+
+An error occurred (InvalidClientTokenId) when calling the DescribeDBInstances operation: The security token included in the request is invalid.
+
+An error occurred (InvalidClientTokenId) when calling the StopDBCluster operation: The security token included in the request is invalid.
+
+An error occurred (InvalidClientTokenId) when calling the DescribeDBInstances operation: The security token included in the request is invalid.
+
+An error occurred (InvalidClientTokenId) when calling the StopDBCluster operation: The security token included in the request is invalid.
