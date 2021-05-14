@@ -1,0 +1,8 @@
+oracle spatial included in EE and SE2 now
+
+select a.customer_name, a.phone_number
+from policy_holders a
+where sdo_within_distance(a.geom, hurriance_path_genome,
+'distance = 10 unit = mile') = 'TRUE';
+
+select geometry from countries where name='Aruba';
