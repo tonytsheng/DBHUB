@@ -24,6 +24,10 @@ BEGIN
   DBMS_DATAPUMP.START_JOB(v_hdnl);
 END;
 /
+
+-- encrypted file add below
+-- dbms_datapump.set_parameter(handle => h1, name => 'ENCRYPTION_PASSWORD', value => 'secret password') 
+
 SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir(p_directory => 'DATA_PUMP_DIR'));
 exit;
 
@@ -95,10 +99,6 @@ BEGIN
 END;
 /
 SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_PUMP_DIR', p_filename  => 'sample.sql'));
-
-
-
-
 
 select count(*) from FLY1.RESERVATION;
 exit;
