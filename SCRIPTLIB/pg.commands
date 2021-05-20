@@ -14,4 +14,5 @@ In this group of commands, the letters E, i, m, s, t, and v stand for foreign ta
 \du -- roles
 \dx -- list extensions
 
+set search_path to  "$user", public, topology, customer_orders;
 

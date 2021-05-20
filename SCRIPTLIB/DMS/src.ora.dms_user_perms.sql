@@ -1,4 +1,4 @@
-create user dms_user identified by dms123;
+create user dms_user identified by Pass1234;
 GRANT CREATE SESSION TO dms_user;
 GRANT SELECT ANY TRANSACTION TO dms_user;
 GRANT SELECT ON V_$ARCHIVED_LOG TO dms_user;
