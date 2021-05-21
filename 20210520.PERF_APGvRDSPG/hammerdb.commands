@@ -1,0 +1,28 @@
+dbset db ora # sets db engine
+
+print dict # dictionary settings
+
+diset tpcc total_iterations 1000 # change in dictionary to value
+
+loadscript # loads new script from values you changed
+
+print script # see script that you loaded
+
+print vucreated #how many virtual users
+
+vuset vu 4
+vuset logtotemp 1 #turn on logging
+
+vucreate #create the virtual users
+
+vustatus 
+
+vurun #run the workload
+
+vustatus
+
+vucomplete #returns boolean value whether running or complete
+
+vudestroy
+
+clearscript
