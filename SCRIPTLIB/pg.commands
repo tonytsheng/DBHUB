@@ -16,3 +16,6 @@ In this group of commands, the letters E, i, m, s, t, and v stand for foreign ta
 
 set search_path to  "$user", public, topology, customer_orders;
 
+select version();
+
+
