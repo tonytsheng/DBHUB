@@ -1,0 +1,17 @@
+CREATE EXTENSION IF NOT EXISTS aws_s3 CASCADE;
+
+-- confirm this works to set bucket
+SELECT aws_commons.create_s3_uri(
+   'dataexports', 
+   's3://ttsheng-pgdata',
+   'us-east-2');
+
+SELECT aws_commons.create_s3_uri(
+   'dataexports',
+   's3://ttsheng-pgdata',
+   'us-east-2'
+) AS s3_uri_1 \gset
+
+SELECT * FROM aws_s3.query_export_to_s3('SELECT * FROM customer_orders.stores', :'s3_uri_1');
+
+psql=> SELECT * FROM aws_s3.query_export_to_s3('SELECT * FROM sample_table', :'s3_uri_1', options :='format text');
