@@ -1,0 +1,2 @@
+/usr/pgsql-12/bin/pgbench -T30 -j 2 -S -c4 pg102 -h pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com  -U postgres
+
