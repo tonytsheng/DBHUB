@@ -1,0 +1,5 @@
+cd ~/rpms/apache-tinkerpop-gremlin-console-3.4.10 
+bin/gremlin.sh
+gremlin> :remote connect tinkerpop.server conf/neptune-remote.yaml
+gremlin> :remote console
+

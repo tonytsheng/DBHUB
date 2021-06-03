@@ -260,3 +260,20 @@ gremlin>  g.V().has('code', 'ORD').valueMap(true).unfold()
 ==>desc=[Chicago O'Hare International Airport]
 gremlin>  g.E().has('code', 'ORD').valueMap(true).unfold()
 
+
+Create/Filter	addV, addE, has, hasId, hasLabel, filter, property, where
+Find	both, bothV, bothE, choose, coalesce, in, inV, inE, out, outV, outE, repeat, until, times, select
+Fetch	aggregate, path, project, properties, store, values, valueMap
+Reduce	count, dedup
+
+SQL - select country,count(country) from airports group by country;
+g.V().hasLabel('airport').groupCount().by('country')
+
+SQL - select a1.code,r1.dest,r2.dest,r3.dest from airports a1
+  join routes r1 on a1.code=r1.src
+  join routes r2 on r1.dest=r2.src
+  join routes r3 on r2.dest=r3.src
+  where a1.code='AUS' and r3.dest='AGR';
+g.V().has('code','AUS').out().out().out().has('code','AGR').path().by('code')
+
+
