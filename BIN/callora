@@ -22,6 +22,7 @@ CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${HOST})(PORT=1521))
 if [ -z ${INFILE} ]; then
     sqlplus ${CONNSTR}
 else
+    #suppress output if using an inputfile 
     sqlplus -S ${CONNSTR} @${INFILE}
 fi
 
