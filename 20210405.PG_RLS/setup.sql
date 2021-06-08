@@ -98,3 +98,52 @@ postgres=> select * from employee;
 -------+-------+---------+--------+----------------
 (0 rows)
 
+-- 3 levels of users
+root -- see everything
+admin -- see admin data
+analyst -- lowest
+
+create table important (id int, name text, root_info text, admin_info text, analyst_info text);
+insert into important values (1, 'john', 'root','admin','analyst');
+insert into important values (2, 'clark', 'root','admin','analyst');
+insert into important values (3, 'tom', 'root','admin','analyst');
+
+create table employee ( empno int, ename text, address text, salary int, account_number text );
+insert into employee values (1, 'john', '2 down str',  20000, 'HDFC-22001' );
+insert into employee values (2, 'clark', '132 south avn',  80000, 'HDFC-23029' );
+insert into employee values (3, 'soojie', 'Down st 17th',  60000, 'ICICI-19022' );
+select * from employee;
+
+create user john with password 'Pass1234';
+create user clark with password 'Pass1234';
+create user soojie with password 'Pass1234';
+grant select on employee to john;
+grant select on employee to clark;
+grant select on employee to soojie;
+
+create policy emp_rls_policy on employee for all to public using (ename=current_user);
+alter table employee enable row level security;
+
+\c pg1001 john
+john@pg1001=> select current_user;
+ current_user
+--------------
+
+CREATE VIEW users_view
+WITH (security_barrier = true, check_option = local) AS
+SELECT /* accessible to everyone */
+       username,
+       /* accessible only to certain groups */
+       CASE WHEN pg_has_role('x', 'USAGE') OR pg_has_role('y', 'USAGE')
+            THEN level2_col
+            ELSE NULL
+       END AS level2_col,
+       /* accessible only to admins and owner */
+       CASE WHEN username = current_user OR pg_has_role('admin', 'USAGE')
+            THEN level3_col
+            ELSE NULL
+       END AS level3_col
+FROM users;
+
+
+
