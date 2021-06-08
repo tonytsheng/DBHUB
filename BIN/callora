@@ -20,7 +20,7 @@ CREDS="${USER}/${PW}"
 CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${HOST})(PORT=1521))(CONNECT_DATA=(SID=${SID})))"
 
 if [ -z ${INFILE} ]; then
-    sqlplus -S ${CONNSTR}
+    sqlplus ${CONNSTR}
 else
     sqlplus -S ${CONNSTR} @${INFILE}
 fi
