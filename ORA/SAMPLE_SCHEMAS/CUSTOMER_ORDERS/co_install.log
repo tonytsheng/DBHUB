@@ -1,0 +1,1079 @@
+Dropping user
+drop user customerorders
+          *
+ERROR at line 1:
+ORA-01918: user 'CUSTOMERORDERS' does not exist 
+
+
+Creating user
+
+Grant succeeded.
+
+
+User altered.
+
+
+User altered.
+
+Connected.
+Running DDL
+Creating tables, constraints and views for Customer Orders
+Creating tables
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+Creating indexes
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+Creating views
+
+View created.
+
+
+View created.
+
+
+View created.
+
+
+View created.
+
+
+View created.
+
+Add constraints to tables
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+alter table products add constraint products_json_c
+*
+ERROR at line 1:
+ORA-00604: error occurred at recursive SQL level 1 
+ORA-00942: table or view does not exist 
+
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+creating comments
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+Running DML
+Removing existing data
+
+Table truncated.
+
+
+Table truncated.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+Inserting data
+INSERTING into CUSTOMERS
+
+PL/SQL procedure successfully completed.
+
+INSERTING into PRODUCTS
+
+PL/SQL procedure successfully completed.
+
+INSERTING into STORES
+
+PL/SQL procedure successfully completed.
+
+INSERTING into ORDERS
+
+PL/SQL procedure successfully completed.
+
+INSERTING into SHIPMENTS
+
+PL/SQL procedure successfully completed.
+
+INSERTING into ORDER_ITEMS
+
+PL/SQL procedure successfully completed.
+
+INSERTING into INVENTORY
+
+PL/SQL procedure successfully completed.
+
+
+Commit complete.
+
+Resetting identity columns
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+Example queries
+Store sales analysis
+
+STORE_NAME                     CONSECUTIVE_DAYS   STORE_MX                                                                                                      
+------------------------------ ---------------- ----------                                                                                                      
+Online                                       95         95                                                                                                      
+Tokyo                                         8          8                                                                                                      
+Tel Aviv                                      5          5                                                                                                      
+Bejing                                        4          4                                                                                                      
+Buenos Aires                                  4          4                                                                                                      
+Bengaluru                                     3          3                                                                                                      
+Perth                                         3          3                                                                                                      
+San Francisco                                 3          3                                                                                                      
+Sao Paulo                                     3          3                                                                                                      
+Utrecht                                       3          3                                                                                                      
+Berlin                                        2          2                                                                                                      
+Chicago                                       2          2                                                                                                      
+Johannesburg                                  2          2                                                                                                      
+Lagos                                         2          2                                                                                                      
+London                                        2          2                                                                                                      
+Madrid                                        2          2                                                                                                      
+Mexico City                                   2          2                                                                                                      
+Mumbai                                        2          2                                                                                                      
+New Dehli                                     2          2                                                                                                      
+New York City                                 2          2                                                                                                      
+Seattle                                       2          2                                                                                                      
+Sydney                                        2          2                                                                                                      
+Bucharest                                     1          1                                                                                                      
+
+23 rows selected.
+
+High value customers
+
+CUSTOMER_ID NUM_MONTHS TOTAL_VALUE                                                                                                                              
+----------- ---------- -----------                                                                                                                              
+          3          3      720.92                                                                                                                              
+          7          3      478.63                                                                                                                              
+          9          3      687.73                                                                                                                              
+         19          3      430.90                                                                                                                              
+         24          3      579.17                                                                                                                              
+         49          3      631.51                                                                                                                              
+         52          3      665.12                                                                                                                              
+         62          4      882.99                                                                                                                              
+         63          4      646.23                                                                                                                              
+         87          3      515.15                                                                                                                              
+         92          3    1,078.31                                                                                                                              
+        104          3      757.34                                                                                                                              
+        111          3      648.26                                                                                                                              
+        119          3      584.34                                                                                                                              
+        123          3      515.07                                                                                                                              
+        131          3      817.67                                                                                                                              
+        133          4    1,152.00                                                                                                                              
+        134          3      703.64                                                                                                                              
+        146          4    1,054.09                                                                                                                              
+        152          4    1,088.09                                                                                                                              
+        154          3      793.01                                                                                                                              
+        160          4      632.68                                                                                                                              
+        166          4    1,537.74                                                                                                                              
+        189          3      746.02                                                                                                                              
+        190          4      948.04                                                                                                                              
+        194          3      760.11                                                                                                                              
+        207          3      730.21                                                                                                                              
+        213          3      734.65                                                                                                                              
+        214          3      561.19                                                                                                                              
+        219          3      773.65                                                                                                                              
+        220          3      470.08                                                                                                                              
+        239          3      573.00                                                                                                                              
+        242          3      813.07                                                                                                                              
+        245          3      492.64                                                                                                                              
+        253          3      460.20                                                                                                                              
+        278          3    1,198.37                                                                                                                              
+        291          3      665.48                                                                                                                              
+        299          3      541.97                                                                                                                              
+        306          3      847.44                                                                                                                              
+        317          3      576.98                                                                                                                              
+        318          3      711.30                                                                                                                              
+        330          4      709.53                                                                                                                              
+        336          3      547.17                                                                                                                              
+        364          3      656.75                                                                                                                              
+        374          3      385.08                                                                                                                              
+        386          3      778.70                                                                                                                              
+        388          3      746.48                                                                                                                              
+
+47 rows selected.
+
+Product rating analysis
+
+PRODUCT_NAME                   NUMBER_OF_REVIEWS PRODUCT_MEAN_RATING PRODUCT_MEDIAN_RATING PRODUCT_MODE_RATING PRODUCT_LOWEST_RATING PRODUCT_HIGHEST_RATING     
+------------------------------ ----------------- ------------------- --------------------- ------------------- --------------------- ----------------------     
+Women's Trousers (Blue)                        1                  10                    10                  10                    10                     10     
+Men's Jeans (Grey)                             4                 8.5                   8.5                   7                     7                     10     
+Girl's Pyjamas (White)                         6                8.33                     8                   7                     7                     10     
+Women's Coat (Black)                           9                7.67                     8                   8                     5                     10     
+Boy's Trousers (Blue)                          3                7.67                     8                   6                     6                      9     
+Women's Shirt (Green)                          9                7.56                     8                   8                     3                     10     
+Men's Coat (Red)                               1                   7                     7                   7                     7                      7     
+Boy's Jeans (Black)                            6                   7                   6.5                   5                     5                     10     
+Girl's Dress (Red)                             7                6.86                     8                   9                     2                     10     
+Boy's Shorts (Blue)                            6                 6.5                     6                   6                     4                     10     
+Men's Hoodie (Red)                             5                 6.4                     5                  10                     3                     10     
+Girl's Coat (Blue)                             8                6.25                     8                   8                     1                     10     
+Boy's Socks (Grey)                             8                6.25                   6.5                   6                     1                      9     
+Girl's Trousers (Red)                          5                 6.2                     6                   4                     4                      9     
+Boy's Coat (Blue)                              5                 6.2                     6                   8                     4                      8     
+Boy's Pyjamas (Grey)                           2                   6                     6                   5                     5                      7     
+Girl's Shorts (Green)                          6                   6                     6                   4                     4                      8     
+Girl's Pyjamas (Black)                         7                5.86                     6                   4                     1                     10     
+Women's Skirt (Red)                            8                5.75                   6.5                   7                     2                      8     
+Women's Jacket (Black)                         2                 5.5                   5.5                   5                     5                      6     
+Women's Sweater (Brown)                        9                5.44                     5                   5                     2                     10     
+Boy's Shirt (Black)                            9                5.33                     5                   1                     1                     10     
+Boy's Trousers (White)                        30                 5.3                     5                   2                     1                     10     
+Boy's Trousers (Black)                         6                5.17                     5                   3                     3                      8     
+Boy's Sweater (Red)                            7                5.14                     5                   7                     2                      8     
+Women's Jacket (Blue)                          7                5.14                     6                   1                     1                      9     
+Boy's Socks (White)                            9                   5                     3                   8                     1                     10     
+Women's Socks (Grey)                           1                   5                     5                   5                     5                      5     
+Girl's Hoodie (White)                          8                4.88                     4                   3                     2                     10     
+Girl's Pyjamas (Red)                           8                4.88                     4                   2                     2                      9     
+Boy's Hoodie (Grey)                            9                4.67                     4                   4                     1                     10     
+Women's Jeans (Brown)                          6                 4.5                   3.5                   2                     1                      9     
+Women's Dress (Black)                          4                4.25                     4                   4                     4                      5     
+Men's Shorts (Black)                           4                4.25                   4.5                   1                     1                      7     
+Men's Pyjamas (Blue)                           6                4.17                     4                   1                     1                      8     
+Women's Jeans (Red)                            3                   4                     1                   1                     1                     10     
+Girl's Jeans (Grey)                            6                   4                   3.5                   1                     1                      9     
+Boy's Sweater (Green)                          2                 3.5                   3.5                   2                     2                      5     
+Women's Skirt (Brown)                          5                 3.4                     3                   3                     1                      8     
+Boy's Socks (Black)                            8                3.13                     2                   2                     2                      8     
+Women's Pyjamas (Grey)                         6                2.67                     3                   1                     1                      4     
+TOTAL                                        261                5.54                     6                   8                     1                     10     
+
+42 rows selected.
+
+Most popular products by volume
+
+PRODUCT_NAME                   NUMBER_OF_ORDERS TOTAL_VALUE REVENUE_RANK                                                                                        
+------------------------------ ---------------- ----------- ------------                                                                                        
+Girl's Trousers (Red)                       148   15,794.76            1                                                                                        
+Boy's Hoodie (Grey)                         100    3,754.08           35                                                                                        
+Men's Pyjamas (Blue)                        100    3,274.61           36                                                                                        
+Men's Coat (Red)                             98    4,230.30           31                                                                                        
+Boy's Socks (White)                          98    3,081.12           38                                                                                        
+
+Most popular products by value
+
+PRODUCT_NAME                   NUMBER_OF_ORDERS TOTAL_VALUE ORDER_COUNT_RANK                                                                                    
+------------------------------ ---------------- ----------- ----------------                                                                                    
+Girl's Trousers (Red)                       148   15,794.76                1                                                                                    
+Girl's Hoodie (White)                        94   14,283.75                7                                                                                    
+Women's Trousers (Blue)                      82   12,181.76               28                                                                                    
+Boy's Coat (Blue)                            94   11,214.71                7                                                                                    
+Girl's Pyjamas (White)                       89   11,118.60               17                                                                                    
+
+Daily order count and value
+
+SALE_DATE            NUMBER_OF_ORDERS VALUE_OF_ORDERS                                                                                                           
+-------------------- ---------------- ---------------                                                                                                           
+04-FEB-2018                         1          209.38                                                                                                           
+05-FEB-2018                         0            0.00                                                                                                           
+06-FEB-2018                         0            0.00                                                                                                           
+07-FEB-2018                         0            0.00                                                                                                           
+08-FEB-2018                         1           54.23                                                                                                           
+09-FEB-2018                         1           43.30                                                                                                           
+10-FEB-2018                         1          304.98                                                                                                           
+11-FEB-2018                         1          153.19                                                                                                           
+12-FEB-2018                         0            0.00                                                                                                           
+13-FEB-2018                         1          199.48                                                                                                           
+14-FEB-2018                         0            0.00                                                                                                           
+15-FEB-2018                         0            0.00                                                                                                           
+16-FEB-2018                         0            0.00                                                                                                           
+17-FEB-2018                         0            0.00                                                                                                           
+18-FEB-2018                         0            0.00                                                                                                           
+19-FEB-2018                         0            0.00                                                                                                           
+20-FEB-2018                         0            0.00                                                                                                           
+21-FEB-2018                         0            0.00                                                                                                           
+22-FEB-2018                         2          537.23                                                                                                           
+23-FEB-2018                         2          448.61                                                                                                           
+24-FEB-2018                         4          413.10                                                                                                           
+25-FEB-2018                         0            0.00                                                                                                           
+26-FEB-2018                         2          221.88                                                                                                           
+27-FEB-2018                         1          351.64                                                                                                           
+28-FEB-2018                         1          319.20                                                                                                           
+01-MAR-2018                         4          875.32                                                                                                           
+02-MAR-2018                         2          247.40                                                                                                           
+03-MAR-2018                         3          422.83                                                                                                           
+04-MAR-2018                         0            0.00                                                                                                           
+05-MAR-2018                         1          239.28                                                                                                           
+06-MAR-2018                         2          355.04                                                                                                           
+07-MAR-2018                         2          263.79                                                                                                           
+08-MAR-2018                         1           96.68                                                                                                           
+09-MAR-2018                         2          135.39                                                                                                           
+10-MAR-2018                         2          247.21                                                                                                           
+11-MAR-2018                         1          132.05                                                                                                           
+12-MAR-2018                         5          562.18                                                                                                           
+13-MAR-2018                         2          522.16                                                                                                           
+14-MAR-2018                         4          601.28                                                                                                           
+15-MAR-2018                         3          236.50                                                                                                           
+16-MAR-2018                         2          388.88                                                                                                           
+17-MAR-2018                         2          285.21                                                                                                           
+18-MAR-2018                         2          218.53                                                                                                           
+19-MAR-2018                         1           52.16                                                                                                           
+20-MAR-2018                         1          130.95                                                                                                           
+21-MAR-2018                         1          138.20                                                                                                           
+22-MAR-2018                         5        1,003.52                                                                                                           
+23-MAR-2018                         2          305.96                                                                                                           
+24-MAR-2018                         2          240.35                                                                                                           
+25-MAR-2018                         1           38.28                                                                                                           
+26-MAR-2018                         1          359.11                                                                                                           
+27-MAR-2018                         4          912.41                                                                                                           
+28-MAR-2018                         2          256.71                                                                                                           
+29-MAR-2018                         3          505.10                                                                                                           
+30-MAR-2018                         7        1,329.04                                                                                                           
+31-MAR-2018                         3          303.90                                                                                                           
+01-APR-2018                         2          275.65                                                                                                           
+02-APR-2018                         3          544.43                                                                                                           
+03-APR-2018                         5          755.80                                                                                                           
+04-APR-2018                         3          466.20                                                                                                           
+05-APR-2018                         2          140.26                                                                                                           
+06-APR-2018                         1           78.14                                                                                                           
+07-APR-2018                         5          910.14                                                                                                           
+08-APR-2018                         0            0.00                                                                                                           
+09-APR-2018                         7        1,252.24                                                                                                           
+10-APR-2018                         7        1,212.61                                                                                                           
+11-APR-2018                         5        1,111.21                                                                                                           
+12-APR-2018                         3          815.66                                                                                                           
+13-APR-2018                         5          777.46                                                                                                           
+14-APR-2018                         1           57.10                                                                                                           
+15-APR-2018                         2          460.98                                                                                                           
+16-APR-2018                         3          375.71                                                                                                           
+17-APR-2018                         4          497.83                                                                                                           
+18-APR-2018                         3          527.73                                                                                                           
+19-APR-2018                         2          104.65                                                                                                           
+20-APR-2018                         5          700.68                                                                                                           
+21-APR-2018                         4          769.02                                                                                                           
+22-APR-2018                         4          838.40                                                                                                           
+23-APR-2018                         5          850.45                                                                                                           
+24-APR-2018                         3          470.73                                                                                                           
+25-APR-2018                         5          543.06                                                                                                           
+26-APR-2018                         7          962.23                                                                                                           
+27-APR-2018                         5          681.62                                                                                                           
+28-APR-2018                         7        1,082.03                                                                                                           
+29-APR-2018                         4          611.63                                                                                                           
+30-APR-2018                         2          443.74                                                                                                           
+01-MAY-2018                         4          433.75                                                                                                           
+02-MAY-2018                         6          810.51                                                                                                           
+03-MAY-2018                         5          631.16                                                                                                           
+04-MAY-2018                         4          703.06                                                                                                           
+05-MAY-2018                         5        1,304.49                                                                                                           
+06-MAY-2018                         7        1,568.44                                                                                                           
+07-MAY-2018                         3          366.23                                                                                                           
+08-MAY-2018                         2          295.09                                                                                                           
+09-MAY-2018                         3          357.54                                                                                                           
+10-MAY-2018                         3          687.55                                                                                                           
+11-MAY-2018                         3          764.82                                                                                                           
+
+SALE_DATE            NUMBER_OF_ORDERS VALUE_OF_ORDERS                                                                                                           
+-------------------- ---------------- ---------------                                                                                                           
+12-MAY-2018                         3          427.95                                                                                                           
+13-MAY-2018                         5          810.37                                                                                                           
+14-MAY-2018                         2          415.91                                                                                                           
+15-MAY-2018                         5          807.96                                                                                                           
+16-MAY-2018                         1          150.00                                                                                                           
+17-MAY-2018                         3          402.88                                                                                                           
+18-MAY-2018                         4          871.67                                                                                                           
+19-MAY-2018                         1          104.37                                                                                                           
+20-MAY-2018                         2          376.42                                                                                                           
+21-MAY-2018                         6        1,194.02                                                                                                           
+22-MAY-2018                         5          626.35                                                                                                           
+23-MAY-2018                         4          710.44                                                                                                           
+24-MAY-2018                         7          955.61                                                                                                           
+25-MAY-2018                         3          410.90                                                                                                           
+26-MAY-2018                         3          445.38                                                                                                           
+27-MAY-2018                         5          436.81                                                                                                           
+28-MAY-2018                         3          552.76                                                                                                           
+29-MAY-2018                         1          101.68                                                                                                           
+30-MAY-2018                         0            0.00                                                                                                           
+31-MAY-2018                         4          530.82                                                                                                           
+01-JUN-2018                         6          683.14                                                                                                           
+02-JUN-2018                         5          598.83                                                                                                           
+03-JUN-2018                         4          542.80                                                                                                           
+04-JUN-2018                         4          774.33                                                                                                           
+05-JUN-2018                         3          400.90                                                                                                           
+06-JUN-2018                         5          977.01                                                                                                           
+07-JUN-2018                         1           26.14                                                                                                           
+08-JUN-2018                         3          648.46                                                                                                           
+09-JUN-2018                         3          415.18                                                                                                           
+10-JUN-2018                         3          520.15                                                                                                           
+11-JUN-2018                         2          379.92                                                                                                           
+12-JUN-2018                         4          417.65                                                                                                           
+13-JUN-2018                         5          903.63                                                                                                           
+14-JUN-2018                         5        1,112.48                                                                                                           
+15-JUN-2018                         4          462.06                                                                                                           
+16-JUN-2018                         5          817.75                                                                                                           
+17-JUN-2018                         3          532.90                                                                                                           
+18-JUN-2018                         4          818.02                                                                                                           
+19-JUN-2018                         6        1,116.91                                                                                                           
+20-JUN-2018                         6        1,109.11                                                                                                           
+21-JUN-2018                         6        1,313.93                                                                                                           
+22-JUN-2018                         7          792.58                                                                                                           
+23-JUN-2018                         3          488.63                                                                                                           
+24-JUN-2018                         4          660.64                                                                                                           
+25-JUN-2018                         5          758.19                                                                                                           
+26-JUN-2018                         7        1,077.50                                                                                                           
+27-JUN-2018                         6        1,192.44                                                                                                           
+28-JUN-2018                         2          443.51                                                                                                           
+29-JUN-2018                         4          359.01                                                                                                           
+30-JUN-2018                         1          156.64                                                                                                           
+01-JUL-2018                         3          544.36                                                                                                           
+02-JUL-2018                         7        1,076.29                                                                                                           
+03-JUL-2018                         2          308.14                                                                                                           
+04-JUL-2018                         5          725.44                                                                                                           
+05-JUL-2018                         6        1,056.17                                                                                                           
+06-JUL-2018                         0            0.00                                                                                                           
+07-JUL-2018                         2          261.43                                                                                                           
+08-JUL-2018                        11        1,688.50                                                                                                           
+09-JUL-2018                         5          642.62                                                                                                           
+10-JUL-2018                         1          155.88                                                                                                           
+11-JUL-2018                         5          419.96                                                                                                           
+12-JUL-2018                         3          640.59                                                                                                           
+13-JUL-2018                         5          980.06                                                                                                           
+14-JUL-2018                         4          652.81                                                                                                           
+15-JUL-2018                         1           19.16                                                                                                           
+16-JUL-2018                         0            0.00                                                                                                           
+17-JUL-2018                         3          722.53                                                                                                           
+18-JUL-2018                         4          813.25                                                                                                           
+19-JUL-2018                         4          715.92                                                                                                           
+20-JUL-2018                         4          559.31                                                                                                           
+21-JUL-2018                         4          563.57                                                                                                           
+22-JUL-2018                         6          690.61                                                                                                           
+23-JUL-2018                         3          544.45                                                                                                           
+24-JUL-2018                         4          484.77                                                                                                           
+25-JUL-2018                         3          402.02                                                                                                           
+26-JUL-2018                         5          476.93                                                                                                           
+27-JUL-2018                         4        1,213.76                                                                                                           
+28-JUL-2018                         5          744.00                                                                                                           
+29-JUL-2018                         7        1,447.36                                                                                                           
+30-JUL-2018                         4          594.54                                                                                                           
+31-JUL-2018                         3          740.03                                                                                                           
+01-AUG-2018                         5        1,099.93                                                                                                           
+02-AUG-2018                         3          374.01                                                                                                           
+03-AUG-2018                         2          223.42                                                                                                           
+04-AUG-2018                         5        1,079.57                                                                                                           
+05-AUG-2018                         5        1,077.18                                                                                                           
+06-AUG-2018                         2          293.20                                                                                                           
+07-AUG-2018                         4          466.25                                                                                                           
+08-AUG-2018                         3          490.18                                                                                                           
+09-AUG-2018                         5          640.42                                                                                                           
+10-AUG-2018                         3          364.84                                                                                                           
+11-AUG-2018                         5          713.17                                                                                                           
+12-AUG-2018                         7        1,125.01                                                                                                           
+13-AUG-2018                         9        1,545.54                                                                                                           
+14-AUG-2018                         6          929.81                                                                                                           
+15-AUG-2018                         3          665.71                                                                                                           
+16-AUG-2018                         4          643.10                                                                                                           
+
+SALE_DATE            NUMBER_OF_ORDERS VALUE_OF_ORDERS                                                                                                           
+-------------------- ---------------- ---------------                                                                                                           
+17-AUG-2018                         5          709.08                                                                                                           
+18-AUG-2018                         8        1,303.89                                                                                                           
+19-AUG-2018                         5          871.74                                                                                                           
+20-AUG-2018                         4          854.74                                                                                                           
+21-AUG-2018                         2          166.50                                                                                                           
+22-AUG-2018                         5          484.46                                                                                                           
+23-AUG-2018                        11        1,949.52                                                                                                           
+24-AUG-2018                         4          704.29                                                                                                           
+25-AUG-2018                         0            0.00                                                                                                           
+26-AUG-2018                         3          454.58                                                                                                           
+27-AUG-2018                         6        1,025.92                                                                                                           
+28-AUG-2018                         5          455.32                                                                                                           
+29-AUG-2018                         4          668.26                                                                                                           
+30-AUG-2018                         5          972.71                                                                                                           
+31-AUG-2018                         8        1,000.66                                                                                                           
+01-SEP-2018                         4          417.83                                                                                                           
+02-SEP-2018                         7        1,431.90                                                                                                           
+03-SEP-2018                        10        1,144.54                                                                                                           
+04-SEP-2018                         4          678.74                                                                                                           
+05-SEP-2018                         9        1,509.30                                                                                                           
+06-SEP-2018                         7        1,282.86                                                                                                           
+07-SEP-2018                         1          204.46                                                                                                           
+08-SEP-2018                         9        1,235.66                                                                                                           
+09-SEP-2018                         8        1,128.13                                                                                                           
+10-SEP-2018                         7        1,198.13                                                                                                           
+11-SEP-2018                         3          637.48                                                                                                           
+12-SEP-2018                         8        1,409.66                                                                                                           
+13-SEP-2018                         6        1,265.07                                                                                                           
+14-SEP-2018                         3          749.05                                                                                                           
+15-SEP-2018                         4          471.35                                                                                                           
+16-SEP-2018                         5        1,145.17                                                                                                           
+17-SEP-2018                         2          409.50                                                                                                           
+18-SEP-2018                         3          696.43                                                                                                           
+19-SEP-2018                         8          988.78                                                                                                           
+20-SEP-2018                         4          605.09                                                                                                           
+21-SEP-2018                         7          816.78                                                                                                           
+22-SEP-2018                         4          647.82                                                                                                           
+23-SEP-2018                         3          620.31                                                                                                           
+24-SEP-2018                         6        1,094.24                                                                                                           
+25-SEP-2018                         4          917.77                                                                                                           
+26-SEP-2018                         6          713.95                                                                                                           
+27-SEP-2018                         4          614.63                                                                                                           
+28-SEP-2018                         3          823.48                                                                                                           
+29-SEP-2018                         6          613.57                                                                                                           
+30-SEP-2018                         6          890.78                                                                                                           
+01-OCT-2018                         6        1,154.87                                                                                                           
+02-OCT-2018                         3          226.69                                                                                                           
+03-OCT-2018                         7        1,155.18                                                                                                           
+04-OCT-2018                         1          228.76                                                                                                           
+05-OCT-2018                         3          445.35                                                                                                           
+06-OCT-2018                         6          846.67                                                                                                           
+07-OCT-2018                         8        1,082.29                                                                                                           
+08-OCT-2018                         3          615.53                                                                                                           
+09-OCT-2018                         8        1,437.97                                                                                                           
+10-OCT-2018                         9        1,788.72                                                                                                           
+11-OCT-2018                         7          747.83                                                                                                           
+12-OCT-2018                         2          305.48                                                                                                           
+13-OCT-2018                         5          816.43                                                                                                           
+14-OCT-2018                         5          528.84                                                                                                           
+15-OCT-2018                         6          725.76                                                                                                           
+16-OCT-2018                         3          422.58                                                                                                           
+17-OCT-2018                         9        1,134.96                                                                                                           
+18-OCT-2018                         6          764.75                                                                                                           
+19-OCT-2018                         5          760.67                                                                                                           
+20-OCT-2018                         5          797.36                                                                                                           
+21-OCT-2018                         2          198.62                                                                                                           
+22-OCT-2018                         4          723.16                                                                                                           
+23-OCT-2018                         7        1,412.60                                                                                                           
+24-OCT-2018                         7          931.38                                                                                                           
+25-OCT-2018                         8        1,010.50                                                                                                           
+26-OCT-2018                         6        1,233.25                                                                                                           
+27-OCT-2018                         6          759.75                                                                                                           
+28-OCT-2018                         9        1,167.47                                                                                                           
+29-OCT-2018                         6          771.18                                                                                                           
+30-OCT-2018                         3          424.11                                                                                                           
+31-OCT-2018                         7        1,304.17                                                                                                           
+01-NOV-2018                         5          660.67                                                                                                           
+02-NOV-2018                         6        1,487.50                                                                                                           
+03-NOV-2018                         4          580.93                                                                                                           
+04-NOV-2018                         4        1,014.95                                                                                                           
+05-NOV-2018                         4          792.70                                                                                                           
+06-NOV-2018                         7          979.82                                                                                                           
+07-NOV-2018                         8          839.06                                                                                                           
+08-NOV-2018                         9        1,360.67                                                                                                           
+09-NOV-2018                         4          650.25                                                                                                           
+10-NOV-2018                         4          590.20                                                                                                           
+11-NOV-2018                         6          865.12                                                                                                           
+12-NOV-2018                         5          730.06                                                                                                           
+13-NOV-2018                         3          481.38                                                                                                           
+14-NOV-2018                         2          320.39                                                                                                           
+15-NOV-2018                         8        1,336.67                                                                                                           
+16-NOV-2018                         4          839.44                                                                                                           
+17-NOV-2018                         5          644.00                                                                                                           
+18-NOV-2018                         8        1,237.14                                                                                                           
+19-NOV-2018                         7        1,028.19                                                                                                           
+20-NOV-2018                         5          828.49                                                                                                           
+21-NOV-2018                         6        1,384.62                                                                                                           
+
+SALE_DATE            NUMBER_OF_ORDERS VALUE_OF_ORDERS                                                                                                           
+-------------------- ---------------- ---------------                                                                                                           
+22-NOV-2018                         3          236.50                                                                                                           
+23-NOV-2018                         4          891.24                                                                                                           
+24-NOV-2018                         3          699.45                                                                                                           
+25-NOV-2018                         2          318.94                                                                                                           
+26-NOV-2018                         4          738.78                                                                                                           
+27-NOV-2018                         4          702.97                                                                                                           
+28-NOV-2018                         6          870.00                                                                                                           
+29-NOV-2018                         5          635.92                                                                                                           
+30-NOV-2018                        10        1,666.31                                                                                                           
+01-DEC-2018                         2          348.97                                                                                                           
+02-DEC-2018                         9        1,566.81                                                                                                           
+03-DEC-2018                        10        1,597.85                                                                                                           
+04-DEC-2018                         9          919.85                                                                                                           
+05-DEC-2018                         2          456.58                                                                                                           
+06-DEC-2018                         8        1,477.13                                                                                                           
+07-DEC-2018                         5          977.65                                                                                                           
+08-DEC-2018                         5          890.85                                                                                                           
+09-DEC-2018                         9        1,450.03                                                                                                           
+10-DEC-2018                         9        1,541.38                                                                                                           
+11-DEC-2018                         4          519.10                                                                                                           
+12-DEC-2018                         8        1,433.59                                                                                                           
+13-DEC-2018                        10        1,241.31                                                                                                           
+14-DEC-2018                         4          833.18                                                                                                           
+15-DEC-2018                         5          839.04                                                                                                           
+16-DEC-2018                         8        1,236.49                                                                                                           
+17-DEC-2018                         3          226.37                                                                                                           
+18-DEC-2018                         9        1,527.34                                                                                                           
+19-DEC-2018                         3          493.39                                                                                                           
+20-DEC-2018                         7        1,065.27                                                                                                           
+21-DEC-2018                         6          920.23                                                                                                           
+22-DEC-2018                         4          638.16                                                                                                           
+23-DEC-2018                         6          400.79                                                                                                           
+24-DEC-2018                         5          854.51                                                                                                           
+25-DEC-2018                         7        1,222.27                                                                                                           
+26-DEC-2018                         3          453.00                                                                                                           
+27-DEC-2018                         4          513.24                                                                                                           
+28-DEC-2018                         8        1,270.83                                                                                                           
+29-DEC-2018                         5          795.87                                                                                                           
+30-DEC-2018                         5          609.17                                                                                                           
+31-DEC-2018                         9        1,448.28                                                                                                           
+01-JAN-2019                         7        1,028.36                                                                                                           
+02-JAN-2019                         6          972.54                                                                                                           
+03-JAN-2019                         8        1,080.85                                                                                                           
+04-JAN-2019                         4          753.68                                                                                                           
+05-JAN-2019                         9        1,613.11                                                                                                           
+06-JAN-2019                         4          701.82                                                                                                           
+07-JAN-2019                         7        1,030.74                                                                                                           
+08-JAN-2019                         6        1,204.56                                                                                                           
+09-JAN-2019                         1          221.38                                                                                                           
+10-JAN-2019                         9        1,203.94                                                                                                           
+11-JAN-2019                         4          402.55                                                                                                           
+12-JAN-2019                        11        1,884.84                                                                                                           
+13-JAN-2019                         9        1,612.92                                                                                                           
+14-JAN-2019                         7        1,293.03                                                                                                           
+15-JAN-2019                         7        1,103.19                                                                                                           
+16-JAN-2019                         6          941.68                                                                                                           
+17-JAN-2019                         4          823.33                                                                                                           
+18-JAN-2019                         8        1,217.60                                                                                                           
+19-JAN-2019                         3          929.88                                                                                                           
+20-JAN-2019                         9        1,353.34                                                                                                           
+21-JAN-2019                        10        1,357.98                                                                                                           
+22-JAN-2019                         7          844.70                                                                                                           
+23-JAN-2019                        10        1,562.43                                                                                                           
+24-JAN-2019                         8        1,071.97                                                                                                           
+25-JAN-2019                        11        2,038.57                                                                                                           
+26-JAN-2019                         7        1,088.72                                                                                                           
+27-JAN-2019                         4          500.10                                                                                                           
+28-JAN-2019                         8        1,013.35                                                                                                           
+29-JAN-2019                         4          346.98                                                                                                           
+30-JAN-2019                         8          922.87                                                                                                           
+31-JAN-2019                         9        1,202.63                                                                                                           
+01-FEB-2019                         6        1,007.87                                                                                                           
+02-FEB-2019                         6        1,193.55                                                                                                           
+03-FEB-2019                         6          895.15                                                                                                           
+04-FEB-2019                         7          713.00                                                                                                           
+05-FEB-2019                         5          869.79                                                                                                           
+06-FEB-2019                         3          168.49                                                                                                           
+07-FEB-2019                         7        1,402.48                                                                                                           
+08-FEB-2019                         2          277.42                                                                                                           
+09-FEB-2019                        10        1,196.25                                                                                                           
+10-FEB-2019                         4          676.61                                                                                                           
+11-FEB-2019                         4          353.43                                                                                                           
+12-FEB-2019                         8        1,433.28                                                                                                           
+13-FEB-2019                         6        1,160.04                                                                                                           
+14-FEB-2019                         7        1,263.98                                                                                                           
+15-FEB-2019                         4          767.94                                                                                                           
+16-FEB-2019                         5          927.73                                                                                                           
+17-FEB-2019                         3          243.90                                                                                                           
+18-FEB-2019                         5          826.58                                                                                                           
+19-FEB-2019                         8        1,076.35                                                                                                           
+20-FEB-2019                         6          922.16                                                                                                           
+21-FEB-2019                         4          576.21                                                                                                           
+22-FEB-2019                         6        1,124.39                                                                                                           
+23-FEB-2019                         3          369.60                                                                                                           
+24-FEB-2019                         4          473.60                                                                                                           
+25-FEB-2019                         7        1,155.70                                                                                                           
+26-FEB-2019                         5          748.25                                                                                                           
+
+SALE_DATE            NUMBER_OF_ORDERS VALUE_OF_ORDERS                                                                                                           
+-------------------- ---------------- ---------------                                                                                                           
+27-FEB-2019                         7        1,055.80                                                                                                           
+28-FEB-2019                         7        1,202.08                                                                                                           
+01-MAR-2019                         6          925.22                                                                                                           
+02-MAR-2019                         4          751.81                                                                                                           
+03-MAR-2019                         5          760.03                                                                                                           
+04-MAR-2019                         8        1,361.05                                                                                                           
+05-MAR-2019                         4          396.97                                                                                                           
+06-MAR-2019                         5          667.02                                                                                                           
+07-MAR-2019                         6        1,291.81                                                                                                           
+08-MAR-2019                         4          593.47                                                                                                           
+09-MAR-2019                         9        1,551.99                                                                                                           
+10-MAR-2019                         5          494.58                                                                                                           
+11-MAR-2019                         2          390.24                                                                                                           
+12-MAR-2019                         5          918.08                                                                                                           
+13-MAR-2019                         4          596.63                                                                                                           
+14-MAR-2019                         6          914.78                                                                                                           
+15-MAR-2019                         7          920.92                                                                                                           
+16-MAR-2019                         5          685.33                                                                                                           
+17-MAR-2019                         7          952.78                                                                                                           
+18-MAR-2019                         4          511.17                                                                                                           
+19-MAR-2019                         6          979.97                                                                                                           
+20-MAR-2019                         4          602.58                                                                                                           
+21-MAR-2019                         5          661.32                                                                                                           
+22-MAR-2019                         3          655.92                                                                                                           
+23-MAR-2019                         3          277.65                                                                                                           
+24-MAR-2019                         5          918.06                                                                                                           
+25-MAR-2019                         7        1,124.52                                                                                                           
+26-MAR-2019                         2          311.84                                                                                                           
+27-MAR-2019                         5          531.44                                                                                                           
+28-MAR-2019                         6          616.94                                                                                                           
+29-MAR-2019                         6          740.97                                                                                                           
+30-MAR-2019                         3          654.42                                                                                                           
+31-MAR-2019                         3          509.66                                                                                                           
+01-APR-2019                         5        1,059.71                                                                                                           
+02-APR-2019                         2          234.04                                                                                                           
+03-APR-2019                         4          726.53                                                                                                           
+04-APR-2019                         4          374.67                                                                                                           
+05-APR-2019                         3          668.16                                                                                                           
+06-APR-2019                         3          420.33                                                                                                           
+07-APR-2019                         2          401.84                                                                                                           
+08-APR-2019                         3          468.68                                                                                                           
+09-APR-2019                         0            0.00                                                                                                           
+10-APR-2019                         5          673.99                                                                                                           
+11-APR-2019                         3          148.67                                                                                                           
+12-APR-2019                         1          309.36                                                                                                           
+
+433 rows selected.
+
+Month and year sales matrix
+
+ORDER_YEAR   JAN_VALUE   FEB_VALUE   MAR_VALUE   APR_VALUE   MAY_VALUE   JUN_VALUE   JUL_VALUE   AUG_VALUE   SEP_VALUE   OCT_VALUE   NOV_VALUE   DEC_VALUE      
+---------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- ----------- -----------      
+      2018                3,256.22   11,405.42   18,317.39   18,254.94   20,500.44   19,884.46   23,353.01   26,362.46   25,922.88   25,412.36   29,768.53      
+      2019   33,323.64   24,081.63   23,269.17    5,485.98                                                                                                      
+
