@@ -1,3 +1,9 @@
+# oracle to postgresql 
+# 1 - selection rule - schema and table name
+# 2 - set of transformation rules to convert to lowercase - schema, tablename, columnname
+# 3 - datatype transformation - numeric(19,0) to numeric precision 0.
+#       note that the data in the source is 38.00000 and transforms to 38
+#       this is not converting precision from X to 0, eg: 38.45 to 38
 { 
   "rules": [
     {
