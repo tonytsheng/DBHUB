@@ -18,4 +18,4 @@ set search_path to  "$user", public, topology, customer_orders;
 
 select version();
 
-
+\i <infile>

@@ -1,0 +1,11 @@
+the number 1234.56 has a precision of 6 and a scale of 2. So to store this number, you need NUMBER(6,2).
+NUMBER(p,s)
+
+table:
+ANSI data type	Oracle NUMBER data type
+INT		NUMBER(38)
+SMALLINT	NUMBER(38)
+NUMBER(p,s)	NUMBER(p,s)
+DECIMAL(p,s)	NUMBER(p,s)
+
+
