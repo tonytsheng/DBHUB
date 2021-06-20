@@ -48,7 +48,7 @@ COMPUTE SUM OF mbytes ON REPORT
 SELECT owner, segment_type, tablespace_name, segment_name,
         ( bytes/1048576 ) mbytes, extents
 FROM dba_segments
-WHERE owner = UPPER( '&OwnerName' )
+WHERE owner = UPPER( 'CUSTOMER_ORDERS' )
 ORDER BY owner, tablespace_name, segment_type, segment_name;
 
 col owner for a7
