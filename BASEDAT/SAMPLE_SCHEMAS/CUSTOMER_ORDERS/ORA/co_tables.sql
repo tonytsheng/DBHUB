@@ -38,7 +38,8 @@ create table orders (
   order_datetime  timestamp not null,
   customer_id     integer not null,
   order_status    varchar2(10 char) not null,
-  store_id        integer not null)
+  store_id        integer not null,
+  order_img       blob) -- added ttsheng for perf testing DMS+blob
 ;
 
 create table shipments (
