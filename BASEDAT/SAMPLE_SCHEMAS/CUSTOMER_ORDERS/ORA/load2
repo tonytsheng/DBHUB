@@ -1,0 +1,12 @@
+while true
+do
+callora customer_orders Pass1234  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins2.sql &
+callora customer_orders Pass1234  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins2.sql &
+callora customer_orders Pass1234  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins2.sql &
+callora customer_orders Pass1234  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins2.sql &
+callora customer_orders Pass1234  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins2.sql &
+callora customer_orders Pass1234  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins2.sql &
+callora customer_orders Pass1234  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins2.sql &
+callora customer_orders Pass1234  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins2.sql
+sleep 1
+done
