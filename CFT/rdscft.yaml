@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: 'Oracle RDS Template'
+Description: "RDS Template"
 Parameters:
   pEnv:
     Default: stage
@@ -12,8 +12,8 @@ Parameters:
     AllowedValues: [vpc-0467e5c237261df36]
     Type: String
   pDBName:
-    Default: p200
-    Description: The database name
+    Default: "p200"
+    Description: "The database name"
     Type: String
     MinLength: '1'
     MaxLength: '64'
@@ -21,7 +21,7 @@ Parameters:
     ConstraintDescription: must begin with a letter and contain only alphanumeric
       characters.
   pDBUser:
-    Default: postgres
+    Default: "postgres"
     Description: The database admin account username
     Type: String
     MinLength: '1'
@@ -70,7 +70,7 @@ Parameters:
     Default: pg200
     Type: String
   pLicenseModel:
-    Default: license-included
+    Default: "license-included"
     AllowedValues: [bring-your-own-license, license-included]
     Type: String
   pMaxAllocatedStorage:
