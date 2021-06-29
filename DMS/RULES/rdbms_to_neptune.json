@@ -1,0 +1,126 @@
+{ 
+    "rules": [ 
+        { 
+            "rule-type": "transformation", 
+            "rule-id": "1", 
+            "rule-name": "1", 
+            "rule-target": "column", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "ROUTE", 
+                "column-name": "ROUTE_ID" 
+            }, 
+            "rule-action": "remove-column", 
+            "value": null, 
+            "old-value": null 
+        }, 
+        { 
+            "rule-type": "transformation", 
+            "rule-id": "2", 
+            "rule-name": "2", 
+            "rule-target": "column", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "ROUTE", 
+                "column-name": "VERSION_ID" 
+            }, 
+            "rule-action": "remove-column", 
+            "value": null, 
+            "old-value": null 
+        }, 
+        { 
+            "rule-type": "transformation", 
+            "rule-id": "3", 
+            "rule-name": "3", 
+            "rule-target": "column", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "AIRPORT", 
+                "column-name": "VERSION_ID" 
+            }, 
+            "rule-action": "remove-column", 
+            "value": null, 
+            "old-value": null 
+        }, 
+        { 
+            "rule-type": "transformation", 
+            "rule-id": "4", 
+            "rule-name": "4", 
+            "rule-target": "column", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "COUNTRY", 
+                "column-name": "VERSION_ID" 
+            }, 
+            "rule-action": "remove-column", 
+            "value": null, 
+            "old-value": null 
+        }, 
+        { 
+            "rule-type": "selection", 
+            "rule-id": "5", 
+            "rule-name": "5", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "COUNTRY_IN_CONTINENT" 
+            }, 
+            "rule-action": "exclude", 
+            "filters": [] 
+        }, 
+        { 
+            "rule-type": "selection", 
+            "rule-id": "6", 
+            "rule-name": "6", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "CONTINENT" 
+            }, 
+            "rule-action": "exclude", 
+            "filters": [] 
+        }, 
+        { 
+            "rule-type": "selection", 
+            "rule-id": "7", 
+            "rule-name": "7", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "VERSION" 
+            }, 
+            "rule-action": "exclude", 
+            "filters": [] 
+        }, 
+        { 
+            "rule-type": "selection", 
+            "rule-id": "8", 
+            "rule-name": "8", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "COUNTRY" 
+            }, 
+            "rule-action": "include", 
+            "filters": [] 
+        }, 
+        { 
+            "rule-type": "selection", 
+            "rule-id": "9", 
+            "rule-name": "9", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "AIRPORT" 
+            }, 
+            "rule-action": "include", 
+            "filters": [] 
+        }, 
+        { 
+            "rule-type": "selection", 
+            "rule-id": "10", 
+            "rule-name": "10", 
+            "object-locator": { 
+                "schema-name": "AIR_ROUTES", 
+                "table-name": "ROUTE" 
+            }, 
+            "rule-action": "include", 
+            "filters": [] 
+        } 
+    ] 
+} 
