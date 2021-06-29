@@ -1,0 +1,30 @@
+---
+AWSTemplateFormatVersion: "version date" #optional
+
+Description: #optional
+  String
+
+Metadata: #optional
+  template metadata
+
+Parameters: #optional
+  set of parameters
+
+Rules: #optional
+  set of rules
+
+Mappings: #optional
+  set of mappings
+
+Conditions: #optional
+  set of conditions
+
+Transform: #optional
+  set of transforms
+
+Resources:
+  set of resources
+
+Outputs: #optional
+  set of outputs
+
