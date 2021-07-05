@@ -6,18 +6,18 @@
 #
 
 # echo header
-echo -e "ROWS/SEC \t ROWS \t SCHEMA \t\t\t TABLE \t\t STATUS"
+echo -e "ROWS/SEC \t FULLROWS \t SCHEMA \t\t\t TABLE \t\t STATUS"
 
 # get current date
 curr_date=`date -Is`
 
-while read start_date rowcount schema table state1 state2
+while read start_date fullrows schema table state1 state2
 do
 # calculate seconds since the replication task started
 sec_since_start=`printf "%s\n" $(( $(date -d "$curr_date" "+%s") - $(date -d "$start_date" "+%s") ))`
 
 # calculate rows per second
-rows_per_sec=`expr ${rowcount} / ${sec_since_start}`
+rows_per_sec=`expr ${fullrows} / ${sec_since_start}`
 #echo "${start_date} || ${rowcount} || ${sec_since_start} || ${rows_per_sec}"
-echo -e "${rows_per_sec} \t\t ${rowcount} \t ${schema} \t\t ${table} \t ${state1} ${state2}"
-done < <(aws --profile ec2 dms describe-table-statistics --replication-task-arn arn:aws:dms:us-east-2:070201068661:task:CNGFTOEC7D5I5YENYHV3WUEG66LDQMF2MXEMLKQ --output text | awk -F' ' '{print $5, $8, $12, $13, $14 " "$15}' )
+echo -e "${rows_per_sec} \t\t ${fullrows} \t ${schema} \t\t ${table} \t ${state1} ${state2}"
+done < <(aws --profile ec2 dms describe-table-statistics --replication-task-arn arn:aws:dms:us-east-2:070201068661:task:E5P7J6S2HT5AC5QTUKOIWTWWGPSL62FHMTY24PQ --output text | awk -F' ' '{print $5, $8, $12, $13, $14 " "$15}' )
