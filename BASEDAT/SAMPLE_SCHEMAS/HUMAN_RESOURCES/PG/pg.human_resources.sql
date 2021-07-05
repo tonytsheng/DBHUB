@@ -4,7 +4,7 @@ CREATE TABLE human_resources.regions
        CONSTRAINT  region_id_nn NOT NULL 
     , region_name    VARCHAR(25) 
     );
-
+alter table human_resources.regions add primary key (region_id, region_name);
 
 CREATE TABLE human_resources.countries 
     ( country_id      CHAR(2) 
@@ -12,6 +12,7 @@ CREATE TABLE human_resources.countries
     , country_name    VARCHAR(40) 
     , region_id       numeric 
     ) ;
+alter table human_resources.countries add primary key (country_id);
 
 
 CREATE TABLE human_resources.locations
@@ -23,6 +24,7 @@ CREATE TABLE human_resources.locations
     , state_province VARCHAR(25)
     , country_id     CHAR(2)
     ) ;
+alter table human_resources.locations add primary key (location_id);
 
 CREATE TABLE human_resources.departments
     ( department_id    numeric(4)
@@ -31,6 +33,7 @@ CREATE TABLE human_resources.departments
     , manager_id       numeric(6)
     , location_id      numeric(4)
     ) ;
+alter table human_resources.departments add primary key (department_id);
 
 CREATE TABLE human_resources.jobs
     ( job_id         VARCHAR(10)
@@ -39,6 +42,7 @@ CREATE TABLE human_resources.jobs
     , min_salary     numeric(6)
     , max_salary     numeric(6)
     ) ;
+alter table human_resources.jobs add primary key (job_id);
 
 CREATE TABLE human_resources.employees
     ( employee_id    numeric(6)
@@ -61,6 +65,7 @@ CREATE TABLE human_resources.employees
     , CONSTRAINT     emp_email_uk
                      UNIQUE (email)
     ) ;
+alter table human_resources.employees add primary key (employee_id);
 
 
 CREATE TABLE human_resources.job_history
@@ -76,6 +81,7 @@ CREATE TABLE human_resources.job_history
     , CONSTRAINT    jhist_date_interval
                     CHECK (end_date > start_date)
     ) ;
+alter table human_resources.job_history add primary key (employee_id, job_id, department_id);
 
 CREATE OR REPLACE VIEW emp_details_view
   (employee_id,

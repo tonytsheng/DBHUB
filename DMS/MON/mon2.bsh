@@ -6,6 +6,7 @@
 #
 
 # echo header
+echo "+----+----+----+----+----+----+----+----+----+"
 echo -e "I U D \tB\tR/S\tTABLE "
 
 # get current date
