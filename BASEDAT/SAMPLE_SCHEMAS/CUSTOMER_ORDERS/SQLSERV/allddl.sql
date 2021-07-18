@@ -1,397 +1,25 @@
--- ------------ Write DROP-TRIGGER-stage scripts -----------
-
-DROP TRIGGER IF EXISTS customers$tr_ind_on_null
-ON customer_orders.customers;
-
-
-
-DROP TRIGGER IF EXISTS inventory$tr_ind_on_null
-ON customer_orders.inventory;
-
-
-
-DROP TRIGGER IF EXISTS orders$tr_ind_on_null
-ON customer_orders.orders;
-
-
-
-DROP TRIGGER IF EXISTS products$tr_ind_on_null
-ON customer_orders.products;
-
-
-
-DROP TRIGGER IF EXISTS shipments$tr_ind_on_null
-ON customer_orders.shipments;
-
-
-
-DROP TRIGGER IF EXISTS stores$tr_ind_on_null
-ON customer_orders.stores;
-
-
-
--- ------------ Write DROP-FUNCTION-stage scripts -----------
-
-DROP FUNCTION IF EXISTS customer_orders.customers$tr_fn_ind_on_null();
-
-
-
-DROP FUNCTION IF EXISTS customer_orders.inventory$tr_fn_ind_on_null();
-
-
-
-DROP FUNCTION IF EXISTS customer_orders.orders$tr_fn_ind_on_null();
-
-
-
-DROP FUNCTION IF EXISTS customer_orders.products$tr_fn_ind_on_null();
-
-
-
-DROP FUNCTION IF EXISTS customer_orders.shipments$tr_fn_ind_on_null();
-
-
-
-DROP FUNCTION IF EXISTS customer_orders.stores$tr_fn_ind_on_null();
-
-
-
--- ------------ Write DROP-FOREIGN-KEY-CONSTRAINT-stage scripts -----------
-
-ALTER TABLE customer_orders.inventory DROP CONSTRAINT inventory_product_id_fk;
-
-
-
-ALTER TABLE customer_orders.inventory DROP CONSTRAINT inventory_store_id_fk;
-
-
-
-ALTER TABLE customer_orders.order_items DROP CONSTRAINT order_items_order_id_fk;
-
-
-
-ALTER TABLE customer_orders.order_items DROP CONSTRAINT order_items_product_id_fk;
-
-
-
-ALTER TABLE customer_orders.order_items DROP CONSTRAINT order_items_shipment_id_fk;
-
-
-
-ALTER TABLE customer_orders.orders DROP CONSTRAINT orders_customer_id_fk;
-
-
-
-ALTER TABLE customer_orders.orders DROP CONSTRAINT orders_store_id_fk;
-
-
-
-ALTER TABLE customer_orders.shipments DROP CONSTRAINT shipments_customer_id_fk;
-
-
-
-ALTER TABLE customer_orders.shipments DROP CONSTRAINT shipments_store_id_fk;
-
-
-
--- ------------ Write DROP-CONSTRAINT-stage scripts -----------
-
-ALTER TABLE customer_orders.customers DROP CONSTRAINT customers_email_u;
-
-
-
-ALTER TABLE customer_orders.customers DROP CONSTRAINT customers_pk;
-
-
-
-ALTER TABLE customer_orders.inventory DROP CONSTRAINT inventory_pk;
-
-
-
-ALTER TABLE customer_orders.inventory DROP CONSTRAINT inventory_store_product_u;
-
-
-
-ALTER TABLE customer_orders.order_items DROP CONSTRAINT order_items_pk;
-
-
-
-ALTER TABLE customer_orders.order_items DROP CONSTRAINT order_items_product_u;
-
-
-
-ALTER TABLE customer_orders.orders DROP CONSTRAINT orders_pk;
-
-
-
-ALTER TABLE customer_orders.orders DROP CONSTRAINT orders_status_c;
-
-
-
-ALTER TABLE customer_orders.products DROP CONSTRAINT products_pk;
-
-
-
-ALTER TABLE customer_orders.shipments DROP CONSTRAINT shipment_status_c;
-
-
-
-ALTER TABLE customer_orders.shipments DROP CONSTRAINT shipments_pk;
-
-
-
-ALTER TABLE customer_orders.stores DROP CONSTRAINT store_at_least_one_address_c;
-
-
-
-ALTER TABLE customer_orders.stores DROP CONSTRAINT store_name_u;
-
-
-
-ALTER TABLE customer_orders.stores DROP CONSTRAINT stores_pk;
-
-
-
--- ------------ Write DROP-INDEX-stage scripts -----------
-
-DROP INDEX IF EXISTS customer_orders.customers_name_i;
-
-
-
-DROP INDEX IF EXISTS customer_orders.inventory_product_id_i;
-
-
-
-DROP INDEX IF EXISTS customer_orders.order_items_shipment_id_i;
-
-
-
-DROP INDEX IF EXISTS customer_orders.orders_customer_id_i;
-
-
-
-DROP INDEX IF EXISTS customer_orders.orders_store_id_i;
-
-
-
-DROP INDEX IF EXISTS customer_orders.shipments_customer_id_i;
-
-
-
-DROP INDEX IF EXISTS customer_orders.shipments_store_id_i;
-
-
-
--- ------------ Write DROP-VIEW-stage scripts -----------
-
-DROP VIEW IF EXISTS customer_orders.a_product_orders;
-
-
-
-DROP VIEW IF EXISTS customer_orders.customer_order_products;
-
-
-
-DROP VIEW IF EXISTS customer_orders.product_orders;
-
-
-
-DROP VIEW IF EXISTS customer_orders.product_reviews;
-
-
-
-DROP VIEW IF EXISTS customer_orders.store_orders;
-
-
-
--- ------------ Write DROP-TABLE-stage scripts -----------
-
-DROP TABLE IF EXISTS customer_orders.customers;
-
-
-
-DROP TABLE IF EXISTS customer_orders.inventory;
-
-
-
-DROP TABLE IF EXISTS customer_orders.order_items;
-
-
-
-DROP TABLE IF EXISTS customer_orders.orders;
-
-
-
-DROP TABLE IF EXISTS customer_orders.products;
-
-
-
-DROP TABLE IF EXISTS customer_orders.shipments;
-
-
-
-DROP TABLE IF EXISTS customer_orders.stores;
-
-
-
--- ------------ Write DROP-SEQUENCE-stage scripts -----------
-
-DROP SEQUENCE IF EXISTS customer_orders.seq_customers$def_on_null;
-
-
-
-DROP SEQUENCE IF EXISTS customer_orders.seq_inventory$def_on_null;
-
-
-
-DROP SEQUENCE IF EXISTS customer_orders.seq_orders$def_on_null;
-
-
-
-DROP SEQUENCE IF EXISTS customer_orders.seq_products$def_on_null;
-
-
-
-DROP SEQUENCE IF EXISTS customer_orders.seq_shipments$def_on_null;
-
-
-
-DROP SEQUENCE IF EXISTS customer_orders.seq_stores$def_on_null;
-
-
-
--- ------------ Write DROP-DATABASE-stage scripts -----------
-
--- ------------ Write CREATE-DATABASE-stage scripts -----------
-
-CREATE SCHEMA IF NOT EXISTS customer_orders;
-
-
-
--- ------------ Write CREATE-SEQUENCE-stage scripts -----------
-
-CREATE SEQUENCE IF NOT EXISTS customer_orders.seq_customers$def_on_null
-INCREMENT BY 1
-START WITH 393
-MAXVALUE 9223372036854775807
-MINVALUE 1
-NO CYCLE
-CACHE 20;
-
-
-
-CREATE SEQUENCE IF NOT EXISTS customer_orders.seq_inventory$def_on_null
-INCREMENT BY 1
-START WITH 567
-MAXVALUE 9223372036854775807
-MINVALUE 1
-NO CYCLE
-CACHE 20;
-
-
-
-CREATE SEQUENCE IF NOT EXISTS customer_orders.seq_orders$def_on_null
-INCREMENT BY 1
-START WITH 1951
-MAXVALUE 9223372036854775807
-MINVALUE 1
-NO CYCLE
-CACHE 20;
-
-
-
-CREATE SEQUENCE IF NOT EXISTS customer_orders.seq_products$def_on_null
-INCREMENT BY 1
-START WITH 47
-MAXVALUE 9223372036854775807
-MINVALUE 1
-NO CYCLE
-CACHE 20;
-
-
-
-CREATE SEQUENCE IF NOT EXISTS customer_orders.seq_shipments$def_on_null
-INCREMENT BY 1
-START WITH 2027
-MAXVALUE 9223372036854775807
-MINVALUE 1
-NO CYCLE
-CACHE 20;
-
-
-
-CREATE SEQUENCE IF NOT EXISTS customer_orders.seq_stores$def_on_null
-INCREMENT BY 1
-START WITH 24
-MAXVALUE 9223372036854775807
-MINVALUE 1
-NO CYCLE
-CACHE 20;
-
-
-
+use customer_orders
+go
 -- ------------ Write CREATE-TABLE-stage scripts -----------
 
-CREATE TABLE customer_orders.customers(
+CREATE TABLE customers(
     customer_id BIGINT NOT NULL,
     email_address CHARACTER VARYING(255) NOT NULL,
     full_name CHARACTER VARYING(255) NOT NULL
 )
-        WITH (
-        OIDS=FALSE
-        );
+go
 
 
-COMMENT ON TABLE customer_orders.customers
-     IS 'Details of the people placing orders';
-
-
-COMMENT ON COLUMN customer_orders.customers.customer_id
-     IS 'Auto-incrementing primary key';
-
-
-COMMENT ON COLUMN customer_orders.customers.email_address
-     IS 'The email address the person uses to access the account';
-
-
-COMMENT ON COLUMN customer_orders.customers.full_name
-     IS 'What this customer is called';
-
-
-
-CREATE TABLE customer_orders.inventory(
+CREATE TABLE inventory(
     inventory_id BIGINT NOT NULL,
     store_id NUMERIC(38,0) NOT NULL,
     product_id NUMERIC(38,0) NOT NULL,
     product_inventory NUMERIC(38,0) NOT NULL
 )
-        WITH (
-        OIDS=FALSE
-        );
+go
 
 
-COMMENT ON TABLE customer_orders.inventory
-     IS 'Details of the quantity of stock available for products at each location';
-
-
-COMMENT ON COLUMN customer_orders.inventory.inventory_id
-     IS 'Auto-incrementing primary key';
-
-
-COMMENT ON COLUMN customer_orders.inventory.store_id
-     IS 'Which location the goods are located at';
-
-
-COMMENT ON COLUMN customer_orders.inventory.product_id
-     IS 'Which item this stock is for';
-
-
-COMMENT ON COLUMN customer_orders.inventory.product_inventory
-     IS 'The current quantity in stock';
-
-
-
-CREATE TABLE customer_orders.order_items(
+CREATE TABLE order_items(
     order_id NUMERIC(38,0) NOT NULL,
     line_item_id NUMERIC(38,0) NOT NULL,
     product_id NUMERIC(38,0) NOT NULL,
@@ -399,84 +27,21 @@ CREATE TABLE customer_orders.order_items(
     quantity NUMERIC(38,0) NOT NULL,
     shipment_id NUMERIC(38,0)
 )
-        WITH (
-        OIDS=FALSE
-        );
-
-
-COMMENT ON TABLE customer_orders.order_items
-     IS 'Details of which products the customer has purchased in an order';
-
-
-COMMENT ON COLUMN customer_orders.order_items.order_id
-     IS 'The order these products belong to';
-
-
-COMMENT ON COLUMN customer_orders.order_items.line_item_id
-     IS 'An incrementing number, starting at one for each order';
-
-
-COMMENT ON COLUMN customer_orders.order_items.product_id
-     IS 'Which item was purchased';
-
-
-COMMENT ON COLUMN customer_orders.order_items.unit_price
-     IS 'How much the customer paid for one item of the product';
-
-
-COMMENT ON COLUMN customer_orders.order_items.quantity
-     IS 'How many items of this product the customer purchased';
-
-
-COMMENT ON COLUMN customer_orders.order_items.shipment_id
-     IS 'Where this product will be delivered';
+go
 
 
 
-CREATE TABLE customer_orders.orders(
+CREATE TABLE orders(
     order_id BIGINT NOT NULL,
-    order_datetime TIMESTAMP(6) WITHOUT TIME ZONE NOT NULL,
+    order_datetime TIMESTAMP(6) NOT NULL,
     customer_id NUMERIC(38,0) NOT NULL,
     order_status CHARACTER VARYING(10) NOT NULL,
     store_id NUMERIC(38,0) NOT NULL
 )
-        WITH (
-        OIDS=FALSE
-        );
+go
 
 
-COMMENT ON TABLE customer_orders.orders
-     IS 'Details of who made purchases where';
-
-
-COMMENT ON COLUMN customer_orders.orders.order_id
-     IS 'Auto-incrementing primary key';
-
-
-COMMENT ON COLUMN customer_orders.orders.order_datetime
-     IS 'When the order was placed';
-
-
-COMMENT ON COLUMN customer_orders.orders.customer_id
-     IS 'Who placed this order';
-
-
-COMMENT ON COLUMN customer_orders.orders.order_status
-     IS 'What state the order is in. Valid values are:
-OPEN - the order is in progress
-PAID - money has been received from the customer for this order
-SHIPPED - the products have been dispatched to the customer
-COMPLETE - the customer has received the order
-CANCELLED - the customer has stopped the order
-REFUNDED - there has been an issue with the order and the money has been returned to the customer';
-
-
-COMMENT ON COLUMN customer_orders.orders.store_id
-     IS 'Where this order was placed';
-
-
-
-CREATE TABLE customer_orders.products(
+CREATE TABLE products(
     product_id BIGINT NOT NULL,
     product_name CHARACTER VARYING(255) NOT NULL,
     unit_price NUMERIC(10,2),
@@ -485,96 +50,21 @@ CREATE TABLE customer_orders.products(
     image_mime_type CHARACTER VARYING(512),
     image_filename CHARACTER VARYING(512),
     image_charset CHARACTER VARYING(512),
-    image_last_updated TIMESTAMP(0) WITHOUT TIME ZONE
+    image_last_updated TIMESTAMP(0) 
 )
-        WITH (
-        OIDS=FALSE
-        );
+go
 
 
-COMMENT ON TABLE customer_orders.products
-     IS 'Details of goods that customers can purchase';
-
-
-COMMENT ON COLUMN customer_orders.products.product_id
-     IS 'Auto-incrementing primary key';
-
-
-COMMENT ON COLUMN customer_orders.products.product_name
-     IS 'What a product is called';
-
-
-COMMENT ON COLUMN customer_orders.products.unit_price
-     IS 'The monetary value of one item of this product';
-
-
-COMMENT ON COLUMN customer_orders.products.product_details
-     IS 'Further details of the product stored in JSON format';
-
-
-COMMENT ON COLUMN customer_orders.products.product_image
-     IS 'A picture of the product';
-
-
-COMMENT ON COLUMN customer_orders.products.image_mime_type
-     IS 'The mime-type of the product image';
-
-
-COMMENT ON COLUMN customer_orders.products.image_filename
-     IS 'The name of the file loaded in the image column';
-
-
-COMMENT ON COLUMN customer_orders.products.image_charset
-     IS 'The character set used to encode the image';
-
-
-COMMENT ON COLUMN customer_orders.products.image_last_updated
-     IS 'The date the image was last changed';
-
-
-
-CREATE TABLE customer_orders.shipments(
+CREATE TABLE shipments(
     shipment_id BIGINT NOT NULL,
     store_id NUMERIC(38,0) NOT NULL,
     customer_id NUMERIC(38,0) NOT NULL,
     delivery_address CHARACTER VARYING(512) NOT NULL,
     shipment_status CHARACTER VARYING(100) NOT NULL
 )
-        WITH (
-        OIDS=FALSE
-        );
+go
 
-
-COMMENT ON TABLE customer_orders.shipments
-     IS 'Details of where ordered goods will be delivered';
-
-
-COMMENT ON COLUMN customer_orders.shipments.shipment_id
-     IS 'Auto-incrementing primary key';
-
-
-COMMENT ON COLUMN customer_orders.shipments.store_id
-     IS 'Which location the goods will be transported from';
-
-
-COMMENT ON COLUMN customer_orders.shipments.customer_id
-     IS 'Who this shipment is for';
-
-
-COMMENT ON COLUMN customer_orders.shipments.delivery_address
-     IS 'Where the goods will be transported to';
-
-
-COMMENT ON COLUMN customer_orders.shipments.shipment_status
-     IS 'The current status of the shipment. Valid values are:
-CREATED - the shipment is ready for order assignment
-SHIPPED - the goods have been dispatched
-IN-TRANSIT - the goods are en-route to their destination
-DELIVERED - the good have arrived at their destination';
-
-
-
-CREATE TABLE customer_orders.stores(
+CREATE TABLE stores(
     store_id BIGINT NOT NULL,
     store_name CHARACTER VARYING(255) NOT NULL,
     web_address CHARACTER VARYING(100),
@@ -585,60 +75,10 @@ CREATE TABLE customer_orders.stores(
     logo_mime_type CHARACTER VARYING(512),
     logo_filename CHARACTER VARYING(512),
     logo_charset CHARACTER VARYING(512),
-    logo_last_updated TIMESTAMP(0) WITHOUT TIME ZONE
+    logo_last_updated TIMESTAMP(0) 
 )
-        WITH (
-        OIDS=FALSE
-        );
-
-
-COMMENT ON TABLE customer_orders.stores
-     IS 'Physical and virtual locations where people can purchase products';
-
-
-COMMENT ON COLUMN customer_orders.stores.store_id
-     IS 'Auto-incrementing primary key';
-
-
-COMMENT ON COLUMN customer_orders.stores.store_name
-     IS 'What the store is called';
-
-
-COMMENT ON COLUMN customer_orders.stores.web_address
-     IS 'The URL of a virtual store';
-
-
-COMMENT ON COLUMN customer_orders.stores.physical_address
-     IS 'The postal address of this location';
-
-
-COMMENT ON COLUMN customer_orders.stores.latitude
-     IS 'The north-south position of a physical store';
-
-
-COMMENT ON COLUMN customer_orders.stores.longitude
-     IS 'The east-west position of a physical store';
-
-
-COMMENT ON COLUMN customer_orders.stores.logo
-     IS 'An image used by this store';
-
-
-COMMENT ON COLUMN customer_orders.stores.logo_mime_type
-     IS 'The mime-type of the store logo';
-
-
-COMMENT ON COLUMN customer_orders.stores.logo_filename
-     IS 'The name of the file loaded in the image column';
-
-
-COMMENT ON COLUMN customer_orders.stores.logo_charset
-     IS 'The character set used to encode the image';
-
-
-COMMENT ON COLUMN customer_orders.stores.logo_last_updated
-     IS 'The date the image was last changed';
-
+go
+exit
 
 
 -- ------------ Write CREATE-VIEW-stage scripts -----------
