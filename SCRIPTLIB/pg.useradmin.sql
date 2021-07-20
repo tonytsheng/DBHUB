@@ -6,6 +6,7 @@ alter role alice with login;
 
 create role readwrite;
 grant connect on database pg102 to readwrite;
+grant all on database pg102 to readwrite;
 create user ttsheng with password 'ttsheng';
 grant readwrite to ttsheng;
 

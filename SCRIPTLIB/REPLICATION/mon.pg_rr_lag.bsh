@@ -1,0 +1,15 @@
+USER=$1
+PW=$2
+HOST=$3
+DB=$4
+export PGPASSWORD=${PW}
+TIMESTAMP=`date +%Y%m%d.%H%M%S`
+
+CONNSTR="--host=${HOST} --port=5432 --username=${USER} --dbname=${DB} "
+RR_LAG=`psql ${CONNSTR} <<EQ | sed '/^$/d' | egrep -v 'row|---|lag'
+SELECT extract(epoch from now() - pg_last_xact_replay_timestamp()) AS reader_lag;
+\q
+EQ`
+
+echo "+++ ${TIMESTAMP} : ${RR_LAG}"
+
