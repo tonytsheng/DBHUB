@@ -1,4 +1,7 @@
 set verify off
+
+create user ttsheng identified by 'ttsheng';
+
 grant create session,
       create table,
       create sequence,

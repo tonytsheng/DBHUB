@@ -1,0 +1,26 @@
+create user ttsheng identified by "Pass1234";
+grant create etc to ttsheng
+
+grant execute on rdsadmin.rds_file_util to ttsheng;
+grant write on directory data_pump_dir to ttsheng;
+grant read on directory data_pump_dir to ttsheng;
+
+create table titan (id number, filename varchar2(40), content blob);
+create index titan_idx_1 on titan (id);
+
+CREATE SEQUENCE titan_seq
+    INCREMENT BY 1
+    START WITH 10
+    MINVALUE 10
+    MAXVALUE 100000
+    CYCLE
+    CACHE 10;
+
+insert single row via sqlw with a blob in the blob column
+
+sql load 
+
+policy on bucket
+role that has the policy
+add role to s3 integration to the rds instance
+
