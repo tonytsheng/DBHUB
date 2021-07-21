@@ -10,20 +10,21 @@ DECLARE
   l_blob      BLOB;
   l_blob_len  INTEGER;
   l_filename  varchar2(40);
+  l_id        integer;
 BEGIN
+for r in (select id, content, filename from titan where id < 50)
+loop
+ -- dbms_output.put_line ('working on '  || r.id || ' - ' || r.filename);
   -- Get LOB locator
-  SELECT content, filename
-  INTO   l_blob, l_filename
+  SELECT content
+  INTO   l_blob
   FROM   titan
-  WHERE  id = 1;
-
-  dbms_output.put_line ('after select ');
+  WHERE  id = r.id;
 
   l_blob_len := DBMS_LOB.getlength(l_blob);
   
   -- Open the destination file.
-  --l_file := UTL_FILE.fopen('BLOB_DIR','MyImage.gif','w', 32767);
-  l_file := UTL_FILE.fopen('DATA_PUMP_DIR',l_filename,'wb', 32767);
+  l_file := UTL_FILE.fopen('DATA_PUMP_DIR',r.filename,'wb', 32767);
 
   -- Read chunks of the BLOB and write them to the file
   -- until complete.
@@ -34,15 +35,17 @@ BEGIN
   END LOOP;
   
   -- Close the file.
- -- UTL_FILE.fclose(l_file);
+UTL_FILE.fclose(l_file);
+
+end loop;
   
---EXCEPTION
---  WHEN OTHERS THEN
---    -- Close the file if something goes wrong.
---    IF UTL_FILE.is_open(l_file) THEN
---      UTL_FILE.fclose(l_file);
---    END IF;
---    RAISE;
+EXCEPTION
+  WHEN OTHERS THEN
+    -- Close the file if something goes wrong.
+    IF UTL_FILE.is_open(l_file) THEN
+      UTL_FILE.fclose(l_file);
+    END IF;
+    RAISE;
 END;
 /
 col filename format a40
