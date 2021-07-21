@@ -1,0 +1,6 @@
+export REDIS_URL=redis://ttsecnew-ro.26vdzn.ng.0001.use2.cache.amazonaws.com:6379/
+export DB_HOST=pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com
+export DB_USER=postgres
+export DB_PASS=Pass1234
+export DB_NAME=pg102
+
