@@ -1,15 +1,19 @@
-create or replace
-function loader(p_filename varchar2) return blob is
-bf bfile := bfilename('DATA_PUMP_DIR',p_filename);
-b blob;
-begin
-  dbms_lob.createtemporary(b,true);
-  dbms_lob.fileopen(bf, dbms_lob.file_readonly);
-  dbms_lob.loadfromfile(b,bf,dbms_lob.getlength(bf));
-  dbms_lob.fileclose(bf);
- return b;
- end;
-/
+DECLARE
+  l_bfile  BFILE;
+  l_blob   BLOB;
+BEGIN
+  -- this depends on your table definition, col1 being the BLOB column
+  INSERT INTO customer_orders.stores 
+    (store_id, store_name, physical_address, logo) VALUES ('9267409','TTSHENG','1',empty_blob())
+  RETURN logo INTO l_blob;
 
+  l_bfile := BFILENAME('DATA_PUMP_DIR', 'aws-logo-blog-header.png');
+  DBMS_LOB.fileopen(l_bfile, Dbms_Lob.File_Readonly);
+  DBMS_LOB.loadfromfile(l_blob, l_bfile, DBMS_LOB.getlength(l_bfile));
+  DBMS_LOB.fileclose(l_bfile);
+
+  COMMIT;
+END;
+/
 exit
 

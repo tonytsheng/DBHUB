@@ -1,2 +1,0 @@
-bcp airline out airline.bcp -d fly1 -U admin -P Pass1234 -S sqlserv100.cyt4dgtj55oy.us-east-2.rds.amazonaws.com
-
