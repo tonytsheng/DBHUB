@@ -1,0 +1,21 @@
+\conninfo
+\c [ dbname [ username ]
+\! pwd
+
+\d - tables, views, etc
+\dE[S+] [ pattern ]
+\di[S+] [ pattern ]
+\dm[S+] [ pattern ]
+\ds[S+] [ pattern ]
+\dt[S+] [ pattern ]
+\dv[S+] [ pattern ]
+In this group of commands, the letters E, i, m, s, t, and v stand for foreign table, index, materialized view, sequence, table, and view, respectively
+\dn -- schemas
+\du -- roles
+\dx -- list extensions
+
+set search_path to  "$user", public, topology, customer_orders;
+
+select version();
+
+\i <infile>

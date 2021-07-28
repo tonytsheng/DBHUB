@@ -1,0 +1,6 @@
+extract file to data_pump_dir
+upload to s3
+
+what if we dms table to s3 in csv
+use sqs to get just the column
+

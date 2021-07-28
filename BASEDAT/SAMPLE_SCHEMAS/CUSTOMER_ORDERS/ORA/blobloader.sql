@@ -1,3 +1,4 @@
+# put a file in your data pump dir
 DECLARE
   l_bfile  BFILE;
   l_blob   BLOB;
