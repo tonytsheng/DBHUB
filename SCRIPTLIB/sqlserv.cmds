@@ -4,3 +4,5 @@ select name from master.sys.databases
 
 select @@version
 
+select suser_sname(owner_sid), name from sys.databases
+
