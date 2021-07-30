@@ -1,2 +1,6 @@
 select name from sys.tables
 
+select name from master.sys.databases
+
+select @@version
+

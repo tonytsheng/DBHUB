@@ -1,0 +1,74 @@
+AWS DMS change data capture requires full logging to be turned on in SQL Server. 
+To turn on full logging in SQL Server, either enable MS-REPLICATION or CHANGE DATA CAPTURE (CDC).
+
+-- endpoints
+-- put in database name
+
+-- selection rules
+-- schema - %
+-- table - %
+
+-- ====  
+-- Enable Database for CDC template   
+-- ====  
+USE MyDB  
+GO  
+EXEC sys.sp_cdc_enable_db  
+GO
+-- need to be not express edition
+
+select name, is_cdc_enabled from master.sys.databases
+
+-- for RDS
+exec msdb.dbo.rds_cdc_enable_db 'dbname'
+go
+
+exec sys.sp_cdc_enable_table
+@source_schema = N'schema_name',
+@source_name = N'table_name',
+@role_name = NULL,
+@supports_net_changes = 1
+GO
+use fly1
+go
+exec sys.sp_cdc_enable_table
+@source_schema = N'dbo',
+@source_name = N'airline',
+@role_name = NULL,
+@supports_net_changes = 1
+GO
+
+exec sys.sp_cdc_enable_table
+@source_schema = N'dbo',
+@source_name = N'airline',
+@role_name = NULL,
+@supports_net_changes = 1
+GO
+exec sys.sp_cdc_enable_table
+@source_schema = N'dbo',
+@source_name = N'airport',
+@role_name = NULL,
+@supports_net_changes = 1
+go
+exec sys.sp_cdc_enable_table
+@source_schema = N'dbo',
+@source_name = N'employee',
+@role_name = NULL,
+@supports_net_changes = 1
+go
+exec sys.sp_cdc_enable_table
+@source_schema = N'dbo',
+@source_name = N'reservation',
+@role_name = NULL,
+@supports_net_changes = 1
+go
+
+use fly1
+go
+EXEC sys.sp_cdc_change_job @job_type = 'capture' ,@pollinginterval = 86399
+go
+exec sp_cdc_stop_job 'capture'
+go
+exec sp_cdc_start_job 'capture'
+go
+
