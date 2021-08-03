@@ -1,0 +1,87 @@
+pg102=> select now();
+              now
+-------------------------------
+ 2021-08-03 13:13:53.520034+00
+(1 row)
+
+pg102=> set timezone to 'EST';
+SET
+pg102=> select now();
+              now
+-------------------------------
+ 2021-08-03 08:14:22.214933-05
+(1 row)
+
+pg102=> set time zone 'GMT';
+SET
+pg102=> select now();
+              now
+-------------------------------
+ 2021-08-03 13:16:10.118753+00
+(1 row)
+
+pg102=> show timezone;
+ TimeZone
+----------
+ GMT
+(1 row)
+
+pg102=> show time zone;
+ TimeZone
+----------
+ GMT
+(1 row)
+
+SELECT * FROM pg_timezone_names;
+
+-- alter the database
+-- timezone is a session setting
+ALTER DATABASE postgres SET timezone TO 'Europe/Berlin';
+
+create table t1 (id numeric, tx_date timestamp);
+
+create table t1 (id numeric, tx_date timestamp, tx_date_2 timestamptz);
+insert into t1 values (1, now(), now());
+
+On the RR
+pg102=> select * from t1;
+ id |          tx_date           |           tx_date_2
+----+----------------------------+-------------------------------
+  1 | 2021-08-03 13:43:37.113014 | 2021-08-03 13:43:37.113014+00
+(1 row)
+
+pg102=> set time zone 'GMT';
+SET
+pg102=> select * from t1;
+ id |          tx_date           |           tx_date_2
+----+----------------------------+-------------------------------
+  1 | 2021-08-03 13:43:37.113014 | 2021-08-03 13:43:37.113014+00
+(1 row)
+
+pg102=> select * from t1;
+ id |          tx_date           |           tx_date_2
+----+----------------------------+-------------------------------
+  1 | 2021-08-03 13:43:37.113014 | 2021-08-03 13:43:37.113014+00
+(1 row)
+
+pg102=> SET timezone = 'America/New_York';
+SET
+pg102=> select * from t1;
+ id |          tx_date           |           tx_date_2
+----+----------------------------+-------------------------------
+  1 | 2021-08-03 13:43:37.113014 | 2021-08-03 09:43:37.113014-04
+(1 row)
+
+pg102=> set timezone = 'Europe/Tiraspol';
+SET
+pg102=> select * from t1;
+ id |          tx_date           |           tx_date_2
+----+----------------------------+-------------------------------
+  1 | 2021-08-03 13:43:37.113014 | 2021-08-03 16:43:37.113014+03
+(1 row)
+
+pg102=>
+
+pg102=> ALTER DATABASE postgres SET timezone TO 'Europe/Berlin';
+ERROR:  cannot execute ALTER DATABASE in a read-only transaction
+
