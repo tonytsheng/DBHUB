@@ -62,7 +62,7 @@ def planet(id):
     if res:
         return res
 
-    sql = "select * from customer_orders.stores"
+    sql = "select * from tutorial.planet"
     res = Database.record(sql, (id,))
 
     if res:
@@ -73,7 +73,7 @@ def planet(id):
 
 
 # Display the result of some queries
-print(fetch("SELECT * FROM customer_orders.stores"))
+print(fetch("SELECT * FROM tutorial.planet"))
 print(planet(1))
 print(planet(2))
 print(planet(3))
