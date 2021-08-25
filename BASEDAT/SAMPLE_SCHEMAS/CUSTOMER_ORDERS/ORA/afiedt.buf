@@ -1,2 +1,0 @@
-SELECT rdsadmin.rdsadmin_s3_tasks.download_from_s3( p_bucket_name    =>  'ttsheng-misc', p_directory_name =>  'DATA_PUMP_DIR') AS TASK_ID FROM DUAL
-/

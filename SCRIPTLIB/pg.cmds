@@ -3,6 +3,7 @@
 \! pwd
 
 \d - tables, views, etc
+\d+ <tablename>
 \dE[S+] [ pattern ]
 \di[S+] [ pattern ]
 \dm[S+] [ pattern ]
