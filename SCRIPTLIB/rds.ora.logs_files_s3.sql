@@ -1,7 +1,8 @@
 set linesize 200
 SELECT originating_timestamp || ' ' || message_text FROM alertlog;
 
-SQL> SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir(p_directory => 'DATA_PUMP_DIR'));
+SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir(p_directory => 'DATA_PUMP_DIR'));
+SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir('BDUMP'));
 
 SQL> SELECT rdsadmin.rdsadmin_s3_tasks.upload_to_s3(
   p_bucket_name    =>  'ttsheng-logs',
