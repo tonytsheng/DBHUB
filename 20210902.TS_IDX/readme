@@ -1,0 +1,15 @@
+generate index sql file from a list of tables
+
+put your tables into the tlist file
+
+run the ./gen_idx script
+
+take the output and run it in psql
+
+notes
++ this is postgresql syntax
++ you will need to edit the schema name, column name and index name if applicable
++ index name looks like idx_$table_name_ts right now
++ if the table name is really long, the generated index name might be too long
+
+

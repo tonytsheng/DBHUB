@@ -1,0 +1,5 @@
+for t in `cat tlist`
+do
+echo "create index idx_${t}_ts on customer_orders.$t(migrated_timestamp);"
+done
+
