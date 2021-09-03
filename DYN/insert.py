@@ -37,7 +37,7 @@ def put_flight(flight_date, flight_number, arrival_airport, arrival_delay, depar
     return response
 
 if __name__ == '__main__':
-    flight_resp = put_flight("2021-03-19", "WE270", "BKK", "", "HDY", "", "scheduled" ) 
+    flight_resp = put_flight("2021-09-05", "QF8594", "GIS", "", "WLG", "", "cancelled" ) 
     print("Put flight succeeded:")
     pprint(flight_resp)
 # snippet-end:[dynamodb.python.codeexample.MoviesItemOps01]

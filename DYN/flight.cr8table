@@ -4,4 +4,4 @@ aws dynamodb create-table \
         AttributeName=flight_number,AttributeType=S \
     --key-schema AttributeName=flight_date,KeyType=HASH  \
         AttributeName=flight_number,KeyType=RANGE  \
-    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 \
+    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 

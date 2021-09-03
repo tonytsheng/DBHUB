@@ -29,12 +29,12 @@ python2 insert.py
 print_msg "Uploading CSV to S3"
 
 sed "s/\"//g" DAT/flight.${TIMESTAMP}.csv > DAT/flight.${TIMESTAMP}.1.csv
-aws s3 cp DAT/flight.${TIMESTAMP}.1.csv  s3://ttsheng-ing
+aws s3 cp DAT/flight.${TIMESTAMP}.1.csv  s3://ttsheng-flightimp
 
 # create manifest for Quicksight
 print_msg "Generating manifest file"
 cp MAN/manifest.head MAN/manifest.${TIMESTAMP}
-for l in `aws s3 ls ttsheng-ing | awk -F' '  '{printf "\"https://ttsheng-ing.s3.amazonaws.com/%s\"\n",$4}' | sed '$!s/$/,/'`;do
+for l in `aws s3 ls ttsheng-flightimp | awk -F' '  '{printf "\"https://ttsheng-ing.s3.amazonaws.com/%s\"\n",$4}' | sed '$!s/$/,/'`;do
     echo $l >> MAN/manifest.${TIMESTAMP}
 done
 cat MAN/manifest.foot >> MAN/manifest.${TIMESTAMP}
