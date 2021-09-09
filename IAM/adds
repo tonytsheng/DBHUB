@@ -1,0 +1,8 @@
+had to add 
+aws --profile ec2
+
+to a series of scripts for dynamodb
+the ec2 profile has an entry in ~/.aws/config
+
+so the aws command for cli wasn't using this profile that had the keys associated
+
