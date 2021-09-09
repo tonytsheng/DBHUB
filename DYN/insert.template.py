@@ -17,6 +17,7 @@ PrintMsg("SSI_REP: " + ssirep)
 # snippet-start:[dynamodb.python.codeexample.MoviesItemOps01]
 from pprint import pprint
 import boto3
+boto3.setup_default_session(profile_name='ec2')
 
 def put_flight(flight_date, flight_number, arrival_airport, arrival_delay, departure_airport, departure_delay, flight_status, dynamodb=None):
     if not dynamodb:

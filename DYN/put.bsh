@@ -1,0 +1,15 @@
+aws --profile ec2 dynamodb put-item \
+  --table-name flight \
+  --item '{
+    "flight_number": {"S":"FJ1392"},
+    "flight_date": {"S":"2021-09-10"},
+    "dep": {"S":"NAN"},
+    "arr": {"S":"HKG"},
+    "status": {"S":"scheduled"}
+}' \
+--return-consumed-capacity TOTAL
+
+
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+
+# "2021-09-10", "FJ1392", "NAN", "", "HKG", "", "scheduled"

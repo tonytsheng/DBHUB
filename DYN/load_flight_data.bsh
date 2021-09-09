@@ -10,7 +10,7 @@ echo "+-----+-----+-----+-----+"
 
 TIMESTAMP=`date +%Y%m%d.%H%M%S`
 print_msg "Requesting current flight info"
-curl "http://api.aviationstack.com/v1/flights?access_key=cd1ac0711cea6e4539c43d322fc1ccd8" | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, .arrival.delay, .departure.iata, .departure.delay, .flight_status  ' | awk '/2020/{if (x)print x;x="";}{x=(!x)?$0:x","$0;}END{print x;}' >  DAT/flight.${TIMESTAMP}.csv
+curl "http://api.aviationstack.com/v1/flights?access_key=cd1ac0711cea6e4539c43d322fc1ccd8" | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, .arrival.delay, .departure.iata, .departure.delay, .flight_status  ' | awk '/2021/{if (x)print x;x="";}{x=(!x)?$0:x","$0;}END{print x;}' >  DAT/flight.${TIMESTAMP}.csv
 
 awk -F',' '{printf "    flight_resp = put_flight(%s, %s, %s, %s, %s, %s, %s ) \n",$1, $2, $3, $4, $5, $6, $7  }' DAT/flight.${TIMESTAMP}.csv | sed s/null/\"\"/g > DAT/insert.${TIMESTAMP}.py
 
@@ -21,20 +21,20 @@ echo "    print(\"Put flight succeeded:\")" >> insert.py
 echo "    pprint(flight_resp)" >> insert.py
 echo "# snippet-end:[dynamodb.python.codeexample.MoviesItemOps01]" >> insert.py
 echo "" >> insert.py
-echo "os.system('aws dynamodb scan --table-name flight --select \"COUNT\"')" >> insert.py
+echo "os.system('aws --profile ec2 dynamodb scan --table-name flight --select \"COUNT\"')" >> insert.py
 print_msg "Inserting into Dynamo"
-python2 insert.py
+python3 insert.py
 
 # upload to s3
 print_msg "Uploading CSV to S3"
 
 sed "s/\"//g" DAT/flight.${TIMESTAMP}.csv > DAT/flight.${TIMESTAMP}.1.csv
-aws s3 cp DAT/flight.${TIMESTAMP}.1.csv  s3://ttsheng-flightimp
+aws --profile ec2 s3 cp DAT/flight.${TIMESTAMP}.1.csv  s3://ttsheng-flightimp
 
 # create manifest for Quicksight
 print_msg "Generating manifest file"
 cp MAN/manifest.head MAN/manifest.${TIMESTAMP}
-for l in `aws s3 ls ttsheng-flightimp | awk -F' '  '{printf "\"https://ttsheng-ing.s3.amazonaws.com/%s\"\n",$4}' | sed '$!s/$/,/'`;do
+for l in `aws --profile ec2 s3 ls ttsheng-flightimp | awk -F' '  '{printf "\"https://ttsheng-ing.s3.amazonaws.com/%s\"\n",$4}' | sed '$!s/$/,/'`;do
     echo $l >> MAN/manifest.${TIMESTAMP}
 done
 cat MAN/manifest.foot >> MAN/manifest.${TIMESTAMP}

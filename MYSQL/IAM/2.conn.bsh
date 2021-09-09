@@ -1,5 +1,0 @@
-RDSHOST="auroramysql001-instance-1.czzdit7hfndz.us-east-2.rds.amazonaws.com"
-TOKEN="$(aws rds generate-db-auth-token --hostname $RDSHOST --port 3306 --region us-east-2 --username flyread)"
-
-mysql --host=$RDSHOST --port=3306 --ssl-ca=rds-ca-2019-root.pem --enable-cleartext-plugin --user=flyread --password=$TOKEN
-
