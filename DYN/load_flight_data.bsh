@@ -10,9 +10,11 @@ echo "+-----+-----+-----+-----+"
 
 TIMESTAMP=`date +%Y%m%d.%H%M%S`
 print_msg "Requesting current flight info"
-curl "http://api.aviationstack.com/v1/flights?access_key=cd1ac0711cea6e4539c43d322fc1ccd8" | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, .arrival.delay, .departure.iata, .departure.delay, .flight_status  ' | awk '/2021/{if (x)print x;x="";}{x=(!x)?$0:x","$0;}END{print x;}' >  DAT/flight.${TIMESTAMP}.csv
+# curl "http://api.aviationstack.com/v1/flights?access_key=cd1ac0711cea6e4539c43d322fc1ccd8" | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, .arrival.delay, .departure.iata, .departure.delay, .flight_status  ' | awk '/2021/{if (x)print x;x="";}{x=(!x)?$0:x","$0;}END{print x;}' >  DAT/flight.${TIMESTAMP}.csv
+curl "http://api.aviationstack.com/v1/flights?access_key=cd1ac0711cea6e4539c43d322fc1ccd8" | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, .departure.iata, .flight_status  ' | awk '/2021/{if (x)print x;x="";}{x=(!x)?$0:x","$0;}END{print x;}' | grep -v null >  DAT/flight.${TIMESTAMP}.csv
 
-awk -F',' '{printf "    flight_resp = put_flight(%s, %s, %s, %s, %s, %s, %s ) \n",$1, $2, $3, $4, $5, $6, $7  }' DAT/flight.${TIMESTAMP}.csv | sed s/null/\"\"/g > DAT/insert.${TIMESTAMP}.py
+#awk -F',' '{printf "    flight_resp = put_flight(%s, %s, %s, %s, %s, %s, %s ) \n",$1, $2, $3, $4, $5, $6, $7  }' DAT/flight.${TIMESTAMP}.csv | sed s/null/\"\"/g > DAT/insert.${TIMESTAMP}.py
+awk -F',' '{printf "    flight_resp = put_flight(%s, %s, %s, %s, %s  ) \n",$1, $2, $3, $4, $5   }' DAT/flight.${TIMESTAMP}.csv | sed s/null/\"\"/g > DAT/insert.${TIMESTAMP}.py
 
 cp insert.template.py insert.py
 cat DAT/insert.${TIMESTAMP}.py >> insert.py

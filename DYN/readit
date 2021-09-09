@@ -1,0 +1,10 @@
+while true
+do
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+sleep 1
+done
+
