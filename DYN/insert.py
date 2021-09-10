@@ -75,7 +75,7 @@ if __name__ == '__main__':
     flight_resp = put_flight("2021-09-10", "CA8411", "ANC", "PVG", "scheduled"  ) 
     flight_resp = put_flight("2021-09-10", "MS8074", "HKT", "AUH", "scheduled"  ) 
     flight_resp = put_flight("2021-09-10", "BC590", "UKB", "OKA", "scheduled"  ) 
-    flight_resp = put_flight("2021-09-10", "QF7405", "MEL", "SYD", "scheduled"  ) 
+    flight_resp = put_flight("2021-09-10", "QF7405", "MEL", "SYD", "unknown"  ) 
     flight_resp = put_flight("2021-09-10", "ZH2725", "XIY", "TAO", "scheduled"  ) 
     flight_resp = put_flight("2021-09-10", "JD5287", "SHE", "TAO", "scheduled"  ) 
     flight_resp = put_flight("2021-09-10", "G56439", "XIY", "TAO", "scheduled"  ) 
