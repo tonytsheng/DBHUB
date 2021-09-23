@@ -4559,3 +4559,4 @@ An error occurred (InvalidClientTokenId) when calling the StopDBCluster operatio
 An error occurred (InvalidClientTokenId) when calling the DescribeDBInstances operation: The security token included in the request is invalid.
 
 An error occurred (InvalidClientTokenId) when calling the StopDBCluster operation: The security token included in the request is invalid.
+-bash: /home/ec2-user/DBHUN/DYN/load_flight_data.bsh: No such file or directory
