@@ -1,1166 +1,4 @@
--bash: /home/ec2-user/DBHUN/DYN/load_flight_data.bsh: No such file or directory
-+-----+-----+-----+-----+
-20210923.001253 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0100 85188    0 85188    0     0  23294      0 --:--:--  0:00:03 --:--:-- 23294
-+-----+-----+-----+-----+
-20210923.001256 Inserting into Dynamo
-+-----+-----+-----+-----+
-{
-    "Count": 233,
-    "ScannedCount": 233,
-    "ConsumedCapacity": null
-}
-2021-09-23 00:12:56: HOST: ip-10-0-0-166
-2021-09-23 00:12:56: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 00:13:00 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': '3AA32LRN86K7FVHCD76C1F4D0FVV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': '3AA32LRN86K7FVHCD76C1F4D0FVV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.001301 Uploading CSV to S3
-+-----+-----+-----+-----+
-Completed 3.5 KiB/3.5 KiB (54.2 KiB/s) with 1 file(s) remainingupload: DAT/flight.20210923.001253.1.csv to s3://ttsheng-flightimp/flight.20210923.001253.1.csv
-+-----+-----+-----+-----+
-20210923.001301 Generating manifest file
-+-----+-----+-----+-----+
-+-----+-----+-----+-----+
-20210923.001302 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.145332.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.145647.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.145853.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.150014.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151220.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151325.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151351.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151739.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151942.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.152014.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.155852.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.165103.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.165231.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.170113.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.170338.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.170358.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.172854.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.180706.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.181015.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.000849.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.001253.1.csv"
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-+-----+-----+-----+-----+
-20210923.001501 Requesting current flight info
-+-----+-----+-----+-----+
-/home/ec2-user/DBHUB/DYN/load_flight_data.bsh: line 14: DAT/flight.20210923.001501.csv: No such file or directory
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0100 19447    0 19447    0     0   3810      0 --:--:--  0:00:05 --:--:--  3980100 85188    0 85188    0     0  16641      0 --:--:--  0:00:05 --:--:-- 21848
-/home/ec2-user/DBHUB/DYN/load_flight_data.bsh: line 17: DAT/insert.20210923.001501.py: No such file or directory
-awk: fatal: cannot open file `DAT/flight.20210923.001501.csv' for reading (No such file or directory)
-cp: cannot stat ‘insert.template.py’: No such file or directory
-cat: DAT/insert.20210923.001501.py: No such file or directory
-+-----+-----+-----+-----+
-20210923.001506 Inserting into Dynamo
-+-----+-----+-----+-----+
-  File "insert.py", line 1
-    print("Put flight succeeded:")
-    ^
-IndentationError: unexpected indent
-+-----+-----+-----+-----+
-20210923.001506 Uploading CSV to S3
-+-----+-----+-----+-----+
-/home/ec2-user/DBHUB/DYN/load_flight_data.bsh: line 33: DAT/flight.20210923.001501.1.csv: No such file or directory
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.001506 Generating manifest file
-+-----+-----+-----+-----+
-cp: cannot stat ‘MAN/manifest.head’: No such file or directory
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-/home/ec2-user/DBHUB/DYN/load_flight_data.bsh: line 42: MAN/manifest.20210923.001501: No such file or directory
-+-----+-----+-----+-----+
-20210923.001506 Manifest file below
-+-----+-----+-----+-----+
-cat: MAN/manifest.20210923.001501: No such file or directory
-rm: cannot remove ‘DAT/flight.20210923.001501.csv’: No such file or directory
-rm: cannot remove ‘DAT/flight.20210923.001501.1.csv’: No such file or directory
-rm: cannot remove ‘DAT/insert.20210923.001501.py’: No such file or directory
-rm: cannot remove ‘MAN/manifest.20210923.001501’: No such file or directory
-+-----+-----+-----+-----+
-20210923.001801 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:07 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:08 --:--:--     0100 85188    0 85188    0     0  10298      0 --:--:--  0:00:08 --:--:-- 21013
-+-----+-----+-----+-----+
-20210923.001809 Inserting into Dynamo
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-2021-09-23 00:18:09: HOST: ip-10-0-0-166
-2021-09-23 00:18:09: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 00:18:13 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'BUEGRVB36FO2O1MU6DU103FGRNVV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': 'BUEGRVB36FO2O1MU6DU103FGRNVV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.001813 Uploading CSV to S3
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.001813 Generating manifest file
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.001813 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-+-----+-----+-----+-----+
-20210923.003701 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0100 85190    0 85190    0     0  22318      0 --:--:--  0:00:03 --:--:-- 22318
-+-----+-----+-----+-----+
-20210923.003705 Inserting into Dynamo
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-2021-09-23 00:37:05: HOST: ip-10-0-0-166
-2021-09-23 00:37:05: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 00:37:08 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'E8TMTPFQQG89DGAKLHJHTATOL3VV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': 'E8TMTPFQQG89DGAKLHJHTATOL3VV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.003708 Uploading CSV to S3
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.003708 Generating manifest file
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.003708 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-+-----+-----+-----+-----+
-20210923.004001 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:--     0100 85185    0 85185    0     0  13291      0 --:--:--  0:00:06 --:--:-- 20286
-+-----+-----+-----+-----+
-20210923.004007 Inserting into Dynamo
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-2021-09-23 00:40:07: HOST: ip-10-0-0-166
-2021-09-23 00:40:07: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 00:40:11 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'RU0PATRU3E8S9A9AM4TDEOGU1BVV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': 'RU0PATRU3E8S9A9AM4TDEOGU1BVV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.004011 Uploading CSV to S3
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.004011 Generating manifest file
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.004011 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-+-----+-----+-----+-----+
-20210923.004301 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0100 13991    0 13991    0     0   2525      0 --:--:--  0:00:05 --:--:--  3248100 85185    0 85185    0     0  15249      0 --:--:--  0:00:05 --:--:-- 25428
-+-----+-----+-----+-----+
-20210923.004307 Inserting into Dynamo
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-2021-09-23 00:43:07: HOST: ip-10-0-0-166
-2021-09-23 00:43:07: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 00:43:11 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'TUOAUFF3CNO64APE97T3IQABFJVV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': 'TUOAUFF3CNO64APE97T3IQABFJVV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.004311 Uploading CSV to S3
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.004311 Generating manifest file
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.004311 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-+-----+-----+-----+-----+
-20210923.004801 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0100 85185    0 85185    0     0  16136      0 --:--:--  0:00:05 --:--:-- 21017
-+-----+-----+-----+-----+
-20210923.004806 Inserting into Dynamo
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-2021-09-23 00:48:06: HOST: ip-10-0-0-166
-2021-09-23 00:48:06: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 00:48:10 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': '4KAUB6R0H02T6JIC7MDASJPT0BVV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': '4KAUB6R0H02T6JIC7MDASJPT0BVV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.004810 Uploading CSV to S3
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.004810 Generating manifest file
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.004810 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-+-----+-----+-----+-----+
-20210923.011201 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0100 85420    0 85420    0     0  63937      0 --:--:--  0:00:01 --:--:-- 63985
-+-----+-----+-----+-----+
-20210923.011202 Inserting into Dynamo
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-2021-09-23 01:12:02: HOST: ip-10-0-0-166
-2021-09-23 01:12:02: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 01:12:06 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': '9NDJPOMFHLIQNS1V8ROSFPM1G3VV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': '9NDJPOMFHLIQNS1V8ROSFPM1G3VV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.011206 Uploading CSV to S3
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.011206 Generating manifest file
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.011207 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-+-----+-----+-----+-----+
-20210923.011601 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0100 85420    0 85420    0     0  30205      0 --:--:--  0:00:02 --:--:-- 30205
-+-----+-----+-----+-----+
-20210923.011604 Inserting into Dynamo
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-2021-09-23 01:16:04: HOST: ip-10-0-0-166
-2021-09-23 01:16:04: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 01:16:07 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'UON89201HRK5GC6C08P2MTA1UFVV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': 'UON89201HRK5GC6C08P2MTA1UFVV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.011608 Uploading CSV to S3
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.011608 Generating manifest file
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.011608 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-+-----+-----+-----+-----+
-20210923.012101 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0100 19453    0 19453    0     0  11524      0 --:--:--  0:00:01 --:--:-- 11517100 84496    0 84496    0     0  49615      0 --:--:--  0:00:01 --:--:-- 49586
-+-----+-----+-----+-----+
-20210923.012103 Inserting into Dynamo
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-2021-09-23 01:21:03: HOST: ip-10-0-0-166
-2021-09-23 01:21:03: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 01:21:07 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'O340UB9U752EFI7M5Q15DCV66FVV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': 'O340UB9U752EFI7M5Q15DCV66FVV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.012107 Uploading CSV to S3
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.012107 Generating manifest file
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.012107 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-XDG_SESSION_ID=153144
-SHELL=/bin/sh
-USER=ec2-user
-PATH=/usr/bin:/bin
-PWD=/home/ec2-user
-LANG=en_US.UTF-8
-HOME=/home/ec2-user
-SHLVL=2
-LOGNAME=ec2-user
-XDG_RUNTIME_DIR=/run/user/1000
-_=/usr/bin/printenv
-+-----+-----+-----+-----+
-20210923.013201 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0100 13991    0 13991    0     0   6637      0 --:--:--  0:00:02 --:--:--  6637100 84043    0 84043    0     0  39017      0 --:--:--  0:00:02 --:--:-- 39017
-+-----+-----+-----+-----+
-20210923.013203 Inserting into Dynamo
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-2021-09-23 01:32:03: HOST: ip-10-0-0-166
-2021-09-23 01:32:03: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 01:32:07 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': '0IK7TOB7KUCO5O3DD4L47BVT07VV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': '0IK7TOB7KUCO5O3DD4L47BVT07VV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.013207 Uploading CSV to S3
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.013207 Generating manifest file
-+-----+-----+-----+-----+
-Traceback (most recent call last):
-  File "/usr/bin/aws", line 19, in <module>
-    import awscli.clidriver
-  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
-    import botocore.session
-  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.configloader
-  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
-    from botocore.compat import six
-  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
-    from urllib3 import exceptions
-  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
-    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
-  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
-    from .connection import (
-  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
-    from .util.ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
-    from .ssl_ import (
-  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
-    from ..exceptions import (
-ImportError: cannot import name ProxySchemeUnsupported
-+-----+-----+-----+-----+
-20210923.013207 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-XDG_SESSION_ID=153147
+XDG_SESSION_ID=169219
 SHELL=/bin/sh
 USER=ec2-user
 PATH=/home/ec2-user/.nvm/versions/node/v10.24.1/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3@global/bin:/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/usr/local/bin:/home/ec2-user/.rvm/bin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/opt/oracle/instantclient_19_9:/opt/mssql-tools/bin:/usr/bin:/home/ec2-user/DBHUB/BIN:/usr/pgsql-12/bin/
@@ -1172,127 +10,41 @@ LOGNAME=ec2-user
 XDG_RUNTIME_DIR=/run/user/1000
 _=/usr/bin/printenv
 +-----+-----+-----+-----+
-20210923.013401 Requesting current flight info
+20211003.000001 Requesting current flight info
 +-----+-----+-----+-----+
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 13991    0 13991    0     0  12719      0 --:--:--  0:00:01 --:--:-- 12719100 84043    0 84043    0     0  75374      0 --:--:--  0:00:01 --:--:-- 75374
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0100 84855    0 84855    0     0  24147      0 --:--:--  0:00:03 --:--:-- 24147
 +-----+-----+-----+-----+
-20210923.013402 Inserting into Dynamo
+20211003.000004 Inserting into Dynamo
 +-----+-----+-----+-----+
 {
-    "Count": 269,
-    "ScannedCount": 269,
+    "Count": 3629,
+    "ScannedCount": 3629,
     "ConsumedCapacity": null
 }
-2021-09-23 01:34:02: HOST: ip-10-0-0-166
-2021-09-23 01:34:02: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
+2021-10-03 00:00:04: HOST: ip-10-0-0-166
+2021-10-03 00:00:04: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
 Put flight succeeded:
 {'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
                                       'content-length': '2',
                                       'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 01:34:06 GMT',
+                                      'date': 'Sun, 03 Oct 2021 00:00:08 GMT',
                                       'server': 'Server',
                                       'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'J8D96T5V1H3HCH2O6SI3JS2ISBVV4KQNSO5AEMVJF66Q9ASUAAJG'},
+                                      'x-amzn-requestid': 'VIUHUI9EAH5V8H4L5OI578TUCRVV4KQNSO5AEMVJF66Q9ASUAAJG'},
                       'HTTPStatusCode': 200,
-                      'RequestId': 'J8D96T5V1H3HCH2O6SI3JS2ISBVV4KQNSO5AEMVJF66Q9ASUAAJG',
+                      'RequestId': 'VIUHUI9EAH5V8H4L5OI578TUCRVV4KQNSO5AEMVJF66Q9ASUAAJG',
                       'RetryAttempts': 0}}
 +-----+-----+-----+-----+
-20210923.013407 Uploading CSV to S3
+20211003.000009 Uploading CSV to S3
 +-----+-----+-----+-----+
-Completed 3.4 KiB/3.4 KiB (35.3 KiB/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20210923.013401.1.csv to s3://ttsheng-flightimp/flight.20210923.013401.1.csv
+Completed 3.5 KiB/3.5 KiB (54.4 KiB/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20211003.000001.1.csv to s3://ttsheng-flightimp/flight.20211003.000001.1.csv
 +-----+-----+-----+-----+
-20210923.013408 Generating manifest file
-+-----+-----+-----+-----+
-+-----+-----+-----+-----+
-20210923.013408 Manifest file below
-+-----+-----+-----+-----+
-{
-    "fileLocations": [
-        {
-            "URIs": [
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.145332.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.145647.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.145853.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.150014.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151220.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151325.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151351.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151739.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.151942.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.152014.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.155852.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.165103.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.165231.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.170113.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.170338.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.170358.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.172854.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.180706.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210909.181015.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.000849.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.001253.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.011301.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.012013.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.013401.1.csv"
-            ]
-        }
-    ],
-    "globalUploadSettings": {
-       "format": "CSV",
-        "delimiter": ",",
-        "textqualifier": "'",
-        "containsHeader": "false"
-    }
-}
-XDG_SESSION_ID=153177
-SHELL=/bin/sh
-USER=ec2-user
-PATH=/home/ec2-user/.nvm/versions/node/v10.24.1/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3@global/bin:/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/usr/local/bin:/home/ec2-user/.rvm/bin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/opt/oracle/instantclient_19_9:/opt/mssql-tools/bin:/usr/bin:/home/ec2-user/DBHUB/BIN:/usr/pgsql-12/bin/
-PWD=/home/ec2-user
-LANG=en_US.UTF-8
-HOME=/home/ec2-user
-SHLVL=2
-LOGNAME=ec2-user
-XDG_RUNTIME_DIR=/run/user/1000
-_=/usr/bin/printenv
-+-----+-----+-----+-----+
-20210923.020001 Requesting current flight info
-+-----+-----+-----+-----+
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0100 13991    0 13991    0     0   6710      0 --:--:--  0:00:02 --:--:--  6710100 84103    0 84103    0     0  39410      0 --:--:--  0:00:02 --:--:-- 39410
-+-----+-----+-----+-----+
-20210923.020003 Inserting into Dynamo
-+-----+-----+-----+-----+
-{
-    "Count": 269,
-    "ScannedCount": 269,
-    "ConsumedCapacity": null
-}
-2021-09-23 02:00:03: HOST: ip-10-0-0-166
-2021-09-23 02:00:03: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 23 Sep 2021 02:00:06 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'M37B69AD1VDCSARKAFQOKEMJSJVV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': 'M37B69AD1VDCSARKAFQOKEMJSJVV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
-+-----+-----+-----+-----+
-20210923.020007 Uploading CSV to S3
-+-----+-----+-----+-----+
-Completed 3.4 KiB/3.4 KiB (51.4 KiB/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20210923.020001.1.csv to s3://ttsheng-flightimp/flight.20210923.020001.1.csv
-+-----+-----+-----+-----+
-20210923.020008 Generating manifest file
+20211003.000009 Generating manifest file
 +-----+-----+-----+-----+
 +-----+-----+-----+-----+
-20210923.020008 Manifest file below
+20211003.000010 Manifest file below
 +-----+-----+-----+-----+
 {
     "fileLocations": [
@@ -1322,7 +74,70 @@ Completed 3.4 KiB/3.4 KiB (51.4 KiB/s) with 1 file(s) remainingupload: DBHUB/DY
 "https://ttsheng-ing.s3.amazonaws.com/flight.20210923.011301.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20210923.012013.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20210923.013401.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.020001.1.csv"
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.020001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.030001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.050001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.060001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210923.070001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210924.010001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210924.020001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210924.030001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210924.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210924.050001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210924.060001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210924.070001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210924.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210924.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210925.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210925.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210925.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210925.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210925.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210925.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210926.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210926.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210926.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210926.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210926.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210926.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210927.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210927.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210927.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210927.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210927.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210927.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210928.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210928.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210928.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210928.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210928.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210928.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210929.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210929.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210929.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210929.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210929.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210929.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210930.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210930.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210930.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210930.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210930.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20210930.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211001.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211001.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211001.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211001.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211001.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211001.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211002.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211002.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211002.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211002.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211002.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211002.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211003.000001.1.csv"
             ]
         }
     ],
