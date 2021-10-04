@@ -6,3 +6,37 @@ select @@version
 
 select suser_sname(owner_sid), name from sys.databases
 
+create login dms_adventureworks with password ='Pass1234', default_database=Adventureworks
+
+-- have to run this as admin
+exec msdb.dbo.rds_download_from_s3
+@s3_arn_of_file='arn:aws:s3:::ttsheng-dbs3/sqlserver/ProductVendor.csv',
+@rds_file_path='D:\S3\seed_data\ProductVendor.csv',
+@overwrite_file=1;
+go
+
+1> exec msdb.dbo.rds_gather_file_details;
+2> go
+task_id     task_type                                          lifecycle                                          created_at
+----------- -------------------------------------------------- -------------------------------------------------- -----------------------
+          3 LIST_FILES_ON_DISK                                 CREATED                                            2021-10-03 03:20:26.747
+Task Id: 3ed successfully.
+To get file details (path/size/last modified date), please run 'exec msdb.dbo.rds_fn_list_file_details(3)'
+
+1> SELECT * FROM msdb.dbo.rds_fn_list_file_details(3);
+2> go
+filepath                                                                                                                                                                                                                                                         size_in_bytes                                                                                                                                                                                            last_modified_utc                      is_directory
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------- ------------
+D:\S3\seed_data\                                                                                                                                                                                                                                                 0                                                                                                                                                                                                                   2021-10-03 03:20:22.2160000 true
+D:\S3\seed_data\ProductVendor.csv                                                                                                                                                                                                                                35804                                                                                                                                                                                                               2021-10-03 03:20:22.2160000 false
+
+(2 rows affected)
+1>
+
+1> use adventureworks
+2> go
+Changed database context to 'AdventureWorks'.
+1> grant alter on Purchasing.ProductVendor to dms_adventureworks
+2> go
+
+
