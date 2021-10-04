@@ -1,4 +1,4 @@
-XDG_SESSION_ID=171656
+XDG_SESSION_ID=171928
 SHELL=/bin/sh
 USER=ec2-user
 PATH=/home/ec2-user/.nvm/versions/node/v10.24.1/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3@global/bin:/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/usr/local/bin:/home/ec2-user/.rvm/bin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/opt/oracle/instantclient_19_9:/opt/mssql-tools/bin:/usr/bin:/home/ec2-user/DBHUB/BIN:/usr/pgsql-12/bin/
@@ -10,41 +10,41 @@ LOGNAME=ec2-user
 XDG_RUNTIME_DIR=/run/user/1000
 _=/usr/bin/printenv
 +-----+-----+-----+-----+
-20211004.120001 Requesting current flight info
+20211004.160001 Requesting current flight info
 +-----+-----+-----+-----+
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0100 83343    0 83343    0     0  14593      0 --:--:--  0:00:05 --:--:-- 18724
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0100 13991    0 13991    0     0   2354      0 --:--:--  0:00:05 --:--:--  2968100 82051    0 82051    0     0  13709      0 --:--:--  0:00:05 --:--:-- 21851
 +-----+-----+-----+-----+
-20211004.120007 Inserting into Dynamo
+20211004.160007 Inserting into Dynamo
 +-----+-----+-----+-----+
 {
-    "Count": 4207,
-    "ScannedCount": 4207,
+    "Count": 4252,
+    "ScannedCount": 4252,
     "ConsumedCapacity": null
 }
-2021-10-04 12:00:07: HOST: ip-10-0-0-166
-2021-10-04 12:00:07: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
+2021-10-04 16:00:07: HOST: ip-10-0-0-166
+2021-10-04 16:00:07: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
 Put flight succeeded:
 {'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
                                       'content-length': '2',
                                       'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Mon, 04 Oct 2021 12:00:10 GMT',
+                                      'date': 'Mon, 04 Oct 2021 16:00:11 GMT',
                                       'server': 'Server',
                                       'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'K1UDBJ22N959DOTJJ61OSAO01RVV4KQNSO5AEMVJF66Q9ASUAAJG'},
+                                      'x-amzn-requestid': '7BCS5H5A9OMEHE4HV9QEVMBRP7VV4KQNSO5AEMVJF66Q9ASUAAJG'},
                       'HTTPStatusCode': 200,
-                      'RequestId': 'K1UDBJ22N959DOTJJ61OSAO01RVV4KQNSO5AEMVJF66Q9ASUAAJG',
+                      'RequestId': '7BCS5H5A9OMEHE4HV9QEVMBRP7VV4KQNSO5AEMVJF66Q9ASUAAJG',
                       'RetryAttempts': 0}}
 +-----+-----+-----+-----+
-20211004.120011 Uploading CSV to S3
+20211004.160012 Uploading CSV to S3
 +-----+-----+-----+-----+
-Completed 3.4 KiB/3.4 KiB (49.2 KiB/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20211004.120001.1.csv to s3://ttsheng-flightimp/flight.20211004.120001.1.csv
+Completed 3.5 KiB/3.5 KiB (50.2 KiB/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20211004.160001.1.csv to s3://ttsheng-flightimp/flight.20211004.160001.1.csv
 +-----+-----+-----+-----+
-20211004.120012 Generating manifest file
+20211004.160012 Generating manifest file
 +-----+-----+-----+-----+
 +-----+-----+-----+-----+
-20211004.120012 Manifest file below
+20211004.160013 Manifest file below
 +-----+-----+-----+-----+
 {
     "fileLocations": [
@@ -146,7 +146,8 @@ Completed 3.4 KiB/3.4 KiB (49.2 KiB/s) with 1 file(s) remainingupload: DBHUB/DY
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211004.000001.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211004.040001.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211004.080001.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20211004.120001.1.csv"
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211004.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211004.160001.1.csv"
             ]
         }
     ],
