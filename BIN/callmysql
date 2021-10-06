@@ -10,19 +10,19 @@ usage(){
     exit 1
 }
 
-if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${HOST} ] || [ -z ${SID} ]; then
+if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${HOST} ]; then
     usage
     exit 1
 fi
  
 CREDS="${USER}/${PW}"
-CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${HOST})(PORT=1521))(CONNECT_DATA=(SID=${SID})))"
+CONNSTR="-h ${HOST} -u ${USER} -p${PW} "
 
 if [ -z ${INFILE} ]; then
-    sqlplus ${CONNSTR}
+    mysql ${CONNSTR}
 else
     #suppress output if using an inputfile 
-    sqlplus -S ${CONNSTR} @${INFILE}
+    mysql -S ${CONNSTR} @${INFILE}
 fi
 
 
