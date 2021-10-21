@@ -1,4 +1,4 @@
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 100
         , 'Steven'
         , 'King'
@@ -12,7 +12,7 @@ INSERT INTO employee VALUES
         , 90
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 101
         , 'Neena'
         , 'Kochhar'
@@ -26,7 +26,7 @@ INSERT INTO employee VALUES
         , 90
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 102
         , 'Lex'
         , 'De Haan'
@@ -40,7 +40,7 @@ INSERT INTO employee VALUES
         , 90
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 103
         , 'Alexander'
         , 'Hunold'
@@ -54,7 +54,7 @@ INSERT INTO employee VALUES
         , 60
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 104
         , 'Bruce'
         , 'Ernst'
@@ -68,7 +68,7 @@ INSERT INTO employee VALUES
         , 60
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 105
         , 'David'
         , 'Austin'
@@ -82,7 +82,7 @@ INSERT INTO employee VALUES
         , 60
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 106
         , 'Valli'
         , 'Pataballa'
@@ -96,7 +96,7 @@ INSERT INTO employee VALUES
         , 60
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 107
         , 'Diana'
         , 'Lorentz'
@@ -110,7 +110,7 @@ INSERT INTO employee VALUES
         , 60
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 108
         , 'Nancy'
         , 'Greenberg'
@@ -124,7 +124,7 @@ INSERT INTO employee VALUES
         , 100
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 109
         , 'Daniel'
         , 'Faviet'
@@ -138,7 +138,7 @@ INSERT INTO employee VALUES
         , 100
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 110
         , 'John'
         , 'Chen'
@@ -152,7 +152,7 @@ INSERT INTO employee VALUES
         , 100
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 111
         , 'Ismael'
         , 'Sciarra'
@@ -166,7 +166,7 @@ INSERT INTO employee VALUES
         , 100
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 112
         , 'Jose Manuel'
         , 'Urman'
@@ -180,7 +180,7 @@ INSERT INTO employee VALUES
         , 100
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 113
         , 'Luis'
         , 'Popp'
@@ -194,7 +194,7 @@ INSERT INTO employee VALUES
         , 100
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 114
         , 'Den'
         , 'Raphaely'
@@ -208,7 +208,7 @@ INSERT INTO employee VALUES
         , 30
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 115
         , 'Alexander'
         , 'Khoo'
@@ -222,7 +222,7 @@ INSERT INTO employee VALUES
         , 30
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 116
         , 'Shelli'
         , 'Baida'
@@ -236,7 +236,7 @@ INSERT INTO employee VALUES
         , 30
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 117
         , 'Sigal'
         , 'Tobias'
@@ -250,7 +250,7 @@ INSERT INTO employee VALUES
         , 30
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 118
         , 'Guy'
         , 'Himuro'
@@ -264,7 +264,7 @@ INSERT INTO employee VALUES
         , 30
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 119
         , 'Karen'
         , 'Colmenares'
@@ -278,7 +278,7 @@ INSERT INTO employee VALUES
         , 30
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 120
         , 'Matthew'
         , 'Weiss'
@@ -292,7 +292,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 121
         , 'Adam'
         , 'Fripp'
@@ -306,7 +306,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 122
         , 'Payam'
         , 'Kaufling'
@@ -320,7 +320,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 123
         , 'Shanta'
         , 'Vollman'
@@ -334,7 +334,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 124
         , 'Kevin'
         , 'Mourgos'
@@ -348,7 +348,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 125
         , 'Julia'
         , 'Nayer'
@@ -362,7 +362,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 126
         , 'Irene'
         , 'Mikkilineni'
@@ -376,7 +376,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 127
         , 'James'
         , 'Landry'
@@ -390,7 +390,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 128
         , 'Steven'
         , 'Markle'
@@ -404,7 +404,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 129
         , 'Laura'
         , 'Bissot'
@@ -418,7 +418,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 130
         , 'Mozhe'
         , 'Atkinson'
@@ -432,7 +432,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 131
         , 'James'
         , 'Marlow'
@@ -446,7 +446,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 132
         , 'TJ'
         , 'Olson'
@@ -460,7 +460,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 133
         , 'Jason'
         , 'Mallin'
@@ -474,7 +474,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 134
         , 'Michael'
         , 'Rogers'
@@ -488,7 +488,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 135
         , 'Ki'
         , 'Gee'
@@ -502,7 +502,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 136
         , 'Hazel'
         , 'Philtanker'
@@ -516,7 +516,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 137
         , 'Renske'
         , 'Ladwig'
@@ -530,7 +530,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 138
         , 'Stephen'
         , 'Stiles'
@@ -544,7 +544,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 139
         , 'John'
         , 'Seo'
@@ -558,7 +558,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 140
         , 'Joshua'
         , 'Patel'
@@ -572,7 +572,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 141
         , 'Trenna'
         , 'Rajs'
@@ -586,7 +586,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 142
         , 'Curtis'
         , 'Davies'
@@ -600,7 +600,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 143
         , 'Randall'
         , 'Matos'
@@ -614,7 +614,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 144
         , 'Peter'
         , 'Vargas'
@@ -628,7 +628,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 145
         , 'John'
         , 'Russell'
@@ -642,7 +642,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 146
         , 'Karen'
         , 'Partners'
@@ -656,7 +656,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 147
         , 'Alberto'
         , 'Errazuriz'
@@ -670,7 +670,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 148
         , 'Gerald'
         , 'Cambrault'
@@ -684,7 +684,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 149
         , 'Eleni'
         , 'Zlotkey'
@@ -698,7 +698,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 150
         , 'Peter'
         , 'Tucker'
@@ -712,7 +712,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 151
         , 'David'
         , 'Bernstein'
@@ -726,7 +726,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 152
         , 'Peter'
         , 'Hall'
@@ -740,7 +740,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 153
         , 'Christopher'
         , 'Olsen'
@@ -754,7 +754,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 154
         , 'Nanette'
         , 'Cambrault'
@@ -768,7 +768,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 155
         , 'Oliver'
         , 'Tuvault'
@@ -782,7 +782,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 156
         , 'Janette'
         , 'King'
@@ -796,7 +796,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 157
         , 'Patrick'
         , 'Sully'
@@ -810,7 +810,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 158
         , 'Allan'
         , 'McEwen'
@@ -824,7 +824,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 159
         , 'Lindsey'
         , 'Smith'
@@ -838,7 +838,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 160
         , 'Louise'
         , 'Doran'
@@ -852,7 +852,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 161
         , 'Sarath'
         , 'Sewall'
@@ -866,7 +866,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 162
         , 'Clara'
         , 'Vishney'
@@ -880,7 +880,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 163
         , 'Danielle'
         , 'Greene'
@@ -894,7 +894,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 164
         , 'Mattea'
         , 'Marvins'
@@ -908,7 +908,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 165
         , 'David'
         , 'Lee'
@@ -922,7 +922,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 166
         , 'Sundar'
         , 'Ande'
@@ -936,7 +936,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 167
         , 'Amit'
         , 'Banda'
@@ -950,7 +950,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 168
         , 'Lisa'
         , 'Ozer'
@@ -964,7 +964,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 169  
         , 'Harrison'
         , 'Bloom'
@@ -978,7 +978,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 170
         , 'Tayler'
         , 'Fox'
@@ -992,7 +992,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 171
         , 'William'
         , 'Smith'
@@ -1006,7 +1006,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 172
         , 'Elizabeth'
         , 'Bates'
@@ -1020,7 +1020,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 173
         , 'Sundita'
         , 'Kumar'
@@ -1034,7 +1034,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 174
         , 'Ellen'
         , 'Abel'
@@ -1048,7 +1048,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 175
         , 'Alyssa'
         , 'Hutton'
@@ -1062,7 +1062,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 176
         , 'Jonathon'
         , 'Taylor'
@@ -1076,7 +1076,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 177
         , 'Jack'
         , 'Livingston'
@@ -1090,7 +1090,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 178
         , 'Kimberely'
         , 'Grant'
@@ -1104,7 +1104,7 @@ INSERT INTO employee VALUES
         , NULL
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 179
         , 'Charles'
         , 'Johnson'
@@ -1118,7 +1118,7 @@ INSERT INTO employee VALUES
         , 80
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 180
         , 'Winston'
         , 'Taylor'
@@ -1132,7 +1132,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 181
         , 'Jean'
         , 'Fleaur'
@@ -1146,7 +1146,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 182
         , 'Martha'
         , 'Sullivan'
@@ -1160,7 +1160,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 183
         , 'Girard'
         , 'Geoni'
@@ -1174,7 +1174,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 184
         , 'Nandita'
         , 'Sarchand'
@@ -1188,7 +1188,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 185
         , 'Alexis'
         , 'Bull'
@@ -1202,7 +1202,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 186
         , 'Julia'
         , 'Dellinger'
@@ -1216,7 +1216,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 187
         , 'Anthony'
         , 'Cabrio'
@@ -1230,7 +1230,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 188
         , 'Kelly'
         , 'Chung'
@@ -1244,7 +1244,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 189
         , 'Jennifer'
         , 'Dilly'
@@ -1258,7 +1258,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 190
         , 'Timothy'
         , 'Gates'
@@ -1272,7 +1272,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 191
         , 'Randall'
         , 'Perkins'
@@ -1286,7 +1286,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 192
         , 'Sarah'
         , 'Bell'
@@ -1300,7 +1300,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 193
         , 'Britney'
         , 'Everett'
@@ -1314,7 +1314,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 194
         , 'Samuel'
         , 'McCain'
@@ -1328,7 +1328,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 195
         , 'Vance'
         , 'Jones'
@@ -1342,7 +1342,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 196
         , 'Alana'
         , 'Walsh'
@@ -1356,7 +1356,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 197
         , 'Kevin'
         , 'Feeney'
@@ -1370,7 +1370,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 198
         , 'Donald'
         , 'OConnell'
@@ -1384,7 +1384,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 199
         , 'Douglas'
         , 'Grant'
@@ -1398,7 +1398,7 @@ INSERT INTO employee VALUES
         , 50
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 200
         , 'Jennifer'
         , 'Whalen'
@@ -1412,7 +1412,7 @@ INSERT INTO employee VALUES
         , 10
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 201
         , 'Michael'
         , 'Hartstein'
@@ -1426,7 +1426,7 @@ INSERT INTO employee VALUES
         , 20
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 202
         , 'Pat'
         , 'Fay'
@@ -1440,7 +1440,7 @@ INSERT INTO employee VALUES
         , 20
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 203
         , 'Susan'
         , 'Mavris'
@@ -1454,7 +1454,7 @@ INSERT INTO employee VALUES
         , 40
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 204
         , 'Hermann'
         , 'Baer'
@@ -1468,7 +1468,7 @@ INSERT INTO employee VALUES
         , 70
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 205
         , 'Shelley'
         , 'Higgins'
@@ -1482,7 +1482,7 @@ INSERT INTO employee VALUES
         , 110
         );
 
-INSERT INTO employee VALUES 
+INSERT INTO fly.employee VALUES 
         ( 206
         , 'William'
         , 'Gietz'
@@ -1495,5 +1495,5 @@ INSERT INTO employee VALUES
         , 205
         , 110
         );
-select count(*) from employee;
+select count(*) from fly.employee;
 \q
