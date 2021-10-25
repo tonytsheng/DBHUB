@@ -7,5 +7,8 @@ select pid as process_id,
        state,
        state_change
 from pg_stat_activity;
+
+select * from pg_stat_activity where datname = 'pg102';
+
 \quit;
 
