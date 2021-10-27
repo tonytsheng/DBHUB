@@ -42,6 +42,11 @@ sudo yum install mysql
 
 mysql -h dnshostname -P 3306 -u admin -p
 
+## Sybase ASE
+# download and install
+sudo yum install devart-odbc-ase.i386.rpm
+edit /etc/odbc.ini
+
 ## MS Sql Server
 download and install
 sudo su

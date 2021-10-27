@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# SAP Adaptive Server Enterprise page size (KB):        2048
+# Master device path:   /opt/sap/data/master.dat
+# Error log path:       /home/sybase/ASE-16_0/install/ase100.log
+# Configuration file path:      /opt/sap/configfile
+# Directory for shared memory files:    /home/sybase//ASE-16_0
+# License properties file:      /home/sybase/ASE-16_0/sysam/ase100.properties
+# Interfaces file directory:    /home/sybase
+# SAP Adaptive Server Enterprise name:  ase100
+#
+/opt/sap/ASE-16_0/bin/dataserver \
+-d/opt/sap/data/master.dat \
+-e/home/sybase/ASE-16_0/install/ase100.log \
+-c/opt/sap/configfile \
+-M/home/sybase//ASE-16_0 \
+-N/home/sybase/ASE-16_0/sysam/ase100.properties \
+-i/home/sybase \
+-sase100 \
+
