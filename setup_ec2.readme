@@ -44,8 +44,14 @@ mysql -h dnshostname -P 3306 -u admin -p
 
 ## Sybase ASE
 # download and install
-sudo yum install devart-odbc-ase.i386.rpm
-edit /etc/odbc.ini
+SDK for Sybase ASE which includes open client
+linuxamd64164001.tgz
+tar xvf 
+./setup.bin
+choose America. accept license agreement. choose typical. install path /home/ec2-user/sybase/sap
+source /home/ec2-user/sybase/sap/SYBASE.sh
+create interfaces file in /home/ec2-user/sybase/sap
+isql will be run from /home/ec2-user/sybase/sap//sybase/sap/OCS-16_0/bin/
 
 ## MS Sql Server
 download and install
