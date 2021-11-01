@@ -7,12 +7,31 @@ fi
 
 # User specific environment and startup programs
 
-export ORACLE_HOME=/opt/oracle/instantclient_19_9
-export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9
-export PATH=$PATH:$ORACLE_HOME:/opt/mssql-tools/bin:/usr/bin:/home/ec2-user/DBHUB/BIN
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
-# User specific environment and startup programs
+export PATH
+source $HOME/.nvm/nvm.sh
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export ORACLE_HOME=/opt/oracle/instantclient_19_9
+export ORACLE_SID=ttsora10
+export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9
+export PATH=$PATH:$ORACLE_HOME:/opt/mssql-tools/bin:/usr/bin:/home/ec2-user/DBHUB/BIN:/usr/pgsql-12/bin/:/home/ec2-user/sybase/sap/OCS-16_0/bin
+export NEPTUNE_ENDPOINT=nep1002.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
+export SERVICE_REGION=us-east-2
+export GIT_EDITOR=vim
+export SAP_JRE8="/home/ec2-user/sybase/sap/shared/SAPJRE-8_1_075_64BIT"
+export SAP_JRE8_64="/home/ec2-user/sybase/sap/shared/SAPJRE-8_1_075_64BIT"
+export SYBASE_OCS="OCS-16_0"
+export INCLUDE="/home/ec2-user/sybase/sap/OCS-16_0/include":$INCLUDE
+export LIB="/home/ec2-user/sybase/sap/OCS-16_0/lib":$LIB
+export LD_LIBRARY_PATH="/home/ec2-user/sybase/sap/OCS-16_0/lib:/home/ec2-user/sybase/sap/OCS-16_0/lib3p64:/home/ec2-user/sybase/sap/OCS-16_0/lib3p":$LD_LIBRARY_PATH
+export SYBASE="/home/ec2-user/sybase/sap"
+export LD_LIBRARY_PATH="/home/ec2-user/sybase/sap/DataAccess/ODBC/lib":$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="/home/ec2-user/sybase/sap/DataAccess64/ODBC/lib":$LD_LIBRARY_PATH
+export SYBROOT="/home/ec2-user/sybase/sap"
 
 alias push_dbhub='git push git@github.com:tonytsheng/DBHUB.git master'
 complete -C aws_completer aws
-
+alias aws='aws --profile ec2'

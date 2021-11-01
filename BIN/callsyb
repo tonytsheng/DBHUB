@@ -1,0 +1,29 @@
+#set -x
+USER=$1
+PW=$2
+SID=$3
+INFILE=$4
+
+usage(){
+    echo "Usage:"
+    echo "callsyb [-S] USER PW HOST SID [INFILE]"
+    exit 1
+}
+
+if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${SID} ]; then
+    usage
+    exit 1
+fi
+export SYBASE="/home/ec2-user/sybase/sap"
+export SYBASE_OCS="OCS-16_0"
+ 
+CONNSTR="-U ${USER} -P${PW} -S ${SID}"
+
+if [ -z ${INFILE} ]; then
+    ${SYBASE}/${SYBASE_OCS}/bin/isql ${CONNSTR}
+else
+    #suppress output if using an inputfile 
+    ${SYBASE}/${SYBASE_OCS}/bin/isql ${CONNSTR} -i ${INFILE}
+fi
+
+
