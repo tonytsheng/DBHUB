@@ -1,0 +1,1 @@
+pgbench -c 50 -p 1 -T 600 -h pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com -U postgres -p 5432 pg102

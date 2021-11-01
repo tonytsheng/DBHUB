@@ -45,7 +45,7 @@ mysql -h dnshostname -P 3306 -u admin -p
 ## Sybase ASE
 # download and install
 SDK for Sybase ASE which includes open client
-linuxamd64164001.tgz
+download from linuxamd64164001.tgz SAP downloads
 tar xvf 
 ./setup.bin
 choose America. accept license agreement. choose typical. install path /home/ec2-user/sybase/sap
