@@ -9,7 +9,7 @@ go
 drop table reservation
 go
 create table airline 
-    ( id numeric not null identity
+    ( id numeric identity not null
     , airline_name varchar(90) not null 
     , ind varchar(30)
     , abbreviation varchar(3)
@@ -60,14 +60,15 @@ CREATE TABLE employee
     , first_name     VARCHAR(20) not null
     , last_name      VARCHAR(25) not null
     , email          VARCHAR(25) not null
-    , phone_number   VARCHAR(20)
-    , hire_date      DATE
-    , job_id         VARCHAR(10)
-    , salary         numeric
-    , commission_pct numeric
-    , manager_id     numeric
-    , department_id  numeric
-    ) ;
+    , phone_number   VARCHAR(20) null
+    , hire_date      DATE null
+    , job_id         VARCHAR(10) null
+    , salary         numeric null
+    , commission_pct numeric null
+    , manager_id     numeric null
+    , department_id  numeric null
+    ) 
+go
 
 CREATE UNIQUE INDEX emp_emp_id_pk ON employee (employee_id) 
 go

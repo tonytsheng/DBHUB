@@ -11,7 +11,8 @@ INSERT INTO employee VALUES
         , 'Kochhar'
         , 'NKOCHHAR'
         , '515.123.4568'
-        , '21-09-2005' 
+	, getdate()
+--        , '21-09-2005' 
         , 'AD_VP'
         , 17000
         , NULL
