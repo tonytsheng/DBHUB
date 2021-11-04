@@ -3,6 +3,13 @@ $ mongoimport --db test --collection inventory \
         --authenticationDatabase admin --username admin --password Pass1234 \
         --drop --file DAT/inventory.crud.json
 
+## make sure input file is just json records:
+## no commas, one json doc per row
+#{ "item": "journal", "qty": 25, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" }
+#{ "item": "notebook", "qty": 50, "size": { "h": 8.5, "w": 11, "uom": "in" }, "status": "A" }
+#{ "item": "paper", "qty": 100, "size": { "h": 8.5, "w": 11, "uom": "in" }, "status": "D" }
+
+
 # shell commands
 $ mongo
 db.help()
@@ -50,5 +57,13 @@ s0:PRIMARY> db.createCollection("tonechart")
 }
 s0:PRIMARY> db.getCollectionNames()
 [ "inventory", "tonechart" ]
+
+s0:PRIMARY> db.nfl.count()
+866
+
+s0:PRIMARY> db.nfl.find({"title" : {$regex: "BUD"}})
+
+s0:PRIMARY> db.nfl.find({"title" : {$regex: "BUD"}}).count()
+99
 
 
