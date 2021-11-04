@@ -1,0 +1,54 @@
+# bulk import from command line
+$ mongoimport --db test --collection inventory \
+        --authenticationDatabase admin --username admin --password Pass1234 \
+        --drop --file DAT/inventory.crud.json
+
+# shell commands
+$ mongo
+db.help()
+
+use admin
+db.auth("admin","Pass1234")
+use test
+rs.status
+
+s0:PRIMARY> db.getCollectionNames()
+[ "inventory" ]
+
+s0:PRIMARY> db.inventory.find()
+{ "_id" : ObjectId("6183e76bb4a0c61187cdd3ce"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("6183e76bb4a0c61187cdd3cf"), "item" : "paper", "qty" : 100, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "D" }
+{ "_id" : ObjectId("6183e76bb4a0c61187cdd3d0"), "item" : "planner", "qty" : 75, "size" : { "h" : 22.85, "w" : 30, "uom" : "cm" }, "status" : "D" }
+{ "_id" : ObjectId("6183e76bb4a0c61187cdd3d1"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("6183e76bb4a0c61187cdd3d2"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+
+s0:PRIMARY> db.inventory.find( {item: "notebook"})
+{ "_id" : ObjectId("6183e76bb4a0c61187cdd3d2"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+
+
+s0:PRIMARY> db.inventory.find( {item: "postcard"})
+{ "_id" : ObjectId("6183e9d3dbc1da23cb031df2"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("6183e9d3dbc1da23cb031df3"), "item" : "postcard", "qty" : 5, "size" : { "h" : 1, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("6183e9d3dbc1da23cb031df4"), "item" : "postcard", "qty" : 95, "size" : { "h" : 5, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("6183e9d3dbc1da23cb031df5"), "item" : "postcard", "qty" : 35, "size" : { "h" : 55, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("6183e9d3dbc1da23cb031df6"), "item" : "postcard", "qty" : 15, "size" : { "h" : 16, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("6183e9d3dbc1da23cb031df7"), "item" : "postcard", "qty" : 45, "size" : { "h" : 17, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("6183e9d3dbc1da23cb031df8"), "item" : "postcard", "qty" : 45, "size" : { "h" : 19, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("6183e9d3dbc1da23cb031df9"), "item" : "postcard", "qty" : 45, "size" : { "h" : 18, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+
+s0:PRIMARY> db.createCollection("tonechart")
+{
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1636035353, 1),
+                "signature" : {
+                        "hash" : BinData(0,"OhbhBAms06y8KyBNCuQYXy10Ojg="),
+                        "keyId" : NumberLong("7026031798597451780")
+                }
+        },
+        "operationTime" : Timestamp(1636035353, 1)
+}
+s0:PRIMARY> db.getCollectionNames()
+[ "inventory", "tonechart" ]
+
+
