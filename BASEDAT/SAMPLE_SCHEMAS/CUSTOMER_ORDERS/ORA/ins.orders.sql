@@ -8,4 +8,5 @@ values ( order_seq.nextval
   (select order_img from orders where order_id=793)
 );
 commit;
+select count(*) from orders;
 exit;
