@@ -17,14 +17,93 @@ $ mongoimport --db test --collection inventory \
 # csv file
 $ mongoimport -d tymongo -c test --type csv --file database2.csv --headerline
 
+$ mongorestore --username=admin --password=Pass1234 --authenticationDatabase=admin --archive=sampledata.archive 
 # shell commands
 $ mongo
 db.help()
 
 use admin
 db.auth("admin","Pass1234")
+
+
 use test
 rs.status
+
+s0:PRIMARY> db.adminCommand({listDatabases:1})
+{
+        "databases" : [
+                {
+                        "name" : "admin",
+                        "sizeOnDisk" : 184320,
+                        "empty" : false
+                },
+                {
+                        "name" : "config",
+                        "sizeOnDisk" : 77824,
+                        "empty" : false
+                },
+                {
+                        "name" : "local",
+                        "sizeOnDisk" : 161398784,
+                        "empty" : false
+                },
+                {
+                        "name" : "sample_airbnb",
+                        "sizeOnDisk" : 55033856,
+                        "empty" : false
+                },
+                {
+                        "name" : "sample_analytics",
+                        "sizeOnDisk" : 9895936,
+                        "empty" : false
+                },
+                {
+                        "name" : "sample_geospatial",
+                        "sizeOnDisk" : 987136,
+                        "empty" : false
+                },
+                {
+                        "name" : "sample_mflix",
+                        "sizeOnDisk" : 41713664,
+                        "empty" : false
+                },
+                {
+                        "name" : "sample_restaurants",
+                        "sizeOnDisk" : 6164480,
+                        "empty" : false
+                },
+                {
+                        "name" : "sample_supplies",
+                        "sizeOnDisk" : 983040,
+                        "empty" : false
+                },
+                {
+                        "name" : "sample_training",
+                        "sizeOnDisk" : 43057152,
+                        "empty" : false
+                },
+                {
+                        "name" : "sample_weatherdata",
+                        "sizeOnDisk" : 2478080,
+                        "empty" : false
+                },
+                {
+                        "name" : "test",
+                        "sizeOnDisk" : 11624448,
+                        "empty" : false
+                }
+        ],
+        "totalSize" : 333598720,
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1636335796, 1),
+                "signature" : {
+                        "hash" : BinData(0,"D+VajCvGgeNtWw0hZ9Kfik3GfMI="),
+                        "keyId" : NumberLong("7026031798597451780")
+                }
+        },
+        "operationTime" : Timestamp(1636335796, 1)
+}
 
 s0:PRIMARY> db.getCollectionNames()
 [ "inventory" ]
