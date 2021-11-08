@@ -1,0 +1,6 @@
+file=$1
+
+mongoimport --db sample_airbnb --collection listingsAndReviews \
+        --authenticationDatabase admin --username admin --password Pass1234 \
+        --file ${file} --jsonArray
+
