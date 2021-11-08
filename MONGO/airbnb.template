@@ -1,0 +1,359 @@
+[
+  {
+    "_id": "GID1",
+    "listing_url": "https://www.airbnb.com/rooms/34424",
+    "name": "Simmons Schneider",
+    "summary": "Esse ex pariatur nisi consequat quis consequat aliquip dolor velit qui voluptate pariatur. Ad incididunt officia non consequat magna dolore ea ullamco do eu. Duis eu excepteur nulla officia proident nulla in velit. Laborum nulla elit Lorem esse ipsum eu ut. Nostrud enim ullamco velit velit laborum anim proident commodo dolore proident laboris sunt nisi. Commodo reprehenderit qui elit sunt sit consequat est anim nostrud exercitation laborum incididunt in. Pariatur irure eu consectetur pariatur officia elit non nostrud officia sit excepteur nisi enim.\r\n",
+    "space": "Incididunt do irure sunt ipsum est consequat minim voluptate nisi. Est ad do est fugiat culpa et ullamco dolor exercitation fugiat velit nisi proident commodo. Est id qui non irure fugiat in ullamco officia laborum dolore. Nulla laboris culpa tempor quis ullamco ullamco dolor proident tempor irure mollit sit. Elit consequat voluptate mollit dolore esse nulla pariatur occaecat amet nostrud exercitation aliquip ex. Labore dolore laborum irure incididunt veniam ea et adipisicing voluptate velit. Sit consequat dolor non non proident eiusmod sint veniam ad eiusmod enim adipisicing exercitation.\r\n",
+    "description": "Enim eu labore magna reprehenderit laborum mollit eiusmod ipsum veniam ut dolore exercitation aliqua. Ex ut et dolor irure esse excepteur minim. Ad culpa est minim occaecat laborum ipsum excepteur. In nisi aliquip incididunt elit enim cillum dolore excepteur dolore consectetur exercitation qui.\r\nMagna incididunt consequat id occaecat officia cupidatat adipisicing culpa non est minim ad officia dolor. Quis esse exercitation ipsum nisi voluptate eu nisi aute dolor. Veniam eu tempor mollit aliqua mollit. Adipisicing magna deserunt sint veniam nostrud quis aute esse aliquip velit tempor veniam. Excepteur officia consequat esse laboris.\r\n",
+    "property_type": "house",
+    "min_nights": 54,
+    "max_nights": 84,
+    "index": 0,
+    "guid": "e35dcb8a-f0ae-483c-ba31-6842b08dbf1c",
+    "isActive": true,
+    "balance": "$2,985.13",
+    "picture": "http://placehold.it/32x32",
+    "age": 24,
+    "eyeColor": "blue",
+    "gender": "male",
+    "company": "DIGIGENE",
+    "email": "simmonsschneider@digigene.com",
+    "phone": "+1 (893) 598-3030",
+    "address": "248 Monitor Street, Kula, Arizona, 7851",
+    "registered": "2015-06-16T12:24:43 +04:00",
+    "latitude": -21.312136,
+    "longitude": 172.676055,
+    "tags": [
+      "est",
+      "nisi",
+      "ea",
+      "magna",
+      "laboris",
+      "incididunt",
+      "laboris"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Minnie Medina"
+      },
+      {
+        "id": 1,
+        "name": "Bonita Le"
+      },
+      {
+        "id": 2,
+        "name": "Beasley Austin"
+      }
+    ],
+    "greeting": "Hello, Simmons Schneider! You have 3 unread messages.",
+    "favoriteFruit": "strawberry"
+  },
+  {
+    "_id": "GID2",
+    "listing_url": "https://www.airbnb.com/rooms/73371",
+    "name": "Colleen Humphrey",
+    "summary": "Non aliquip laboris commodo eu sint nostrud cupidatat. Officia officia amet minim nulla dolore amet voluptate incididunt incididunt deserunt aliquip proident. Sint tempor culpa pariatur velit elit commodo sunt aute aliquip aliqua fugiat occaecat aliquip velit. Aliquip amet cupidatat velit ullamco occaecat nostrud labore. Ex aliqua exercitation amet dolore cillum.\r\n",
+    "space": "Mollit magna consequat et amet et dolore. Amet labore ex anim laborum id occaecat aliquip id quis reprehenderit elit. Fugiat ex pariatur ipsum pariatur aute ex ipsum. Pariatur fugiat ipsum enim incididunt excepteur labore pariatur deserunt commodo eiusmod.\r\n",
+    "description": "Enim esse mollit velit id ex culpa nisi Lorem. Officia labore sint commodo aute officia consequat. Veniam consequat duis voluptate Lorem elit ad non. Lorem commodo nostrud mollit pariatur id pariatur aliqua do elit labore eiusmod. Consequat elit mollit velit irure sit fugiat ex dolor dolore nulla incididunt magna. Lorem et ad ea elit est deserunt magna ea adipisicing proident deserunt veniam eu.\r\nIn aliquip excepteur duis sit Lorem sit qui adipisicing ipsum mollit minim Lorem ullamco laborum. Anim et occaecat ad eiusmod laboris ipsum veniam sunt enim sit velit laboris sunt id. Dolor incididunt amet minim voluptate ipsum.\r\n",
+    "property_type": "house",
+    "min_nights": 43,
+    "max_nights": 86,
+    "index": 1,
+    "guid": "3092e8bf-8162-460f-a1d6-d567a402fdfd",
+    "isActive": true,
+    "balance": "$3,069.56",
+    "picture": "http://placehold.it/32x32",
+    "age": 24,
+    "eyeColor": "blue",
+    "gender": "female",
+    "company": "DANCERITY",
+    "email": "colleenhumphrey@dancerity.com",
+    "phone": "+1 (936) 520-3915",
+    "address": "444 Lamont Court, Sunnyside, Georgia, 3839",
+    "registered": "2018-04-08T06:40:27 +04:00",
+    "latitude": 87.899554,
+    "longitude": 31.107568,
+    "tags": [
+      "voluptate",
+      "aute",
+      "veniam",
+      "laboris",
+      "ex",
+      "incididunt",
+      "incididunt"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Anderson Nicholson"
+      },
+      {
+        "id": 1,
+        "name": "Doreen Hendricks"
+      },
+      {
+        "id": 2,
+        "name": "Queen Franks"
+      }
+    ],
+    "greeting": "Hello, Colleen Humphrey! You have 2 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "GID3",
+    "listing_url": "https://www.airbnb.com/rooms/56690",
+    "name": "Cindy Rodriquez",
+    "summary": "Non amet officia consectetur dolor velit nisi cupidatat elit cillum. Laborum incididunt in Lorem dolor enim aute culpa qui labore. Proident nulla duis nostrud laborum ea consequat adipisicing eu esse proident est est do sunt. Culpa dolor eu qui mollit proident et dolore tempor commodo duis. Adipisicing sunt do magna enim pariatur. Nisi ad sint minim cillum.\r\n",
+    "space": "Adipisicing nisi enim sint voluptate do cillum. Nisi consectetur cillum qui magna enim cupidatat. Lorem et deserunt excepteur velit. Nisi incididunt do proident minim incididunt excepteur laboris quis id.\r\n",
+    "description": "Tempor pariatur quis velit enim ut eu veniam reprehenderit excepteur non laboris ut. Minim voluptate sint eu irure duis mollit eiusmod velit Lorem eiusmod. Mollit ad exercitation et veniam reprehenderit aliqua amet ullamco. Fugiat laboris eiusmod duis Lorem occaecat enim aute proident.\r\nEx cillum incididunt est eu laboris. Excepteur labore non do aute consectetur ex esse nostrud dolor proident incididunt eiusmod. Veniam dolor tempor cupidatat ex ipsum. Proident tempor occaecat est et sit velit ut.\r\n",
+    "property_type": "townhouse",
+    "min_nights": 62,
+    "max_nights": 32,
+    "index": 2,
+    "guid": "e5e42628-1029-44de-8d9a-49548547eab5",
+    "isActive": false,
+    "balance": "$1,266.04",
+    "picture": "http://placehold.it/32x32",
+    "age": 34,
+    "eyeColor": "brown",
+    "gender": "female",
+    "company": "EYEWAX",
+    "email": "cindyrodriquez@eyewax.com",
+    "phone": "+1 (906) 518-2102",
+    "address": "391 Linden Boulevard, Keyport, Colorado, 6595",
+    "registered": "2019-09-29T07:53:49 +04:00",
+    "latitude": 20.723251,
+    "longitude": 108.633238,
+    "tags": [
+      "ut",
+      "fugiat",
+      "consectetur",
+      "et",
+      "enim",
+      "reprehenderit",
+      "in"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Rojas Wallace"
+      },
+      {
+        "id": 1,
+        "name": "Lela Parsons"
+      },
+      {
+        "id": 2,
+        "name": "Diane Ware"
+      }
+    ],
+    "greeting": "Hello, Cindy Rodriquez! You have 4 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "GID4",
+    "listing_url": "https://www.airbnb.com/rooms/45955",
+    "name": "Yang Case",
+    "summary": "Culpa officia occaecat excepteur anim laborum duis et ex in deserunt quis aliquip. Lorem incididunt sit enim veniam magna dolore pariatur deserunt non laboris minim irure dolor excepteur. Ex eu proident dolore et incididunt sunt cillum eu occaecat occaecat irure esse. Elit deserunt veniam do cupidatat laboris consequat adipisicing dolore adipisicing. Commodo consequat non anim sint voluptate adipisicing ipsum ullamco officia et aliquip sint.\r\n",
+    "space": "Enim et labore officia irure qui nisi aliqua excepteur fugiat non proident dolor fugiat cillum. Dolor id non cupidatat occaecat sit cillum. Id aute deserunt minim quis veniam qui mollit fugiat. Ullamco excepteur ex pariatur velit tempor tempor laboris. Do voluptate cupidatat consequat labore commodo cillum irure irure. Aliquip qui nulla aliquip magna occaecat aliqua quis deserunt do consequat. Consectetur nisi esse ipsum eiusmod enim adipisicing dolor consectetur nisi pariatur nulla aliquip aliqua tempor.\r\n",
+    "description": "Enim magna eu commodo fugiat. Reprehenderit consectetur et enim incididunt deserunt Lorem fugiat. Dolore mollit ex ipsum amet ex irure cillum fugiat deserunt dolor incididunt nisi eu laboris. Anim ex amet amet exercitation proident voluptate officia ad adipisicing sint exercitation adipisicing commodo. Anim in non dolor duis aliqua quis nisi cillum duis fugiat veniam. Officia commodo aliquip dolor fugiat laboris nostrud sit.\r\nDuis proident minim tempor ut commodo sit et excepteur. Nostrud cupidatat aute pariatur qui amet nostrud mollit. Elit adipisicing dolore velit consequat et elit elit officia. Non non cupidatat nulla incididunt quis et officia id pariatur deserunt ipsum. Occaecat consectetur adipisicing dolore reprehenderit eiusmod aute dolore elit esse. Exercitation velit anim ea cupidatat exercitation nisi ipsum nisi veniam ipsum aute irure amet culpa. Culpa adipisicing reprehenderit ad voluptate dolor id ipsum id amet excepteur.\r\n",
+    "property_type": "room",
+    "min_nights": 63,
+    "max_nights": 25,
+    "index": 3,
+    "guid": "d6670fdd-4a2c-4240-9e63-bdc952d81da5",
+    "isActive": true,
+    "balance": "$3,917.59",
+    "picture": "http://placehold.it/32x32",
+    "age": 22,
+    "eyeColor": "brown",
+    "gender": "male",
+    "company": "CORPULSE",
+    "email": "yangcase@corpulse.com",
+    "phone": "+1 (961) 539-3670",
+    "address": "768 Blake Avenue, Barclay, Virginia, 4777",
+    "registered": "2014-08-08T05:36:08 +04:00",
+    "latitude": 22.288747,
+    "longitude": -117.554114,
+    "tags": [
+      "ea",
+      "sunt",
+      "fugiat",
+      "et",
+      "elit",
+      "mollit",
+      "dolor"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Kellie Adkins"
+      },
+      {
+        "id": 1,
+        "name": "Hodges Giles"
+      },
+      {
+        "id": 2,
+        "name": "Francis Gray"
+      }
+    ],
+    "greeting": "Hello, Yang Case! You have 1 unread messages.",
+    "favoriteFruit": "apple"
+  },
+  {
+    "_id": "GID5",
+    "listing_url": "https://www.airbnb.com/rooms/61044",
+    "name": "Hansen Whitley",
+    "summary": "Tempor magna quis eu fugiat consequat veniam quis. Occaecat tempor Lorem mollit cillum nisi deserunt. Occaecat elit ipsum est Lorem ea. Eiusmod est exercitation excepteur duis. Eu ullamco consectetur excepteur incididunt velit ea velit nisi dolore reprehenderit eiusmod id. Ullamco ut est eu enim dolore nostrud id quis aliquip reprehenderit ullamco.\r\n",
+    "space": "Aliqua nulla enim ipsum nostrud ipsum laborum cupidatat. Laboris anim deserunt cupidatat eu dolor. Quis esse excepteur aute laborum. Aliquip irure ad id sit excepteur irure amet elit sunt aliquip laboris eu sunt deserunt. Eiusmod laboris mollit enim adipisicing exercitation eu sint voluptate anim deserunt adipisicing anim enim proident.\r\n",
+    "description": "Dolor labore sit voluptate voluptate. Proident ut ea veniam culpa ipsum aliqua eiusmod reprehenderit. Ullamco voluptate reprehenderit Lorem nulla voluptate laboris. Nulla enim magna aliqua commodo sit tempor exercitation esse duis pariatur. Dolore mollit veniam sit labore eu. Do ut enim nulla tempor culpa.\r\nEiusmod anim ipsum nisi eiusmod anim. Ipsum ipsum velit culpa anim tempor aliqua ea adipisicing aliquip commodo dolore reprehenderit anim ad. Deserunt sint ea laboris ea amet labore aliquip ex. Id laboris ea incididunt ut mollit occaecat ullamco eiusmod dolor aliqua. Ad dolor commodo aliquip incididunt amet exercitation sunt Lorem ut tempor. Laborum irure culpa dolore ea labore amet irure magna mollit qui ullamco. Aute do id in dolor laborum labore excepteur velit ipsum.\r\n",
+    "property_type": "trailer",
+    "min_nights": 9,
+    "max_nights": 87,
+    "index": 4,
+    "guid": "c24d4dfe-0c82-4047-811e-9ff3d0f4ef9a",
+    "isActive": false,
+    "balance": "$2,822.44",
+    "picture": "http://placehold.it/32x32",
+    "age": 39,
+    "eyeColor": "brown",
+    "gender": "male",
+    "company": "ZILLACTIC",
+    "email": "hansenwhitley@zillactic.com",
+    "phone": "+1 (819) 538-3185",
+    "address": "960 Christopher Avenue, Gerber, Texas, 9417",
+    "registered": "2019-02-06T03:48:00 +05:00",
+    "latitude": 83.928737,
+    "longitude": -24.891147,
+    "tags": [
+      "dolor",
+      "consectetur",
+      "voluptate",
+      "aute",
+      "excepteur",
+      "nulla",
+      "minim"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Cameron Drake"
+      },
+      {
+        "id": 1,
+        "name": "Kirk Sutton"
+      },
+      {
+        "id": 2,
+        "name": "Greer Patrick"
+      }
+    ],
+    "greeting": "Hello, Hansen Whitley! You have 3 unread messages.",
+    "favoriteFruit": "apple"
+  },
+  {
+    "_id": "GID6",
+    "listing_url": "https://www.airbnb.com/rooms/97282",
+    "name": "Valencia Christian",
+    "summary": "Aliqua nulla dolor esse ea amet nulla irure laborum cupidatat. Incididunt duis irure eu nisi et exercitation. Ullamco dolor proident in mollit culpa aliqua officia consequat amet enim et. Magna elit eiusmod irure id commodo cillum. Irure occaecat tempor cupidatat est ex.\r\n",
+    "space": "Irure duis ullamco velit incididunt id ad eu do qui sunt eiusmod voluptate. Occaecat nostrud est aliqua ad dolor id. Esse ipsum incididunt veniam amet ipsum exercitation dolore voluptate adipisicing. Id consectetur culpa reprehenderit nostrud eiusmod commodo culpa laboris. Occaecat aute excepteur aute irure dolore. Sit consectetur non sit sunt laboris sunt velit commodo proident sunt elit pariatur non.\r\n",
+    "description": "Ad in dolor dolore ea cupidatat id culpa reprehenderit cillum eu do adipisicing. Proident tempor ipsum fugiat officia incididunt elit cupidatat reprehenderit culpa sit mollit duis ullamco. Ea sit laboris ad sunt sit culpa fugiat aliquip aliqua.\r\nCupidatat consequat eiusmod cillum sunt. Cillum magna proident sint sunt. Esse in dolor adipisicing eiusmod sint Lorem. Magna tempor proident fugiat mollit irure irure do ea magna. Commodo qui non fugiat quis.\r\n",
+    "property_type": "townhouse",
+    "min_nights": 34,
+    "max_nights": 62,
+    "index": 5,
+    "guid": "74f654b6-27f6-4ee2-b8d8-49694b526d04",
+    "isActive": true,
+    "balance": "$2,697.00",
+    "picture": "http://placehold.it/32x32",
+    "age": 30,
+    "eyeColor": "green",
+    "gender": "male",
+    "company": "NURALI",
+    "email": "valenciachristian@nurali.com",
+    "phone": "+1 (916) 587-2404",
+    "address": "657 Doscher Street, Hillsboro, Iowa, 9610",
+    "registered": "2019-05-31T01:54:27 +04:00",
+    "latitude": -71.32463,
+    "longitude": 88.257211,
+    "tags": [
+      "ea",
+      "laboris",
+      "dolore",
+      "nisi",
+      "id",
+      "et",
+      "et"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Helen Silva"
+      },
+      {
+        "id": 1,
+        "name": "Tara Graham"
+      },
+      {
+        "id": 2,
+        "name": "Faulkner Sanchez"
+      }
+    ],
+    "greeting": "Hello, Valencia Christian! You have 10 unread messages.",
+    "favoriteFruit": "apple"
+  },
+  {
+    "_id": "GID7",
+    "listing_url": "https://www.airbnb.com/rooms/69532",
+    "name": "Claudia Holden",
+    "summary": "Nisi sint labore nulla aliqua sit anim nisi dolore fugiat eiusmod incididunt labore laborum qui. Ad amet ut deserunt enim deserunt do. Qui ex cupidatat laborum dolor do cupidatat. Do irure commodo qui qui.\r\n",
+    "space": "Sit fugiat Lorem ad et labore amet amet labore. Pariatur reprehenderit occaecat consequat sint officia enim occaecat nostrud non pariatur ut commodo enim. Elit proident exercitation ut et ad exercitation duis minim labore dolore nostrud mollit.\r\n",
+    "description": "Ut aliquip esse laborum et. Consequat incididunt est veniam duis consequat consequat nulla minim qui fugiat do esse. Pariatur esse ad laborum enim incididunt ex nulla aliquip consequat eu excepteur nostrud. Reprehenderit esse ullamco quis non quis laboris aliqua commodo proident Lorem ea sit duis dolore. Adipisicing adipisicing officia magna adipisicing consectetur nostrud eiusmod veniam minim et sint. In elit officia amet culpa enim non ullamco non mollit mollit sit reprehenderit.\r\nUllamco sit consectetur laborum elit fugiat fugiat velit incididunt eiusmod sint qui. Laboris dolor in sit exercitation veniam proident aute nisi fugiat duis sunt culpa. Culpa amet id do dolore aute tempor quis mollit. Consectetur qui officia anim voluptate deserunt minim. Cupidatat ea aliqua voluptate do magna. Fugiat labore elit veniam sit reprehenderit excepteur occaecat ipsum sint cupidatat officia veniam voluptate. Anim ad ullamco est aute tempor eiusmod ullamco elit veniam ipsum laborum sint sint.\r\n",
+    "property_type": "house",
+    "min_nights": 48,
+    "max_nights": 74,
+    "index": 6,
+    "guid": "ce1ef370-b721-411e-8f1c-3353cb24247c",
+    "isActive": false,
+    "balance": "$1,658.96",
+    "picture": "http://placehold.it/32x32",
+    "age": 29,
+    "eyeColor": "green",
+    "gender": "female",
+    "company": "LUDAK",
+    "email": "claudiaholden@ludak.com",
+    "phone": "+1 (959) 531-3460",
+    "address": "820 Linwood Street, Brambleton, Palau, 6981",
+    "registered": "2020-09-15T11:16:51 +04:00",
+    "latitude": -61.909434,
+    "longitude": 61.800728,
+    "tags": [
+      "ullamco",
+      "laborum",
+      "eiusmod",
+      "laboris",
+      "et",
+      "anim",
+      "cupidatat"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Ayala Ferguson"
+      },
+      {
+        "id": 1,
+        "name": "Stacey Horne"
+      },
+      {
+        "id": 2,
+        "name": "Hayes Sargent"
+      }
+    ],
+    "greeting": "Hello, Claudia Holden! You have 9 unread messages.",
+    "favoriteFruit": "strawberry"
+  }
+]

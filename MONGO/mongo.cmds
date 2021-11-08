@@ -29,6 +29,10 @@ db.auth("admin","Pass1234")
 use test
 rs.status
 
+show databases
+show dbs
+show collections
+
 s0:PRIMARY> db.adminCommand({listDatabases:1})
 {
         "databases" : [
@@ -129,6 +133,9 @@ s0:PRIMARY> db.inventory.find( {item: "postcard"})
 { "_id" : ObjectId("6183e9d3dbc1da23cb031df8"), "item" : "postcard", "qty" : 45, "size" : { "h" : 19, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
 { "_id" : ObjectId("6183e9d3dbc1da23cb031df9"), "item" : "postcard", "qty" : 45, "size" : { "h" : 18, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
 
+s0:PRIMARY> db.listingsAndReviews.find({"property_type":"house"})
+
+
 s0:PRIMARY> db.createCollection("tonechart")
 {
         "ok" : 1,
@@ -152,4 +159,80 @@ s0:PRIMARY> db.nfl.find({"title" : {$regex: "BUD"}})
 s0:PRIMARY> db.nfl.find({"title" : {$regex: "BUD"}}).count()
 99
 
+# find column list - best thing close to desc/explain
+s0:PRIMARY> db.listingsAndReviews.findOne()
+
+# or below
+# s0:PRIMARY> var col_list=db.listingsAndReviews.findOne();
+s0:PRIMARY> for (var col in col_list) {print (col); }
+_id
+listing_url
+name
+summary
+space
+description
+neighborhood_overview
+notes
+transit
+access
+interaction
+house_rules
+property_type
+room_type
+bed_type
+minimum_nights
+maximum_nights
+cancellation_policy
+last_scraped
+calendar_last_scraped
+first_review
+last_review
+accommodates
+bedrooms
+beds
+number_of_reviews
+bathrooms
+amenities
+price
+security_deposit
+cleaning_fee
+extra_people
+guests_included
+images
+host
+address
+availability
+review_scores
+reviews
+
+
+# query
+s0:PRIMARY> db.listingsAndReviews.find({"property_type":"house"}, {"property_type":1, _id:2, "address":3} )
+{ "_id" : "6189685e6d8c7bcd4b89d2e7", "property_type" : "house", "address" : "444 Lamont Court, Sunnyside, Georgia, 3839" }
+{ "_id" : "6189685e17bcdc2d7a23555c", "property_type" : "house", "address" : "248 Monitor Street, Kula, Arizona, 7851" }
+{ "_id" : "6189685e32579ceb69db7d26", "property_type" : "house", "address" : "820 Linwood Street, Brambleton, Palau, 6981" }
+{ "_id" : "6187685e17bcdc2d7a23555c", "property_type" : "house", "address" : "248 Monitor Street, Kula, Arizona, 7851" }
+
+# query by type
+s0:PRIMARY> db.listingsAndReviews.aggregate( {$sortByCount: "$property_type"} )
+{ "_id" : "Apartment", "count" : 3626 }
+{ "_id" : "House", "count" : 606 }
+{ "_id" : "Condominium", "count" : 399 }
+{ "_id" : "Serviced apartment", "count" : 185 }
+{ "_id" : "Loft", "count" : 142 }
+{ "_id" : "Townhouse", "count" : 108 }
+{ "_id" : "Guest suite", "count" : 81 }
+{ "_id" : "Bed and breakfast", "count" : 69 }
+{ "_id" : "Boutique hotel", "count" : 53 }
+{ "_id" : "Guesthouse", "count" : 50 }
+{ "_id" : "Hostel", "count" : 34 }
+{ "_id" : "Villa", "count" : 32 }
+{ "_id" : "Hotel", "count" : 26 }
+{ "_id" : "Aparthotel", "count" : 23 }
+{ "_id" : "Cottage", "count" : 20 }
+{ "_id" : "Other", "count" : 18 }
+{ "_id" : "Cabin", "count" : 15 }
+{ "_id" : "Bungalow", "count" : 14 }
+{ "_id" : "Resort", "count" : 11 }
+{ "_id" : "Casa particular (Cuba)", "count" : 9 }
 

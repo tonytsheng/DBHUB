@@ -1,0 +1,9 @@
+ID1=`uuidgen`
+ID2=`uuidgen`
+ID3=`uuidgen`
+ID4=`uuidgen`
+ID5=`uuidgen`
+ID6=`uuidgen`
+ID7=`uuidgen`
+
+sed s/GID/${ID1}/g airbnb.template > airbnb.new1
