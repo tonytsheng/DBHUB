@@ -1,0 +1,35 @@
+use admin
+db.createRole(
+{
+role: "changestreamrole",
+privileges: [
+{ resource: { db: "", collection: "" }, actions: [ "find","changeStream" ] }
+],
+roles: []
+}
+)
+
+use test
+db.createUser( 
+{ 
+user: "dmsuser",
+pwd: "Pass1234",
+roles: [ { role: "changestreamrole", db: "admin" }, "read"] 
+})
+
+{
+    "rules": [
+        {
+            "rule-type": "selection",
+            "rule-id": "163647818",
+            "rule-name": "163647818",
+            "object-locator": {
+                "schema-name": "%",
+                "table-name": "%"
+            },
+            "rule-action": "include",
+            "filters": []
+        }
+    ]
+}
+# note no transformation rule, just a selection rule. let dms create the table on the target
