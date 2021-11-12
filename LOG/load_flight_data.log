@@ -1,4 +1,4 @@
-XDG_SESSION_ID=233130
+XDG_SESSION_ID=235016
 SHELL=/bin/sh
 USER=ec2-user
 PATH=/home/ec2-user/.nvm/versions/node/v10.24.1/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3@global/bin:/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/usr/local/bin:/home/ec2-user/.rvm/bin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/opt/oracle/instantclient_19_9:/opt/mssql-tools/bin:/usr/bin:/home/ec2-user/DBHUB/BIN:/usr/pgsql-12/bin/
@@ -10,41 +10,41 @@ LOGNAME=ec2-user
 XDG_RUNTIME_DIR=/run/user/1000
 _=/usr/bin/printenv
 +-----+-----+-----+-----+
-20211111.120001 Requesting current flight info
+20211112.160001 Requesting current flight info
 +-----+-----+-----+-----+
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0100 82197    0 82197    0     0  55954      0 --:--:--  0:00:01 --:--:-- 55992
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0100 23671    0 23671    0     0  15410      0 --:--:--  0:00:01 --:--:-- 15400100 82360    0 82360    0     0  53238      0 --:--:--  0:00:01 --:--:-- 53204
 +-----+-----+-----+-----+
-20211111.120002 Inserting into Dynamo
+20211112.160003 Inserting into Dynamo
 +-----+-----+-----+-----+
 {
-    "Count": 18188,
-    "ScannedCount": 18188,
+    "Count": 18730,
+    "ScannedCount": 18730,
     "ConsumedCapacity": null
 }
-2021-11-11 12:00:02: HOST: ip-10-0-0-166
-2021-11-11 12:00:02: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
+2021-11-12 16:00:03: HOST: ip-10-0-0-166
+2021-11-12 16:00:03: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
 Put flight succeeded:
 {'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
                                       'content-length': '2',
                                       'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Thu, 11 Nov 2021 12:00:06 GMT',
+                                      'date': 'Fri, 12 Nov 2021 16:00:07 GMT',
                                       'server': 'Server',
                                       'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'LNG1E1V05AHIHV7CJ7E4V9MA2JVV4KQNSO5AEMVJF66Q9ASUAAJG'},
+                                      'x-amzn-requestid': 'OVH10N2RBPGJQJS5HH3QJJF02BVV4KQNSO5AEMVJF66Q9ASUAAJG'},
                       'HTTPStatusCode': 200,
-                      'RequestId': 'LNG1E1V05AHIHV7CJ7E4V9MA2JVV4KQNSO5AEMVJF66Q9ASUAAJG',
+                      'RequestId': 'OVH10N2RBPGJQJS5HH3QJJF02BVV4KQNSO5AEMVJF66Q9ASUAAJG',
                       'RetryAttempts': 0}}
 +-----+-----+-----+-----+
-20211111.120007 Uploading CSV to S3
+20211112.160008 Uploading CSV to S3
 +-----+-----+-----+-----+
-Completed 3.5 KiB/3.5 KiB (65.3 KiB/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20211111.120001.1.csv to s3://ttsheng-flightimp/flight.20211111.120001.1.csv
+Completed 3.4 KiB/3.4 KiB (57.2 KiB/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20211112.160001.1.csv to s3://ttsheng-flightimp/flight.20211112.160001.1.csv
 +-----+-----+-----+-----+
-20211111.120007 Generating manifest file
+20211112.160008 Generating manifest file
 +-----+-----+-----+-----+
 +-----+-----+-----+-----+
-20211111.120008 Manifest file below
+20211112.160009 Manifest file below
 +-----+-----+-----+-----+
 {
     "fileLocations": [
@@ -374,7 +374,14 @@ Completed 3.5 KiB/3.5 KiB (65.3 KiB/s) with 1 file(s) remainingupload: DBHUB/DY
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211111.000001.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211111.040001.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211111.080001.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20211111.120001.1.csv"
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211111.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211111.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211111.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211112.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211112.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211112.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211112.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211112.160001.1.csv"
             ]
         }
     ],
