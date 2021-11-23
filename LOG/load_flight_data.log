@@ -1,4 +1,4 @@
-XDG_SESSION_ID=238792
+XDG_SESSION_ID=252537
 SHELL=/bin/sh
 USER=ec2-user
 PATH=/home/ec2-user/.nvm/versions/node/v10.24.1/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3@global/bin:/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/usr/local/bin:/home/ec2-user/.rvm/bin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/opt/oracle/instantclient_19_9:/opt/mssql-tools/bin:/usr/bin:/home/ec2-user/DBHUB/BIN:/usr/pgsql-12/bin/
@@ -10,41 +10,28 @@ LOGNAME=ec2-user
 XDG_RUNTIME_DIR=/run/user/1000
 _=/usr/bin/printenv
 +-----+-----+-----+-----+
-20211115.000001 Requesting current flight info
+20211123.120001 Requesting current flight info
 +-----+-----+-----+-----+
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 84126    0 84126    0     0  87086      0 --:--:-- --:--:-- --:--:-- 86996
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   134    0   134    0     0   1252      0 --:--:-- --:--:-- --:--:--  1252
+jq: error (at <stdin>:0): Cannot iterate over null (null)
 +-----+-----+-----+-----+
-20211115.000002 Inserting into Dynamo
+20211123.120001 Inserting into Dynamo
 +-----+-----+-----+-----+
-{
-    "Count": 19713,
-    "ScannedCount": 19713,
-    "ConsumedCapacity": null
-}
-2021-11-15 00:00:03: HOST: ip-10-0-0-166
-2021-11-15 00:00:03: SSI_REP: /home/user/dba_arch/scripts/install/ssi/rep.ip-10-0-0-166
-Put flight succeeded:
-{'ResponseMetadata': {'HTTPHeaders': {'connection': 'keep-alive',
-                                      'content-length': '2',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'date': 'Mon, 15 Nov 2021 00:00:06 GMT',
-                                      'server': 'Server',
-                                      'x-amz-crc32': '2745614147',
-                                      'x-amzn-requestid': 'OP18D88Q2END8N2AGHMFITEV9JVV4KQNSO5AEMVJF66Q9ASUAAJG'},
-                      'HTTPStatusCode': 200,
-                      'RequestId': 'OP18D88Q2END8N2AGHMFITEV9JVV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'RetryAttempts': 0}}
+  File "/home/ec2-user/DBHUB/DYN/insert.py", line 41
+    flight_resp = put_flight(, , , ,   ) 
+                             ^
+SyntaxError: invalid syntax
 +-----+-----+-----+-----+
-20211115.000007 Uploading CSV to S3
+20211123.120001 Uploading CSV to S3
 +-----+-----+-----+-----+
-Completed 3.4 KiB/3.4 KiB (60.6 KiB/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20211115.000001.1.csv to s3://ttsheng-flightimp/flight.20211115.000001.1.csv
+Completed 1 Byte/1 Byte (10 Bytes/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20211123.120001.1.csv to s3://ttsheng-flightimp/flight.20211123.120001.1.csv
 +-----+-----+-----+-----+
-20211115.000008 Generating manifest file
+20211123.120002 Generating manifest file
 +-----+-----+-----+-----+
 +-----+-----+-----+-----+
-20211115.000008 Manifest file below
+20211123.120002 Manifest file below
 +-----+-----+-----+-----+
 {
     "fileLocations": [
@@ -395,7 +382,58 @@ Completed 3.4 KiB/3.4 KiB (60.6 KiB/s) with 1 file(s) remainingupload: DBHUB/DY
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211114.120001.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211114.160001.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211114.200001.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20211115.000001.1.csv"
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211115.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211115.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211115.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211115.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211115.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211115.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211116.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211116.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211116.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211116.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211116.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211116.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211117.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211117.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211117.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211117.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211117.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211117.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211118.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211118.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211118.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211118.120002.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211118.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211118.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211119.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211119.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211119.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211119.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211119.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211119.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211120.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211120.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211120.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211120.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211120.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211120.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211121.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211121.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211121.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211121.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211121.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211121.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211122.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211122.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211122.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211122.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211122.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211122.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211123.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211123.040001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211123.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211123.120001.1.csv"
             ]
         }
     ],
