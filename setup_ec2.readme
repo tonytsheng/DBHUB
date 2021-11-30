@@ -126,4 +126,13 @@ source ~/.bashrc
 #security groups for ports
 #dns hostnames enabled
 #dns resolution enabled
-#
+
+## efs
+# might need thse packages
+sudo yum install nfs-utils
+create the efs volume in the console
+cd /
+sudo mkdir dbmount
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-04a372e88a5e283ee.efs.us-east-2.amazonaws.com:/ dbmount
+change permissions on /dbmount
+

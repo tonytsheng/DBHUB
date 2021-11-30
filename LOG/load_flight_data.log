@@ -1,4 +1,4 @@
-XDG_SESSION_ID=262238
+XDG_SESSION_ID=264126
 SHELL=/bin/sh
 USER=ec2-user
 PATH=/home/ec2-user/.nvm/versions/node/v10.24.1/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3/bin:/home/ec2-user/.rvm/gems/ruby-2.6.3@global/bin:/home/ec2-user/.rvm/rubies/ruby-2.6.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/usr/local/bin:/home/ec2-user/.rvm/bin:/home/ec2-user/.local/bin:/home/ec2-user/bin:/opt/oracle/instantclient_19_9:/opt/mssql-tools/bin:/usr/bin:/home/ec2-user/DBHUB/BIN:/usr/pgsql-12/bin/
@@ -10,28 +10,28 @@ LOGNAME=ec2-user
 XDG_RUNTIME_DIR=/run/user/1000
 _=/usr/bin/printenv
 +-----+-----+-----+-----+
-20211129.120001 Requesting current flight info
+20211130.160001 Requesting current flight info
 +-----+-----+-----+-----+
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   134    0   134    0     0   1425      0 --:--:-- --:--:-- --:--:--  1425
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   134    0   134    0     0    660      0 --:--:-- --:--:-- --:--:--   663
 jq: error (at <stdin>:0): Cannot iterate over null (null)
 +-----+-----+-----+-----+
-20211129.120001 Inserting into Dynamo
+20211130.160001 Inserting into Dynamo
 +-----+-----+-----+-----+
   File "/home/ec2-user/DBHUB/DYN/insert.py", line 41
     flight_resp = put_flight(, , , ,   ) 
                              ^
 SyntaxError: invalid syntax
 +-----+-----+-----+-----+
-20211129.120001 Uploading CSV to S3
+20211130.160001 Uploading CSV to S3
 +-----+-----+-----+-----+
-Completed 1 Byte/1 Byte (15 Bytes/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20211129.120001.1.csv to s3://ttsheng-flightimp/flight.20211129.120001.1.csv
+Completed 1 Byte/1 Byte (11 Bytes/s) with 1 file(s) remainingupload: DBHUB/DYN/DAT/flight.20211130.160001.1.csv to s3://ttsheng-flightimp/flight.20211130.160001.1.csv
 +-----+-----+-----+-----+
-20211129.120002 Generating manifest file
+20211130.160002 Generating manifest file
 +-----+-----+-----+-----+
 +-----+-----+-----+-----+
-20211129.120003 Manifest file below
+20211130.160003 Manifest file below
 +-----+-----+-----+-----+
 {
     "fileLocations": [
@@ -469,7 +469,14 @@ Completed 1 Byte/1 Byte (15 Bytes/s) with 1 file(s) remainingupload: DBHUB/DYN/
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211129.000001.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211129.040001.1.csv",
 "https://ttsheng-ing.s3.amazonaws.com/flight.20211129.080001.1.csv",
-"https://ttsheng-ing.s3.amazonaws.com/flight.20211129.120001.1.csv"
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211129.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211129.160001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211129.200001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211130.000001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211130.040002.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211130.080001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211130.120001.1.csv",
+"https://ttsheng-ing.s3.amazonaws.com/flight.20211130.160001.1.csv"
             ]
         }
     ],
