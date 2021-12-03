@@ -7,7 +7,7 @@ set verify off
 -- define ttbs = &4
 
 define co_password = Pass1234
-define connect_string = ttsora10
+define connect_string = ora10a
 define tbs = customer_orders
 define ttbs = temp
 
@@ -19,7 +19,8 @@ PROMPT Dropping user
 PROMPT Creating user
 @@co_user &co_password &tbs &ttbs
 
-conn customer_orders/&co_password@&connect_string
+-- conn customerorders/&co_password@&connect_string
+conn customerorders/&co_password
 
 PROMPT Running DDL
 @@co_ddl

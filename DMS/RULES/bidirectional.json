@@ -1,0 +1,20 @@
+{
+  "rules": [
+    {
+      "rule-type": "selection",
+      "rule-id": "559298436",
+      "rule-name": "559298436",
+      "object-locator": {
+        "schema-name": "CUSTOMER_ORDERS",
+        "table-name": "%"
+      },
+      "rule-action": "include",
+      "filters": [],
+      "LoopbackPreventionSettings": {
+        "EnableLoopbackPrevention": true,
+        "SourceSchema": "CUSTOMER_ORDERS",
+        "TargetSchema": "CUSTOMER_ORDERS"
+      }
+    }
+  ]
+}
