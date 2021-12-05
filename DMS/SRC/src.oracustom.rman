@@ -1,0 +1,4 @@
+rman 
+connect target / 
+CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 1 DAYS;
+
