@@ -26,6 +26,9 @@ GRANT SELECT ON ALL_TAB_PARTITIONS TO dmsuser;
 GRANT SELECT ON SYS.DBA_REGISTRY TO dmsuser;
 GRANT SELECT ON SYS.OBJ$ TO dmsuser;
 GRANT SELECT ON DBA_TABLESPACES TO dmsuser;
-grant execute on SYS.DBMS_LOGMNR to dmsuser; -- oracle custom
+grant execute on SYS.DBMS_LOGMNR to dmsuser; -- oracle custom - login to machine, sqlplus / as sysdba, run this
+grant execute on dbms_logmnr to dmsuser;
+grant logmining to dmsuser;
+grant execute_catalog_role to dmsuser; -- oracle custom - login to machine, sqlplus / as sysdba, run this
 GRANT SELECT ON DBA_OBJECTS TO dmsuser; -- Required if the Oracle version is earlier than 11.2.0.3.
 GRANT SELECT ON SYS.ENC$ TO dmsuser; -- Required if transparent data encryption (TDE) is enabled. For more information on using Oracle TDE with AWS DMS, see .

@@ -1,2 +1,1 @@
-select owner, object_name from dba_objects where object_name like 'ORDERS%'
-/
+select count(*) from customer_orders.products
