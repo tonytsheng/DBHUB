@@ -1,0 +1,6280 @@
+{
+    "Items": [
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CKG"
+            },
+            "arrival_airport": {
+                "S": "KMG"
+            },
+            "flight_number": {
+                "S": "3U8514"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "IXB"
+            },
+            "arrival_airport": {
+                "S": "HYD"
+            },
+            "flight_number": {
+                "S": "6E6036"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SHJ"
+            },
+            "arrival_airport": {
+                "S": "DEL"
+            },
+            "flight_number": {
+                "S": "6E9316"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVX"
+            },
+            "arrival_airport": {
+                "S": "MJZ"
+            },
+            "flight_number": {
+                "S": "6R550"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "DAC"
+            },
+            "arrival_airport": {
+                "S": "GYD"
+            },
+            "flight_number": {
+                "S": "7L534"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ICN"
+            },
+            "arrival_airport": {
+                "S": "CEB"
+            },
+            "flight_number": {
+                "S": "8Y601"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ICN"
+            },
+            "arrival_airport": {
+                "S": "KLO"
+            },
+            "flight_number": {
+                "S": "8Y701"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "FIH"
+            },
+            "arrival_airport": {
+                "S": "MDK"
+            },
+            "flight_number": {
+                "S": "8Z644"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "LHW"
+            },
+            "flight_number": {
+                "S": "9C6231"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "SHA"
+            },
+            "flight_number": {
+                "S": "9C8930"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "KOJ"
+            },
+            "arrival_airport": {
+                "S": "HND"
+            },
+            "flight_number": {
+                "S": "AA7239"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "MAD"
+            },
+            "flight_number": {
+                "S": "AA8700"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CGK"
+            },
+            "arrival_airport": {
+                "S": "HKG"
+            },
+            "flight_number": {
+                "S": "AA8918"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "ZAG"
+            },
+            "flight_number": {
+                "S": "AC2982"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "OSL"
+            },
+            "flight_number": {
+                "S": "AC6857"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "FRA"
+            },
+            "arrival_airport": {
+                "S": "BCN"
+            },
+            "flight_number": {
+                "S": "AC9288"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "AUH"
+            },
+            "flight_number": {
+                "S": "AF3806"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NBO"
+            },
+            "arrival_airport": {
+                "S": "EBB"
+            },
+            "flight_number": {
+                "S": "AF8201"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "BEG"
+            },
+            "arrival_airport": {
+                "S": "TIA"
+            },
+            "flight_number": {
+                "S": "AF9735"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "DEL"
+            },
+            "flight_number": {
+                "S": "AI284"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CGK"
+            },
+            "arrival_airport": {
+                "S": "DPS"
+            },
+            "flight_number": {
+                "S": "AM7411"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "WUX"
+            },
+            "flight_number": {
+                "S": "AQ1023"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "HAK"
+            },
+            "flight_number": {
+                "S": "AQ1025"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "KWE"
+            },
+            "flight_number": {
+                "S": "AQ1027"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "CGO"
+            },
+            "flight_number": {
+                "S": "AQ1029"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "SHE"
+            },
+            "flight_number": {
+                "S": "AQ1031"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "NKG"
+            },
+            "flight_number": {
+                "S": "AQ1033"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "NGB"
+            },
+            "flight_number": {
+                "S": "AQ1035"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "DLC"
+            },
+            "flight_number": {
+                "S": "AQ1037"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "TSN"
+            },
+            "flight_number": {
+                "S": "AQ1055"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "HET"
+            },
+            "flight_number": {
+                "S": "AQ1057"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "JHG"
+            },
+            "flight_number": {
+                "S": "AQ1103"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "XIY"
+            },
+            "flight_number": {
+                "S": "AQ1105"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "WNZ"
+            },
+            "flight_number": {
+                "S": "AQ1257"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "RLK"
+            },
+            "flight_number": {
+                "S": "AQ1421"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "HRB"
+            },
+            "flight_number": {
+                "S": "AQ1447"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "FOC"
+            },
+            "flight_number": {
+                "S": "AQ1503"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "AVA"
+            },
+            "flight_number": {
+                "S": "AQ1527"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "YYA"
+            },
+            "flight_number": {
+                "S": "AQ1535"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "DME"
+            },
+            "arrival_airport": {
+                "S": "AER"
+            },
+            "flight_number": {
+                "S": "AT9028"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "JFK"
+            },
+            "arrival_airport": {
+                "S": "SAL"
+            },
+            "flight_number": {
+                "S": "AV567"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "AYT"
+            },
+            "arrival_airport": {
+                "S": "IST"
+            },
+            "flight_number": {
+                "S": "AY3312"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "HKG"
+            },
+            "flight_number": {
+                "S": "AY5844"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "BEG"
+            },
+            "arrival_airport": {
+                "S": "TIA"
+            },
+            "flight_number": {
+                "S": "AZ2512"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "AUH"
+            },
+            "flight_number": {
+                "S": "AZ5791"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KUL"
+            },
+            "arrival_airport": {
+                "S": "DOH"
+            },
+            "flight_number": {
+                "S": "B66521"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "HKG"
+            },
+            "flight_number": {
+                "S": "BA4140"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "LHR"
+            },
+            "arrival_airport": {
+                "S": "LIS"
+            },
+            "flight_number": {
+                "S": "BA500"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KUL"
+            },
+            "arrival_airport": {
+                "S": "DOH"
+            },
+            "flight_number": {
+                "S": "BA5817"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "BA7388"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CKG"
+            },
+            "arrival_airport": {
+                "S": "KMG"
+            },
+            "flight_number": {
+                "S": "BK5324"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "CHC"
+            },
+            "flight_number": {
+                "S": "BR3215"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "ZQN"
+            },
+            "flight_number": {
+                "S": "BR3265"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "ZQN"
+            },
+            "flight_number": {
+                "S": "BR3285"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "BR3359"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "BOH"
+            },
+            "arrival_airport": {
+                "S": "RHO"
+            },
+            "flight_number": {
+                "S": "BY6624"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AMD"
+            },
+            "arrival_airport": {
+                "S": "BOM"
+            },
+            "flight_number": {
+                "S": "BZ481"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PEK"
+            },
+            "arrival_airport": {
+                "S": "NKG"
+            },
+            "flight_number": {
+                "S": "CA1083"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "NKG"
+            },
+            "flight_number": {
+                "S": "CA1089"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "PEK"
+            },
+            "flight_number": {
+                "S": "CA1386"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "LZO"
+            },
+            "flight_number": {
+                "S": "CA4352"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PVG"
+            },
+            "arrival_airport": {
+                "S": "ANC"
+            },
+            "flight_number": {
+                "S": "CA8413"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KMG"
+            },
+            "arrival_airport": {
+                "S": "BKK"
+            },
+            "flight_number": {
+                "S": "CF219"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "LHW"
+            },
+            "arrival_airport": {
+                "S": "NKG"
+            },
+            "flight_number": {
+                "S": "CF9001"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CSX"
+            },
+            "arrival_airport": {
+                "S": "NKG"
+            },
+            "flight_number": {
+                "S": "CF9007"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "PVG"
+            },
+            "flight_number": {
+                "S": "CF9035"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "TAO"
+            },
+            "arrival_airport": {
+                "S": "NKG"
+            },
+            "flight_number": {
+                "S": "CF9045"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "CAN"
+            },
+            "flight_number": {
+                "S": "CF9081"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "PKX"
+            },
+            "flight_number": {
+                "S": "CF9085"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PVG"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "CK281"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "HKG"
+            },
+            "flight_number": {
+                "S": "CX178"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PVG"
+            },
+            "arrival_airport": {
+                "S": "CGO"
+            },
+            "flight_number": {
+                "S": "CX50"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "DAX"
+            },
+            "flight_number": {
+                "S": "CZ3263"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "KMG"
+            },
+            "flight_number": {
+                "S": "CZ3493"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "FRA"
+            },
+            "flight_number": {
+                "S": "CZ469"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "XUZ"
+            },
+            "flight_number": {
+                "S": "CZ4711"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "ANC"
+            },
+            "flight_number": {
+                "S": "CZ477"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "STN"
+            },
+            "flight_number": {
+                "S": "CZ491"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "XFN"
+            },
+            "flight_number": {
+                "S": "CZ5659"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "WXN"
+            },
+            "flight_number": {
+                "S": "CZ8253"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "CTU"
+            },
+            "flight_number": {
+                "S": "CZ8647"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "ZQZ"
+            },
+            "arrival_airport": {
+                "S": "SJW"
+            },
+            "flight_number": {
+                "S": "CZ9751"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "LPA"
+            },
+            "flight_number": {
+                "S": "DE1178"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NBO"
+            },
+            "arrival_airport": {
+                "S": "EBB"
+            },
+            "flight_number": {
+                "S": "DL7530"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NBO"
+            },
+            "arrival_airport": {
+                "S": "EBB"
+            },
+            "flight_number": {
+                "S": "DL9145"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "UFA"
+            },
+            "flight_number": {
+                "S": "DP6501"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "PEE"
+            },
+            "flight_number": {
+                "S": "DP6515"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "ALA"
+            },
+            "arrival_airport": {
+                "S": "DXB"
+            },
+            "flight_number": {
+                "S": "EK2423"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "BNE"
+            },
+            "arrival_airport": {
+                "S": "GLT"
+            },
+            "flight_number": {
+                "S": "EK5253"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "BNE"
+            },
+            "arrival_airport": {
+                "S": "BDB"
+            },
+            "flight_number": {
+                "S": "EK5558"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "DXB"
+            },
+            "flight_number": {
+                "S": "EK649"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "KMG"
+            },
+            "flight_number": {
+                "S": "EK7438"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "EK7559"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "FRA"
+            },
+            "arrival_airport": {
+                "S": "HEL"
+            },
+            "flight_number": {
+                "S": "ET1574"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "PMI"
+            },
+            "arrival_airport": {
+                "S": "HAJ"
+            },
+            "flight_number": {
+                "S": "EW5410"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "LIS"
+            },
+            "arrival_airport": {
+                "S": "TER"
+            },
+            "flight_number": {
+                "S": "EY1598"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "AUH"
+            },
+            "flight_number": {
+                "S": "EY265"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "EY4599"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "CHC"
+            },
+            "flight_number": {
+                "S": "EY4689"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "ZQN"
+            },
+            "flight_number": {
+                "S": "EY4739"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "ZQN"
+            },
+            "flight_number": {
+                "S": "EY4747"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SUV"
+            },
+            "arrival_airport": {
+                "S": "LBS"
+            },
+            "flight_number": {
+                "S": "FJ1032"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NAN"
+            },
+            "arrival_airport": {
+                "S": "SYD"
+            },
+            "flight_number": {
+                "S": "FJ1911"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "LBS"
+            },
+            "arrival_airport": {
+                "S": "SUV"
+            },
+            "flight_number": {
+                "S": "FJ2035"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "FJ5531"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "FOC"
+            },
+            "arrival_airport": {
+                "S": "SHA"
+            },
+            "flight_number": {
+                "S": "FM9206"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PMI"
+            },
+            "arrival_airport": {
+                "S": "SDR"
+            },
+            "flight_number": {
+                "S": "FR2660"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ATH"
+            },
+            "arrival_airport": {
+                "S": "CHQ"
+            },
+            "flight_number": {
+                "S": "FR3923"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PMI"
+            },
+            "arrival_airport": {
+                "S": "MAN"
+            },
+            "flight_number": {
+                "S": "FR9037"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KIX"
+            },
+            "arrival_airport": {
+                "S": "ANC"
+            },
+            "flight_number": {
+                "S": "FX5016"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "FY7146"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "ALA"
+            },
+            "arrival_airport": {
+                "S": "DXB"
+            },
+            "flight_number": {
+                "S": "FZ1722"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "XIY"
+            },
+            "flight_number": {
+                "S": "G56623"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SHJ"
+            },
+            "arrival_airport": {
+                "S": "JAI"
+            },
+            "flight_number": {
+                "S": "G9435"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SHJ"
+            },
+            "arrival_airport": {
+                "S": "KTM"
+            },
+            "flight_number": {
+                "S": "G9537"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SUB"
+            },
+            "arrival_airport": {
+                "S": "DPS"
+            },
+            "flight_number": {
+                "S": "GA3444"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "CGO"
+            },
+            "flight_number": {
+                "S": "GI4035"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "LYG"
+            },
+            "flight_number": {
+                "S": "GI4103"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "BKK"
+            },
+            "arrival_airport": {
+                "S": "CGO"
+            },
+            "flight_number": {
+                "S": "GI4206"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "XUZ"
+            },
+            "flight_number": {
+                "S": "GJ8059"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "YNT"
+            },
+            "flight_number": {
+                "S": "GJ8061"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "XFN"
+            },
+            "flight_number": {
+                "S": "GJ8127"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "INC"
+            },
+            "flight_number": {
+                "S": "GJ8575"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HET"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "GJ8716"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "HGH"
+            },
+            "flight_number": {
+                "S": "GJ8990"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "KOJ"
+            },
+            "arrival_airport": {
+                "S": "NRT"
+            },
+            "flight_number": {
+                "S": "GK622"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ATH"
+            },
+            "arrival_airport": {
+                "S": "LHR"
+            },
+            "flight_number": {
+                "S": "GQ700"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "FUK"
+            },
+            "arrival_airport": {
+                "S": "HND"
+            },
+            "flight_number": {
+                "S": "HA5141"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "SHM"
+            },
+            "arrival_airport": {
+                "S": "HND"
+            },
+            "flight_number": {
+                "S": "HA5908"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "SHA"
+            },
+            "flight_number": {
+                "S": "HO1046"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "XIY"
+            },
+            "flight_number": {
+                "S": "HO5861"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "JJN"
+            },
+            "arrival_airport": {
+                "S": "WUX"
+            },
+            "flight_number": {
+                "S": "HT3806"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "WNZ"
+            },
+            "flight_number": {
+                "S": "HU7221"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "DOY"
+            },
+            "flight_number": {
+                "S": "HU7259"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "PVG"
+            },
+            "flight_number": {
+                "S": "HU7331"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CKG"
+            },
+            "arrival_airport": {
+                "S": "MAN"
+            },
+            "flight_number": {
+                "S": "HU7953"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "TAS"
+            },
+            "arrival_airport": {
+                "S": "IST"
+            },
+            "flight_number": {
+                "S": "HY7271"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KJA"
+            },
+            "arrival_airport": {
+                "S": "UUS"
+            },
+            "flight_number": {
+                "S": "HZ4745"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "MAD"
+            },
+            "flight_number": {
+                "S": "IB3477"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KUL"
+            },
+            "arrival_airport": {
+                "S": "DOH"
+            },
+            "flight_number": {
+                "S": "IB7945"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SUB"
+            },
+            "arrival_airport": {
+                "S": "UPG"
+            },
+            "flight_number": {
+                "S": "ID6136"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "DPS"
+            },
+            "arrival_airport": {
+                "S": "SUB"
+            },
+            "flight_number": {
+                "S": "ID8131"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SUB"
+            },
+            "arrival_airport": {
+                "S": "UPG"
+            },
+            "flight_number": {
+                "S": "ID8192"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "DPS"
+            },
+            "arrival_airport": {
+                "S": "SUB"
+            },
+            "flight_number": {
+                "S": "IN261"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "DPS"
+            },
+            "arrival_airport": {
+                "S": "SOC"
+            },
+            "flight_number": {
+                "S": "IN475"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MHD"
+            },
+            "arrival_airport": {
+                "S": "THR"
+            },
+            "flight_number": {
+                "S": "IV25"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SHJ"
+            },
+            "arrival_airport": {
+                "S": "BOM"
+            },
+            "flight_number": {
+                "S": "IX252"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MAA"
+            },
+            "arrival_airport": {
+                "S": "KWI"
+            },
+            "flight_number": {
+                "S": "J91428"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "SJW"
+            },
+            "flight_number": {
+                "S": "JD5117"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "LJG"
+            },
+            "flight_number": {
+                "S": "JD5131"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "CKG"
+            },
+            "flight_number": {
+                "S": "JD5227"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "FUK"
+            },
+            "arrival_airport": {
+                "S": "KMI"
+            },
+            "flight_number": {
+                "S": "JL3625"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "KOJ"
+            },
+            "arrival_airport": {
+                "S": "TNE"
+            },
+            "flight_number": {
+                "S": "JL3763"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "KKX"
+            },
+            "arrival_airport": {
+                "S": "KOJ"
+            },
+            "flight_number": {
+                "S": "JL3780"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "KOJ"
+            },
+            "arrival_airport": {
+                "S": "NRT"
+            },
+            "flight_number": {
+                "S": "JL6086"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "KOJ"
+            },
+            "arrival_airport": {
+                "S": "HND"
+            },
+            "flight_number": {
+                "S": "JL644"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "JQ253"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "DUD"
+            },
+            "flight_number": {
+                "S": "JQ269"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "DPS"
+            },
+            "arrival_airport": {
+                "S": "CGK"
+            },
+            "flight_number": {
+                "S": "JT43"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "DPS"
+            },
+            "arrival_airport": {
+                "S": "SUB"
+            },
+            "flight_number": {
+                "S": "JT923"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "BEG"
+            },
+            "arrival_airport": {
+                "S": "SKP"
+            },
+            "flight_number": {
+                "S": "JU166"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "AUH"
+            },
+            "flight_number": {
+                "S": "JU7512"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "NQZ"
+            },
+            "arrival_airport": {
+                "S": "ALA"
+            },
+            "flight_number": {
+                "S": "KC618"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ICN"
+            },
+            "arrival_airport": {
+                "S": "TAO"
+            },
+            "flight_number": {
+                "S": "KJ231"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "AUH"
+            },
+            "flight_number": {
+                "S": "KL3944"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "KL4109"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NBO"
+            },
+            "arrival_airport": {
+                "S": "EBB"
+            },
+            "flight_number": {
+                "S": "KL4188"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NBO"
+            },
+            "arrival_airport": {
+                "S": "EBB"
+            },
+            "flight_number": {
+                "S": "KQ418"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "KWI"
+            },
+            "flight_number": {
+                "S": "KU420"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "INC"
+            },
+            "flight_number": {
+                "S": "KY9055"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KUL"
+            },
+            "arrival_airport": {
+                "S": "DOH"
+            },
+            "flight_number": {
+                "S": "LA5270"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "MAD"
+            },
+            "flight_number": {
+                "S": "LA5402"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "LA5682"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "LA8927"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ICN"
+            },
+            "arrival_airport": {
+                "S": "FRA"
+            },
+            "flight_number": {
+                "S": "LH8431"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ICN"
+            },
+            "arrival_airport": {
+                "S": "FRA"
+            },
+            "flight_number": {
+                "S": "LH8433"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "LH9753"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "LH9777"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "OSL"
+            },
+            "flight_number": {
+                "S": "LX1210"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "PVG"
+            },
+            "flight_number": {
+                "S": "LX188"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "ZAG"
+            },
+            "flight_number": {
+                "S": "LX4250"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "LX9000"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "LX9003"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "KMG"
+            },
+            "flight_number": {
+                "S": "MF1239"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "INC"
+            },
+            "flight_number": {
+                "S": "MF5345"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "HGH"
+            },
+            "flight_number": {
+                "S": "MF5454"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "MH128"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "LWY"
+            },
+            "arrival_airport": {
+                "S": "BKM"
+            },
+            "flight_number": {
+                "S": "MH3540"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KUL"
+            },
+            "arrival_airport": {
+                "S": "DOH"
+            },
+            "flight_number": {
+                "S": "MH9054"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ASW"
+            },
+            "arrival_airport": {
+                "S": "CAI"
+            },
+            "flight_number": {
+                "S": "MS85"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "WNZ"
+            },
+            "flight_number": {
+                "S": "MU2491"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "SHA"
+            },
+            "flight_number": {
+                "S": "MU3422"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "WUH"
+            },
+            "flight_number": {
+                "S": "MU6733"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "KMG"
+            },
+            "flight_number": {
+                "S": "MU6823"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "WEH"
+            },
+            "flight_number": {
+                "S": "MU6895"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "XIY"
+            },
+            "flight_number": {
+                "S": "MU6955"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "SHA"
+            },
+            "arrival_airport": {
+                "S": "CTU"
+            },
+            "flight_number": {
+                "S": "MU8402"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVX"
+            },
+            "arrival_airport": {
+                "S": "IST"
+            },
+            "flight_number": {
+                "S": "N41277"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "FUK"
+            },
+            "arrival_airport": {
+                "S": "KMI"
+            },
+            "flight_number": {
+                "S": "NH4665"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "BKK"
+            },
+            "arrival_airport": {
+                "S": "NRT"
+            },
+            "flight_number": {
+                "S": "NH8546"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CHC"
+            },
+            "arrival_airport": {
+                "S": "LAX"
+            },
+            "flight_number": {
+                "S": "NZ1010"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "NZ3282"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "NZ3345"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "NZ401"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "NPE"
+            },
+            "flight_number": {
+                "S": "NZ5025"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "NPL"
+            },
+            "arrival_airport": {
+                "S": "AKL"
+            },
+            "flight_number": {
+                "S": "NZ5030"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "PMR"
+            },
+            "arrival_airport": {
+                "S": "AKL"
+            },
+            "flight_number": {
+                "S": "NZ5100"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "CHC"
+            },
+            "flight_number": {
+                "S": "NZ515"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "IVC"
+            },
+            "arrival_airport": {
+                "S": "CHC"
+            },
+            "flight_number": {
+                "S": "NZ5700"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "ZQN"
+            },
+            "flight_number": {
+                "S": "NZ611"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "ZQN"
+            },
+            "flight_number": {
+                "S": "NZ621"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "BNE"
+            },
+            "arrival_airport": {
+                "S": "BDB"
+            },
+            "flight_number": {
+                "S": "NZ7154"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "BNE"
+            },
+            "arrival_airport": {
+                "S": "GLT"
+            },
+            "flight_number": {
+                "S": "NZ7164"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "BNE"
+            },
+            "arrival_airport": {
+                "S": "MKY"
+            },
+            "flight_number": {
+                "S": "NZ7763"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "GIS"
+            },
+            "arrival_airport": {
+                "S": "AKL"
+            },
+            "flight_number": {
+                "S": "NZ8166"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "TRG"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "NZ8251"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NPL"
+            },
+            "arrival_airport": {
+                "S": "CHC"
+            },
+            "flight_number": {
+                "S": "NZ8761"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NPL"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "NZ8791"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "IVC"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "NZ8872"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "JJN"
+            },
+            "flight_number": {
+                "S": "O36859"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "JJN"
+            },
+            "arrival_airport": {
+                "S": "HGH"
+            },
+            "flight_number": {
+                "S": "O36860"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PEK"
+            },
+            "arrival_airport": {
+                "S": "HGH"
+            },
+            "flight_number": {
+                "S": "O36865"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CTU"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O36884"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "TAO"
+            },
+            "flight_number": {
+                "S": "O36886"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O36897"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NTG"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O36899"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CKG"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O36900"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PEK"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O36909"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PEK"
+            },
+            "arrival_airport": {
+                "S": "HGH"
+            },
+            "flight_number": {
+                "S": "O36913"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HAK"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O36919"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "CGO"
+            },
+            "flight_number": {
+                "S": "O36923"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "TAO"
+            },
+            "flight_number": {
+                "S": "O36933"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PEK"
+            },
+            "arrival_airport": {
+                "S": "WUX"
+            },
+            "flight_number": {
+                "S": "O36945"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "JJN"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O36948"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "WEF"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O36950"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "URC"
+            },
+            "flight_number": {
+                "S": "O36957"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "TSN"
+            },
+            "flight_number": {
+                "S": "O36971"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "WUX"
+            },
+            "flight_number": {
+                "S": "O36979"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HET"
+            },
+            "arrival_airport": {
+                "S": "HGH"
+            },
+            "flight_number": {
+                "S": "O37053"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CSX"
+            },
+            "arrival_airport": {
+                "S": "WUH"
+            },
+            "flight_number": {
+                "S": "O37055"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MAA"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O37070"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "URC"
+            },
+            "arrival_airport": {
+                "S": "HGH"
+            },
+            "flight_number": {
+                "S": "O37111"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "URC"
+            },
+            "flight_number": {
+                "S": "O37112"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "FOC"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O37145"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "WNZ"
+            },
+            "arrival_airport": {
+                "S": "WEH"
+            },
+            "flight_number": {
+                "S": "O37253"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "WEH"
+            },
+            "arrival_airport": {
+                "S": "WNZ"
+            },
+            "flight_number": {
+                "S": "O37254"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CSX"
+            },
+            "arrival_airport": {
+                "S": "KIX"
+            },
+            "flight_number": {
+                "S": "O37255"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KIX"
+            },
+            "arrival_airport": {
+                "S": "WUH"
+            },
+            "flight_number": {
+                "S": "O37302"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "SZX"
+            },
+            "flight_number": {
+                "S": "O37306"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "MAD"
+            },
+            "flight_number": {
+                "S": "OB5503"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "FUK"
+            },
+            "arrival_airport": {
+                "S": "KMI"
+            },
+            "flight_number": {
+                "S": "OC65"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "HKG"
+            },
+            "flight_number": {
+                "S": "OM5612"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "ZAG"
+            },
+            "flight_number": {
+                "S": "OU461"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "IST"
+            },
+            "flight_number": {
+                "S": "OZ6924"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SHJ"
+            },
+            "arrival_airport": {
+                "S": "ISB"
+            },
+            "flight_number": {
+                "S": "PA213"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CMN"
+            },
+            "arrival_airport": {
+                "S": "SAW"
+            },
+            "flight_number": {
+                "S": "PC652"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CGK"
+            },
+            "arrival_airport": {
+                "S": "DPS"
+            },
+            "flight_number": {
+                "S": "PG4312"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SHJ"
+            },
+            "arrival_airport": {
+                "S": "ISB"
+            },
+            "flight_number": {
+                "S": "PK182"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "AUH"
+            },
+            "flight_number": {
+                "S": "PK4265"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "ALA"
+            },
+            "arrival_airport": {
+                "S": "KBP"
+            },
+            "flight_number": {
+                "S": "PQ322"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "BNE"
+            },
+            "arrival_airport": {
+                "S": "NLK"
+            },
+            "flight_number": {
+                "S": "QF183"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "BNE"
+            },
+            "arrival_airport": {
+                "S": "BDB"
+            },
+            "flight_number": {
+                "S": "QF2322"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "BNE"
+            },
+            "arrival_airport": {
+                "S": "GLT"
+            },
+            "flight_number": {
+                "S": "QF2334"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "DUD"
+            },
+            "flight_number": {
+                "S": "QF4943"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "QF4971"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "KOJ"
+            },
+            "arrival_airport": {
+                "S": "NRT"
+            },
+            "flight_number": {
+                "S": "QF5068"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "ZQN"
+            },
+            "flight_number": {
+                "S": "QF8448"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "NPE"
+            },
+            "flight_number": {
+                "S": "QF8465"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "PMR"
+            },
+            "arrival_airport": {
+                "S": "AKL"
+            },
+            "flight_number": {
+                "S": "QF8484"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "GIS"
+            },
+            "arrival_airport": {
+                "S": "AKL"
+            },
+            "flight_number": {
+                "S": "QF8495"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "NPL"
+            },
+            "arrival_airport": {
+                "S": "AKL"
+            },
+            "flight_number": {
+                "S": "QF8502"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "IVC"
+            },
+            "arrival_airport": {
+                "S": "WLG"
+            },
+            "flight_number": {
+                "S": "QF8631"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "BNE"
+            },
+            "arrival_airport": {
+                "S": "MKY"
+            },
+            "flight_number": {
+                "S": "QF984"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "DPS"
+            },
+            "arrival_airport": {
+                "S": "UPG"
+            },
+            "flight_number": {
+                "S": "QG342"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SUB"
+            },
+            "arrival_airport": {
+                "S": "BPN"
+            },
+            "flight_number": {
+                "S": "QG430"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "DPS"
+            },
+            "arrival_airport": {
+                "S": "CGK"
+            },
+            "flight_number": {
+                "S": "QG683"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "PLM"
+            },
+            "arrival_airport": {
+                "S": "CGK"
+            },
+            "flight_number": {
+                "S": "QG985"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "QR4968"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KUL"
+            },
+            "arrival_airport": {
+                "S": "DOH"
+            },
+            "flight_number": {
+                "S": "QR853"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NBO"
+            },
+            "arrival_airport": {
+                "S": "LGG"
+            },
+            "flight_number": {
+                "S": "QR8776"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "AUH"
+            },
+            "flight_number": {
+                "S": "S74608"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ICN"
+            },
+            "arrival_airport": {
+                "S": "OVB"
+            },
+            "flight_number": {
+                "S": "S75792"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "VVO"
+            },
+            "arrival_airport": {
+                "S": "PKC"
+            },
+            "flight_number": {
+                "S": "S76215"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "VVO"
+            },
+            "arrival_airport": {
+                "S": "UUS"
+            },
+            "flight_number": {
+                "S": "S76221"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "IKT"
+            },
+            "arrival_airport": {
+                "S": "NMA"
+            },
+            "flight_number": {
+                "S": "S76351"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NKG"
+            },
+            "arrival_airport": {
+                "S": "YNT"
+            },
+            "flight_number": {
+                "S": "SC4728"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SUB"
+            },
+            "arrival_airport": {
+                "S": "BPN"
+            },
+            "flight_number": {
+                "S": "SJ232"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SUB"
+            },
+            "arrival_airport": {
+                "S": "CGK"
+            },
+            "flight_number": {
+                "S": "SJ257"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "DPS"
+            },
+            "arrival_airport": {
+                "S": "CGK"
+            },
+            "flight_number": {
+                "S": "SJ273"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SUB"
+            },
+            "arrival_airport": {
+                "S": "UPG"
+            },
+            "flight_number": {
+                "S": "SJ566"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "OSL"
+            },
+            "flight_number": {
+                "S": "SK3516"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "SQ218"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "ZAG"
+            },
+            "flight_number": {
+                "S": "SQ2413"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "SQ282"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "GIS"
+            },
+            "arrival_airport": {
+                "S": "AKL"
+            },
+            "flight_number": {
+                "S": "SQ4398"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "NPE"
+            },
+            "flight_number": {
+                "S": "SQ4413"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "ZQN"
+            },
+            "flight_number": {
+                "S": "SQ4450"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "AKL"
+            },
+            "arrival_airport": {
+                "S": "ZQN"
+            },
+            "flight_number": {
+                "S": "SQ4451"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NPL"
+            },
+            "arrival_airport": {
+                "S": "CHC"
+            },
+            "flight_number": {
+                "S": "SQ4533"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SHJ"
+            },
+            "arrival_airport": {
+                "S": "BRU"
+            },
+            "flight_number": {
+                "S": "SQ7366"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SIN"
+            },
+            "arrival_airport": {
+                "S": "HKG"
+            },
+            "flight_number": {
+                "S": "SQ7868"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SIN"
+            },
+            "arrival_airport": {
+                "S": "ATH"
+            },
+            "flight_number": {
+                "S": "SQ8560"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "REN"
+            },
+            "flight_number": {
+                "S": "SU1244"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "OVB"
+            },
+            "flight_number": {
+                "S": "SU1306"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "HMA"
+            },
+            "flight_number": {
+                "S": "SU1382"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "KJA"
+            },
+            "flight_number": {
+                "S": "SU1482"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "OMS"
+            },
+            "flight_number": {
+                "S": "SU1638"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "SEZ"
+            },
+            "flight_number": {
+                "S": "SU244"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "BEG"
+            },
+            "arrival_airport": {
+                "S": "TIA"
+            },
+            "flight_number": {
+                "S": "SU3761"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "LED"
+            },
+            "flight_number": {
+                "S": "SU46"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "VVO"
+            },
+            "arrival_airport": {
+                "S": "PKC"
+            },
+            "flight_number": {
+                "S": "SU5614"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "MQF"
+            },
+            "flight_number": {
+                "S": "SU6263"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVO"
+            },
+            "arrival_airport": {
+                "S": "AER"
+            },
+            "flight_number": {
+                "S": "SU6499"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CGK"
+            },
+            "arrival_airport": {
+                "S": "DPS"
+            },
+            "flight_number": {
+                "S": "SV6156"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NBO"
+            },
+            "arrival_airport": {
+                "S": "EBB"
+            },
+            "flight_number": {
+                "S": "SV6931"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "AYT"
+            },
+            "arrival_airport": {
+                "S": "LED"
+            },
+            "flight_number": {
+                "S": "TK1233"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "IST"
+            },
+            "flight_number": {
+                "S": "TK1908"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "TAS"
+            },
+            "arrival_airport": {
+                "S": "IST"
+            },
+            "flight_number": {
+                "S": "TK371"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "TK4810"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "ISL"
+            },
+            "arrival_airport": {
+                "S": "BAH"
+            },
+            "flight_number": {
+                "S": "TK6578"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ESB"
+            },
+            "arrival_airport": {
+                "S": "IKA"
+            },
+            "flight_number": {
+                "S": "TK7880"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "TK9311"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "IXK"
+            },
+            "arrival_airport": {
+                "S": "AMD"
+            },
+            "flight_number": {
+                "S": "TRJ720"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "DJE"
+            },
+            "flight_number": {
+                "S": "TU875"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "XUZ"
+            },
+            "flight_number": {
+                "S": "TV6917"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "INC"
+            },
+            "flight_number": {
+                "S": "TV6943"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "ALC"
+            },
+            "arrival_airport": {
+                "S": "LTN"
+            },
+            "flight_number": {
+                "S": "U22230"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KTM"
+            },
+            "arrival_airport": {
+                "S": "KEP"
+            },
+            "flight_number": {
+                "S": "U4405"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVX"
+            },
+            "arrival_airport": {
+                "S": "AYT"
+            },
+            "flight_number": {
+                "S": "U61575"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "UFA"
+            },
+            "arrival_airport": {
+                "S": "AYT"
+            },
+            "flight_number": {
+                "S": "U61863"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVX"
+            },
+            "arrival_airport": {
+                "S": "BQS"
+            },
+            "flight_number": {
+                "S": "U6299"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVX"
+            },
+            "arrival_airport": {
+                "S": "TAS"
+            },
+            "flight_number": {
+                "S": "U68961"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "IAD"
+            },
+            "arrival_airport": {
+                "S": "BOS"
+            },
+            "flight_number": {
+                "S": "UA641"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "ZAG"
+            },
+            "flight_number": {
+                "S": "UA7278"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "UK8218"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "MAA"
+            },
+            "flight_number": {
+                "S": "UL1025"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MAA"
+            },
+            "arrival_airport": {
+                "S": "CMB"
+            },
+            "flight_number": {
+                "S": "UL126"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CMB"
+            },
+            "arrival_airport": {
+                "S": "AUH"
+            },
+            "flight_number": {
+                "S": "UL2265"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "UL2328"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "ZRH"
+            },
+            "arrival_airport": {
+                "S": "MAD"
+            },
+            "flight_number": {
+                "S": "VY5147"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MHD"
+            },
+            "arrival_airport": {
+                "S": "THR"
+            },
+            "flight_number": {
+                "S": "W51090"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MEL"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "WY5128"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "NBO"
+            },
+            "arrival_airport": {
+                "S": "EBB"
+            },
+            "flight_number": {
+                "S": "WY5390"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "DOH"
+            },
+            "arrival_airport": {
+                "S": "MUC"
+            },
+            "flight_number": {
+                "S": "WY6241"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "SVX"
+            },
+            "arrival_airport": {
+                "S": "BAX"
+            },
+            "flight_number": {
+                "S": "WZ1075"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "BMA"
+            },
+            "arrival_airport": {
+                "S": "AGH"
+            },
+            "flight_number": {
+                "S": "X14447"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "landed"
+            },
+            "departure_airport": {
+                "S": "AYT"
+            },
+            "arrival_airport": {
+                "S": "DUS"
+            },
+            "flight_number": {
+                "S": "XC9961"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "FMO"
+            },
+            "arrival_airport": {
+                "S": "AYT"
+            },
+            "flight_number": {
+                "S": "XQ251"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "GIZ"
+            },
+            "arrival_airport": {
+                "S": "RUH"
+            },
+            "flight_number": {
+                "S": "XY116"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "GIZ"
+            },
+            "arrival_airport": {
+                "S": "DMM"
+            },
+            "flight_number": {
+                "S": "XY718"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "PVG"
+            },
+            "flight_number": {
+                "S": "Y87331"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "TPE"
+            },
+            "flight_number": {
+                "S": "Y87911"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "TSN"
+            },
+            "flight_number": {
+                "S": "Y87921"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "PEK"
+            },
+            "flight_number": {
+                "S": "Y87933"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "CGO"
+            },
+            "flight_number": {
+                "S": "Y87969"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "PEK"
+            },
+            "flight_number": {
+                "S": "Y87985"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "XMN"
+            },
+            "flight_number": {
+                "S": "Y87993"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "YG9033"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "MNL"
+            },
+            "flight_number": {
+                "S": "YG9041"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "KUL"
+            },
+            "flight_number": {
+                "S": "YG9051"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "YNZ"
+            },
+            "arrival_airport": {
+                "S": "ICN"
+            },
+            "flight_number": {
+                "S": "YG9073"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "KMG"
+            },
+            "arrival_airport": {
+                "S": "LHE"
+            },
+            "flight_number": {
+                "S": "YG9089"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "HGH"
+            },
+            "arrival_airport": {
+                "S": "SIN"
+            },
+            "flight_number": {
+                "S": "YG9119"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "TAO"
+            },
+            "arrival_airport": {
+                "S": "KIX"
+            },
+            "flight_number": {
+                "S": "YG9127"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "cancelled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "PEK"
+            },
+            "flight_number": {
+                "S": "ZH1386"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "LZO"
+            },
+            "flight_number": {
+                "S": "ZH4352"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "SHA"
+            },
+            "flight_number": {
+                "S": "ZH5006"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "active"
+            },
+            "departure_airport": {
+                "S": "CAN"
+            },
+            "arrival_airport": {
+                "S": "LJG"
+            },
+            "flight_number": {
+                "S": "ZH8401"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        },
+        {
+            "flight_status": {
+                "S": "scheduled"
+            },
+            "departure_airport": {
+                "S": "MHD"
+            },
+            "arrival_airport": {
+                "S": "THR"
+            },
+            "flight_number": {
+                "S": "ZO4040"
+            },
+            "flight_date": {
+                "S": "2021-10-09"
+            }
+        }
+    ],
+    "Count": 369,
+    "ScannedCount": 369,
+    "ConsumedCapacity": null
+}
