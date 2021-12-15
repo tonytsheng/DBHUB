@@ -1,0 +1,32 @@
+aws dynamodb describe-table --table-name logfile --query "Table.TableStatus"
+
+aws --profile ec2 dynamodb put-item \
+  --table-name flight \
+  --item '{
+    "flight_number": {"S":"FJ1392"},
+    "flight_date": {"S":"2021-09-10"},
+    "dep": {"S":"NAN"},
+    "arr": {"S":"HKG"},
+    "status": {"S":"scheduled"}
+}' \
+--return-consumed-capacity TOTAL
+
+
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+
+# "2021-09-10", "FJ1392", "NAN", "", "HKG", "", "scheduled"
+
+
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+# run this after creating a global table
+aws dynamodb scan --region ap-southeast-2 --table-name flight --select "COUNT"
+
+aws dynamodb query --table-name flight \
+  --key-condition-expression "flight_date =:flight_date" \
+  --expression-attribute-values '{ ":flight_date" : { "S": "2021-10-09"} }'
+
+aws dynamodb query --region us-east-2 --table-name flight \
+  --key-condition-expression "flight_date =:flight_date AND flight_number =:flight_number" \
+  --expression-attribute-values '{ ":flight_date" : { "S": "2021-10-09"},
+                                   ":flight_number" : {"S": "ZO4040"}}'
+
