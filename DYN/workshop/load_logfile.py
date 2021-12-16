@@ -7,7 +7,10 @@ from lab_config import boto_args
 
 
 def import_csv(tableName, fileName, attributesNameList, attributesTypeList):
+    dynamodb = boto3.setup_default_session(profile_name='ec2') 
+    # ttsheng need above for custom profile
     dynamodb = boto3.resource(**boto_args)
+
     dynamodb_table = dynamodb.Table(tableName)
     count = 0
 

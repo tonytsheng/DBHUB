@@ -13,6 +13,9 @@ from lab_config import boto_args
 queue = Queue()
 
 def import_csv(tableName, filename, thread_id):
+    dynamodb = boto3.setup_default_session(profile_name='ec2')
+    # ttsheng need above for custom profile
+
     dynamodb = boto3.resource(**boto_args)
     dynamodb_table = dynamodb.Table(tableName)
     count = 0

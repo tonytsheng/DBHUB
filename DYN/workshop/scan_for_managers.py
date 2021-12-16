@@ -5,6 +5,8 @@ import sys
 from lab_config import boto_args
 
 def scan_table(tableName,pageSize):
+    dynamodb = boto3.setup_default_session(profile_name='ec2')
+    # ttsheng need above for custom profile
     dynamodb = boto3.resource(**boto_args)
     table = dynamodb.Table(tableName)
 
