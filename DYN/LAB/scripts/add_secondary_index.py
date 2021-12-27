@@ -1,5 +1,6 @@
 import boto3
 
+dynamodb = boto3.setup_default_session(profile_name='ec2')
 dynamodb = boto3.client('dynamodb')
 
 try:

@@ -1,7 +1,7 @@
 import boto3
 
 from entities import Game
-
+dynamodb = boto3.setup_default_session(profile_name='ec2')
 dynamodb = boto3.client('dynamodb')
 
 MAP_NAME = "Green Grasslands"
