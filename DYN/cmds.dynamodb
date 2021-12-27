@@ -1,3 +1,5 @@
+dynamodb = boto3.setup_default_session(profile_name='ec2')
+
 aws dynamodb describe-table --table-name logfile --query "Table.TableStatus"
 
 aws --profile ec2 dynamodb put-item \
@@ -29,4 +31,55 @@ aws dynamodb query --region us-east-2 --table-name flight \
   --key-condition-expression "flight_date =:flight_date AND flight_number =:flight_number" \
   --expression-attribute-values '{ ":flight_date" : { "S": "2021-10-09"},
                                    ":flight_number" : {"S": "ZO4040"}}'
+
+aws dynamodb list-tables
+
+aws dynamodb describe-table --table-name logfile
+
+aws dynamodb scan --table-name battle-royale --select COUNT --return-consumed-capacity TOTAL
+
+:~/DBHUB/DYN/LAB/application (master) $ aws dynamodb describe-table --table-name battle-royale
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "PK",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "SK",
+                "AttributeType": "S"
+            }
+        ],
+        "TableName": "battle-royale",
+        "KeySchema": [
+            {
+                "AttributeName": "PK",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "SK",
+                "KeyType": "RANGE"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": 1640630358.779,
+        "ProvisionedThroughput": {
+            "LastIncreaseDateTime": 1640630433.151,
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 100,
+            "WriteCapacityUnits": 100
+        },
+        "TableSizeBytes": 0,
+        "ItemCount": 0,
+        "TableArn": "arn:aws:dynamodb:us-east-2:070201068661:table/battle-royale",
+        "TableId": "550ab8d0-ea0d-441d-b1c0-bf7542b525dd"
+    }
+}
+:~/DBHUB/DYN/LAB/application (master) $ aws dynamodb describe-table --table-name battle-royale --query "Table.TableStatus"
+"ACTIVE"
+:~/DBHUB/DYN/LAB/application (master) $ aws dynamodb describe-table --table-name battle-royale --query "Table.CreationDateTime"
+1640630358.779
+:~/DBHUB/DYN (master) $ aws dynamodb describe-table --table-name battle-royale --query "Table.ProvisionedThroughput.WriteCapacityUnits"
+100
 
