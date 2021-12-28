@@ -289,3 +289,6 @@ aws dynamodb scan --table-name battle-royale --projection-expression "PK, game_i
 
 aws dynamodb query --table-name battle-royale --projection-expression "PK, game_id" --return-consumed-capacity TOTAL --expression-attribute-values '{ ":PK" : { "S": "GAME#3a816c56-53e9-4d42-a76d-fa4af24b9842"} } ' --key-condition-expression  "PK=:PK"
 
+
+# DynamoDB to csv
+aws dynamodb scan --table-name my-table --select ALL_ATTRIBUTES --page-size 500 --max-items 100000 --output json | jq -r '.Items' | jq -r '(.[0] | keys_unsorted) as $keys | $keys, map([.[ $keys[] ].S])[] | @csv' 
