@@ -278,3 +278,14 @@ def find_open_games_by_map(map_name):
     "ConsumedCapacity": null
 }
 
+## Lab/Demo commands
+aws dynamodb scan  --table-name battle-royale --projection-expression "username, game_id" --return-consumed-capacity TOTAL
+
+aws dynamodb scan  --table-name battle-royale --index-name UserGameIndex --projection-expression "username, game_id" --return-consumed-capacity TOTAL
+
+aws dynamodb query --table-name battle-royale --index-name UserGameIndex --projection-expression "username, game_id" --return-consumed-capacity TOTAL --expression-attribute-values '{ ":username" : { "S": "angelaoliver"} } ' --key-condition-expression  "username=:username"
+
+aws dynamodb scan --table-name battle-royale --projection-expression "PK, game_id" --return-consumed-capacity TOTAL
+
+aws dynamodb query --table-name battle-royale --projection-expression "PK, game_id" --return-consumed-capacity TOTAL --expression-attribute-values '{ ":PK" : { "S": "GAME#3a816c56-53e9-4d42-a76d-fa4af24b9842"} } ' --key-condition-expression  "PK=:PK"
+
