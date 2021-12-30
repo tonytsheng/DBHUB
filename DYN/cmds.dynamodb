@@ -292,3 +292,22 @@ aws dynamodb query --table-name battle-royale --projection-expression "PK, game_
 
 # DynamoDB to csv
 aws dynamodb scan --table-name my-table --select ALL_ATTRIBUTES --page-size 500 --max-items 100000 --output json | jq -r '.Items' | jq -r '(.[0] | keys_unsorted) as $keys | $keys, map([.[ $keys[] ].S])[] | @csv' 
+
+
+aws dynamodb query --table-name flight   \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"   \
+  --return-consumed-capacity TOTAL   \
+  --expression-attribute-values '{ ":flight_date" : { "S": "2021-10-30"} } '   \
+  --key-condition-expression  "flight_date=:flight_date"
+
+aws dynamodb query --table-name flight   \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"   \
+  --return-consumed-capacity TOTAL   \
+  --expression-attribute-values '{ ":departure_airport" : { "S": "MEL"} } '   \
+  --key-condition-expression  "departure_airport=:departure_airport"
+
+An error occurred (ValidationException) when calling the Query operation: Query condition missed key schema element: flight_date
+# No GSI to query on departure_airport
+# Add a GSI on PK:departure_airport, SK:flight_date
+# see index being created by describe-table
+
