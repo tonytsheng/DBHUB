@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "csv_load_flight.py", line 2, in <module>
+    import boto3
+ImportError: No module named boto3
+Traceback (most recent call last):
+  File "./csv_load_flight.py", line 2, in <module>
+    import boto3
+ImportError: No module named boto3

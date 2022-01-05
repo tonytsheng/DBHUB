@@ -311,3 +311,38 @@ An error occurred (ValidationException) when calling the Query operation: Query 
 # Add a GSI on PK:departure_airport, SK:flight_date
 # see index being created by describe-table
 
+aws dynamodb query --table-name flight     \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"     \
+  --return-consumed-capacity TOTAL     \
+  --expression-attribute-values '{ ":departure_airport" : { "S": "MEL"} } '     \
+  --key-condition-expression  "departure_airport=:departure_airport" \
+  --index-name departure_airport-flight_date-index
+# returns 752 rows
+# note GSI is PK:departure_airport, SK:flight_date
+# note GSI can have different pk and sk from the base table
+# LSI must have same pk as base table but can have different sk
+
+aws dynamodb query --table-name flight     \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"     \
+  --return-consumed-capacity TOTAL     \
+  --expression-attribute-values '{ ":arrival_airport" : { "S": "MEL"} } '     \
+  --key-condition-expression  "arrival_airport=:arrival_airport"
+
+An error occurred (ValidationException) when calling the Query operation: Query condition missed key schema element: flight_date
+
+aws dynamodb query --table-name flight   \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"   \
+  --return-consumed-capacity TOTAL   \
+  --expression-attribute-values '{ ":flight_date" : { "S": "2021-10-30"} } '   \
+  --key-condition-expression  "flight_date=:flight_date" \
+  --index-name departure_airport-flight_date-index
+An error occurred (ValidationException) when calling the Query operation: Query condition missed key schema element: departure_airport
+
+aws dynamodb update-table \
+    --table-name flight \
+    --attribute-definitions AttributeName=arrival_airport,AttributeType=S \
+    --global-secondary-index-updates \
+        "[{\"Create\":{\"IndexName\": \"arrival_airport-index\",\"KeySchema\":[{\"AttributeName\":\"arrival_airport\",\"KeyType\":\"HASH\"}], \
+        \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
+# can also do this through console or python script
+
