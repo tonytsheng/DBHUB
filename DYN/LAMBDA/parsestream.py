@@ -1,3 +1,15 @@
+# example taken from Be A Better Dev
+# https://gist.github.com/djg07/2bcf216822c9ab664d8286924776999f
+# lambda function to read through DynamoDB Stream
+# and pull out information for old vs new images for records that have been modified
+# DDB table: flight
+# "dep": { "S": "MEL" } 
+# "arr": { "S": "MEL" } 
+# "status": { "S": "scheduled" }
+# "flight_number": { "S": "UK8218" }
+# "flight_date": { "S": "2021-10-30"}
+
+
 import json
 
 print('Loading function')

@@ -1,3 +1,7 @@
+# file to load from a csv file
+# dynamodb table: flight
+# 'flight_date','flight_number','dep','arr','status'
+
 from __future__ import print_function # Python 2/3 compatibility
 import boto3
 import time
