@@ -4,7 +4,7 @@ print('Loading function')
 
 def lambda_handler(event, context):
 	print('------------------------')
-	print(event)
+	# print(event)
 	#1. Iterate over each record
 	try:
 		for record in event['Records']:
@@ -38,21 +38,23 @@ def handle_insert(record):
 	print("Done handling INSERT Event")
 
 def handle_modify(record):
-	print("Handling MODIFY Event")
+	#print("Handling MODIFY Event")
 
 	#3a. Parse oldImage and score
 	oldImage = record['dynamodb']['OldImage']
-	oldScore = oldImage['score']['N']
+	oldFlightNo = oldImage['flight_number']['S']
+	oldFlightDate = oldImage['flight_date']['S']
+	oldStatus = oldImage['status']['S']
 	
 	#3b. Parse oldImage and score
 	newImage = record['dynamodb']['NewImage']
-	newScore = newImage['score']['N']
+	newStatus = newImage['status']['S']
 
 	#3c. Check for change
-	if oldScore != newScore:
-		print('Scores changed - oldScore=' + str(oldScore) + ', newScore=' + str(newScore))
+	if oldStatus != newStatus:
+		print('Change for ' + str(oldFlightNo) + ' at ' + str(oldFlightDate) + ' : - oldStatus=' + str(oldStatus) + ', newStatus=' + str(newStatus))
 
-	print("Done handling MODIFY Event")
+	#print("Done handling MODIFY Event")
 
 def handle_remove(record):
 	print("Handling REMOVE Event")
@@ -67,3 +69,4 @@ def handle_remove(record):
 	print ('Row removed with playerId=' + oldPlayerId)
 
 	print("Done handling REMOVE Event")
+
