@@ -346,3 +346,10 @@ aws dynamodb update-table \
         \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
 # can also do this through console or python script
 
+aws dynamodb update-table --table-name 'logfile' --stream-specification StreamEnabled=true,StreamViewType=NEW_IMAGE
+
+aws lambda create-function --function-name cancelled_lambda --zip-file fileb://function.zip --handler cancelled_flight.lambda_handler --timeout 60 --runtime python3.7 --role arn:aws:iam::070201068661:role/ttsheng-lambda-dynamodb-role
+
+aws lambda create-event-source-mapping --function-name ddbreplica_lambda --enabled --batch-size 100 --starting-position TRIM_HORIZON --event-source-arn arn:aws:dynamodb:us-east-2:070201068661:table/logfile/stream/2022-01-06T00:56:38.634
+
+aws lambda create-event-source-mapping --function-name cancelled_lambda --enabled --batch-size 100 --starting-position TRIM_HORIZON --event-source-arn arn:aws:dynamodb:us-east-2:070201068661:table/flight/stream/2021-12-09T16:17:02.414

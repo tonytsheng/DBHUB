@@ -17,7 +17,7 @@ class StreamTypeDeserializer(TypeDeserializer):
 
 def _lambda_handler(event, context):
     dynamodb = boto3.resource(**boto_args)
-    dynamodb_table = dynamodb.Table('logfile_replica')
+    dynamodb_table = dynamodb.Table('flight_cancelled')
 
     ddb_deserializer = StreamTypeDeserializer()
 
@@ -28,7 +28,7 @@ def _lambda_handler(event, context):
 
         event_name = record['eventName'].upper()  # INSERT, MODIFY, REMOVE
 
-        if (event_name == 'INSERT') or (event_name == 'MODIFY'):
+        if (event_name == 'MODIFY'):
             if 'NewImage' not in ddb:
                 print ('Cannot process stream if it does not contain NewImage')
                 continue
