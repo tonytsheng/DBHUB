@@ -1,7 +1,8 @@
 count=0
 c=1
 total=100000
-outfile=$1
+year=$1
+outfile=$2
 while [ ${c} -lt 200000 ]
 do
 
@@ -14,7 +15,7 @@ do
     DEP=`shuf -n 1 /home/ec2-user/DBHUB/BASEDAT/SAMPLE_SCHEMAS/FLY1/ORA/iata.dat`
     ARR=`shuf -n 1 /home/ec2-user/DBHUB/BASEDAT/SAMPLE_SCHEMAS/FLY1/ORA/iata.dat`
     STATUS=`shuf -n 1 /home/ec2-user/DBHUB/BASEDAT/SAMPLE_SCHEMAS/FLY1/ORA/status`
-    TIMESTAMP=`date -d "$((RANDOM%1+2020))-$((RANDOM%12+1))-$((RANDOM%28+1)) " '+%Y-%m-%d'`
+    TIMESTAMP=`date -d "$((RANDOM%1+${year}))-$((RANDOM%12+1))-$((RANDOM%28+1)) " '+%Y-%m-%d'`
 
     #echo "    flight_resp = put_flight (\"$TIMESTAMP\", \"$flightno\", \"$DEP\", \"$ARR\", \"$STATUS\") "
     echo "\"$TIMESTAMP\", \"$airline$flightnumber\", \"$DEP\", \"$ARR\", \"$STATUS\" " >> $outfile
