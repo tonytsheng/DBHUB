@@ -1,0 +1,12 @@
+aws dynamodb update-item \
+    --table-name ProductCatalog \
+    --key '{"Id":{"N":"1"}}' \
+    --update-expression "SET Price = :newval" \
+    --condition-expression "Price = :currval" \
+    --expression-attribute-values file://expression-attribute-values.json
+
+json:
+{
+    ":newval":{"N":"8"},
+    ":currval":{"N":"10"}
+}
