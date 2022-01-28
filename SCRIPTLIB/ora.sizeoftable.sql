@@ -2,7 +2,7 @@ set linesize 200
 col owner format a20
 col name format a20
 SELECT
-   owner, "Type", table_name "Name", TRUNC(sum(bytes)/1024/1024/1024) GB
+   owner, "Type", table_name "Name", TRUNC(sum(bytes)/1024/1024) MB
 FROM
 (  SELECT segment_name table_name, owner, bytes, 'Table' as "Type"
    FROM dba_segments

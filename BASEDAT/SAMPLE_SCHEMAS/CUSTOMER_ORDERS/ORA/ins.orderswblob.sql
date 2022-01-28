@@ -5,7 +5,7 @@ values ( order_seq.nextval
   ,3
   ,1
   ,'COMPLETE',
-  (select order_img from orders where order_id=792)
+  (select order_img from orders where order_id=695)
 );
 commit;
 exit;
