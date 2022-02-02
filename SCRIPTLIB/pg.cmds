@@ -14,9 +14,85 @@ In this group of commands, the letters E, i, m, s, t, and v stand for foreign ta
 \dn -- schemas
 \du -- roles
 \dx -- list extensions
+\db -- tablespaces
 
 set search_path to  "$user", public, topology, customer_orders;
 
 select version();
 
 \i <infile>
+
+pg102=> create tablespace customer_orders location '/data/customer_orders.dbf';
+CREATE TABLESPACE
+pg102=> \db
+                                 List of tablespaces
+      Name       |  Owner   |                        Location
+-----------------+----------+--------------------------------------------------------
+ customer_orders | postgres | /rdsdbdata/db/base/tablespace/data/customer_orders.dbf
+ pg_default      | rdsadmin |
+ pg_global       | rdsadmin |
+(3 rows)
+
+pg102=> create  user customer_orders;
+CREATE ROLE
+pg102=> \du
+                                                               List of roles
+    Role name    |                         Attributes                         |                          Member of
+
+-----------------+------------------------------------------------------------+----------------------------------------------
+---------------
+ clark           |                                                            | {}
+ customer_orders |                                                            | {}
+ dms_user        |                                                            | {}
+ john            |                                                            | {}
+ postgres        | Create role, Create DB                                    +| {tpcc,rds_superuser}
+                 | Password valid until infinity                              |
+ rds_ad          | Cannot login                                               | {}
+ rds_iam         | Cannot login                                               | {}
+ rds_password    | Cannot login                                               | {}
+ rds_replication | Cannot login                                               | {}
+ rds_superuser   | Cannot login                                               | {pg_monitor,pg_signal_backend,rds_replication
+,rds_password}
+ rdsadmin        | Superuser, Create role, Create DB, Replication, Bypass RLS+| {}
+                 | Password valid until infinity                              |
+ rdsrepladmin    | No inheritance, Replication                               +| {}
+                 | Password valid until infinity                              |
+ readwrite       | Cannot login                                               | {}
+ soojie          |                                                            | {}
+ tpcc            |                                                            | {}
+ ttsheng         |                                                            | {readwrite}
+
+pg102=> show temp_tablespaces;
+ temp_tablespaces
+------------------
+
+(1 row)
+pg102=> show temp_tablespaces;
+ temp_tablespaces
+------------------
+
+(1 row)
+
+pg102=> \dt
+                        List of relations
+  Schema  |             Name              | Type  |     Owner
+----------+-------------------------------+-------+---------------
+ public   | awsdms_apply_exceptions       | table | dms_user
+ public   | awsdms_validation_failures_v1 | table | dms_user
+ public   | important                     | table | postgres
+ public   | pgbench_accounts              | table | postgres
+ public   | pgbench_branches              | table | postgres
+ public   | pgbench_history               | table | postgres
+ public   | pgbench_tellers               | table | postgres
+ public   | spatial_ref_sys               | table | rdsadmin
+ public   | t1                            | table | postgres
+ topology | layer                         | table | rds_superuser
+ topology | topology                      | table | rds_superuser
+(11 rows)
+
+pg102=> select pg_relation_filepath ('t1');
+ pg_relation_filepath
+----------------------
+ base/16396/11373209
+(1 row)
+
