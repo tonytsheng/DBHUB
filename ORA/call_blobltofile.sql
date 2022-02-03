@@ -1,6 +1,6 @@
 DECLARE
   l_blob  BLOB;
-p_dir      => 'BLOB_DIR';
+p_dir      => 'DATA_PUMP_DIR';
 p_filename => 'MyImage.gif';
 l_file      UTL_FILE.FILE_TYPE;
 l_buffer    RAW(32767);
@@ -9,11 +9,10 @@ l_pos       INTEGER := 1;
 l_blob_len  INTEGER;
 BEGIN
 	  -- Get LOB locator
-  SELECT col1
+  SELECT order_img
   INTO   l_blob
-  FROM   tab1
-  WHERE  rownum = 1;
-
+  FROM   orders
+  WHERE  order_id=206490;
 
 l_blob_len := DBMS_LOB.getlength(l_blob);
 
