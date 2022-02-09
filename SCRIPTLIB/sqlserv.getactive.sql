@@ -1,4 +1,6 @@
 DECLARE @dbname SYSNAME =NULL
+SET ANSI_PADDING ON;
+
 
 SELECT 
         sdes.session_id 
@@ -10,13 +12,13 @@ SELECT
        ,sdes.program_name
        ,sdes.login_name
        ,sdes.status
---       ,sdec.num_reads
---       ,sdec.num_writes
---       ,sdec.last_read
---       ,sdec.last_write
---       ,sdes.reads
---       ,sdes.logical_reads
---       ,sdes.writes
+       ,sdec.num_reads
+       ,sdec.num_writes
+       ,sdec.last_read
+       ,sdec.last_write
+       ,sdes.reads
+       ,sdes.logical_reads
+       ,sdes.writes
        ,DatabaseName = COALESCE( db_name(sdes.database_id),  N'')
        ,sdest.ObjName
     ,sdes.client_interface_name
@@ -53,4 +55,5 @@ where t.resource_type = 'database'
                                     ELSE DB_ID(@dbname)
                                END
   and t.request_type = 'LOCK'
-  and t.request_status = 'GRANT';
+  and t.request_status = 'GRANT'
+  and sdes.is_user_process = 1;
