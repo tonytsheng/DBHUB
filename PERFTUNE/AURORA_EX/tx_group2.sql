@@ -1,4 +1,4 @@
-\set order_id random(1,10000000) 
+\set order_id floor(random()*(1000000-1+1))+1
 
 BEGIN; 
 -- select random orders 
