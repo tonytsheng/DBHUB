@@ -96,3 +96,5 @@ pg102=> select pg_relation_filepath ('t1');
  base/16396/11373209
 (1 row)
 
+select version();
+

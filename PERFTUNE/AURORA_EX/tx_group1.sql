@@ -1,8 +1,13 @@
-\set order_item_quantity floor(random()*(100-1+1))+1
-\set order_item_price round((random()*(90-10)+10)::numeric,2)
-\set order_payment round((random()*(90-10)+10)::numeric,2)
-\set order_update_id floor(random()*(100000000-1+1))+1
-\set order_delete_id floor(random()*(100000000-1+1))+1
+\set order_item_quantity random(1,100)
+\set order_item_price double(random(1,1000))
+\set order_payment double(random(1, :order_item_price))
+\set order_update_id random(1,10000000)
+\set order_delete_id random(1,10000000)
+--\set order_item_quantity floor(random()*(100-1+1))+1
+--\set order_item_price round((random()*(90-10)+10)::numeric,2)
+--\set order_payment round((random()*(90-10)+10)::numeric,2)
+--\set order_update_id floor(random()*(100000000-1+1))+1
+--\set order_delete_id floor(random()*(100000000-1+1))+1
 
 BEGIN;
 

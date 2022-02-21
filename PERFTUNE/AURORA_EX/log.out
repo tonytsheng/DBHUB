@@ -1,0 +1,33 @@
+pghost: aurdb1-instance-1.cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 1 duration: 300 dbName: aurdb1
+transaction type: /home/ec2-user/DBHUB/PERFTUNE/AURORA_EX/tx_group1.sql
+scaling factor: 1
+query mode: simple
+number of clients: 1
+number of threads: 1
+duration: 300 s
+number of transactions actually processed: 60429
+latency average = 4.965 ms
+tps = 201.429799 (including connections establishing)
+tps = 201.436731 (excluding connections establishing)
+pghost: aurdb1-instance-1.cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 3 duration: 120 dbName: aurdb1
+transaction type: /home/ec2-user/DBHUB/PERFTUNE/AURORA_EX/tx_group1.sql
+scaling factor: 1
+query mode: simple
+number of clients: 3
+number of threads: 3
+duration: 120 s
+number of transactions actually processed: 43113
+latency average = 8.356 ms
+tps = 359.017686 (including connections establishing)
+tps = 359.061004 (excluding connections establishing)
+pghost: aurdb1-instance-1.cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 16 duration: 300 dbName: aurdb1
+transaction type: /home/ec2-user/DBHUB/PERFTUNE/AURORA_EX/tx_group1.sql
+scaling factor: 1
+query mode: simple
+number of clients: 16
+number of threads: 8
+duration: 300 s
+number of transactions actually processed: 74122
+latency average = 64.765 ms
+tps = 247.048333 (including connections establishing)
+tps = 247.077714 (excluding connections establishing)
