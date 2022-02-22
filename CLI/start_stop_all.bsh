@@ -1,10 +1,20 @@
 ACTIONIN=$1
-ACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-instance
+RDSACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-instance
+CLUACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-cluster
 #echo ${ACTION}
 
-for ins in `/usr/local/bin/aws --profile ec2 rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier' | sed s/\"//g `
+echo "+++ Instances"
+for instance in `/usr/local/bin/aws --profile ec2 rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier' | sed s/\"//g `
 do
-    echo $ins
-    /usr/local/bin/aws --profile ec2 rds ${ACTION} --db-instance-identifier $ins --output text
+    echo $instance
+    /usr/local/bin/aws --profile ec2 rds ${RDSACTION} --db-instance-identifier $instance --output text
+done
+
+echo "+++ Clusters"
+
+for cluster in `/usr/local/bin/aws --profile ec2 rds describe-db-clusters | jq ' .DBClusters[]  | .DBClusterIdentifier' | sed s/\"//g `
+do
+    echo $cluster
+    /usr/local/bin/aws --profile ec2 rds ${CLUACTION} --db-cluster-identifier $cluster --output text
 done
 
