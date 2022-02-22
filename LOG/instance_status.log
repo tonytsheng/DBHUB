@@ -4560,3 +4560,75 @@ An error occurred (InvalidClientTokenId) when calling the DescribeDBInstances op
 
 An error occurred (InvalidClientTokenId) when calling the StopDBCluster operation: The security token included in the request is invalid.
 -bash: /home/ec2-user/DBHUN/DYN/load_flight_data.bsh: No such file or directory
+Traceback (most recent call last):
+  File "/usr/bin/aws", line 19, in <module>
+    import awscli.clidriver
+  File "/usr/lib/python2.7/site-packages/awscli/clidriver.py", line 17, in <module>
+    import botocore.session
+  File "/usr/lib/python2.7/site-packages/botocore/session.py", line 29, in <module>
+    import botocore.configloader
+  File "/usr/lib/python2.7/site-packages/botocore/configloader.py", line 19, in <module>
+    from botocore.compat import six
+  File "/usr/lib/python2.7/site-packages/botocore/compat.py", line 28, in <module>
+    from urllib3 import exceptions
+  File "/usr/lib/python2.7/site-packages/urllib3/__init__.py", line 7, in <module>
+    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
+  File "/usr/lib/python2.7/site-packages/urllib3/connectionpool.py", line 29, in <module>
+    from .connection import (
+  File "/usr/lib/python2.7/site-packages/urllib3/connection.py", line 41, in <module>
+    from .util.ssl_ import (
+  File "/usr/lib/python2.7/site-packages/urllib3/util/__init__.py", line 8, in <module>
+    from .ssl_ import (
+  File "/usr/lib/python2.7/site-packages/urllib3/util/ssl_.py", line 10, in <module>
+    from ..exceptions import (
+ImportError: cannot import name ProxySchemeUnsupported
+
+An error occurred (InvalidClientTokenId) when calling the DescribeDBInstances operation: The security token included in the request is invalid.
+
+An error occurred (InvalidClientTokenId) when calling the DescribeDBInstances operation: The security token included in the request is invalid.
+
+An error occurred (InvalidClientTokenId) when calling the DescribeDBInstances operation: The security token included in the request is invalid.
+aurdb1-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurdb1-instance-1-us-east-2c
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurmysql100-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+nep1002
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+ora10a
+
+An error occurred (InvalidParameterValue) when calling the StopDBInstance operation: Cannot start or stop an Oracle DB instance in RDS Custom.
+pg102
+DBINSTANCE	2000	True	us-east-2c	7	rds-ca-2019	True	False	arn:aws:rds:us-east-2:070201068661:db:pg102	db.m6g.xlarge	pg102	stopping	pg102	0	db-LYKLXOEPHQVAWYLP546OGFUPZA	False	postgres	12.7	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-LYKLXOEPHQVAWYLP546OGFUPZA	False	2021-05-04T20:29:47.313Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2022-02-22T13:39:32Z	postgresql-license	postgres	5000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	True	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	07:20-07:50	thu:03:34-thu:04:04	True	us-east-2b	True	gp2
+DBPARAMETERGROUPS	default.postgres12	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
+ENDPOINT	pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+sqlserver500
+DBINSTANCE	200	False	us-east-2b	7	rds-ca-2019	SQL_Latin1_General_CP1_CI_AS	True	False	arn:aws:rds:us-east-2:070201068661:db:sqlserver500	db.m5.large	sqlserver500	stopping	0	db-LKKJYBCIE5CUCQSWXR65DJZBYA	True	sqlserver-se	15.00.4073.23.v1	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-LKKJYBCIE5CUCQSWXR65DJZBYA	False	2021-07-28T18:53:07.091Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2022-02-22T13:40:01Z	license-included	admin	1000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	04:39-05:09	sat:08:54-sat:09:24	True	True	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::070201068661:role/ttsheng-rds	ACTIVE
+DBPARAMETERGROUPS	default.sqlserver-se-15.0	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	sqlserver500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1433
+OPTIONGROUPMEMBERSHIPS	default:sqlserver-se-15-00	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55

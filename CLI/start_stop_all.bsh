@@ -2,9 +2,9 @@ ACTIONIN=$1
 ACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-instance
 #echo ${ACTION}
 
-for ins in `/usr/bin/aws rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier' | sed s/\"//g `
+for ins in `/usr/local/bin/aws --profile ec2 rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier' | sed s/\"//g `
 do
     echo $ins
-    /usr/bin/aws rds ${ACTION} --db-instance-identifier $ins --output text
+    /usr/local/bin/aws --profile ec2 rds ${ACTION} --db-instance-identifier $ins --output text
 done
 

@@ -1,2 +1,4 @@
 #aws rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier, .DBInstanceStatus'
-/usr/local/bin/aws rds --profile ec2 describe-db-instances --output text | grep DBINSTANCES | awk -F' ' '{print $11" "   $12}'
+#/usr/local/bin/aws rds --profile ec2 describe-db-instances --output text | grep DBINSTANCES | awk -F' ' '{print $11" "   $12}'
+
+/usr/local/bin/aws --profile ec2 rds describe-db-instances  | egrep  -w "DBInstanceIdentifier|DBInstanceStatus"
