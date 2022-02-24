@@ -1,6 +1,7 @@
 set linesize 200
 col owner format a20
 col name format a20
+col segment_name format a20
 SELECT
    owner, "Type", table_name "Name", TRUNC(sum(bytes)/1024/1024) MB
 FROM
@@ -29,5 +30,9 @@ FROM
 GROUP BY table_name, owner, "Type"
 -- HAVING SUM(bytes)/1024/1024 > 10  /* Ignore really small tables */
 ORDER BY SUM(bytes) desc;
+
+select segment_name,sum(bytes)/1024/1024 MB 
+from dba_segments where segment_type='TABLE' and segment_name=upper('ORDERS') group by segment_name;
+
 exit
 
