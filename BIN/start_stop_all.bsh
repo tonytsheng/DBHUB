@@ -1,3 +1,4 @@
+date
 ACTIONIN=$1
 ACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-instance
 #echo ${ACTION}

@@ -1,0 +1,21 @@
+callcode in|out inputfile|outputfile s3bucket table
+
+direction
+in - copy file from s3 into datapumpdir
+load
+tail log
+
+out - 
+export data
+copy file from datapumpdir to s3
+tail log
+
+check job status
+while job is running
+
+select * from dba_datapump_jobs;
+
+SELECT * FROM TABLE
+    (rdsadmin.rds_file_util.read_text_file(
+        p_directory => 'PRODUCT_DESCRIPTIONS',
+        p_filename  => 'rice.txt'));
