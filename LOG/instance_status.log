@@ -4676,3 +4676,77 @@ An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster op
 nep1002-cluster
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep1002-cluster is in stopped state but expected it to be one of available.
++++ Instances
+aurdb1-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurdb1-instance-1-us-east-2c
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurmysql100-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+nep1002
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+ora10a
+
+An error occurred (InvalidParameterValue) when calling the StopDBInstance operation: Cannot start or stop an Oracle DB instance in RDS Custom.
+pg102
+DBINSTANCE	2000	True	us-east-2b	7	rds-ca-2019	True	False	arn:aws:rds:us-east-2:070201068661:db:pg102	db.m6g.xlarge	pg102	stopping	pg102	0	db-LYKLXOEPHQVAWYLP546OGFUPZA	False	postgres	12.7	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-LYKLXOEPHQVAWYLP546OGFUPZA	False	2021-05-04T20:29:47.313Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2022-03-04T22:54:32Z	postgresql-license	postgres	5000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	True	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	07:20-07:50	thu:03:34-thu:04:04	True	us-east-2c	True	gp2
+DBPARAMETERGROUPS	default.postgres12	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
+ENDPOINT	pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+sqlserver500
+DBINSTANCE	200	False	us-east-2b	7	rds-ca-2019	SQL_Latin1_General_CP1_CI_AS	True	False	arn:aws:rds:us-east-2:070201068661:db:sqlserver500	db.m5.large	sqlserver500	stopping	0	db-LKKJYBCIE5CUCQSWXR65DJZBYA	True	sqlserver-se	15.00.4073.23.v1	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-LKKJYBCIE5CUCQSWXR65DJZBYA	False	2021-07-28T18:53:07.091Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2022-03-04T22:51:01Z	license-included	admin	1000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	04:39-05:09	sat:08:54-sat:09:24	True	True	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::070201068661:role/ttsheng-rds	ACTIVE
+DBPARAMETERGROUPS	default.sqlserver-se-15.0	pending-reboot
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	sqlserver500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1433
+OPTIONGROUPMEMBERSHIPS	default:sqlserver-se-15-00	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
++++ Clusters
+aurdb1
+DBCLUSTER	1	7	2022-01-18T21:02:59.135Z	True	False	arn:aws:rds:us-east-2:070201068661:cluster:aurdb1	aurdb1	default.aurora-postgresql12	default-vpc-0467e5c237261df36	aurdb1	cluster-Y46UNRHHS4Y5B4T5BUAB4TBKRY	True	2022-02-25T08:11:21.862Z	aurdb1.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com	aurora-postgresql	provisioned	12.7	Z2XHWR1WZ565X2	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2022-03-04T22:58:39.374Z	postgres	True	5432	08:03-08:33	thu:10:10-thu:10:40	aurdb1.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com	available	True
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	aurdb1-instance-1-us-east-2c	False	1
+DBCLUSTERMEMBERS	in-sync	aurdb1-instance-1	True	1
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+aurmysql100
+DBCLUSTER	1	1	2022-01-20T16:22:52.184Z	True	False	arn:aws:rds:us-east-2:070201068661:cluster:aurmysql100	aurmysql100	default.aurora-mysql5.7	default-vpc-0467e5c237261df36	aurmysql100	cluster-E2X4ZWZVNQ4XMFZRWXKAPHN7YQ	False	2022-03-03T07:48:27.228Z	aurmysql100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com	aurora-mysql	provisioned	5.7.mysql_aurora.2.07.2	Z2XHWR1WZ565X2	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2022-03-04T22:55:16.319Z	admin	False	3306	07:44-08:14	mon:06:45-mon:07:15	aurmysql100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com	available	True
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	aurmysql100-instance-1	True	1
+ENABLEDCLOUDWATCHLOGSEXPORTS	error
+ENABLEDCLOUDWATCHLOGSEXPORTS	general
+ENABLEDCLOUDWATCHLOGSEXPORTS	slowquery
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+nep1002-cluster
+DBCLUSTER	1	1	2021-05-04T13:27:37.832Z	False	False	arn:aws:rds:us-east-2:070201068661:cluster:nep1002-cluster	nep1002-cluster	default.neptune1	default-vpc-0467e5c237261df36	cluster-NSP664KOMS2MLEUP5UFI5JTCJU	False	2022-03-03T04:13:51.978Z	nep1002-cluster.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	neptune	provisioned	1.0.4.1	Z18MU2VX5LLW0S	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2022-03-04T22:57:01.736Z	admin	False	8182	04:00-04:30	tue:07:18-tue:07:48	nep1002-cluster.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	available	True
+ASSOCIATEDROLES	arn:aws:iam::070201068661:role/load-neptune-s3	ACTIVE
+ASSOCIATEDROLES	arn:aws:iam::070201068661:role/ttsheng-rds	ACTIVE
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	nep1002	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
