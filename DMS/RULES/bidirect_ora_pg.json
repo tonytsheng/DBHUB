@@ -12,7 +12,7 @@
             "LoopbackPreventionSettings": {
                 "EnableLoopbackPrevention": true,
                 "SourceSchema": "CUSTOMER_ORDERS",
-                "TargetSchema": "CUSTOMER_ORDERS"
+                "TargetSchema": "customer_orders"
             }
         },
         {
