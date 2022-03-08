@@ -1,0 +1,9 @@
+turn on rds.logical_replication
+add pglogical to shared_preload_libraries
+create pglogical extension
+confirm schema owner is postgres/master user
+use master user for endpoint and owner of objects
+
+https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html
+
+
