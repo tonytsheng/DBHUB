@@ -69,6 +69,9 @@ sysctl sshd restart
 ## zip/unzip
 sudo yum install zip
 
+# stress rpm for stress tesing
+sudo yum install stress
+
 ## aws cli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
@@ -135,4 +138,4 @@ cd /
 sudo mkdir dbmount
 sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-04a372e88a5e283ee.efs.us-east-2.amazonaws.com:/ dbmount
 change permissions on /dbmount
-
+## echo "fs-04a372e88a5e283ee.efs.us-east-2.amazonaws.com:/ /dbmount efs _netdev,tls,iam 0 0" > /etc/fstab
