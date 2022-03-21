@@ -1,6 +1,0 @@
-export REDIS_URL=redis://ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379/
-export DB_HOST=mysql100.cyt4dgtj55oy.us-east-2.rds.amazonaws.com
-export DB_USER=admin
-export DB_PASS=Pass1234
-export DB_NAME=mysql100
-
