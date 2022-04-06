@@ -1,0 +1,20 @@
+grant select_catalog_role to jeffdm with admin option;
+grant execute_catalog_role to jeffdm with admin option;
+grant create session to jeffdm;
+grant create table to jeffdm;
+grant unlimited tablespace to jeffdm;
+GRANT EXECUTE ON dbms_pipe TO jeffdm;
+GRANT EXECUTE ON dbms_lock TO jeffdm;
+GRANT EXECUTE ON dbms_lob TO jeffdm;
+GRANT EXECUTE ON dbms_utility TO jeffdm;
+GRANT EXECUTE ON dbms_sql TO jeffdm;
+GRANT EXECUTE ON utl_raw TO jeffdm;
+grant CREATE SEQUENCE to jeffdm;
+grant CREATE SESSION to jeffdm;
+grant CREATE TABLE to jeffdm;
+grant CREATE TRIGGER to jeffdm;
+grant CREATE VIEW to jeffdm;
+grant CREATE PROCEDURE to jeffdm;
+
+exit
+
