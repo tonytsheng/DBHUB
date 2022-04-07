@@ -1,3 +1,4 @@
+# let dms create the objects on the target
 2022-04-07T12:37:30:819811 [AT_GLOBAL       ]I:  Task Server Log - S6MQBCQAMJFUZY463NRHOFFBMB7AFAL5ERHFZMA  (V3.4.6.R2 ip-172-23-1-112 Linux 4.14.231-173.360.amzn2.x86_64 #1 SMP Mon Apr 19 23:20:22 UTC 2021 x86_64 64-bit, PID: 1948571) started at Thu Apr 07 12:37:30 2022  (at_logger.c:3027)
 2022-04-07T12:37:30:819874 [DATA_STRUCTURE  ]I:  SQLite version is 3.31.1  (at_sqlite.c:174)
 2022-04-07T12:37:30:819896 [VALIDATOR       ]I:  validation_util_class_initialize  (validation_util.c:71)
