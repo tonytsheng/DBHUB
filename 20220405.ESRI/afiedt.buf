@@ -1,4 +1,0 @@
-SELECT objectid, SDO_UTIL.TO_WKTGEOMETRY(shape) as point from esritestcopy
-where objectid > 30
-and objectid < 39
-/
