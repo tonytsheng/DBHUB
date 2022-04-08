@@ -1,0 +1,12 @@
+scenario 1
+tables with geometry column
+primary key added
+geo columns indexed
+dms won't replicate all of the data for full load
+we can insert 10 rows at a time for esrifeatureclass and it does not error out
+we cannot insert via cursor the whole 545 rows - errors for row 61
+
+scenario 2
+with no pk, the shape columns will be skipped - since blob columns
+
+

@@ -228,4 +228,5 @@ ON "JEFFDM"."GDELTTEST" ("SHAPE")
 
  
 
+CREATE INDEX IF NOT EXISTS shape_142143_2_sidx ON jeffdm.gdelttest USING gist (shape);
 

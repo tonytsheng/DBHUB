@@ -1,0 +1,14 @@
+# trying to load this table in batches of 90 rows
+
+2022-04-08T18:48:08 [SOURCE_CAPTURE  ]I:  New Log Miner boundaries in thread '1' : First REDO Sequence is '185731', Last REDO Sequence is '185731'  (oracdc_reader.c:632)
+2022-04-08T18:48:17 [VALIDATOR       ]E:  Validation is not supported during heterogenous migration for Oracle Spatial type of column 'SHAPE'. [1026104]  (validation_config.c:1256)
+2022-04-08T18:48:17 [VALIDATOR       ]E:  Could not find the sql to retrieve column 'SHAPE' from table 'ESRITESTTHREE' [1026104]  (validation_config.c:555)
+2022-04-08T18:48:17 [VALIDATOR       ]E:   failed target validation_config_fetch_validation_rules_for_endpoint [1026104]  (validation_config.c:391)
+2022-04-08T18:48:17 [VALIDATOR       ]W:  Suspending the table : 2 from validation since we received an error message : 'Fetching the validation rules failed' with type : non-retryable(0)  (partition_validator.c:515)
+2022-04-08T18:48:17 [VALIDATOR       ]I:  Suspending table : 2 from validation with error message : 'Fetching the validation rules failed'  (partition_update_tracker.c:1143)
+2022-04-08T18:51:56 [SOURCE_CAPTURE  ]I:  New Log Miner boundaries in thread '1' : First REDO Sequence is '185731', Last REDO Sequence is '185732'  (oracdc_reader.c:632)
+2022-04-08T18:53:56 [SOURCE_CAPTURE  ]I:  New Log Miner boundaries in thread '1' : First REDO Sequence is '185732', Last REDO Sequence is '185732'  (oracdc_reader.c:632)
+2022-04-08T18:53:56 [SOURCE_CAPTURE  ]I:  Oracle database version is 19.0.0.0.0  (oracle_endpoint_conn.c:359)
+2022-04-08T18:54:48 [TARGET_APPLY    ]I:  Error executing data handler [1022521]  (streamcomponent.c:1955)
+2022-04-08T18:54:48 [TASK_MANAGER    ]I:  Postgres apply or data error. Failing stream component to retry at subtask 0, component st_0_WGMP5LDFGG2UXMQ4IQAQU5R2PXLGRF2H5N2F62Y [1022521]  (subtask.c:1412)
+2022-04-08T18:54:48 [TARGET_APPLY    ]I:  Target component st_0_WGMP5LDFGG2UXMQ4IQAQU5R2PXLGRF2H5N2F62Y was detached because of postgres data or apply error. Will try to reattach  (subtask.c:1535)

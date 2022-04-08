@@ -1,2 +1,2 @@
-select count(*) from jeffdm.esrifeatureclass ;
+select count(*) from postgres.esritestthree ;
 \q
