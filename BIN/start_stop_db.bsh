@@ -15,7 +15,7 @@ waitforstatus(){
   while [[ ${CHECK} != ${STATUS} ]]
   do
     put_msg ${CHECK}
-    sleep 10
+    sleep 30
     CHECK=`/usr/local/bin/aws rds describe-db-instances --db-instance-identifier ${INSTANCE} --profile ec2 | jq -r '.DBInstances [] | .DBInstanceStatus'`
   done 
   put_msg ${CHECK}

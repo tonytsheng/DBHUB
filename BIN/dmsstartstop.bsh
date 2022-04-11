@@ -1,0 +1,35 @@
+#aws dms start-replication-task --replication-task-arn arn:aws:dms:us-east-2:070201068661:task:PWFBUEFAUWZTSDZ4MTLACRSCFMS6GTHXTDVR7EY --start-replication-task-type reload-target
+#aws dms describe-replication-tasks --filter Name=replication-task-arn,Values=arn:aws:dms:us-east-2:070201068661:task:PWFBUEFAUWZTSDZ4MTLACRSCFMS6GTHXTDVR7EY |  jq -r ' .ReplicationTasks[] | (.Status|tostring)'
+
+#set -x
+ARN=$1
+ACTIONIN=$2
+ACTIONIN=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')
+ACTION=$(echo "$ACTIONIN" )-replication-task
+
+put_msg()
+{
+  echo "`date +%Y%m%d.%H%M%S`::: $1"
+}
+
+waitforstatus(){
+  STATUS=$1
+  CHECK=`/usr/local/bin/aws rds describe-replication-instances --filter Name=replication-task-arn,Values=${ARN} --profile ec2 | jq -r ' .ReplicationTasks[] | (.Status|tostring)'
+  while [[ ${CHECK} != ${STATUS} ]]
+  do
+    put_msg ${CHECK}
+    sleep 10
+    CHECK=`/usr/local/bin/aws rds describe-replication-instances --filter Name=replication-task-arn,Values=${ARN} --profile ec2 | jq -r ' .ReplicationTasks[] | (.Status|tostring)'
+  done 
+  put_msg ${CHECK}
+}
+
+## MAIN
+aws dms ${ACTION} --replication-task --replication-task-arn ${ARN} --start-replication-task-type reload-target
+
+if [[ "${ACTIONIN}" == "start" ]]; then
+  waitforstatus "started"
+else
+  waitforstatus "stopped"
+fi
+
