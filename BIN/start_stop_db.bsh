@@ -1,0 +1,32 @@
+#set -x
+INSTANCE=$1
+ACTIONIN=$2
+ACTIONIN=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')
+ACTION=$(echo "$ACTIONIN" )-db-instance
+
+put_msg()
+{
+  echo "`date +%Y%m%d.%H%M%S`::: $1"
+}
+
+waitforstatus(){
+  STATUS=$1
+  CHECK=`/usr/local/bin/aws rds describe-db-instances --db-instance-identifier ${INSTANCE} --profile ec2 | jq -r '.DBInstances [] | .DBInstanceStatus'`
+  while [[ ${CHECK} != ${STATUS} ]]
+  do
+    put_msg ${CHECK}
+    sleep 10
+    CHECK=`/usr/local/bin/aws rds describe-db-instances --db-instance-identifier ${INSTANCE} --profile ec2 | jq -r '.DBInstances [] | .DBInstanceStatus'`
+  done 
+  put_msg ${CHECK}
+}
+
+## MAIN
+/usr/local/bin/aws rds ${ACTION} --db-instance-identifier ${INSTANCE} --profile ec2 --output text
+
+if [[ "${ACTIONIN}" == "start" ]]; then
+  waitforstatus "available"
+else
+  waitforstatus "stopped"
+fi
+
