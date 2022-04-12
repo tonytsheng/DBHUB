@@ -1,12 +1,13 @@
 make sure pk on primary
-dms recreate table
-look for "]E:" or "]W:"
-log_min_duration_statement - 0 on rds postgresql 
-single table
-give aswim dump file
+if there is not, it will not create blob columns on target
+have dms recreate table
+look for "]E:" or "]W:" in the logs
+set parameter log_min_duration_statement - 0 on rds postgresql in parameter group
+make task do single table
+can give aswim dump file
 commit after 50K rows in this case - tx size is dependent
 ignore last column - special character
 dms task - transformation rule - remove column for target
-removed column lower trnasform rule
+removed column lower transform rule
 
 
