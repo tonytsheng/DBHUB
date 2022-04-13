@@ -14,22 +14,23 @@ put_msg()
 
 waitforstatus(){
   STATUS=$1
-  CHECK=`/usr/local/bin/aws rds describe-replication-instances --filter Name=replication-task-arn,Values=${ARN} --profile ec2 | jq -r ' .ReplicationTasks[] | (.Status|tostring)'
+  CHECK=`/usr/local/bin/aws dms describe-replication-tasks --filter Name=replication-task-arn,Values=${ARN} --profile ec2 | jq -r ' .ReplicationTasks[] | (.Status|tostring)'`
   while [[ ${CHECK} != ${STATUS} ]]
   do
     put_msg ${CHECK}
-    sleep 10
-    CHECK=`/usr/local/bin/aws rds describe-replication-instances --filter Name=replication-task-arn,Values=${ARN} --profile ec2 | jq -r ' .ReplicationTasks[] | (.Status|tostring)'
+    sleep 30
+    CHECK=`/usr/local/bin/aws dms describe-replication-tasks --filter Name=replication-task-arn,Values=${ARN} --profile ec2 | jq -r ' .ReplicationTasks[] | (.Status|tostring)'`
   done 
   put_msg ${CHECK}
 }
 
 ## MAIN
-aws dms ${ACTION} --replication-task --replication-task-arn ${ARN} --start-replication-task-type reload-target
 
 if [[ "${ACTIONIN}" == "start" ]]; then
-  waitforstatus "started"
+  aws dms ${ACTION} --replication-task-arn ${ARN} --start-replication-task-type reload-target --profile ec2
+  waitforstatus "running"
 else
+  aws dms ${ACTION} --replication-task-arn ${ARN} --profile ec2
   waitforstatus "stopped"
 fi
 
