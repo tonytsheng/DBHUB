@@ -1,6 +1,3 @@
-#aws dms start-replication-task --replication-task-arn arn:aws:dms:us-east-2:070201068661:task:PWFBUEFAUWZTSDZ4MTLACRSCFMS6GTHXTDVR7EY --start-replication-task-type reload-target
-#aws dms describe-replication-tasks --filter Name=replication-task-arn,Values=arn:aws:dms:us-east-2:070201068661:task:PWFBUEFAUWZTSDZ4MTLACRSCFMS6GTHXTDVR7EY |  jq -r ' .ReplicationTasks[] | (.Status|tostring)'
-
 #set -x
 ARN=$1
 ACTIONIN=$2
