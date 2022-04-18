@@ -44,7 +44,7 @@ def fetch(password, id):
     record = cur.fetchall()
     cur.close()
 
-#    res = Cache.get(sql)
+#    res = Cache.get(sql, id)
 #    record = res.fetchall()
 #    print (id)
 
