@@ -7,6 +7,8 @@ import base64
 import json
 from botocore.exceptions import ClientError
 import redis
+import logging
+import time
 
 def get_db_password():
     secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:secret-pg102-WNHBUK"
@@ -29,7 +31,7 @@ def get_db_password():
 def fetch(sql):
     """Retrieve records from the cache, or else from the database."""
     res = cache.get(sql)
-    print ('cache get result')
+    print ('fetch_ cache get result')
     print (res)
 
     if res:
@@ -48,8 +50,11 @@ def fetch(sql):
 
 def getplanet(id):
     """Retrieve a record from the cache, or else from the database."""
-    key = f"planet:{id}"
+#    key = f"planet:{id}"
+    key = "planet:{id}"
     res = cache.hgetall(key)
+    print ('getplanet_ from cache')
+    print (res)
 
     if res:
         print ('getplanetid_ from cache')
@@ -67,6 +72,37 @@ def getplanet(id):
         cache.hmset(key, res)
         cache.expire(key, ttl)
     return res
+
+def setkey (id, secs):
+    logging.basicConfig(level=logging.INFO,format='%(asctime)s: %(message)s')
+    keyName=id
+    keyValues={'datetime': time.ctime(time.time())}
+#    keyValues={'datetime': time.ctime(time.time()), 'epochtime': time.time()}
+
+# Set the hash 'mykey' with the current date and time in human readable format (datetime field) 
+# and epoch number (epochtime field).
+    cache.hset(keyName, mapping=keyValues)
+
+# Set the key to expire and removed from cache in 60 seconds.
+    cache.expire(keyName, 2)
+
+# Sleep just for better illustration of TTL (expiration) value
+    time.sleep(secs)
+
+# Retrieves all the fields and current TTL
+    keyValues=cache.hgetall(keyName)
+    keyTTL=cache.ttl(keyName)
+
+    if keyValues:
+        print('cache hit')
+
+    else:
+        print('cache miss')
+
+    logging.info("Key {} was set at {} and has {} seconds until expired".format(keyName, keyValues, keyTTL))
+
+#    sheng='sheng'
+#    logging.info("Logging {}".format(sheng))
 
 
 # Initialize the cache
@@ -86,6 +122,11 @@ dbconn = psycopg2.connect(user="postgres"
 
 
 # Display the result of some queries
-print(fetch("SELECT * FROM tutorial.planet"))
-print(getplanet(2))
-print(getplanet(3))
+#print(fetch("SELECT * FROM tutorial.planet"))
+#print(getplanet(2))
+#print(getplanet(3))
+setkey(2, 1)
+setkey(4, 5)
+setkey(6, 1)
+setkey(8, 5)
+
