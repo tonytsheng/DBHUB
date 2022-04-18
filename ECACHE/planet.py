@@ -25,9 +25,10 @@ def get_db_password():
     password = database_secrets['password']
     return password
 
+
 def fetch(sql):
     """Retrieve records from the cache, or else from the database."""
-    res = Cache.get(sql)
+    res = cache.get(sql)
     print ('cache get result')
     print (res)
 
@@ -35,58 +36,56 @@ def fetch(sql):
         print ('fetch_ from cache')
         return json.loads(res)
 
-    print ('from db')
-    cur = DBConn.cursor()
+    print ('fetch_ from db')
+    cur = dbconn.cursor()
     cur.execute(sql)
     record = cur.fetchall()
     print (record)
     cur.close()
-    Cache.setex(sql, TTL, json.dumps(res))
+    cache.setex(sql, ttl, json.dumps(res))
     return res
 
 
 def getplanet(id):
     """Retrieve a record from the cache, or else from the database."""
     key = f"planet:{id}"
-    res = Cache.hgetall(key)
+    res = cache.hgetall(key)
 
     if res:
         print ('getplanetid_ from cache')
         return res
 
-    print ('from db')
+    print ('getplanetid_ from db')
     sql = "SELECT id, name FROM tutorial.planet WHERE id=%s"
-    cur = DBConn.cursor()
+    cur = dbconn.cursor()
     cur.execute(sql,(id,))
     record = cur.fetchall()
     print (record)
     cur.close()
 
     if res:
-        Cache.hmset(key, res)
-        Cache.expire(key, TTL)
+        cache.hmset(key, res)
+        cache.expire(key, ttl)
     return res
 
-# Time to live for cached data
-TTL = 60
-REDIS_URL = 'redis://ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379'
+
+# Initialize the cache
+ttl = 10
+redis_url = 'redis://ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379'
+cache = redis.Redis.from_url(redis_url)
+
 sql = ("select * from tutorial.planet")
 
 # Initialize the database
-#Database = DB(host=DB_HOST, user=DB_USER, password=DB_PASS, db=DB_NAME)
 password = get_db_password()
-#print (password)
-DBConn = psycopg2.connect(user="postgres"
+dbconn = psycopg2.connect(user="postgres"
 , password=password
 , host="pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com"
 , port="5432"
 , database="pg102")
 
-# Initialize the cache
-Cache = redis.Redis.from_url(REDIS_URL)
 
 # Display the result of some queries
 print(fetch("SELECT * FROM tutorial.planet"))
-#print(getplanet(1))
 print(getplanet(2))
 print(getplanet(3))
