@@ -10,4 +10,4 @@ ignore last column - special character
 dms task - transformation rule - remove column for target
 removed column lower transform rule
 
-
+dropped municipality column from both source and target tables - this is not the problem

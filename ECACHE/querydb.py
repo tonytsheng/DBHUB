@@ -36,34 +36,34 @@ def fetch(password, id):
       , port="5432"
       , database="pg102")
 
-    res = Cache.get(sql)
+    sql = "SELECT employee_id, last_name FROM human_resources.employees WHERE employee_id= (%s);"
+    id = ("115",)
+    print ('sql : ' + sql)
+    cur = DBConn.cursor()
+    cur.execute(sql, id,)
+    record = cur.fetchall()
+    cur.close()
+
+#    res = Cache.get(sql)
 #    record = res.fetchall()
-#    print (record)
+#    print (id)
 
-    key = f"planet:{id}"
-    res = Cache.hgetall(key)
+#    key = f"planet:{id}"
+#    res = Cache.hgetall(key)
 
-    if res:
-        print ('returning from cache')
-        return json.loads(res)
+#    if res:
+#        print ('returning from cache')
+#        return json.loads(res)
 #        return (res)
 
-    print ('returning from database')
+#    print ('returning from database')
 
-    sql = "SELECT `employee_id`, `last_name` FROM `human_resources.employees` WHERE `employee_id`=id")
-    print (sql)
-    res = Database.record(sql, (id,))
-    cur = DBConn.cursor()
-    cur.execute(sql)
-    record = cur.fetchall()
-#    print(record)
-    cur.close()
-    Cache.setex(sql, TTL, json.dumps(res))
+#    Cache.setex(sql, TTL, json.dumps(res))
     return record
 
 if __name__ == '__main__':
     dbpw = get_db_password()
-    print(fetch(dbpw, 115)
+    print(fetch(dbpw, "115"))
 #    print(fetch(dbpw, 'select * from human_resources.jobs'))
 #    print(fetch(dbpw, 'select version()'))
 
