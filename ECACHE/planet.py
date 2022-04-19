@@ -73,10 +73,8 @@ def getplanet(id):
     return res
 
 def setkey (id, secs):
-    logging.basicConfig(level=logging.INFO,format='%(asctime)s: %(message)s')
 
     keyName=id
-#    keyValues={'datetime': time.ctime(time.time())}
 #    keyValues={'datetime': time.ctime(time.time()), 'epochtime': time.time()}
 
     sql = "SELECT name FROM tutorial.planet WHERE id=%s"
@@ -85,13 +83,10 @@ def setkey (id, secs):
 #    record = cur.fetchall()
     record = cur.fetchone()
 #    logging.info("record: {}".format(record))
-    record = str(record)
-    keyValues={'name': '(record)'}
-
+    record = format(record)
+    keyValues={'name': (record)}
+#    logging.info("keyvalues: {}".format(keyValues))
     cur.close()
-
-# Set the hash 'mykey' with the current date and time in human readable format (datetime field) 
-# and epoch number (epochtime field).
     cache.hset(keyName, mapping=keyValues)
 
 # Set the key to expire and removed from cache in X seconds.
@@ -105,23 +100,24 @@ def setkey (id, secs):
     keyTTL=cache.ttl(keyName)
 
     if keyValues:
-        print('cache hit')
+        logging.info("cache hit")
 
     else:
-        print('cache miss')
+        logging.info("cache miss")
 
     logging.info("Key {} was set at {} and has {} seconds until expired".format(keyName, keyValues, keyTTL))
 
-#    sheng='sheng'
-#    logging.info("Logging {}".format(sheng))
 
+
+# Set up logging
+logging.basicConfig(level=logging.INFO,format='%(asctime)s: %(message)s')
+#sheng='sheng'
+#logging.info("Logging {}".format(sheng))
 
 # Initialize the cache
 ttl = 10
 redis_url = 'redis://ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379'
 cache = redis.Redis.from_url(redis_url)
-
-sql = ("select * from tutorial.planet")
 
 # Initialize the database
 password = get_db_password()
@@ -131,11 +127,6 @@ dbconn = psycopg2.connect(user="postgres"
 , port="5432"
 , database="pg102")
 
-
-# Display the result of some queries
-#print(fetch("SELECT * FROM tutorial.planet"))
-#print(getplanet(2))
-#print(getplanet(3))
 setkey(2, 1)
 setkey(4, 5)
 setkey(6, 1)
