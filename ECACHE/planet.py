@@ -1,5 +1,4 @@
 import os
-import redis
 import pymysql
 import psycopg2
 import boto3
@@ -75,15 +74,27 @@ def getplanet(id):
 
 def setkey (id, secs):
     logging.basicConfig(level=logging.INFO,format='%(asctime)s: %(message)s')
+
     keyName=id
-    keyValues={'datetime': time.ctime(time.time())}
+#    keyValues={'datetime': time.ctime(time.time())}
 #    keyValues={'datetime': time.ctime(time.time()), 'epochtime': time.time()}
+
+    sql = "SELECT name FROM tutorial.planet WHERE id=%s"
+    cur = dbconn.cursor()
+    cur.execute(sql,(id,))
+#    record = cur.fetchall()
+    record = cur.fetchone()
+#    logging.info("record: {}".format(record))
+    record = str(record)
+    keyValues={'name': '(record)'}
+
+    cur.close()
 
 # Set the hash 'mykey' with the current date and time in human readable format (datetime field) 
 # and epoch number (epochtime field).
     cache.hset(keyName, mapping=keyValues)
 
-# Set the key to expire and removed from cache in 60 seconds.
+# Set the key to expire and removed from cache in X seconds.
     cache.expire(keyName, 2)
 
 # Sleep just for better illustration of TTL (expiration) value
