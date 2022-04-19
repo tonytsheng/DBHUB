@@ -27,51 +27,6 @@ def get_db_password():
     return password
 
 
-def fetch(sql):
-    """Retrieve records from the cache, or else from the database."""
-    res = cache.get(sql)
-    print ('fetch_ cache get result')
-    print (res)
-
-    if res:
-        print ('fetch_ from cache')
-        return json.loads(res)
-
-    print ('fetch_ from db')
-    cur = dbconn.cursor()
-    cur.execute(sql)
-    record = cur.fetchall()
-    print (record)
-    cur.close()
-    cache.setex(sql, ttl, json.dumps(res))
-    return res
-
-
-def getplanet(id):
-    """Retrieve a record from the cache, or else from the database."""
-#    key = f"planet:{id}"
-    key = "planet:{id}"
-    res = cache.hgetall(key)
-    print ('getplanet_ from cache')
-    print (res)
-
-    if res:
-        print ('getplanetid_ from cache')
-        return res
-
-    print ('getplanetid_ from db')
-    sql = "SELECT id, name FROM tutorial.planet WHERE id=%s"
-    cur = dbconn.cursor()
-    cur.execute(sql,(id,))
-    record = cur.fetchall()
-    print (record)
-    cur.close()
-
-    if res:
-        cache.hmset(key, res)
-        cache.expire(key, ttl)
-    return res
-
 def setkey (id, secs):
 
     keyName=id
@@ -110,7 +65,7 @@ def setkey (id, secs):
 
 
 # Set up logging
-logging.basicConfig(level=logging.INFO,format='%(asctime)s: %(message)s')
+logging.basicConfig(level=logging.INFO,format='%(asctime)s: %(message)s', datefmt='%m/%d/%Y %H:%M:%S ')
 #sheng='sheng'
 #logging.info("Logging {}".format(sheng))
 
