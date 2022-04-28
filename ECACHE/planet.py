@@ -47,9 +47,6 @@ def setkey (id, secs):
 # Set the key to expire and removed from cache in X seconds.
     cache.expire(keyName, 2)
 
-# Sleep just for better illustration of TTL (expiration) value
-    time.sleep(secs)
-
 # Retrieves all the fields and current TTL
     keyValues=cache.hgetall(keyName)
     keyTTL=cache.ttl(keyName)
@@ -61,8 +58,6 @@ def setkey (id, secs):
         logging.info("cache miss")
 
     logging.info("Key {} was set at {} and has {} seconds until expired".format(keyName, keyValues, keyTTL))
-
-
 
 # Set up logging
 logging.basicConfig(level=logging.INFO,format='%(asctime)s: %(message)s', datefmt='%m/%d/%Y %H:%M:%S ')
@@ -83,7 +78,22 @@ dbconn = psycopg2.connect(user="postgres"
 , database="pg102")
 
 setkey(2, 1)
+# Sleep just for better illustration of TTL (expiration) value
+#time.sleep(1)
 setkey(4, 5)
+#time.sleep(5)
 setkey(6, 1)
 setkey(8, 5)
 
+#keyValues=cache.hgetall()
+keyValues=cache.keys("*")
+logging.info("first cache scan ")
+for k in enumerate(keyValues):
+    logging.info("first cache scan {} ".format(k))
+
+time.sleep(5)
+#keyValues=cache.hgetall()
+keyValues=cache.keys("*")
+logging.info("second cache scan ")
+for k in enumerate(keyValues):
+    logging.info("second cache scan {} ".format(k))
