@@ -2,22 +2,22 @@ DMS
 =====
 
 - Log
-sample log files
+  sample log files
 
 - MON
-monitoring
+  monitoring
 
 - PERFLOB
-perf tuning for blob data
+  perf tuning for blob data
 
 - RULES
-various migration rules
+  various migration rules
 
 - SRC
-configs for various source databases
+  configs for various source databases
 
 - TASK
-replication target json 
+  replication target json 
 
 - TGT
-configs for various target databases
+  configs for various target databases
