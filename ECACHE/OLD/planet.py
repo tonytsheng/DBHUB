@@ -28,6 +28,7 @@ def get_db_password():
 
 
 def setkey (id, secs):
+
     keyName=id
 #    keyValues={'datetime': time.ctime(time.time()), 'epochtime': time.time()}
 
@@ -96,15 +97,3 @@ keyValues=cache.keys("*")
 logging.info("second cache scan ")
 for k in enumerate(keyValues):
     logging.info("second cache scan {} ".format(k))
-
-# populate the cache with a ttl
-# query the cache at intervals until ttl
-# then query the database once more
-
-# perf example
-# query cache a ton
-# query db a ton
-# compare results
-# ref table usecase
-
-
