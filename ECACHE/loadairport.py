@@ -20,8 +20,8 @@ def loadcache (filename, secs):
             for row in myreader:
                 newitem = {}
                 keyName=row[1]
-                keyValues={'name':row[0]}
-                print("%s : %s %s"  % (filename, keyName, keyValues))
+                keyValues={'name':row[0], 'iata':row[1]}
+                logging.info("%s %s"  % (keyName, keyValues))
                 cache.hset(keyName, mapping=keyValues)
                 cache.expire(keyName, 604800)
     logging.info("cache load done")
@@ -30,9 +30,26 @@ def loadcache (filename, secs):
 def checkcache ():
     #keyValues=cache.hgetall()
     keyValues=cache.keys("*")
-    logging.info("checking cache ")
+#    logging.info("checking cache ")
     for k in enumerate(keyValues):
         logging.info("cache check {} ".format(k))
+
+
+def getIdFromCache (iata):
+#    logging.info("cache: %s", id)
+#    keyValues=cache.keys(id)
+    keyValues=cache.hgetall(iata)
+
+    if keyValues:
+        logging.info("cache hit")
+
+    for k in enumerate(keyValues):
+        logging.info("cache check {} ".format(k))
+
+
+def getIdFromDB (id):
+
+    logging.info("db: %s", id)
 
 ## main
 logging.basicConfig(level=logging.INFO,format='%(asctime)s: %(message)s', datefmt='%m/%d/%Y %H:%M:%S ')
@@ -43,6 +60,7 @@ redis_url = 'redis://ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379'
 cache = redis.Redis.from_url(redis_url)
 
 loadcache("/home/ec2-user/DBHUB/BASEDAT/SAMPLE_SCHEMAS/FLY1/air2.csv", 604800)
-
 checkcache()
 
+getIdFromCache('CDG')
+#getIdFromDB('CDG')

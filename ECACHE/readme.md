@@ -1,12 +1,12 @@
 Simple POC for ElastiCache and PostgreSQL
 ====
 
-- Redis cluster
-- PostgreSQL database
+- ElastiCache Redis cluster
+- RDS for PostgreSQL database
 - reference data
 - python code
 
-Planet
+planet.py
 ---
 simple example to load and query from either cache or database
 
