@@ -1,0 +1,1 @@
+time (for i in {1..5}; do python queryairport.py ;echo \n;done)
