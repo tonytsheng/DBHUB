@@ -18,12 +18,16 @@ def loadcache (filename, secs):
         with open(filename, 'r', encoding="utf-8") as csvfile:
             myreader = csv.reader(csvfile, delimiter=',')
             for row in myreader:
-                newitem = {}
+                rowdata = {}
 #               should look like iata:CDG
-                keyName= "iata:"+ row[1]
-                keyValues={'airport_name':row[0], 'iata':row[1]}
-                logging.info("%s %s"  % (keyName, keyValues))
-                cache.hset(keyName, mapping=keyValues)
+                rowdata["name"] = row[2]
+                rowdata["continent"] = row[4]
+                rowdata["country"] = row[5]
+                rowdata["gps_code"] = row[8]
+                rowdata["coords"] = row[11]
+                keyName= "airport:"+ row[9]
+                logging.info("%s %s"  % (keyName, rowdata))
+                cache.hmset(keyName, rowdata)
                 cache.expire(keyName, 604800)
     logging.info("cache load done")
 
@@ -60,8 +64,8 @@ ttl = 10
 redis_url = 'redis://ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379'
 cache = redis.Redis.from_url(redis_url)
 
-loadcache("/home/ec2-user/DBHUB/BASEDAT/SAMPLE_SCHEMAS/FLY1/air2.csv", 604800)
-checkcache()
+loadcache("/home/ec2-user/DBHUB/BASEDAT/SAMPLE_SCHEMAS/FLY1/air3.csv", 604800)
+#checkcache()
 
 getIdFromCache('CDG')
 #getIdFromDB('CDG')
