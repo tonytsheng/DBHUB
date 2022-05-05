@@ -1,0 +1,71 @@
+/etc/redis-stable/src/redis-cli -h ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com -p 6379
+
+ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379> info keyspace
+# Keyspace
+db0:keys=1214,expires=1214,avg_ttl=602187099
+ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379> select 0
+OK
+ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379> keys "TP*"
+1) "TPE    "
+2) "TPA    "
+
+ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379> info
+# Server
+redis_version:6.2.5
+redis_git_sha1:0
+redis_git_dirty:0
+redis_build_id:0
+...
+
+FLUSHALL - deletes everything
+SET server:name someserver
+EXPIRE keyname1 50
+TTL keyname1
+SETEX keyname 30 "Hello world"
+MSET key1 "Hello" key2 "World"
+APPEND key1 " World"
+RENAME key1 greeting
+
+HSET user:brad name "Brad"
+HSET user:brad email "b@gmail.com"
+HGET user:brad name
+HGET user:brad email
+HGETALL user:brad
+
+HMSET user:john name "john d" email "jd@gmail.com" age "25"
+HGETALL user:john
+
+HKEYS user:john
+HVALS user:john
+
+hgetall airport:SRQ
+ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379> hgetall airport:SRQ
+ 1) "name"
+ 2) "Sarasota Bradenton International Airport"
+ 3) "continent"
+ 4) "NA"
+ 5) "country"
+ 6) "US"
+ 7) "gps_code"
+ 8) "KSRQ"
+ 9) "coords"
+10) "-82.55439758300781, 27.39539909362793"
+ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379> hkeys airport:TPA
+1) "name"
+2) "continent"
+3) "country"
+4) "gps_code"
+5) "coords"
+ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379> hkeys airport:SRQ
+1) "name"
+2) "continent"
+3) "country"
+4) "gps_code"
+5) "coords"
+ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379> hvals airport:SRQ
+1) "Sarasota Bradenton International Airport"
+2) "NA"
+3) "US"
+4) "KSRQ"
+5) "-82.55439758300781, 27.39539909362793"
+
