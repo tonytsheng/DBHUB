@@ -1,4 +1,4 @@
-/etc/redis-stable/src/redis-cli -h ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com -p 6379
+/usr/bin/redis-cli -h ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com -p 6379
 
 ttsecnew.26vdzn.ng.0001.use2.cache.amazonaws.com:6379> info keyspace
 # Keyspace

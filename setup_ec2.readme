@@ -140,4 +140,8 @@ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,ret
 change permissions on /dbmount
 ## echo "fs-04a372e88a5e283ee.efs.us-east-2.amazonaws.com:/ /dbmount efs _netdev,tls,iam 0 0" > /etc/fstab
 #
-#touch 
+sudo amazon-linux-extras install postgresql10
+sudo amazon-linux-extras install redis6
+sudo yum install mariadb
+sudo yum remove unixODBC-utf16-2.3.1-1.x86_64
+sudo  yum -y install  mssql-tools
