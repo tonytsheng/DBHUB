@@ -22,7 +22,7 @@ export PGPASSWORD=`aws secretsmanager get-secret-value --profile ec2 --secret-id
 #echo $PGPASSWORD
 
 CONNSTR="--host=${HOST} --port=5432 --username=${USER} --dbname=${DB} "
-echo $CONNSTR
+# echo $CONNSTR
 
 if [ -z ${INFILE} ]; then
     psql ${CONNSTR}
