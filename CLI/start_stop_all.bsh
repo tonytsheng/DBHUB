@@ -1,3 +1,4 @@
+date
 ACTIONIN=$1
 RDSACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-instance
 CLUACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-cluster
@@ -7,7 +8,7 @@ echo "+++ Instances"
 for instance in `/usr/bin/aws --profile ec2 rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier' | sed s/\"//g `
 do
     echo $instance
-echo "    /usr/bin/aws --profile ec2 rds ${RDSACTION} --db-instance-identifier $instance --output text"
+    /usr/bin/aws --profile ec2 rds ${RDSACTION} --db-instance-identifier $instance --output text
 done
 
 echo "+++ Clusters"
