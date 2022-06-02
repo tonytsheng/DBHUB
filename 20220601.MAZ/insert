@@ -1,0 +1,1 @@
+callora customer_orders Pass1234 ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsm100   /home/ec2-user/DBHUB/BASEDAT/SAMPLE_SCHEMAS/CUSTOMER_ORDERS/ORA/ins.orderswblob.sql

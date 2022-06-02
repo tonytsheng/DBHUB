@@ -1,0 +1,22 @@
+# when testing failover, sqlplus called from bash/command line will not fail right away
+# but calling from a bash function does
+# so this is preferred so that you can see immediately if the db is up or not
+
+function dbup() {
+CREDS="customer_orders/Pass1234"
+CONNSTR="${CREDS}@(DESCRIPTION=(CONNECT_TIMEOUT=5)(ADDRESS=(PROTOCOL=TCP)(HOST=ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsm100)))"
+DBUP=`sqlplus -S ${CONNSTR} <<EQ | egrep -v '\---|rows|NAME' | sed 's/ //g;/^$/d'
+insert into heartbeat values (seq_heartbeat.nextval,sysdate, '$IP');
+EQ`
+}
+
+while true
+do
+IP=`nslookup ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com | grep -v '#' | grep Address | awk -F':' '{print $2}' | sed 's/ //g'`
+#STAT=`aws rds describe-db-instances --db-instance-identifier ttsm100 | egrep "DBInstanceStatus" | awk -F':' '{print $2}'`
+#CLASS=`aws rds describe-db-instances --db-instance-identifier ttsm100 | egrep "DBInstanceClass" | awk -F':' '{print $2}'`
+dbup
+echo `date +%Y%m%d.%H%M%S` ::: $IP ::: $STAT ::: $CLASS ::: $DBUP
+sleep 1
+done
+
