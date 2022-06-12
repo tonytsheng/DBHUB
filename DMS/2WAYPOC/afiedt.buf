@@ -1,0 +1,2 @@
+select heartbeat_id, last_update_dt, last_update_site from heartbeat ORDER BY last_update_dt desc
+/

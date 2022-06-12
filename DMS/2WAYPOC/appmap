@@ -1,0 +1,2 @@
+#app|table:oracle|postgresql:dbversion:user:endpoint:dbname
+heartbeat:oracle:122:customer_orders:ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:ttsora10

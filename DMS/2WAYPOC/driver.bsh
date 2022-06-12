@@ -1,0 +1,31 @@
+SITE=$1
+ENGINE=`grep heartbeat appmap | awk -F':' '{print $2}'`
+VERSION=`grep heartbeat appmap | awk -F':' '{print $3}'`
+USER=`grep heartbeat appmap | awk -F':' '{print $4}'`
+DBENDPT=`grep heartbeat appmap | awk -F':' '{print $5}'`
+DBNAME=`grep heartbeat appmap | awk -F':' '{print $6}'`
+sqlplus=/opt/oracle/instantclient_19_9/sqlplus
+
+#psql=TBD 
+if [ "${ENGINE}" == "oracle" ];then
+  CONNSTR="${USER}/Pass1234@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBENDPT})(PORT=1521))(CONNECT_DATA=(SID=${DBNAME})))"
+echo ${CONNSTR}
+sqlplus ${CONNSTR} <<EQ
+set linesize 200
+col last_update_site format a99
+col description format a20
+insert into heartbeat (description, last_update_dt, last_update_site) 
+values ('test',sysdate, '${SITE}');
+commit;
+SELECT *
+FROM (select heartbeat_id, last_update_dt, last_update_site from heartbeat ORDER BY last_update_dt desc) h1
+WHERE rownum <= 5
+ORDER BY rownum;
+EQ
+
+else 
+  echo "PG"
+fi
+
+# insert needs a specific site id somehow
+#
