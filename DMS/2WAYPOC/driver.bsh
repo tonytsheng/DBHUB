@@ -1,10 +1,10 @@
 
 SITE=$1
-ENGINE=`grep -v '#' appmap | grep heartbeat | awk -F':' '{print $2}'`
-VERSION=`grep -v '#' appmap | grep heartbeat | awk -F':' '{print $3}'`
-USER=`grep -v '#' appmap | grep heartbeat | awk -F':' '{print $4}'`
-DBENDPT=`grep -v '#' appmap | grep heartbeat | awk -F':' '{print $5}'`
-DBNAME=`grep -v '#' appmap | grep heartbeat | awk -F':' '{print $6}'`
+ENGINE=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $2}'`
+VERSION=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $3}'`
+USER=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $4}'`
+DBENDPT=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $5}'`
+DBNAME=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $6}'`
 sqlplus=/opt/oracle/instantclient_19_9/sqlplus
 #psql=TBD 
 
@@ -24,12 +24,8 @@ sqlplus ${CONNSTR} <<EQ
   ORDER BY rownum;
 EQ
 else 
-export PGPASSWORD=Pass1234
   CONNSTR="--host=${DBENDPT} --port=5432 --username=${USER} --dbname=${DBNAME}"
-  echo "PG" $CONNSTR
-  PGPASSWORD=Pass1234 psql ${CONNSTR} -c "select count(*) from customer_orders.orders;"
-  PGPASSWORD=Pass1234 psql ${CONNSTR} -c "insert into customer_orders.heartbeat (heartbeat_id, last_update_dt, last_update_site) values (nextval('seq_heartbeat') ,sysdate, '${SITE}');"
-
-
+  PGPASSWORD=Pass1234 psql ${CONNSTR} -c "insert into customer_orders.heartbeat (heartbeat_id, last_update_dt, last_update_site) values (nextval('customer_orders.seq_heartbeat') ,now(), '${SITE}');"
+  PGPASSWORD=Pass1234 psql ${CONNSTR} -c "SELECT * FROM (SELECT * FROM customer_orders.heartbeat ORDER BY last_update_dt DESC LIMIT 5) h1 ORDER BY last_update_dt desc;"
 fi
 

@@ -1,3 +1,3 @@
 #app|table:oracle|postgresql:dbversion:user:endpoint:dbname
-heartbeat:oracle:122:customer_orders:ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:ttsora10
-#heartbeat:postgresql:133:postgres:pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com:pg102
+SITEA:oracle:122:customer_orders:ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:ttsora10
+SITEB:postgresql:133:postgres:pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com:pg102

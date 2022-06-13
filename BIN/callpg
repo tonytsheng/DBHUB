@@ -19,7 +19,7 @@ if [ -z ${USER} ] || [ -z ${HOST} ] || [ -z ${DB} ]; then
 fi
 #export PGPASSWORD=${PW}
 export PGPASSWORD=`aws secretsmanager get-secret-value --profile ec2 --secret-id secret-${DB} | jq --raw-output '.SecretString' | jq -r .password`
-#echo $PGPASSWORD
+echo $PGPASSWORD
 
 CONNSTR="--host=${HOST} --port=5432 --username=${USER} --dbname=${DB} "
 # echo $CONNSTR
