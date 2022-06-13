@@ -1,3 +1,7 @@
+## driver.bsh $1
+## reads from appmap file for SITEA or SITEB
+## logs in to insert rows based on which SITE
+## checks latest 5 rows
 
 SITE=$1
 ENGINE=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $2}'`
