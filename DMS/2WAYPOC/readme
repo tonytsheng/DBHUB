@@ -1,0 +1,11 @@
+Simple Proof of Concept for 2 Way Replication
+
+- Heartbeat table, Unique index, Sequence
+- Driver script to load data based on either SITEA or SITEB as an input parameter
+- appmap - mapping file for database connection info based on site
+
+DMS config is not included in this directory
+- Migration tasks must include loopback prevention
+- Sequences are not replicated and therefore must be seeded per site
+- No conflict resolution across sites
+
