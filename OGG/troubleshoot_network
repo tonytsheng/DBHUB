@@ -1,0 +1,8 @@
+[ec2-user@ip-10-0-2-230 dirprm]$ nc -z -v ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com 7810
+Ncat: Version 7.50 ( https://nmap.org/ncat )
+Ncat: Connection timed out.
+[ec2-user@ip-10-0-2-230 dirprm]$ nc -z -v ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com 1521
+Ncat: Version 7.50 ( https://nmap.org/ncat )
+Ncat: Connected to 10.1.2.187:1521.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+
