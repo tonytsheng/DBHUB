@@ -13,16 +13,6 @@ DBNAME=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $6}'`
 sqlplus=/opt/oracle/instantclient_19_9/sqlplus
 #psql=TBD 
 #
-PROJ="--projection-expression "dbengine" --expression-attribute-values \'{ ":site" : { \"S\": \"${SITE}\"} }\' --key-condition-expression  \"site=":site"\" "
-PROJ=$(printf "--projection-expression n")
-
-
-
-echo ${EXPR} ${PROJ} ${KEY}
-ENGINE=$(aws --profile ec2 dynamodb query --table-name appmap ${PROJ})
-ENGINE="aws --profile ec2 dynamodb query --table-name appmap ${PROJ} "
-echo $ENGINE
-exit
 
 if [ "${ENGINE}" == "oracle" ];then
   CONNSTR="${USER}/Pass1234@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBENDPT})(PORT=1521))(CONNECT_DATA=(SID=${DBNAME})))"

@@ -3,6 +3,7 @@ Simple Proof of Concept for 2 Way Replication
 - Heartbeat table, Unique index, Sequence
 - Driver script to load data based on either SITEA or SITEB as an input parameter
 - appmap - mapping file for database connection info based on site
+- v2 - loaded appmap data into a dynamodb table - see ins.ddb.appmap.py
 
 DMS config is not included in this directory
 - Migration tasks must include loopback prevention
