@@ -1,4 +1,4 @@
-## set -x
+set -x
 ## driver.bsh $1
 ## reads from appmap file for SITEA or SITEB
 ## logs in to insert rows based on which SITE
@@ -12,10 +12,14 @@ DBENDPT=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $5}'`
 DBNAME=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $6}'`
 sqlplus=/opt/oracle/instantclient_19_9/sqlplus
 #psql=TBD 
-#
-PROJ="--projection-expression "dbengine" --expression-attribute-values \'{ ":site" : { \"S\": \"${SITE}\"} }\' --key-condition-expression  \"site=":site"\" "
-PROJ=$(printf "--projection-expression n")
+# --projection-expression "dbengine" --expression-attribute-values '{ ":site" : { "S": "SITEA"} }' --key-condition-expression "site=:site"
+PROJ="--projection-expression \"dbengine\" "
+EXPR="--expression-attribute-values  "
+SQ=''"'"' '
+STR=$PROJ $EXPR $SQ
+echo $STR
 
+exit
 
 
 echo ${EXPR} ${PROJ} ${KEY}
