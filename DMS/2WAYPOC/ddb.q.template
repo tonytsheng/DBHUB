@@ -1,0 +1,1 @@
+aws --profile ec2 dynamodb query --table-name appmap --projection-expression "dbengine" --expression-attribute-values '{ ":site" :  { "S": "VARSITE" } }' --key-condition-expression "site=:site"

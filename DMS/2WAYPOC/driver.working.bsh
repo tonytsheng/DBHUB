@@ -13,18 +13,21 @@ DBNAME=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $6}'`
 sqlplus=/opt/oracle/instantclient_19_9/sqlplus
 #psql=TBD 
 # --projection-expression "dbengine" --expression-attribute-values '{ ":site" : { "S": "SITEA"} }' --key-condition-expression "site=:site"
-PROJ="--projection-expression \"dbengine\" "
-EXPR="--expression-attribute-values  "
-SQ=''"'"' '
-STR=$PROJ $EXPR $SQ
-echo $STR
+#printf " --projection-expression "dbengine" --expression-attribute-values '{ \":site\" : { \"S\": \"$1\"} }' --key-condition-expression \"site=:site\" \n", ${SITE}
+#PROJ=`printf " --projection-expression "dbengine" --expression-attribute-values '{ \":site\" : { \"S\": \"$1\"} }' --key-condition-expression \"site=:site\" \n" ${SITE}`
+#echo $PROJ
+#
+#
+#SATTR=" \"S\": \"${SITE}\" "
+#ATTR=`printf "aws --profile ec2 dynamodb query --table-name appmap --projection-expression \"dbengine\" --expression-attribute-values '{ \"S\" : \"%s\"} }' --key-condition-expression \"site=:site\" \n", ${SITE}`
+#echo ${SATTR}
 
-exit
+#ENGINE=`aws --profile ec2 dynamodb query --table-name appmap --projection-expression "dbengine" --expression-attribute-values '{ ":site" :  { \"""${SITE}""\" } }' --key-condition-expression "site=:site" `
+#ENGINE=`aws --profile ec2 dynamodb query --table-name appmap --projection-expression "dbengine" --expression-attribute-values '{ :site :{ S:  ${SITE} } }' --key-condition-expression "site=:site" `
 
-
-echo ${EXPR} ${PROJ} ${KEY}
-ENGINE=$(aws --profile ec2 dynamodb query --table-name appmap ${PROJ})
-ENGINE="aws --profile ec2 dynamodb query --table-name appmap ${PROJ} "
+sed s/VARSITE/${SITE}/g ddb.q.template > ddb.q.cli
+CMD=`cat ddb.q.cli`
+ENGINE=`${CMD}`
 echo $ENGINE
 exit
 
