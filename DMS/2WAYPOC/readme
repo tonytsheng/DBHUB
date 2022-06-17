@@ -1,5 +1,15 @@
 Simple Proof of Concept for 2 Way Replication
 
+2022-06-17
+- Read from DynamoDB table based on input parameter
+- Get engine
+- Insert and Query latest based on which engine, inserting respective SITE
+- Note that DMS migration tasks are not in this repo
+- ins.dyn.appmap.py - loads appmap DDB table
+- scan.dyn.appmap.cli - query appmap DDB table
+
+
+
 - Heartbeat table, Unique index, Sequence
 - Driver script to load data based on either SITEA or SITEB as an input parameter
 - appmap - mapping file for database connection info based on site
