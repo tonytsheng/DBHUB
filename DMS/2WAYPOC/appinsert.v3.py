@@ -38,20 +38,27 @@ boto3.setup_default_session(profile_name='ec2')
 dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
 table = dynamodb.Table('appmap')
 # TODO use getitem instead - ensure this is only one returned row
-response = table.query(
-           KeyConditionExpression=Key('site').eq(SITE)
+#response = table.query(
+#           KeyConditionExpression=Key('site').eq(SITE)
+#)
+print ("before get_item")
+
+response = table.get_item(
+    Key={ 'site': { 'S': 'SITEA' } 
+        }
 )
+print ("after get_item")
 
 for i in response['Items']:
     print (i['dbname'], ":", i['username'])
-    site_input = (i['dbengine'])
+    db_engine = (i['dbengine'])
     db_endpoint = (i['endpoint'])
     db_port = str((i['port']))
     db_name = (i['dbname'])
     db_dsn = db_endpoint + ":" + db_port + "/" +db_name
 #    print (db_dsn)
 
-if site_input == "oracle":
+if db_engine == "oracle":
 #    print ("ORACLE")
     conn = None
     sql_ins = ('INSERT into heartbeat (heartbeat_id, last_update_dt, last_update_site) '
