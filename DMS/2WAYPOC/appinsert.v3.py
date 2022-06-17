@@ -34,11 +34,9 @@ def get_secret():
     return (password)
 
 # TODO def get_ddb_creds()
-
 boto3.setup_default_session(profile_name='ec2')
 dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
 table = dynamodb.Table('appmap')
-
 # TODO use getitem instead - ensure this is only one returned row
 response = table.query(
            KeyConditionExpression=Key('site').eq(SITE)
@@ -47,9 +45,14 @@ response = table.query(
 for i in response['Items']:
     print (i['dbname'], ":", i['username'])
     site_input = (i['dbengine'])
+    db_endpoint = (i['endpoint'])
+    db_port = str((i['port']))
+    db_name = (i['dbname'])
+    db_dsn = db_endpoint + ":" + db_port + "/" +db_name
+#    print (db_dsn)
 
 if site_input == "oracle":
-    print ("ORACLE")
+#    print ("ORACLE")
     conn = None
     sql_ins = ('INSERT into heartbeat (heartbeat_id, last_update_dt, last_update_site) '
               'VALUES (seq_heartbeat.nextval, sysdate, :site)'
@@ -63,7 +66,8 @@ if site_input == "oracle":
     try:
         conn = cx_Oracle.connect(user="customer_orders"
              , password="Pass1234"
-             , dsn="ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsora10")
+#             , dsn="ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsora10")
+             , dsn=db_dsn)
         cur = conn.cursor()
         cur.execute(sql_ins, [SITE])
         conn.commit()
@@ -78,7 +82,7 @@ if site_input == "oracle":
 else:
     print ("PG")
     conn = None
-    dbpw = get_secret()
+    db_pw = get_secret()
     sql_ins = ('INSERT into customer_orders.heartbeat (heartbeat_id, last_update_dt, last_update_site) '
             ' VALUES (nextval(\'customer_orders.seq_heartbeat\') ,now(), %s)'
                )
@@ -88,12 +92,11 @@ else:
                )
     try:
         conn = psycopg2.connect(user="postgres"
-             , password=dbpw
-             , host="pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com"
-             , port="5432"
-             , database="pg102")
+             , password=db_pw
+             , host=db_endpoint
+             , port=db_port
+             , database=db_name)
 
-        # create a cursor
         cur = conn.cursor()
         cur.execute(sql_ins, [SITE])
         conn.commit()
