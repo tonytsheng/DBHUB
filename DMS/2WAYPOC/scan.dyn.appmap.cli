@@ -1,1 +1,1 @@
-aws dynamodb scan --table-name appmap  --projection-expression "site,dbengine,username,endpoint,dbname" --output text
+aws dynamodb scan --profile ec2 --table-name appmap  --projection-expression "site,dbengine,username,endpoint,dbname" --output text

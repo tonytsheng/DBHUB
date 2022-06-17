@@ -11,6 +11,17 @@ import cx_Oracle
 SITE=(sys.argv[1])
 print ("site input:"+  SITE)
 
+dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
+table = dynamodb.Table('appmap')
+
+response = table.query(
+    ProjectionExpression="dbengine",
+    ExpressionAttributeNames={"#pk": "pk", "#sk": "sk"},
+    KeyConditionExpression=
+        Key('SITE').eq('SITEA') 
+    )
+print(response['Items'])
+
 if SITE == "SITEA":
     print ("ORACLE")
     conn = None
