@@ -37,25 +37,22 @@ def get_secret():
 boto3.setup_default_session(profile_name='ec2')
 dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
 table = dynamodb.Table('appmap')
-# TODO use getitem instead - ensure this is only one returned row
-#response = table.query(
-#           KeyConditionExpression=Key('site').eq(SITE)
-#)
-print ("before get_item")
 
 response = table.get_item(
-    Key={ 'site': { 'S': 'SITEA' } 
-        }
+    Key={ 'site': 'SITEA' } ,
 )
-print ("after get_item")
+print (response['Item'])
 
-for i in response['Items']:
-    print (i['dbname'], ":", i['username'])
-    db_engine = (i['dbengine'])
-    db_endpoint = (i['endpoint'])
-    db_port = str((i['port']))
-    db_name = (i['dbname'])
-    db_dsn = db_endpoint + ":" + db_port + "/" +db_name
+db_endpoint = (response[0])
+print (db_endpoint)
+
+
+#for i in response['Item']:
+#    print (i['dbname'], ":", i['username'])
+#    db_endpoint = (i['endpoint'])
+#    db_port = str((i['port']))
+#    db_name = (i['dbname'])
+#    db_dsn = db_endpoint + ":" + db_port + "/" +db_name
 #    print (db_dsn)
 
 if db_engine == "oracle":

@@ -1,0 +1,41 @@
+SQL> create role fss;
+
+Role created.
+
+SQL> create user fdd identified by 'Pass1234';
+create user fdd identified by 'Pass1234'
+                              *
+ERROR at line 1:
+ORA-00988: missing or invalid password(s)
+
+
+SQL> create user fdd identified by "Pass1234";
+
+User created.
+
+SQL> grant fss to fdd with admin option;
+
+Grant succeeded.
+
+SQL> grant fss to system;
+
+Grant succeeded.
+
+SQL> create role fssproxy;
+
+Role created.
+
+SQL> grant fss to fssproxy;
+
+Grant succeeded.
+
+SQL> grant fssproxy to fdd with admin option;
+
+Grant succeeded.
+
+SQL> select version from v$instance;
+
+VERSION
+-----------------
+19.0.0.0.0
+
