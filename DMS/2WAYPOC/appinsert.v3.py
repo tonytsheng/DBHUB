@@ -1,10 +1,14 @@
 #!/usr/bin/python
 
 ## python3 appinsert.v2.py $SITE
+## checks a dynamodb table for which database should be accessed based on an input parameter
+## used in conjunction with a 2 way bi directional replication architecture
+
 import psycopg2 
 import boto3
 import base64
 import json
+import decimal
 import sys
 import getopt
 import cx_Oracle
@@ -33,27 +37,25 @@ def get_secret():
     password = database_secrets['password']
     return (password)
 
-# TODO def get_ddb_creds()
 boto3.setup_default_session(profile_name='ec2')
 dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
 table = dynamodb.Table('appmap')
 
 response = table.get_item(
-    Key={ 'site': 'SITEA' } ,
+    Key={ 'site': SITE } ,
 )
-print (response['Item'])
 
-db_endpoint = (response[0])
-print (db_endpoint)
+appmap_resp = response['Item']
+#for key in appmap_resp:
+#    print (key, '->', appmap_resp[key])
 
-
-#for i in response['Item']:
-#    print (i['dbname'], ":", i['username'])
-#    db_endpoint = (i['endpoint'])
-#    db_port = str((i['port']))
-#    db_name = (i['dbname'])
-#    db_dsn = db_endpoint + ":" + db_port + "/" +db_name
-#    print (db_dsn)
+db_engine=appmap_resp['dbengine']
+db_endpoint=appmap_resp['endpoint']
+db_port=appmap_resp['port']
+db_name=appmap_resp['dbname']
+db_user=appmap_resp['username']
+db_dsn = db_endpoint + ":" + db_port + "/" +db_name
+print(db_dsn)
 
 if db_engine == "oracle":
 #    print ("ORACLE")
@@ -68,9 +70,8 @@ if db_engine == "oracle":
               )
 
     try:
-        conn = cx_Oracle.connect(user="customer_orders"
+        conn = cx_Oracle.connect(user=db_user
              , password="Pass1234"
-#             , dsn="ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsora10")
              , dsn=db_dsn)
         cur = conn.cursor()
         cur.execute(sql_ins, [SITE])
@@ -84,7 +85,7 @@ if db_engine == "oracle":
         if conn is not None:
             conn.close()
 else:
-    print ("PG")
+#    print ("PG")
     conn = None
     db_pw = get_secret()
     sql_ins = ('INSERT into customer_orders.heartbeat (heartbeat_id, last_update_dt, last_update_site) '
@@ -95,7 +96,7 @@ else:
                  ' last_update_dt DESC LIMIT 5) h1 ORDER BY last_update_dt desc'
                )
     try:
-        conn = psycopg2.connect(user="postgres"
+        conn = psycopg2.connect(user=db_user
              , password=db_pw
              , host=db_endpoint
              , port=db_port

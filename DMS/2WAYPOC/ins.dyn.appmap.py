@@ -41,8 +41,8 @@ def put_appmap(site, dbengine, username, endpoint, port, dbname, dynamodb=None):
     return response
 
 if __name__ == '__main__':
-    appmap_resp = put_appmap('SITEA', 'oracle', 'customer_orders', 'ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com', 1521, 'ttsora10' ) 
-    appmap_resp = put_appmap('SITEB', 'postgresql','postgres','pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com',5432, 'pg102' ) 
+    appmap_resp = put_appmap('SITEA', 'oracle', 'customer_orders', 'ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com', '1521', 'ttsora10' ) 
+    appmap_resp = put_appmap('SITEB', 'postgresql','postgres','pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com','5432', 'pg102' ) 
     print("Put appmap succeeded:")
     pprint(appmap_resp)
 # snippet-end:[dynamodb.python.codeexample.MoviesItemOps01]
