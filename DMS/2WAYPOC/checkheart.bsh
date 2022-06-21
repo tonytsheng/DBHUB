@@ -11,7 +11,7 @@ sqlplus=/opt/oracle/instantclient_19_9/sqlplus
 if [ "${ENGINE}" == "oracle" ];then
   CONNSTR="${USER}/Pass1234@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBENDPT})(PORT=1521))(CONNECT_DATA=(SID=${DBNAME})))"
   #echo ${CONNSTR}
-sqlplus ${CONNSTR} <<EQ
+sqlplus -S ${CONNSTR} <<EQ
   set linesize 200
   col last_update_site format a99
   col description format a20
@@ -19,6 +19,7 @@ sqlplus ${CONNSTR} <<EQ
   FROM (select heartbeat_id, last_update_dt, last_update_site from heartbeat ORDER BY last_update_dt desc) h1
   WHERE rownum <= 10
   ORDER BY rownum;
+  exit;
 EQ
 else 
   CONNSTR="--host=${DBENDPT} --port=5432 --username=${USER} --dbname=${DBNAME}"

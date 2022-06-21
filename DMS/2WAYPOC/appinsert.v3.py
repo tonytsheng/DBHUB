@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## python3 appinsert.v2.py $SITE
 ## checks a dynamodb table for which database should be accessed based on an input parameter
