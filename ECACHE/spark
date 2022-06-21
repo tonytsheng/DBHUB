@@ -1,0 +1,7 @@
+customer flight - rdbms
+customer bag - redis - updates as bag 
+
+get bag current location
+update bag to new location - puts current into old location
+
+

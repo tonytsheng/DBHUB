@@ -1,3 +1,5 @@
+## python3 queryairport.py
+
 import os
 #import pymysql
 import psycopg2
@@ -37,8 +39,6 @@ def queryDB (id):
     logging.info("from queryDB: {}".format(record))
     cur.close()
     time.sleep(1)
-
-
 
 def queryCache (id):
     keyName="airport:"+ id
