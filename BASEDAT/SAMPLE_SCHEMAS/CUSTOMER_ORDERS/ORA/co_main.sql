@@ -6,7 +6,7 @@ set verify off
 -- define tbs = &3
 -- define ttbs = &4
 
-define co_password = Pass1234
+define co_password = Pass
 define connect_string = ora10a
 define tbs = customer_orders
 define ttbs = temp

@@ -15,7 +15,7 @@
         "Engine" : "postgres",
         "LicenseModel" : "postgresql-license",
         "MasterUsername" : "postgres",
-        "MasterUserPassword" : "Pass1234",
+        "MasterUserPassword" : "Pass",
 	"PubliclyAccessible" : "false"
       }
     }    

@@ -17,7 +17,7 @@ def connect():
 #        print('Connecting to the PostgreSQL database...')
 #        conn = psycopg2.connect(**params)
         conn = cx_Oracle.connect(user="customer_orders",
-                password="Pass1234",
+                password="Pass",
                 dsn="ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsm100")
 #                port="1521",
 #                database="ttsm100")

@@ -13,7 +13,7 @@ use test
 db.createUser( 
 { 
 user: "dmsuser",
-pwd: "Pass1234",
+pwd: "Pass",
 roles: [ { role: "changestreamrole", db: "admin" }, "read"] 
 })
 

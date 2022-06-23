@@ -4,7 +4,7 @@ Database set to PostgreSQL
 Value pg1001.czzdit7hfndz.us-east-2.rds.amazonaws.com for connection:pg_host is the same as existing value pg1001.czzdit7hfndz.us-east-2.rds.amazonaws.com, no change made
 Value 5432 for connection:pg_port is the same as existing value 5432, no change made
 Value postgres for tpcc:pg_superuser is the same as existing value postgres, no change made
-Value Pass1234 for tpcc:pg_superuserpass is the same as existing value Pass1234, no change made
+Value Pass for tpcc:pg_superuserpass is the same as existing value Pass, no change made
 Value pg1001 for tpcc:pg_defaultdbase is the same as existing value pg1001, no change made
 Value tpcc for tpcc:pg_user is the same as existing value tpcc, no change made
 Value tpcc for tpcc:pg_pass is the same as existing value tpcc, no change made
@@ -22,7 +22,7 @@ tpcc       {
  pg_count_ware       = 1
  pg_num_vu           = 1
  pg_superuser        = postgres
- pg_superuserpass    = Pass1234
+ pg_superuserpass    = Pass
  pg_defaultdbase     = pg1001
  pg_user             = tpcc
  pg_pass             = tpcc

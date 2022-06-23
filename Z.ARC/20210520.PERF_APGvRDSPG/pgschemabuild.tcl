@@ -16,7 +16,7 @@ diset tpcc pg_count_ware 50
 diset tpcc pg_num_vu 10
 diset tpcc pg_partition false
 diset tpcc pg_superuser postgres
-diset tpcc pg_superuserpass Pass1234
+diset tpcc pg_superuserpass Pass
 diset tpcc pg_defaultdbase pg500
 diset tpcc pg_user tpcc
 diset tpcc pg_pass tpcc

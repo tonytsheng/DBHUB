@@ -41,7 +41,7 @@ go
 
 
 +++
-1> create login dms_adventureworks with password ='Pass1234', default_database=Adventureworks
+1> create login dms_adventureworks with password ='Pass', default_database=Adventureworks
 2> go
 1> create user dms_adventureworks for login dms_adventureworks;
 2> go

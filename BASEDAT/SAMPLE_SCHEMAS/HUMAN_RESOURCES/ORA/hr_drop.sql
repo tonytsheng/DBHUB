@@ -48,7 +48,7 @@ SET TAB OFF
 SET PAGESIZE 100
 SET ECHO OFF
 
-CONNECT human_resources/Pass1234@&connect_string
+CONNECT human_resources/Pass@&connect_string
 
 DROP PROCEDURE add_job_history;
 DROP PROCEDURE secure_dml;

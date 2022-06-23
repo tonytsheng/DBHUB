@@ -20,7 +20,7 @@ dbset db pg
 diset connection pg_host pg1001.czzdit7hfndz.us-east-2.rds.amazonaws.com
 diset connection pg_port 5432
 diset tpcc pg_superuser postgres
-diset tpcc pg_superuserpass Pass1234
+diset tpcc pg_superuserpass Pass
 diset tpcc pg_defaultdbase pg1001
 diset tpcc pg_user tpcc
 diset tpcc pg_pass tpcc

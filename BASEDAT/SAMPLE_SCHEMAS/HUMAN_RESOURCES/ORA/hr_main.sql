@@ -55,7 +55,7 @@ SET VERIFY OFF
 
 PROMPT 
 PROMPT specify password for HR as parameter 1:
-DEFINE pass     = Pass1234
+DEFINE pass     = Pass
 PROMPT 
 PROMPT specify default tablespeace for HR as parameter 2:
 DEFINE tbs      = human_resources
@@ -64,7 +64,7 @@ PROMPT specify temporary tablespace for HR as parameter 3:
 DEFINE ttbs     = temp 
 PROMPT 
 PROMPT specify password for SYS as parameter 4:
-DEFINE pass_sys = Pass1234
+DEFINE pass_sys = Pass
 PROMPT 
 PROMPT specify log path as parameter 5:
 DEFINE log_path = /tmp/
@@ -92,7 +92,7 @@ REM will succeed regardless of the existence of the
 REM DEMO and TEMP tablespaces 
 REM =======================================================
 
-CREATE USER HUMAN_RESOURCES IDENTIFIED BY Pass1234;
+CREATE USER HUMAN_RESOURCES IDENTIFIED BY Pass;
 
 ALTER USER HUMAN_RESOURCES DEFAULT TABLESPACE HUMAN_RESOURCES
               QUOTA UNLIMITED ON HUMAN_RESOURCES;
@@ -106,14 +106,14 @@ REM =======================================================
 REM grants from sys schema
 REM =======================================================
 
-REM CONNECT admin/Pass1234@ttsora10 AS SYSDBA;
+REM CONNECT admin/Pass@ttsora10 AS SYSDBA;
 REM GRANT execute ON sys.dbms_stats TO HUMAN_RESOURCES;
 
 REM =======================================================
 REM create hr schema objects
 REM =======================================================
 
-CONNECT HUMAN_RESOURCES/Pass1234@ttsora10
+CONNECT HUMAN_RESOURCES/Pass@ttsora10
 ALTER SESSION SET NLS_LANGUAGE=American;
 ALTER SESSION SET NLS_TERRITORY=America;
 

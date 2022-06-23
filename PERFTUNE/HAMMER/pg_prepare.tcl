@@ -14,7 +14,7 @@ diset connection pg_host pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com
 diset connection pg_port 5432
 diset tpcc pg_num_vu 1
 diset tpcc pg_superuser postgres
-diset tpcc pg_superuserpass Pass1234
+diset tpcc pg_superuserpass Pass
 diset tpcc pg_defaultdbase pg102
 diset tpcc pg_user tpcc
 diset tpcc pg_pass tpcc

@@ -2,7 +2,7 @@
 sybinit.release_directory: USE_DEFAULT
 sybinit.product: sqlsrv
 sqlsrv.server_name: ase100
-sqlsrv.sa_password: Pass1234
+sqlsrv.sa_password: Pass
 sqlsrv.new_config: yes
 sqlsrv.do_add_server: yes
 sqlsrv.network_protocol_list: tcp
