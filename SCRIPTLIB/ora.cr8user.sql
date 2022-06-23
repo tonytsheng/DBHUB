@@ -1,6 +1,6 @@
 drop user DMSUSER;
 create tablespace DMSUSER;
-create user DMSUSER identified by Pass1234 default tablespace DMSUSER;
+create user DMSUSER identified by '***' default tablespace DMSUSER;
 grant create session to DMSUSER;
 grant create any table to DMSUSER;
 grant drop any table to DMSUSER;

@@ -8,7 +8,7 @@ grant create session,
       create view,
       create procedure
   to customer_orders
-  identified by 'Pass1234';
+  identified by '***';
 
 alter user customer_orders default tablespace customer_orders
               quota unlimited on customer_orders;

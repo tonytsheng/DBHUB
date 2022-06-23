@@ -9,7 +9,7 @@ use strict;
 # RDS instance info
 my $RDS_PORT=1521;
 my $RDS_HOST="octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com";
-my $RDS_LOGIN="admin/Pass1234";
+my $RDS_LOGIN="admin/Passwd";
 my $RDS_SID="OCTORA01"; 
 
 #The $ARGV[0] is a parameter you pass into the script

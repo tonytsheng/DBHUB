@@ -70,8 +70,9 @@ if db_engine == "oracle":
               )
 
     try:
+        db_pw = get_secret()
         conn = cx_Oracle.connect(user=db_user
-             , password="Pass1234"
+             , password=db_pw
              , dsn=db_dsn)
         cur = conn.cursor()
         cur.execute(sql_ins, [SITE])

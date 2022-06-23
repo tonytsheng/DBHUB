@@ -8,8 +8,10 @@ DBNAME=`grep -v '#' appmap | grep ${SITE} | awk -F':' '{print $6}'`
 sqlplus=/opt/oracle/instantclient_19_9/sqlplus
 #psql=TBD 
 
+DB_PW=`aws secretsmanager get-secret-value --profile ec2 --secret-id secret-pg102 | jq --raw-output '.SecretString' | jq -r .password`
+
 if [ "${ENGINE}" == "oracle" ];then
-  CONNSTR="${USER}/Pass1234@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBENDPT})(PORT=1521))(CONNECT_DATA=(SID=${DBNAME})))"
+  CONNSTR="${USER}/${DB_PW}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${DBENDPT})(PORT=1521))(CONNECT_DATA=(SID=${DBNAME})))"
   #echo ${CONNSTR}
 sqlplus -S ${CONNSTR} <<EQ
   set linesize 200
@@ -23,6 +25,6 @@ sqlplus -S ${CONNSTR} <<EQ
 EQ
 else 
   CONNSTR="--host=${DBENDPT} --port=5432 --username=${USER} --dbname=${DBNAME}"
-  PGPASSWORD=Pass1234 psql ${CONNSTR} -c "SELECT * FROM (SELECT * FROM customer_orders.heartbeat ORDER BY last_update_dt DESC LIMIT 10) h1 ORDER BY last_update_dt desc;"
+  PGPASSWORD=${DB_PW} psql ${CONNSTR} -c "SELECT * FROM (SELECT * FROM customer_orders.heartbeat ORDER BY last_update_dt DESC LIMIT 10) h1 ORDER BY last_update_dt desc;"
 fi
 

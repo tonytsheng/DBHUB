@@ -6,7 +6,7 @@ select @@version
 
 select suser_sname(owner_sid), name from sys.databases
 
-create login dms_adventureworks with password ='Pass1234', default_database=Adventureworks
+create login dms_adventureworks with password ='***', default_database=Adventureworks
 
 -- have to run this as admin
 exec msdb.dbo.rds_download_from_s3
