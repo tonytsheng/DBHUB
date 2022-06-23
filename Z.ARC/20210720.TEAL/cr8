@@ -1,4 +1,4 @@
-create user ttsheng identified by "Pass1234";
+create user ttsheng identified by "*";
 grant create etc to ttsheng
 
 grant execute on rdsadmin.rds_file_util to ttsheng;

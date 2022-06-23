@@ -1,7 +1,8 @@
 nslookup ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com
 IP=`nslookup ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com | grep -v '#' | grep Address | awk -F':' '{print $2}' | sed 's/ //g'`
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
 
-CREDS="customer_orders/Pass1234"
+CREDS="customer_orders/${DB_PW}"
 CONNSTR="${CREDS}@(DESCRIPTION=(CONNECT_TIMEOUT=10)(ADDRESS=(PROTOCOL=TCP)(HOST=ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsm100)))"
 echo sqlplus $CONNSTR
 sqlplus -S ${CONNSTR}<<EQ

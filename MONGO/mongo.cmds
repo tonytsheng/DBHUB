@@ -1,6 +1,6 @@
 # bulk import from command line
 $ mongoimport --db test --collection inventory \
-        --authenticationDatabase admin --username admin --password Pass1234 \
+        --authenticationDatabase admin --username admin --password Pass \
         --drop --file DAT/inventory.crud.json
 
 ## make sure input file is just json records:
@@ -17,13 +17,13 @@ $ mongoimport --db test --collection inventory \
 # csv file
 $ mongoimport -d tymongo -c test --type csv --file database2.csv --headerline
 
-$ mongorestore --username=admin --password=Pass1234 --authenticationDatabase=admin --archive=sampledata.archive 
+$ mongorestore --username=admin --password=Pass --authenticationDatabase=admin --archive=sampledata.archive 
 # shell commands
 $ mongo
 db.help()
 
 use admin
-db.auth("admin","Pass1234")
+db.auth("admin","Pass")
 
 
 use test

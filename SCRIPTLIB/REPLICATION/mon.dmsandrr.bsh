@@ -1,3 +1,6 @@
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
+
+
 /home/ec2-user/DBHUB/DMS/MON/mon2.bsh
-callpg2 postgres Pass1234 pg102-rr.cyt4dgtj55oy.us-east-2.rds.amazonaws.com pg102 /home/ec2-user/DBHUB/SCRIPTLIB/REPLICATION/rds.pg.replica_lag.sql
+callpg2 postgres ${DB_PW} pg102-rr.cyt4dgtj55oy.us-east-2.rds.amazonaws.com pg102 /home/ec2-user/DBHUB/SCRIPTLIB/REPLICATION/rds.pg.replica_lag.sql
 

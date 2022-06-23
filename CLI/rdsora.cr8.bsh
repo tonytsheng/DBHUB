@@ -1,8 +1,10 @@
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
+
 /usr/local/bin/aws rds create-db-instance \
     --db-name octora01 \
     --db-instance-identifier octora01 \
     --db-instance-class db.m5.large \
     --engine oracle-ee \
     --master-username admin \
-    --master-user-password "Pass1234" \
+    --master-user-password "${DB_PW}" \
     --allocated-storage 20

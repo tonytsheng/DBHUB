@@ -1,5 +1,5 @@
 create tablespace POSTGRES;
-create user postgres identified by Pass1234 default tablespace POSTGRES;
+create user postgres identified by Pass default tablespace POSTGRES;
 grant create session to POSTGRES;
 grant create any table to POSTGRES;
 grant drop any table to POSTGRES;

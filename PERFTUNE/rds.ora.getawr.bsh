@@ -37,10 +37,12 @@
 BEG_DATE=`date -d '1 hour ago' "+%Y-%m-%d %H:00"`
 END_DATE=`date "+%Y-%m-%d %H:00"`
 
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
+
 #echo "BEG DATE: ${BEG_DATE}"
 #echo "END DATE: ${END_DATE}"
 
-CREDS="admin/Pass1234"
+CREDS="admin/${DB_PW}"
 CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ora1001.czzdit7hfndz.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ora1001)))"
 
 sqlplus -S ${CONNSTR} <<EQ 

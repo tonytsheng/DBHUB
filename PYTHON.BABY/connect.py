@@ -13,7 +13,7 @@ def connect():
 #        print('Connecting to the PostgreSQL database...')
 #        conn = psycopg2.connect(**params)
         conn = psycopg2.connect(user="postgres",
-                password="Pass1234",
+                password="Pass",
                 host="pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com",
                 port="5432",
                 database="pg102")

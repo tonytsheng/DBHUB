@@ -1,6 +1,6 @@
 USER=postgres
 DB=pg100
-export PGPASSWORD=Pass1234
+export PGPASSWORD=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
 
 psql --host=pg100.czzdit7hfndz.us-east-2.rds.amazonaws.com  --port=5432 --username=${USER} --dbname=${DB}<<EQ
 -- \c customer_orders

@@ -33,7 +33,7 @@ Properties:
   KmsKeyId: String
   LicenseModel: String
   MasterUsername: postgres
-  MasterUserPassword: Pass1234
+  MasterUserPassword: Pass
   MaxAllocatedStorage: 500
   MonitoringInterval: Integer
   MonitoringRoleArn: String

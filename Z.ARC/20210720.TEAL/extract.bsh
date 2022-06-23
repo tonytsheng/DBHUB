@@ -4,8 +4,9 @@
 # note that the table has a filename as well as the blob column
 # so the code uses filename to store the blob data
 
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
 
-sqlplus "ttsheng/Pass1234@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsora10)))" <<EQ
+sqlplus "ttsheng/${DB_PW}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsora10)))" <<EQ
 set serveroutput on;
 set linesize 200;
 
@@ -66,7 +67,7 @@ EQ
 ## call aws s3 cp 
 
 ## code below is for oracle on rds to transfer file to s3
-#sqlplus "admin/Pass1234@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsora10)))" <<EQ
+#sqlplus "admin/Pass@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsora10)))" <<EQ
 #SELECT rdsadmin.rdsadmin_s3_tasks.upload_to_s3(
 #      p_bucket_name    =>  'ttsheng-misc', 
 #--      p_prefix         =>  'budget', 

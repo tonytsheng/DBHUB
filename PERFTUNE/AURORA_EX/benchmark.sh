@@ -1,10 +1,12 @@
 #!/bin/bash
 
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
+
 # postgreSQL connection environment variables
 export BENCHMARK_HOST=aurdb1-instance-1.cyt4dgtj55oy.us-east-2.rds.amazonaws.com
 export BENCHMARK_PORT=5432
 export BENCHMARK_DB=aurdb1
-export PGPASSWORD=Pass1234
+export PGPASSWORD=${DB_PW}
 export BENCHMARK_USER=postgres
 # pgbench control environment variables
 export BENCHMARK_CONNECTIONS=16

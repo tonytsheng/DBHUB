@@ -6,7 +6,7 @@ grant create session,
       create view,
       create procedure
   to tts_spatial
-  identified by "Pass1234";
+  identified by "*";
 
 alter user tts_spatial default tablespace tts_spatial
               quota unlimited on tts_spatial;

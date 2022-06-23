@@ -6,8 +6,9 @@
 ## reboot
 ## login and create the extention:
 ## 2 - CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
 
-export PGPASSWORD=Pass1234
+export PGPASSWORD=${DB_PW}
 psql --host=pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com --port=5432 --username=postgres --dbname=pg102 <<EQ
 \x
 \echo #----#----#----# 

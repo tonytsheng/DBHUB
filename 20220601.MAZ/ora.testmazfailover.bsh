@@ -1,9 +1,10 @@
 # when testing failover, sqlplus called from bash/command line will not fail right away
 # but calling from a bash function does
 # so this is preferred so that you can see immediately if the db is up or not
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
 
 function dbup() {
-CREDS="customer_orders/Pass1234"
+CREDS="customer_orders/${DB_PW}"
 CONNSTR="${CREDS}@(DESCRIPTION=(CONNECT_TIMEOUT=5)(ADDRESS=(PROTOCOL=TCP)(HOST=ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsm100)))"
 DBUP=`sqlplus -S ${CONNSTR} <<EQ | egrep -v '\---|rows|NAME' | sed 's/ //g;/^$/d'
 insert into heartbeat values (seq_heartbeat.nextval,sysdate, '$IP');

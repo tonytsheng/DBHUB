@@ -13,7 +13,7 @@ def execute():
     conn = None
     try:
         conn = cx_Oracle.connect(user="customer_orders",
-                password="Pass1234",
+                password="Pass",
                 dsn="ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsm100")
 		
         cur = conn.cursor()
@@ -33,7 +33,7 @@ def connect():
     dsn = "(DESCRIPTION=(CONNECT_TIMEOUT=10)(ADDRESS=(PROTOCOL=TCP)(HOST=ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsm100)))"
     try:
         conn = cx_Oracle.connect(user="customer_orders",
-            password="Pass1234",
+            password="Pass",
             dsn=dsn)
 #            dsn="ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsm100")
     except cx_Oracle.DatabaseError as e:

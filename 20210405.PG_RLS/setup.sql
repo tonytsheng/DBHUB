@@ -1,6 +1,6 @@
 ### restrict column access
 #login as postgres
-create user admin with password 'Pass1234';
+create user admin with password 'Pass';
 create table employee ( empno int, ename text, address text, salary int, account_number text );
 insert into employee values (1, 'john', '2 down str',  20000, 'HDFC-22001' );
 insert into employee values (2, 'clark', '132 south avn',  80000, 'HDFC-23029' );
@@ -48,9 +48,9 @@ insert into employee values (2, 'clark', '132 south avn',  80000, 'HDFC-23029' )
 insert into employee values (3, 'soojie', 'Down st 17th',  60000, 'ICICI-19022' );
 select * from employee;
 
-create user john with password 'Pass1234';
-create user clark with password 'Pass1234';
-create user soojie with password 'Pass1234';
+create user john with password 'Pass';
+create user clark with password 'Pass';
+create user soojie with password 'Pass';
 grant select on employee to john;
 grant select on employee to clark;
 grant select on employee to soojie;
@@ -114,9 +114,9 @@ insert into employee values (2, 'clark', '132 south avn',  80000, 'HDFC-23029' )
 insert into employee values (3, 'soojie', 'Down st 17th',  60000, 'ICICI-19022' );
 select * from employee;
 
-create user john with password 'Pass1234';
-create user clark with password 'Pass1234';
-create user soojie with password 'Pass1234';
+create user john with password 'Pass';
+create user clark with password 'Pass';
+create user soojie with password 'Pass';
 grant select on employee to john;
 grant select on employee to clark;
 grant select on employee to soojie;

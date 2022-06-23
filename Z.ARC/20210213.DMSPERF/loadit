@@ -1,7 +1,8 @@
-callora admin Pass1234 ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
-callora admin Pass1234 ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
-callora admin Pass1234 ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
-callora admin Pass1234 ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
-callora admin Pass1234 ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
-callora admin Pass1234 ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
-callora admin Pass1234 ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
+callora admin ${DB_PW} ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
+callora admin ${DB_PW} ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
+callora admin ${DB_PW} ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
+callora admin ${DB_PW} ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
+callora admin ${DB_PW} ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
+callora admin ${DB_PW} ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 
+callora admin ${DB_PW} ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 insblob.sql & 

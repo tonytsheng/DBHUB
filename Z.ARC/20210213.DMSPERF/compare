@@ -1,9 +1,10 @@
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
 echo "++++"
 date
-callora admin Pass1234 octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com OCTORA01 <<EQ
+callora admin ${DB_PW} octora01.czzdit7hfndz.us-east-2.rds.amazonaws.com OCTORA01 <<EQ
 select count(*) from customer_orders.stores;
 EQ
-callpg postgres Pass1234 aurpg02-instance-1.czzdit7hfndz.us-east-2.rds.amazonaws.com aurpg02 <<EQ
+callpg postgres ${DB_PW} aurpg02-instance-1.czzdit7hfndz.us-east-2.rds.amazonaws.com aurpg02 <<EQ
 select count(*) from customer_orders.stores;
 EQ
 
