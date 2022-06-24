@@ -86,7 +86,8 @@ END; """
 
 sql_list = """ SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir('DATA_PUMP_DIR')) ORDER BY MTIME """
 sql_cat_log = """ SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_PUMP_DIR', p_filename  => '""" + LOGFILE + """'))"""
-sql_chk_log = """ SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_PUMP_DIR', p_filename  => '""" + LOGFILE + """')) where text like '%successfully completed%' """
+#sql_chk_log = """ SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_PUMP_DIR', p_filename  => '""" + LOGFILE + """')) where text like '%successfully completed%' """
+sql_chk_status = """ select job_name, state from v$datapump_job where job_name = '""" + SCHEMA + """_EXP'"""
 
 #print (sql_exp)
 #print (sql_cat_log)
@@ -94,25 +95,30 @@ db_pw = get_secret()
 conn = cx_Oracle.connect(user='admin'
          , password=db_pw
          , dsn='ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsora10')
-cur = conn.cursor()
 
+cur = conn.cursor()
 cur.execute(sql_exp)
 #records = cur.fetchall()
 #for row in records:
 #    print (row)
 
-#print ('+++ log list +++')
-#cur.execute(sql_list)
-#records = cur.fetchall()
-#for row in records:
-#    print (row)
+time.sleep (10)
+cur.execute(sql_chk_status)
+records = cur.fetchall()
+for row in records:
+    print (row)
+row_count = cur.rowcount
+print(row_count)
 
-print('+++ starting job...')
-print('+++ waiting 60 seconds...')
-wait()
-
-#chklogrows = cur.execute(sql_chk_log)
-#print (len(chklogrows))
+while row_count >=1 :
+    time.sleep (5)
+    print ('+++ status +++')
+    cur.execute(sql_chk_status)
+    records = cur.fetchall()
+    for row in records:
+        print (row)
+    row_count=cur.rowcount
+    print (row_count)
 
 print ('+++ log contents +++')
 cur.execute(sql_cat_log)
