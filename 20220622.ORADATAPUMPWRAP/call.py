@@ -64,7 +64,7 @@ sql_exp = """ DECLARE
   sts ku$_Status;          -- The status object returned by get_status
 BEGIN
 
-    v_hdnl := DBMS_DATAPUMP.OPEN( operation => 'EXPORT', job_mode => 'SCHEMA', job_name=>null); 
+    v_hdnl := DBMS_DATAPUMP.OPEN( operation => 'EXPORT', job_mode => 'SCHEMA', job_name=>'""" + SCHEMA + """_EXP'); 
       dbms_output.put_line (v_hdnl);
     DBMS_DATAPUMP.ADD_FILE(
       handle    => v_hdnl,
@@ -111,8 +111,8 @@ print('+++ starting job...')
 print('+++ waiting 60 seconds...')
 wait()
 
-chklogrows = cur.execute(sql_chk_log)
-print (len(chklogrows))
+#chklogrows = cur.execute(sql_chk_log)
+#print (len(chklogrows))
 
 print ('+++ log contents +++')
 cur.execute(sql_cat_log)
