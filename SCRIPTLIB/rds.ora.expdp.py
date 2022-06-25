@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 
-## export schema from schema name in parameter
-## generate log file
-## call schema export
-## pause until complete - polling logfile
-##
+## python3 rds.ora.expdp.py SCHEMA
+## oracle export wrapper
+## call api to 
+## 1 run export job
+## 2 wait for job to be complete
+## 3 print out log file
+## designed to easier instead of calling all the data pump apis manually
+## edit connection strings
 
-#import psycopg2 
 import boto3
 import base64
 import json
@@ -49,7 +51,7 @@ now = datetime.datetime.now()
 TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
 LOGFILE = SCHEMA+ ".exp.log"
 DUMPFILE = SCHEMA + ".dmp"
-print (LOGFILE)
+print ("+++ Expdp logfile: " + LOGFILE)
 
 conn = None
 sql_exp = """ DECLARE  
@@ -98,29 +100,24 @@ conn = cx_Oracle.connect(user='admin'
 
 cur = conn.cursor()
 cur.execute(sql_exp)
-#records = cur.fetchall()
-#for row in records:
-#    print (row)
-
 time.sleep (10)
+
 cur.execute(sql_chk_status)
 records = cur.fetchall()
 for row in records:
-    print (row)
+    print ("+++ Waiting for job: " + str(row))
 row_count = cur.rowcount
-print(row_count)
+#print(row_count)
 
 while row_count >=1 :
     time.sleep (5)
-    print ('+++ status +++')
     cur.execute(sql_chk_status)
     records = cur.fetchall()
     for row in records:
-        print (row)
+        print ("+++ Waiting for job: " + str(row))
     row_count=cur.rowcount
-    print (row_count)
+#    print ( row_count)
 
-print ('+++ log contents +++')
 cur.execute(sql_cat_log)
 records = cur.fetchall()
 for row in records:
