@@ -20,4 +20,3 @@ dbup
 echo `date +%Y%m%d.%H%M%S` ::: $IP ::: $STAT ::: $CLASS ::: $DBUP
 sleep 1
 done
-

@@ -7,14 +7,34 @@ import os
 import socket
 import datetime
 #from config import config
+import boto3
+import json
+
+
+def get_secret():
+    secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:secret-pg102-WNHBUK"
+    region_name = "us-east-2"
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='ec2')
+    client = session.client(
+      service_name='secretsmanager'
+        )
+    get_secret_value_response = client.get_secret_value(
+                SecretId=secret_name
+            )
+
+    database_secrets = json.loads(get_secret_value_response['SecretString'])
+    password = database_secrets['password']
+    return (password)
 
 def execute():
     """ Connect to the Oracle database server """
     conn = None
+    db_pw=get_secret()
     try:
         conn = cx_Oracle.connect(user="customer_orders",
-                password="Pass",
-                dsn="ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsm100")
+                password=db_pw,
+                dsn="ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsora10")
 		
         cur = conn.cursor()
         sql = "insert into heartbeat values (seq_heartbeat.nextval, :updatedate, :ip)"
@@ -30,10 +50,11 @@ def execute():
             conn.close()
 
 def connect():
-    dsn = "(DESCRIPTION=(CONNECT_TIMEOUT=10)(ADDRESS=(PROTOCOL=TCP)(HOST=ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsm100)))"
+    db_pw=get_secret()
+    dsn = "(DESCRIPTION=(CONNECT_TIMEOUT=10)(ADDRESS=(PROTOCOL=TCP)(HOST=tsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsora10)))"
     try:
         conn = cx_Oracle.connect(user="customer_orders",
-            password="Pass",
+            password=db_pw,
             dsn=dsn)
 #            dsn="ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsm100")
     except cx_Oracle.DatabaseError as e:
@@ -45,7 +66,8 @@ def connect():
 
 
 if __name__ == '__main__':
-    ip = socket.gethostbyname('ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com')
+    ip = socket.gethostbyname('ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com')
+    print (ip)
     print (datetime.datetime.now())
     connect()
 
