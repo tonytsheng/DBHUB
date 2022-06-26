@@ -2,6 +2,10 @@
 # if you have DBV enabled, turn this off
 # DBV - as dbv_owner: grant dv_patch_admin to sys;
 
+
+#set serveroutput on
+#exec DBMS_QOPATCH.GET_SQLPATCH_STATUS;
+
 unzip ${patches}/${reldate}/p${this_combo}_121020_${this_platform}.zip
 cd ${this_combo}
 
