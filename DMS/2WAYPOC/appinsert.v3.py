@@ -3,6 +3,7 @@
 ## python3 appinsert.v2.py $SITE
 ## checks a dynamodb table for which database should be accessed based on an input parameter
 ## used in conjunction with a 2 way bi directional replication architecture
+## TODO - error checking
 
 import psycopg2 
 import boto3

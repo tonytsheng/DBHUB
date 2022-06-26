@@ -27,47 +27,28 @@ def get_secret():
     password = database_secrets['password']
     return (password)
 
-def execute():
-    """ Connect to the Oracle database server """
-    conn = None
-    db_pw=get_secret()
-    try:
-        conn = cx_Oracle.connect(user="customer_orders",
-                password=db_pw,
-                dsn="ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsora10")
-		
-        cur = conn.cursor()
-        sql = "insert into heartbeat values (seq_heartbeat.nextval, :updatedate, :ip)"
-        cur.execute(sql, updatedate=datetime.datetime.now(), ip=(ip))
-        cur.close()
-        conn.commit()
-        print ("insert ::: ", ip)
-
-    except (Exception, cx_Oracle.DatabaseError) as error:
-        print("Database Error ::: ", error)
-    finally:
-        if conn is not None:
-            conn.close()
-
 def connect():
     db_pw=get_secret()
-    dsn = "(DESCRIPTION=(CONNECT_TIMEOUT=10)(ADDRESS=(PROTOCOL=TCP)(HOST=tsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsora10)))"
+#    dsn = dsn
     try:
-        conn = cx_Oracle.connect(user="customer_orders",
+        conn = cx_Oracle.connect(user="admin",
             password=db_pw,
             dsn=dsn)
-#            dsn="ttsm100.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsm100")
+        sql = "select name from v$database"
+        cur = conn.cursor()
+        cur.execute(sql)
+        records = cur.fetchone()
+        for row in records:
+            print (row)
+        cur.close()
     except cx_Oracle.DatabaseError as e:
-            # Log error as appropriate
-        raise
-
-        # If the database connection succeeded create the cursor
-        # we-re going to use.
+        print("Database Error ::: ", e)
 
 
 if __name__ == '__main__':
+    dsn =  "(DESCRIPTION=(CONNECT_TIMEOUT=10)(ADDRESS=(PROTOCOL=TCP)(HOST=ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsora10)))"
+    print (datetime.datetime.now())
     ip = socket.gethostbyname('ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com')
     print (ip)
-    print (datetime.datetime.now())
     connect()
 
