@@ -1,0 +1,1 @@
+aws rds reboot-db-instance  --profile dba --db-instance-identifier ttsora30 --force-failover

@@ -38,17 +38,16 @@ def connect():
         cur = conn.cursor()
         cur.execute(sql)
         records = cur.fetchone()
-        for row in records:
-            print (row)
         cur.close()
     except cx_Oracle.DatabaseError as e:
         print("Database Error ::: ", e)
+    return records
 
 
 if __name__ == '__main__':
     dsn =  "(DESCRIPTION=(CONNECT_TIMEOUT=10)(ADDRESS=(PROTOCOL=TCP)(HOST=ttsora30.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsora30)))"
-    print (datetime.datetime.now())
+    timestamp = str(datetime.datetime.now())
     ip = socket.gethostbyname('ttsora30.ciushqttrpqx.us-east-2.rds.amazonaws.com')
-    print (ip)
-    connect()
+    dbcheck = str(connect())
+    print (timestamp + " ::: " + ip + " ::: " + dbcheck)
 
