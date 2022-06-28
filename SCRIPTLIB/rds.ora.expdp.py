@@ -8,6 +8,7 @@
 ## 3 print out log file
 ## designed to easier instead of calling all the data pump apis manually
 ## edit connection strings
+## TODO error checking
 
 import boto3
 import base64
