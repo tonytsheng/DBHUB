@@ -1,14 +1,34 @@
 #!/usr/bin/python3
 
-## python3 rds.ora.expdp.py SCHEMA
-## oracle export wrapper
-## call api to 
-## 1 run export job
-## 2 wait for job to be complete
-## 3 print out log file
-## designed to easier instead of calling all the data pump apis manually
-## edit connection strings
-## TODO error checking
+#----------------------------------------------------------------------------
+# Created By  : Tony Sheng ttsheng@amazon.com
+# Created Date: 2022-06-29
+# version ='1.0'
+# ---------------------------------------------------------------------------
+#
+# rds.ora.expdp.py
+# Run an expdp with an RDS for Oracle database
+#   set export dump and log file names
+#   run export job
+#   wait for job to be complete
+#   print out log file
+#   main goal was to call apis automatically instead of manually
+#
+# ---------------------------------------------------------------------------
+#
+# To run:
+# Edit your database endpoints
+#    $ python3 rds.ora.expdp.py SCHEMA
+#
+# ---------------------------------------------------------------------------
+#
+# History
+# 2022-06-29 - Version 1.0
+# ---------------------------------------------------------------------------
+#
+# ToDo
+#   some sort of error checking
+
 
 import boto3
 import base64
