@@ -38,6 +38,7 @@ finish DMS scripts
 
 2022-06-30
 - Cleanup
+- Added DMS CLI setup scripts - rep instance, endpoints, still need to do migration task
 
 2022-06-17
 - Read from DynamoDB table based on input parameter
