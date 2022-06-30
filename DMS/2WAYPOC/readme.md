@@ -19,13 +19,12 @@ Create your user/schemas/etc
 - 3.cr8.pg.heart.sql - create an example heartbeat table in postgresql
 
 ====
-Set up DMS 
+Set up DMS - you will need to edit for the appropriate arns
 
 - 4.cr8.dms.repinstance.cli - set up a replication instance
 - 5.cr8.dms.endpts.cli - set up source and target database endpoints
 - 6.cr8.dms.migtaskfwd.cli - create forward migration task
 - 7.cr8.dms.migtaskbck.cli - create backward migration task
-- you will need to fill in the appropriate arns after running each one of these
 
 
 ====
