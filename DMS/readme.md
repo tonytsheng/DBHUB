@@ -1,6 +1,9 @@
 DMS
 =====
 
+- 2WAY POC
+  Proof of concept scripts for 2 Way Replication
+
 - Log
   sample log files
 
