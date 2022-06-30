@@ -1,0 +1,3 @@
+aws dms create-endpoint --endpoint-identifier asrcttsora10 --endpoint-type source --engine-name oracle --username admin --password Pass --server-name ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com --port 1521 --database-name ttsora10
+
+aws dms create-endpoint --endpoint-identifier btgtpg102 --endpoint-type target --engine-name postgres --username postgres --password Pass --server-name pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com --port 5432 --database-name pg102

@@ -6,22 +6,35 @@ Used initially for a DMS 2WAY POC
 DMS set up is not included in this directory yet
 
 ====
-Set up scripts
+Set up DynamoDB 
 
 1.cr8.ddb.appmap.py - create a DynamoDB table to store appmap information
 2.ins.dyn.appmap.py - load a DynamoDB table called appmap with application id and database endpoint information
+
+====
+Set up RDBMS source and target 
+Create your user/schemas/etc
+
 3.cr8.ora.heart.sql - create an example heartbeat table in oracle
 3.cr8.pg.heart.sql - create an example heartbeat table in postgresql
 
 ====
-To run
+Set up DMS 
+
+4.cr8.dms.repinstance.cli - set up a replication instance
+5.cr8.dms.endpts.cli - set up source and target database endpoints
+6.cr8.dms.migtask.cli - create a migration task - TODO
+
+
+====
+To run the simulated app:
 python3 appinsert.v3.py SITEA|SITEB
 
-
+====
 
 
 TODO
-create DMS migration tasks
+finish DMS scripts
 
 2022-06-30
 - Cleanup

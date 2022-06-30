@@ -1,0 +1,18 @@
+aws dms describe-replication-instances | jq -r ' .ReplicationInstances[] | .ReplicationInstanceArn , .ReplicationInstanceIdentifier  ,  .ReplicationInstanceStatus'
+
+aws dms describe-replication-instances --filters Name=replication-instance-arn,Values=arn:aws:dms:us-east-2:070201068661:rep:A5NGDBGWJDNEDNLYGJ3DXJZEM3U5OUWZHKUWU7I
+
+aws dms delete-replication-instance --replication-instance-arn arn:aws:dms:us-east-2:070201068661:rep:A5NGDBGWJDNEDNLYGJ3DXJZEM3U5OUWZHKUWU7I
+
+aws dms create-endpoint --endpoint-identifier asrcttsora10 --endpoint-type source --engine-name oracle --username admin --password Pass --server-name ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com --port 1521 --database-name ttsora10
+
+aws dms create-endpoint --endpoint-identifier btgtpg102 --endpoint-type target --engine-name postgres --username postgres --password Pass --server-name pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com --port 5432 --database-name pg102
+
+aws dms describe-endpoints | jq -r ' .Endpoints[] | ."EndpointIdentifier", ."EndpointType", ."EngineName" , .EndpointArn'
+
+aws dms test-connection --replication-instance-arn arn:aws:dms:us-east-2:070201068661:rep:5UAX6IVZH2EGBH37TZH3RFMQOHQQQX2MNM6QWSY --endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:GH3ZVQ25A2KA2BA4S4QBHN37HSHE726JYTBPFRQ
+# this doesn't really do what you want - you want a successful test but this seems
+# to just kick it off
+# need to poll it somehow
+
+

@@ -1,0 +1,1 @@
+aws dms create-replication-instance --replication-instance-identifier rep400 --profile ec2 --replication-instance-class dms.t3.medium --no-publicly-accessible
