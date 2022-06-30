@@ -3,6 +3,7 @@ Simple Proof of Concept for 2 Way Replication
 A simple python database client that reads from a DynamoDB table
 to determine which database engine and related endpoint information to connect to 
 Used initially for a DMS 2WAY POC
+DMS set up is not included in this directory yet
 
 ====
 Set up scripts
@@ -18,6 +19,9 @@ python3 appinsert.v3.py SITEA|SITEB
 
 
 
+
+TODO
+create DMS migration tasks
 
 2022-06-30
 - Cleanup
