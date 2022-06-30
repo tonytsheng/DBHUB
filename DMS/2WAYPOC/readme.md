@@ -8,28 +8,28 @@ DMS set up is not included in this directory yet
 ====
 Set up DynamoDB 
 
-1.cr8.ddb.appmap.py - create a DynamoDB table to store appmap information
-2.ins.dyn.appmap.py - load a DynamoDB table called appmap with application id and database endpoint information
+- 1.cr8.ddb.appmap.py - create a DynamoDB table to store appmap information
+- 2.ins.dyn.appmap.py - load a DynamoDB table called appmap with application id and database endpoint information
 
 ====
 Set up RDBMS source and target 
 Create your user/schemas/etc
 
-3.cr8.ora.heart.sql - create an example heartbeat table in oracle
-3.cr8.pg.heart.sql - create an example heartbeat table in postgresql
+- 3.cr8.ora.heart.sql - create an example heartbeat table in oracle
+- 3.cr8.pg.heart.sql - create an example heartbeat table in postgresql
 
 ====
 Set up DMS 
 
-4.cr8.dms.repinstance.cli - set up a replication instance
-5.cr8.dms.endpts.cli - set up source and target database endpoints
-6.cr8.dms.migtask.cli - create a migration task 
-you will need to fill in the appropriate arns after running each one of these
+- 4.cr8.dms.repinstance.cli - set up a replication instance
+- 5.cr8.dms.endpts.cli - set up source and target database endpoints
+- 6.cr8.dms.migtask.cli - create a migration task 
+- you will need to fill in the appropriate arns after running each one of these
 
 
 ====
 To run the simulated app:
-python3 appinsert.v3.py SITEA|SITEB
+- python3 appinsert.v3.py SITEA|SITEB
 
 ====
 
