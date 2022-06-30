@@ -50,14 +50,9 @@ finish DMS scripts
 - scan.dyn.appmap.cli - query appmap DDB table
 
 
-
 - Heartbeat table, Unique index, Sequence
 - Driver script to load data based on either SITEA or SITEB as an input parameter
 - appmap - mapping file for database connection info based on site
 - v2 - loaded appmap data into a dynamodb table - see ins.ddb.appmap.py
 
-DMS config is not included in this directory
-- Migration tasks must include loopback prevention
-- Sequences are not replicated and therefore must be seeded per site
-- No conflict resolution across sites
 
