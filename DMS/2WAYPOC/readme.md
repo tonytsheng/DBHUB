@@ -23,7 +23,8 @@ Set up DMS
 
 - 4.cr8.dms.repinstance.cli - set up a replication instance
 - 5.cr8.dms.endpts.cli - set up source and target database endpoints
-- 6.cr8.dms.migtask.cli - create a migration task 
+- 6.cr8.dms.migtaskfwd.cli - create forward migration task
+- 7.cr8.dms.migtaskbck.cli - create backward migration task
 - you will need to fill in the appropriate arns after running each one of these
 
 
