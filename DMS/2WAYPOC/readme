@@ -23,7 +23,8 @@ Set up DMS
 
 4.cr8.dms.repinstance.cli - set up a replication instance
 5.cr8.dms.endpts.cli - set up source and target database endpoints
-6.cr8.dms.migtask.cli - create a migration task - TODO
+6.cr8.dms.migtask.cli - create a migration task 
+you will need to fill in the appropriate arns after running each one of these
 
 
 ====
@@ -38,7 +39,7 @@ finish DMS scripts
 
 2022-06-30
 - Cleanup
-- Added DMS CLI setup scripts - rep instance, endpoints, still need to do migration task
+- Added DMS CLI setup scripts - rep instance, endpoints, migration task
 
 2022-06-17
 - Read from DynamoDB table based on input parameter

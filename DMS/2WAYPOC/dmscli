@@ -1,12 +1,28 @@
-aws dms describe-replication-instances | jq -r ' .ReplicationInstances[] | .ReplicationInstanceArn , .ReplicationInstanceIdentifier  ,  .ReplicationInstanceStatus'
+aws dms create-replication-instance            \
+    --replication-instance-identifier rep400   \
+    --profile ec2                              \
+    --replication-instance-class dms.t3.medium \
+    --no-publicly-accessible
 
-aws dms describe-replication-instances --filters Name=replication-instance-arn,Values=arn:aws:dms:us-east-2:070201068661:rep:A5NGDBGWJDNEDNLYGJ3DXJZEM3U5OUWZHKUWU7I
+aws dms describe-replication-instances  | jq -r ' .ReplicationInstances[] |    .ReplicationInstanceArn , .ReplicationInstanceIdentifier  , .ReplicationInstanceStatus'
 
-aws dms delete-replication-instance --replication-instance-arn arn:aws:dms:us-east-2:070201068661:rep:A5NGDBGWJDNEDNLYGJ3DXJZEM3U5OUWZHKUWU7I
+aws dms describe-replication-instances     \
+    --filters Name=replication-instance-arn,Values=arn:aws:dms:us-east-2:070201068661:rep:A5NGDBGWJDNEDNLYGJ3DXJZEM3U5OUWZHKUWU7I
+
+aws dms delete-replication-instance    \
+    --replication-instance-arn arn:aws:dms:us-east-2:070201068661:rep:A5NGDBGWJDNEDNLYGJ3DXJZEM3U5OUWZHKUWU7I
 
 aws dms create-endpoint --endpoint-identifier asrcttsora10 --endpoint-type source --engine-name oracle --username admin --password Pass --server-name ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com --port 1521 --database-name ttsora10
 
-aws dms create-endpoint --endpoint-identifier btgtpg102 --endpoint-type target --engine-name postgres --username postgres --password Pass --server-name pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com --port 5432 --database-name pg102
+aws dms create-endpoint             \
+    --endpoint-identifier btgtpg102 \
+    --endpoint-type target          \
+    --engine-name postgres          \
+    --username postgres             \
+    --password Pass                 \
+    --server-name pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com \
+    --port 5432                     \
+    --database-name pg102
 
 aws dms describe-endpoints | jq -r ' .Endpoints[] | ."EndpointIdentifier", ."EndpointType", ."EngineName" , .EndpointArn'
 
@@ -15,4 +31,15 @@ aws dms test-connection --replication-instance-arn arn:aws:dms:us-east-2:0702010
 # to just kick it off
 # need to poll it somehow
 
+
+aws dms create-replication-task --replication-task-identifier a1mig100 \ 
+    --source-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:V64WVN3F2MJSYOX2Z2Y2NT5655PLSDQLUBPB63I  \
+    --target-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:WGMP5LDFGG2UXMQ4IQAQU5R2PXLGRF2H5N2F62Y \
+    --replication-instance-arn  arn:aws:dms:us-east-2:070201068661:rep:QUWKO2V7GOPSAWMJRCTWQCN2BUAUP5TMIZCQ7KQ\
+    --migration-type full-load-and-cdc \
+    --table-mappings file://ora-pg-bidirect.json
+
+aws dms describe-replication-tasks | jq -r ' .ReplicationTasks[] | .ReplicationTaskIdentifier, .Status, .ReplicationTaskArn'
+
+aws dms delete-replication-task --replication-task-arn arn:aws:dms:us-east-2:070201068661:task:M3Y2BEHQ6CFEXVA3PF3U5ETIJX7LIZ5R3XLHCTY
 
