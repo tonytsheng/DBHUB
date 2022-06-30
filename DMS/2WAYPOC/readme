@@ -1,5 +1,27 @@
 Simple Proof of Concept for 2 Way Replication
 
+A simple python database client that reads from a DynamoDB table
+to determine which database engine and related endpoint information to connect to 
+Used initially for a DMS 2WAY POC
+
+====
+Set up scripts
+
+1.cr8.ddb.appmap.py - create a DynamoDB table to store appmap information
+2.ins.dyn.appmap.py - load a DynamoDB table called appmap with application id and database endpoint information
+3.cr8.ora.heart.sql - create an example heartbeat table in oracle
+3.cr8.pg.heart.sql - create an example heartbeat table in postgresql
+
+====
+To run
+python3 appinsert.v3.py SITEA|SITEB
+
+
+
+
+2022-06-30
+- Cleanup
+
 2022-06-17
 - Read from DynamoDB table based on input parameter
 - Get engine

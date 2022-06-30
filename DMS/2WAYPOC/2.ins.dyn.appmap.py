@@ -1,6 +1,28 @@
-#!/usr/bin/python
-# run: python ins.ddb.appmap.y
-# ensure you have boto3 installed
+#!/usr/bin/env python3
+#----------------------------------------------------------------------------
+# Created By  : Tony Sheng ttsheng@amazon.com
+# Created Date: 2022-06-30
+# version ='1.0'
+# ---------------------------------------------------------------------------
+#
+# 2.ins.dyn.appmap.py
+# Insert appmap data into the DDB table appmap
+#   for storing appmap data
+#     get the database engine credential based on an input parameter
+#     and then connect appropriately
+#
+# ---------------------------------------------------------------------------
+#
+# To run:
+#    $ python3 2.ins.dyn.appmap.py
+#
+# ---------------------------------------------------------------------------
+#
+# History
+# 2022-06-30 - Version 1.0
+# ---------------------------------------------------------------------------
+#
+# ToDo
 
 import csv
 import time

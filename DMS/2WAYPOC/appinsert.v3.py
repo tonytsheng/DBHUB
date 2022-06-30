@@ -1,4 +1,35 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+#----------------------------------------------------------------------------
+# Created By  : Tony Sheng ttsheng@amazon.com
+# Created Date: 2022-06-30
+# version ='1.0'
+# ---------------------------------------------------------------------------
+#
+# appinsert.v3.py 
+# Python database client
+#   based on an input parameter
+#     get database engine and endpoint info from a DDB table
+#     connect appropriately
+#   originally built for a DMS 2WAY POC
+#
+# ---------------------------------------------------------------------------
+#
+# To run:
+#    $ python3 appinsert.v3.py SITEA|SITEB
+# See other scripts in this directory for setup
+# 1.cr8.ddb.appmap.py
+# 2.ins.dyn.appmap.py
+# 3.cr8.ora.heart.sql
+# 3.cr8.pg.heart.sql
+ 
+#
+# ---------------------------------------------------------------------------
+#
+# History
+# 2022-06-29 - Version 1.0
+# ---------------------------------------------------------------------------
+#
+# ToDo
 
 ## python3 appinsert.v2.py $SITE
 ## checks a dynamodb table for which database should be accessed based on an input parameter
