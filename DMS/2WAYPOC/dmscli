@@ -32,14 +32,11 @@ aws dms test-connection --replication-instance-arn arn:aws:dms:us-east-2:0702010
 # need to poll it somehow
 
 
-aws dms create-replication-task --replication-task-identifier a1mig100 \ 
-    --source-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:V64WVN3F2MJSYOX2Z2Y2NT5655PLSDQLUBPB63I  \
-    --target-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:WGMP5LDFGG2UXMQ4IQAQU5R2PXLGRF2H5N2F62Y \
-    --replication-instance-arn  arn:aws:dms:us-east-2:070201068661:rep:QUWKO2V7GOPSAWMJRCTWQCN2BUAUP5TMIZCQ7KQ\
-    --migration-type full-load-and-cdc \
-    --table-mappings file://ora-pg-bidirect.json
+aws dms create-replication-task --replication-task-identifier a1mig100  --source-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:V64WVN3F2MJSYOX2Z2Y2NT5655PLSDQLUBPB63I  --target-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:WGMP5LDFGG2UXMQ4IQAQU5R2PXLGRF2H5N2F62Y --replication-instance-arn  arn:aws:dms:us-east-2:070201068661:rep:QUWKO2V7GOPSAWMJRCTWQCN2BUAUP5TMIZCQ7KQ --migration-type full-load-and-cdc  --table-mappings file://ora-pg-bidirect.json
+
 
 aws dms describe-replication-tasks | jq -r ' .ReplicationTasks[] | .ReplicationTaskIdentifier, .Status, .ReplicationTaskArn'
 
 aws dms delete-replication-task --replication-task-arn arn:aws:dms:us-east-2:070201068661:task:M3Y2BEHQ6CFEXVA3PF3U5ETIJX7LIZ5R3XLHCTY
+
 

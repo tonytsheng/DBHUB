@@ -1,0 +1,2 @@
+aws dms create-replication-task --replication-task-identifier b-pgora --target-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:2XSM2RTYVQFXJPZBLOMMIO7AGCJYE6BHCK2SXTY  --source-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:UJ6KS3DQF5BGIFIO6FYIHB3B6WVHEWOKUBREHNA --replication-instance-arn  arn:aws:dms:us-east-2:070201068661:rep:QUWKO2V7GOPSAWMJRCTWQCN2BUAUP5TMIZCQ7KQ --migration-type cdc --table-mappings file://pg_to_ora.loopback.json
+
