@@ -1,0 +1,8 @@
+hvr ami
+start the instance
+open security group from workstation to vpc for 8080 - this doesn't work yet
+
+sudo su - hvr
+hvrwebdesktop
+see the url that is displayed
+
