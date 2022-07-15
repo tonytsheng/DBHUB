@@ -1,9 +1,12 @@
-Simple Proof of Concept for 2 Way Replication
+DMS 2WAY Replication Proof of Concept
 
-A simple python database client that reads from a DynamoDB table
-to determine which database engine and related endpoint information to connect to 
-Used initially for a DMS 2WAY POC
-DMS set up is not included in this directory yet
+At AWS, we talk a lot about 2 way doors - in business, speed matters and most decisions are not 1 way doors but 2 way doors - you can make the decision to walk through the door and walk right back if it doesn't work out. Database migrations can architected to be similar. 
+
+These are components for a simple proof of concept for a DMS bi directional replication architecture. This includes:
+- A DynamoDB table that contains database endpoint information. Depending on the supplied parameter, it will execute an insert on the old or the new database.
+- A python script that retrieves information from DDB and then applies the insert.
+- Database objects for Oracle and PostgreSQL
+- DMS cli commands to create a replication instance, database endpoints and migration tasks.
 
 ![Optional Text](2way.jpg)
 ====
