@@ -8,6 +8,8 @@ These are components for a simple proof of concept for a DMS bi directional repl
 - Database objects for Oracle and PostgreSQL
 - DMS cli commands to create a replication instance, database endpoints and migration tasks.
 
+Below is the sample architecture:
+
 ![Optional Text](2way.jpg)
 ====
 Set up DynamoDB 
@@ -17,13 +19,13 @@ Set up DynamoDB
 
 ====
 Set up RDBMS source and target 
-Create your user/schemas/etc
+Create your databases/users/schemas/tablespaces/etc. Then the appropriate script:
 
 - 3.cr8.ora.heart.sql - create an example heartbeat table in oracle
 - 3.cr8.pg.heart.sql - create an example heartbeat table in postgresql
 
 ====
-Set up DMS - you will need to edit for the appropriate arns
+Set up the DMS instance, database endpoints and the migration tasks. You will need to edit for the appropriate arns.
 
 - 4.cr8.dms.repinstance.cli - set up a replication instance
 - 5.cr8.dms.endpts.cli - set up source and target database endpoints
@@ -33,7 +35,7 @@ Set up DMS - you will need to edit for the appropriate arns
 
 ====
 To run the simulated app:
-- python3 appinsert.v3.py SITEA|SITEB
+% python3 appinsert.v3.py SITEA|SITEB
 
 ====
 
