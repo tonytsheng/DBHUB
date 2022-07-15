@@ -5,6 +5,7 @@ to determine which database engine and related endpoint information to connect t
 Used initially for a DMS 2WAY POC
 DMS set up is not included in this directory yet
 
+![Optional Text](../blob/master/DMS/2WAYPOC/2way.jpg)
 ====
 Set up DynamoDB 
 
