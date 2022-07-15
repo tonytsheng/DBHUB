@@ -35,8 +35,8 @@ To run the simulated app:
 ====
 
 
-TODO
-finish DMS scripts
+2022-07-14
+Added Architecture diagram
 
 2022-06-30
 - Cleanup
