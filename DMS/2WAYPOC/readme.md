@@ -36,7 +36,7 @@ To run the simulated app:
 
 
 2022-07-14
-Added Architecture diagram
+- Added Architecture diagram
 
 2022-06-30
 - Cleanup
