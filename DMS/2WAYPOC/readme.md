@@ -1,12 +1,13 @@
 DMS 2WAY Replication Proof of Concept
 
-At AWS, we talk a lot about 2 way doors - in business, speed matters and most decisions are not 1 way doors but 2 way doors - you can make the decision to walk through the door and walk right back if it doesn't work out. Database migrations can architected to be similar. 
+At AWS, we talk a lot about 2 way doors - in business, speed matters. Most decisions are not 1 way doors but 2 way doors - you can make the decision to walk through the door and walk right back if it doesn't work out. This is also an important mental model when it comes to database migrations. The scripts here are meant to help you build a 2 way door when it comes to database migrations. In this case, we use two DMS migration tasks to replicate data forward for a migration, but also backwards in case you need to failback.
 
-These are components for a simple proof of concept for a DMS bi directional replication architecture. This includes:
-- A DynamoDB table that contains database endpoint information. Depending on the supplied parameter, it will execute an insert on the old or the new database.
-- A python script that retrieves information from DDB and then applies the insert.
-- Database objects for Oracle and PostgreSQL
-- DMS cli commands to create a replication instance, database endpoints and migration tasks.
+Also included is a python script to act as a database 'client'. This script reads from a DynamoDB table that stores database endpoint information - depending on an input parameter, SITEA or SITEB, the client will either insert to an Oracle or PostgreSQL database. Consider this an easy way to track which site has migrated.
+
+There are also infrastructure set up scripts included for:
+- DynamoDB 
+- Objects for Oracle and PostgreSQL
+- DMS cli commands for a replication instance, database endpoints and migration tasks.
 
 Below is the sample architecture:
 
