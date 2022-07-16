@@ -13,6 +13,7 @@ Below is the sample architecture:
 
 ![Optional Text](2way.jpg)
 ====
+====
 Set up DynamoDB 
 
 - 1.cr8.ddb.appmap.py - create a DynamoDB table to store appmap information
