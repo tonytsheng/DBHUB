@@ -20,20 +20,22 @@ Set up DynamoDB
 - 2.ins.dyn.appmap.py - load a DynamoDB table called appmap with application id and database endpoint information
 
 ====
-Set up RDBMS source and target 
-Create your databases/users/schemas/tablespaces/etc. Then the appropriate script:
+Set up RDBMS source and target. In this case, we use Oracle as the old database and PostgreSQL as the new database we are migrating to.
+Create your databases/users/schemas/tablespaces/etc. Then run the appropriate script:
 
 - 3.cr8.ora.heart.sql - create an example heartbeat table in oracle
 - 3.cr8.pg.heart.sql - create an example heartbeat table in postgresql
 
+Note: Sequences are not replicated with DMS. Therefore each site has a unique starting value.
+
 ====
-Set up the DMS instance, database endpoints and the migration tasks. You will need to edit for the appropriate arns.
+Set up the DMS instance, database endpoints and the migration tasks. Make sure you edit the appropriate arns.
 
 - 4.cr8.dms.repinstance.cli - set up a replication instance
 - 5.cr8.dms.endpts.cli - set up source and target database endpoints
 - 6.cr8.dms.migtaskfwd.cli - create forward migration task
 - 7.cr8.dms.migtaskbck.cli - create backward migration task
-
+- Turn on the migration tasks and check for errors. If you run into errors, you may need to increase the level of logging.
 
 ====
 To run the simulated app:
