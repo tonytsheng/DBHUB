@@ -1,0 +1,3 @@
+ec2 instance - IAM role has Admin only
+
+make sure the region is correct and the name of the stream is case sensitive
