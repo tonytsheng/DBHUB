@@ -25,6 +25,7 @@ Create your databases/users/schemas/tablespaces/etc. Then run the appropriate sc
 
 - 3.cr8.ora.heart.sql - create an example heartbeat table in oracle
 - 3.cr8.pg.heart.sql - create an example heartbeat table in postgresql
+- Make sure to run all the appropriate permissions for using Oracle as a source and PostgreSQL as a target.
 
 Note: Sequences are not replicated with DMS. Therefore each site has a unique starting value.
 
