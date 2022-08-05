@@ -1,0 +1,9 @@
+{
+    "ExtraArchivedLogDestIds": [],
+    "DatabaseName": "ttsora4s",
+    "Port": 1521,
+    "ServerName": "ttsora4s.ciushqttrpqx.us-east-2.rds.amazonaws.com",
+    "Username": "customer_orders",
+    "UseBFile": true,
+    "UseLogminerReader": false
+}
