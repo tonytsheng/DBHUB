@@ -1,0 +1,48 @@
+# create ogg credentials
+curl -u oggadmin:"password" \
+-H "Content-Type: application/json" \
+-H "Accept: application/json" \
+-X POST http://localhost:9001/services/v2/credentials/OracleGoldenGate/ggadmin -d '{"userid":"ggadmin@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=x.x.x.x)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SID=XXX)))", "password":""""password""""}' | json_reformat
+
+# create checkpoint and heartbeat tables on source and target
+curl -u oggadmin:"password" \
+-H "Content-Type: application/json" \
+-H "Accept: application/json" \
+-X POST http://localhost:9001/services/v2/connections/OracleGoldenGate.ggadmin/tables/checkpoint \
+--data '{"operation":"add","name":"ggadmin.checkpoint_table"}' | python -m json.tool
+
+curl -u oggadmin:"password" \
+-H "Content-Type: application/json" \
+-H "Accept: application/json" \
+-X POST http://localhost:9001/services/v2/connections/OracleGoldenGate.ggadmin/tables/heartbeat \
+--data '{"operation":"add","name":"ggadmin.checkpoint_table"}' | python -m json.tool
+
+# add tran data for app_owner schema
+curl -u oggadmin:"password" \
+-H "Content-Type: application/json" \
+-H "Accept: application/json" \
+-X POST http://localhost:9001/services/v2/connections/OracleGoldenGate.ggadmin/trandata/schema \
+--data '{"operation":"add","schemaName":"app_owner","prepareCsnMode":"nowait"}' | python -m json.tool
+
+# check status of Extract process
+curl -X GET \
+http://localhost:9001/services/v2/extracts/EXT_SRC/info/status \
+-u 'oggadmin:password' \
+-H 'Cache-Control: no-cache' \
+-d '{""}' | python -m json.tool
+
+# check status of Replicat process
+curl -X GET \
+http://localhost:9001/services/v2/replicats/REP_TGT/info/status \
+-u 'oggadmin:password' \
+-H 'Cache-Control: no-cache' \
+-d '{""}' | python -m json.tool
+
+# start Replicat
+curl -X POST \
+http://localhost:9001/services/v2/commands/execute \
+-u 'oggadmin:password' \
+-H 'Cache-Control: no-cache' \
+-d '{"name":"start","processName":"REP_TGT"}' | python -m json.tool
+
+
