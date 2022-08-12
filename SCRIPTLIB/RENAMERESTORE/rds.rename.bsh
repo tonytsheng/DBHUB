@@ -1,0 +1,41 @@
+set -x
+OLDINSTANCE=$1
+NEWINSTANCE=$2
+
+put_msg()
+{
+  echo "`date +%Y%m%d.%H%M%S`::: $1"
+}
+
+waitforstatus(){
+# at some point, the rename will be done and a describe of the old instance will return an error
+# the new instance will be available 
+
+  STATUS=$1
+#  /usr/bin/aws rds describe-db-instances --db-instance-identifier ${OLDINSTANCE} --profile ec2 | jq -r '.DBInstances [] | .DBInstanceStatus' | grep Error
+#  if [ $? = 1 ]]; then  # instance is already renamed
+    
+#  if [[ ${CHECK} contains Error ]]
+#    check for new instance
+# An error occurred (DBInstanceNotFound) when calling the DescribeDBInstances operation: DBInstance pg102 not found.
+
+  while [[ ${CHECK} != ${STATUS} ]]
+  do
+    put_msg ${CHECK}
+    sleep 30
+    CHECK=`/usr/bin/aws rds describe-db-instances --db-instance-identifier ${OLDINSTANCE} --profile ec2 | jq -r '.DBInstances [] | .DBInstanceStatus'`
+  done 
+  put_msg ${CHECK}
+}
+
+## MAIN
+/usr/bin/aws rds modify-db-instance              \
+    --db-instance-identifier ${OLDINSTANCE}      \
+    --new-db-instance-identifier ${NEWINSTANCE}  \
+    --profile ec2                                \
+    --apply-immediately
+
+sleep 15
+
+waitforstatus "available"
+
