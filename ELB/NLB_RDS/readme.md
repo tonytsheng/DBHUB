@@ -4,19 +4,18 @@ Database endpoints can change - see https://aws.amazon.com/premiumsupport/knowle
 
 Here are steps that will help you implement this solution.
 
-- Go to the EC2 console
--- Create Target Group under Load Balancing
---  Click IP addreses
---  Give your target group a name 
----  Protocol - TCP and Database Port Number
---  Click the appropriate VPC in the drop down
---  Dont worry about health checks 
---  Next
---  Register Targets
---    VPC in drop down
---    Add ip for your database - may need to do an nslookup on the endpoint
---    Make sure port is right
---    Create target group
+## Go to the EC2 console and Create Target Group under Load Balancing
+-  Click IP addreses
+-  Give your target group a name 
+-  Protocol - TCP and Database Port Number
+-  Click the appropriate VPC in the drop down
+-  Dont worry about health checks 
+-  Next
+-  Register Targets
+-    VPC in drop down
+-    Add ip for your database - may need to do an nslookup on the endpoint
+-    Make sure port is right
+-    Create target group
 
 Click Load Balancers - Create
   Create Network Load Balancer
