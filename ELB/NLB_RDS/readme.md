@@ -17,27 +17,27 @@ Here are steps that will help you implement this solution.
 -    Make sure port is right
 -    Create target group
 
-Click Load Balancers - Create
-  Create Network Load Balancer
-  Give it a load balancer name
-  Internal
-  IPv4
-  Click the appropriate VPC in the drop down
-  Listener - TCP and database port and select a target group
-  Click Creae
+## Create the Network Load Balancer
+- In the EC2 console, click on Load Balancer under Load Balancing
+- Choose Network Load Balancer
+- Give it a load balancer name
+- Click Internal
+- Ensure IPv4
+-  Click the appropriate VPC in the drop down
+-  Listener - enter TCP and the database port and select the name of the Target Group you just created
+-  Click Creae
 
-Go to VPC Security Groups
-You will need to open the database port for the subnet(s) that your database is running in.
-So add an inbound rule for port 5432, subnet 10.0.2.0/24 for example.
+## Open the database port in your VPC Security Groups
+- You will need to open the database port for the subnet(s) that your database is running in. So add an inbound rule for port 5432, subnet 10.0.2.0/24 for example.
 
 Wait for the status of the load balancer to become available
 
 Then call your database client cli program with the NLB endpoint instead of the database endpoint.
 
-If/when your endpoints change:
-Get the IP of the endpoint after your database becomes available.
-Update the IP address in the Target Group. Add the new IP and remove the old IP.
-This can also be done via a cronjob or a Lambda function that checks database endpoints and calls an AWS CLI command to update the Target Group.
+## If/when your endpoints change:
+- Get the IP of the endpoint after your database becomes available.
+- Update the IP address in the Target Group. Add the new IP and remove the old IP.
+- This can also be done via a cronjob or a Lambda function that checks database endpoints and calls an AWS CLI command to update the Target Group.
 
   
 
