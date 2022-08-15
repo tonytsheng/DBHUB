@@ -30,9 +30,29 @@ Here are steps that will help you implement this solution.
 ## Open the database port in your VPC Security Groups
 - You will need to open the database port for the subnet(s) that your database is running in. So add an inbound rule for port 5432, subnet 10.0.2.0/24 for example.
 
-Wait for the status of the load balancer to become available
+## Test connectivity through the NLB
+- Wait for the status of the load balancer to become available
+- Then call your database client cli program with the NLB endpoint instead of the database endpoint.
+- Calling psql with the database endpoint:
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ psql --host=pg102-old.cyt4dgtj55oy.us-east-2.rds.amazonaws.com --port=5432 --username=postgres --dbname=pg102
+Password for user postgres:
+psql (10.17, server 12.8)
+WARNING: psql major version 10, server major version 12.
+         Some psql features might not work.
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type "help" for help.
 
-Then call your database client cli program with the NLB endpoint instead of the database endpoint.
+pg102=>
+
+
+- Calling psql with the NLB endpoint:
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ psql --host=ttshengnlb-95d4fe9fd1597692.elb.us-east-2.amazonaws.com --port=5432 --username=postgres --dbname=pg102
+Password for user postgres:
+psql (10.17, server 12.8)
+WARNING: psql major version 10, server major version 12.
+         Some psql features might not work.
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type "help" for help.
 
 ## If/when your endpoints change:
 - Get the IP of the endpoint after your database becomes available.
