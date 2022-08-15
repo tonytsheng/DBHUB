@@ -59,6 +59,7 @@ Type "help" for help.
 
 pg102=>
 ```
+- You can now give your application owners the NLB endpoint instead of the database endpoint.
 
 ## If/when your endpoints change:
 - Get the IP of the endpoint after your database becomes available.
