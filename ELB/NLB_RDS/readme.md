@@ -34,7 +34,8 @@ Here are steps that will help you implement this solution.
 - Wait for the status of the load balancer to become available
 - Then call your database client cli program with the NLB endpoint instead of the database endpoint.
 - Calling psql with the database endpoint:
-```[ec2-user@ip-10-0-2-111 NLB_RDS]$ psql --host=pg102-old.cyt4dgtj55oy.us-east-2.rds.amazonaws.com --port=5432 --username=postgres --dbname=pg102
+```
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ psql --host=pg102-old.cyt4dgtj55oy.us-east-2.rds.amazonaws.com --port=5432 --username=postgres --dbname=pg102
 Password for user postgres:
 psql (10.17, server 12.8)
 WARNING: psql major version 10, server major version 12.
@@ -47,7 +48,8 @@ pg102=>
 
 
 - Calling psql with the NLB endpoint:
-```[ec2-user@ip-10-0-2-111 NLB_RDS]$ psql --host=ttshengnlb-95d4fe9fd1597692.elb.us-east-2.amazonaws.com --port=5432 --username=postgres --dbname=pg102
+```
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ psql --host=ttshengnlb-95d4fe9fd1597692.elb.us-east-2.amazonaws.com --port=5432 --username=postgres --dbname=pg102
 Password for user postgres:
 psql (10.17, server 12.8)
 WARNING: psql major version 10, server major version 12.
