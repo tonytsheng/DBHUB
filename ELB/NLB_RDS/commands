@@ -1,0 +1,156 @@
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ aws elbv2 describe-load-balancers
+{
+    "LoadBalancers": [
+        {
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-2:070201068661:loadbalancer/net/ttshengnlb/95d4fe9fd1597692",
+            "DNSName": "ttshengnlb-95d4fe9fd1597692.elb.us-east-2.amazonaws.com",
+            "CanonicalHostedZoneId": "ZLMOA37VPKANP",
+            "CreatedTime": "2022-08-15T16:04:11.478000+00:00",
+            "LoadBalancerName": "ttshengnlb",
+            "Scheme": "internet-facing",
+            "VpcId": "vpc-0467e5c237261df36",
+            "State": {
+                "Code": "active"
+            },
+            "Type": "network",
+            "AvailabilityZones": [
+                {
+                    "ZoneName": "us-east-2b",
+                    "SubnetId": "subnet-0bf0aafaa5c0521ff",
+                    "LoadBalancerAddresses": []
+                },
+                {
+                    "ZoneName": "us-east-2c",
+                    "SubnetId": "subnet-0808b6c26e6ff6694",
+                    "LoadBalancerAddresses": []
+                }
+            ],
+            "IpAddressType": "ipv4"
+        }
+    ]
+}
+
+
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ aws elbv2 describe-target-groups
+{
+    "TargetGroups": [
+        {
+            "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-2:070201068661:targetgroup/ttsheng-tgtgrp1/4e3ef4da3a858403",
+            "TargetGroupName": "ttsheng-tgtgrp1",
+            "Protocol": "TCP",
+            "Port": 5432,
+            "VpcId": "vpc-0467e5c237261df36",
+            "HealthCheckProtocol": "TCP",
+            "HealthCheckPort": "traffic-port",
+            "HealthCheckEnabled": true,
+            "HealthCheckIntervalSeconds": 30,
+            "HealthCheckTimeoutSeconds": 10,
+            "HealthyThresholdCount": 3,
+            "UnhealthyThresholdCount": 3,
+            "LoadBalancerArns": [
+                "arn:aws:elasticloadbalancing:us-east-2:070201068661:loadbalancer/net/ttshengnlb/95d4fe9fd1597692"
+            ],
+            "TargetType": "ip",
+            "IpAddressType": "ipv4"
+        }
+    ]
+}
+
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ aws elbv2 describe-target-group-attributes --target-group-arn "arn:aws:elasticloadbalancing:us-east-2:070201068661:targetgroup/ttsheng-tgtgrp1/4e3ef4da3a858403"
+{
+    "Attributes": [
+        {
+            "Key": "proxy_protocol_v2.enabled",
+            "Value": "false"
+        },
+        {
+            "Key": "preserve_client_ip.enabled",
+            "Value": "false"
+        },
+        {
+            "Key": "stickiness.enabled",
+            "Value": "false"
+        },
+        {
+            "Key": "deregistration_delay.timeout_seconds",
+            "Value": "300"
+        },
+        {
+            "Key": "stickiness.type",
+            "Value": "source_ip"
+        },
+        {
+            "Key": "deregistration_delay.connection_termination.enabled",
+            "Value": "false"
+        }
+    ]
+}
+
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ aws rds describe-db-instances --db-instance-identifier pg102-old | egrep 'InstanceIdentifier|Address'
+            "DBInstanceIdentifier": "pg102-old",
+                "Address": "pg102-old.cyt4dgtj55oy.us-east-2.rds.amazonaws.com",
+            "ReadReplicaDBInstanceIdentifiers": [],
+
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ nslookup pg102-old.cyt4dgtj55oy.us-east-2.rds.amazonaws.com
+Server:         10.0.0.2
+Address:        10.0.0.2#53
+
+Non-authoritative answer:
+pg102-old.cyt4dgtj55oy.us-east-2.rds.amazonaws.com      canonical name = ec2-3-18-39-46.us-east-2.compute.amazonaws.com.
+Name:   ec2-3-18-39-46.us-east-2.compute.amazonaws.com
+Address: 10.0.1.85
+
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ nslookup ttshengnlb-95d4fe9fd1597692.elb.us-east-2.amazonaws.com
+Server:         10.0.0.2
+Address:        10.0.0.2#53
+
+Non-authoritative answer:
+Name:   ttshengnlb-95d4fe9fd1597692.elb.us-east-2.amazonaws.com
+Address: 3.131.183.143
+
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ callpg.nosecretsmgr postgres Pass1234 ttshengnlb-95d4fe9fd1597692.elb.us-east-2.amazonaws.com   pg102
+psql (10.17, server 12.8)
+WARNING: psql major version 10, server major version 12.
+         Some psql features might not work.
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+pg102=> \dt
+                        List of relations
+  Schema  |             Name              | Type  |     Owner
+----------+-------------------------------+-------+---------------
+ postgres | base_esri                     | table | postgres
+ postgres | esritestthree                 | table | postgres
+ postgres | mdrt_22eb0$                   | table | postgres
+ public   | awsdms_apply_exceptions       | table | dms_user
+ public   | awsdms_ddl_audit              | table | postgres
+ public   | awsdms_validation_failures_v1 | table | dms_user
+ public   | important                     | table | postgres
+ public   | pgbench_accounts              | table | postgres
+ public   | pgbench_branches              | table | postgres
+ public   | pgbench_history               | table | postgres
+ public   | pgbench_tellers               | table | postgres
+ public   | spatial_ref_sys               | table | rdsadmin
+ public   | t1                            | table | postgres
+ public   | ttsheng_t1                    | table | postgres
+ topology | layer                         | table | rds_superuser
+ topology | topology                      | table | rds_superuser
+(16 rows)
+
+
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ aws ec2 describe-security-group-rules  --filter Name="group-id",Values="sg-0ec060f989b5efc55" --output text
+SECURITYGROUPRULES      10.0.2.0/24     5432    sg-0ec060f989b5efc55    070201068661    tcp     False           sgr-00acb4c36efd5e0c6   5432 TAGS    Name    nlb1
+SECURITYGROUPRULES      10.0.0.0/24     5432    sg-0ec060f989b5efc55    070201068661    tcp     False           sgr-0eab874eeaf647c6a   5432 TAGS    Name    nlb2
+SECURITYGROUPRULES              5432    sg-0ec060f989b5efc55    070201068661    tcp     False   pl-e5a5408c     sgr-0a076255a6085896f   5432
+SECURITYGROUPRULES              6379    sg-0ec060f989b5efc55    070201068661    tcp     False   pl-3ea44157     sgr-013eddc92a3ce9ee0   6379
+SECURITYGROUPRULES      3.16.146.0/29   22      sg-0ec060f989b5efc55    070201068661    tcp     False           sgr-0608d5c3e0166538e   22
+SECURITYGROUPRULES      71.179.90.238/32        22      sg-0ec060f989b5efc55    070201068661    tcp     False           sgr-09dc8db983a7742ca   22
+SECURITYGROUPRULES              5439    sg-0ec060f989b5efc55    070201068661    tcp     False   pl-3ea44157     sgr-01e67b8f55e0b7e95   5439
+SECURITYGROUPRULES              1521    sg-0ec060f989b5efc55    070201068661    tcp     False   pl-3ea44157     sgr-039c57240e57e41ec   1521
+SECURITYGROUPRULES              22      sg-0ec060f989b5efc55    070201068661    tcp     False   pl-3ea44157     sgr-0d82fc775a8c0b82c   22
+SECURITYGROUPRULES              3306    sg-0ec060f989b5efc55    070201068661    tcp     False   pl-3ea44157     sgr-0c39599097d99c382   3306
+SECURITYGROUPRULES      0.0.0.0/0       -1      sg-0ec060f989b5efc55    070201068661    -1      True            sgr-037ef431e39831044   -1
+SECURITYGROUPRULES              5432    sg-0ec060f989b5efc55    070201068661    tcp     False   pl-3ea44157     sgr-04ed3156b67f53898   5432
+SECURITYGROUPRULES              -1      sg-0ec060f989b5efc55    070201068661    -1      False           sgr-038c758e964631f90   -1 REFERENCEDGROUPINFO     sg-0ec060f989b5efc55    070201068661
+
+
