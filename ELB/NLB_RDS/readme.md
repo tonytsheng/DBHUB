@@ -56,6 +56,8 @@ WARNING: psql major version 10, server major version 12.
          Some psql features might not work.
 SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
 Type "help" for help.
+
+pg102=>
 ```
 
 ## If/when your endpoints change:
