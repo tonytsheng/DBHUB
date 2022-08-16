@@ -5,33 +5,38 @@ Database endpoints can change - see https://aws.amazon.com/premiumsupport/knowle
 Here are steps that will help you implement this solution.
 
 ## Go to the EC2 console and Create Target Group under Load Balancing
--  Click IP addreses
--  Give your target group a name 
--  Protocol - TCP and Database Port Number
--  Click the appropriate VPC in the drop down
--  Dont worry about health checks 
--  Next
--  Register Targets
--    VPC in drop down
--    Add ip for your database - may need to do an nslookup on the endpoint
--    Make sure port is right
--    Create target group
+-  Chooose IP addresses for Target Type.
+-  Give your target group a name .
+-  For Protocol - choose TCP and the Port Number that your database runs on.
+-  Click the appropriate VPC in the drop down.
+-  Click TCP in the Health Check drop down.
+-  Leave defaults for Advanced health check settings.
+-  Click Next.
+-  Register Targets.
+-    Use your VPC in drop down.
+-    Add the ip address for your database (if you don't know, do an nslookup on the endpoint).
+-    Click Include as pending below.
+-    Click Create Target Group.
 
 ## Create the Network Load Balancer
-- In the EC2 console, click on Load Balancer under Load Balancing
-- Choose Network Load Balancer
-- Give it a load balancer name
-- Click Internal
-- Ensure IPv4
--  Click the appropriate VPC in the drop down
--  Listener - enter TCP and the database port and select the name of the Target Group you just created
--  Click Creae
+- In the EC2 console, click on Load Balancer under Load Balancing.
+- Click Create Load Balancer.
+- Choose Network Load Balancer.
+- Give it a load balancer name.
+- Under Scheme, choose Internal.
+- Ensure IPv4.
+- Click the appropriate VPC in the drop down.
+- Under Mappings, choose your availability zones.
+- Ensure that the subnets are ones that your database is running in.
+- Leave the Private IPv4 address drop down default for all subnets.
+- Listener - enter TCP and the database port and select the name of the Target Group you just created.
+- Click Create Load Balancer.
 
 ## Open the database port in your VPC Security Groups
 - You will need to open the database port for the subnet(s) that your database is running in. So add an inbound rule for port 5432, subnet 10.0.2.0/24 for example.
 
 ## Test connectivity through the NLB
-- Wait for the status of the load balancer to become available
+- Wait for the status of the load balancer to become Active - this may take a few minutes.
 - Then call your database client cli program with the NLB endpoint instead of the database endpoint.
 - Calling psql with the database endpoint:
 ```
