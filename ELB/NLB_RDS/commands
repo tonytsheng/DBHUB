@@ -154,3 +154,21 @@ SECURITYGROUPRULES              5432    sg-0ec060f989b5efc55    070201068661    
 SECURITYGROUPRULES              -1      sg-0ec060f989b5efc55    070201068661    -1      False           sgr-038c758e964631f90   -1 REFERENCEDGROUPINFO     sg-0ec060f989b5efc55    070201068661
 
 
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ aws elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:us-east-2:070201068661:targetgroup/ttsheng-tgt2/77e969a96c82e2a5
+{
+    "TargetHealthDescriptions": [
+        {
+            "Target": {
+                "Id": "10.0.2.48",
+                "Port": 5432,
+                "AvailabilityZone": "us-east-2c"
+            },
+            "HealthCheckPort": "5432",
+            "TargetHealth": {
+                "State": "healthy"
+            }
+        }
+    ]
+}
+
+
