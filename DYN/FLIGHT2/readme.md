@@ -15,25 +15,15 @@ EMAIL
 BAGID1 
 BAGID2
 
-## Model - what elements go in this single table
-single flight identified by a flight number
-FLIGHTNUMBER - PK
-TIME_SCHEDULED - SK
-IATA - DEP ARR
-TIMEACTUAL - DEP ARR
-PASS - FNAME LNAME PHONE EMAIL
-BAG - ID1 ID2
-what makes the row unique - FLIGHTNUMBER and TIME_SCHEDULED
-
 ## Access patterns - how do you search this data
-FLIGHTNUMBER
-scheduled time
-arrived time
-DEP_IATA
-ARR_IATA
-Depart or Arrival window of time
-PASS LNAME PHONE EMAIL
-BAGID
+- FLIGHTNUMBER
+- scheduled time
+- arrived time
+- DEP_IATA
+- ARR_IATA
+- Depart or Arrival window of time
+- PASS LNAME PHONE EMAIL
+- BAGID
 
 ## Summary
 Table Name
