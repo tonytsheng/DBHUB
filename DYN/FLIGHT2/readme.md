@@ -1,6 +1,6 @@
-+ Business Context - store and query flight info
+## Business Context - store and query flight info
 
-+ What data do you need to store:
+## What data do you need to store:
   FLIGHTNUMBER
   SCHEDULED_DEP_TIME
   DEP_IATA
@@ -14,7 +14,7 @@
     BAGID1 
     BAGID2
 
-+ Model - what elements go in this single table
+## Model - what elements go in this single table
 single flight identified by a flight number
   FLIGHTNUMBER - PK
   TIME_SCHEDULED - SK
@@ -24,7 +24,7 @@ single flight identified by a flight number
     BAG - ID1 ID2
 what makes the row unique - FLIGHTNUMBER and TIME_SCHEDULED
 
-+ Access patterns - how do you search this data
+## Access patterns - how do you search this data
   FLIGHTNUMBER
 scheduled time
 arrived time
@@ -34,7 +34,7 @@ arrived time
   PASS LNAME PHONE EMAIL
   BAGID
 
-+ Summary
+## Summary
 Table Name
 PK
 SK
