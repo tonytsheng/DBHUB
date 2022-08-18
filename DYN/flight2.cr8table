@@ -1,8 +1,0 @@
-aws dynamodb create-table \
-    --table-name flight2 \
-    --profile ec2 \
-    --attribute-definitions AttributeName=flight_number,AttributeType=S \
-        AttributeName=flight_date,AttributeType=S \
-    --key-schema AttributeName=flight_number,KeyType=HASH  \
-        AttributeName=flight_date,KeyType=RANGE  \
-    --provisioned-throughput ReadCapacityUnits=50,WriteCapacityUnits=50
