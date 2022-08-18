@@ -1,26 +1,26 @@
 ## Existing Relational Model
 - FLIGHT
-- flightno
-- airline
-- dep airport
-- arr airport
-- scheduled dep time
-- scheduled arr time
+  - flightno
+  - airline
+  - dep airport
+  - arr airport
+  - scheduled dep time
+  - scheduled arr time
 
-PASSENGER
-- pass id
-- lname, fname, address
-- phone
-- email
+- PASSENGER
+  - pass id
+  - lname, fname, address
+  - phone
+  - email
 
-BAGGAGE
-- bag id
-- description
+- BAGGAGE
+  - bag id
+  - description
 
 - FLIGHT_PASS_BAG
-flight no
-passid
-bagid
+  - flight no
+  - passid
+  - bagid
 
 
 ## Business Context 
