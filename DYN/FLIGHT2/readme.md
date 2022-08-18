@@ -22,6 +22,8 @@
   - passid
   - bagid
 
+- Sample query
+  - select flightno, departure_airport, scheduled_dep_time, pass_lname, pass_phone, bag_id, bag_description from flight_pass_bag fpb, passenger p, flight f where f.flight_id=fpb.flight_id and fpb.pass_id=p.pass_id and fpb.bagid=b.bag_id
 
 ## Business Context 
 Store and query flight info
