@@ -54,10 +54,21 @@ A flight that has the following attributes:
 ## What might the single table model look like
 - FLIGHTNUMBER - PK
 - SCHEDULED_DEPARTURE_TIME - SK
--  IATA - DEP ARR
--   TIMES - ACTUALDEP ACTUALARR
--   PASSENGER - FNAME LNAME PHONE EMAIL
--   BAGGAGE - ID1 ID2 ID3
+- IATA 
+  - DEP 
+  - ARR
+- TIMES 
+  - ACTUALDEP 
+  - ACTUALARR
+- PASSENGER 
+  - FNAME 
+  - LNAME 
+  - PHONE 
+  - EMAIL
+- BAGGAGE 
+  - ID1 
+  - ID2 
+  - ID3
 
 GSI:
 - 1 - SCHEDULED_DEPARTURE_TIME - PK, FLIGHTNUMBER - SK
