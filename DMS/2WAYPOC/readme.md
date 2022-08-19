@@ -12,14 +12,12 @@ There are also infrastructure set up scripts included for:
 Below is the sample architecture:
 
 ![Optional Text](2way.jpg)
-====
-====
-Set up DynamoDB 
+##Set up DynamoDB 
 
 - 1.cr8.ddb.appmap.py - create a DynamoDB table to store appmap information
 - 2.ins.dyn.appmap.py - load a DynamoDB table called appmap with application id and database endpoint information
 
-====
+## Set up your databases
 Set up RDBMS source and target. In this case, we use Oracle as the old database and PostgreSQL as the new database we are migrating to.
 Create your databases/users/schemas/tablespaces/etc. Then run the appropriate script:
 
@@ -29,7 +27,7 @@ Create your databases/users/schemas/tablespaces/etc. Then run the appropriate sc
 
 Note: Sequences are not replicated with DMS. Therefore each site has a unique starting value.
 
-====
+## Set up DMS
 Set up the DMS instance, database endpoints and the migration tasks. Make sure you edit the appropriate arns.
 
 - 4.cr8.dms.repinstance.cli - set up a replication instance
