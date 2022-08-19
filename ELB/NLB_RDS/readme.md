@@ -27,9 +27,9 @@ Here are steps that will help you implement this solution.
 - Ensure IPv4.
 - Click the appropriate VPC in the drop down.
 - Under Mappings, choose your availability zones.
-- Ensure that the subnets are ones that your database is running in.
-- Leave the Private IPv4 address drop down default for all subnets.
-- Listener - enter TCP and the database port and select the name of the Target Group you just created.
+  - Ensure that the subnets are ones that your database is running in.
+  - Leave the Private IPv4 address drop down default for all subnets.
+  - Listener - enter TCP and the database port and select the name of the Target Group you just created.
 - Click Create Load Balancer.
 
 ## Open the database port in your VPC Security Groups
