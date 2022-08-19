@@ -69,22 +69,22 @@ A flight that has the following attributes:
 - BAGGAGE#ID2 
 - BAGGAGE#ID3 
 
-GSI:
-# inherit rcu/wcu from the base table
-# create after table gets created
-# projections - KEYS_ONLY, INCLUDE, ALL
+## GSI:
 - 1 - SCHEDULED_DEPARTURE_TIME - PK, FLIGHTNUMBER - SK INCLUDE ALL COLS -- don't need this because this is already in the base table
 - 2 - PASSENGER#LNAME, IATA#DEP
 - 3 - PASSENGER#LNAME, BAGGAGE#ID1
 - 4 - ACTUAL#DEP, IATA#DEP
+- inherit rcu/wcu from the base table
+- create after table gets created
+- projections - KEYS_ONLY, INCLUDE, ALL
 
-LSI:
-# contains a copy of all the data from the base table
-# 5 per table
-# projections - KEYS_ONLY, INCLUDE, ALL
-# created when the table is created 
+## LSI:
 - 1 - FLIGHTNUMBER PK, AIRPORT#DEP, AIRPORT#ARR
 - 2 - FLIGHTNUMBER PK, SCHEDULEDTIME#ARR, SCHEDULEDTIME#DEP
 - 4 - FLIGHTNUMBER PK, PASSENGER#LNAME
+- contains a copy of all the data from the base table
+- 5 per table
+- projections - KEYS_ONLY, INCLUDE, ALL
+- created when the table is created 
 
  
