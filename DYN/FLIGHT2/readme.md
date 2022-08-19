@@ -72,6 +72,7 @@ GSI:
 - 1 - SCHEDULED_DEPARTURE_TIME - PK, FLIGHTNUMBER - SK INCLUDE ALL COLS -- don't need this because this is already in the base table
 - 2 - PASSENGER#LNAME, IATA#DEP
 - 3 - PASSENGER#LNAME, BAGGAGE#ID1
+- 4 - ACTUAL#DEP, IATA#DEP
 
 LSI:
 
