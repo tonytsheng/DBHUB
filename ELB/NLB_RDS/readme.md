@@ -13,9 +13,9 @@ Here are steps that will help you implement this solution.
 -  Leave defaults for Advanced health check settings.
 -  Click Next.
 -  Register Targets.
--    Use your VPC in drop down.
--    Add the ip address for your database (if you don't know, do an nslookup on the endpoint).
--    Click Include as pending below.
+   -  Use your VPC in drop down.
+   -  Add the ip address for your database (if you don't know, do an nslookup on the endpoint).
+   -  Click Include as pending below.
 -    Click Create Target Group.
 
 ## Create the Network Load Balancer
