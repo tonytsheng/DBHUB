@@ -353,3 +353,6 @@ aws lambda create-function --function-name cancelled_lambda --zip-file fileb://f
 aws lambda create-event-source-mapping --function-name ddbreplica_lambda --enabled --batch-size 100 --starting-position TRIM_HORIZON --event-source-arn arn:aws:dynamodb:us-east-2:070201068661:table/logfile/stream/2022-01-06T00:56:38.634
 
 aws lambda create-event-source-mapping --function-name cancelled_lambda --enabled --batch-size 100 --starting-position TRIM_HORIZON --event-source-arn arn:aws:dynamodb:us-east-2:070201068661:table/flight/stream/2021-12-09T16:17:02.414
+
+
+
