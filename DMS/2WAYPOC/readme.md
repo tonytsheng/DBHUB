@@ -37,13 +37,11 @@ Set up the DMS instance, database endpoints and the migration tasks. Make sure y
 - 7.cr8.dms.migtaskbck.cli - create backward migration task
 - Turn on the migration tasks and check for errors. If you run into errors, you may need to increase the level of logging.
 
-====
+## Run the app
 To run the simulated app:
 % python3 appinsert.v3.py SITEA|SITEB
 
-====
-
-
+## History
 2022-07-14
 - Added Architecture diagram
 
