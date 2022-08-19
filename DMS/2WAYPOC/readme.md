@@ -12,7 +12,7 @@ There are also infrastructure set up scripts included for:
 Below is the sample architecture:
 
 ![Optional Text](2way.jpg)
-##Set up DynamoDB 
+## Set up DynamoDB 
 
 - 1.cr8.ddb.appmap.py - create a DynamoDB table to store appmap information
 - 2.ins.dyn.appmap.py - load a DynamoDB table called appmap with application id and database endpoint information
