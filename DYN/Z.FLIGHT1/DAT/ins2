@@ -1,0 +1,70 @@
+import csv
+import time
+import socket
+import array
+import os
+from collections import defaultdict
+
+# PrintMsg
+def PrintMsg (msg):
+    print (time.strftime("%Y-%m-%d %H:%M:%S") + ": " + msg)
+
+host = socket.gethostname().split('.',1)[0]
+PrintMsg("HOST: " + host)
+ssirep = "/home/user/dba_arch/scripts/install/ssi/rep." + host
+PrintMsg("SSI_REP: " + ssirep)
+
+# snippet-start:[dynamodb.python.codeexample.MoviesItemOps01]
+from pprint import pprint
+import boto3
+
+def put_flight(flight_date, flight_number, arrival_airport, arrival_delay, departure_airport, departure_delay, flight_status, dynamodb=None):
+    if not dynamodb:
+        dynamodb = boto3.setup_default_session(profile_name='ec2')
+        dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
+
+    table = dynamodb.Table('flight')
+    response = table.put_item(
+       Item={
+            'flight_date': flight_date,
+            'flight_number': flight_number,
+            'arrival_airport': arrival_airport,
+            'arrival_delay': arrival_delay,
+            'departure_airport': departure_airport,
+            'departure_delay': departure_delay,
+            'flight_status': flight_status,
+        }
+    )
+    return response
+
+if __name__ == '__main__':
+    flight_resp = put_flight ("2021-05-09", "LX9513", "SPI", "", "HRG","","scheduled")
+    flight_resp = put_flight ("2021-10-04", "O36877", "ATQ", "", "GOT","","landed")
+    flight_resp = put_flight ("2021-02-26", "PO211", "SPI", "", "SLC","","scheduled")
+    flight_resp = put_flight ("2021-01-04", "GJ6013", "GZT", "", "CUZ","","cancelled")
+    flight_resp = put_flight ("2021-10-14", "KL856", "NDJ", "", "VVI","","landed")
+    flight_resp = put_flight ("2021-09-19", "QF7494", "GDL", "", "PGUM","","scheduled")
+    flight_resp = put_flight ("2021-10-27", "GJ8135", "DSS", "", "DXB","","unknown")
+    flight_resp = put_flight ("2021-02-27", "QF7422", "TFN", "", "MFM","","cancelled")
+    flight_resp = put_flight ("2021-09-13", "QF7494", "SIN", "", "SLC","","cancelled")
+    flight_resp = put_flight ("2021-07-13", "QF7342", "KIX", "", "DUB","","cancelled")
+    flight_resp = put_flight ("2021-06-19", "QF7423", "BAB", "", "LXR","","cancelled")
+    flight_resp = put_flight ("2021-04-13", "QF7311", "TRN", "", "LOS","","scheduled")
+    flight_resp = put_flight ("2021-06-20", "GJ6013", "SLC", "", "ISL","","active")
+    flight_resp = put_flight ("2021-11-02", "GJ8143", "BDL", "", "VBG","","landed")
+    flight_resp = put_flight ("2021-02-17", "LX9003", "TIP", "", "AER","","unknown")
+    flight_resp = put_flight ("2021-01-09", "QF7342", "PMO", "", "CMH","","active")
+    flight_resp = put_flight ("2021-10-08", "SQ282", "ISE", "", "AAL","","active")
+    flight_resp = put_flight ("2021-04-09", "HT3819", "GRV", "", "BHD","","cancelled")
+    flight_resp = put_flight ("2021-06-20", "AF267", "SEZ", "", "LIS","","landed")
+    flight_resp = put_flight ("2021-09-20", "NZ3282", "BEL", "", "AMS","","landed")
+    flight_resp = put_flight ("2021-06-01", "NZ3282", "PMO", "", "TLV","","unknown")
+    flight_resp = put_flight ("2021-07-07", "O36972", "PSA", "", "OTP","","active")
+    flight_resp = put_flight ("2021-06-14", "landed", "NAP", "", "CBM","","landed")
+    flight_resp = put_flight ("2021-10-20", "GJ8137", "LGA", "", "NKG","","cancelled")
+    flight_resp = put_flight("2021-09-04", "NZ8765", "CHC", "", "NPL", "", "cancelled" ) 
+    print("Put flight succeeded:")
+    pprint(flight_resp)
+# snippet-end:[dynamodb.python.codeexample.MoviesItemOps01]
+
+os.system('aws dynamodb --profile ec2 scan --table-name flight --select "COUNT"')

@@ -1,0 +1,10 @@
+            ]
+        }
+    ],
+    "globalUploadSettings": {
+       "format": "CSV",
+        "delimiter": ",",
+        "textqualifier": "'",
+        "containsHeader": "false"
+    }
+}
