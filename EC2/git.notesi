@@ -1,0 +1,19 @@
+# To Initialize
+git init
+
+git pull git@github.com:tonytsheng/DBHUB.git
+
+[ec2-user@ip-10-0-2-111 BIN]$ git config --list
+user.email=tonytsheng@gmail.com
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+
+[ec2-user@ip-10-0-2-111 BIN]$ cat push_dbhub
+git add .
+git commit -a -m "$1"
+git push git@github.com:tonytsheng/DBHUB.git master
+[ec2-user@ip-10-0-2-111 BIN]$
+
+
