@@ -283,7 +283,18 @@ Resources:
             yum update -y
             yum install mysql -y
             yum install nc -y
+            cd /etc/yum.repos.d
+            wget http://yum.oracle.com/public-yum-ol7.repo
+            wget http://yum.oracle.com/RPM-GPG-KEY-oracle-ol7
+            rpm --import RPM-GPG-KEY-oracle-ol7
+            yum install -y yum-utils
+            yum-config-manager --enable ol7_oracle_instantclient
+            yum install -y oracle-instantclient18.3-sqlplus
             echo "export AWS_DEFAULT_REGION=${AWS::Region}" >> /home/ec2-user/.bash_profile
+            echo "export ORACLE_HOME=/usr/lib/oracle/18.3/client64/" >> /home/ec2-user/.bash_profile
+            echo "export LD_LIBRARY_PATH=/usr/lib/oracle/18.3/client64/lib/" >> /home/ec2-user/.bash_profile
+            echo "export PATH=$PATH:/usr/lib/oracle/18.3/client64/bin" >> /home/ec2-user/.bash_profile
+
 
 ####### for RDS ######
   RdsDbSubnetGroup:
