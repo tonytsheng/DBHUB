@@ -1,4 +1,4 @@
-# using 
+# using
 https://aws.amazon.com/blogs/publicsector/how-to-deliver-performant-gis-desktop-applications-amazon-appstream-2-0/
 
 # using postgresql with gis extensions
@@ -10,13 +10,13 @@ CREATE EXTENSION fuzzystrmatch;
 CREATE EXTENSION postgis_tiger_geocoder;
 CREATE EXTENSION postgis_topology;
 ALTER SCHEMA tiger OWNER TO rds_superuser;
-ALTER SCHEMA tiger_data OWNER TO rds_superuser; 
+ALTER SCHEMA tiger_data OWNER TO rds_superuser;
 ALTER SCHEMA topology OWNER TO rds_superuser;
 CREATE FUNCTION exec(text) returns text language plpgsql volatile AS $f$ BEGIN EXECUTE $1; RETURN $1; END; $f$;
 SELECT exec('ALTER TABLE ' ^|^| quote_ident(s.nspname) ^|^| '.' ^|^| quote_ident(s.relname) ^|^| ' OWNER TO rds_superuser;')
 FROM (
 SELECT nspname, relname
-FROM pg_class c JOIN pg_namespace n ON (c.relnamespace = n.oid) 
+FROM pg_class c JOIN pg_namespace n ON (c.relnamespace = n.oid)
 WHERE nspname in ('tiger','topology') AND
 relkind IN ('r','S','v') ORDER BY relkind = 'S')
 echo s;
@@ -39,3 +39,25 @@ C:\OSGeo4W\bin\ogr2ogr.exe -f "PostgreSQL" "PG:host=${RDSPostGIS.Endpoint.Addres
             curl https://raw.githubusercontent.com/aws-samples/appstream-qgis-blog/main/ookla-download-speed.qgs --output C:\ookla-example-project.qgs
             REM find and replace the placeholder RDS hostname with the real RDS hostname and add it to the OSGeo4W package
             powershell -Command "(gc C:\ookla-example-project.qgs) -replace 'placeholderhostname', '${RDSPostGIS.Endpoint.Address}' | Out-File -encoding ASCII C:\OSGeo4W\ookla-example-project.qgs"
+
+
+
+# see https://gist.github.com/abelcallejo/e75eb93d73db6f163b076d0232fc7d7e
+# to set up gdal on ec2
+
+cd /tmp
+wget https://download.osgeo.org/proj/proj-6.1.1.tar.gz
+tar -xvf proj-6.1.1.tar.gz
+cd proj-6.1.1
+./configure
+sudo make
+sudo make install
+
+cd /tmp
+wget https://github.com/OSGeo/gdal/releases/download/v3.2.1/gdal-3.2.1.tar.gz
+tar -xvf gdal-3.2.1.tar.gz
+cd gdal-3.2.1
+./configure --with-proj=/usr/local --with-python
+sudo make
+sudo make install
+
