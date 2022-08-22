@@ -12,13 +12,14 @@ ALTER SCHEMA tiger_data OWNER TO rds_superuser;
 ALTER SCHEMA topology OWNER TO rds_superuser;
 ```
 ## Get the sample data
+```
 mkdir /home/ec2-user/data/GIS
 aws s3 cp s3://ookla-open-data/shapefiles/performance/type=fixed/year=2021/quarter=3/2021-07-01_performance_fixed_tiles.zip /home/ec2-user/data/GIS  --no-sign-request
 cd /home/ec2-user/data/GIS
 unzip 2021-07-01_performance_fixed_tiles.zip
-
+```
 ## Install osgeo on your EC2 instance 
-# see https://gist.github.com/abelcallejo/e75eb93d73db6f163b076d0232fc7d7e
+(see https://gist.github.com/abelcallejo/e75eb93d73db6f163b076d0232fc7d7e)
 ```
 cd /tmp
 wget https://download.osgeo.org/proj/proj-6.1.1.tar.gz
