@@ -20,16 +20,6 @@ Parameters:
     Type: String
     Default: 10.1.2.0/24
 
-    #  PrivateSubnet1CIDR:
-    #Description: Please enter the IP range (CIDR notation) for the private subnet in the first Availability Zone
-    #Type: String
-    #Default: 10.1.3.0/24
-
-    #  PrivateSubnet2CIDR:
-    #Description: Please enter the IP range (CIDR notation) for the private subnet in the second Availability Zone
-    #Type: String
-    #Default: 10.1.4.0/24
-
   SSHKeyName:
     Type: AWS::EC2::KeyPair::KeyName
     Description: Choose a SSH key for the instances
@@ -98,28 +88,6 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub ${EnvironmentName} Public-AZ2
-
-          #  PrivateSubnetAz1:
-          #    Type: AWS::EC2::Subnet
-          #    Properties:
-          #      VpcId: !Ref MyVpc
-          #      AvailabilityZone: !Select [ 0, !GetAZs  '' ]
-          #      CidrBlock: !Ref PrivateSubnet1CIDR
-          #      MapPublicIpOnLaunch: false
-          #      Tags:
-          #        - Key: Name
-          #          Value: !Sub ${EnvironmentName} Private-AZ1
-
-          #  PrivateSubnetAz2:
-          #    Type: AWS::EC2::Subnet
-          #    Properties:
-          #      VpcId: !Ref MyVpc
-          #      AvailabilityZone: !Select [ 1, !GetAZs  '' ]
-          #      CidrBlock: !Ref PrivateSubnet2CIDR
-          #      MapPublicIpOnLaunch: false
-          #      Tags:
-          #        - Key: Name
-          #          Value: !Sub ${EnvironmentName} Private-AZ2
 
   NatGatewayEipAz1:
     Type: AWS::EC2::EIP
@@ -196,48 +164,6 @@ Resources:
       RouteTableId: !Ref PublicRouteTableAz2
       SubnetId: !Ref PublicSubnetAz2
 
-####### private subnet section ########
-#  PrivateRouteTableAz1:
-#    Type: AWS::EC2::RouteTable
-#    Properties:
-#      VpcId: !Ref MyVpc
-#      Tags:
-#        - Key: Name
-#          Value: !Sub ${EnvironmentName} Private-AZ1
-
-      #  DefaultPrivateRouteAz1:
-      #    Type: AWS::EC2::Route
-      #    Properties:
-      #      RouteTableId: !Ref PrivateRouteTableAz1
-      #      DestinationCidrBlock: 0.0.0.0/0
-      #      NatGatewayId: !Ref NatGatewayAz1
-
-      #  PrivateSubnetAz1RouteTableAssociation:
-      #    Type: AWS::EC2::SubnetRouteTableAssociation
-      #    Properties:
-      #      RouteTableId: !Ref PrivateRouteTableAz1
-      #      SubnetId: !Ref PrivateSubnetAz1
-
-      #  PrivateRouteTableAz2:
-      #    Type: AWS::EC2::RouteTable
-      #    Properties:
-      #      VpcId: !Ref MyVpc
-      #      Tags:
-      #        - Key: Name
-      #          Value: !Sub ${EnvironmentName} Private-AZ2
-
-      #  DefaultPrivateRouteAz2:
-      #    Type: AWS::EC2::Route
-      #    Properties:
-      #RouteTableId: !Ref PrivateRouteTableAz2
-      #DestinationCidrBlock: 0.0.0.0/0
-      #NatGatewayId: !Ref NatGatewayAz2
-
-      #  PrivateSubnetAz2RouteTableAssociation:
-      #    Type: AWS::EC2::SubnetRouteTableAssociation
-      #    Properties:
-      #      RouteTableId: !Ref PrivateRouteTableAz2
-      #      SubnetId: !Ref PrivateSubnetAz2
 
 ######## Bastion RDS Client EC2 ###########
   BastionSecurityGroup:
