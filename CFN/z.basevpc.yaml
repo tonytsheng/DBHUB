@@ -41,11 +41,11 @@ Parameters:
 
   MyPcIpAddress:
     Type: String
-    Default: 111.111.111.111/32
+    Default: 52.95.4.0/32
 
   RdsMasterUsername:
     Type: String
-    Default: "admin"
+    Default: "postgres"
     NoEcho: true
 
   RdsMasterUserPassword:
@@ -318,8 +318,8 @@ Resources:
       VpcId: !Ref MyVpc
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: 3306
-          ToPort: 3306
+          FromPort: 5432
+          ToPort: 5432
           CidrIp: !Ref VpcCIDR
       SecurityGroupEgress:
         - IpProtocol: -1
@@ -328,22 +328,22 @@ Resources:
   MySqlDb1:
     Type: AWS::RDS::DBInstance
     Properties: 
-      DBInstanceIdentifier: "MySqlDb1"
-      DBName: "maindb"
+      DBInstanceIdentifier: "pg500"
+      DBName: "pg500"
       AllocatedStorage: 100
       DBInstanceClass: "db.m5.2xlarge"
       MasterUsername: !Ref RdsMasterUsername
       MasterUserPassword: !Ref RdsMasterUserPassword
       StorageType: "io1"
       Iops: 5000
-      Engine: "MySQL"
+      Engine: "postgres"
       MultiAZ: true
       DBSubnetGroupName: !Ref RdsDbSubnetGroup
       PubliclyAccessible: false
       VPCSecurityGroups:
         - !Ref RdsDbSecurityGroup
       StorageEncrypted: true
-      DeletionProtection: true
+      DeletionProtection: false
       Tags:
       - Key: Name
         Value: "MySqlDb1"
