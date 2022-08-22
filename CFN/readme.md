@@ -1,5 +1,7 @@
 ## Cloud Formation Templates
 - 0.basevpc.yaml 
   - Simplest vpc including 2 database subnets, 1 RDS for PostgreSQL instance and 1 EC2 bastion host that has postgresql, mysql and oracle connectivity libraries loaded.
-    - Make sure to modify MyPcIpAddress and the SSHKeyName to yours.
-    - Connect with your ssh client to the public IPv4 hostname
+    - Modify MyPcIpAddress and the SSHKeyName to yours.
+    - Once the stack is created, ssh to the EC2 instance and use it as a database 'hub.'
+    - Connect to your RDS for PostgreSQL instance like so:
+      - psql --host=<your db endpoint> --port=5432 --username=postgres --dbname=pg500
