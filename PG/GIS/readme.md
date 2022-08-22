@@ -39,7 +39,7 @@ sudo make install
 ```
 ## Load the shapefile into your PostgreSQL database
 ```
-ogr2ogr -f "PostgreSQL" "PG:host=${RDSPostGIS.Endpoint.Address} user=${DBMasterUsername} dbname=postgres password=%PGPASSWORD%" "/home/ec2-user/data/GIS/gps_fixed_tiles.shp"
+ogr2ogr -f "PostgreSQL" "PG:host=<database endpoint> user=<username> dbname=<dbname> password=<password>" "/home/ec2-user/data/GIS/gps_fixed_tiles.shp"
 ```
 
 ## Run your GIS application and connect to your PostgreSQL database. Add the appropriate layer.
