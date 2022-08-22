@@ -4,4 +4,6 @@
     - Modify MyPcIpAddress and the SSHKeyName to yours.
     - Once the stack is created, ssh to the EC2 instance and use it as a database 'hub.'
     - Connect to your RDS for PostgreSQL instance like so:
-      - psql --host=<your db endpoint> --port=5432 --username=postgres --dbname=pg500
+      ```
+      psql --host=<your db endpoint> --port=5432 --username=postgres --dbname=pg500
+      ```
