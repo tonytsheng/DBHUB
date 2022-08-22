@@ -218,6 +218,7 @@ Resources:
             yum install -y yum-utils
             yum-config-manager --enable ol7_oracle_instantclient
             yum install -y oracle-instantclient18.3-sqlplus
+            amazon-linux-extras install postgresql10 -y
             echo "export AWS_DEFAULT_REGION=${AWS::Region}" >> /home/ec2-user/.bash_profile
             echo "export ORACLE_HOME=/usr/lib/oracle/18.3/client64/" >> /home/ec2-user/.bash_profile
             echo "export LD_LIBRARY_PATH=/usr/lib/oracle/18.3/client64/lib/" >> /home/ec2-user/.bash_profile
@@ -253,7 +254,7 @@ Resources:
         - IpProtocol: -1
           CidrIp: 0.0.0.0/0
 
-  MySqlDb1:
+  pg500:
     Type: AWS::RDS::DBInstance
     Properties: 
       DBInstanceIdentifier: "pg500"
@@ -274,7 +275,7 @@ Resources:
       DeletionProtection: false
       Tags:
       - Key: Name
-        Value: "MySqlDb1"
+        Value: "pg500"
 
 ################# Output Sections ###############
 Outputs:
