@@ -39,7 +39,7 @@
       - Modify
       - Option Group
 
-## Console Notes:
+## Console Notes
 - Upon initiating the switchover: 
 ```
 Switch over replica is in progress for ttsora90-rr. The switchover is in progress for ttsora90-rr. Replication is intrerrpted for all databases in the replica configuration. RDS is restarting the old and new primary databases and transferring transactions to ttsora90-rr.
@@ -49,8 +49,11 @@ Switch over replica is in progress for ttsora90-rr. The switchover is in progres
 ```
 Switch over replica is complete for ttsora90-rr Reconnect your application to the new primary database. You might also want to configure Multi-AZ replication or change the instance type of the new primary to match the old one.
 ```
-  - Also note that the ttsora90-rr is now the primary database. [The old read replica]
-  - Note that IP addresses did not switch. You will have to change the database endpoint. Consider using an NLB in front of your databases.
+
+## Items to Note
+- The ttsora90-rr is now the primary database. [The old read replica]
+- The IP addresses did not switch (unlike MultiAZ failover). You will have to change the database endpoint. Consider using an NLB in front of your databases.
+- Downtime is around 60 seconds.
 
 ## Sample Logs
 - The output from ins.heartbeat.py:
