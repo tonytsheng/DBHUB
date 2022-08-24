@@ -358,16 +358,4 @@ Database Error :::  ORA-16000: database or pluggable database open for read-only
 Database Error :::  ORA-16000: database or pluggable database open for read-only access
 2022-08-24 19:06:34.756646 ::: ttsora90 ::: 10.1.1.185 ::: available ::: False
 2022-08-24 19:06:34.756646 ::: ttsora90-rr ::: 10.1.2.248 ::: available ::: None
-Database Error :::  ORA-16000: database or pluggable database open for read-only access
-2022-08-24 19:06:39.474805 ::: ttsora90 ::: 10.1.1.185 ::: available ::: False
-2022-08-24 19:06:39.474805 ::: ttsora90-rr ::: 10.1.2.248 ::: available ::: None
-Database Error :::  ORA-16000: database or pluggable database open for read-only access
-2022-08-24 19:06:44.198921 ::: ttsora90 ::: 10.1.1.185 ::: available ::: False
-2022-08-24 19:06:44.198921 ::: ttsora90-rr ::: 10.1.2.248 ::: available ::: None
-Database Error :::  ORA-16000: database or pluggable database open for read-only access
-2022-08-24 19:06:48.922731 ::: ttsora90 ::: 10.1.1.185 ::: available ::: False
-2022-08-24 19:06:48.922731 ::: ttsora90-rr ::: 10.1.2.248 ::: available ::: None
-Database Error :::  ORA-16000: database or pluggable database open for read-only access
-2022-08-24 19:06:53.641693 ::: ttsora90 ::: 10.1.1.185 ::: available ::: False
-2022-08-24 19:06:53.641693 ::: ttsora90-rr ::: 10.1.2.248 ::: available ::: None
 ```
