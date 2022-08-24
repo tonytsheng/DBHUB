@@ -43,9 +43,9 @@
     ````
 
 ## Potential Issues
-- The new primary DB instance isn't ready for a role transition. The instance must be available, have no operations pending in its maintenance window, and have a backup retention period greater than 0.
+- "The new primary DB instance isn't ready for a role transition. The instance must be available, have no operations pending in its maintenance window, and have a backup retention period greater than 0."
   - Increase Backup Retention period on the Read Replica from 0 to X days
-- You can't switch over because the primary instance's (ttsora90) option group contains unrelated instances
+- "You can't switch over because the primary instance's (ttsora90) option group contains unrelated instances."
   - Assign both primary and read replica to a new/limited option group. The goal is to have an option group that is independent of other instances.
   - Create a new custom option group.
     - RDS Console
