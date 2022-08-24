@@ -25,7 +25,7 @@
     - for primary and standby databases, call sqlplus client with an input script
   - sel.last5heartbeat.sql
     - check the last 5 rows for the heartbeat table
-    - the output looks like this:
+    - the output looks like this - note that latency between the source and the read replica is usually less than a few seconds.
     ```
     ttsora90
            24-AUG-22 07.06.36.000000 PM                                                10.1.1.185                               10.1.2.248
