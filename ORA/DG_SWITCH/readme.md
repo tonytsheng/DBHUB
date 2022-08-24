@@ -47,7 +47,7 @@ Switch over replica is in progress for ttsora90-rr. The switchover is in progres
 
 - When the switchover is done:
 ```
-Switch over replica is complete for ttsora90-rr Reconnect your application to the new primary database. You might also want to configure Multi-AZ replication or change the instance type of the new primary to match the old one.
+Switch over replica is complete for ttsora90-rr. Reconnect your application to the new primary database. You might also want to configure Multi-AZ replication or change the instance type of the new primary to match the old one.
 ```
 
 ## Items to Note
@@ -56,7 +56,7 @@ Switch over replica is complete for ttsora90-rr Reconnect your application to th
 - Downtime is around 60 seconds.
 
 ## Sample Logs
-- The output from ins.heartbeat.py:
+- The output from ins.heartbeat.py [less frequent logging next time]:
 ```
 Database Error :::  ORA-16000: database or pluggable database open for read-only access
 2022-08-24 18:59:37.455867 ::: ttsora90 ::: 10.1.1.185 ::: available ::: None
