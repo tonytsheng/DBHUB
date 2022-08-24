@@ -25,6 +25,22 @@
     - for primary and standby databases, call sqlplus client with an input script
   - sel.last5heartbeat.sql
     - check the last 5 rows for the heartbeat table
+    - the output looks like this:
+    ```
+    ttsora90
+           24-AUG-22 07.06.36.000000 PM                                                10.1.1.185                               10.1.2.248
+           24-AUG-22 07.06.41.000000 PM                                                10.1.1.185                               10.1.2.248
+           24-AUG-22 07.06.45.000000 PM                                                10.1.1.185                               10.1.2.248
+           24-AUG-22 07.06.50.000000 PM                                                10.1.1.185                               10.1.2.248
+           24-AUG-22 07.06.55.000000 PM                                                10.1.1.185                               10.1.2.248
+
+    ttsora90-rr
+           24-AUG-22 07.06.36.000000 PM                                                10.1.1.185                               10.1.2.248
+           24-AUG-22 07.06.41.000000 PM                                                10.1.1.185                               10.1.2.248
+           24-AUG-22 07.06.45.000000 PM                                                10.1.1.185                               10.1.2.248
+           24-AUG-22 07.06.50.000000 PM                                                10.1.1.185                               10.1.2.248
+           24-AUG-22 07.06.55.000000 PM                                                10.1.1.185                               10.1.2.248
+    ````
 
 ## Potential Issues
 - The new primary DB instance isn't ready for a role transition. The instance must be available, have no operations pending in its maintenance window, and have a backup retention period greater than 0.
