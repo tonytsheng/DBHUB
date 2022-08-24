@@ -8,8 +8,8 @@
     - error message if you cannot insert the row into the database
       - in the case of trying to insert into the read replica, you will this:
       ```
-Database Error :::  ORA-16000: database or pluggable database open for read-only access
-```
+      Database Error :::  ORA-16000: database or pluggable database open for read-only access
+      ```
   - cr8.heartbeat.sql 
     - create a heartbeat table 
   - checkdb.bsh
