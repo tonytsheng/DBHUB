@@ -67,8 +67,8 @@ Switch over replica is complete for ttsora90-rr. Reconnect your application to t
 ```
 
 ## Items to Note
-- The ttsora90-rr is now the primary database. [The old read replica]
-- The IP addresses did not switch (unlike MultiAZ failover). You will have to change the database endpoint. Consider using an NLB in front of your databases.
+- After the switchover is complete, ttsora90-rr is now the primary database. [The old read replica]
+- The IP addresses did not switch (unlike MultiAZ failover). Any applications will have to change to the new endpoint. Consider using an NLB in front of your databases.
 - Downtime is around 60 seconds.
 
 ## Sample Logs
