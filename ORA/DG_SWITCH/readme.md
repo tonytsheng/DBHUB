@@ -14,5 +14,5 @@
     - create a heartbeat table 
   - checkdb.bsh
     - for primary and standby databases, call sqlplus client with an input script
-  - 1.sql
+  - sel.last5heartbeat.sql
     - check the last 5 rows for the heartbeat table
