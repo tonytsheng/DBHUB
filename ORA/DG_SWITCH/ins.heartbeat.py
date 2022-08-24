@@ -40,9 +40,24 @@ import json
 import subprocess
 from subprocess import Popen, PIPE
 
+def get_secret():
+    secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:secret-pg102-WNHBUK"
+    region_name = "us-east-2"
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='ec2')
+    client = session.client(
+      service_name='secretsmanager'
+        )
+    get_secret_value_response = client.get_secret_value(
+                SecretId=secret_name
+            )
+
+    database_secrets = json.loads(get_secret_value_response['SecretString'])
+    password = database_secrets['password']
+    return (password)
 
 def db_ins(dsn, ip_p, ip_s):
-    db_pw="Pass1234"
+    db_pw=get_secret()
     try:
         conn = cx_Oracle.connect(user="ttsheng",
             password=db_pw,
