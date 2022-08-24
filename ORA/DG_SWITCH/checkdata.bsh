@@ -1,0 +1,5 @@
+for sid in ttsora90 ttsora90-rr ;do
+  echo $sid
+  callora ttsheng Pass1234 ${sid}.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora90 1.sql | grep -v DESC
+done
+echo ""
