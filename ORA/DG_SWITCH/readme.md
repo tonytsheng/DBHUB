@@ -50,9 +50,10 @@ Switch over replica is in progress for ttsora90-rr. The switchover is in progres
 Switch over replica is complete for ttsora90-rr Reconnect your application to the new primary database. You might also want to configure Multi-AZ replication or change the instance type of the new primary to match the old one.
 ```
   - Also note that the ttsora90-rr is now the primary database. [The old read replica]
+  - Note that IP addresses did not switch. You will have to change the database endpoint. Consider using an NLB in front of your databases.
 
 ## Sample Logs
-- From 
+- The output from ins.heartbeat.py:
 ```
 Database Error :::  ORA-16000: database or pluggable database open for read-only access
 2022-08-24 18:59:37.455867 ::: ttsora90 ::: 10.1.1.185 ::: available ::: None
