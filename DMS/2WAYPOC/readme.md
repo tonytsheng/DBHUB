@@ -15,7 +15,7 @@ Below is the sample architecture:
 
 ## Set up DynamoDB 
 - 1.cr8.ddb.appmap.py - create a DynamoDB table to store appmap information
-- 2.ins.dyn.appmap.py - load a DynamoDB table called appmap with application id and database endpoint information
+- 2.ins.dyn.appmap.py - load a DynamoDB table called appmap with application id and database endpoint information. Ensure you use the right endpoints for your environment.
 
 ## Set up your databases
 Set up RDBMS source and target. In this case, we use Oracle as the old database and PostgreSQL as the new database we are migrating to. Create your databases/users/schemas/tablespaces/etc. Then run the appropriate script:
