@@ -55,16 +55,17 @@
       - Modify
       - Option Group
 
-## Console Notes
-- Upon initiating the switchover: 
-```
-Switch over replica is in progress for ttsora90-rr. The switchover is in progress for ttsora90-rr. Replication is intrerrpted for all databases in the replica configuration. RDS is restarting the old and new primary databases and transferring transactions to ttsora90-rr.
-```
-
-- When the switchover is done:
-```
-Switch over replica is complete for ttsora90-rr. Reconnect your application to the new primary database. You might also want to configure Multi-AZ replication or change the instance type of the new primary to match the old one.
-```
+## Switchover
+- You can use the aws rds switchover-read-replica command with aws cli v2.7.26. This test was run by switching over in the RDS Console.
+- Console Messages
+  - Upon initiating the switchover: 
+  ```
+  Switch over replica is in progress for ttsora90-rr. The switchover is in progress for ttsora90-rr. Replication is intrerrpted for all databases in the replica configuration. RDS is restarting the old and new primary databases and transferring transactions to ttsora90-rr.
+  ```
+  - When the switchover is done:
+  ```
+  Switch over replica is complete for ttsora90-rr. Reconnect your application to the new primary database. You might also want to configure Multi-AZ replication or change the instance type of the new primary to match the old one.
+  ```
 
 ## Items to Note
 - After the switchover is complete, ttsora90-rr is now the primary database. [The old read replica]
