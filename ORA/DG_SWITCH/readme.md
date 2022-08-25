@@ -56,7 +56,7 @@
       - Option Group
 
 ## Switchover
-- You can use the aws rds switchover-read-replica command with aws cli v2.7.26. This test was run by switching over in the RDS Console.
+- You can use the "aws rds switchover-read-replica" command with aws cli v2.7.26. This test was run by switching over in the RDS Console.
 - Console Messages
   - Upon initiating the switchover: 
   ```
