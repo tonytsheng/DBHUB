@@ -1,0 +1,16 @@
+dbca -silent -createDatabase \
+ -templateName General_Purpose.dbc \
+ -gdbname oradev -sid oradev  -responseFile NO_VALUE \
+ -characterSet AL32UTF8 \
+ -sysPassword oracle \
+ -systemPassword oracle \
+ -createAsContainerDatabase false \
+ -databaseType MULTIPURPOSE \
+ -memoryMgmtType auto_sga \
+ -totalMemory 46000 \
+ -storageType FS \
+ -datafileDestination "/u01/app/oracle/oradata/" \
+ -redoLogFileSize 512 \
+ -emConfiguration NONE \
+ -ignorePreReqs
+
