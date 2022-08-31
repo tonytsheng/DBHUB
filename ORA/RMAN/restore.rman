@@ -1,0 +1,12 @@
+run {
+allocate channel t1 type DISK;
+set until time "to_date('2009/02/09 07:00:00','yyyy/mm/dd HH24:MI:SS')";
+restore controlfile;
+sql "alter database mount";
+RESTORE DATABASE;
+recover database;
+sql "alter database open resetlogs";
+release channel t1;
+}
+
+
