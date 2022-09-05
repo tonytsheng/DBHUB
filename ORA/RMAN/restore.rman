@@ -10,3 +10,12 @@ release channel t1;
 }
 
 
+# restore to new instance
+# rman files are in different locations than original
+catalog all backup pieces (full qualified path of the backup pieces) 
+in control file. . then start restore . RMAN will automatically pickup the 
+backup pieces from their different locations
+example :
+RMAN> Catalog backuppiece '/u01/backup1/...' ;
+
+
