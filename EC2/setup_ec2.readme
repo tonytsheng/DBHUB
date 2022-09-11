@@ -187,3 +187,10 @@ tmpfs          tmpfs     7.9G     0  7.9G   0% /sys/fs/cgroup
 tmpfs          tmpfs     1.6G     0  1.6G   0% /run/user/1000
 
 
+attach volume from ebs snapshot to new ec2 instance
+lsblk
+sudo file -s /dev/nvme1n1p1
+sudo lsblk -f
+sudo mkdir /u01
+sudo mount /dev/nvme1n1p1 /u01
+

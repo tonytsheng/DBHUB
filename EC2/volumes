@@ -1,0 +1,16 @@
+Attaching volumes to an EC2 instance.
+
+On Instance create, add volume.
+Specify what snapshot you want.
+The console will give you a path for the volume, like /dev/sda.
+
+lsblk
+ls -l /dev/s*
+
+sudo mkdir /<newmountpoint>
+sudo mount /dev/<path> /<newmountpoint>
+
+ls -al /dev/disk/by-uuid/
+edit /etc/fstab to mount on startup
+findmnt --verify
+

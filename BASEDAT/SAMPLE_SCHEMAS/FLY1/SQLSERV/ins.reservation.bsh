@@ -3,7 +3,7 @@ seatletter=`head /dev/urandom | tr -dc A-G | head -c1`
 flightno=`echo $RANDOM | head -c2`
 echo ${seatnumber}${seatletter}
 
-sqlcmd -U fly1 -P fly1 -S sqlserver500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com <<EQ
+sqlcmd -U fly1 -P fly1 -S sqlserver500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com  <<EQ
 use fly1
 go
 insert into

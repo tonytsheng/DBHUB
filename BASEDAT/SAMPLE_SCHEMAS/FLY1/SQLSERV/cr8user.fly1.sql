@@ -8,5 +8,11 @@ create user fly1 for login fly1
 go
 grant alter on schema::dbo to fly1
 go
+grant create table to fly1
+go
+grant create sequence to fly1
+go
+grant create index to fly1
+go
 
 
