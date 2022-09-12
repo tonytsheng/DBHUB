@@ -71,4 +71,7 @@ tmpfs           7.6G     0  7.6G   0% /sys/fs/cgroup
 tmpfs           1.6G     0  1.6G   0% /run/user/54321
 tmpfs           1.6G     0  1.6G   0% /run/user/1000
 /dev/nvme1n1    1.2T   33M  1.2T   1% /fast
+
+## might need to reload daemon if mount command doesn't work
+sudo systemctl daemon-reload 
 ```
