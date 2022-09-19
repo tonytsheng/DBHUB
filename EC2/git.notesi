@@ -16,4 +16,6 @@ git commit -a -m "$1"
 git push git@github.com:tonytsheng/DBHUB.git master
 [ec2-user@ip-10-0-2-111 BIN]$
 
-
+git rebase -i HEAD~4
+## remove your commit from this file
+push_dbhub "comment"
