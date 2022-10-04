@@ -1,3 +1,6 @@
+expdp ttsheng/ttsheng@oradev schemas=ttsheng directory=DATA_PUMP_DIR logfile=exp.log
+
+
 set linesize 200
 col opname format a30
 select job_name, state from dba_datapump_jobs;
