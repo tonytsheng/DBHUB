@@ -1,0 +1,1 @@
+output | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, '
