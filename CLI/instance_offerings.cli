@@ -1,0 +1,1 @@
+aws rds describe-reserved-db-instances-offerings --product-description mysql --output text | awk -F' ' '{print $3 $9}'  | grep -v Hourly
