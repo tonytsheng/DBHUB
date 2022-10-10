@@ -6,6 +6,7 @@ make sure gcc is installed - you will have to run a cc command later
 set up slob.conf
 modify the SQLNet connectivity section
 SCALE=800M
+DATABASE_STATISTICS_TYPE=awr
 ADMIN_SQLNET_SERVICE=oradev
 SQLNET_SERVICE_BASE=oradev
 SYSDBA_PASSWD="Pass1234"
