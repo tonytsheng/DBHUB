@@ -1,0 +1,23 @@
+download the zip
+put it on host and untar/unzip
+
+make sure gcc is installed - you will have to run a cc command later
+
+set up slob.conf
+modify the SQLNet connectivity section
+SCALE=800M
+ADMIN_SQLNET_SERVICE=oradev
+SQLNET_SERVICE_BASE=oradev
+SYSDBA_PASSWD="Pass1234"
+
+create a slob tablespace
+
+./setup.sh SLOB 5
+# 5 users
+# these get created as user0, user1, user2, etc.
+
+sh runit.sh 3
+# number of users to test
+
+see awr.txt after test is done
+
