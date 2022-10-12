@@ -53,5 +53,36 @@ These artifacts in this library reference some simple performance tests done for
 *still at 65.2 gets/execution
 
 AWR IOPS - 5413 - 25170
+smart flash cache
+```
+SQL> alter system set db_flash_cache_file = '/fast/oradata/flash/cache1' scope=spfile;
+
+System altered.
 
 
+SQL> alter system set db_flash_cache_size=2G scope=spfile;
+
+System altered.
+
+SQL> shutdown immediate
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+SQL> startup
+ORACLE instance started.
+
+Total System Global Area 2147483648 bytes
+Fixed Size                  8622776 bytes
+Variable Size             704646472 bytes
+Database Buffers         1426063360 bytes
+Redo Buffers                8151040 bytes
+Database mounted.
+Database opened.
+SQL> show parameter flash
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+db_flash_cache_file                  string      /fast/oradata/flash/cache1
+db_flash_cache_size                  big integer 2G
+db_flashback_retention_target        integer     1440
+```
