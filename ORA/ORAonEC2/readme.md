@@ -49,8 +49,9 @@ These artifacts in this library reference some simple performance tests done for
 
 |                                  |     EBS     |    NVME    | SmartCache |
 | -------------                    |  --------   |   -------  | ---------  |
-|Executions - most expensive query |   192,776   |  1,013,242 |   | 
-*still at 65.2 gets/execution
+|Executions of most expensive query |   192,776   |  1,013,242 |   | 
+
+*consistent at 65.2 gets/execution
 
 |              |   EBS    |  NVME  |  SmartCache |
 | ----         | -------  | ------ |  -------    |
