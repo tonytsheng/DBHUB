@@ -13139,3 +13139,40 @@ An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster op
 nep1002-cluster
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep1002-cluster is in stopped state but expected it to be one of available.
+Tue Oct 11 23:00:01 UTC 2022
+stop-db-instance
++++ Instances
+aurdb1-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurdb1-instance-1-us-east-2c
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurmysql100-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+nep1002
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+pg200
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg200 is not in available state.
+sqlserver500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Cannot stop or start a SQLServer MultiAz database instance
+sqlserver600
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver600 is not in available state.
++++ Clusters
+aurdb1
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurdb1 is in stopped state but expected it to be one of available.
+aurmysql100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurmysql100 is in stopped state but expected it to be one of available.
+nep1002-cluster
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep1002-cluster is in stopped state but expected it to be one of available.
