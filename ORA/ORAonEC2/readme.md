@@ -6,23 +6,23 @@ These artifacts in this library reference some simple performance tests done for
 2. Oracle data files on instance store volumes.
 3. Turn on Smart Flash Cache.
 
-- Baseline:
-  - i3en.large - 2x16
-    - oracle sitting on /u01
-    - not using asm
-    - data files built right on file system
+### Baseline:
+- i3en.large - 2x16
+  - oracle sitting on /u01
+  - not using asm
+  - data files built right on file system
 ```    
-    - ebs - /dev/nvme2n1p1  100G  2.3G   98G   3% /
-    - ebs - /dev/nvme0n1p1  493G  334G  134G  72% /u01
-    - nvme - /dev/nvme1n1    1.2T  2.1G  1.1T   1% /fast
+  - ebs - /dev/nvme2n1p1  100G  2.3G   98G   3% /
+  - ebs - /dev/nvme0n1p1  493G  334G  134G  72% /u01
+  - nvme - /dev/nvme1n1    1.2T  2.1G  1.1T   1% /fast
 ```
   - Notable Oracle parameters
     - SGA - 2G
-- Instance store test:
-    - tablespace created on instance store
-    - all user data located on that tablespace
-    - redo/archive log still on regular /u01 EBS volume
-- Smart Flash Cache test:
+### Instance store test:
+  - tablespace created on instance store
+  - all user data located on that tablespace
+  - redo/archive log still on regular /u01 EBS volume
+### Smart Flash Cache test:
 ```
 SQL> alter system set db_flash_cache_file = '/fast/oradata/flash/cache1' scope=spfile;
 
@@ -54,7 +54,7 @@ db_flash_cache_file                  string      /fast/oradata/flash/cache1
 db_flash_cache_size                  big integer 2G
 db_flashback_retention_target        integer     1440
 ```
-- SLOB parameters:
+### SLOB parameters:
   - 15 schemas: ./setup.sh tablespacename 15
   - UPDATE_PCT: 25
   - SCAN_PCT: 10
@@ -66,7 +66,7 @@ db_flashback_retention_target        integer     1440
   - hot spot off
   - think time off
 
-- Outputs to compare:
+### Outputs to compare:
   - AWR report, generated automatically by SLOB
   - iostat, generated automatically by SLOB
   - Various AWR metrics
