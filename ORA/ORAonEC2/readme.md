@@ -36,11 +36,8 @@ These artifacts in this library reference some simple performance tests done for
 - Outputs to compare:
   - AWR report, generated automatically by SLOB
   - iostat, generated automatically by SLOB
-  - AWR Prospector summary
+  - Various AWR metrics
 
-- Baseline test notes:
-  - peak iops
-  - 
 | Metric           |    EBS     |   NVME   | SmartCache |
 | ----             | ---------- | -------- | ---------- |
 | Logical read/s   |  6,628.1   | 34,202.6 | 
@@ -49,8 +46,10 @@ These artifacts in this library reference some simple performance tests done for
 | Executes/s       |   82.5     |  421.7   |
 | Transactions/s   |   19.9     |  104.2   |
 
-Executions of most expensive query by gets - 192,776 - 1,013,242 - 
-still at 65.2 gets/execution
+|                                  |     EBS     |    NVME    | SmartCache |
+| -------------                    |  --------   |   -------  | ---------  |
+|Executions - most expensive query |   192,776   |  1,013,242 |   | 
+*still at 65.2 gets/execution
 
 AWR IOPS - 5413 - 25170
 
