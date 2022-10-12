@@ -76,24 +76,24 @@ db_flashback_retention_target        integer     1440
 
 ### Results 
 
-| Metric           |    EBS 2G     |   NVMe 2G   | SmartCache 2G | NVMe 10G | SmartCache 10G DBWR|
+| Metric           |    EBS 2G     |   NVMe 2G   | SmartCache 2G | NVMe 10G | SmartCache 10G |
 | ----             | ----------    | --------    | ----------    |  -----  | ---------- |
-| Logical read/s   |  6,628.1      | 34,202.6    |   37,474.7    |  17,147 | 50,472
-| Physical read/s  |  4,129.9      | 19,041.1    |   10,392      |  226    | 1065
-| Physical write/s |  1,605.1      | 8,101.0     |    6,795       |  2,707 | 6220
-| Executes/s       |   82.5        |  421.7      |    462        |  216    | 621
-| Transactions/s   |   19.9        |  104.2      |    114        |  52.1   | 150.6
+| Logical read/s   |  6,628        | 34,202      |   37,474      |  17,147 | 50,472     |
+| Physical read/s  |  4,129        | 19,041      |   10,392      |  226    | 1,065      |
+| Physical write/s |  1,605        | 8,101       |    6,795      |  2,707  | 6,220      |
+| Executes/s       |   82          |  421        |    462        |  216    | 621        |
+| Transactions/s   |   19          |  104        |    114        |  52.1   | 150        |
 
 
-|                                  |     EBS 2G    |    NVMe 2G   | SmartCache 2G | NVMe 10G | SmartCache 10G |
-| -------------                    |  --------     |   -------    | ---------     | -------- | ------- |
-|Executions of most expensive query |   192,776    |  1,013,242   | 1,110,225     |  35,116 | 1,472,365
+|                                   |     EBS 2G   |    NVMe 2G   | SmartCache 2G | NVMe 10G | SmartCache 10G |
+| -------------                     |  --------    |   -------    | ---------     | -------- | -------        |
+|Executions of most expensive query |   192,776    |  1,013,242   | 1,110,225     |  35,116  | 1,472,365      |
 
 *consistent at 65.2 gets/execution
 
-|              |   EBS 2G   |  NVMe 2G  |  SmartCache 2G | NVMe 10G | SmartCache 10G 
-| ----         | -------    | ------    |  -------       |  --------  |----
-| AWR IOPS     |   5413     |  25170    |   15840        | 2852       |6234
+|              |   EBS 2G   |  NVMe 2G  |  SmartCache 2G | NVMe 10G   | SmartCache 10G 
+| ----         | -------    | ------    |  -------       | --------  | ----
+| AWR IOPS     |   5413     |  25170    |   15840        | 2852       | 6234
 
 
 ### Conclusion
