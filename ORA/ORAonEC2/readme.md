@@ -14,13 +14,14 @@ These artifacts in this library reference some simple performance tests done for
     - oracle sitting on /u01
     - not using asm
     - data files built right on file system
-  - Oracle parameters
+  - Notable Oracle parameters
     - SGA - 2G
-    - db_recovery_file_dest_size - 1T
-  - Instance store changes
+- Instance store test:
     - tablespace created on instance store
     - all user data located on that tablespace
     - redo/archive log still on regular /u01 EBS volume
+- Smart Flash Cache test:
+
 - SLOB parameters:
   - 15 schemas: ./setup.sh tablespacename 15
   - UPDATE_PCT: 25
