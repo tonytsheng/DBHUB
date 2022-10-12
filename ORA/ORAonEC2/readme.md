@@ -75,11 +75,11 @@ db_flashback_retention_target        integer     1440
   - Various AWR metrics
 
 ### Results 
-- 1 - Data files on EBS, SGA at 2G.
-- 2 - Data files on NVMe, SGA at 2G.
-- 3 - Data files on NVMe, SGA at 2G, Smart Flash Cache turned on at 2G.
-- 4 - Data files on NVMe, SGA at 10G.
-- 5 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=5 .
+- Test #1 - Data files on EBS, SGA at 2G.
+- #2 - Data files on NVMe, SGA at 2G.
+- #3 - Data files on NVMe, SGA at 2G, Smart Flash Cache turned on at 2G.
+- #4 - Data files on NVMe, SGA at 10G.
+- #5 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=5 .
 
 | Metric           |  Test 1 |   2    | 3      | 4      | 5      |
 | ----             | ----    | ------ | ----   | -----  | ------ |
