@@ -52,8 +52,12 @@ These artifacts in this library reference some simple performance tests done for
 |Executions - most expensive query |   192,776   |  1,013,242 |   | 
 *still at 65.2 gets/execution
 
-AWR IOPS - 5413 - 25170
-smart flash cache
+| ----         |   EBS    |  NVME  |
+| ----
+| AWR IOPS     |   5413   |  25170 | 
+
+
+- smart flash cache
 ```
 SQL> alter system set db_flash_cache_file = '/fast/oradata/flash/cache1' scope=spfile;
 
