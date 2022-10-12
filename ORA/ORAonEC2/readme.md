@@ -94,8 +94,7 @@ See https://kevinclosson.net/slob/
 |                                   |     Test 1 |   2        |  3        | 4      | 5         |
 | -------------                     |  --------  |  ----      | ----      | ----   | -------   |
 |Executions of most expensive query |   192,776  |  1,013,242 | 1,110,225 | 35,116 | 1,472,365 |
-
-*consistent at 65.2 gets/execution
+|*consistent at 65.2 gets/execution |
 
 |              |     Test 1 |   2    |  3        | 4      | 5    |
 | ----         | -------    | ------ |  ---      | -----  | ---- |
