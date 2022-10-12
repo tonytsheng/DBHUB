@@ -91,9 +91,9 @@ db_flashback_retention_target        integer     1440
 
 *consistent at 65.2 gets/execution
 
-|              |   EBS 2G   |  NVMe 2G  |  SmartCache 2G | NVMe 10G | 
-| ----         | -------    | ------    |  -------       |  --------  |
-| AWR IOPS     |   5413     |  25170    |   15840        | 2852 |6234
+|              |   EBS 2G   |  NVMe 2G  |  SmartCache 2G | NVMe 10G | SmartCache 10G 
+| ----         | -------    | ------    |  -------       |  --------  |----
+| AWR IOPS     |   5413     |  25170    |   15840        | 2852       |6234
 
 
 ### Conclusion
