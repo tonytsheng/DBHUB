@@ -58,6 +58,7 @@ db_flash_cache_size                  big integer 2G
 db_flashback_retention_target        integer     1440
 ```
 ### SLOB parameters:
+See https://kevinclosson.net/slob/
   - 15 schemas: ./setup.sh tablespacename 15
   - UPDATE_PCT: 25
   - SCAN_PCT: 10
