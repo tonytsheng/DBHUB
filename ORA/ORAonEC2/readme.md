@@ -41,12 +41,13 @@ These artifacts in this library reference some simple performance tests done for
 - Baseline test notes:
   - peak iops
   - 
-Metric           -   EBS    -  NVME    - SmartCache
-Logical read/s   - 6,628.1  - 34,202.6 - 
-Physical read/s  - 4,129.9  - 19,041.1 - 
-Physical write/s - 1,605.1  - 8,101.0 - 
-Executes/s       - 82.5     - 421.7
-Transactions/s   - 19.9     - 104.2
+| Metric           |    EBS     |   NVME   | SmartCache |
+| ----             | ---------- | -------- | ---------- |
+| Logical read/s   |  6,628.1   | 34,202.6 | 
+| Physical read/s  |  4,129.9   | 19,041.1 | 
+| Physical write/s |  1,605.1   | 8,101.0  | 
+| Executes/s       |   82.5     |  421.7   |
+| Transactions/s   |   19.9     |  104.2   |
 
 Executions of most expensive query by gets - 192,776 - 1,013,242 - 
 still at 65.2 gets/execution
