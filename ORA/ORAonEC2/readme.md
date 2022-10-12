@@ -1,16 +1,18 @@
 ## Performance testing self managed Oracle on EC2.
-For some customers, RDS is not an option for running their databases. It could be that their databases are either too large, their IOPS requirements are too great, they need more control their an RDS instance can provide or some other reason. When customers run into these or similar issues, sometimes a self managed databases running on an EC2 instance can be a good option. Running on EC2 allows customers to leverage AWS for some of the traditional IT maintenance tasks.
+Some customers do not have the option of running their databases in RDS. The reasons for this vary, from their database size, to COTS application requirements to very large IOPS requirements. When customers run into these or similar issues, sometimes a self managed databases running on an EC2 instance can be a good option. Running on EC2 allows customers to leverage AWS for some of the traditional IT maintenance tasks. In these circumstances, it is always valuable to also consider RDS Custom.
 
 These artifacts in this library reference some simple performance tests done for 3 scenarios for a self managed Oracle database running on an EC2 instance:
 1. A baseline performance test using SLOB and Oracle data files on EBS volumes.
 2. Oracle data files on instance store volumes.
-3. Turn on smart flash cache.
+3. Turn on Smart Flash Cache.
 
 - Baseline:
   - i3en.large - 2x16
+```    
     - ebs - /dev/nvme2n1p1  100G  2.3G   98G   3% /
     - ebs - /dev/nvme0n1p1  493G  334G  134G  72% /u01
     - nvme - /dev/nvme1n1    1.2T  2.1G  1.1T   1% /fast
+```
     - oracle sitting on /u01
     - not using asm
     - data files built right on file system
