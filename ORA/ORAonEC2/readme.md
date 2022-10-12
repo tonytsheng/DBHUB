@@ -84,8 +84,9 @@ db_flashback_retention_target        integer     1440
 | Executes/s       |   82.5        |  421.7      |    462        |  220
 | Transactions/s   |   19.9        |  104.2      |    114        |  53
 
-|                                  |     EBS 2G    |    NVMe 2G   | SmartCache 2G |
-| -------------                    |  --------     |   -------    | ---------     | --------
+
+|                                  |     EBS 2G    |    NVMe 2G   | SmartCache 2G | NVMe 10G |
+| -------------                    |  --------     |   -------    | ---------     | -------- |
 |Executions of most expensive query |   192,776    |  1,013,242   | 1,110,225     |  520,042 | 
 
 *consistent at 65.2 gets/execution
