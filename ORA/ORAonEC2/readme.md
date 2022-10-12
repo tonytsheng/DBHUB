@@ -75,19 +75,24 @@ db_flashback_retention_target        integer     1440
   - Various AWR metrics
 
 ### Results 
+1 - Data files on EBS, SGA at 2G.
+2 - Data files on NVMe, SGA at 2G.
+3 - Data files on NVMe, SGA at 2G, Smart Flash Cache turned on at 2G.
+4 - Data files on NVMe, SGA at 10G.
+5 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=5 .
 
-| Metric           |    EBS 2G     |   NVMe 2G   | SmartCache 2G | NVMe 10G | SmartCache 10G |
-| ----             | ----------    | --------    | ----------    |  -----  | ---------- |
-| Logical read/s   |  6,628        | 34,202      |   37,474      |  17,147 | 50,472     |
-| Physical read/s  |  4,129        | 19,041      |   10,392      |  226    | 1,065      |
-| Physical write/s |  1,605        | 8,101       |    6,795      |  2,707  | 6,220      |
-| Executes/s       |   82          |  421        |    462        |  216    | 621        |
-| Transactions/s   |   19          |  104        |    114        |  52.1   | 150        |
+| Metric           |  Test 1 |   2    | 3      | 4      | 5      |
+| ----             | ----    | ------ | ----   | -----  | ------ |
+| Logical read/s   |  6,628  | 34,202 | 37,474 | 17,147 | 50,472 |
+| Physical read/s  |  4,129  | 19,041 | 10,392 | 226    | 1,065  |
+| Physical write/s |  1,605  | 8,101  |  6,795 | 2,707  | 6,220  |
+| Executes/s       |   82    |  421   |  462   | 216    | 621    |
+| Transactions/s   |   19    |  104   |  114   | 52     | 150    |
 
 
-|                                   |     EBS 2G   |    NVMe 2G   | SmartCache 2G | NVMe 10G | SmartCache 10G |
-| -------------                     |  --------    |   -------    | ---------     | -------- | -------        |
-|Executions of most expensive query |   192,776    |  1,013,242   | 1,110,225     |  35,116  | 1,472,365      |
+|                                   |     Test 1 |   2        |  3        | 4      | 5         |
+| -------------                     |  --------  |  ----      | ----      | ----   | -------   |
+|Executions of most expensive query |   192,776  |  1,013,242 | 1,110,225 | 35,116 | 1,472,365 |
 
 *consistent at 65.2 gets/execution
 
