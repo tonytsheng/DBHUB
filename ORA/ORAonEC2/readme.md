@@ -52,8 +52,8 @@ These artifacts in this library reference some simple performance tests done for
 |Executions - most expensive query |   192,776   |  1,013,242 |   | 
 *still at 65.2 gets/execution
 
-| ----         |   EBS    |  NVME  |
-| ----
+|              |   EBS    |  NVME  |
+| ----         | -------  | ------ |
 | AWR IOPS     |   5413   |  25170 | 
 
 
