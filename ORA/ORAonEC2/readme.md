@@ -71,6 +71,8 @@ db_flashback_retention_target        integer     1440
   - iostat, generated automatically by SLOB
   - Various AWR metrics
 
+### Results
+
 | Metric           |    EBS     |   NVME   | SmartCache |
 | ----             | ---------- | -------- | ---------- |
 | Logical read/s   |  6,628.1   | 34,202.6 | 
