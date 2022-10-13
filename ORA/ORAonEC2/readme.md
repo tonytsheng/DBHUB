@@ -2,7 +2,7 @@
 Some customers do not have the option of running their databases in RDS. The reasons for this vary, from their database size, to COTS application requirements to very large IOPS requirements. When customers run into these or similar issues, sometimes a self managed databases running on an EC2 instance can be a good option. Running on EC2 allows customers to leverage AWS for some of the traditional IT maintenance tasks. In these circumstances, it is always valuable to also consider RDS Custom.
 
 These artifacts in this library reference some simple performance tests for a self managed Oracle database running on an EC2 instance. Note the following:
-1. SLOB was used as the tool to generate application load. There was no tuning of application code although that is usually the best return on investment. 
+1. SLOB was used as the tool to generate application load and an identical test was run for each iteration. There was no tuning of application code although that is usually the best return on investment. 
 2. The baseline was an Oracle database with default parameters, an SGA of 2G, with data files sitting on EBS volumes.
 3. We then compared to putting data files on instance store volumes.
 4. We then turned on Smart Flash Cache and the file for the Cache was also placed on an instance store volume.
