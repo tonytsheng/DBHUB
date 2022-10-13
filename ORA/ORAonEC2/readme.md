@@ -84,21 +84,21 @@ See https://kevinclosson.net/slob/. Also note that the SLOB profile was identica
 
 | Metric           |  Test 1 |   2    | 3      | 4      | 5      |  6    |
 | ----             | ----    | ------ | ----   | -----  | ------ | ----  |
-| Logical read/s   |  6,628  | 34,202 | 37,474 | 17,147 | 50,472 |
-| Physical read/s  |  4,129  | 19,041 | 10,392 | 226    | 1,065  |
-| Physical write/s |  1,605  | 8,101  |  6,795 | 2,707  | 6,220  |
-| Executes/s       |   82    |  421   |  462   | 216    | 621    |
-| Transactions/s   |   19    |  104   |  114   | 52     | 150    |
+| Logical read/s   |  6,628  | 34,202 | 37,474 | 17,147 | 50,472 | 56,715|
+| Physical read/s  |  4,129  | 19,041 | 10,392 | 226    | 1,065  | 1,143 |
+| Physical write/s |  1,605  | 8,101  |  6,795 | 2,707  | 6,220  | 9,543 |
+| Executes/s       |   82    |  421   |  462   | 216    | 621    | 696   |
+| Transactions/s   |   19    |  104   |  114   | 52     | 150    | 173   |
 
 
 |                                       |     Test 1 |   2        |  3        | 4      | 5         |  6    |
 | -------------                         |  --------  |  ----      | ----      | ----   | -------   | ----  |
-|Executions of the most expensive query |   192,776  |  1,013,242 | 1,110,225 | 35,116 | 1,472,365 |
+|Executions of the most expensive query |   192,776  |  1,013,242 | 1,110,225 | 35,116 | 1,472,365 | 1,687,701 |
 |*consistent at 65.2 gets/execution     |
 
 |              |     Test 1 |   2    |  3        | 4      | 5    |  6   |
 | ----         | -------    | ------ |  ---      | -----  | ---- | ---- |
-| AWR IOPS     |   5413     |  25170 |   15840   | 2852   | 6234 |
+| AWR IOPS     |   5413     |  25170 |   15840   | 2852   | 6234 | 9183 |
 
 
 ### Conclusion TODO
