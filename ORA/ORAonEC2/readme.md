@@ -4,7 +4,7 @@ Some customers do not have the option of running their databases in RDS. The rea
 These artifacts in this library reference some simple performance tests for a self managed Oracle database running on an EC2 instance. Note the following:
 1. SLOB was used as the tool to generate application load and an identical test was run for each iteration. There was no tuning of application code although that is usually the best return on investment. 
 2. The baseline was an Oracle database with default parameters, an SGA of 2G, with data files sitting on EBS volumes.
-3. We then compared to putting data files on instance store volumes.
+3. We then put all the user test data on data files that were on instance store volumes.
 4. We then turned on Smart Flash Cache and the file for the Cache was also placed on an instance store volume.
 4. We then increased the SGA to 10G. Note the server has 16G of memory. This did not give us an improvement in performance like expected.
 5. We increased the db_writer_processes to 5 from the default of 1 and that was a notable increase in pefformance. Note that this was a recommendation in the very first AWR report.
