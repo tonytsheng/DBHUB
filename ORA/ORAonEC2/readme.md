@@ -1,14 +1,14 @@
 ## Performance testing self managed Oracle on EC2.
-Some customers do not have the option of running their databases in RDS. The reasons for this vary, from their database size, to COTS application requirements to very large IOPS requirements. When customers run into these or similar issues, sometimes a self managed databases running on an EC2 instance can be a good option. Running on EC2 allows customers to leverage AWS for some of the traditional IT maintenance tasks. In these circumstances, it is always valuable to also consider RDS Custom.
+Some teams have IOPS demands that they need to maintain.  They want to do this with a self-managed Oracle database running on EC2.  This will allow them to spin up instances rather quickly, but still maintain full control of their databases.
 
-These artifacts in this library reference some simple performance tests for a self managed Oracle database running on an EC2 instance. Note the following:
-1. SLOB was used as the tool to generate application load and an identical test was run for each iteration. There was no tuning of application code although that is usually the best return on investment. 
-2. The baseline was an Oracle database with default parameters, an SGA of 2G, with data files sitting on EBS volumes.
-3. We then put all the user test data on data files that were on instance store volumes.
-4. We then turned on Smart Flash Cache and the file for the Cache was also placed on an instance store volume.
-4. We then increased the SGA to 10G. Note the server has 16G of memory. This did not give us an improvement in performance like expected.
-5. We increased the db_writer_processes to 5 from the default of 1 and that was a notable increase in pefformance. Note that this was a recommendation in the very first AWR report.
-6. We then increased db_writer_processes to 10, just to see what else would happen.
+These artifacts in this library reference some performance tests for a self-managed Oracle database running on an EC2 instance. The following general steps were followed:
+1. The baseline was an Oracle database with default parameters, an SGA of 2G, and data files sitting on EBS volumes running on an i3en EC2 instance.
+2. SLOB was used as the tool to generate application load and an identical test was run for each iteration. There was no tuning of application code although that is usually the best return on investment. 
+3. All of the user test data that was on the EBS volumes was then moved to instance store volumes.
+4. Smart Flash Cache was then turned on and the file for the Cache was placed on an instance store volume.
+5. The SGA was then increased to 10G. Note the server has 16G of memory. This did not give produce an improvement in performance as expected.
+6. The db_writer_processes was increased to 5 from the default of 1 and this produced a notable increase in performance. Note that this was a recommendation in the very first AWR report.
+7. The db_writer_processes were then increased to 10 to see if there would be another increase in performance.  This increase did achieve another performance increase. 
 
 ### Baseline
 - i3en.large - 2x16
@@ -23,6 +23,19 @@ These artifacts in this library reference some simple performance tests for a se
   - Notable Oracle parameters that were tuned:
     - sga_target
     - db_writer_processes
+
+### SLOB parameters:
+See https://kevinclosson.net/slob/. Also note that the SLOB profile was identical through all the testing.
+  - 15 schemas: ./setup.sh tablespacename 15
+  - UPDATE_PCT: 25
+  - SCAN_PCT: 10
+  - RUN_TIME: 3600
+  - WORK_LOOP: 0
+  - SCALE: 800M (51200 blocks)
+  - WORK_UNIT: 64
+  - REDO_STRESS: LITE
+  - hot spot off
+  - think time off
 
 ### Smart Flash Cache 
 ```
@@ -56,26 +69,19 @@ db_flash_cache_file                  string      /fast/oradata/flash/cache1
 db_flash_cache_size                  big integer 2G
 db_flashback_retention_target        integer     1440
 ```
-### SLOB parameters:
-See https://kevinclosson.net/slob/. Also note that the SLOB profile was identical through all the testing.
-  - 15 schemas: ./setup.sh tablespacename 15
-  - UPDATE_PCT: 25
-  - SCAN_PCT: 10
-  - RUN_TIME: 3600
-  - WORK_LOOP: 0
-  - SCALE: 800M (51200 blocks)
-  - WORK_UNIT: 64
-  - REDO_STRESS: LITE
-  - hot spot off
-  - think time off
 
-### Results 
+### Test Parameters
+- Notable Oracle parameters that were tuned:
+  - sga_target
+  - db_writer_processes
 - Test #1 - Data files on EBS, SGA at 2G.
 - #2 - Data files on NVMe, SGA at 2G.
 - #3 - Data files on NVMe, SGA at 2G, Smart Flash Cache turned on at 2G.
 - #4 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G.
 - #5 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=5.
 - #6 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=10.
+
+### Results 
 
 | AWR Metric           |  Test 1 |   2    | 3      | 4      | 5      |  6    |
 | ----             | ----    | ------ | ----   | -----  | ------ | ----  |
