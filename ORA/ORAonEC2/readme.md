@@ -99,6 +99,6 @@ db_flashback_retention_target        integer     1440
 ### Conclusion 
 - In this simple test, performance with just NVMe volumes is much greater than running on EBS volumes, understandbly. The downside to this is that instance store volumes do not persist if your EC2 instance is stopped and started [note - not just rebooted]. If considering this because of IOPS requirements, also consider some kind of database redunndancy, like replication. The ideal use case is when data can be re-ingested since NVMe volumes will not persist when the EC2 instance is stopped and stared.
 - Smart Flash Cache is definitely worth testing.
-- Increasing the db_writer_processes [how many DBWR processes are running on the server] is a worthwhile adjustment.
+- Increasing the db_writer_processes [how many DBWR processes are running on the server] parameter is a worthwhile adjustment.
 - Simply increasing the SGA size did not increase performance. In fact, it made things run slower.
-- This was a simple test. Like with most things Oracle, there could be more lots more details to tune.
+- This was a simple test. Like with most things Oracle, there could be more details to tune.
