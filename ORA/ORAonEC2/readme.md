@@ -75,11 +75,11 @@ db_flashback_retention_target        integer     1440
   - sga_target
   - db_writer_processes
 - Test #1 - Data files on EBS, SGA at 2G.
-- #2 - Data files on NVMe, SGA at 2G.
-- #3 - Data files on NVMe, SGA at 2G, Smart Flash Cache turned on at 2G.
-- #4 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G.
-- #5 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=5.
-- #6 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=10.
+- Test #2 - Data files on NVMe, SGA at 2G.
+- Test #3 - Data files on NVMe, SGA at 2G, Smart Flash Cache turned on at 2G.
+- Test #4 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G.
+- Test #5 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=5.
+- Test #6 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=10.
 
 ### Results 
 
