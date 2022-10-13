@@ -77,7 +77,7 @@ See https://kevinclosson.net/slob/. Also note that the SLOB profile was identica
 - #5 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=5.
 - #6 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=10.
 
-| Metric           |  Test 1 |   2    | 3      | 4      | 5      |  6    |
+| AWR Metric           |  Test 1 |   2    | 3      | 4      | 5      |  6    |
 | ----             | ----    | ------ | ----   | -----  | ------ | ----  |
 | Logical read/s   |  6,628  | 34,202 | 37,474 | 17,147 | 50,472 | 56,715|
 | Physical read/s  |  4,129  | 19,041 | 10,392 | 226    | 1,065  | 1,143 |
