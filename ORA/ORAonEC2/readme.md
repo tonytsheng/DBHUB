@@ -7,7 +7,7 @@ These artifacts in this library reference some simple performance tests for a se
 3. We then compared to putting data files on instance store volumes.
 4. We then turned on Smart Flash Cache and the file for the Cache was also placed on an instance store volume.
 4. Increase the SGA to 10G. Note the server has 16G of memory. This did not give us an extreme boost in performance like we expected.
-5. We increased the db_writer_processes to 5 from the default of 1 and that was a notable increase in pefformance.
+5. We increased the db_writer_processes to 5 from the default of 1 and that was a notable increase in pefformance. Note that this was recommended from the very first AWR report.
 6. Increased db_writer_processes to 10
 
 ### Baseline
