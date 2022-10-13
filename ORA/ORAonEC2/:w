@@ -5,7 +5,7 @@ These artifacts in this library reference some simple performance tests done for
 1. A baseline performance test using SLOB and Oracle data files on EBS volumes.
 2. Oracle data files on instance store volumes.
 3. Turn on Smart Flash Cache.
-4. Increase the SGA to 10G, data on instance store volumes, Smart Flash Cache still turned on.
+4. Increase the SGA to 10G, data on instance store volumes, Smart Flash Cache turned off.
 5. Same as #4, but turn Smart Flash Cache back on.
 
 ### Baseline:
@@ -79,7 +79,7 @@ See https://kevinclosson.net/slob/
 - Test #1 - Data files on EBS, SGA at 2G.
 - #2 - Data files on NVMe, SGA at 2G.
 - #3 - Data files on NVMe, SGA at 2G, Smart Flash Cache turned on at 2G.
-- #4 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G.
+- #4 - Data files on NVMe, SGA at 10G.
 - #5 - Data files on NVMe, SGA at 10G, Smart Flash Cache turned on at 10G, db_writer_processes=5 .
 
 | Metric           |  Test 1 |   2    | 3      | 4      | 5      |
