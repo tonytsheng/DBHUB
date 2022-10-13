@@ -69,11 +69,6 @@ See https://kevinclosson.net/slob/. Also note that the SLOB profile was identica
   - hot spot off
   - think time off
 
-### Outputs to compare:
-  - AWR report, generated automatically by SLOB
-  - iostat, generated automatically by SLOB
-  - Various AWR metrics
-
 ### Results 
 - Test #1 - Data files on EBS, SGA at 2G.
 - #2 - Data files on NVMe, SGA at 2G.
