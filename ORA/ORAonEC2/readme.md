@@ -4,7 +4,7 @@ Some teams have IOPS demands that they need to maintain.  They want to do this w
 These artifacts in this library reference some performance tests for a self-managed Oracle database running on an EC2 instance. The following general steps were followed:
 1. The baseline was an Oracle database with default parameters, an SGA of 2G, and data files sitting on EBS volumes running on an i3en EC2 instance.
 2. SLOB was used as the tool to generate application load and an identical test was run for each iteration. There was no tuning of application code although that is usually the best return on investment. 
-3. All of the user test data that was on the EBS volumes was then moved to instance store volumes.
+3. All of the user test data that was on the EBS volumes was then moved to an instance store volume.
 4. Smart Flash Cache was then turned on and the file for the Cache was placed on an instance store volume.
 5. The SGA was then increased to 10G. Note the server has 16G of memory. This did not give produce an improvement in performance as expected.
 6. The db_writer_processes was increased to 5 from the default of 1 and this produced a notable increase in performance. Note that this was a recommendation in the very first AWR report.
