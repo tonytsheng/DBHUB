@@ -6,9 +6,9 @@ These artifacts in this library reference some simple performance tests for a se
 2. The baseline was an Oracle database with default parameters, an SGA of 2G, with data files sitting on EBS volumes.
 3. We then compared to putting data files on instance store volumes.
 4. We then turned on Smart Flash Cache and the file for the Cache was also placed on an instance store volume.
-4. Increase the SGA to 10G. Note the server has 16G of memory. This did not give us an extreme boost in performance like we expected.
-5. We increased the db_writer_processes to 5 from the default of 1 and that was a notable increase in pefformance. Note that this was recommended from the very first AWR report.
-6. Increased db_writer_processes to 10
+4. We then increased the SGA to 10G. Note the server has 16G of memory. This did not give us an improvement in performance like expected.
+5. We increased the db_writer_processes to 5 from the default of 1 and that was a notable increase in pefformance. Note that this was a recommendation in the very first AWR report.
+6. We then increased db_writer_processes to 10, just to see what else would happen.
 
 ### Baseline
 - i3en.large - 2x16
@@ -90,18 +90,13 @@ See https://kevinclosson.net/slob/. Also note that the SLOB profile was identica
 | Executes/s       |   82    |  421   |  462   | 216    | 621    | 696   |
 | Transactions/s   |   19    |  104   |  114   | 52     | 150    | 173   |
 
-
 |                                       |     Test 1 |   2        |  3        | 4      | 5         |  6    |
 | -------------                         |  --------  |  ----      | ----      | ----   | -------   | ----  |
 |Executions of the most expensive query |   192,776  |  1,013,242 | 1,110,225 | 35,116 | 1,472,365 | 1,687,701 |
 |*consistent at 65.2 gets/execution     |
 
-|              |     Test 1 |   2    |  3        | 4      | 5    |  6   |
-| ----         | -------    | ------ |  ---      | -----  | ---- | ---- |
-| AWR IOPS     |   5413     |  25170 |   15840   | 2852   | 6234 | 9183 |
-
-
 ### Conclusion TODO
 - In this simple test, performance with just NVMe volumes is much greater than running on EBS volumes, understandbly. The downside to this is that instance store volumes do not persist if your EC2 instance is stopped and started [note - not just rebooted]. If considering this because of IOPS requirements, also consider some kind of database redunndancy, like replication. The ideal use case is when data can be re-ingested since NVMe volumes will not persist when the EC2 instance is stopped and stared.
-- Performance is a bit better when turning on Smart Flash Cache. Note that physical reads and IOPS both drop a bit but transactions per second and executions of the most expensive query have both increased slightly. The database is doing more work with less IO.
+- Smart Flash Cache is definitely worth testing.
+- Increasing the db_writer_processes [how many DBWR processes are running on the server] is a worthwhile adjustment.
 - The size of the SGA for this test with 2G and the Smart Flash Cache size was the same. This instance had 
