@@ -95,7 +95,7 @@ See https://kevinclosson.net/slob/. Also note that the SLOB profile was identica
 |Executions of the most expensive query |   192,776  |  1,013,242 | 1,110,225 | 35,116 | 1,472,365 | 1,687,701 |
 |*consistent at 65.2 gets/execution     |
 
-### Conclusion TODO
+### Conclusion 
 - In this simple test, performance with just NVMe volumes is much greater than running on EBS volumes, understandbly. The downside to this is that instance store volumes do not persist if your EC2 instance is stopped and started [note - not just rebooted]. If considering this because of IOPS requirements, also consider some kind of database redunndancy, like replication. The ideal use case is when data can be re-ingested since NVMe volumes will not persist when the EC2 instance is stopped and stared.
 - Smart Flash Cache is definitely worth testing.
 - Increasing the db_writer_processes [how many DBWR processes are running on the server] is a worthwhile adjustment.
