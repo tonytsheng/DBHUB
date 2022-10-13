@@ -1,14 +1,15 @@
 ## Performance testing self managed Oracle on EC2.
 Some customers do not have the option of running their databases in RDS. The reasons for this vary, from their database size, to COTS application requirements to very large IOPS requirements. When customers run into these or similar issues, sometimes a self managed databases running on an EC2 instance can be a good option. Running on EC2 allows customers to leverage AWS for some of the traditional IT maintenance tasks. In these circumstances, it is always valuable to also consider RDS Custom.
 
-These artifacts in this library reference some simple performance tests done for 5 scenarios for a self managed Oracle database running on an EC2 instance:
-1. A baseline performance test using SLOB and Oracle data files on EBS volumes.
-2. Oracle data files on instance store volumes.
-3. Turn on Smart Flash Cache.
-4. Increase the SGA to 10G, data on instance store volumes, Smart Flash Cache still turned on.
-5. Same as #4, but turn Smart Flash Cache back on.
+These artifacts in this library reference some simple performance tests for a self managed Oracle database running on an EC2 instance. Note the following:
+1. SLOB was used as the tool to generate application load. There was no tuning of application code although that is usually the best return on investment. 
+2. The baseline was an Oracle database with default parameters, an SGA of 2G, with data files sitting on EBS volumes.
+3. We then compared to putting data files on instance store volumes.
+4. We then turned on Smart Flash Cache and the file for the Cache was also placed on an instance store volume.
+4. Increase the SGA to 10G. Note the server has 16G of memory. This did not give us an extreme boost in performance like we expected.
+5. We increased the db_writer_processes to 5 from the default of 1 and that was a notable increase in pefformance.
 
-### Baseline:
+### Baseline
 - i3en.large - 2x16
   - oracle sitting on /u01
   - not using asm
@@ -18,14 +19,11 @@ These artifacts in this library reference some simple performance tests done for
   - ebs - /dev/nvme0n1p1  493G  334G  134G  72% /u01
   - nvme - /dev/nvme1n1    1.2T  2.1G  1.1T   1% /fast
 ```
-  - Notable Oracle parameters
-    - SGA - 2G
-### Instance store test:
-  - tablespace created on instance store
-  - all user data located on that tablespace
-  - redo/archive log still on regular /u01 EBS volume
+  - Notable Oracle parameters that were tuned:
+    - sga_target
+    - db_writer_processes
 
-### Smart Flash Cache test:
+### Smart Flash Cache 
 ```
 SQL> alter system set db_flash_cache_file = '/fast/oradata/flash/cache1' scope=spfile;
 
@@ -58,7 +56,7 @@ db_flash_cache_size                  big integer 2G
 db_flashback_retention_target        integer     1440
 ```
 ### SLOB parameters:
-See https://kevinclosson.net/slob/
+See https://kevinclosson.net/slob/. Also note that the SLOB profile was identical through all the testing.
   - 15 schemas: ./setup.sh tablespacename 15
   - UPDATE_PCT: 25
   - SCAN_PCT: 10
@@ -91,10 +89,10 @@ See https://kevinclosson.net/slob/
 | Transactions/s   |   19    |  104   |  114   | 52     | 150    |
 
 
-|                                   |     Test 1 |   2        |  3        | 4      | 5         |
-| -------------                     |  --------  |  ----      | ----      | ----   | -------   |
-|Executions of most expensive query |   192,776  |  1,013,242 | 1,110,225 | 35,116 | 1,472,365 |
-|*consistent at 65.2 gets/execution |
+|                                       |     Test 1 |   2        |  3        | 4      | 5         |
+| -------------                         |  --------  |  ----      | ----      | ----   | -------   |
+|Executions of the most expensive query |   192,776  |  1,013,242 | 1,110,225 | 35,116 | 1,472,365 |
+|*consistent at 65.2 gets/execution     |
 
 |              |     Test 1 |   2    |  3        | 4      | 5    |
 | ----         | -------    | ------ |  ---      | -----  | ---- |
