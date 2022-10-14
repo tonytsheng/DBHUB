@@ -1,0 +1,16 @@
+# input file looks like:
+#KEY 4048:1736 string
+#3
+#KEY 0:1772 string
+#1
+#KEY 4192:1349 string
+#1
+#KEY 7329:2407 string
+#2
+#KEY 0:1774 string
+#1
+
+paste -d " " - - < input > output
+
+# groups of 3 lines
+paste -d " " - - - < input > output 
