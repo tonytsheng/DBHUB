@@ -88,10 +88,10 @@ nvme4n1     259:6    0  900G  0 disk /u03
 ```
 - Drop the old tablespace. Recreate the tablespace with new data files on the new volumes.
 - Recreate slob test data using the modified tablespace/data files
-- AWR recommendation: Increase the size of the log files to 2048 M to hold at least 20 minutes of redo information.
+- AWR recommendation: Increase the size of the log files to 2048 M to hold at least 20 minutes of redo information. We created 3 new log groups with 2 members each of 2048 M and then dropped the old log groups.
 - AWR recommendation: Increase the size of the redo log buffer by setting the value of parameter "log_buffer" to 32 M.
-- AWR recommendation: Increase db_writer_processes to 20 - recommended in the last AWR report although a number was not recommended.
-- Increase flash cache size to 30G - Oracle recommends 2-3x the size of the SGA.
+- AWR recommendation: Increase db_writer_processes to 20 - recommended in the last AWR report although a value was not recommended.
+- Increase flash cache size to 30G - Oracle recommends 2-3x the size of the SGA. 30G is 3x the size of the SGA.
 
 | AWR Metric           |  Last Test |   2    | 3      | 4      | 5      |  6    |
 | ----             | ----    | ------ | ----   | -----  | ------ | ----  |
@@ -109,4 +109,7 @@ nvme4n1     259:6    0  900G  0 disk /u03
 
 - IOPS from AWR for this last test: 8035
 
+# Next:
+- make log_buffer even larger
+- adjust db_writer_processes to 15
 
