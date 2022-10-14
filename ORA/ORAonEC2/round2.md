@@ -91,5 +91,19 @@ nvme4n1     259:6    0  900G  0 disk /u03
 - AWR recommendation: Increase the size of the log files to 2048 M to hold at least 20 minutes of redo information.
 - AWR recommendation: Increase the size of the redo log buffer by setting the value of parameter "log_buffer" to 32 M.
 - AWR recommendation: Increase db_writer_processes to 20 - recommended in the last AWR report although a number was not recommended.
-- Increase flash cache size - Oracle recommends 2-3x the size of the SGA.
+- Increase flash cache size to 30G - Oracle recommends 2-3x the size of the SGA.
+
+| AWR Metric           |  Last Test |   2    | 3      | 4      | 5      |  6    |
+| ----             | ----    | ------ | ----   | -----  | ------ | ----  |
+| Logical read/s   |  56,715| 63,229
+| Physical read/s  |  1,143 | 1,697
+| Physical write/s |  9,543 | 10,244
+| Executes/s       |  696   | 771
+| Transactions/s   |  173   | 193
+
+
+|                                       |     Last Test  |   2        |  3        | 4      | 5         |  6    |
+| -------------                         |  --------  |  ----      | ----      | ----   | -------   | ----  |
+|Executions of the most expensive query |   1,687,701 | 1,879,119
+|*consistent at 65.2 gets/execution     |
 
