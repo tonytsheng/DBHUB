@@ -13,6 +13,8 @@ group 12 ('/u01/app/oracle/oradata/ORADEV/onlinelog/redo12_1.log'
 , '/u01/app/oracle/oradata/ORADEV/onlinelog/redo12_2.log'
 , '/u01/app/oracle/oradata/ORADEV/onlinelog/redo12_3.log') size 2G;
 
+select * from v$logfile;
+
 alter system switch logfile;
 alter database drop logfile group 1, group 2, group 3;
 
