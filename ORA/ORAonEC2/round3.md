@@ -19,7 +19,7 @@
 | Executes/s       |  771 | 824 |
 | Transactions/s   |  193 | 204 |
 
-| --------------------                  |  --------  |  ----      | 
+|                                       |     Last Test  |   2        |  3        | 4      | 5         |  6  | --------------------                  |  --------  |  ----      | 
 |Executions of the most expensive query |   1,687,701 | 1,989,971 |
 |*consistent at 65.2 gets/execution     |
 
