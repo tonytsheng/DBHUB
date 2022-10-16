@@ -21,7 +21,7 @@
 
 
 | -------------                         |  --------  |  ----      | ----      | ----   | -------   | ----  |
-|Executions of the most expensive query |   1,687,701 | 1,989,971
+|Executions of the most expensive query |   1,687,701 | 1,989,971 |
 |*consistent at 65.2 gets/execution     |
 
 - IOPS from AWR for this last test: 8035
