@@ -25,4 +25,5 @@
 |*consistent at 65.2 gets/execution     |
 
 - IOPS from AWR for this last test: 8035
+- 6237
 
