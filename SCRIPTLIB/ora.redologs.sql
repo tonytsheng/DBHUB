@@ -13,7 +13,21 @@ group 12 ('/u01/app/oracle/oradata/ORADEV/onlinelog/redo12_1.log'
 , '/u01/app/oracle/oradata/ORADEV/onlinelog/redo12_2.log'
 , '/u01/app/oracle/oradata/ORADEV/onlinelog/redo12_3.log') size 2G;
 
+alter database add logfile group 20 ('/u01/app/oracle/oradata/ORADEV/onlinelog/redo20_1.log'
+, '/u01/app/oracle/oradata/ORADEV/onlinelog/redo20_2.log'
+, '/u01/app/oracle/oradata/ORADEV/onlinelog/redo20_3.log') size 5G, 
+  group 21 ('/u01/app/oracle/oradata/ORADEV/onlinelog/redo21_1.log'
+, '/u01/app/oracle/oradata/ORADEV/onlinelog/redo21_2.log'
+, '/u01/app/oracle/oradata/ORADEV/onlinelog/redo21_3.log') size 5G,
+group 22 ('/u01/app/oracle/oradata/ORADEV/onlinelog/redo22_1.log'
+, '/u01/app/oracle/oradata/ORADEV/onlinelog/redo22_2.log'
+, '/u01/app/oracle/oradata/ORADEV/onlinelog/redo22_3.log') size 5G;
+
 select * from v$logfile;
+select * from v$log;
+
+alter system switch logfile;
+alter database drop logfile group 1, group 2, group 3;
 
 alter system switch logfile;
 alter database drop logfile group 1, group 2, group 3;

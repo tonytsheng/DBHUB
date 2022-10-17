@@ -1,0 +1,9 @@
+# sudo mkfs -t xfs /dev/nvme1n1
+sudo mount /dev/nvme0n1 /fast01
+sudo mount /dev/nvme6n1 /fast02
+sudo mount /dev/nvme9n1 /fast03
+sudo mount /dev/nvme2n1 /fast04
+sudo mount /dev/nvme5n1 /fast05
+sudo mount /dev/nvme8n1 /fast06
+sudo mount /dev/nvme4n1 /fast07
+sudo mount /dev/nvme7n1 /fast08
