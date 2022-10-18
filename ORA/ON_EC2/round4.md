@@ -4,19 +4,28 @@
 - flash cache across 8 instance store volumes - 200G each - 1600G
 - tempfiles - 8 across instance store volumes - 16G each - 128G
 
-- 2. increased log buffer
+- 2. increased redo member files from 2G to 5G - 3 groups of 3 each
 
-| AWR Metric           |  Last Test |   2    | 3      | 4      | 5      |  6    |
+- 3. increased log buffer from 131MB to 10G 
+
+- 4. increased log_archive_max_processes from 4 to 20
+
+- 5. spread logfiles across u01 u02 u03
+
+- 6. increased logfiles from 5G to 20G - logs were rotating at every 2-3 minutes
+  - spread logfiles across u02 u03 u04 instead of on u01
+
+| AWR Metric           |  Last Test |   2  | 3 | 4      | 5      |  6    |
 | ----             | ----    | ------ | ----   | -----  | ------ | ----  |
-| Logical read/s   |  66,991 | 41,735 | 40,755 |
-| Physical read/s  |  1,638| .8 | 333 |
-| Physical write/s |  9,342| 5,772 | 5,573 |
-| Executes/s       |  824 | 511 | 501 |
-| Transactions/s   |  204 | 127 | 124 |
+| Logical read/s   |  66,991 | 41,735 | 40,755 | 43,214 | NA     | 83,120 |
+| Physical read/s  |  1,638  | .8     | 333    |.2      |        | .2    |
+| Physical write/s |  9,342  | 5,772  | 5,573  |  4,202 |        | 4,536 |
+| Executes/s       |  824    | 511    | 501    | 528    |        | 1,016 |
+| Transactions/s   |  204    | 127    | 124    | 131    |        | 253   |
 
-|                                       |     Last Test  |   2        |  3        | 4      | 5         |  6    |
-| -------------                         |  --------  |  ----      | ----      | ----   | -------   | ----  |
-|Executions of the most expensive query |   1,989,971 | 1,249,562 | 1,224,431 |
+|                                       |     Last Test  |   2    |  3        | 4         | 5         |  6    |
+| -------------                         |  --------  |  ----      | ----      | ----      | -------   | ----  |
+|Executions of the most expensive query |   1,989,971 | 1,249,562 | 1,224,431 | 1,290,303 |  NA       | 2,471,303 |
 |*consistent at 65.2 gets/execution     |
 
 - IOPS from AWR for this last test: 8035
