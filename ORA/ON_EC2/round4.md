@@ -4,16 +4,16 @@
 - flash cache across 8 instance store volumes - 200G each - 1600G
 - tempfiles - 8 across instance store volumes - 16G each - 128G
 
-- 2. increased redo member files from 2G to 5G - 3 groups of 3 each
+2. increased redo member files from 2G to 5G - 3 groups of 3 each
 
-- 3. increased log buffer from 131MB to 10G 
+3. increased log buffer from 131MB to 10G 
 
-- 4. increased log_archive_max_processes from 4 to 20
+4. increased log_archive_max_processes from 4 to 20
 
-- 5. spread logfiles across u01 u02 u03
+5. spread logfiles across u01 u02 u03
 
-- 6. increased logfiles from 5G to 20G - logs were rotating at every 2-3 minutes
-  - spread logfiles across u02 u03 u04 instead of on u01
+6. increased logfiles from 5G to 20G - logs were rotating at every 2-3 minutes
+- spread logfiles across u02 u03 u04 instead of on u01
 
 | AWR Metric           |  Last Test |   2  | 3 | 4      | 5      |  6    |
 | ----             | ----    | ------ | ----   | -----  | ------ | ----  |
