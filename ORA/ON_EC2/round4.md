@@ -3,21 +3,21 @@ Some teams have IOPS demands that they need to maintain.  They want to do this w
 
 These artifacts in this library reference some performance tests for a self-managed Oracle database running on an EC2 instance. The following tests were run:
 1. A baseline test.
-2. increased redo member files from 2G to 5G - 3 groups of 3 each
-3. increased log buffer from 131MB to 10G 
-4. increased log_archive_max_processes from 4 to 20
-5. spread logfiles across u01 u02 u03
-6. increased logfiles from 5G to 20G - logs were rotating at every 2-3 minutes
+2. Increase the size of logfiles from 2G to 5G.
+3. Increase the log buffer size rom 131MB to 10G.
+4. Increase the log_archive_max_processes from 4 to 20.
+5. Spread logfiles across the /u01 /u02 and /u03 filesystems.
+6. Increase the size of the logfiles from 5G to 20G - logs were rotating at every 2-3 minutes
     - spread logfiles across u02 u03 u04 instead of on u01
-7. increased logfiles from 20G to 40G.
-8. increased logfiles from 40G to 60G.
+7. Increase the size of logfiles from 20G to 40G.
+8. Increase the size of logfiles from 40G to 60G.
     - changed db_recovery_file_dest to /u04 - archived logs writing instead of /u01
-9. adjust shared pool size from 0 to 78G
-10. shared pool from 78G to 200G
-11. shared pool from 200G to 100G
-12. shared pool from 100G to 80G - results should look like #9
-13. pin user tables to smart flash cache
-14. filesystemio_options=SETALL
+9. Increase the shared pool size from 0 to 78G.
+10. Increase the shared pool from 78G to 200G.
+11. Decrease the shared pool from 200G to 100G.
+12. Decrease the shared pool from 100G to 80G.
+13. Pin user tables to the smart flash cache.
+14. Set filesystemio_options from NONE to SETALL.
 
 ### Baseline
 - ien.24xlarge 
@@ -25,6 +25,7 @@ These artifacts in this library reference some performance tests for a self-mana
   - oracle sga - 700G
   - flash cache across 8 instance store volumes - 200G each - 1600G
   - tempfiles - 8 across instance store volumes - 16G each - 128G
+  - User data was placed on EBS volumes. 
 
 ### SLOB parameters:
 SLOB was used to run the load test and the same profile was used for each test.
@@ -61,9 +62,7 @@ Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
 *consistent at 65.2 gets/execution     
 
 ### Conclusion
-- In this simple test, performance with just NVMe volumes is much greater than running on EBS volumes, understandbly. The downside to this is that instance store volumes do not persist if your EC2 instance is stopped and started [note - not just rebooted]. If considering this because of IOPS requirements, also consider some kind of database redundancy, like replication. The ideal use case is when data can be re-ingested since NVMe volumes will not persist when the EC2 instance is stopped and stared.
-- Smart Flash Cache is definitely worth testing.
-- Increasing the db_writer_processes [how many DBWR processes are running on the server] parameter is a worthwhile adjustment.
-- Simply increasing the SGA size did not increase performance. In fact, it made things run slower.
 - This was a simple test. Like with most things Oracle, there could be more details to tune.
-
+- AMM
+- filesystemio
+- shared pool
