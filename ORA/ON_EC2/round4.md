@@ -22,7 +22,7 @@
 
 Test    | Logical read/s | Physical read/s | Physical write/s | Executes/s | Transactions/s | Execs of most exp query | 
 ---     | ----           |   -----         |   ------         | ------     | ---------      |  --------               |
-1       | 
+1       | 66,991         | 1,638           | 9,342            | 824        | 204            | 1,989,971               |
 2       |
 3       | 
 
