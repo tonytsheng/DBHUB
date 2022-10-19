@@ -20,11 +20,12 @@
 13. pin user tables to smart flash cache
 
 
-Test    | Logical read/s | Physical read/s | Physical write/s | Executes/s | Transactions/s | Execs of most exp query | 
----     | ----           |   -----         |   ------         | ------     | ---------      |  --------               |
-1       | 66,991         | 1,638           | 9,342            | 824        | 204            | 1,989,971               |
-2       |
-3       | 
+Test    | Log read/s | Phys read/s | Phys write/s | Executes/s | Transactions/s | Execs of most exp query | 
+---     | ----      |   -----      |   ------         | ------     | ---------      |  --------               |
+1       | 66,991    | 1,638 | 9,342  | 824 | 204 | 1,989,971  |
+2       | 41,735    | .8    | 5,772  | 511 | 124 | 1,249,562  |
+3       | 40755	    | 333   | 5573   | 501 | 124 | 1,224,431  |
+
 
 
 | AWR Metric              |  Last Test|   2       | 3         | 4         | 5     |  6        |  7        |   8       |   9       |   10      | 11 |      12          |
