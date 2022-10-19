@@ -12,16 +12,18 @@
   - spread logfiles across u02 u03 u04 instead of on u01
 7. increased logfiles from 20G to 40G.
 8. increased logfiles from 40G to 60G.
+  - changed db_recovery_file_dest to /u04
+9. adjust shared pool size from 0 to 78336M
 
 
-| AWR Metric              |  Last Test|   2       | 3         | 4         | 5         |  6        |  7        |   8       |
-| ----                    | ----      | ------    | ----      | -----     | ------    | ----      | ----      | ----      |
-| Logical read/s          |  66,991   | 41,735    | 40,755    | 43,214    | NA        | 83,120    | 133,312   | 121,897   |
-| Physical read/s         |  1,638    | .8        | 333       |.2         |           | .2        | 325       | .2        |
-| Physical write/s        |  9,342    | 5,772     | 5,573     |  4,202    |           | 4,536     | 4,894     | 3,384     |
-| Executes/s              |  824      | 511       | 501       | 528       |           | 1,016     | 1,633     | 1,491     |
-| Transactions/s          |  204      | 127       | 124       | 131       |           | 253       | 407       | 372       |
-| Execs of most exp query*| 1,989,971 | 1,249,562 | 1,224,431 | 1,290,303 |  NA       | 2,471,303 | 3,963,227 | 3,631,911 |
+| AWR Metric              |  Last Test|   2       | 3         | 4         | 5         |  6        |  7        |   8       |   9       |
+| ----                    | ----      | ------    | ----      | -----     | ------    | ----      | ----      | ----      | ----      |
+| Logical read/s          |  66,991   | 41,735    | 40,755    | 43,214    | NA        | 83,120    | 133,312   | 121,897   | 154,954   |
+| Physical read/s         |  1,638    | .8        | 333       |.2         |           | .2        | 325       | .2        | 4.2       |
+| Physical write/s        |  9,342    | 5,772     | 5,573     |  4,202    |           | 4,536     | 4,894     | 3,384     | 4,285     |
+| Executes/s              |  824      | 511       | 501       | 528       |           | 1,016     | 1,633     | 1,491     | 1,900     |
+| Transactions/s          |  204      | 127       | 124       | 131       |           | 253       | 407       | 372       | 472       |
+| Execs of most exp query*| 1,989,971 | 1,249,562 | 1,224,431 | 1,290,303 |  NA       | 2,471,303 | 3,963,227 | 3,631,911 | 4,606,302 |
 
 
 *consistent at 65.2 gets/execution     
