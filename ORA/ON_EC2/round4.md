@@ -8,10 +8,10 @@ These artifacts in this library reference some performance tests for a self-mana
 4. increased log_archive_max_processes from 4 to 20
 5. spread logfiles across u01 u02 u03
 6. increased logfiles from 5G to 20G - logs were rotating at every 2-3 minutes
-  - spread logfiles across u02 u03 u04 instead of on u01
+- spread logfiles across u02 u03 u04 instead of on u01
 7. increased logfiles from 20G to 40G.
 8. increased logfiles from 40G to 60G.
-  - changed db_recovery_file_dest to /u04 - archived logs writing instead of /u01
+- changed db_recovery_file_dest to /u04 - archived logs writing instead of /u01
 9. adjust shared pool size from 0 to 78G
 10. shared pool from 78G to 200G
 11. shared pool from 200G to 100G
