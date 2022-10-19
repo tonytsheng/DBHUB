@@ -2,7 +2,7 @@
 Some teams have IOPS demands that they need to maintain.  They want to do this with a self-managed Oracle database running on EC2.  This will allow them to spin up instances rather quickly, but still maintain full control of their databases.
 
 These artifacts in this library reference some performance tests for a self-managed Oracle database running on an EC2 instance. The following tests were run:
-1. A baseline test.
+1. A baseline test. Note this baseline test was using an instance shape of ien.large, which is a 2x16 machine.
 2. Increase the size of logfiles from 2G to 5G.
 3. Increase the log buffer size rom 131MB to 10G.
 4. Increase the log_archive_max_processes from 4 to 20.
@@ -46,7 +46,7 @@ Test    | Log read/s | Phys read/s | Phys write/s | Executes/s | Transactions/s 
 ---     | ----      |   -----      |   ------         | ------     | ---------      |  --------               |
 Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
 2       | 41,735    | .8    | 5,772  | 511   | 124   | 1,249,562  |
-3       | 40,755    | | 333 | 5,573  | 501   | 124   | 1,224,431  |
+3       | 40,755    | 333   | 5,573  | 501   | 124   | 1,224,431  |
 4       |43,214     | 0.2   | 4,202  | 528   | 131   | 1,290,303  |
 5       | NA        |       |        |       |       |       NA   |
 6       | 83,120    | 0.2   | 4,536  | 1,016 | 253   | 2,471,303  |
