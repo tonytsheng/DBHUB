@@ -2,6 +2,7 @@
 Some teams have IOPS demands that they need to maintain.  They want to do this with a self-managed Oracle database running on EC2.  This will allow them to spin up instances rather quickly, but still maintain full control of their databases.
 
 These artifacts in this library reference some performance tests for a self-managed Oracle database running on an EC2 instance. The following tests were run:
+1. A baseline test.
 2. increased redo member files from 2G to 5G - 3 groups of 3 each
 3. increased log buffer from 131MB to 10G 
 4. increased log_archive_max_processes from 4 to 20
@@ -25,7 +26,21 @@ These artifacts in this library reference some performance tests for a self-mana
   - flash cache across 8 instance store volumes - 200G each - 1600G
   - tempfiles - 8 across instance store volumes - 16G each - 128G
 
+### SLOB parameters:
+SLOB was used to run the load test and the same profile was used for each test.
+  - 15 schemas: ./setup.sh tablespacename 15
+  - UPDATE_PCT: 25
+  - SCAN_PCT: 10
+  - RUN_TIME: 3600
+  - WORK_LOOP: 0
+  - SCALE: 800M (51200 blocks)
+  - WORK_UNIT: 64
+  - REDO_STRESS: LITE
+  - hot spot off
+  - think time off
+See https://kevinclosson.net/slob/ for more information.
 
+### Test Results
 Test    | Log read/s | Phys read/s | Phys write/s | Executes/s | Transactions/s | Execs of most exp query* | 
 ---     | ----      |   -----      |   ------         | ------     | ---------      |  --------               |
 Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
