@@ -1,9 +1,7 @@
-- ec2 ien24xlarge
-- 96 cpus x 768 memory
-- oracle sga - 700G
-- flash cache across 8 instance store volumes - 200G each - 1600G
-- tempfiles - 8 across instance store volumes - 16G each - 128G
+## Performance testing self managed Oracle on EC2.
+Some teams have IOPS demands that they need to maintain.  They want to do this with a self-managed Oracle database running on EC2.  This will allow them to spin up instances rather quickly, but still maintain full control of their databases.
 
+These artifacts in this library reference some performance tests for a self-managed Oracle database running on an EC2 instance. The following tests were run:
 2. increased redo member files from 2G to 5G - 3 groups of 3 each
 3. increased log buffer from 131MB to 10G 
 4. increased log_archive_max_processes from 4 to 20
@@ -20,9 +18,17 @@
 13. pin user tables to smart flash cache
 14. filesystemio_options=SETALL
 
+### Baseline
+- ien.24xlarge 
+  - 96 cpus x 768 memory
+  - oracle sga - 700G
+  - flash cache across 8 instance store volumes - 200G each - 1600G
+  - tempfiles - 8 across instance store volumes - 16G each - 128G
+
+
 Test    | Log read/s | Phys read/s | Phys write/s | Executes/s | Transactions/s | Execs of most exp query* | 
 ---     | ----      |   -----      |   ------         | ------     | ---------      |  --------               |
-1       | 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
+Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
 2       | 41,735    | .8    | 5,772  | 511   | 124   | 1,249,562  |
 3       | 40,755    | | 333 | 5,573  | 501   | 124   | 1,224,431  |
 4       |43,214     | 0.2   | 4,202  | 528   | 131   | 1,290,303  |
@@ -39,6 +45,10 @@ Test    | Log read/s | Phys read/s | Phys write/s | Executes/s | Transactions/s 
 
 *consistent at 65.2 gets/execution     
 
-- IOPS from AWR for this last test: 8035
-- 6237
+### Conclusion
+- In this simple test, performance with just NVMe volumes is much greater than running on EBS volumes, understandbly. The downside to this is that instance store volumes do not persist if your EC2 instance is stopped and started [note - not just rebooted]. If considering this because of IOPS requirements, also consider some kind of database redundancy, like replication. The ideal use case is when data can be re-ingested since NVMe volumes will not persist when the EC2 instance is stopped and stared.
+- Smart Flash Cache is definitely worth testing.
+- Increasing the db_writer_processes [how many DBWR processes are running on the server] parameter is a worthwhile adjustment.
+- Simply increasing the SGA size did not increase performance. In fact, it made things run slower.
+- This was a simple test. Like with most things Oracle, there could be more details to tune.
 
