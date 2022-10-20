@@ -3,20 +3,21 @@ Some teams have IOPS demands that they need to maintain.  They want to do this w
 
 These artifacts in this library reference some performance tests for a self-managed Oracle database running on an EC2 instance. The following tests were run:
 1. A baseline test. Note this baseline test was using an instance shape of ien.large, which is a 2x16 machine.
-2. Changed instance shape to ien.24xlarge. Increased the size of logfiles from 2G to 5G.
-3. Increase the log buffer size rom 131MB to 10G.
-4. Increase the log_archive_max_processes from 4 to 20.
+2. Changed the instance shape to ien.24xlarge. Increased the size of logfiles from 2G to 5G.
+3. Increased the log buffer size from 131MB to 10G.
+4. Increased the log_archive_max_processes from 4 to 20.
 5. Spread logfiles across the /u01 /u02 and /u03 filesystems.
-6. Increase the size of the logfiles from 5G to 20G - logs were rotating at every 2-3 minutes
-    - spread logfiles across u02 u03 u04 instead of on u01
-7. Increase the size of logfiles from 20G to 40G.
-8. Increase the size of logfiles from 40G to 60G.
-    - changed db_recovery_file_dest to /u04 - archived logs writing instead of /u01
-9. Increase the shared pool size from 0 to 78G.
-10. Increase the shared pool from 78G to 200G.
-11. Decrease the shared pool from 200G to 100G.
-12. Decrease the shared pool from 100G to 80G.
-13. Pin user tables to the smart flash cache.
+6. Increased the size of the logfiles from 5G to 20G - logs were rotating at every 2-3 minutes.
+    - spread logfiles across /u02, /u03, and /u04 instead of on /u01.
+7. Increased the size of logfiles from 20G to 40G.
+8. Increased the size of logfiles from 40G to 60G.
+    - changed db_recovery_file_dest to /u04 - archived logs now writing to /u04 instead of /u01.
+9. Increased the shared pool size from 0 to 78G.
+10. Increased the shared pool from 78G to 200G.
+11. Decreased the shared pool from 200G to 100G.
+12. Decreased the shared pool from 100G to 80G.
+13. Pinned user tables to the smart flash cache.
+    - alter table TABLENAME storage (FLASH_CACHE KEEP);
 14. Set filesystemio_options from NONE to SETALL.
 
 ### Baseline
