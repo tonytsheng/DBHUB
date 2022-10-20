@@ -1,7 +1,7 @@
 ## Performance testing self managed Oracle on EC2.
 Some teams have IOPS demands that they need to maintain.  They want to do this with a self-managed Oracle database running on EC2.  This will allow them to spin up instances rather quickly, but still maintain full control of their databases.
 
-These artifacts in this library reference some performance tests for a self-managed Oracle database running on an EC2 instance. The following tests were run:
+These artifacts in this repo reference some performance tests for a self-managed Oracle database running on an EC2 instance. The following tests were run and note the corresponding AWR report:
 1. A baseline test. Note this baseline test was using an instance shape of ien.large, which is a 2x16 machine.
 2. Changed the instance shape to ien.24xlarge. Increased the size of logfiles from 2G to 5G.
 3. Increased the log buffer size from 131MB to 10G.
@@ -43,11 +43,11 @@ See https://kevinclosson.net/slob/. Also note that the SLOB profile was identica
 
 ### Results 
 Test    | Log read/s | Phys read/s | Phys write/s | Executes/s | Transactions/s | Execs of most exp query* |
----     | ----      |   -----      |   ------         | ------     | ---------      |  --------               |
+---     | ----      |   -----      |   ------        | ------     | ---------      |  --------               |
 Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
-2       | 41,735    | .8    | 5,772  | 511   | 124   | 1,249,562  |
+2       | 41,735    | .8    | 5,772  | 511   | 127   | 1,249,562  |
 3       | 40,755    | 333   | 5,573  | 501   | 124   | 1,224,431  |
-4       |43,214     | 0.2   | 4,202  | 528   | 131   | 1,290,303  |
+4       | 43,214    | 0.2   | 4,202  | 528   | 131   | 1,290,303  |
 5       | NA        |       |        |       |       |       |
 6       | 83,120    | 0.2   | 4,536  | 1,016 | 253   | 2,471,303  |
 7       | 133,312   |325    | 4,894  | 1,633 | 407   | 3,963,227  |
@@ -62,6 +62,7 @@ Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
 *consistent at 65.2 gets/execution
 
 ### Conclusion
+- Changing the instance without changing any other parameters did not increase performance, in fact, performance declined.
 - The biggest increase in performance was setting filesystemio_options. Adjusting shared pool had non-intuitive results. Surprisingly, pinning user tables to the smart flash cache resulted in a slight performance decrease.
 - Automatic Memory Management and adjusting the PGA were both not tested here but might be worthwhile to test.
 - This was a simple test. Like with most things Oracle, there could be more details to tune.
