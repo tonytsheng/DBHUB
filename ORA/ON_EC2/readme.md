@@ -62,5 +62,5 @@ Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
 
 ### Conclusion
 - The biggest increase in performance was setting filesystemio_options. Adjusting shared pool had non-intuitive results. Surpsingly, pinning user tables to the smart flash cache resulted in a slight performance decrease.
-- Automatic Memory Management was not tested here but that would be a good test. Adjusting the PGA would also be a worthwhile test but that was not tested here either.
+- Automatic Memory Management and adjusting the PGA were both not tested here but might be worthwhile to test.
 - This was a simple test. Like with most things Oracle, there could be more details to tune.
