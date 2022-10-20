@@ -62,8 +62,8 @@ Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
 *consistent at 65.2 gets/execution
 
 ### Conclusion
-- Changing the instance without changing any other parameters did not increase performance, in fact, performance declined.
+- Changing the instance shape without changing any other parameters did not increase performance, in fact, performance declined.
 - The biggest increase in performance was setting filesystemio_options. Adjusting shared pool had non-intuitive results. Surprisingly, pinning user tables to the smart flash cache resulted in a slight performance decrease.
-- For all of these tests, user data was placed on EBS volumes. Placing user data on instance store volumes should provide even more performance and would be a good follow up test, as long as the production implementation included resilency such as a standby with Oracle Data Guard for example.
+- For all of these tests, user data was placed on EBS volumes. Placing user data on instance store volumes should provide even more performance and would be a good follow up test, as long as the production implementation included a level of resilience such as a standby with Oracle Data Guard, for example.
 - Although not tested, Automatic Memory Management and adjusting the PGA could be worthwile follow up tests.
 
