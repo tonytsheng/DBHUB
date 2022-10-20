@@ -64,5 +64,4 @@ Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
 ### Conclusion
 - Changing the instance without changing any other parameters did not increase performance, in fact, performance declined.
 - The biggest increase in performance was setting filesystemio_options. Adjusting shared pool had non-intuitive results. Surprisingly, pinning user tables to the smart flash cache resulted in a slight performance decrease.
-- Automatic Memory Management and adjusting the PGA were both not tested here but might be worthwhile to test.
-- This was a simple test. Like with most things Oracle, there could be more details to tune.
+- This was a simple test. Like with most things Oracle, there could be more details to tune. For instance, although not tested, Automatic Memory Management and adjusting the PGA could be worthwile tests.
