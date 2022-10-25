@@ -1,0 +1,12 @@
+iostat -t -xm 3 
+vmstat -t 3
+mpstat -P ALL 3
+
+default is every 3 seconds
+
+how many cpus
+lscpu
+
+how much memory
+free -g -t -h
+
