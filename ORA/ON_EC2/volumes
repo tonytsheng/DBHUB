@@ -79,3 +79,41 @@ sudo systemctl daemon-reload
 alter system set db_flash_cache_file= '/fast01/oradata/flash/cache01', '/fast02/oradata/flash/cache02', '/fast03/oradata/flash/cache03', '/fast04/oradata/flash/cache04', '/fast05/oradata/flash/cache05', '/fast06/oradata/flash/cache06', '/fast07/oradata/flash/cache07', '/fast08/oradata/flash/cache08' scope=spfile;
 alter system set db_flash_cache_size=200G, 200G, 200G, 200G, 200G, 200G, 200G, 200G  scope=spfile;
 
+sudo mkfs -t xfs /dev/nvme3n1
+sudo mkfs -t xfs /dev/nvme6n1
+sudo mkfs -t xfs /dev/nvme11n1
+sudo mkfs -t xfs /dev/nvme9n1
+sudo mkfs -t xfs /dev/nvme5n1
+sudo mkfs -t xfs /dev/nvme8n1
+sudo mkfs -t xfs /dev/nvme4n1
+sudo mkfs -t xfs /dev/nvme7n1
+sudo mkdir /fast01
+sudo mkdir /fast02
+sudo mkdir /fast03
+sudo mkdir /fast04
+sudo mkdir /fast05
+sudo mkdir /fast06
+sudo mkdir /fast07
+sudo mkdir /fast08
+sudo mount /dev/nvme3n1 /fast01
+sudo mount /dev/nvme6n1 /fast02
+sudo mount /dev/nvme11n1 /fast03
+sudo mount /dev/nvme9n1 /fast04
+sudo mount /dev/nvme5n1 /fast05
+sudo mount /dev/nvme8n1 /fast06
+sudo mount /dev/nvme4n1 /fast07
+sudo mount /dev/nvme7n1 /fast08
+for i in {1..8}
+do
+sudo chown oracle /fast0${i}
+sudo chgrp oinstall /fast0${i}
+mkdir /fast0${i}/oradata
+mkdir /fast0${i}/oradata/flash
+mkdir /fast0${i}/oradata/
+mkdir /fast0${i}/oradata/tempfile
+done
+
+sudo mount /dev/nvme0n1 /u02
+sudo mount /dev/nvme10n1 /u03
+sudo mount /dev/nvme2n1 /u04
+
