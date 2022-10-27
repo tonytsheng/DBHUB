@@ -1,0 +1,149 @@
++ Install supporting rpms, etc
+sudo yum install java-11-amazon-corretto-headless
+sudo yum install java-11-amazon-corretto
+sudo amazon-linux-extras install java-openjdk11
+java -version
+sudo alternatives --config java
+
+sudo su - 
+cd /opt
+mkdir oracle
+cd oracle
+unzip ~/rpms/instantclient-basic-linux.x64-19.9.0.0.0dbru.zip
+unzip ~/rpms/instantclient-sqlplus-linux.x64-19.9.0.0.0dbru.zip
+
++ Set up .bash_profile with env vars
+export ORACLE_HOME=/opt/oracle/instantclient_19_9
+export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9
+export PATH=$ORACLE_HOME:$PATH
+
++ Confirm database connectivity
+[ec2-user@ip-10-5-4-84 ~]$ sqlplus system/Pass1234@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=18.212.70.138)(PORT=1521))(CONNECT_DATA=(SID=oradev)))
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Thu Oct 27 19:42:32 2022
+Version 19.9.0.0.0
+
+Copyright (c) 1982, 2020, Oracle.  All rights reserved.
+
+Last Successful login time: Thu Oct 27 2022 19:03:28 +00:00
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.2.0.1.0 - 64bit Production
+
+SQL>
+SQL>
+SQL>
+SQL>
+SQL> quit
+
+
++ Install and configure dms agent
+[ec2-user@ip-10-5-4-84 ~]$ sudo rpm -i aws-schema-conversion-tool-dms-agent-3.4.5-R2.x86_64.rpm
+warning: aws-schema-conversion-tool-dms-agent-3.4.5-R2.x86_64.rpm: Header V4 RSA/SHA1 Signature, key ID 7a24e172: NOKEY
+Installation was successful, please run script /opt/amazon/aws-schema-conversion-tool-dms-agent/bin/configure.sh to configure and start the agent services
+[ec2-user@ip-10-5-4-84 ~]$ /opt/amazon/aws-schema-conversion-tool-dms-agent/bin/configure.sh
+You must be root to configure the AWS Schema Conversion Tool DMS Agent
+[ec2-user@ip-10-5-4-84 ~]$ sudo /opt/amazon/aws-schema-conversion-tool-dms-agent/bin/configure.sh
+
+Configure the AWS Schema Conversion Tool DMS Agent server
+Note: you will use these parameters when configuring agent in AWS Schema Conversion Tool
+
+Please provide password for the server
+Use minimum 8 and up to 20 alphanumeric characters with at least one digit and one capital case character
+Password:
+Password (again):
+Error "libncurses.so.5: cannot open shared object file: No such file or directory"
+failed to load at_base
+
+Please provide port number the server will listen on (default is 3554)
+Note: you will have to configure your firewall rules accordingly
+Port: 1521
+Adding systemd script
+Created symlink from /etc/systemd/system/default.target.wants/replicate-local.service to /etc/systemd/system/replicate-local.service.
+Added to /etc/systemd/system and enabled
+Starting service...
+[ec2-user@ip-10-5-4-84 ~]$ ps -ef  |grep repctl
+ec2-user 19474  3246  0 19:51 pts/0    00:00:00 grep --color=auto repctl
+[ec2-user@ip-10-5-4-84 ~]$ sudo yum install libncurses
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                                                                            | 3.7 kB  00:00:00
+No package libncurses available.
+Error: Nothing to do
+[ec2-user@ip-10-5-4-84 ~]$ sudo yum install libncurses5
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+No package libncurses5 available.
+Error: Nothing to do
+[ec2-user@ip-10-5-4-84 ~]$ sudo yum install libncurses5^C
+[ec2-user@ip-10-5-4-84 ~]$ ls -l /usr/lib/libncurses*
+ls: cannot access /usr/lib/libncurses*: No such file or directory
+[ec2-user@ip-10-5-4-84 ~]$ sudo yum install libncurses*
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Package ncurses-libs-6.0-8.20170212.amzn2.1.3.x86_64 already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package ncurses-c++-libs.x86_64 0:6.0-8.20170212.amzn2.1.3 will be installed
+---> Package ncurses-compat-libs.x86_64 0:6.0-8.20170212.amzn2.1.3 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=============================================================================================================================
+ Package                          Arch                Version                                  Repository               Size
+=============================================================================================================================
+Installing:
+ ncurses-c++-libs                 x86_64              6.0-8.20170212.amzn2.1.3                 amzn2-core               52 k
+ ncurses-compat-libs              x86_64              6.0-8.20170212.amzn2.1.3                 amzn2-core              308 k
+
+Transaction Summary
+=============================================================================================================================
+Install  2 Packages
+
+Total download size: 359 k
+Installed size: 1.1 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/2): ncurses-compat-libs-6.0-8.20170212.amzn2.1.3.x86_64.rpm                                        | 308 kB  00:00:00
+(2/2): ncurses-c++-libs-6.0-8.20170212.amzn2.1.3.x86_64.rpm                                           |  52 kB  00:00:00
+-----------------------------------------------------------------------------------------------------------------------------
+Total                                                                                        3.4 MB/s | 359 kB  00:00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+Warning: RPMDB altered outside of yum.
+  Installing : ncurses-c++-libs-6.0-8.20170212.amzn2.1.3.x86_64                                                          1/2
+  Installing : ncurses-compat-libs-6.0-8.20170212.amzn2.1.3.x86_64                                                       2/2
+  Verifying  : ncurses-compat-libs-6.0-8.20170212.amzn2.1.3.x86_64                                                       1/2
+  Verifying  : ncurses-c++-libs-6.0-8.20170212.amzn2.1.3.x86_64                                                          2/2
+
+Installed:
+  ncurses-c++-libs.x86_64 0:6.0-8.20170212.amzn2.1.3          ncurses-compat-libs.x86_64 0:6.0-8.20170212.amzn2.1.3
+
+Complete!
+[ec2-user@ip-10-5-4-84 ~]$ ls -l /usr/lib/libncurses*
+ls: cannot access /usr/lib/libncurses*: No such file or directory
+[ec2-user@ip-10-5-4-84 ~]$ sudo /opt/amazon/aws-schema-conversion-tool-dms-agent/bin/configure.sh
+
+Configure the AWS Schema Conversion Tool DMS Agent server
+Note: you will use these parameters when configuring agent in AWS Schema Conversion Tool
+
+Please provide password for the server
+Use minimum 8 and up to 20 alphanumeric characters with at least one digit and one capital case character
+Password:
+Password (again):
+pszRootPath=/opt/amazon/aws-schema-conversion-tool-dms-agent/
+pszBinPath=/opt/amazon/aws-schema-conversion-tool-dms-agent/bin/
+[setserverpassword command] Succeeded
+
+Please provide port number the server will listen on (default is 3554)
+Note: you will have to configure your firewall rules accordingly
+Port: 1521
+Adding systemd script
+Added to /etc/systemd/system and enabled
+Starting service...
+[ec2-user@ip-10-5-4-84 ~]$ ps -ef  |grep repctl
+amazon   20300     1  0 19:53 ?        00:00:00 /opt/amazon/aws-schema-conversion-tool-dms-agent/bin/repctl -d /opt/amazon/aws-schema-conversion-tool-dms-agent/data service start port=3553 rest_port=1521
+amazon   20301 20300  1 19:53 ?        00:00:00 /opt/amazon/aws-schema-conversion-tool-dms-agent/bin/repctl -d /opt/amazon/aws-schema-conversion-tool-dms-agent/data service start port=3553 rest_port=1521
+ec2-user 20420  3246  0 19:53 pts/0    00:00:00 grep --color=auto repctl
+[ec2-user@ip-10-5-4-84 ~]$
+

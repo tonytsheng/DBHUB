@@ -1,8 +1,0 @@
-sudo service aws-kinesis-agent stop
-sudo service aws-kinesis-agent start
-sudo vi /etc/aws-kinesis/agent.json
-
-cd ~/DBHUB/KINESIS
-sudo ./LogGenerator.py 50000
-
-
