@@ -6,7 +6,7 @@
             "rule-name": "1",
             "object-locator": {
                 "schema-name": "customer_orders",
-                "table-name": "%"
+                "table-name": "heartbeat"
             },
             "rule-action": "include",
             "LoopbackPreventionSettings": {

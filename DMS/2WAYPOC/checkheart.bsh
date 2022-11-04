@@ -19,12 +19,12 @@ sqlplus -S ${CONNSTR} <<EQ
   col description format a20
   SELECT *
   FROM (select heartbeat_id, last_update_dt, last_update_site from heartbeat ORDER BY last_update_dt desc) h1
-  WHERE rownum <= 10
+  WHERE rownum <= 20
   ORDER BY rownum;
   exit;
 EQ
 else 
   CONNSTR="--host=${DBENDPT} --port=5432 --username=${USER} --dbname=${DBNAME}"
-  PGPASSWORD=${DB_PW} psql ${CONNSTR} -c "SELECT * FROM (SELECT * FROM customer_orders.heartbeat ORDER BY last_update_dt DESC LIMIT 10) h1 ORDER BY last_update_dt desc;"
+  PGPASSWORD=${DB_PW} psql ${CONNSTR} -c "SELECT * FROM (SELECT * FROM customer_orders.heartbeat ORDER BY last_update_dt DESC LIMIT 20) h1 ORDER BY last_update_dt desc;"
 fi
 

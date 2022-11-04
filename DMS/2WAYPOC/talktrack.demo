@@ -1,0 +1,40 @@
+Prep
+  Console :
+    2 migration tasks
+    both started and in green status
+    oracle -> pg     - restart - data loss - sync
+    pg     -> oracle - resume
+
+PPT
+  customer need - migration is a big deal
+    one shot over probably a long weekend
+    thousands of labor hours to get to this point
+    don't screw it up 
+  BfA - 2 way doors - most business decisions can be reversed easily
+    want to do the same with database migrations
+    Amazon.com did this exact thing
+  Solution
+    DynamoDB - key value pair - what has migrated or not - simple fast lookup
+    python 'client' - put data where it needs to go
+    Database migration - source Oracle - target RDS PostgreSQL
+    DMS - migrate in both directions - two migration tasks
+
+Demo
+  2 bg windows: qsite SITEA and qsite SITEB
+  1 fg window : 
+    show replication for migration forward is working
+      python3 appinsert.v3.pt SITEA 
+    now that we have replicated forward
+      no one hitting old database anymore
+      turn on new app in the cloud
+      replicate data backwards
+  one table involved in this but once again POC
+
+Conclusion
+  dms migration task info
+  dynamodb info
+  
+
+
+
+   

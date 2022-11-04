@@ -1,2 +1,3 @@
-select object_name, object_type from dba_objects where owner='ADMIN'
+select * from customer_orders.heartbeat where last_update_site='SITEB'
+order by last_update_dt
 /
