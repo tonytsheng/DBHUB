@@ -19,6 +19,11 @@ These artifacts in this repo reference some performance tests for a self-managed
 13. Pinned user tables to the smart flash cache.
     - alter table TABLENAME storage (FLASH_CACHE KEEP);
 14. Set filesystemio_options from NONE to SETALL.
+15. Changed instance type to r6id.24xl. Modified flash cache to only be on 4 instance volumes. 2 TEMP tablespaces spread across 5 files on instance store (by accident). Archiver error in the middle of test. 
+16. rerun. archiver error for a few mins.
+17. Increased EBS volumes and corresponding IOPS. 
+u02, u03, u04 - io1 volume: size from 900GB to 9000GB. IOPS from 45000 to 64000
+AWS will optimize each volume as part of this modification, which will take at least a few hours.
 
 ### Baseline
 - ien.24xlarge
@@ -58,6 +63,9 @@ Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
 12      | 152,165   | 335   | 4,277  | 1,864 | 464   | 4,533,680  |
 13      | 120,531   | .3    | 3,131  | 1,474 | 368   | 3,595,694  |
 14      | 395,464   | 332   | 1,604  | 4,830 | 1,180 | 11,621,071 |
+15      | 241,842   | 334   | 10,182 | 2,964 | 728   | 7,157,683 |
+16      | NA        |       |        |       |       |       |
+17      | 564,401   | .1   | 25,015 | 6,857 | 1,648   | 16,029,950 |
 
 *consistent at 65.2 gets/execution
 
