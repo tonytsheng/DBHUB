@@ -21,9 +21,7 @@ These artifacts in this repo reference some performance tests for a self-managed
 14. Set filesystemio_options from NONE to SETALL.
 15. Changed instance type to r6id.24xl. Modified flash cache to only be on 4 instance volumes. 2 TEMP tablespaces spread across 5 files on instance store (by accident). Archiver error in the middle of test. 
 16. rerun. archiver error for a few mins.
-17. Increased EBS volumes and corresponding IOPS. 
-u02, u03, u04 - io1 volume: size from 900GB to 9000GB. IOPS from 45000 to 64000
-AWS will optimize each volume as part of this modification, which will take at least a few hours.
+17. Increased EBS volumes and corresponding IOPS for u02, u03, and u04. io1 volume size modified from 900GB to 9000GB. IOPS from 45000 to 64000. AWS will optimize each volume as part of this modification, which will take at least a few hours.
 
 ### Baseline
 - ien.24xlarge
@@ -74,4 +72,4 @@ Baseline| 66,991    | 1,638 | 9,342  | 824   | 204   | 1,989,971  |
 - The biggest increase in performance was setting filesystemio_options. Adjusting shared pool had non-intuitive results. Surprisingly, pinning user tables to the smart flash cache resulted in a slight performance decrease.
 - For all of these tests, user data was placed on EBS volumes. Placing user data on instance store volumes should provide even more performance and would be a good follow up test, as long as the production implementation included a level of resilience such as a standby with Oracle Data Guard, for example.
 - Although not tested, Automatic Memory Management and adjusting the PGA could be worthwile follow up tests.
-
+- Use a size large enough for the EBS volumes to get that max IOPS.
