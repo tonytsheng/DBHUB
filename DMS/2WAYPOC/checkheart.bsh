@@ -15,10 +15,12 @@ if [ "${ENGINE}" == "oracle" ];then
   #echo ${CONNSTR}
 sqlplus -S ${CONNSTR} <<EQ
   set linesize 200
+  set pagesize 25
   col last_update_site format a99
+  col last_update_dt format a30
   col description format a20
   SELECT *
-  FROM (select heartbeat_id, last_update_dt, last_update_site from heartbeat ORDER BY last_update_dt desc) h1
+  FROM (select heartbeat_id, description, last_update_dt, last_update_site from heartbeat ORDER BY last_update_dt desc) h1
   WHERE rownum <= 20
   ORDER BY rownum;
   exit;

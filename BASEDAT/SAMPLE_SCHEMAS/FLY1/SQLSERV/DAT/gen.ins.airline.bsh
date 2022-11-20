@@ -1,1 +1,0 @@
-awk -F',' '{printf "insert into airline (airline_name, ind, abbreviation, formal_name, origin_country, ind2) values (%s,%s,%s,%s,%s,%s)\ngo\n", $2, $3, $4, $5, $6,  $7}' airline.csv

@@ -1,3 +1,15 @@
++ Update
+add oracle ip to target group
+10.1.2.187:1521
+add to pending target
+register target
+wait for it to become healthy
+maybe open a port or something - won't go green
+
+elb can only span resource in the same vpc
+  but can do it if you peer vpcs
+
+
 EC2 console
 Target Groups under Load Balancing
 

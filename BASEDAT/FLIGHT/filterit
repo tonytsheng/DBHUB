@@ -1,6 +1,0 @@
-for f in `ls flight*`
-do
-sed s/\"//g $f > new
-mv new $f
-done
-

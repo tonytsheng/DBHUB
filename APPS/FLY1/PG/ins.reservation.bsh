@@ -1,0 +1,26 @@
+seatnumber=`echo $RANDOM %25 | head -c2`
+seatletter=`head /dev/urandom | tr -dc A-G | head -c1`
+#flightno=`echo $RANDOM | head -c2`
+#flightno=`shuf -n 1 ../BASEDAT/currentflightiata`
+#echo ${lname} " : " ${fname} " : " ${flightcarrier} " : " ${flightno}
+
+# sqlplus with -l - connect only once 
+# trap for connection errors 
+# pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com pg102
+psql  -h pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com -p 5432 -d pg102 -U postgres <<EQ
+insert into
+reservation (lname, fname, seatno, flightno, dep, arr, reservedate)
+values 
+( (    select last_name from employee offset random() * (select count(*) from employee) limit 1 ), 
+  (    select first_name from employee offset random() * (select count(*) from employee) limit 1 ), 
+--   '${seatnumber}${seatletter}',
+--   (SELECT upper(array_to_string(ARRAY(SELECT chr((97 + round(random() * 25)) :: integer) FROM generate_series(1,3)), '')) || (select floor(random()* (99-10 + 10) + 10);
+
+
+--  '${flightno}',
+  (    select iata_code from airport offset random() * (select count(*) from airport) limit 1 ), 
+  (    select iata_code from airport offset random() * (select count(*) from airport) limit 1 ), 
+  now());
+select count(*) from reservation;
+\q
+EQ

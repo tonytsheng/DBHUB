@@ -3,7 +3,7 @@ SITE=$1
 while true
 do
 ./checkheart.bsh ${SITE}
-for i in {0..15}
+for i in {1..5}
 do
 echo -ne "$i"'\r'
 sleep 1
