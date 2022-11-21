@@ -7,7 +7,7 @@ drop sequence reservation_seq;
 create table airline (
 id number, 
 name varchar(30), 
-ind varchar(1), 
+iata varchar(2), 
 abbreviation varchar(3), 
 formal_name varchar(30), 
 origin_country varchar(30), 

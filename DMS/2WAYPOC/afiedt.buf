@@ -1,3 +1,2 @@
-select * from customer_orders.heartbeat where last_update_site='SITEB'
-order by last_update_dt
+insert into airline2 values (20923, 'COBALT', ' ', 'FCB', 'COBALT', 'Cyprus','Y')
 /

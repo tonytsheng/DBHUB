@@ -1,0 +1,2 @@
+select iata || '799' from airline where iata is not null order by dbms_random.value
+/
