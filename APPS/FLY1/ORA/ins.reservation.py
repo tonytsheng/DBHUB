@@ -8,6 +8,9 @@
 # ins.reservation.py
 # Python database client
 #   to use for FLY1 proof of concept
+#   must have data loaded 
+#   inserts rows into the reservation table and uses random 
+#     data from other tables to do the insert
 #
 # ---------------------------------------------------------------------------
 #
@@ -40,11 +43,13 @@ from random import seed
 from random import randint
 import random
 
+# get some random values for seat numbers and flight numbers
 seatnumber = randint(0,50)
 letters = ['A','B','C','D','E','F','G','H','I','J']
 seatletter = str(random.sample(letters,1)[0])
 seat=str(seatnumber)+seatletter
 flightnumber = str(randint(0,999))
+
 #print (seatnumber)
 #print (seatletter)
 #print (seat)
