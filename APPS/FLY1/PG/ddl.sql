@@ -5,13 +5,14 @@ drop table fly.reservation;
 drop sequence fly.reservation_seq;
 
 create table fly.airline (
-id int, 
-name varchar(30), 
-ind varchar(1), 
-abbreviation varchar(3), 
-formal_name varchar(30), 
-origin_country varchar(30), 
+id int,
+name varchar(30),
+iata varchar(2),
+abbreviation varchar(3),
+formal_name varchar(30),
+origin_country varchar(30),
 ind2 varchar(1));
+
 
 create unique index airline_pkidx on fly.airline (id, name);
 alter table fly.airline add constraint airline_pk primary key (id, name);
