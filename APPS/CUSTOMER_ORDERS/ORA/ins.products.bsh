@@ -6,11 +6,12 @@ db=$4
 PROD_NAME=`shuf -n 1 iata.dat`
 echo $PROD_NAME
 
-echo "insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE,PRODUCT_DETAILS)  " > /tmp/sql.$$
+echo "insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE,PRODUCT_DETAILS, IMAGE_LAST_UPDATED)  " > /tmp/sql.$$
 echo "values ( products_seq.nextval" >> /tmp/sql.$$
 echo " , '$PROD_NAME' " >> /tmp/sql.$$
 echo " , NULL " >> /tmp/sql.$$
 echo " , NULL " >>/tmp/sql.$$
+echo " , sysdate " >>/tmp/sql.$$
 echo "); " >> /tmp/sql.$$
 echo " commit; " >>/tmp/sql.$$
 echo " select count(*) from products; " >> /tmp/sql.$$

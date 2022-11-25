@@ -1,4 +1,4 @@
-for i in {0..15}
+for (( i=1;i<=$1;i++ ))
 do
 echo -ne "$i"'\r'
 sleep 1
