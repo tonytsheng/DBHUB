@@ -1,0 +1,13 @@
+{
+  "cloudwatch.emitMetrics": true,
+  "kinesis.endpoint": "",
+  "firehose.endpoint": "firehose:us-east-2.amazonaws.com",
+
+  "flows": [
+    {
+      "filePattern": "/home/ec2-user/data/httpd/ssl_access*",
+      "deliveryStream" : "WebLogs",
+      "initialPosition" : "START_OF_FILE"
+    }
+  ]
+}
