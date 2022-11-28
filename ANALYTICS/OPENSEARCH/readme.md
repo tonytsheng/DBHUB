@@ -1,4 +1,4 @@
-# Configure Your Open Search clsuter
+## Configure Your Open Search cluster
 domain name
 deployment type - dev/test
 version - used 1.3
