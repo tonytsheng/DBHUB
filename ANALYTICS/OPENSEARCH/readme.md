@@ -1,30 +1,30 @@
 ## Configure Your Open Search cluster
-domain name
-deployment type - dev/test
-version - used 1.3
-auto tune enabled
-1 az
-3 nodes
-ebs storage
-gp3
-10 mb ebs storage per node
-disable fine grained access control
-domain access policy - configure
-elements - my ip address - allow
-[allow the ip from your workstation and your dbhub ec2 instance]
-encryption - defaults
-create
+- Enter domain name
+- Select deployment type 
+- Used version 1.3 
+- auto tune enabled
+- 1 az, 3 nodes
+- ebs storage, gp3
+- 10 mb ebs storage per node
+- disable fine grained access control
+- Configure domain access policy
+  - elements - allow your ip address 
+  - Allow any IPs, including from your EC2 instance for example
+- Defaults for encryption options
+- Create
 
-create kinesis data firehose delivery stream
-source - direct put
-destination - open search
-stream name
-enable data transformation - browse lambda function for apache logs to opensearch
-choose opensearch service domain
-index, index rotation
-s3 bucket for failed data
+## Create Kinesis Data Firehose Delivery Stream
+- Source - direct put
+- Destination - open search
+- Modify the stream name
+- Enable data transformation - browse lambda function for apache logs to opensearch
+- Choose opensearch service domain
+- Specify index name and used a day for index rotation
+- Specify an S3 bucket with prefix for bad data
 
-edit /etc/aws-kinesis/agent.json
+## On your EC2 instance
+- Edit /etc/aws-kinesis/agent.json
+
 tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
 debug
 1 - stop agent, move files back in and start again
