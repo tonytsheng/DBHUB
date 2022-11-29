@@ -24,8 +24,9 @@
 
 ## On your EC2 instance
 - Edit /etc/aws-kinesis/agent.json
-
-tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
+  - See agent.json
+- ```sudo service aws-kinesis-agent start|stop|status```
+- tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
 debug
 1 - stop agent, move files back in and start again
 2 - remove and reinstall rpm, edit agent.json and start again
