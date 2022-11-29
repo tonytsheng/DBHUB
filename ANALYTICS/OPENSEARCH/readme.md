@@ -26,12 +26,20 @@
 - Edit /etc/aws-kinesis/agent.json
   - See agent.json
 - ```sudo service aws-kinesis-agent start|stop|status```
-- tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
-debug
-1 - stop agent, move files back in and start again
-2 - remove and reinstall rpm, edit agent.json and start again
-files could be read in /var/log/cadabra - dummy directory created for a lab
-but not from /home/ec2-user/data
+- ```tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log```
 
+## Log Generator
+
+## OpenSearch cli queries
+```
 curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/weblogs-*/_search?q=get' | jq
+
+curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/weblogs*/_search?q=host:80.127.116.96' | jq
+
+curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/weblogs*/_search?q=response:400' | jq
+
+curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/weblogs*/_count'
+{"count":349276,"_shards":{"total":10,"successful":10,"skipped":0,"failed":0}}
+```
+
 
