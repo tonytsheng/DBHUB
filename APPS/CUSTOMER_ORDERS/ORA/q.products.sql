@@ -8,5 +8,7 @@ select * from
 (select PRODUCT_ID,PRODUCT_NAME, IMAGE_LAST_UPDATED from products where image_last_updated is not null 
 	order by IMAGE_LAST_UPDATED desc) h1  
 where rownum <=10 order by rownum;  
+
+select count(*) from orders;
 exit
 
