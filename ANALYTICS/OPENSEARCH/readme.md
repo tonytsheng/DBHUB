@@ -42,4 +42,14 @@ curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.am
 curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/web*/_stats' | jq
 ```
 
+## Dashboard
+
+Once your data has been loaded with KDFH:
+- go to your dashboard
+- on the left, click Stack Management
+- on the left, click Index Patterns
+- enter your index pattern name, click Create Index pattern
+- go back to Dashboard..Discover
+- your index pattern that you just created should now show up in the dropdown in the left panel
+
 
