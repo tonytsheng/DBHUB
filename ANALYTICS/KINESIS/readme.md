@@ -10,6 +10,6 @@
   - See agent.json.opensearch
   - Note that the kdfh stream (kdfh-400) was built with a lambda function to convert apache logs to opensearch - this was done in the console
   - Start/stop the kinesis agent and watch the logs:
-- ```sudo service aws-kinesis-agent start|stop|status```
-- ```tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log```
+    - ```sudo service aws-kinesis-agent start|stop|status```
+    - ```tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log```
 
