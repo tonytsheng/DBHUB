@@ -1,0 +1,15 @@
+{
+  "cloudwatch.emitMetrics": true,
+  "kinesis.endpoint": "",
+  "firehose.endpoint": "firehose.us-east-2.amazonaws.com",
+
+  "awsAccessKeyId": "",
+  "awsSecretAccessKey": "",
+
+  "flows": [
+    {
+      "filePattern": "/var/log/cadabra/*.log",
+      "deliveryStream": "kdfh-ec2-s3"
+    }
+  ]
+}
