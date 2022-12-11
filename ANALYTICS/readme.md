@@ -4,7 +4,8 @@
   2 - S3
 
 ## OpenSearch
-see OpenSearch folder
+set up KDFH for OpenSearch - see the details in the KINESIS folder
+set up OpenSearch cluster - see the details in the OPENSEARCH folder
 
-## S3
-use for EMR
+## EMC
+configure KDFH to deliver to an S3 bucket

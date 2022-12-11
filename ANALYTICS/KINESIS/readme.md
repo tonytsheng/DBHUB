@@ -13,3 +13,11 @@
     - ```sudo service aws-kinesis-agent start|stop|status```
     - ```tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log```
 
+## Connecting KDFH to S3
+- sudo ./LogGenerator.py 5000
+- writes to /var/log/cadabra/%Y%m%d-%H%M%S.log
+- using the kdfh-ec2-s3 kdfh stream, which was built:
+  - Source - direct put
+  - Destination - S3
+  - Modify the stream name
+  - Browse for S3 bucket
