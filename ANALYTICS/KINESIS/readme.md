@@ -21,3 +21,9 @@
   - Destination - S3
   - Modify the stream name
   - Browse for S3 bucket
+
+## Switch
+- sudo cp agent.json.opensearch /etc/aws-kinesis-agent/agent.json 
+- sudo cp agent.json.s3 /etc/aws-kinesis-agent/agent.json 
+- sudo service aws-kinesis-agent restart
+
