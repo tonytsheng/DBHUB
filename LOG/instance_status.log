@@ -15825,3 +15825,62 @@ An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster op
 nep1002-cluster
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep1002-cluster is in stopped state but expected it to be one of available.
+Sun Dec 11 23:00:01 UTC 2022
+stop-db-instance
++++ Instances
+aurdb1-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurdb1-instance-1-us-east-2c
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aurmysql100-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+nep1002
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+pg200
+DBINSTANCE	20	True	us-east-2c	7	region	rds-ca-2019	True	False	arn:aws:rds:us-east-2:070201068661:db:pg200	db.m6i.large	pg200	stopping	pg200	0	db-FBYKSIQLCRZQLFAHDFYYJZOBLY	False	postgres	14.3	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-FBYKSIQLCRZQLFAHDFYYJZOBLY	False	2022-08-14T13:31:22.388Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2022-12-11T22:54:33Z	postgresql-license	postgres	1000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	09:39-10:09	sun:05:26-sun:05:56	True	True	gp2
+DBPARAMETERGROUPS	default.postgres14	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENDPOINT	pg200.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-14	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+sqlserver500
+DBINSTANCE	200	False	us-east-2b	7	region	rds-ca-2019	SQL_Latin1_General_CP1_CI_AS	True	False	arn:aws:rds:us-east-2:070201068661:db:sqlserver500	db.m5.large	sqlserver500	stopping	0	db-LKKJYBCIE5CUCQSWXR65DJZBYA	True	sqlserver-se	15.00.4073.23.v1	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-LKKJYBCIE5CUCQSWXR65DJZBYA	False	2021-07-28T18:53:07.091Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2022-12-11T22:55:01Z	license-included	admin	1000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	04:39-05:09	sat:08:54-sat:09:24	True	True	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::070201068661:role/ttsheng-rds	ACTIVE
+DBPARAMETERGROUPS	default.sqlserver-se-15.0	pending-reboot
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	sqlserver500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1433
+OPTIONGROUPMEMBERSHIPS	default:sqlserver-se-15-00	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+sqlserver600
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver600 is not in available state.
++++ Clusters
+aurdb1
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurdb1 is in stopped state but expected it to be one of available.
+aurmysql100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aurmysql100 is in stopped state but expected it to be one of available.
+nep1002-cluster
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep1002-cluster is in stopped state but expected it to be one of available.
