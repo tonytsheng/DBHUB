@@ -8,4 +8,6 @@
 ## Workshop
 https://catalog.us-east-1.prod.workshops.aws/workshops/c86bd131-f6bf-4e8f-b798-58fd450d3c44/en-US/spark-etl/steps
 
+## Jupyter Notebook
+
 
