@@ -31,9 +31,11 @@ Here are steps that will help you implement this solution.
   - Leave the Private IPv4 address drop down default for all subnets.
   - Listener - enter TCP and the database port and select the name of the Target Group you just created.
 - Click Create Load Balancer.
+- Note the port that your Load Balancer is running on - the default is 80.
+- You can add another target group to run on another port.
 
 ## Open the database port in your VPC Security Groups
-- You will need to open the database port for the subnet(s) that your database is running in. So add an inbound rule for port 5432, subnet 10.0.2.0/24 for example.
+- You will need to open the database port for the subnet(s) that your database is running in. So add an inbound rule for port that the load balancer is running on, 80 is the default, subnet 10.0.2.0/24 for example.
 
 ## Test connectivity through the NLB
 - Wait for the status of the load balancer to become Active - this may take a few minutes.
@@ -54,7 +56,7 @@ pg102=>
 
 - Calling psql with the NLB endpoint:
 ```
-[ec2-user@ip-10-0-2-111 NLB_RDS]$ psql --host=ttshengnlb-95d4fe9fd1597692.elb.us-east-2.amazonaws.com --port=5432 --username=postgres --dbname=pg102
+[ec2-user@ip-10-0-2-111 NLB_RDS]$ psql --host=ttshengnlb-95d4fe9fd1597692.elb.us-east-2.amazonaws.com --port=80 --username=postgres --dbname=pg102
 Password for user postgres:
 psql (10.17, server 12.8)
 WARNING: psql major version 10, server major version 12.
