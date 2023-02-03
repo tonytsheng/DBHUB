@@ -1,0 +1,3 @@
+select segment_name,sum(bytes)/1024/1024 MB
+from dba_segments where segment_type='TABLE' and segment_name=upper('sde.gis_osm_buildings_wkt') group by segment_name
+/

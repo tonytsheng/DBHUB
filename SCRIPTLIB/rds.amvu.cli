@@ -142,3 +142,5 @@ aws rds describe-db-engine-versions --engine "postgres" --engine-version "13.2" 
     ]
 ]
 
+aws rds describe-db-engine-versions --engine oracle-ee --region us-east-2 --query "DBEngineVersions[*].ValidUpgradeTarget[*].{AutoUpgrade:AutoUpgrade,EngineVersion:EngineVersion}" --output text --profile dba
+
