@@ -7,3 +7,9 @@
       ```
       psql --host=<your db endpoint> --port=5432 --username=postgres --dbname=pg500
       ```
+- 1.DMSWorkshop.yaml 
+  - Taken from a DMS Workshop in AWS Workshop studio
+    - Base VPC
+    - A source database, depending on the lab chosen in CFN drop downs
+    - All the components for DMS
+      - DMS Replication Instance and Endpoints are not created.
