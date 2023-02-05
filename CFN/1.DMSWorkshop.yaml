@@ -436,7 +436,7 @@ Resources:
       DBInstanceClass: !Ref RDSInstanceType
       Engine: oracle-ee
       EngineVersion: '19.0.0.0.ru-2022-04.rur-2022-04.r1'
-      LicenseModel: license-included
+      LicenseModel: bring-your-own-license
       PubliclyAccessible: false
       AvailabilityZone:
         Fn::GetAtt:

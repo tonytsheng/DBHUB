@@ -11,5 +11,10 @@
   - Taken from a DMS Workshop in AWS Workshop studio
     - Base VPC
     - A source database, depending on the lab chosen in CFN drop downs
-    - All the components for DMS
+      - For Oracle to Aurora PostgreSQL:
+        - A windows EC2 instance for SCT
+        - An RDS for Oracle instance
+        - An Aurora PostgreSQL cluster
+      - For SQL Server to Aurora PostgreSQL:
+        - A windows EC2 instance for SCT also running SQL Server
       - DMS Replication Instance and Endpoints are not created.
