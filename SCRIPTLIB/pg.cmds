@@ -99,3 +99,7 @@ pg102=> select pg_relation_filepath ('t1');
 select version();
 select pg_sleep(5);
 
+select "table", size, tbl_rows, estimated_visible_rows
+from SVV_TABLE_INFO
+where "table" = 'orders';
+
