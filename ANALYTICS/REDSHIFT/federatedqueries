@@ -1,0 +1,30 @@
+1 create an external schema that points to aurora
+CREATE EXTERNAL SCHEMA apg
+FROM POSTGRES
+DATABASE 'database-1' SCHEMA 'myschema'
+URI 'endpoint to aurora hostname'
+IAM_ROLE 'arn:aws:iam::123456789012:role/Redshift-SecretsManager-RO'
+SECRET_ARN 'arn:aws:secretsmanager:us-west-2:123456789012:secret:federation/test/dataplane-apg-creds-YbVKQw';
+
+2 create an external schema that points to s3, grant permission
+CREATE EXTERNAL SCHEMA s3 
+FROM DATA CATALOG 
+DATABASE 'default' REGION 'us-west-2' 
+IAM_ROLE 'arn:aws:iam::123456789012:role/Redshift-S3'; 
+
+GRANT USAGE ON SCHEMA s3 TO public;
+
+3 query the external schemas
+SELECT count(*) FROM public.lineitem; 		-- the redshift table
+SELECT count(*) FROM apg.lineitem;		-- the aurora table
+SELECT count(*) FROM s3.lineitem_1t_part;	-- the s3 table
+
+4 the view across all data sources
+CREATE VIEW lineitem_all AS
+  SELECT l_orderkey,l_partkey,l_suppkey,l_linenumber,l_quantity,l_extendedprice,l_discount,l_tax,l_returnflag,l_linestatus,
+         l_shipdate::date,l_commitdate::date,l_receiptdate::date, l_shipinstruct ,l_shipmode,l_comment 
+  FROM s3.lineitem_1t_part 
+  UNION ALL SELECT * FROM public.lineitem 
+  UNION ALL SELECT * FROM apg.lineitem 
+     with no schema binding;
+
