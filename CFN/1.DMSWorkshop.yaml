@@ -39,7 +39,8 @@ Mappings:
       "EC2AMI" : "ami-03682cbe3aba12927"  # Updated  snapshot June 10, 2022 ec2 from Feb 2020
       "OracleSnapshotId" : "arn:aws:rds:us-east-1:833997227572:snapshot:dms-lab-oracle-source-sept2022-us-east-1"
     us-east-2: # Ohio
-      "EC2AMI" : "ami-083d84d1b53340b9d" # Updated  snapshot June 10, 2022 ec2 from Feb 2020
+#      "EC2AMI" : "ami-083d84d1b53340b9d" # Updated  snapshot June 10, 2022 ec2 from Feb 2020
+      "EC2AMI" : "ami-009bba4ea98291f51" # Updated  snapshot June 10, 2022 ec2 from Feb 2020
       "OracleSnapshotId" : "arn:aws:rds:us-east-2:833997227572:snapshot:dms-lab-oracle-source-sept2022-us-east-2"
     us-west-2: # Oregon
       "EC2AMI" : "ami-03693ba72dc02b388" # Updated  snapshot June 10, 2022 ec2 from Feb 2020
