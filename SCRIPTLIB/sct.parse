@@ -1,0 +1,3 @@
+highlight all text in pdf
+paste into txt file
+grep Issue sctfile | awk '{printf (NR%2==0) ? $0 "\n" :  $0}'
