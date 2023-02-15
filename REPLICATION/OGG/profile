@@ -1,0 +1,9 @@
+export ORACLE_HOME=/opt/oracle/instantclient_19_9
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$ORACLE_HOME:$PATH
+export OGG_HOME=/home/ec2-user/gg
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.352.b08-2.amzn2.0.1.x86_64
+#export JAVA_HOME=$OGG_HOME/jdk
+export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server:/opt/oracle/instantclient_19_9:$LD_LIBRARY_PATH
+
+
+sudo yum install java-1.8.0-openjdk-1.8.0.352.b08-2.amzn2.0.1.x86_64
