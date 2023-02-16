@@ -1,0 +1,23 @@
+unzip 214000_ggs_Linux_x64_BigData_64bit.zip
+
+install java
+
+set env vars
+
+ADMIN/ttsora10> alter system set ENABLE_GOLDENGATE_REPLICATION=true scope=spfile;
+alter system set ENABLE_GOLDENGATE_REPLICATION=true scope=spfile
+this has to be done with a parameter group
+create new parameter group from an existing parameter group family
+modify the parameter
+assign the rds instances to the new parameter group
+
+install ogg core
+- fix swap space on instance
+- create /home/ec2-user/install
+- mv zip file into install
+- unzip gg core into install dir
+- create empty /home/ec2-user/ogg
+- create empty /home/ec2-user/oggd
+- ./runInstaller -silent -showProgress -waitforcompletion -responseFile /home/ec2-user/install/fbo_ggs_Linux_x64_Oracle_shiphome/Disk1/oggcore.rsp
+
+
