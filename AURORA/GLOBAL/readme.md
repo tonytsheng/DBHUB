@@ -9,7 +9,7 @@ aws rds describe-db-engine-versions --engine aurora-mysql  --query 'DBEngineVers
 aws rds create-global-cluster --global-cluster-identifier aurg-mysql-100 \
   --engine aurora-mysql --engine-version 8.0.mysql_aurora.3.02.2 --region us-east-2
 ```
-  - Create primary cluster in smae region as the global database
+  - Create primary cluster in same region as the global database
 ```
 aws rds create-db-cluster --global-cluster-identifier aurg-mysql-100 \
   --db-cluster-identifier  aurg-mysql-100-us-e2 \
@@ -31,6 +31,5 @@ aws rds create-db-instance --db-cluster-identifier aurg-mysql-100-us-e2 \
 ```
   - The first instance you create in the cluster is the writer.
   - All subsequent ones will be readers.
-
 - Reminder - remove a node from the region that it is in.
   - Console may get a little confused based on global vs regions.
