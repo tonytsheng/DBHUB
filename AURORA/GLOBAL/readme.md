@@ -36,15 +36,28 @@ aws rds create-db-cluster --global-cluster-identifier aurg-mysql-100 \
   --db-cluster-identifier  aurg-mysql-100-ap-se2 \
   --engine aurora-mysql --engine-version 8.0.mysql_aurora.3.02.2  \
   --region ap-southeast-2
+  | --enable-global-write-forwarding
 
 aws rds create-db-instance --db-cluster-identifier aurg-mysql-100-ap-se2 \
   --db-instance-identifier aurg-mysql-100-ap-se2-200 \
   --db-instance-class db.r5.large \
   --engine aurora-mysql --engine-version 8.0.mysql_aurora.3.02.2 \
   --region ap-southeast-2
+
+aws rds create-db-instance --db-cluster-identifier aurg-mysql-100-ap-se2 \
+  --db-instance-identifier aurg-mysql-100-ap-se2-100 \
+  --db-instance-class db.r5.large \
+  --engine aurora-mysql --engine-version 8.0.mysql_aurora.3.02.2 \
+  --region ap-southeast-2
+
+aws rds modify-db-cluster --db-cluster-identifier aurg-mysql-100-ap-se2 \
+  --region ap-southeast-2 \
+  --enable-global-write-forwarding
+
 ```
   - Note there is no user credentials when creating this secondary cluster
   - The first instance you create in the cluster is the writer.
   - All subsequent ones will be readers.
+  - You can create more than one instance at a time. [Confirm]
 - Reminder - remove a node from the region that it is in.
   - Console may get a little confused based on global vs regions.
