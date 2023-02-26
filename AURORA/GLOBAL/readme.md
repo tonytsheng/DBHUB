@@ -1,4 +1,5 @@
 ## Aurora Global and Write Forwarding
+### Aurora Global Setup
 - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-write-forwarding.html 
 - Note global cluster and regional clusters
 - One writer in primary cluster and many readers
