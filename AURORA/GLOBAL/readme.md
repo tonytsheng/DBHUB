@@ -64,3 +64,6 @@ aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifi
   - You can create more than one instance at a time. [Confirm]
   - Remove a node from the region that it is in.
   - Console may get a little confused based on global vs regions.
+
+###  Write Forwarding
+
