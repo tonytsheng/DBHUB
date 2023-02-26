@@ -1,10 +1,10 @@
 - Aurora Global and Write Forwarding
+  - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-write-forwarding.html 
   - Note global cluster and regional clusters
   - One writer in primary cluster and many readers
   - In the console, create an Aurora cluster in your primary region.
     - Then Add Region which will add a second region and turn your cluster into a global cluster.
 ![Optional Text](globalaurora1.jpg)
-  - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-write-forwarding.html 
   - List engines available for aurora-mysql - note global write forwarding is only available for mysql
 ```
 aws rds describe-db-engine-versions --engine aurora-mysql  --query 'DBEngineVersions[].ValidUpgradeTarget[].[Engine,EngineVersion]'
