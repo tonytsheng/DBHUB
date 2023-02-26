@@ -67,4 +67,55 @@ aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifi
   - Console may get a little confused based on global vs regions.
 
 ###  Write Forwarding
+- Baseline operations
+  - Create test table on the primary writer node.
+  - Open port for security groups and/or peer VPCs where reader nodes are running.
+  - Insert some dummy data on the primary writer node.
+  - Select data from a reader node.
+
+```
+[ec2-user@ip-10-0-2-111 ~]$ for region in us-east-1 us-east-2 ap-southeast-2; do aws rds describe-db-instances --query 'DBInstances[].Endpoint[]' --region $region; done
+[
+    {
+        "Address": "clu-usea1-mysql-db900-r.c93uuztwxxsv.us-east-1.rds.amazonaws.com",
+        "Port": 3306,
+        "HostedZoneId": "Z2R2ITUGPM61AM"
+    },
+    {
+        "Address": "neptunedbinstance-od7q4irkakwq.c93uuztwxxsv.us-east-1.neptune.amazonaws.com",
+        "Port": 8182,
+        "HostedZoneId": "ZUFXD4SLT2LS7"
+    }
+]
+[
+    {
+        "Address": "clu-usea2-mysql-db900-w.cyt4dgtj55oy.us-east-2.rds.amazonaws.com",
+        "Port": 3306,
+        "HostedZoneId": "Z2XHWR1WZ565X2"
+    },
+    {
+        "Address": "pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com",
+        "Port": 5432,
+        "HostedZoneId": "Z2XHWR1WZ565X2"
+    },
+    {
+        "Address": "sqlserver500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com",
+        "Port": 1433,
+        "HostedZoneId": "Z2XHWR1WZ565X2"
+    }
+]
+[
+    {
+        "Address": "clu-apse2-mysql-db900-r.cighaawlyk1n.ap-southeast-2.rds.amazonaws.com",
+        "Port": 3306,
+        "HostedZoneId": "Z32T0VRHXEXS0V"
+    }
+]
+
+```
+MySQL [ttsheng]> set aurora_replica_read_consistency = 'eventual';
+ERROR 1231 (42000): Variable aurora_replica_read_consistency cannot be set on Master
+MySQL [ttsheng]> quit
+```
+
 
