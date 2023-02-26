@@ -111,6 +111,7 @@ aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifi
         "HostedZoneId": "Z32T0VRHXEXS0V"
     }
 ]
+```
 
 ```
 MySQL [ttsheng]> set aurora_replica_read_consistency = 'eventual';
