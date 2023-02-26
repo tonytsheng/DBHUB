@@ -58,10 +58,9 @@ aws rds modify-db-cluster --db-cluster-identifier aurg-mysql-100-ap-se2 \
   --enable-global-write-forwarding
 aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifier,GlobalWriteForwardingStatus:GlobalWriteForwardingStatus}' --region ap-southeast-2
 ```
-
-  - Note there is no user credentials when creating this secondary cluster
+  - Note there are no user credentials when creating a secondary cluster
   - The first instance you create in the cluster is the writer.
   - All subsequent ones will be readers.
   - You can create more than one instance at a time. [Confirm]
-- Reminder - remove a node from the region that it is in.
+  - Remove a node from the region that it is in.
   - Console may get a little confused based on global vs regions.
