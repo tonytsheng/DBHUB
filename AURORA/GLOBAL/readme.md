@@ -112,11 +112,10 @@ aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifi
     }
 ]
 ```
-
+  - Note you can't set aurora replica read consistency on the writer node.
 ```
 MySQL [ttsheng]> set aurora_replica_read_consistency = 'eventual';
 ERROR 1231 (42000): Variable aurora_replica_read_consistency cannot be set on Master
-MySQL [ttsheng]> quit
 ```
 
 
