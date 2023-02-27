@@ -58,23 +58,6 @@ aws rds modify-db-cluster --db-cluster-identifier aurg-mysql-100-ap-se2 \
   --region ap-southeast-2 \
   --enable-global-write-forwarding
 aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifier,GlobalWriteForwardingStatus:GlobalWriteForwardingStatus}' --region ap-southeast-2
-```
-  - Note there are no user credentials when creating a secondary cluster
-  - The first instance you create in the cluster is the writer.
-  - All subsequent ones will be readers.
-  - You can create more than one instance at a time. [Confirm]
-  - You must remove a node/cluster from the region that it is in.
-  - Remove a cluster from the global cluster by promoting it to a stand alone.
-  - Console may get a little confused based on global vs regions.
-
-###  Write Forwarding
-- Baseline operations
-  - Create test table on the primary writer node.
-  - Open port for security groups and/or peer VPCs where reader nodes are running.
-  - Insert some dummy data on the primary writer node.
-  - Select data from a reader node.
-
-```
 [ec2-user@ip-10-0-2-111 ~]$ for region in us-east-1 us-east-2 ap-southeast-2; do aws rds describe-db-instances --query 'DBInstances[].Endpoint[]' --region $region; done
 [
     {
@@ -113,6 +96,13 @@ aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifi
     }
 ]
 ```
+  - Note there are no user credentials when creating a secondary cluster
+  - The first instance you create in the cluster is the writer.
+  - All subsequent ones will be readers.
+  - You can create more than one regional cluster at a time. 
+  - You must remove a node/cluster from the region that it is in.
+  - Remove a cluster from the global cluster by promoting it to a stand alone.
+  - Console may get a little confused based on global vs regions.
 - Testing write forwarding
 ```
 MySQL [(none)]> use ttsheng;
