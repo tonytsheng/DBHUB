@@ -5,7 +5,7 @@
 - One writer in primary cluster and many readers
 - In the console, create an Aurora cluster in your primary region.
   - Then Add Region which will add a second region and turn your cluster into a global cluster.
-![Optional Text](globalaurora1.jpg)
+![Optional Text](globalaurora2.jpg)
 
 - Some cli commands
 ```
