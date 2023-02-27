@@ -63,7 +63,8 @@ aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifi
   - The first instance you create in the cluster is the writer.
   - All subsequent ones will be readers.
   - You can create more than one instance at a time. [Confirm]
-  - Remove a node from the region that it is in.
+  - You must remove a node/cluster from the region that it is in.
+  - Remove a cluster from the global cluster by promoting it to a stand alone.
   - Console may get a little confused based on global vs regions.
 
 ###  Write Forwarding
