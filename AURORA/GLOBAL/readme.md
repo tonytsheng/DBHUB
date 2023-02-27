@@ -58,6 +58,7 @@ aws rds modify-db-cluster --db-cluster-identifier aurg-mysql-100-ap-se2 \
   --region ap-southeast-2 \
   --enable-global-write-forwarding
 aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifier,GlobalWriteForwardingStatus:GlobalWriteForwardingStatus}' --region ap-southeast-2
+
 [ec2-user@ip-10-0-2-111 ~]$ for region in us-east-1 us-east-2 ap-southeast-2; do aws rds describe-db-instances --query 'DBInstances[].Endpoint[]' --region $region; done
 [
     {
