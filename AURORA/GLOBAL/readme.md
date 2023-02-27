@@ -112,10 +112,41 @@ aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifi
     }
 ]
 ```
-  - Note you can't set aurora replica read consistency on the writer node.
+- Testing write forwarding
 ```
-MySQL [ttsheng]> set aurora_replica_read_consistency = 'eventual';
-ERROR 1231 (42000): Variable aurora_replica_read_consistency cannot be set on Master
-```
+MySQL [(none)]> use ttsheng;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
 
+Database changed
+MySQL [ttsheng]>  set aurora_replica_read_consistency = 'eventual';
+Query OK, 0 rows affected (0.00 sec)
+
+MySQL [ttsheng]> select * from t1;
++------+------+
+| col1 | col2 |
++------+------+
+|    1 |    2 |
++------+------+
+1 row in set (0.00 sec)
+
+MySQL [ttsheng]> insert into t1 values (99,99); select * from t1;
+Query OK, 1 row affected (0.19 sec)
+
++------+------+
+| col1 | col2 |
++------+------+
+|    1 |    2 |
++------+------+
+1 row in set (0.00 sec)
+
+MySQL [ttsheng]> select * from t1;
++------+------+
+| col1 | col2 |
++------+------+
+|    1 |    2 |
+|   99 |   99 |
++------+------+
+2 rows in set (0.01 sec)
+```
 
