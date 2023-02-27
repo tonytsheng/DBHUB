@@ -104,6 +104,7 @@ aws rds describe-db-clusters --query '*[].{DBClusterIdentifier:DBClusterIdentifi
   - You must remove a node/cluster from the region that it is in.
   - Remove a cluster from the global cluster by promoting it to a stand alone.
   - Console may get a little confused based on global vs regions.
+
 ### Testing write forwarding
 ```
 MySQL [(none)]> use ttsheng;
