@@ -133,7 +133,6 @@ MySQL [ttsheng]> select * from t1;
 MySQL [ttsheng]> insert into t1 values (99,99); select * from t1;
 Query OK, 1 row affected (0.19 sec)
 -- this looks like you write an insert to a read replica!!
-
 +------+------+
 | col1 | col2 |
 +------+------+
@@ -149,5 +148,6 @@ MySQL [ttsheng]> select * from t1;
 |   99 |   99 |
 +------+------+
 2 rows in set (0.01 sec)
+-- wait a few seconds to run the select again - propogated from the writer
 ```
 
