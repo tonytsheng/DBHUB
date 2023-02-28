@@ -1,0 +1,27 @@
+seatnumber=`echo $RANDOM %25 | head -c2`
+seatletter=`head /dev/urandom | tr -dc A-G | head -c1`
+#flightno=`echo $RANDOM | head -c2`
+flightno=`shuf -n 1 /home/ec2-user/DBHUB/APPS/FLIGHT/currentflightiata`
+echo ${lname} " : " ${fname} " : " ${flightcarrier} " : " ${flightno}
+
+# sqlplus with -l - connect only once 
+# trap for connection errors 
+
+sqlplus -S -l 'fly1/fly1@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ttsora10)))' <<EQ
+insert into
+reservation
+(lname, fname, seatno, flightno, dep, arr, reservedate)
+values 
+-- ( reservation_seq.nextval,
+  (select last_name from employee order by rand() limit 1)
+  (select first_name from employee order by rand() limit 1)
+  '${seatnumber}${seatletter}',
+--  (select abbreviation || ${flightno} from (select abbreviation from airline order by dbms_random.value) where rownum <=1),
+  '${flightno}',
+  (select iata_code from airport order by rand() limit 1)
+  (select iata_code from airport order by rand() limit 1)
+  sysdate);
+commit;
+select * from (select * from reservation order by id desc) where rownum <=5 order by id asc ;
+select count(*) from reservation;
+EQ

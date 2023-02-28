@@ -22,7 +22,7 @@ if [ -z ${INFILE} ]; then
     mysql ${CONNSTR}
 else
     #suppress output if using an inputfile 
-    mysql -S ${CONNSTR} @${INFILE}
+    mysql -S ${CONNSTR} < ${INFILE}
 fi
 
 
