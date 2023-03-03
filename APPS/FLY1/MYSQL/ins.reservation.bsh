@@ -17,5 +17,5 @@ values
   (select iata_code from airport order by rand() limit 1),
   curdate());
 commit;
-select * from reservation;
+select count(*) from reservation;
 EQ
