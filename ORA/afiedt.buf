@@ -1,2 +1,0 @@
-select table_name from dba_tables where owner='CUSTOMER_ORDERS'
-/
