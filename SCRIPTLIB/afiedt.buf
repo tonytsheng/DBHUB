@@ -1,2 +1,2 @@
-select job_name,owner_name  from dba_datapump_jobs where state='EXECUTING'
+SELECT text FROM table(rdsadmin.rds_file_util.read_text_file('BDUMP','dbtask-1677858314063-17.log'))
 /
