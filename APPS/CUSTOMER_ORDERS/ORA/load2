@@ -1,4 +1,4 @@
-DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli ttsora10`
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli ttsora10-secret`
 
 while true
 do
