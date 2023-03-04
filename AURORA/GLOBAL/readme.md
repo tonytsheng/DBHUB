@@ -143,4 +143,6 @@ MySQL [ttsheng]> select * from t1;
 2 rows in set (0.01 sec)
 -- wait a few seconds to run the select again - propogated from the writer
 ```
-
+### Failover
+If the writer node is taken down, a reader node becomes the writer. Keep this in mind for naming conventions.
+![Optional Text](globalaurora3.jpg)
