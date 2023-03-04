@@ -9,7 +9,7 @@ select * from all_directories
 ```
 3. Call the write_csv proc for each table, noting the table, directory and output file name. Run this from a machine that has enough disk space for your csv and parquet files.
 ```
- exec write_csv ('SCHEMA.TABLE','CSV_DIR','table.csv');
+ADMIN/ttsora10> exec write_csv ('SCHEMA.TABLE','CSV_DIR','table.csv');
 ``` 
   - See the loop_write_csv pl/sql block to generate this for every table in a given schema
 4. Install everything you need for python, including pandas and pyarrow if not already installed
