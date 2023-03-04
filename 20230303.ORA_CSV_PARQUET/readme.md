@@ -24,3 +24,5 @@ python csv_to_parquet.py TABLENAME
 6. The output will be TABLENAME.parquet
 
 7. Consider downloading a parquet viewer at https://github.com/mukunku/ParquetViewer/releases
+
+8. Tables with blob columns should probably be processed differently.
