@@ -7,7 +7,7 @@ sqlplus user/pw@sid @write_csv.prc
 ```
 select * from all_directories
 ```
-3. Call the write_csv proc for each table, noting the table, directory and output file name. Run this from a machine that hasenough disk space for your csv and parquet files.
+3. Call the write_csv proc for each table, noting the table, directory and output file name. Run this from a machine that has enough disk space for your csv and parquet files.
 ```
  exec write_csv ('SCHEMA.TABLE','CSV_DIR','table.csv');
 ``` 
