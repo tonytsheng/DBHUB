@@ -17,9 +17,10 @@ select * from all_directories
 pip install pandas
 pip install pyarrow
 ```
-5. Edit file names in the csv_to_parquet.py script
-6. Run it
+5. Run it
 ```
-python csv_to_parquet.py
+python csv_to_parquet.py TABLENAME
 ```
+6. The output will be TABLENAME.parquet
+
 7. Consider downloading a parquet viewer at https://github.com/mukunku/ParquetViewer/releases

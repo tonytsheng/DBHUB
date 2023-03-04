@@ -3,9 +3,11 @@
 import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
+import sys
 
-csv_file = 'inventory.csv'
-parquet_file = 'inventory.parquet'
+TABLE=(sys.argv[1])
+csv_file = TABLE + '.csv'
+parquet_file = TABLE + '.parquet'
 chunksize = 100000
 
 csv_stream = pd.read_csv(csv_file, sep=',', chunksize=chunksize, low_memory=False)
