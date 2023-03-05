@@ -16,7 +16,10 @@ values
   (select concat(abbreviation ,${flightno}) from airline order by rand() limit 1 ),
   (select iata_code from airport order by rand() limit 1),
   (select iata_code from airport order by rand() limit 1),
-  curdate());
+  now()
+)
+;
+--  curdate());
 commit;
 select count(*) from reservation;
 EQ
