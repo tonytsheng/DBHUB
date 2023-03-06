@@ -31,4 +31,6 @@ python csv_to_parquet.py TABLENAME
 
 8. Tables with blob columns should probably be processed differently.
 
+- For tables with millions of rows, you may need to process subsets of rows. See https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9536328100346697722 for some ideas.
+
 [1] - https://parquet.apache.org/
