@@ -1,0 +1,2 @@
+SELECT text FROM table(rdsadmin.rds_file_util.read_text_file('BDUMP','dbtask-1678110854994-16.log'))
+/

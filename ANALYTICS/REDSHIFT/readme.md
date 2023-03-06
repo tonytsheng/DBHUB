@@ -1,0 +1,1 @@
+- also see https://github.com/awslabs/amazon-redshift-utils/

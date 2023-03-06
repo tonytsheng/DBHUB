@@ -53,3 +53,4 @@ SELECT rdsadmin.rdsadmin_s3_tasks.download_from_s3(
   p_directory_name =>  'DATA_PUMP_DIR')
 AS TASK_ID FROM DUAL;
 
+EXEC UTL_FILE.FREMOVE('DATA_PUMP_DIR','filename');
