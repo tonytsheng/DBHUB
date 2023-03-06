@@ -1,4 +1,6 @@
 ### Create parquet files from tables in an Oracle database
+There are some customers that are interested in getting data out of an Oracle table and put into a parquet file for processing somewhere else - Redshift, S3, etc. Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval. It provides efficient data compression and encoding schemes with enhanced performance to handle complex data in bulk. [1]
+
 1. Create the stored proc write_csv:
 ```
 sqlplus user/pw@sid @write_csv.prc
@@ -11,7 +13,8 @@ select * from all_directories
 ```
 ADMIN/ttsora10> exec write_csv ('SCHEMA.TABLE','CSV_DIR','table.csv');
 ``` 
-  - See the loop_write_csv pl/sql block to generate this for every table in a given schema
+  - See the loop_write_csv pl/sql block to generate this for every table in a given schema.
+  - Run each of these stored proc calls stand alone as needed per table.
 4. Install everything you need for python, including pandas and pyarrow if not already installed
 ```
 pip install pandas
@@ -26,3 +29,5 @@ python csv_to_parquet.py TABLENAME
 7. Consider downloading a parquet viewer at https://github.com/mukunku/ParquetViewer/releases
 
 8. Tables with blob columns should probably be processed differently.
+
+[1] - https://parquet.apache.org/
