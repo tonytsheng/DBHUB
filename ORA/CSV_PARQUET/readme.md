@@ -1,5 +1,6 @@
 ### Create parquet files from tables in an Oracle database
 There are some customers that are interested in getting data out of an Oracle table and put into a parquet file for processing somewhere else - Redshift, S3, etc. Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval. It provides efficient data compression and encoding schemes with enhanced performance to handle complex data in bulk. [1]
+Here are a few resources that may help for something like this.
 
 1. Create the stored proc write_csv:
 ```
