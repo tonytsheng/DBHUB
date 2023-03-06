@@ -1,11 +1,9 @@
-CREATE OR REPLACE PROCEDURE unload_blob_TEMPLATETABLENAME
-  (p_table_id_colname varchar2, 
-   p_id_value int, 
+CREATE OR REPLACE PROCEDURE unload_blob_TEMPLATE_TABLENAME
+  (p_id_value int, 
    p_dir varchar2
   )
 IS
 
-DECLARE
   l_blob  BLOB;
   p_blob  BLOB;
   p_filename varchar2(2000); 
@@ -19,10 +17,9 @@ BEGIN
   SELECT TEMPLATE_BLOBCOLNAME
   INTO   l_blob
   FROM   TEMPLATE_TABLENAME
---  WHERE  order_id=206490;
   WHERE  TEMPLATE_IDCOLNAME=p_id_value;
 
-p_filename := p_id_value || '.gif';
+p_filename := p_id_value || 'TEMPLATE_TABLENAME.gif';
 l_blob_len := DBMS_LOB.getlength(l_blob);
 
 -- Open the destination file.

@@ -1,0 +1,11 @@
+TABLENAME=$1
+BLOB_COLNAME=$2
+ID_COLNAME=$3
+
+echo $TABLENAME
+
+sed 's/TEMPLATE_TABLENAME/'${TABLENAME}'/g;s/TEMPLATE_BLOBCOLNAME/'${BLOB_COLNAME}'/g;s/TEMPLATE_IDCOLNAME/'${ID_COLNAME}'/g;' unloadblob.prc.template > unloadblob_$1.prc
+
+## sqlplus load it
+
+
