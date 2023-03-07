@@ -1,5 +1,5 @@
 ### Create parquet files from tables in an Oracle database
-There are some customers that are interested in getting data out of an Oracle table and put into a parquet file for processing somewhere else - Redshift, S3, etc. Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval. It provides efficient data compression and encoding schemes with enhanced performance to handle complex data in bulk. [1]
+Sometimes, there are reasons why people are interested in converting data from a table in Oracle to an Apache Parquet file. Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval. It provides efficient data compression and encoding schemes with enhanced performance to handle complex data in bulk. [1]
 Here are a few resources that may help for something like this.
 
 1. Create the stored proc write_csv:
@@ -8,11 +8,12 @@ sqlplus user/pw@sid @write_csv.prc
 ```
 2. Ensure there are the right directories that the database can write files to.
 ```
-select * from all_directories
+create or replace directory CSV_DIR as /data/csv_dir;
+grant read, write on directory CSV_DIR to username;
 ```
 3. Call the write_csv proc for each table, noting the table, directory and output file name. Run this from a machine that has enough disk space for your csv and parquet files.
 ```
-ADMIN/ttsora10> exec write_csv ('SCHEMA.TABLE','CSV_DIR','table.csv');
+ADMIN/ttsora10> exec write_csv ('TABLE','CSV_DIR','table.csv');
 ``` 
   - See the loop_write_csv pl/sql block to generate this for every table in a given schema.
   - Run each of these stored proc calls stand alone as needed per table.
@@ -29,8 +30,8 @@ python csv_to_parquet.py TABLENAME
 
 7. Consider downloading a parquet viewer at https://github.com/mukunku/ParquetViewer/releases
 
-8. Tables with blob columns should probably be processed differently.
+8. Tables with blob columns should probably be handled differently.
 
-- For tables with millions of rows, you may need to process subsets of rows. See https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9536328100346697722 for some ideas.
+- For tables with millions of rows, you may need to process subsets of rows in parallelize it. See https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9536328100346697722 for some ideas.
 
 [1] - https://parquet.apache.org/
