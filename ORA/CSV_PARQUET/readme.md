@@ -8,7 +8,7 @@ Here are a few resources that may help for something like this.
 ```
 2. Create a specific database directory and grant the appropriate permissions to that directory.
 ```
-ADMIN/ttsora10> create or replace directory CSV_DIR as /data/csv_dir;
+ADMIN/ttsora10> create or replace directory CSV_DIR as '/data/csv_dir';
 ADMIN/ttsora10> grant read, write on directory CSV_DIR to username;
 ```
 3. Call the write_csv proc for each table, with input parameters as the table, the output directory and the output file name. Note that the host your database instance is running on should be configured with enough disk space for that directory and the output files that will be generated from your tables.
