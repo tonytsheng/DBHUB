@@ -28,9 +28,11 @@ ADMIN/ttsora10> exec write_csv ('$TABLE','CSV_DIR','$table.csv');
 ```
 6. The output will be $TABLENAME.parquet
 
-7. Tables with blob columns should probably be handled differently.
+7. parq customer.parquet --head 10
+
+8. Tables with blob columns should probably be handled differently.
 
 #### Notes
 [1] - https://parquet.apache.org/
-- Consider downloading a parquet viewer at https://github.com/mukunku/ParquetViewer/releases
+- Consider downloading a parquet viewer at https://github.com/mukunku/ParquetViewer/releases or the python library parquet-cli
 - For tables with millions of rows, you may need to process subsets of rows in parallelize it. See https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9536328100346697722 for some ideas.
