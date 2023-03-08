@@ -1,0 +1,22 @@
+rs-100=# copy customers from 's3://ttsheng-dbs3/customers.parquet' format as parquet;
+ERROR:  invalid CREDENTIALS clause
+DETAIL:
+  -----------------------------------------------
+  error:  invalid CREDENTIALS clause
+  code:      8001
+  context:
+  query:     1225
+  location:  aws_credentials_parser.cpp:78
+  process:   padbmaster [pid=28354]
+  -----------------------------------------------
+
+rs-100=# copy customers from 's3://ttsheng-dbs3/customers.parquet' iam_role 'arn:aws:iam::070201068661:role/ttsheng-redshift-etc' format as parquet;
+INFO:  Load into table 'customers' completed, 0 record(s) loaded successfully.
+COPY
+rs-100=#
+
+select distinct tbl, trim(name) as table_name, query, starttime,
+trim(filename) as input, line_number, colname, err_code,
+trim(err_reason) as reason
+from stl_load_errors sl, stv_tbl_perm sp
+where sl.tbl = sp.id;
