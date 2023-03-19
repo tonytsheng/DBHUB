@@ -1,3 +1,5 @@
 telnet clu-rs-100.cst0cjwllvlj.us-east-2.redshift.amazonaws.com 5439
 
 psql "host=clu-rs-100.cst0cjwllvlj.us-east-2.redshift.amazonaws.com user=awsuser dbname=rs-100 port=5439 password=pw"
+
+note that even though redshift is postgresql compatible, the default port is port 5439, not 5432
