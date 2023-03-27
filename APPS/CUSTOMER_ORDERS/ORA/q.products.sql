@@ -9,6 +9,6 @@ select * from
 	order by IMAGE_LAST_UPDATED desc) h1  
 where rownum <=10 order by rownum;  
 
-select count(*) from orders;
+select count(*) from products;
 exit
 

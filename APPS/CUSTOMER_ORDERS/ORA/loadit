@@ -2,23 +2,23 @@ DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli ttsora10-secret`
 
 while true
 do
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql &
-callora customer_orders ${DB_PW}  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora50 ins.orderswblob.sql
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql &
+callora customer_orders ${DB_PW}  ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 ins.orderswblob.sql
 sleep 1
 done

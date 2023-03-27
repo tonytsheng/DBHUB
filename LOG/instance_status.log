@@ -19282,3 +19282,117 @@ An error occurred (InvalidParameterCombination) when calling the StopDBInstance 
 clu-usea2-mysql-db900
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: Stop-db-cluster is not supported for clusters with read replicas
+Tue Mar 21 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+sqlserver500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver500 is not in available state.
+usea2-mysql-db900-r
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+usea2-mysql-db900-w
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
++++ Clusters
+clu-usea2-mysql-db900
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: Stop-db-cluster is not supported for clusters with read replicas
+Wed Mar 22 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+sqlserver500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver500 is not in available state.
+usea2-mysql-db900-r
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+usea2-mysql-db900-w
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
++++ Clusters
+clu-usea2-mysql-db900
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: Stop-db-cluster is not supported for clusters with read replicas
+Thu Mar 23 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+sqlserver500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver500 is not in available state.
+usea2-mysql-db900-r
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+usea2-mysql-db900-w
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
++++ Clusters
+clu-usea2-mysql-db900
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: Stop-db-cluster is not supported for clusters with read replicas
+Fri Mar 24 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+sqlserver500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver500 is not in available state.
+usea2-mysql-db900-r
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+usea2-mysql-db900-w
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
++++ Clusters
+clu-usea2-mysql-db900
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: Stop-db-cluster is not supported for clusters with read replicas
+Sat Mar 25 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+sqlserver500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver500 is not in available state.
+usea2-mysql-db900-r
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+usea2-mysql-db900-w
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
++++ Clusters
+clu-usea2-mysql-db900
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: Stop-db-cluster is not supported for clusters with read replicas
+Sun Mar 26 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+sqlserver500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver500 is not in available state.
+usea2-mysql-db900-r
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+usea2-mysql-db900-w
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
++++ Clusters
+clu-usea2-mysql-db900
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: Stop-db-cluster is not supported for clusters with read replicas
