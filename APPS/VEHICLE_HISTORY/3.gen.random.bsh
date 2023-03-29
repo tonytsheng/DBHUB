@@ -1,0 +1,6 @@
+#set -x
+
+PW=`aws secretsmanager get-secret-value --profile ec2 --secret-id ttsora10-secret | jq --raw-output '.SecretString' | jq -r .password`
+
+/home/ec2-user/DBHUB/BIN/callmysql admin ${PW} usea2-mysql-db900-r.cyt4dgtj55oy.us-east-2.rds.amazonaws.com < 2.ins.purchase.sql
+
