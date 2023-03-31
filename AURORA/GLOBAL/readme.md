@@ -146,3 +146,6 @@ MySQL [ttsheng]> select * from t1;
 ### Failover
 If the writer node is taken down, a reader node becomes the writer. Keep this in mind for naming conventions.
 ![Optional Text](globalaurora3.jpg)
+
+### Conflict Resolution not needed
+Conflict resolution is a required topic of conversation when talking about multi writer databases. In the case of write forwarding, this topic is irrelevant because writes are forwarded in the order that they are committed. If you have engineered conflict resolution procedures, I am sure you don't miss having to develop these routines.
