@@ -1,3 +1,8 @@
+
+** obsolete
+see csv to parquet directory
+https://github.com/tonytsheng/DBHUB/tree/master/ORA/CSV_PARQUET
+
 unzip 214000_ggs_Linux_x64_BigData_64bit.zip
 
 install java
