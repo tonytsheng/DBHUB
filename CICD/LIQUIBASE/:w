@@ -1,0 +1,7 @@
+## Create the liquibase.properties file
+See example file.
+Place the postgresql jar in the same directory [or maybe in LD_LIBRARY_PATH or PATH]
+## initalize
+liquibase --changeLogFile=pg102.init.sql generate-changelog
+liquibase changelog-sync-sql --changelog-file pg102.init.sql
+liquibase changelog-sync --changelog-file pg102.init.sql
