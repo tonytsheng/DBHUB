@@ -31,3 +31,12 @@ dc027f48914c | sql         |          |     | 4.15.0    |          |        | 13
 f5b2429feaa0 | sql         |          |     | 4.15.0    |          |        | 1318441539
 (6 rows)
 ```
+
+## Use a different properties file
+liquibase --defaultsFile=liquibase.properties.pg201 update --changeLogFile=pg102.2.sql
+applying the changes from pg102 to pg201.
+
+## Diff
+liquibase diff --defaultsFile=liquibase.properties.diff.pg102_pg201 --output-file=diff.sql
+note the output is not in sql format so can't be easily applied
+

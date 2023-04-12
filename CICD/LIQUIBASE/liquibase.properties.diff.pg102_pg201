@@ -1,0 +1,10 @@
+changeLogFile:dbchangelog.xml
+referenceurl:  jdbc:postgresql://pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com:5432/pg102
+referenceusername:  postgres
+referencepassword:  pw
+url:  jdbc:postgresql://pg201.cyt4dgtj55oy.us-east-2.rds.amazonaws.com:5432/pg201
+username:  postgres
+password:  pw
+classpath:  postgresql-42.2.18.jar
+liquibase.command.init.project.projectGuide=off
+liquibaseProLicenseKey: key
