@@ -4,3 +4,5 @@ SELECT datname as "Database name", usename as "User name", ssl, client_addr, app
    ON pg_stat_ssl.pid = pg_stat_activity.pid
    ORDER BY ssl;
 
+select ssl_cipher();
+
