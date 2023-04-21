@@ -1,2 +1,2 @@
-select * from table(RDSADMIN.RDS_FILE_UTIL.LISTDIR('OPATCH_INST_DIR')) order by mtime
+select distinct owner from dba_objects order by 1
 /

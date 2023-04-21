@@ -52,7 +52,8 @@ def wait():
         time.sleep (5)
 
 def get_secret():
-    secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:secret-pg102-WNHBUK"
+#    secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:secret-pg102-WNHBUK"
+    secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:pg102-secret-IZWCR2"
     region_name = "us-east-2"
     session = boto3.session.Session()
     session = boto3.session.Session(profile_name='ec2')
