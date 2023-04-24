@@ -10,7 +10,7 @@
 # Unload a blob column to a flat file
 #   Input parameters:
 #   1 - TABLE
-#   2 - IMG_COLUMN that contains the blob data
+#   2 - BLOB_COLUMN that contains the blob data
 #   3 - ID_COLUMN that contains the primary key for the table
 #   4 - ID_VALUE the primary key value for the query - this must return one single row
 # Ensure your connection string parameters are correct
@@ -36,6 +36,7 @@
 #
 # To run:
 # Edit your database endpoints
+#    $ python3 unload_blob.py $TABLE $BLOB_COLUMN $PK_COLUMN $PK_VALUE
 #    $ python3 unload_blob.py ORDERS ORDER_IMG ORDER_ID 206229
 #
 # ---------------------------------------------------------------------------
@@ -51,7 +52,7 @@ import cx_Oracle
 import sys
 
 TABLE=(sys.argv[1])
-IMG_COLUMN=(sys.argv[2])
+BLOB_COLUMN=(sys.argv[2])
 ID_COLUMN=(sys.argv[3])
 ID_VALUE=(sys.argv[4])
 
@@ -59,7 +60,7 @@ ID_VALUE=(sys.argv[4])
 #print ("img_column: " + IMG_COLUMN)
 #print ("id_column: " + ID_COLUMN)
 #print ("id_value: " + ID_VALUE)
-sql = 'select ' + IMG_COLUMN + ' from ' + TABLE + ' where ' + ID_COLUMN + ' = ' + ID_VALUE 
+sql = 'select ' + BLOB_COLUMN + ' from ' + TABLE + ' where ' + ID_COLUMN + ' = ' + ID_VALUE 
 print (sql)
 
 imagePath = TABLE+'.'+ID_VALUE+'.'+'jpg'
