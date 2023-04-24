@@ -14,3 +14,7 @@ exec unload_blob_orders (255825,'DATA_PUMP_DIR');
 4. You can run step 1 for every table in your database that has a BLOB column.
 
 5. Call the proc for every row that has BLOB data, which will generate a file that can be copied to a storage service.
+
+## Python Code
+See unload_blob.py for a python script that might be easier to implement.
+
