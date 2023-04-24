@@ -1,2 +1,2 @@
-select distinct owner from dba_objects order by 1
+select object_name , object_type from dba_objects where owner='TTSHENG'
 /
