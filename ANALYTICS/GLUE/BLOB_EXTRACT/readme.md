@@ -1,15 +1,30 @@
 ## 
-set up jdbc connection to source database
-jdbc:oracle:thin:@localhost:1521:xe 
-it looks like that
 Add S3 VPC Gateway Endpoint:
 https://stackoverflow.com/questions/55972886/could-not-find-s3-endpoint-or-nat-gateway-for-subnetid
 
+Add Glue VPC endpoint
 
-view crawler logs in cloudwatch logs
-```
-[86aae15c-c28a-431f-9bb3-d4519e8f5b0b] ERROR : JDBC connection URL jdbc:oracle:thin:@:ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com1521/ttsora10 is not supported. Check the Developer Guide for the list of supported data stores / URL formatting.
-```
+Add Glue Service Role
+glue service role must have:
+cloudwatchfull
+ec2full
+s3full
+glueservicenotebookrole
+glueconsolefullaccess
+rdsfullaccess
 
-recreate the jdbc connection - wasn't quite right
+Create Data Connection
+RDS instance
+
+create glue catalog
+ttsgluecatlog
+
+create crawler
+using the data source and glue catalog
+TTSORA10/%
+
+run crawler on demand
+should see hundreds of tables
+
+aws glue get-tables --database-name ttsgluecatalog --profile dba
 
