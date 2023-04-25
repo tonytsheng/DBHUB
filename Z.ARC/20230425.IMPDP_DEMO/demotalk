@@ -1,0 +1,39 @@
+links
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-s3-integration.html
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Oracle.Procedural.Importing.DataPump.html
+https://github.com/tonytsheng/DBHUB/blob/master/SCRIPTLIB/rds.ora.impdp.py
+
+- go over expdp/impdp documentation
+  - directories
+  - log files
+  - api calls
+
+- dbhub
+  - list s3 buckets - dba account - ttsheng-misc
+  - my exp file already in s3 bucket
+  - show directories in database
+select directory_name, directory_path from dba_directories;
+  - copy from s3 to data_pump_dir
+SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir('DATA_PUMP_DIR')) order by mtime;
+SELECT rdsadmin.rdsadmin_s3_tasks.download_from_s3( 'ttsheng-misc', 'DATA_PUMP_DIR') AS TASK_ID FROM DUAL;
+  - list data_pump_dir
+SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir('DATA_PUMP_DIR')) order by mtime;
+  - import
+    - look at docs for api call
+python3 rds.ora.impdp.py TTSHENG
+  - log at log file
+  - log files
+SELECT text FROM table(rdsadmin.rds_file_util.read_text_file('BDUMP','dbtask-1613232257518-54.log'));
+SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file('DATA_PUMP_DIR', 'TTSHENG.imp.log'));
+
+  - list files in directory
+SELECT * FROM TABLE(rdsadmin.rds_file_util.listdir('DATA_PUMP_DIR')) order by mtime;
+SELECT * FROM TABLE(rdsadmin.rds_file_util.read_text_file( p_directory => 'DATA_PUMP_DIR', p_filename  => 'sample_imp.log'));
+
+- clean up
+  - remove files
+EXEC UTL_FILE.FREMOVE('DATA_PUMP_DIR','TTSHENG.imp.log');
+EXEC UTL_FILE.FREMOVE('DATA_PUMP_DIR','TTSHENG.exp.log');
+EXEC UTL_FILE.FREMOVE('DATA_PUMP_DIR','TTSHENG.dmp');
+
+
