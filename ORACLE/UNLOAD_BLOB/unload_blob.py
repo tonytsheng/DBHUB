@@ -45,6 +45,8 @@
 # 2023-04-24 - Version 1.0
 # 2023-04-26 - Version 1.1
 #   single script to unload every blob in the table where the length of blob column is > 1
+#   copies to an s3 bucket
+#   prototype - so error checking is minimal
 # ---------------------------------------------------------------------------
 #
 # ToDo
@@ -52,6 +54,7 @@
 
 import cx_Oracle
 import sys
+import boto3
 
 TABLE=(sys.argv[1])
 BLOB_COLUMN=(sys.argv[2])
@@ -80,8 +83,8 @@ while True:
       break
   ID_VALUE=str(row[0])
   unloadblob_sql = 'select ' + BLOB_COLUMN + ' from ' + TABLE + ' where ' + ID_COLUMN + ' = ' + ID_VALUE 
-  print (unloadblob_sql)
-  #print (ID_VALUE)
+#  print (unloadblob_sql)
+  print ('ID: ' + ID_VALUE)
   inner_cursor = conn.cursor()
   inner_cursor.execute(unloadblob_sql)
   row = inner_cursor.fetchone()
@@ -96,6 +99,17 @@ while True:
   #closing the file flushes it to disk
   imageFile.close()
 
+  s3_client = boto3.client('s3')
+  response = s3_client.upload_file(imagePath, 'ttsheng-dbs3', imagePath)
+#  print(response)
+
 outer_cursor.close()
 inner_cursor.close()
 conn.close()
+
+# list objects in the bucket
+s3_client = boto3.client('s3')
+my_bucket = s3_client.list_objects_v2(Bucket='ttsheng-dbs3')
+for my_bucket_object in my_bucket['Contents']:
+    print(my_bucket_object['Key'])
+
