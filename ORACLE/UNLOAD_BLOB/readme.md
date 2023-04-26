@@ -1,5 +1,9 @@
 ## Unloading BLOBs using a python script
-See unload_blob.py for a python script that might be easier to implement.
+See unload_blob.py for a python script that much easier.
+
+examples:
+python3 unload_blob.py TABLE_NAME BLOB_COLUMNNAME PK_COLUMNNAME
+python3 unload_blob.py ORDERS ORDER_IMG ORDER_ID
 
 
 ## Unloading BLOBs from an Oracle database using stored procedures.
