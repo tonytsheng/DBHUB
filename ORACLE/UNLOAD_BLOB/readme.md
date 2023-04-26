@@ -2,9 +2,10 @@
 See unload_blob.py for a python script that much easier.
 
 examples:
+```
 python3 unload_blob.py TABLE_NAME BLOB_COLUMNNAME PK_COLUMNNAME
 python3 unload_blob.py ORDERS ORDER_IMG ORDER_ID
-
+```
 
 ## Unloading BLOBs from an Oracle database using stored procedures.
 As part of modernizing to cloud databases, many customers desire to unload BLOB data from their existing databases. Ideally, these BLOB files can be put in to a highly durable and performant storage service. Instead of storing the BLOB, store a pointer to the actual content in the storage service.
