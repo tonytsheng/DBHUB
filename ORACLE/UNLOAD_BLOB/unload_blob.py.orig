@@ -2,8 +2,8 @@
 
 #----------------------------------------------------------------------------
 # Created By  : Tony Sheng ttsheng@amazon.com
-# Created Date: 2023-04-26
-# version ='1.1'
+# Created Date: 2023-04-24
+# version ='1.0'
 # ---------------------------------------------------------------------------
 #
 # unload_blob.py
@@ -36,15 +36,13 @@
 #
 # To run:
 # Edit your database endpoints
-#    $ python3 unload_blob.py $TABLE $BLOB_COLUMN $PK_COLUMN 
-#    $ python3 unload_blob.py ORDERS ORDER_IMG ORDER_ID 
+#    $ python3 unload_blob.py $TABLE $BLOB_COLUMN $PK_COLUMN $PK_VALUE
+#    $ python3 unload_blob.py ORDERS ORDER_IMG ORDER_ID 206229
 #
 # ---------------------------------------------------------------------------
 #
 # History
 # 2023-04-24 - Version 1.0
-# 2023-04-26 - Version 1.1
-#   single script to unload every blob in the table where the length of blob column is > 1
 # ---------------------------------------------------------------------------
 #
 # ToDo
@@ -56,46 +54,46 @@ import sys
 TABLE=(sys.argv[1])
 BLOB_COLUMN=(sys.argv[2])
 ID_COLUMN=(sys.argv[3])
-#ID_VALUE=(sys.argv[4])
+ID_VALUE=(sys.argv[4])
 
 #print ("table: " + TABLE)
 #print ("img_column: " + IMG_COLUMN)
 #print ("id_column: " + ID_COLUMN)
 #print ("id_value: " + ID_VALUE)
 
-getvalidid_sql = 'select ' + ID_COLUMN + ' from ' + TABLE + ' where length(' + BLOB_COLUMN + ')>0 ' 
-#print (sql)
+
+#  TODO
+# for loop (select id_value from table where length(blob_column)> 0 )
+# do
+# 'select ' + BLOB_COLUMN + ' from ' + TABLE + ' where ' + ID_COLUMN + ' = ' + ID_VALUE 
+# end loop
+
+sql = 'select ' + BLOB_COLUMN + ' from ' + TABLE + ' where ' + ID_COLUMN + ' = ' + ID_VALUE 
+print (sql)
+
+imagePath = TABLE+'.'+ID_VALUE+'.'+'jpg'
+
 #conn = cx_oracle.connect('your_connection_string')
 
 conn = cx_Oracle.connect(user="customer_orders",
                 password="Pass1234",
                 dsn="ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsora10")
 
-outer_cursor = conn.cursor()
-outer_cursor.execute(getvalidid_sql)
-while True:
-  #assuming one row of image data is returned
-  row = outer_cursor.fetchone()
-  if row is None:
-      break
-  ID_VALUE=str(row[0])
-  unloadblob_sql = 'select ' + BLOB_COLUMN + ' from ' + TABLE + ' where ' + ID_COLUMN + ' = ' + ID_VALUE 
-  print (unloadblob_sql)
-  #print (ID_VALUE)
-  inner_cursor = conn.cursor()
-  inner_cursor.execute(unloadblob_sql)
-  row = inner_cursor.fetchone()
-  imageBlob = row[0]
-#  print (imageBlob)
-  imagePath = TABLE+'.'+ID_VALUE+'.'+'jpg'
-#  print (imagePath)
-  #open a new file in binary mode
-  imageFile = open(imagePath,'wb')
-  #write the data to the file
-  imageFile.write(imageBlob.read())
-  #closing the file flushes it to disk
-  imageFile.close()
+cursor = conn.cursor()
+cursor.execute(sql)
 
-outer_cursor.close()
-inner_cursor.close()
+#assuming one row of image data is returned
+row = cursor.fetchone()
+imageBlob = row[0]
+
+#open a new file in binary mode
+imageFile = open(imagePath,'wb')
+
+#write the data to the file
+imageFile.write(imageBlob.read())
+
+#closing the file flushes it to disk
+imageFile.close()
+
+cursor.close()
 conn.close()
