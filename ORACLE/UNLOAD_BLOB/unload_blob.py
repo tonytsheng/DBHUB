@@ -7,22 +7,14 @@
 # ---------------------------------------------------------------------------
 #
 # unload_blob.py
-# Unload a blob column to a flat file
+# Unload a blob data to a file for every row in a table where the blob column length is greater than 0
+#  and then copies the file to an S3 bucket
 #   Input parameters:
 #   1 - TABLE
 #   2 - BLOB_COLUMN that contains the blob data
 #   3 - ID_COLUMN that contains the primary key for the table
-#   4 - ID_VALUE the primary key value for the query - this must return one single row
 # Ensure your connection string parameters are correct
 # The blob data will be in a file named: TABLE.ID_COLUMN.jpg
-# Ideally, you can then copy this to a Storage Service and update the database table
-# with a full path to the object in the storage service.
-#
-# Also considering generating automation using this script:
-# For each row that has a blob column:
-#   [select id from table where length(blob)>1]
-#   Run this using a different id_value
-#
 #
 # ---------------------------------------------------------------------------
 # Unless required by applicable law or agreed to in writing, software
