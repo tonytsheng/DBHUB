@@ -1,0 +1,31 @@
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] BENCHMARK : Running Start Crawl for Crawler crawlpg102
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] WARN : Unable to read index for table tiger.county_lookup...
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] WARN : Unable to read index for table tiger.countysub_lookup...
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] WARN : Unable to read index for table tiger.featnames...
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] WARN : Unable to read index for table tiger.featnames...
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] WARN : Unable to read index for table tiger.place_lookup...
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] BENCHMARK : Classification complete, writing results to database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Crawler configured with SchemaChangePolicy 
+{
+    "UpdateBehavior": "UPDATE_IN_DATABASE",
+    "DeleteBehavior": "DEPRECATE_IN_DATABASE"
+}
+.
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_adventureworks_dbo_awbuildversion in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_adventureworks_dbo_databaselog in database ttsheng-glue
+...
+...
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_tiger_tract in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_tiger_zcta5 in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_tiger_zip_lookup in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_tiger_zip_lookup_all in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_tiger_zip_lookup_base in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_tiger_zip_state in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_tiger_zip_state_loc in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_topology_layer in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_topology_topology in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Created table pg102_tutorial_planet in database ttsheng-glue
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] BENCHMARK : Finished writing to Catalog
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : Run Summary For TABLE:
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] INFO : ADD: 117
+[e8a14dcf-fe65-4675-b68f-d8a0ef0fe8db] BENCHMARK : Crawler has finished running and is in state READY
