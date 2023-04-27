@@ -9,3 +9,6 @@ select * from version();
 \dn --list schemas
 \timing -- turn on timing in session
 
+show search_path;
+SET search_path TO myschema,public, fly;
+

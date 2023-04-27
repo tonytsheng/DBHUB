@@ -20592,3 +20592,37 @@ An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster op
 docdb-2023-03-27-00-49-42
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb-2023-03-27-00-49-42 is in stopped state but expected it to be one of available.
+Wed Apr 26 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+docdb-2023-03-27-00-49-42
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb-2023-03-27-00-49-422
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb-2023-03-27-00-49-423
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+pg201
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg201 is not in available state.
+sqlserver500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver500 is not in available state.
+usea2-mysql-db900-r
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+usea2-mysql-db900-w
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
++++ Clusters
+clu-usea2-mysql-db900
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: Stop-db-cluster is not supported for clusters with read replicas
+docdb-2023-03-27-00-49-42
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb-2023-03-27-00-49-42 is in stopped state but expected it to be one of available.

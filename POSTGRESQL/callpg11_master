@@ -1,7 +1,0 @@
-psql \
-   --host=pg003.czzdit7hfndz.us-east-2.rds.amazonaws.com \
-   --port=5432 \
-   --username=master \
-   --password \
-   --dbname=fly1
-                    
