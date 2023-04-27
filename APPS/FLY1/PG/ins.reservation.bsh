@@ -7,7 +7,7 @@ echo ${lname} " : " ${fname} " : " ${flightcarrier} " : " ${flightno}
 # sqlplus with -l - connect only once 
 # trap for connection errors 
 # pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com pg102
-export PGPASSWORD=Pass1234
+export PGPASSWORD=`aws secretsmanager get-secret-value --profile ec2 --secret-id pg102-secret | jq --raw-output '.SecretString' | jq -r .password`
 psql  -h pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com -p 5432 -d pg102 -U postgres <<EQ
 insert into
 fly.reservation (lname, fname, seatno, flightno, dep, arr, reservedate)
