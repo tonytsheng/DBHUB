@@ -29,7 +29,7 @@ seatno varchar(10),
 flightno varchar(10),
 dep varchar(3),
 arr varchar(3),
-reservedate date);
+reservedate timestamp);
 
 create unique index reservation_pkidx on fly.reservation (id, lname, fname, seatno, flightno, dep, arr, reservedate);
 alter table fly.reservation add constraint reservation_pk primary key (id, lname, fname, seatno, flightno, dep, arr, reservedate);

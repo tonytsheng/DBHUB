@@ -1,0 +1,13 @@
+cp csv file to s3
+
+create new crawler
+point at s3
+
+new tables created in glue catalog table list
+
+athena query editor
+can see tables in table list on left
+create a sql query and run it
+
+https://docs.aws.amazon.com/athena/latest/ug/connect-to-a-data-source.html
+
