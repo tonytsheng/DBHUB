@@ -2,7 +2,7 @@ seatnumber=`echo $RANDOM %25 | head -c2`
 seatletter=`head /dev/urandom | tr -dc A-G | head -c1`
 flightno=`echo $RANDOM | head -c2`
 flightno=`shuf -n 1 /home/ec2-user/DBHUB/APPS/FLIGHT/currentflightiata`
-echo ${lname} " : " ${fname} " : " ${flightcarrier} " : " ${flightno}
+#echo ${lname} " : " ${fname} " : " ${flightcarrier} " : " ${flightno}
 
 # sqlplus with -l - connect only once 
 # trap for connection errors 
@@ -20,6 +20,6 @@ values
   (    select iata_code from fly.airport offset random() * (select count(*) from fly.airport) limit 1 ), 
   (    select iata_code from fly.airport offset random() * (select count(*) from fly.airport) limit 1 ), 
   now());
-select count(*) from fly.reservation;
+--select count(*) from fly.reservation;
 \q
 EQ
