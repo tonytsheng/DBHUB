@@ -41,16 +41,18 @@ LOCATION 's3://ttsheng-athena/'
 TBLPROPERTIES ('classification' = 'csv');
 ```
 ### Create a Data source and AWS Lambda Function
-For Application name, keep the default AthenaPostgreSQLConnector.
-For CompositeHandler, enter PostGreSqlMuxCompositeHandler.
-For SecretNamePrefix, enter AthenaPostgreSQLFederation.
-For SpillBucket, enter your S3 bucket name (for this post, historicalbucket).
-For ConnectionString, follow the below format postgres://jdbc:postgresql://<RDSEndpoint>:port/<dbname>?user=<username>&password=<password>
-For LambdaFunctionName, enter postgresqlathena.
-For LambdaMemory and LambdaTimeout, keep the default values.
-For SecurityGroupIds, enter the security group ID that is associated to the VPC ID corresponding to your subnet.
-For SpillPrefix, create a folder under the S3 bucket you created and specify the name (for this post, athena-spill).
-For Subnetids, enter the corresponding subnet that the Lambda function can use to access your data source. For example: subnet1, subnet2.
+See the blog post for creating the data source.
+Here are the specifics for the Lambda function.
+- Application name, keep the default AthenaPostgreSQLConnector.
+- CompositeHandler, enter PostGreSqlMuxCompositeHandler.
+- SecretNamePrefix, enter AthenaPostgreSQLFederation.
+- SpillBucket, enter your S3 bucket name (for this post, historicalbucket).
+- ConnectionString, follow the below format postgres://jdbc:postgresql://<RDSEndpoint>:port/<dbname>?user=<username>&password=<password>
+- LambdaFunctionName, enter postgresqlathena.
+- LambdaMemory and LambdaTimeout, keep the default values.
+- SecurityGroupIds, enter the security group ID that is associated to the VPC ID corresponding to your subnet.
+- SpillPrefix, create a folder under the S3 bucket you created and specify the name (for this post, athena-spill).
+- Subnetids, enter the corresponding subnet that the Lambda function can use to access your data source. For example: subnet1, subnet2.
 
 ### Query Testing
 Run the following to get a sense of looking at the data.
