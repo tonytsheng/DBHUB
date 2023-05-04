@@ -1,6 +1,5 @@
 ## Federated Query from RDS and S3
 Federated queries, queries across multiple data stores, is an interesting problem to solve. Here are some details using an RDS for PostgreSQL instance and a csv file stored in S3 using Athena as our query tool. The bulk of this was taken from https://aws.amazon.com/blogs/database/joining-historical-data-between-amazon-athena-and-amazon-rds-for-postgresql/ but using our own data.
-
 ### RDS for PostgreSQL
 We loaded a subset of publically available airport data, but just a subset of it, into an airport table. Here is what the table looks like. Data was loaded from the corresponding sql file.
 ```
@@ -42,6 +41,8 @@ TBLPROPERTIES ('classification' = 'csv');
 ```
 ### Create a Data source and AWS Lambda Function
 See the blog post for creating the data source.
+In some regions, the Serverless Application Repository has been deprecated in lieu of the CloudFormation Registry which has yet to be integrated with Athena. Instead you can follow these instructions for PostgreSQL for RDS. https://github.com/awslabs/aws-athena-query-federation/wiki/Deploy-the-Athena-PostgreSQL-Connector-without-using-SAM
+
 Here are the specifics for the Lambda function.
 - Application name, keep the default AthenaPostgreSQLConnector.
 - CompositeHandler, enter PostGreSqlMuxCompositeHandler.
