@@ -11,3 +11,5 @@
 ## Log Generator
 - Sample log generators
 
+## Athena
+- See folder for Federated Queries
