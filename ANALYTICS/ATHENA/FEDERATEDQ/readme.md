@@ -1,5 +1,7 @@
 ## Federated Query from RDS and S3
 Federated queries, queries across multiple data stores, is an interesting problem to solve. Here are some details using an RDS for PostgreSQL instance and a csv file stored in S3 using Athena as our query tool. The bulk of this was taken from https://aws.amazon.com/blogs/database/joining-historical-data-between-amazon-athena-and-amazon-rds-for-postgresql/ but using our own data.
+For this specific use case, imagine that you have flight reservation info in an RDS database. The reservation table has a limited amount of data about the reservation including arrival and departure airport identification codes but no other data about the airport - name, location, etc. Extended data about airports is stored in a file in an S3 bucket. We can use Athena to run a federated query across both mediums to obtain additional airport data along with each reservation.
+
 ### RDS for PostgreSQL
 We loaded a subset of publically available airport data, but just a subset of it, into an airport table. Here is what the table looks like. Data was loaded from the corresponding sql file.
 ```
@@ -66,5 +68,20 @@ from awsdatacatalog.s3airport.airport s3airport
 , pg102.fly.airport pg102airport 
 where s3airport.iata_code='CDG' 
 and s3airport.iata_code=pg102airport.iata_code;
+
+select p.id
+,p.lname
+, p.fname
+, p.seatno
+, p.flightno
+, p.reservedate
+, a.name
+, a.municipality
+, a.coordinates
+from pg102.fly.reservation p
+, awsdatacatalog.s3airport.airport a
+where p.dep='CDG'
+and a.iata_code=p.dep
+and a.iata_code='CDG';
 ```
 
