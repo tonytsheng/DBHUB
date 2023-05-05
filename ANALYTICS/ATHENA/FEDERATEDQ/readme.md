@@ -83,5 +83,13 @@ from pg102.fly.reservation p
 where p.dep='CDG'
 and a.iata_code=p.dep
 and a.iata_code='CDG';
+
+Results:
+#	id	lname	fname	seatno	flightno	reservedate	name	municipality	coordinates
+1	79938	OConnell	Louise	88B	QF7356	2023-04-27 00:00:00.000	Charles d	Paris    	"2.55    
+2	81368	Baida	Mattea	16D	HT3811	2023-04-27 00:00:00.000	Charles d	Paris    	"2.55    
+3	81601	Feeney	Kevin	23C	QF7524	2023-04-27 00:00:00.000	Charles d	Paris    	"2.55    
+4	82314	Ande	Allan	85D	GI4027	2023-04-27 00:00:00.000	Charles d	Paris    	"2.55    
+5	82468	King	Eleni	13C	CF9033	2023-04-27 00:00:00.000	Charles d	Paris    	"2.55    
 ```
 
