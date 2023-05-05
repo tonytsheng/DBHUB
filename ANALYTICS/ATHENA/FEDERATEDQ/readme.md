@@ -3,19 +3,23 @@ Federated queries, queries across multiple data stores, is an interesting proble
 For this specific use case, imagine that you have flight reservation info in an RDS database. The reservation table has a limited amount of data about the reservation including arrival and departure airport identification codes but no other data about the airport - name, location, etc. Extended data about airports is stored in a file in an S3 bucket. We can use Athena to run a federated query across both mediums to obtain additional airport data along with each reservation.
 
 ### RDS for PostgreSQL
-We loaded a subset of publically available airport data, but just a subset of it, into an airport table. Here is what the table looks like. Data was loaded from the corresponding sql file.
+Here is what our reservation table in RDS looks like. The DEP and ARR columns hold an airport IATA code so that will be the columns that can be joined to the iata_code in our airport data in S3.
 ```
-pg102=> \d fly.airport
-                          Table "fly.airport"
-    Column    |         Type          | Collation | Nullable | Default
---------------+-----------------------+-----------+----------+---------
- airport_code | character varying(4)  |           | not null |
- airport_name | character varying(60) |           | not null |
- airport_c    | numeric               |           |          |
- iata_code    | character varying(3)  |           |          |
+pg102=> \d fly.reservation
+                                     Table "fly.reservation"
+   Column    |            Type             | Collation | Nullable |           Default
+-------------+-----------------------------+-----------+----------+------------------------------
+ id          | integer                     |           | not null | generated always as identity
+ lname       | character varying(30)       |           | not null |
+ fname       | character varying(30)       |           | not null |
+ seatno      | character varying(10)       |           | not null |
+ flightno    | character varying(10)       |           | not null |
+ dep         | character varying(3)        |           | not null |
+ arr         | character varying(3)        |           | not null |
+ reservedate | timestamp without time zone |           | not null |
 Indexes:
-    "airport_pk" PRIMARY KEY, btree (airport_code, airport_name)
-    "airport_pkidx" UNIQUE, btree (airport_code, airport_name)
+    "reservation_pk" PRIMARY KEY, btree (id, lname, fname, seatno, flightno, dep, arr, reservedate)
+    "reservation_pkidx" UNIQUE, btree (id, lname, fname, seatno, flightno, dep, arr, reservedate)
 ```
 
 ### CSV file in S3
