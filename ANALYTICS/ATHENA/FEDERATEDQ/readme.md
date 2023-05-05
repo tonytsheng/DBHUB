@@ -17,7 +17,7 @@ Indexes:
 ```
 
 ### CSV file in S3
-We took the full airport data in csv format and loaded that into an S3 bucket. We then create the corresponding database in the AWS Glue Data Catalog.
+We took the full airport data in csv format and loaded that into an S3 bucket. We then created the corresponding database in the AWS Glue Data Catalog.
 ```
 CREATE EXTERNAL TABLE `s3airport`.`airport` (
 ident char(9)
@@ -48,7 +48,7 @@ Here are the specifics for the Lambda function.
 - CompositeHandler, enter PostGreSqlMuxCompositeHandler.
 - SecretNamePrefix, enter AthenaPostgreSQLFederation.
 - SpillBucket, enter your S3 bucket name (for this post, historicalbucket).
-- ConnectionString, follow the below format postgres://jdbc:postgresql://<RDSEndpoint>:port/<dbname>?user=<username>&password=<password>
+- ConnectionString, follow the below format postgres://jdbc:postgresql://Endpoint:port/dbname?user=username&password=password
 - LambdaFunctionName, enter postgresqlathena.
 - LambdaMemory and LambdaTimeout, keep the default values.
 - SecurityGroupIds, enter the security group ID that is associated to the VPC ID corresponding to your subnet.
