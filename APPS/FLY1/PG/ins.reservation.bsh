@@ -1,3 +1,4 @@
+date
 seatnumber=`echo $RANDOM %25 | head -c2`
 seatletter=`head /dev/urandom | tr -dc A-G | head -c1`
 flightno=`echo $RANDOM | head -c2`
@@ -8,7 +9,7 @@ flightno=`shuf -n 1 /home/ec2-user/DBHUB/APPS/FLIGHT/currentflightiata`
 # trap for connection errors 
 # pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com pg102
 export PGPASSWORD=`aws secretsmanager get-secret-value --profile ec2 --secret-id pg102-secret | jq --raw-output '.SecretString' | jq -r .password`
-psql  -h pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com -p 5432 -d pg102 -U postgres <<EQ
+/usr/bin/psql -h pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com -p 5432 -d pg102 -U postgres <<EQ
 insert into
 fly.reservation (lname, fname, seatno, flightno, dep, arr, reservedate)
 values 
