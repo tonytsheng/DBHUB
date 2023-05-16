@@ -97,3 +97,27 @@ Results:
 5	82468	King	Eleni	13C	CF9033	2023-04-27 00:00:00.000	Charles d	Paris    	"2.55    
 ```
 
+## Athena from the CLI
+```
+export ATHENA_S3_PATH='s3://ttsheng-athena/'
+aws athena list-data-catalogs
+[ec2-user@ip-10-0-2-111 FEDERATEDQ]$ aws athena start-query-execution  --work-group tts1 --query-string "select count(*) from pg102.fly.airport" --result-configuration "OutputLocation=$ATHENA_S3_PATH"
+{
+    "QueryExecutionId": "453a6521-290a-4040-abb4-8d88318283f0"
+}
+
+[ec2-user@ip-10-0-2-111 FEDERATEDQ]$ aws athena get-query-execution --query-execution-id "453a6521-290a-4040-abb4-8d88318283f0"
+{
+    "QueryExecution": {
+        "QueryExecutionId": "453a6521-290a-4040-abb4-8d88318283f0",
+        "Query": "select count(*) from pg102.fly.airport",
+        "StatementType": "DML",
+        "ResultConfiguration": {
+            "OutputLocation": "s3://ttsheng-athena/453a6521-290a-4040-abb4-8d88318283f0.csv"
+        },
+
+...
+
+select count(*) from pg102.fly.airport;
+```
+
