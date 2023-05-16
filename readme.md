@@ -16,6 +16,6 @@ I spent almost 4 years working for Oracle doing the same kind of database things
 ## AWS
 I'm currently a Database Specialist Solutions Architect at AWS and have been here since Oct 2020. I deal with most of our purpose built databases as well as some of our Analytics services and spend a good amount of time with the Database Migration Service as well.
 
-This repo is mostly organized around AWS services/offerings. My focus is our purpose built databases so those form the bulk of material here. I've also been digging into our Analytics offerings too. The SCRIPTLIB is the stuff that I use most every day.
+This repo is mostly organized around AWS services/offerings. The SCRIPTLIB is the stuff that I use most every day.
 I hope something in here helps you with your database solutions.
 
