@@ -6,7 +6,7 @@
 # version ='1.0'
 # ---------------------------------------------------------------------------
 #
-# turnon.py
+# promote_rr.py
 # Promote a Read Replica and Turn on a DMS migration task
 #   Prereqs:
 #     A running replication instancea
@@ -23,7 +23,7 @@
 # ---------------------------------------------------------------------------
 #
 # To run:
-#    $ python3 rds.ora.expdp.py SCHEMA
+#    $ python3 promote_rr.py
 #
 # ---------------------------------------------------------------------------
 #
@@ -73,12 +73,9 @@ def get_secret():
     password = database_secrets['password']
     return (password)
 
-def promote_rr():
-    response = client.promote_read_replica(
-        BackupRetentionPeriod=10,
-        DBInstanceIdentifier='mydbreadreplica',
-        PreferredBackupWindow='03:30-04:00',
-)
+#------------#------------#------------#------------#------------#------------#
+# Set Vars
+#
 
 #SCHEMA=(sys.argv[1])
 now = datetime.datetime.now()
@@ -87,24 +84,10 @@ TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
 #DUMPFILE = SCHEMA + ".dmp"
 #print ("+++ Expdp logfile: " + LOGFILE)
 
+#------------#------------#------------#------------#------------#------------#
+# Set Connection Attributes for Source database
+#
 conn = None
-
-sql_rr_latency = """ select sequence#
-,thread#
-,status
-, to_char(first_time, 'MM/DD/YYYY HH24:MI:SS') FIRST
-, to_char(next_time, 'MM/DD/YYYY HH24:MI:SS') NEXT
-, applied
-, archived
-from v$archived_log
-where first_time > sysdate-1
-and dest_id=2
-order by sequence#
-"""
-## dest_id may need to be modified in the query above
-
-sql_get_scn = """ Select CURRENT_SCN from v$database """
-
 db_pw = get_secret()
 conn = cx_Oracle.connect(user='admin'
          , password=db_pw
@@ -114,44 +97,19 @@ cur = conn.cursor()
 #cur.execute(sql_exp)
 #time.sleep (10)
 
-cur.execute(sql_rr_latency)
-records = cur.fetchall()
-for row in records:
-    print ("+++ Archived Log Status: " + str(row))
-# row_count = cur.rowcount
-
-cur.execute(sql_get_scn)
-records = cur.fetchall()
-for row in records:
-    print ("+++ SCN : " + str(row))
-cur.close()
-
+#------------#------------#------------#------------#------------#------------#
+# Promote Read Replica to Standalone 
+#
 session = boto3.session.Session()
 session = boto3.session.Session(profile_name='dba')
 client = session.client(
       service_name='rds'
         )
-#response = client.promote_read_replica(
-#        BackupRetentionPeriod=5,
-#        DBInstanceIdentifier='ttsora10-rr',
-#        )
-#print(response)
-
-pridb = "ttsora10"
-rrdb = "ttsora10b"
-
-dbs = ["ttsora10", "ttsora10-rr", "ttsora10b"]
-for db in dbs:
-#    print(db)
-    dbstatus = client.describe_db_instances(
-        DBInstanceIdentifier=db
+response = client.promote_read_replica(
+        BackupRetentionPeriod=5,
+        DBInstanceIdentifier='ttsora10b',
         )
-    print(dbstatus)
-    print(db + " : " + dbstatus['DBInstances'][0]['DBInstanceStatus'])
-    print(db + " : " + dbstatus['DBInstances'][0]['DBInstanceStatus'])
-
-
-
+print(response)
 
 #print(row_count)
 #while row_count >=1 :
