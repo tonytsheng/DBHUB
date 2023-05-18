@@ -79,6 +79,7 @@ def get_secret():
 
 #SCHEMA=(sys.argv[1])
 now = datetime.datetime.now()
+print (now)
 TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
 #LOGFILE = SCHEMA+ ".exp.log"
 #DUMPFILE = SCHEMA + ".dmp"
@@ -96,6 +97,16 @@ conn = cx_Oracle.connect(user='admin'
 cur = conn.cursor()
 #cur.execute(sql_exp)
 #time.sleep (10)
+
+#------------#------------#------------#------------#------------#------------#
+# Get SCN from source database
+#
+sql_get_scn = """ Select CURRENT_SCN from v$database """
+cur.execute(sql_get_scn)
+records = cur.fetchall()
+for row in records:
+    print ("+++ SCN : " + str(row))
+cur.close()
 
 #------------#------------#------------#------------#------------#------------#
 # Promote Read Replica to Standalone 

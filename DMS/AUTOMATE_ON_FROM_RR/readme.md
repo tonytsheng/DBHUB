@@ -15,6 +15,15 @@ Execution order:
 - Create target endpoint to the former Read Replica.
 - Create and start DMS migration task starting at the SCN.
 
+# Misc
+- Even though the source database goes into Modifying status, transactions still appear to work fine.
+- Promotion of the RR looks like this:
+  - Modifying
+  - Rebooting
+  - Backing-up
+
+
+
 decribe db instances
 'ReadReplicaDBInstanceIdentifiers': [],
 'ReadReplicaSourceDBInstanceIdentifier': 'ttsora10',

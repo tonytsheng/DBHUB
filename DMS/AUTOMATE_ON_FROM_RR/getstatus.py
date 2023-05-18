@@ -80,6 +80,8 @@ def get_secret():
 
 #SCHEMA=(sys.argv[1])
 now = datetime.datetime.now()
+print ()
+print (now)
 TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
 #LOGFILE = SCHEMA+ ".exp.log"
 #DUMPFILE = SCHEMA + ".dmp"
@@ -109,7 +111,7 @@ sql_rr_latency = """ select sequence#
 , applied
 , archived
 from v$archived_log
-where first_time > sysdate-(1/24)
+where first_time > sysdate-(.5/24)
 and dest_id=2
 order by sequence#
 """
