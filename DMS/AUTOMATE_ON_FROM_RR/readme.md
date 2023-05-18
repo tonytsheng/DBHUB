@@ -16,8 +16,8 @@ Execution order:
 - Create and start DMS migration task starting at the SCN.
 
 # Misc
-- Even though the source database goes into Modifying status, transactions still appear to work fine.
-- Promotion of the RR looks like this:
+- Even though the source database goes into Modifying status when creating or deleting an associated Read Replica, transactions still appear to work fine.
+- Promotion of the RR to a standalone database looks like this:
   - Modifying
   - Rebooting
   - Backing-up

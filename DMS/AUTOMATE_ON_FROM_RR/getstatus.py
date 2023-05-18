@@ -111,7 +111,7 @@ sql_rr_latency = """ select sequence#
 , applied
 , archived
 from v$archived_log
-where first_time > sysdate-(.5/24)
+where first_time > sysdate-(1/24)
 and dest_id=2
 order by sequence#
 """
@@ -141,7 +141,9 @@ session = boto3.session.Session(profile_name='dba')
 client = session.client(
       service_name='rds'
         )
-dbs = ["ttsora10", "ttsora10-rr", "ttsora10b"]
+dbs = ["ttsora10", "ttsora10b", "ttsora10c"]
+# make this list dynamic
+
 print ("#------------#------------#------------#------------#------------#------------#")
 print ("DBIdentifier  \t: Status \t: MultiAZ \t: ReadReplica")
 for db in dbs:
