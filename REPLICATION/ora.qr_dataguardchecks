@@ -10,7 +10,10 @@ select sequence#
 , applied
 , archived
 from v$archived_log
+where first_time > sysdate-1   -- last day
+and dest_id= ??    -- choose correct dest_id
 order by sequence#;
+# get the last group of these
 
 select process, status, thread#, sequence#, block#, blocks
 from v$managed_standby
