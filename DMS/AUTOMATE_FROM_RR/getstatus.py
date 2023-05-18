@@ -145,7 +145,7 @@ dbs = ["ttsora10", "ttsora10b", "ttsora10c"]
 # make this list dynamic
 
 print ("#------------#------------#------------#------------#------------#------------#")
-print ("DBIdentifier  \t: Status \t: MultiAZ \t: ReadReplica")
+print ("DBIdentifier  \t Status \t MultiAZ \t ReadReplica")
 for db in dbs:
     describe_db_output = client.describe_db_instances(
         DBInstanceIdentifier=db
@@ -153,7 +153,7 @@ for db in dbs:
     dbstatus = str(describe_db_output['DBInstances'][0]['DBInstanceStatus'])
     multiaz = str(describe_db_output['DBInstances'][0]['MultiAZ'])
     rrstatus = str(describe_db_output['DBInstances'][0]['ReadReplicaDBInstanceIdentifiers'])
-    print(db + " \t: " + dbstatus + " \t: " + multiaz + " \t: " + rrstatus)
+    print(db + " \t " + dbstatus + " \t " + multiaz + " \t\t " + rrstatus)
 
 
 #print(row_count)
