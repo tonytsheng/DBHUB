@@ -25,7 +25,7 @@ Execution order:
 # Utilities
 ```
 aws rds delete-db-instance --db-instance-identifier ttsora10-rr  --profile dba --skip-final-snapshot
-aws rds create-db-instance-read-replicaa --db-instance-identifier ttsora10c --source-db-instance-identifier ttsora10 --profile dba
+aws rds create-db-instance-read-replicaa --db-instance-identifier ttsora10c --source-db-instance-identifier ttsora10 --profile dba --db-instance-class db.r5.xlarge
 ```
 
 
