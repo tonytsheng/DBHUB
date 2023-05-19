@@ -30,7 +30,7 @@ aws rds create-db-instance-read-replicaa --db-instance-identifier ttsora10c --so
 
 
 # Appendix
-Source Database Alert Log entries when remove a read replica:
+Source Database Alert Log entries when removing a read replica:
 ```
 ('05/19/023 13:47:05', 'Process termination requested for pid 11981 [source = rdbms], [info = 2] [request issued by pid: 6156, uid: 3001]')
 ('05/19/023 13:47:06', 'RSM0 (PID:11460): Using STANDBY_ARCHIVE_DEST parameter default value as /rdsdbdata/db/TTSORA10_A/arch/redolog [krsd.c:18221]')
