@@ -106,7 +106,7 @@ cur = conn.cursor()
 # Get last lines of alert log
 #
 sql_tail_log = """ select to_char(ORIGINATING_TIMESTAMP, 'MM/DD/YYY HH24:MI:SS'), message_text from alertlog
-where ORIGINATING_TIMESTAMP > sysdate-(.5/24)
+where ORIGINATING_TIMESTAMP > sysdate-(1/24)
 """
 
 cur.execute(sql_tail_log)
