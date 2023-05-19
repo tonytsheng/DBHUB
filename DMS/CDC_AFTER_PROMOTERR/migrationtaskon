@@ -1,0 +1,18 @@
+aws dms create-endpoint --endpoint-identifier ttsora10d \ 
+  --endpoint-type target   \
+  --engine-name oracle  \
+  --username admin  \
+  --password Pass1234 \ 
+  --server-name      \ 
+  --port 1521        \ 
+  --database-name ttsora10d    \ 
+
+
+aws dms create-replication-task --replication-task-identifier tts-ora-ora  \
+  --source-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:V64WVN3F2MJSYOX2Z2Y2NT5655PLSDQLUBPB63I   \
+  --target-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:WGMP5LDFGG2UXMQ4IQAQU5R2PXLGRF2H5N2F62Y   \
+  --replication-instance-arn  arn:aws:dms:us-east-2:070201068661:rep:QUWKO2V7GOPSAWMJRCTWQCN2BUAUP5TMIZCQ7KQ  \
+  --migration-type cdc  \
+  --table-mappings file://dms_task.json \
+  --cdc-start-position STRING
+

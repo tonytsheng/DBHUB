@@ -1,4 +1,4 @@
-# Automating Turning on a DMS Migration Task After Promoting a Read Replica
+# Turning on a DMS Migration Task After Promoting a Read Replica
 Prereqs: 
 - Source instance up and healthy.
 - Read replica from that source instance, up and healthy.
