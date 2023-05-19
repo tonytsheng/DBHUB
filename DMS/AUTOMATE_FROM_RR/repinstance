@@ -1,0 +1,1 @@
+aws dms create-replication-instance --replication-instance-identifier rep100 --profile dba --replication-instance-class dms.t3.medium --no-publicly-accessible

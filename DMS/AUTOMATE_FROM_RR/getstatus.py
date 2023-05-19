@@ -86,6 +86,8 @@ TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
 #LOGFILE = SCHEMA+ ".exp.log"
 #DUMPFILE = SCHEMA + ".dmp"
 #print ("+++ Expdp logfile: " + LOGFILE)
+src_db=(sys.argv[1])
+tgt_db=(sys.argv[2])
 
 #------------#------------#------------#------------#------------#------------#
 # Set Connection Attributes for Source database
@@ -99,6 +101,18 @@ conn = cx_Oracle.connect(user='admin'
 cur = conn.cursor()
 #cur.execute(sql_exp)
 #time.sleep (10)
+
+#------------#------------#------------#------------#------------#------------#
+# Get last lines of alert log
+#
+sql_tail_log = """ select to_char(ORIGINATING_TIMESTAMP, 'MM/DD/YYY HH24:MI:SS'), message_text from alertlog
+where ORIGINATING_TIMESTAMP > sysdate-(.5/24)
+"""
+
+cur.execute(sql_tail_log)
+records = cur.fetchall()
+for row in records:
+    print ("+++ " + str(row))
 
 #------------#------------#------------#------------#------------#------------#
 # Get RR Latency
@@ -131,7 +145,8 @@ cur.execute(sql_get_scn)
 records = cur.fetchall()
 for row in records:
     print ("+++ SCN : " + str(row))
-cur.close()
+
+#------------#------------#------------#------------#------------#------------#
 
 #------------#------------#------------#------------#------------#------------#
 # Get Statuses about Source and Promoted Read Replica
@@ -141,7 +156,7 @@ session = boto3.session.Session(profile_name='dba')
 client = session.client(
       service_name='rds'
         )
-dbs = ["ttsora10", "ttsora10b", "ttsora10c"]
+dbs = [src_db, tgt_db]
 # make this list dynamic
 
 print ("#------------#------------#------------#------------#------------#------------#")
@@ -173,4 +188,5 @@ for db in dbs:
 
 
 
+cur.close()
 

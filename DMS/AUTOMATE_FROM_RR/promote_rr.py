@@ -77,13 +77,17 @@ def get_secret():
 # Set Vars
 #
 
-#SCHEMA=(sys.argv[1])
+src_db=(sys.argv[1])
+tgt_db=(sys.argv[2])
 now = datetime.datetime.now()
 print (now)
 TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
 #LOGFILE = SCHEMA+ ".exp.log"
 #DUMPFILE = SCHEMA + ".dmp"
 #print ("+++ Expdp logfile: " + LOGFILE)
+
+print (src_db)
+print (tgt_db)
 
 #------------#------------#------------#------------#------------#------------#
 # Set Connection Attributes for Source database
@@ -118,7 +122,7 @@ client = session.client(
         )
 response = client.promote_read_replica(
         BackupRetentionPeriod=5,
-        DBInstanceIdentifier='ttsora10b',
+        DBInstanceIdentifier=tgt_db,
         )
 print(response)
 
