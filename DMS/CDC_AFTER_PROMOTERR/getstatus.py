@@ -106,7 +106,7 @@ cur = conn.cursor()
 # Get last lines of alert log
 #
 sql_tail_log = """ select to_char(ORIGINATING_TIMESTAMP, 'MM/DD/YYY HH24:MI:SS'), message_text from alertlog
-where ORIGINATING_TIMESTAMP > sysdate-(1/24)
+where ORIGINATING_TIMESTAMP > sysdate-(.5/24)
 """
 
 cur.execute(sql_tail_log)
@@ -125,7 +125,7 @@ sql_rr_latency = """ select sequence#
 , applied
 , archived
 from v$archived_log
-where first_time > sysdate-(1/24)
+where first_time > sysdate-(.5/24)
 and dest_id=2
 order by sequence#
 """
