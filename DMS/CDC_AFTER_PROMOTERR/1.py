@@ -71,11 +71,16 @@ cur = conn.cursor()
 #------------#------------#------------#------------#------------#------------#
 # Get SCN from source database
 #
-sql_get_scn = """ Select CURRENT_SCN from v$database """
+sql_get_scn = """ Select name, CURRENT_SCN from v$database """
 cur.execute(sql_get_scn)
-records = cur.fetchall()
-for row in records:
-    print ("+++ SCN : " + str(row))
+#records = cur.fetchall()
+#for row in records:
+#    print ("+++ SCN : " + str(row))
+record = cur.fetchone()
+scn = str(record[1])
+print ("SCN: " + scn)
+#for row in records:
+#    print ("+++ SCN : " + str(row))
 cur.close()
 
 #------------#------------#------------#------------#------------#------------#

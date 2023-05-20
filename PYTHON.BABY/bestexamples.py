@@ -15,6 +15,7 @@ from datetime import datetime
 import time
 import datetime
 
+# example - wait
 def wait():
     for i in range(12):
         now = datetime.datetime.now()
@@ -22,6 +23,7 @@ def wait():
         print(date_time)
         time.sleep (5)
 
+# example - get secret
 def get_secret():
 #    secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:secret-pg102-WNHBUK"
     secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:pg102-secret-IZWCR2"
@@ -39,10 +41,7 @@ def get_secret():
     password = database_secrets['password']
     return (password)
 
-#------------#------------#------------#------------#------------#------------#
-# multiple input arguments
-#
-
+# example - multiple input arguments
 src_db=(sys.argv[1])
 tgt_db=(sys.argv[2])
 now = datetime.datetime.now()
@@ -56,8 +55,7 @@ print (src_db)
 print (tgt_db)
 
 #------------#------------#------------#------------#------------#------------#
-# Set Connection Attributes for Source database
-#
+# example - oracle connection using cx_Oracle
 conn = None
 db_pw = get_secret()
 conn = cx_Oracle.connect(user='admin'
@@ -69,17 +67,22 @@ cur = conn.cursor()
 #time.sleep (10)
 
 #------------#------------#------------#------------#------------#------------#
-# Get SCN from source database
+# example - fetchone, pull back elements of return set
 #
-sql_get_scn = """ Select CURRENT_SCN from v$database """
+sql_get_scn = """ Select name, CURRENT_SCN from v$database """
 cur.execute(sql_get_scn)
-records = cur.fetchall()
-for row in records:
-    print ("+++ SCN : " + str(row))
+#records = cur.fetchall()
+#for row in records:
+#    print ("+++ SCN : " + str(row))
+record = cur.fetchone()
+scn = str(record[1])
+print ("SCN: " + scn)
+#for row in records:
+#    print ("+++ SCN : " + str(row))
 cur.close()
 
 #------------#------------#------------#------------#------------#------------#
-# parse returned response
+# example - parse from json response
 #
 session = boto3.session.Session()
 session = boto3.session.Session(profile_name='dba')

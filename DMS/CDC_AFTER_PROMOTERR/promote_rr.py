@@ -49,13 +49,19 @@ from datetime import datetime
 import time
 import datetime
 
+#------------#------------#------------#------------#------------#------------#
+# wait 
+#
 def wait():
     for i in range(12):
         now = datetime.datetime.now()
         date_time = now.strftime("%d.%m.%Y %H:%M:%S")
         print(date_time)
-        time.sleep (5)
+        time.sleep(5)
 
+#------------#------------#------------#------------#------------#------------#
+# get_secret
+#
 def get_secret():
 #    secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:secret-pg102-WNHBUK"
     secret_name = "arn:aws:secretsmanager:us-east-2:070201068661:secret:pg102-secret-IZWCR2"
@@ -74,7 +80,72 @@ def get_secret():
     return (password)
 
 #------------#------------#------------#------------#------------#------------#
-# Set Vars
+# get_database_status
+#
+def get_database_status(dbname): 
+    session = boto3.session.Session() 
+    session = boto3.session.Session(profile_name='dba') 
+    client = session.client( 
+        service_name='rds'
+        ) 
+    response = client.describe_db_instances( 
+        DBInstanceIdentifier=dbname,
+        ) 
+    db_status = response["DBInstances"][0]["DBInstanceStatus"]
+    return(db_status)
+
+#------------#------------#------------#------------#------------#------------#
+# Get SCN from source database
+#
+def get_scn(dbname):
+    sql_get_scn = """ select name, CURRENT_SCN from v$database """
+    cur.execute(sql_get_scn)
+    record = cur.fetchone()
+    scn = str(record[1])
+#    print ("after get_scn call" + scn)
+    return (scn)
+
+#------------#------------#------------#------------#------------#------------#
+# promote read replica
+#
+def promote_read_replica(dbname): 
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='dba')
+    client = session.client(
+        service_name='rds'
+        )
+    response = client.promote_read_replica(
+        BackupRetentionPeriod = 5,
+        DBInstanceIdentifier = dbname,
+        ) 
+    return(response)
+
+#------------#------------#------------#------------#------------#------------#
+# create endpoint
+#
+def create_endpoint(dbname, endpoint_type): 
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='dba')
+    client = session.client(
+      service_name='dms'
+        )
+    response = client.create_endpoint(
+        EndpointIdentifier=dbname,
+        EndpointType=endpoint_type,
+        EngineName='oracle',
+        Username='admin',
+        Password='Pass1234',
+        ServerName='ttsora10d.ciushqttrpqx.us-east-2.rds.amazonaws.com',
+        Port=1521,
+        DatabaseName='ttsora10'
+        )
+    #print(response)
+    endpt_arn=response["Endpoint"]["EndpointArn"]
+    return(endpt_arn)
+
+
+#------------#------------#------------#------------#------------#------------#
+# MAIN
 #
 
 src_db=(sys.argv[1])
@@ -82,12 +153,8 @@ tgt_db=(sys.argv[2])
 now = datetime.datetime.now()
 print (now)
 TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
-#LOGFILE = SCHEMA+ ".exp.log"
-#DUMPFILE = SCHEMA + ".dmp"
-#print ("+++ Expdp logfile: " + LOGFILE)
-
-print (src_db)
-print (tgt_db)
+#print (src_db)
+#print (tgt_db)
 
 #------------#------------#------------#------------#------------#------------#
 # Set Connection Attributes for Source database
@@ -102,44 +169,32 @@ cur = conn.cursor()
 #cur.execute(sql_exp)
 #time.sleep (10)
 
-#------------#------------#------------#------------#------------#------------#
-# Get SCN from source database
-#
-sql_get_scn = """ Select CURRENT_SCN from v$database """
-cur.execute(sql_get_scn)
-records = cur.fetchall()
-for row in records:
-    print ("+++ SCN : " + str(row))
+scn = get_scn(src_db)
+print ("SCN: " + scn)
+
+src_db_status = get_database_status(src_db)
+tgt_db_status = get_database_status(tgt_db)
+print (src_db + " : " + src_db_status)
+print (tgt_db + " : " + tgt_db_status)
+
+# promote
+tgt_db_status = get_database_status(tgt_db)
+while tgt_db_status != "available": 
+    tgt_db_status = get_database_status(tgt_db)
+    time.sleep (30)
+    print ("waiting for RR to become available")
+
+# create endpoint
+# tgt_endpoint_arn = create_endpoint
+
+# create migration task
+# using rep instance, scn, tgt_endpoint_arn
+
+quit()
+
+# cleanup
+
 cur.close()
-
-#------------#------------#------------#------------#------------#------------#
-# Promote Read Replica to Standalone 
-#
-session = boto3.session.Session()
-session = boto3.session.Session(profile_name='dba')
-client = session.client(
-      service_name='rds'
-        )
-response = client.promote_read_replica(
-        BackupRetentionPeriod=5,
-        DBInstanceIdentifier=tgt_db,
-        )
-print(response)
-
-#print(row_count)
-#while row_count >=1 :
-#    time.sleep (5)
-#    cur.execute(sql_chk_status)
-#    records = cur.fetchall()
-#    for row in records:
-#        print ("+++ Waiting for job: " + str(row))
-#    row_count=cur.rowcount
-#    print ( row_count)
-
-#cur.execute(sql_cat_log)
-#records = cur.fetchall()
-#for row in records:
-#    print (row)
 
 
 
