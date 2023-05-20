@@ -143,6 +143,61 @@ def create_endpoint(dbname, endpoint_type):
     endpt_arn=response["Endpoint"]["EndpointArn"]
     return(endpt_arn)
 
+#------------#------------#------------#------------#------------#------------#
+# test endpoint
+#
+def test_endpoint(rep_arn, endpoint_arn): 
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='dba')
+    client = session.client(
+      service_name='dms'
+        )
+    response = client.test_endpoint(
+        ReplicationInstanceArn=rep_arn,
+        EndpointArn=endpoint_arn
+    )
+    return(response)
+
+#------------#------------#------------#------------#------------#------------#
+# describe endpoint
+#
+def describe_endpoint(endpoint_identifier): 
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='dba')
+    client = session.client(
+      service_name='dms'
+        )
+    response = client.describe_connections(
+    Filters=[
+        {
+            'Name': 'endpoint-name',
+            'Values': [
+                endpoint_identifier
+            ],
+        },
+    ],
+    MaxRecords=23,
+    Marker='string'
+        )
+    return(response)
+
+#------------#------------#------------#------------#------------#------------#
+# create migration task
+#
+def create_migration_task():
+    client = boto3.client('dms')
+
+    response = client.create_replication_task(
+        ReplicationTaskIdentifier='string',
+        SourceEndpointArn='string',
+        TargetEndpointArn='string',
+        ReplicationInstanceArn='string',
+        MigrationType='full-load'|'cdc'|'full-load-and-cdc',
+        TableMappings='string',
+        ReplicationTaskSettings="{\"Logging\": {\"EnableLogging\": true}}",
+    )
+    return(response)
+
 
 #------------#------------#------------#------------#------------#------------#
 # MAIN
@@ -178,6 +233,8 @@ print (src_db + " : " + src_db_status)
 print (tgt_db + " : " + tgt_db_status)
 
 # promote
+# promote_read_replica(tgt_db)
+
 tgt_db_status = get_database_status(tgt_db)
 while tgt_db_status != "available": 
     tgt_db_status = get_database_status(tgt_db)
@@ -185,12 +242,13 @@ while tgt_db_status != "available":
     print ("waiting for RR to become available")
 
 # create endpoint
-# tgt_endpoint_arn = create_endpoint
+# tgt_endpoint_arn = create_endpoint(tgt_db,target)
+desc_endpt = (describe_endpoint(src_db))
+print (desc_endpt)
 
 # create migration task
 # using rep instance, scn, tgt_endpoint_arn
-
-quit()
+# call waiter
 
 # cleanup
 
