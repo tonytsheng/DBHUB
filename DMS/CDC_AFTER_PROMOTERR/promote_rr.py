@@ -20,10 +20,12 @@
 # limitations under the License.
 # Ensure you apply your due diligence and test to your satisfaction
 # before running this code in a Production system.
+# 
+# Disclaimer: This code is not Production ready. There is no error handling.
 # ---------------------------------------------------------------------------
 #
 # To run:
-#    $ python3 promote_rr.py
+#    $ python3 promote_rr.py src_db tgt_db
 #
 # ---------------------------------------------------------------------------
 #
@@ -231,7 +233,11 @@ print (src_db + " : " + src_db_status)
 print (tgt_db + " : " + tgt_db_status)
 
 # promote
-# promote_read_replica(tgt_db)
+# promote_rr = promote_read_replica(tgt_db)
+rr_dbid=promote_rr[PromoteReadReplicaResult][DBInstance][DBInstanceIdentifier]
+rr_endpoint=promote_rr[PromoteReadReplicaResult][DBInstance][Endpoint][Address]
+rr_port=promote_rr[PromoteReadReplicaResult][DBInstance][Endpoint][Port]
+rr_dbname=promote_rr[PromoteReadReplicaResult][DBInstance][DBName]
 
 tgt_db_status = get_database_status(tgt_db)
 while tgt_db_status != "available": 
