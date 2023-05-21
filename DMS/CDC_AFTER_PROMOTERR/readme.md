@@ -13,7 +13,18 @@ Execution order:
 - Obtain the SCN from the source database.
 - Promote the Read Replica.
 - Create target endpoint to the former Read Replica.
+- Test target endpoint.
 - Create and start DMS migration task starting at the SCN.
+
+# Provided Scripts
+- getstatus.py can be run in another window as needed to track different executions with this work.
+  - latest database alert log entries
+  - list of archived and applied logs.
+  - current SCN.
+  - database instance status.
+  - execute this by running python3 getstatus.py src_db src_rr_db.
+- promote_rr.py is the script that will do all the work.
+  - execute this by running python3 promote_rr.py src_db src_rr_db.
 
 # Misc
 - Even though the source database goes into Modifying status when creating or deleting an associated Read Replica, transactions still appear to work fine.
