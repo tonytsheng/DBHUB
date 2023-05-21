@@ -1,0 +1,5 @@
+[ { "Name": "EndpointId", "Values": ["s-pg102"] } ]
+
+aws dms describe-endpoints --filters Name=endpoint-id,Values=ttsora10  --profile dba
+#this works
+

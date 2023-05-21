@@ -161,25 +161,23 @@ def test_endpoint(rep_arn, endpoint_arn):
 #------------#------------#------------#------------#------------#------------#
 # describe endpoint
 #
-def describe_endpoint(endpoint_identifier): 
+def describe_endpoint(endpoint_arn): 
     session = boto3.session.Session()
     session = boto3.session.Session(profile_name='dba')
     client = session.client(
       service_name='dms'
         )
     response = client.describe_connections(
-    Filters=[
-        {
-            'Name': 'endpoint-name',
-            'Values': [
-                endpoint_identifier
-            ],
-        },
-    ],
-    MaxRecords=23,
-    Marker='string'
+            Filters=[
+            {
+                'Name': 'endpoint-arn',
+                'Values': [endpoint_arn]
+           },
+       ],
+       MaxRecords=23,
+       Marker='string'
         )
-    return(response)
+    return(response["Connections"][0]["Status"])
 
 #------------#------------#------------#------------#------------#------------#
 # create migration task
@@ -243,8 +241,11 @@ while tgt_db_status != "available":
 
 # create endpoint
 # tgt_endpoint_arn = create_endpoint(tgt_db,target)
-desc_endpt = (describe_endpoint(src_db))
-print (desc_endpt)
+desc_endpt = describe_endpoint(tgt_endpoint_arn)
+while desc_endpt != "successful": 
+    desc_endpt = describe_endpoint(tgt_endpoint_arn)
+    time.sleep (30)
+    print ("waiting for endpoint to test successfully ")
 
 # create migration task
 # using rep instance, scn, tgt_endpoint_arn

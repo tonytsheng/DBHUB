@@ -39,6 +39,25 @@ def get_secret():
     password = database_secrets['password']
     return (password)
 
+def describe_endpoint(endpoint_arn):
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='dba')
+    client = session.client(
+      service_name='dms'
+        )
+    response = client.describe_connections(
+            Filters=[
+            {
+                'Name': 'endpoint-arn',
+                'Values': [endpoint_arn]
+           },
+       ],
+       MaxRecords=23,
+       Marker='string'
+        )
+    return(response)
+
+
 #------------#------------#------------#------------#------------#------------#
 # multiple input arguments
 #
@@ -107,6 +126,10 @@ endpt_arn=response["Endpoint"]["EndpointArn"]
 print(endpt_arn)
 username=response["Endpoint"]["Username"]
 print(username)
+
+endpointstatus=describe_endpoint("arn:aws:dms:us-east-2:012363508593:endpoint:NU3L5VIOBDWI6KWTF2YJ5IKDZG7DPNI6H7Y4OOA")
+print (endpointstatus)
+
 
 #print(row_count)
 #while row_count >=1 :
