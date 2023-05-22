@@ -52,6 +52,14 @@ import time
 import datetime
 
 #------------#------------#------------#------------#------------#------------#
+# logit 
+#
+def logit(msg):
+    now = datetime.datetime.now()
+    date_time = now.strftime("%d.%m.%Y %H:%M:%S")
+    print(date_time+" : "+str(msg))
+
+#------------#------------#------------#------------#------------#------------#
 # wait 
 #
 def wait():
@@ -93,8 +101,8 @@ def get_database_status(dbname):
     response = client.describe_db_instances( 
         DBInstanceIdentifier=dbname,
         ) 
-    db_status = response["DBInstances"][0]["DBInstanceStatus"]
-    return(db_status)
+#    db_status = response["DBInstances"][0]["DBInstanceStatus"]
+    return(response)
 
 #------------#------------#------------#------------#------------#------------#
 # Get SCN from source database
@@ -206,7 +214,6 @@ def create_migration_task():
 src_db=(sys.argv[1])
 tgt_db=(sys.argv[2])
 now = datetime.datetime.now()
-print (now)
 TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
 #print (src_db)
 #print (tgt_db)
@@ -225,37 +232,46 @@ cur = conn.cursor()
 #time.sleep (10)
 
 scn = get_scn(src_db)
-print ("SCN: " + scn)
+scn = ("SCN : "+scn)
+logit (scn)
 
-src_db_status = get_database_status(src_db)
-tgt_db_status = get_database_status(tgt_db)
-print (src_db + " : " + src_db_status)
-print (tgt_db + " : " + tgt_db_status)
+db_status = get_database_status(src_db)
+src_db_status = db_status["DBInstances"][0]["DBInstanceStatus"]
+db_status = get_database_status(tgt_db) 
+tgt_db_status = db_status["DBInstances"][0]["DBInstanceStatus"]
+logit (src_db + " : " + src_db_status)
+logit (tgt_db + " : " + tgt_db_status)
 
 # promote
 promote_rr = promote_read_replica(tgt_db)
-print (promote_rr)
-
-rr_dbid=promote_rr[DBInstance][DBInstanceIdentifier]
-rr_endpoint=promote_rr[DBInstance][Endpoint][Address]
-rr_port=promote_rr[DBInstance][Endpoint][Port]
-rr_dbname=promote_rr[DBInstance][DBName]
-print ("rr promoted")
-print (rr_dbid+" : "+rr_endpoint+" : "+ rr_port+" : "+rr_dbname)
+logit ("Promoting Read Replica")
+time.sleep(60)
+logit ("RR promoted")
 
 tgt_db_status = get_database_status(tgt_db)
-while tgt_db_status != "available": 
+db_status = tgt_db_status["DBInstances"][0]["DBInstanceStatus"]
+while db_status != "available": 
     tgt_db_status = get_database_status(tgt_db)
-    time.sleep (30)
-    print ("waiting for RR to become available")
+    db_status = tgt_db_status["DBInstances"][0]["DBInstanceStatus"]
+    time.sleep(30)
+    logit ("waiting for RR to become available")
+
+db_endpoint = tgt_db_status["DBInstances"][0]["Endpoint"]["Address"]
+db_port = tgt_db_status["DBInstances"][0]["Endpoint"]["Port"]
+db_name = tgt_db_status["DBInstances"][0]["DBName"]
+db_arn = tgt_db_status["DBInstances"][0]["DBInstanceArn"]
+logit (db_status)
+logit (db_port)
+logit (db_name)
+logit (db_arn)
 
 # create endpoint
 # tgt_endpoint_arn = create_endpoint(tgt_db,target)
-desc_endpt = describe_endpoint(tgt_endpoint_arn)
-while desc_endpt != "successful": 
-    desc_endpt = describe_endpoint(tgt_endpoint_arn)
-    time.sleep (30)
-    print ("waiting for endpoint to test successfully ")
+#desc_endpt = describe_endpoint(db_arn)
+#while desc_endpt != "successful": 
+#    desc_endpt = describe_endpoint(tgt_endpoint_arn)
+#    time.sleep (30)
+#    print ("waiting for endpoint to test successfully ")
 
 # create migration task
 # using rep instance, scn, tgt_endpoint_arn

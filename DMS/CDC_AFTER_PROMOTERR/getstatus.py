@@ -50,6 +50,11 @@ from datetime import datetime
 import time
 import datetime
 
+def logit(msg):
+    now = datetime.datetime.now()
+    date_time = now.strftime("%d.%m.%Y %H:%M:%S")
+    print(date_time+" : "+str(msg))
+
 def wait():
     for i in range(12):
         now = datetime.datetime.now()
@@ -80,12 +85,12 @@ def get_secret():
 
 #SCHEMA=(sys.argv[1])
 now = datetime.datetime.now()
-print ()
-print (now)
+logit (" ")
+logit (now)
 TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
 #LOGFILE = SCHEMA+ ".exp.log"
 #DUMPFILE = SCHEMA + ".dmp"
-#print ("+++ Expdp logfile: " + LOGFILE)
+#print ("Expdp logfile: " + LOGFILE)
 src_db=(sys.argv[1])
 tgt_db=(sys.argv[2])
 
@@ -112,7 +117,7 @@ where ORIGINATING_TIMESTAMP > sysdate-(.5/24)
 cur.execute(sql_tail_log)
 records = cur.fetchall()
 for row in records:
-    print ("+++ " + str(row))
+    logit (str(row))
 
 #------------#------------#------------#------------#------------#------------#
 # Get RR Latency
@@ -134,7 +139,7 @@ order by sequence#
 cur.execute(sql_rr_latency)
 records = cur.fetchall()
 for row in records:
-    print ("+++ Archived Log Status: " + str(row))
+    logit ("Archived Log Status: " + str(row))
 row_count = cur.rowcount
 
 #------------#------------#------------#------------#------------#------------#
@@ -142,9 +147,8 @@ row_count = cur.rowcount
 #
 sql_get_scn = """ Select CURRENT_SCN from v$database """
 cur.execute(sql_get_scn)
-records = cur.fetchall()
-for row in records:
-    print ("+++ SCN : " + str(row))
+record = cur.fetchone()
+logit ("SCN : " + str(record[0]))
 
 #------------#------------#------------#------------#------------#------------#
 
@@ -159,8 +163,8 @@ client = session.client(
 dbs = [src_db, tgt_db]
 # make this list dynamic
 
-print ("#------------#------------#------------#------------#------------#------------#")
-print ("DBIdentifier  \t Status \t MultiAZ \t ReadReplica")
+logit ("#------------#------------#------------#------------#------------#------------#")
+logit ("DBIdentifier  \t Status \t MultiAZ \t ReadReplica")
 for db in dbs:
     describe_db_output = client.describe_db_instances(
         DBInstanceIdentifier=db
@@ -168,7 +172,7 @@ for db in dbs:
     dbstatus = str(describe_db_output['DBInstances'][0]['DBInstanceStatus'])
     multiaz = str(describe_db_output['DBInstances'][0]['MultiAZ'])
     rrstatus = str(describe_db_output['DBInstances'][0]['ReadReplicaDBInstanceIdentifiers'])
-    print(db + " \t " + dbstatus + " \t " + multiaz + " \t\t " + rrstatus)
+    logit(db + " \t " + dbstatus + " \t " + multiaz + " \t\t " + rrstatus)
 
 
 #print(row_count)
