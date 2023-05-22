@@ -233,11 +233,15 @@ print (src_db + " : " + src_db_status)
 print (tgt_db + " : " + tgt_db_status)
 
 # promote
-# promote_rr = promote_read_replica(tgt_db)
-rr_dbid=promote_rr[PromoteReadReplicaResult][DBInstance][DBInstanceIdentifier]
-rr_endpoint=promote_rr[PromoteReadReplicaResult][DBInstance][Endpoint][Address]
-rr_port=promote_rr[PromoteReadReplicaResult][DBInstance][Endpoint][Port]
-rr_dbname=promote_rr[PromoteReadReplicaResult][DBInstance][DBName]
+promote_rr = promote_read_replica(tgt_db)
+print (promote_rr)
+
+rr_dbid=promote_rr[DBInstance][DBInstanceIdentifier]
+rr_endpoint=promote_rr[DBInstance][Endpoint][Address]
+rr_port=promote_rr[DBInstance][Endpoint][Port]
+rr_dbname=promote_rr[DBInstance][DBName]
+print ("rr promoted")
+print (rr_dbid+" : "+rr_endpoint+" : "+ rr_port+" : "+rr_dbname)
 
 tgt_db_status = get_database_status(tgt_db)
 while tgt_db_status != "available": 
