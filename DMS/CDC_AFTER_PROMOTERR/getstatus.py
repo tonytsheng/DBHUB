@@ -52,7 +52,7 @@ import datetime
 
 def logit(msg):
     now = datetime.datetime.now()
-    date_time = now.strftime("%d.%m.%Y %H:%M:%S")
+    date_time = now.strftime("%Y.%m.%d %H:%M:%S")
     print(date_time+" : "+str(msg))
 
 def wait():
@@ -173,6 +173,7 @@ for db in dbs:
     multiaz = str(describe_db_output['DBInstances'][0]['MultiAZ'])
     rrstatus = str(describe_db_output['DBInstances'][0]['ReadReplicaDBInstanceIdentifiers'])
     logit(db + " \t " + dbstatus + " \t " + multiaz + " \t\t " + rrstatus)
+
 
 
 #print(row_count)

@@ -56,7 +56,7 @@ import datetime
 #
 def logit(msg):
     now = datetime.datetime.now()
-    date_time = now.strftime("%d.%m.%Y %H:%M:%S")
+    date_time = now.strftime("%Y.%m.%d %H:%M:%S")
     print(date_time+" : "+str(msg))
 
 #------------#------------#------------#------------#------------#------------#
@@ -133,21 +133,21 @@ def promote_read_replica(dbname):
 #------------#------------#------------#------------#------------#------------#
 # create endpoint
 #
-def create_endpoint(dbname, endpoint_type): 
+def create_endpoint(dbid, server, port, dbname): 
     session = boto3.session.Session()
     session = boto3.session.Session(profile_name='dba')
     client = session.client(
       service_name='dms'
         )
     response = client.create_endpoint(
-        EndpointIdentifier=dbname,
-        EndpointType=endpoint_type,
+        EndpointIdentifier=dbid,
+        EndpointType='target',
         EngineName='oracle',
         Username='admin',
         Password='Pass1234',
-        ServerName='ttsora10d.ciushqttrpqx.us-east-2.rds.amazonaws.com',
-        Port=1521,
-        DatabaseName='ttsora10'
+        ServerName=server,
+        Port=port,
+        DatabaseName=dbname
         )
     #print(response)
     endpt_arn=response["Endpoint"]["EndpointArn"]
@@ -244,9 +244,9 @@ logit (tgt_db + " : " + tgt_db_status)
 
 # promote
 promote_rr = promote_read_replica(tgt_db)
-logit ("Promoting Read Replica")
+logit ("Promoting Read Replica.")
 time.sleep(60)
-logit ("RR promoted")
+logit ("RR promoted.")
 
 tgt_db_status = get_database_status(tgt_db)
 db_status = tgt_db_status["DBInstances"][0]["DBInstanceStatus"]
@@ -254,24 +254,24 @@ while db_status != "available":
     tgt_db_status = get_database_status(tgt_db)
     db_status = tgt_db_status["DBInstances"][0]["DBInstanceStatus"]
     time.sleep(30)
-    logit ("waiting for RR to become available")
+    logit ("Waiting for RR to become available - current status:"+ db_status)
 
 db_endpoint = tgt_db_status["DBInstances"][0]["Endpoint"]["Address"]
 db_port = tgt_db_status["DBInstances"][0]["Endpoint"]["Port"]
 db_name = tgt_db_status["DBInstances"][0]["DBName"]
 db_arn = tgt_db_status["DBInstances"][0]["DBInstanceArn"]
-logit (db_status)
-logit (db_port)
-logit (db_name)
-logit (db_arn)
+logit ("Endpoint :"+db_endpoint)
+logit ("Port :"+db_port)
+logit ("DBName :"+db_name)
+logit ("DBArn :"+db_arn)
 
-# create endpoint
-# tgt_endpoint_arn = create_endpoint(tgt_db,target)
-#desc_endpt = describe_endpoint(db_arn)
-#while desc_endpt != "successful": 
-#    desc_endpt = describe_endpoint(tgt_endpoint_arn)
-#    time.sleep (30)
-#    print ("waiting for endpoint to test successfully ")
+tgt_endpoint_arn = create_endpoint(tgt_db, db_endpoint, db_port, db_name)
+
+desc_endpt = describe_endpoint(tgt_endpoint_arn)
+while desc_endpt != "successful": 
+    desc_endpt = describe_endpoint(tgt_endpoint_arn)
+    time.sleep (30)
+    logit ("Waiting for endpoint to test successfully - current status : "+desc_endpt)
 
 # create migration task
 # using rep instance, scn, tgt_endpoint_arn
@@ -283,4 +283,12 @@ cur.close()
 
 
 
+
+22.05.2023 21:44:20 : Waiting for RR to become available - current status:backing-up
+22.05.2023 21:44:50 : Waiting for RR to become available - current status:available
+22.05.2023 21:44:50 : Endpoint :ttsora13.ciushqttrpqx.us-east-2.rds.amazonaws.com
+Traceback (most recent call last):
+  File "./promote_rr.py", line 264, in <module>
+    logit ("Port :"+db_port)
+TypeError: can only concatenate str (not "int") to str
 
