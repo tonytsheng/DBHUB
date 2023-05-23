@@ -210,6 +210,8 @@ def create_migration_task():
 #------------#------------#------------#------------#------------#------------#
 # MAIN
 #
+rep_instance_arn="arn:aws:dms:us-east-2:012363508593:rep:D2JPCUIHZYVACQINWOBP5KC2UCAQFT2E3QZFLIA"
+# ^ change this
 
 src_db=(sys.argv[1])
 tgt_db=(sys.argv[2])
@@ -243,9 +245,9 @@ logit (src_db + " : " + src_db_status)
 logit (tgt_db + " : " + tgt_db_status)
 
 # promote
-#promote_rr = promote_read_replica(tgt_db)
+promote_rr = promote_read_replica(tgt_db)
 logit ("Promoting Read Replica.")
-#time.sleep(60)
+time.sleep(60)
 logit ("RR promoted.")
 
 tgt_db_status = get_database_status(tgt_db)
@@ -260,21 +262,21 @@ db_endpoint = tgt_db_status["DBInstances"][0]["Endpoint"]["Address"]
 db_port = tgt_db_status["DBInstances"][0]["Endpoint"]["Port"]
 db_name = tgt_db_status["DBInstances"][0]["DBName"]
 db_arn = tgt_db_status["DBInstances"][0]["DBInstanceArn"]
-logit ("Promoted RR Endpoint :"+db_endpoint)
-msg = "Promoted RR Port :"+ str(db_port)
-logit (msg)
-logit ("Promoted RR DBName :"+db_name)
-logit ("Promoted RR DBInstanceArn :"+db_arn)
+logit ("Promoted RR Endpoint : "+db_endpoint)
+port_msg = "Promoted RR Port : "+str(db_port)
+logit (port_msg)
+logit ("Promoted RR DBName : "+db_name)
+logit ("Promoted RR DBInstanceArn : "+db_arn)
 
 tgt_endpoint_arn = create_endpoint(tgt_db, db_endpoint, db_port, db_name)
 
-tgt_endpoint_test = test_connection("arn:aws:dms:us-east-2:012363508593:rep:D2JPCUIHZYVACQINWOBP5KC2UCAQFT2E3QZFLIA", tgt_endpoint_arn) 
+tgt_endpoint_test = test_connection(rep_instance_arn, tgt_endpoint_arn) 
 
 desc_endpt = describe_endpoint(tgt_endpoint_arn)
 while desc_endpt != "successful": 
     desc_endpt = describe_endpoint(tgt_endpoint_arn)
     time.sleep (30)
-    logit ("Waiting for Promoted RR endpoint to test successfully - current status : "+desc_endpt)
+    logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
 
 # create migration task
 # using rep instance, scn, tgt_endpoint_arn
