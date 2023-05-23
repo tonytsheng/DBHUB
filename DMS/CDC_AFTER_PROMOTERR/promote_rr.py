@@ -156,13 +156,13 @@ def create_endpoint(dbid, server, port, dbname):
 #------------#------------#------------#------------#------------#------------#
 # test endpoint
 #
-def test_endpoint(rep_arn, endpoint_arn): 
+def test_connection(rep_arn, endpoint_arn): 
     session = boto3.session.Session()
     session = boto3.session.Session(profile_name='dba')
     client = session.client(
       service_name='dms'
         )
-    response = client.test_endpoint(
+    response = client.test_connection(
         ReplicationInstanceArn=rep_arn,
         EndpointArn=endpoint_arn
     )
@@ -243,9 +243,9 @@ logit (src_db + " : " + src_db_status)
 logit (tgt_db + " : " + tgt_db_status)
 
 # promote
-promote_rr = promote_read_replica(tgt_db)
+#promote_rr = promote_read_replica(tgt_db)
 logit ("Promoting Read Replica.")
-time.sleep(60)
+#time.sleep(60)
 logit ("RR promoted.")
 
 tgt_db_status = get_database_status(tgt_db)
@@ -260,18 +260,21 @@ db_endpoint = tgt_db_status["DBInstances"][0]["Endpoint"]["Address"]
 db_port = tgt_db_status["DBInstances"][0]["Endpoint"]["Port"]
 db_name = tgt_db_status["DBInstances"][0]["DBName"]
 db_arn = tgt_db_status["DBInstances"][0]["DBInstanceArn"]
-logit ("Endpoint :"+db_endpoint)
-logit ("Port :"+db_port)
-logit ("DBName :"+db_name)
-logit ("DBArn :"+db_arn)
+logit ("Promoted RR Endpoint :"+db_endpoint)
+msg = "Promoted RR Port :"+ str(db_port)
+logit (msg)
+logit ("Promoted RR DBName :"+db_name)
+logit ("Promoted RR DBInstanceArn :"+db_arn)
 
 tgt_endpoint_arn = create_endpoint(tgt_db, db_endpoint, db_port, db_name)
+
+tgt_endpoint_test = test_connection("arn:aws:dms:us-east-2:012363508593:rep:D2JPCUIHZYVACQINWOBP5KC2UCAQFT2E3QZFLIA", tgt_endpoint_arn) 
 
 desc_endpt = describe_endpoint(tgt_endpoint_arn)
 while desc_endpt != "successful": 
     desc_endpt = describe_endpoint(tgt_endpoint_arn)
     time.sleep (30)
-    logit ("Waiting for endpoint to test successfully - current status : "+desc_endpt)
+    logit ("Waiting for Promoted RR endpoint to test successfully - current status : "+desc_endpt)
 
 # create migration task
 # using rep instance, scn, tgt_endpoint_arn
@@ -280,15 +283,4 @@ while desc_endpt != "successful":
 # cleanup
 
 cur.close()
-
-
-
-
-22.05.2023 21:44:20 : Waiting for RR to become available - current status:backing-up
-22.05.2023 21:44:50 : Waiting for RR to become available - current status:available
-22.05.2023 21:44:50 : Endpoint :ttsora13.ciushqttrpqx.us-east-2.rds.amazonaws.com
-Traceback (most recent call last):
-  File "./promote_rr.py", line 264, in <module>
-    logit ("Port :"+db_port)
-TypeError: can only concatenate str (not "int") to str
 

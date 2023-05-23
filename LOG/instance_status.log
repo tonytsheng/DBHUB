@@ -21614,3 +21614,40 @@ An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster op
 docdb-2023-03-27-00-49-42
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb-2023-03-27-00-49-42 is in stopped state but expected it to be one of available.
+Mon May 22 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+docdb-2023-03-27-00-49-42
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb-2023-03-27-00-49-422
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb-2023-03-27-00-49-423
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+sqlserver500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance sqlserver500 is not in available state.
+usea2-mysql-db900-r
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
+usea2-mysql-db900-w
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-mysql DB instances are not eligible for stopping and starting.
++++ Clusters
+clu-usea2-mysql-db900
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: Stop-db-cluster is not supported for clusters with read replicas
+docdb-2023-03-27-00-49-42
+DBCLUSTER	1	False	1	2023-03-27T00:50:16.254Z	False	False	arn:aws:rds:us-east-2:070201068661:cluster:docdb-2023-03-27-00-49-42	docdb-2023-03-27-00-49-42	default.docdb5.0	default-vpc-0467e5c237261df36	cluster-SOE2GPJLCFPNEOVC77ZQ5LMQOE	False	2023-05-21T00:02:22.738Z	docdb-2023-03-27-00-49-42.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	docdb	provisioned	5.0.0	Z7L8695A82IZ6	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2023-05-22T22:56:25.167Z	mongodb	True	27017	00:00-00:30	sat:03:10-sat:03:40	docdb-2023-03-27-00-49-42.cluster-ro-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	available	True
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	docdb-2023-03-27-00-49-423	False	1
+DBCLUSTERMEMBERS	in-sync	docdb-2023-03-27-00-49-422	False	1
+DBCLUSTERMEMBERS	in-sync	docdb-2023-03-27-00-49-42	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
