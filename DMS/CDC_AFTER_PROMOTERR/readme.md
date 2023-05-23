@@ -22,9 +22,9 @@ Execution order:
   - list of archived and applied logs.
   - current SCN.
   - database instance status.
-  - execute this by running 'python3 getstatus.py src_db src_rr_db'.
+  - execute this by running './getstatus.py src_db src_rr_db'.
 - promote_rr.py is the script that will do all the work.
-  - execute this by running 'python3 promote_rr.py src_db src_rr_db'.
+  - execute this by running './promote_rr.py src_db src_rr_db'.
 
 # Misc
 - Even though the source database goes into Modifying status when creating or deleting an associated Read Replica, transactions still appear to work fine.
