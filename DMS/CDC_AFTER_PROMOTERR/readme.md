@@ -8,7 +8,6 @@ Prereqs:
 
 Execution order:
 - Confirm Read Replica latency is acceptable.
-- Stop all applications.
 - Confirm Read Replica is in sync.
 - Obtain the SCN from the source database.
 - Promote the Read Replica.
