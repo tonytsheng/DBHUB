@@ -169,9 +169,34 @@ def test_connection(rep_arn, endpoint_arn):
     return(response)
 
 #------------#------------#------------#------------#------------#------------#
+# get database endpoint arn
+#
+def get_database_endpt_arn(dbname, endpt_type):
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='dba')
+    client = session.client(
+      service_name='dms'
+        )
+    response = client.describe_endpoints(
+            Filters=[
+            {
+                'Name': 'endpoint-id',
+                'Values': [dbname]
+           },
+            {
+                'Name': 'endpoint-type',
+                'Values': [endpt_type]
+            }
+       ],
+       MaxRecords=23,
+       Marker='string'
+        )
+    return(response)
+
+#------------#------------#------------#------------#------------#------------#
 # describe endpoint
 #
-def describe_endpoint(endpoint_arn): 
+def get_endpoint_status(endpoint_arn): 
     session = boto3.session.Session()
     session = boto3.session.Session(profile_name='dba')
     client = session.client(
@@ -192,16 +217,17 @@ def describe_endpoint(endpoint_arn):
 #------------#------------#------------#------------#------------#------------#
 # create migration task
 #
-def create_migration_task():
+def create_replication_task(reptaskid, src_endpt, tgt_endpt, reparn, cdc_start):
     client = boto3.client('dms')
 
     response = client.create_replication_task(
-        ReplicationTaskIdentifier='string',
-        SourceEndpointArn='string',
-        TargetEndpointArn='string',
-        ReplicationInstanceArn='string',
-        MigrationType='full-load'|'cdc'|'full-load-and-cdc',
-        TableMappings='string',
+        ReplicationTaskIdentifier=reptaskid,
+        SourceEndpointArn=src_endpt,
+        TargetEndpointArn=tgt_endpt,
+        ReplicationInstanceArn=reparn,
+        MigrationType='cdc',
+        TableMappings='file://dms_task.json',
+        CdcStartPosition=cdc_start,
         ReplicationTaskSettings="{\"Logging\": {\"EnableLogging\": true}}",
     )
     return(response)
@@ -239,15 +265,17 @@ logit (scn)
 
 db_status = get_database_status(src_db)
 src_db_status = db_status["DBInstances"][0]["DBInstanceStatus"]
+src_db_arn = db_status["DBInstances"][0]["DBInstanceArn"]
 db_status = get_database_status(tgt_db) 
 tgt_db_status = db_status["DBInstances"][0]["DBInstanceStatus"]
-logit (src_db + " : " + src_db_status)
-logit (tgt_db + " : " + tgt_db_status)
+tgt_db_arn = db_status["DBInstances"][0]["DBInstanceArn"]
+logit (src_db + " : " + src_db_status + " : " + src_db_arn)
+logit (tgt_db + " : " + tgt_db_status + " : " + tgt_db_arn)
 
 # promote
-promote_rr = promote_read_replica(tgt_db)
+# promote_rr = promote_read_replica(tgt_db)
 logit ("Promoting Read Replica.")
-time.sleep(60)
+# time.sleep(60)
 logit ("RR promoted.")
 
 tgt_db_status = get_database_status(tgt_db)
@@ -262,27 +290,33 @@ db_endpoint = tgt_db_status["DBInstances"][0]["Endpoint"]["Address"]
 db_port = tgt_db_status["DBInstances"][0]["Endpoint"]["Port"]
 db_name = tgt_db_status["DBInstances"][0]["DBName"]
 db_arn = tgt_db_status["DBInstances"][0]["DBInstanceArn"]
-logit ("Promoted RR Endpoint : "+db_endpoint)
+logit ("Promoted RR Host : "+db_endpoint)
 port_msg = "Promoted RR Port : "+str(db_port)
 logit (port_msg)
 logit ("Promoted RR DBName : "+db_name)
 logit ("Promoted RR DBInstanceArn : "+db_arn)
 
+# src_endpoint_test = test_connection(rep_instance_arn, src_endpoint_arn) 
+
 tgt_endpoint_arn = create_endpoint(tgt_db, db_endpoint, db_port, db_name)
+logit ("Created DMS endpoint for RR DBInstanceArn : "+db_arn)
 
 tgt_endpoint_test = test_connection(rep_instance_arn, tgt_endpoint_arn) 
-
-desc_endpt = describe_endpoint(tgt_endpoint_arn)
+desc_endpt = get_endpoint_status(tgt_endpoint_arn)
+logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
 while desc_endpt != "successful": 
-    desc_endpt = describe_endpoint(tgt_endpoint_arn)
+    desc_endpt = get_endpoint_status(tgt_endpoint_arn)
     time.sleep (30)
     logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
 
-# create migration task
-# using rep instance, scn, tgt_endpoint_arn
-# call waiter
+dbendpt = get_database_endpt_arn(src_db,'source')
+src_endpoint_arn = dbendpt["Endpoints"][0]["EndpointArn"]
+logit ("Source DMS Endpoint: " +src_endpoint_arn)
+logit ("Target DMS Endpoint: " +tgt_endpoint_arn)
 
-# cleanup
+#create_rep_task = create_replication_task('task100', src_endpoint_arn, tgt_endpoint_arn, rep_instance_arn, scn)
+logit (rep_instance_arn)
+logit ("Created DMS migration task.")
 
 cur.close()
 
