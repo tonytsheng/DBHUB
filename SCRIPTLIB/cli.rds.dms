@@ -1,0 +1,38 @@
+aws rds describe-db-instances --profile dba | jq ' .DBInstances[]|  .DBInstanceIdentifier, .DBInstanceStatus'
+aws rds delete-db-instance  --db-instance-identifier ttsora14 --skip-final-snapshot  --profile dba
+aws rds create-db-instance-read-replica --db-instance-identifier ttsora16 --availability-zone "us-east-2a" --source-db-instance-identifier ttsora10 --profile dba --db-instance-class db.r5.large
+
+aws dms create-endpoint --endpoint-identifier ttsora10d \
+  --endpoint-type target   \
+  --engine-name oracle  \
+  --username admin  \
+  --password Pass1234 \
+  --server-name ttsora10d.ciushqttrpqx.us-east-2.rds.amazonaws.com     \
+  --port 1521        \
+  --database-name ttsora10     \
+  --profile dba
+
+aws dms test-connection \
+  --replication-instance-arn arn:aws:dms:us-east-2:012363508593:rep:D2JPCUIHZYVACQINWOBP5KC2UCAQFT2E3QZFLIA \
+  --endpoint-arn arn:aws:dms:us-east-2:012363508593:endpoint:OINR3FXOXYL5Y7ZMDGQQU36K4YRRHOZRLAAINWA \
+  --profile dba
+
+aws dms create-replication-task --replication-task-identifier tts-ora-ora  \
+  --source-endpoint-arn arn:aws:dms:us-east-2:070201068661:endpoint:V64WVN3F2MJSYOX2Z2Y2NT5655PLSDQLUBPB63I   \
+  --target-endpoint-arn arn:aws:dms:us-east-2:012363508593:endpoint:OINR3FXOXYL5Y7ZMDGQQU36K4YRRHOZRLAAINWA \
+  --replication-instance-arn arn:aws:dms:us-east-2:012363508593:rep:D2JPCUIHZYVACQINWOBP5KC2UCAQFT2E3QZFLIA \
+  --migration-type cdc  \
+  --table-mappings file://dms_task.json \
+  --cdc-start-position STRING
+  --profile dba
+
+aws dms describe-endpoints --filter="Name=endpoint-id,Values=ttsora10" --profile dba
+
+aws dms delete-endpoint \
+  --endpoint-arn arn:aws:dms:us-east-2:012363508593:endpoint:OINR3FXOXYL5Y7ZMDGQQU36K4YRRHOZRLAAINWA \
+  --profile dba
+
+aws dms describe-replication-tasks  --filter="Name=replication-task-id,Values=tts100" --profile dba
+
+
+

@@ -477,10 +477,9 @@ tgt_db_arn = db_status["DBInstances"][0]["DBInstanceArn"]
 logit (src_db + " : " + src_db_status + " : " + src_db_arn)
 logit (tgt_db + " : " + tgt_db_status + " : " + tgt_db_arn)
 
-# promote
-## promote_rr = promote_read_replica(tgt_db)
-## logit ("Promoting Read Replica.")
-## time.sleep(60)
+promote_rr = promote_read_replica(tgt_db)
+logit ("Promoting Read Replica.")
+time.sleep(60)
 logit ("RR promoted.")
 
 tgt_db_status = get_database_status(tgt_db)
@@ -504,8 +503,6 @@ logit ("Promoted RR DBInstanceArn : "+db_arn)
 dbendpt = get_database_endpt_arn(src_db,'source')
 src_endpoint_arn = dbendpt["Endpoints"][0]["EndpointArn"]
 logit ("Source DMS Endpoint: " +src_endpoint_arn)
-#src_endpoint_test = test_connection(rep_instance_arn, src_endpoint_arn) 
-# remove ^ don't need to test src endpoint
 
 tgt_endpoint_arn = create_endpoint(tgt_db, db_endpoint, db_port, db_name)
 logit ("Created DMS endpoint for RR DBInstanceArn : "+db_arn)
