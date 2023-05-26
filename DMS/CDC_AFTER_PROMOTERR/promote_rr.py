@@ -347,6 +347,8 @@ task_settings_json = {
         "Severity": "LOGGER_SEVERITY_DEBUG"
       }
     ],
+    "CloudWatchLogGroup": "dms-tasks-tts100",
+    "CloudWatchLogStream": "dms-task-E5P7J6S2HT5AC5QTUKOIWTWWGPSL62FHMTY24PQ"
   },
   "ControlTablesSettings": {
     "ControlSchema":"",
