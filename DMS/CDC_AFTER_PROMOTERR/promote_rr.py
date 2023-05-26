@@ -218,7 +218,11 @@ def get_endpoint_status(endpoint_arn):
 # create migration task
 #
 def create_replication_task(reptaskid, src_endpt, tgt_endpt, reparn, cdc_start):
-    client = boto3.client('dms')
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='dba')
+    client = session.client(
+      service_name='dms'
+        )
 
     response = client.create_replication_task(
         ReplicationTaskIdentifier=reptaskid,
@@ -226,12 +230,205 @@ def create_replication_task(reptaskid, src_endpt, tgt_endpt, reparn, cdc_start):
         TargetEndpointArn=tgt_endpt,
         ReplicationInstanceArn=reparn,
         MigrationType='cdc',
-        TableMappings='file://dms_task.json',
+        TableMappings=json.dumps(table_mappings_json),
         CdcStartPosition=cdc_start,
-        ReplicationTaskSettings="{\"Logging\": {\"EnableLogging\": true}}",
+        ReplicationTaskSettings=''
     )
     return(response)
 
+table_mappings_json = {
+    "rules": [
+        {
+            "rule-type": "selection",
+            "rule-id": "1",
+            "rule-name": "1",
+            "object-locator": {
+                "schema-name": "CUSTOMER_ORDERS",
+                "table-name": "%"
+            },
+            "rule-action": "include",
+            "LoopbackPreventionSettings": {
+                "EnableLoopbackPrevention": "true",
+                "SourceSchema": "CUSTOMER_ORDERS",
+                "TargetSchema": "customer_orders"
+            }
+        },
+        {
+            "rule-type": "transformation",
+            "rule-id": "2",
+            "rule-name": "2",
+            "rule-action": "convert-lowercase",
+            "rule-target": "schema",
+            "object-locator": {
+                "schema-name": "%"
+            }
+        },
+        {
+            "rule-type": "transformation",
+            "rule-id": "3",
+            "rule-name": "3",
+            "rule-action": "convert-lowercase",
+            "rule-target": "table",
+            "object-locator": {
+                "schema-name": "%",
+                "table-name": "%"
+            }
+        },
+        {
+            "rule-type": "transformation",
+            "rule-id": "4",
+            "rule-name": "4",
+            "rule-action": "convert-lowercase",
+            "rule-target": "column",
+            "object-locator": {
+                "schema-name": "%",
+                "table-name": "%",
+                "column-name": "%"
+            }
+        }
+    ]
+}
+
+task_settings_json = {
+  "TargetMetadata": {
+    "TargetSchema": "",
+    "SupportLobs": "true",
+    "FullLobMode": "false",
+    "LobChunkSize": 64,
+    "LimitedSizeLobMode": "true",
+    "LobMaxSize": 3200,
+    "InlineLobMaxSize": 0,
+    "LoadMaxFileSize": 0,
+    "ParallelLoadThreads": 0,
+    "ParallelLoadBufferSize":0,
+    "ParallelLoadQueuesPerThread": 1,
+    "ParallelApplyThreads": 0,
+    "ParallelApplyBufferSize": 100,
+    "ParallelApplyQueuesPerThread": 1,    
+    "BatchApplyEnabled": "false",
+    "TaskRecoveryTableEnabled": "false"
+  },
+  "FullLoadSettings": {
+    "TargetTablePrepMode": "TRUNCATE",
+    "CreatePkAfterFullLoad": "false",
+    "StopTaskCachedChangesApplied": "false",
+    "StopTaskCachedChangesNotApplied": "false",
+    "MaxFullLoadSubTasks": 8,
+    "TransactionConsistencyTimeout": 600,
+    "CommitRate": 10000
+  },
+  "Logging": {
+    "EnableLogging": "true",
+    "LogComponents": [
+      {
+        "Id": "SOURCE_CAPTURE",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },{
+        "Id": "SOURCE_UNLOAD",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },{
+        "Id": "TARGET_APPLY",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },{
+        "Id": "TARGET_LOAD",
+        "Severity": "LOGGER_SEVERITY_INFO"
+      },{
+        "Id": "TASK_MANAGER",
+        "Severity": "LOGGER_SEVERITY_DEBUG"
+      }
+    ],
+  },
+  "ControlTablesSettings": {
+    "ControlSchema":"",
+    "HistoryTimeslotInMinutes":5,
+    "HistoryTableEnabled": "false",
+    "SuspendedTablesTableEnabled": "false",
+    "StatusTableEnabled": "false"
+  },
+  "StreamBufferSettings": {
+    "StreamBufferCount": 3,
+    "StreamBufferSizeInMB": 8
+  },
+  "ChangeProcessingTuning": { 
+    "BatchApplyPreserveTransaction": "true", 
+    "BatchApplyTimeoutMin": 1, 
+    "BatchApplyTimeoutMax": 30, 
+    "BatchApplyMemoryLimit": 500, 
+    "BatchSplitSize": 0, 
+    "MinTransactionSize": 1000, 
+    "CommitTimeout": 1, 
+    "MemoryLimitTotal": 1024, 
+    "MemoryKeepTime": 60, 
+    "StatementCacheSize": 50 
+  },
+  "ChangeProcessingDdlHandlingPolicy": {
+    "HandleSourceTableDropped": "true",
+    "HandleSourceTableTruncated": "true",
+    "HandleSourceTableAltered": "true"
+  },
+  "LoopbackPreventionSettings": {
+    "EnableLoopbackPrevention": "true",
+    "SourceSchema": "LOOP-DATA",
+    "TargetSchema": "loop-data"
+  },
+
+  "CharacterSetSettings": {
+    "CharacterReplacements": [ {
+        "SourceCharacterCodePoint": 35,
+        "TargetCharacterCodePoint": 52
+      }, {
+        "SourceCharacterCodePoint": 37,
+        "TargetCharacterCodePoint": 103
+      }
+    ],
+    "CharacterSetSupport": {
+      "CharacterSet": "UTF16_PlatformEndian",
+      "ReplaceWithCharacterCodePoint": 0
+    }
+  },
+  "BeforeImageSettings": {
+    "EnableBeforeImage": "false",
+    "FieldName": "",  
+    "ColumnFilter": "pk-only"
+  },
+  "ErrorBehavior": {
+    "DataErrorPolicy": "LOG_ERROR",
+    "DataTruncationErrorPolicy":"LOG_ERROR",
+    "DataErrorEscalationPolicy":"SUSPEND_TABLE",
+    "DataErrorEscalationCount": 50,
+    "TableErrorPolicy":"SUSPEND_TABLE",
+    "TableErrorEscalationPolicy":"STOP_TASK",
+    "TableErrorEscalationCount": 50,
+    "RecoverableErrorCount": 0,
+    "RecoverableErrorInterval": 5,
+    "RecoverableErrorThrottling": "true",
+    "RecoverableErrorThrottlingMax": 1800,
+    "ApplyErrorDeletePolicy":"IGNORE_RECORD",
+    "ApplyErrorInsertPolicy":"LOG_ERROR",
+    "ApplyErrorUpdatePolicy":"LOG_ERROR",
+    "ApplyErrorEscalationPolicy":"LOG_ERROR",
+    "ApplyErrorEscalationCount": 0,
+    "FullLoadIgnoreConflicts": "true"
+  },
+  "ValidationSettings": {
+    "EnableValidation": "true",
+    "ValidationMode": "ROW_LEVEL",
+    "ThreadCount": 5,
+    "PartitionSize": 10000,
+    "FailureMaxCount": 1000,
+    "RecordFailureDelayInMinutes": 5,
+    "RecordSuspendDelayInMinutes": 30,
+    "MaxKeyColumnSize": 8096,
+    "TableFailureMaxCount": 10000,
+    "ValidationOnly": "false",
+    "HandleCollationDiff": "false",
+    "RecordFailureDelayLimitInMinutes": 1,
+    "SkipLobColumns": "false",
+    "ValidationPartialLobSize": 0,
+    "ValidationQueryCdcDelaySeconds": 0
+  }
+}
+            
 
 #------------#------------#------------#------------#------------#------------#
 # MAIN
@@ -260,8 +457,8 @@ cur = conn.cursor()
 #time.sleep (10)
 
 scn = get_scn(src_db)
-scn = ("SCN : "+scn)
-logit (scn)
+scn_msg = ("SCN : "+scn)
+logit (scn_msg)
 
 db_status = get_database_status(src_db)
 src_db_status = db_status["DBInstances"][0]["DBInstanceStatus"]
@@ -298,25 +495,30 @@ logit ("Promoted RR DBInstanceArn : "+db_arn)
 
 # src_endpoint_test = test_connection(rep_instance_arn, src_endpoint_arn) 
 
-tgt_endpoint_arn = create_endpoint(tgt_db, db_endpoint, db_port, db_name)
+#tgt_endpoint_arn = create_endpoint(tgt_db, db_endpoint, db_port, db_name)
 logit ("Created DMS endpoint for RR DBInstanceArn : "+db_arn)
 
-tgt_endpoint_test = test_connection(rep_instance_arn, tgt_endpoint_arn) 
-desc_endpt = get_endpoint_status(tgt_endpoint_arn)
-logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
-while desc_endpt != "successful": 
-    desc_endpt = get_endpoint_status(tgt_endpoint_arn)
-    time.sleep (30)
-    logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
+#tgt_endpoint_test = test_connection(rep_instance_arn, tgt_endpoint_arn) 
+#desc_endpt = get_endpoint_status(tgt_endpoint_arn)
+#logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
+#while desc_endpt != "successful": 
+#    desc_endpt = get_endpoint_status(tgt_endpoint_arn)
+#    time.sleep (30)
+#    logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
 
 dbendpt = get_database_endpt_arn(src_db,'source')
 src_endpoint_arn = dbendpt["Endpoints"][0]["EndpointArn"]
 logit ("Source DMS Endpoint: " +src_endpoint_arn)
+
+dbendpt = get_database_endpt_arn(tgt_db,'target')
+tgt_endpoint_arn = dbendpt["Endpoints"][0]["EndpointArn"]
 logit ("Target DMS Endpoint: " +tgt_endpoint_arn)
 
 #create_rep_task = create_replication_task('task100', src_endpoint_arn, tgt_endpoint_arn, rep_instance_arn, scn)
+#logit(create_rep_task)
 logit (rep_instance_arn)
 logit ("Created DMS migration task.")
 
 cur.close()
+
 
