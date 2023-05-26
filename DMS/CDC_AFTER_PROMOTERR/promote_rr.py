@@ -236,6 +236,46 @@ def create_replication_task(reptaskid, src_endpt, tgt_endpt, reparn, cdc_start):
     )
     return(response)
 
+#------------#------------#------------#------------#------------#------------#
+# desc migration task
+#
+def desc_replication_task(reptaskid):
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='dba')
+    client = session.client(
+      service_name='dms'
+        )
+
+    response = client.describe_replication_tasks(
+            Filters=[
+                {
+                'Name': 'replication-task-id',
+                'Values': [reptaskid]
+            },
+        ])
+    return(response)
+
+#------------#------------#------------#------------#------------#------------#
+# start migration task
+#
+def start_replication_task(reptaskid, scn):
+    session = boto3.session.Session()
+    session = boto3.session.Session(profile_name='dba')
+    client = session.client(
+      service_name='dms'
+      )
+
+    response = client.start_replication_task(
+            ReplicationTaskArn=reptaskid,
+            StartReplicationTaskType='start-replication',
+            CdcStartPosition=scn
+        )
+    return(response)
+
+
+#------------#------------#------------#------------#------------#------------#
+# table mappings json
+#
 table_mappings_json = {
     "rules": [
         {
@@ -252,42 +292,12 @@ table_mappings_json = {
                 "SourceSchema": "CUSTOMER_ORDERS",
                 "TargetSchema": "customer_orders"
             }
-        },
-        {
-            "rule-type": "transformation",
-            "rule-id": "2",
-            "rule-name": "2",
-            "rule-action": "convert-lowercase",
-            "rule-target": "schema",
-            "object-locator": {
-                "schema-name": "%"
-            }
-        },
-        {
-            "rule-type": "transformation",
-            "rule-id": "3",
-            "rule-name": "3",
-            "rule-action": "convert-lowercase",
-            "rule-target": "table",
-            "object-locator": {
-                "schema-name": "%",
-                "table-name": "%"
-            }
-        },
-        {
-            "rule-type": "transformation",
-            "rule-id": "4",
-            "rule-name": "4",
-            "rule-action": "convert-lowercase",
-            "rule-target": "column",
-            "object-locator": {
-                "schema-name": "%",
-                "table-name": "%",
-                "column-name": "%"
-            }
         }
     ]
 }
+#------------#------------#------------#------------#------------#------------#
+# task settings json
+#
 
 task_settings_json = {
   "TargetMetadata": {
@@ -453,8 +463,6 @@ conn = cx_Oracle.connect(user='admin'
          , dsn='ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com:1521/ttsora10')
 
 cur = conn.cursor()
-#cur.execute(sql_exp)
-#time.sleep (10)
 
 scn = get_scn(src_db)
 scn_msg = ("SCN : "+scn)
@@ -470,9 +478,9 @@ logit (src_db + " : " + src_db_status + " : " + src_db_arn)
 logit (tgt_db + " : " + tgt_db_status + " : " + tgt_db_arn)
 
 # promote
-# promote_rr = promote_read_replica(tgt_db)
-logit ("Promoting Read Replica.")
-# time.sleep(60)
+## promote_rr = promote_read_replica(tgt_db)
+## logit ("Promoting Read Replica.")
+## time.sleep(60)
 logit ("RR promoted.")
 
 tgt_db_status = get_database_status(tgt_db)
@@ -493,29 +501,45 @@ logit (port_msg)
 logit ("Promoted RR DBName : "+db_name)
 logit ("Promoted RR DBInstanceArn : "+db_arn)
 
-# src_endpoint_test = test_connection(rep_instance_arn, src_endpoint_arn) 
-
-#tgt_endpoint_arn = create_endpoint(tgt_db, db_endpoint, db_port, db_name)
-logit ("Created DMS endpoint for RR DBInstanceArn : "+db_arn)
-
-#tgt_endpoint_test = test_connection(rep_instance_arn, tgt_endpoint_arn) 
-#desc_endpt = get_endpoint_status(tgt_endpoint_arn)
-#logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
-#while desc_endpt != "successful": 
-#    desc_endpt = get_endpoint_status(tgt_endpoint_arn)
-#    time.sleep (30)
-#    logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
-
 dbendpt = get_database_endpt_arn(src_db,'source')
 src_endpoint_arn = dbendpt["Endpoints"][0]["EndpointArn"]
 logit ("Source DMS Endpoint: " +src_endpoint_arn)
+#src_endpoint_test = test_connection(rep_instance_arn, src_endpoint_arn) 
+# remove ^ don't need to test src endpoint
+
+tgt_endpoint_arn = create_endpoint(tgt_db, db_endpoint, db_port, db_name)
+logit ("Created DMS endpoint for RR DBInstanceArn : "+db_arn)
+
+tgt_endpoint_test = test_connection(rep_instance_arn, tgt_endpoint_arn) 
+desc_endpt = get_endpoint_status(tgt_endpoint_arn)
+logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
+while desc_endpt != "successful": 
+    desc_endpt = get_endpoint_status(tgt_endpoint_arn)
+    time.sleep (30)
+    logit ("Waiting for Promoted RR DMS endpoint to test successfully - current status : "+desc_endpt)
 
 dbendpt = get_database_endpt_arn(tgt_db,'target')
 tgt_endpoint_arn = dbendpt["Endpoints"][0]["EndpointArn"]
 logit ("Target DMS Endpoint: " +tgt_endpoint_arn)
 
-#create_rep_task = create_replication_task('task100', src_endpoint_arn, tgt_endpoint_arn, rep_instance_arn, scn)
-#logit(create_rep_task)
+create_rep_task = create_replication_task('tts100', src_endpoint_arn, tgt_endpoint_arn, rep_instance_arn, scn)
+logit(create_rep_task)
+
+desc_rep_task = describe_replication_task('tts100')
+rep_task_arn = desc_rep_task['ReplicationTasks'][0]['ReplicationTaskArn']
+
+start_rep_task = start_replication_task(rep_task_arn,scn)
+logit (start_rep_task)
+
+desc_rep_task = describe_replication_task('tts100')
+state = desc_rep_task['ReplicationTasks'][0]['Status']
+
+while state != "running": 
+    desc_rep_task = describe_replication_task('tts100')
+    state = desc_rep_task['ReplicationTasks'][0]['Status']
+    time.sleep (30)
+    logit ("Waiting for Replication Task to be in running mode - current status : "+state)
+
 logit (rep_instance_arn)
 logit ("Created DMS migration task.")
 

@@ -20,6 +20,7 @@ echo "exit " >> /tmp/sql.$$
 cat /tmp/sql.$$
 
 /home/ec2-user/DBHUB/BIN/callora $user $pw $host $db /tmp/sql.$$
+/home/ec2-user/DBHUB/BIN/callora $user $pw $host $db q.products.sql
 
 rm /tmp/sql.$$
 
