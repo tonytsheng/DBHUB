@@ -27,3 +27,7 @@ aws dms describe-endpoints --filter="Name=endpoint-id,Values=ttsora10" --profile
 aws dms delete-endpoint \
   --endpoint-arn arn:aws:dms:us-east-2:012363508593:endpoint:OINR3FXOXYL5Y7ZMDGQQU36K4YRRHOZRLAAINWA \
   --profile dba
+
+
+aws dms describe-replication-tasks  --filter="Name=replication-task-id,Values=tts100" --profile dba
+

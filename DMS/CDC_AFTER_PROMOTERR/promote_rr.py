@@ -239,7 +239,7 @@ def create_replication_task(reptaskid, src_endpt, tgt_endpt, reparn, cdc_start):
 #------------#------------#------------#------------#------------#------------#
 # desc migration task
 #
-def desc_replication_task(reptaskid):
+def describe_replication_task(reptaskid):
     session = boto3.session.Session()
     session = boto3.session.Session(profile_name='dba')
     client = session.client(
@@ -527,10 +527,16 @@ logit(create_rep_task)
 
 desc_rep_task = describe_replication_task('tts100')
 rep_task_arn = desc_rep_task['ReplicationTasks'][0]['ReplicationTaskArn']
+state = desc_rep_task['ReplicationTasks'][0]['Status']
+
+while state != "ready": 
+    desc_rep_task = describe_replication_task('tts100')
+    state = desc_rep_task['ReplicationTasks'][0]['Status']
+    time.sleep (30)
+    logit ("Waiting for Replication Task to be in ready mode - current status : "+state)
 
 start_rep_task = start_replication_task(rep_task_arn,scn)
 logit (start_rep_task)
-
 desc_rep_task = describe_replication_task('tts100')
 state = desc_rep_task['ReplicationTasks'][0]['Status']
 
@@ -541,7 +547,7 @@ while state != "running":
     logit ("Waiting for Replication Task to be in running mode - current status : "+state)
 
 logit (rep_instance_arn)
-logit ("Created DMS migration task.")
+logit ("Created DMS migration task and now running.")
 
 cur.close()
 
