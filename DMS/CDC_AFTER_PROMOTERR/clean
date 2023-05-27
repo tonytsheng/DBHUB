@@ -1,0 +1,3 @@
+aws dms stop-replication-task  --replication-task-arn     --profile dba
+aws dms delete-replication-task --replication-task-arn    --profile dba
+aws dms delete-endpoint --endpoint-arn     --profile dba

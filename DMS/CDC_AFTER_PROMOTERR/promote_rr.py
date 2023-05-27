@@ -232,7 +232,7 @@ def create_replication_task(reptaskid, src_endpt, tgt_endpt, reparn, cdc_start):
         MigrationType='cdc',
         TableMappings=json.dumps(table_mappings_json),
         CdcStartPosition=cdc_start,
-        ReplicationTaskSettings=''
+        ReplicationTaskSettings=json.dumps(task_settings_json)
     )
     return(response)
 
@@ -286,13 +286,8 @@ table_mappings_json = {
                 "schema-name": "CUSTOMER_ORDERS",
                 "table-name": "%"
             },
-            "rule-action": "include",
-            "LoopbackPreventionSettings": {
-                "EnableLoopbackPrevention": "true",
-                "SourceSchema": "CUSTOMER_ORDERS",
-                "TargetSchema": "customer_orders"
+            "rule-action": "include"
             }
-        }
     ]
 }
 #------------#------------#------------#------------#------------#------------#
@@ -302,10 +297,10 @@ table_mappings_json = {
 task_settings_json = {
   "TargetMetadata": {
     "TargetSchema": "",
-    "SupportLobs": "true",
-    "FullLobMode": "false",
+    "SupportLobs": true,
+    "FullLobMode": false,
     "LobChunkSize": 64,
-    "LimitedSizeLobMode": "true",
+    "LimitedSizeLobMode": true,
     "LobMaxSize": 3200,
     "InlineLobMaxSize": 0,
     "LoadMaxFileSize": 0,
@@ -315,20 +310,20 @@ task_settings_json = {
     "ParallelApplyThreads": 0,
     "ParallelApplyBufferSize": 100,
     "ParallelApplyQueuesPerThread": 1,    
-    "BatchApplyEnabled": "false",
-    "TaskRecoveryTableEnabled": "false"
+    "BatchApplyEnabled": false,
+    "TaskRecoveryTableEnabled": false
   },
   "FullLoadSettings": {
     "TargetTablePrepMode": "TRUNCATE",
-    "CreatePkAfterFullLoad": "false",
-    "StopTaskCachedChangesApplied": "false",
-    "StopTaskCachedChangesNotApplied": "false",
+    "CreatePkAfterFullLoad": false,
+    "StopTaskCachedChangesApplied": false,
+    "StopTaskCachedChangesNotApplied": false,
     "MaxFullLoadSubTasks": 8,
     "TransactionConsistencyTimeout": 600,
     "CommitRate": 10000
   },
   "Logging": {
-    "EnableLogging": "true",
+    "EnableLogging": true,
     "LogComponents": [
       {
         "Id": "SOURCE_CAPTURE",
@@ -353,16 +348,16 @@ task_settings_json = {
   "ControlTablesSettings": {
     "ControlSchema":"",
     "HistoryTimeslotInMinutes":5,
-    "HistoryTableEnabled": "false",
-    "SuspendedTablesTableEnabled": "false",
-    "StatusTableEnabled": "false"
+    "HistoryTableEnabled": false,
+    "SuspendedTablesTableEnabled": false,
+    "StatusTableEnabled": false
   },
   "StreamBufferSettings": {
     "StreamBufferCount": 3,
     "StreamBufferSizeInMB": 8
   },
   "ChangeProcessingTuning": { 
-    "BatchApplyPreserveTransaction": "true", 
+    "BatchApplyPreserveTransaction": true, 
     "BatchApplyTimeoutMin": 1, 
     "BatchApplyTimeoutMax": 30, 
     "BatchApplyMemoryLimit": 500, 
@@ -374,12 +369,12 @@ task_settings_json = {
     "StatementCacheSize": 50 
   },
   "ChangeProcessingDdlHandlingPolicy": {
-    "HandleSourceTableDropped": "true",
-    "HandleSourceTableTruncated": "true",
-    "HandleSourceTableAltered": "true"
+    "HandleSourceTableDropped": true,
+    "HandleSourceTableTruncated": true,
+    "HandleSourceTableAltered": true
   },
   "LoopbackPreventionSettings": {
-    "EnableLoopbackPrevention": "true",
+    "EnableLoopbackPrevention": true,
     "SourceSchema": "LOOP-DATA",
     "TargetSchema": "loop-data"
   },
@@ -399,7 +394,7 @@ task_settings_json = {
     }
   },
   "BeforeImageSettings": {
-    "EnableBeforeImage": "false",
+    "EnableBeforeImage": false,
     "FieldName": "",  
     "ColumnFilter": "pk-only"
   },
@@ -413,17 +408,17 @@ task_settings_json = {
     "TableErrorEscalationCount": 50,
     "RecoverableErrorCount": 0,
     "RecoverableErrorInterval": 5,
-    "RecoverableErrorThrottling": "true",
+    "RecoverableErrorThrottling": true,
     "RecoverableErrorThrottlingMax": 1800,
     "ApplyErrorDeletePolicy":"IGNORE_RECORD",
     "ApplyErrorInsertPolicy":"LOG_ERROR",
     "ApplyErrorUpdatePolicy":"LOG_ERROR",
     "ApplyErrorEscalationPolicy":"LOG_ERROR",
     "ApplyErrorEscalationCount": 0,
-    "FullLoadIgnoreConflicts": "true"
+    "FullLoadIgnoreConflicts": true
   },
   "ValidationSettings": {
-    "EnableValidation": "true",
+    "EnableValidation": true,
     "ValidationMode": "ROW_LEVEL",
     "ThreadCount": 5,
     "PartitionSize": 10000,
@@ -432,10 +427,10 @@ task_settings_json = {
     "RecordSuspendDelayInMinutes": 30,
     "MaxKeyColumnSize": 8096,
     "TableFailureMaxCount": 10000,
-    "ValidationOnly": "false",
-    "HandleCollationDiff": "false",
+    "ValidationOnly": false,
+    "HandleCollationDiff": false,
     "RecordFailureDelayLimitInMinutes": 1,
-    "SkipLobColumns": "false",
+    "SkipLobColumns": false,
     "ValidationPartialLobSize": 0,
     "ValidationQueryCdcDelaySeconds": 0
   }
@@ -479,9 +474,9 @@ tgt_db_arn = db_status["DBInstances"][0]["DBInstanceArn"]
 logit (src_db + " : " + src_db_status + " : " + src_db_arn)
 logit (tgt_db + " : " + tgt_db_status + " : " + tgt_db_arn)
 
-promote_rr = promote_read_replica(tgt_db)
-logit ("Promoting Read Replica.")
-time.sleep(60)
+# promote_rr = promote_read_replica(tgt_db)
+# logit ("Promoting Read Replica.")
+# time.sleep(60)
 logit ("RR promoted.")
 
 tgt_db_status = get_database_status(tgt_db)
