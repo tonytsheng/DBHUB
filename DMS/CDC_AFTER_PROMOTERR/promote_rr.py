@@ -232,7 +232,8 @@ def create_replication_task(reptaskid, src_endpt, tgt_endpt, reparn, cdc_start):
         MigrationType='cdc',
         TableMappings=json.dumps(table_mappings_json),
         CdcStartPosition=cdc_start,
-        ReplicationTaskSettings=json.dumps(task_settings_json)
+        ReplicationTaskSettings="{\"Logging\":{\"EnableLogging\":true,\"EnableLogContext\":false,\"LogComponents\":[{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"DATA_STRUCTURE\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"COMMUNICATION\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"IO\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"COMMON\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"FILE_FACTORY\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"FILE_TRANSFER\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"REST_SERVER\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"ADDONS\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"TARGET_LOAD\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"TARGET_APPLY\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"SOURCE_UNLOAD\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"SOURCE_CAPTURE\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"TRANSFORMATION\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"SORTER\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"TASK_MANAGER\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"TABLES_MANAGER\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"METADATA_MANAGER\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"PERFORMANCE\"},{\"Severity\":\"LOGGER_SEVERITY_DEFAULT\",\"Id\":\"VALIDATOR_EXT\"}],\"CloudWatchLogGroup\":null,\"CloudWatchLogStream\":null},\"StreamBufferSettings\":{\"StreamBufferCount\":3,\"CtrlStreamBufferSizeInMB\":5,\"StreamBufferSizeInMB\":8},\"ErrorBehavior\":{\"FailOnNoTablesCaptured\":true,\"ApplyErrorUpdatePolicy\":\"LOG_ERROR\",\"FailOnTransactionConsistencyBreached\":false,\"RecoverableErrorThrottlingMax\":1800,\"DataErrorEscalationPolicy\":\"SUSPEND_TABLE\",\"ApplyErrorEscalationCount\":0,\"RecoverableErrorStopRetryAfterThrottlingMax\":true,\"RecoverableErrorThrottling\":true,\"ApplyErrorFailOnTruncationDdl\":false,\"DataTruncationErrorPolicy\":\"LOG_ERROR\",\"ApplyErrorInsertPolicy\":\"LOG_ERROR\",\"EventErrorPolicy\":\"IGNORE\",\"ApplyErrorEscalationPolicy\":\"LOG_ERROR\",\"RecoverableErrorCount\":-1,\"DataErrorEscalationCount\":0,\"TableErrorEscalationPolicy\":\"STOP_TASK\",\"RecoverableErrorInterval\":5,\"ApplyErrorDeletePolicy\":\"IGNORE_RECORD\",\"TableErrorEscalationCount\":0,\"FullLoadIgnoreConflicts\":true,\"DataErrorPolicy\":\"LOG_ERROR\",\"TableErrorPolicy\":\"SUSPEND_TABLE\"},\"TTSettings\":{\"TTS3Settings\":null,\"TTRecordSettings\":null,\"EnableTT\":false},\"FullLoadSettings\":{\"CommitRate\":10000,\"StopTaskCachedChangesApplied\":false,\"StopTaskCachedChangesNotApplied\":false,\"MaxFullLoadSubTasks\":8,\"TransactionConsistencyTimeout\":600,\"CreatePkAfterFullLoad\":false,\"TargetTablePrepMode\":\"DO_NOTHING\"},\"TargetMetadata\":{\"ParallelApplyBufferSize\":0,\"ParallelApplyQueuesPerThread\":0,\"ParallelApplyThreads\":0,\"TargetSchema\":\"admin\",\"InlineLobMaxSize\":0,\"ParallelLoadQueuesPerThread\":0,\"SupportLobs\":true,\"LobChunkSize\":64,\"TaskRecoveryTableEnabled\":false,\"ParallelLoadThreads\":0,\"LobMaxSize\":32,\"BatchApplyEnabled\":false,\"FullLobMode\":false,\"LimitedSizeLobMode\":true,\"LoadMaxFileSize\":0,\"ParallelLoadBufferSize\":0},\"BeforeImageSettings\":null,\"ControlTablesSettings\":{\"historyTimeslotInMinutes\":5,\"HistoryTimeslotInMinutes\":5,\"StatusTableEnabled\":false,\"SuspendedTablesTableEnabled\":false,\"HistoryTableEnabled\":false,\"ControlSchema\":\"\",\"FullLoadExceptionTableEnabled\":false},\"LoopbackPreventionSettings\":null,\"CharacterSetSettings\":null,\"FailTaskWhenCleanTaskResourceFailed\":false,\"ChangeProcessingTuning\":{\"StatementCacheSize\":50,\"CommitTimeout\":1,\"BatchApplyPreserveTransaction\":true,\"BatchApplyTimeoutMin\":1,\"BatchSplitSize\":0,\"BatchApplyTimeoutMax\":30,\"MinTransactionSize\":1000,\"MemoryKeepTime\":60,\"BatchApplyMemoryLimit\":500,\"MemoryLimitTotal\":1024},\"ChangeProcessingDdlHandlingPolicy\":{\"HandleSourceTableDropped\":true,\"HandleSourceTableTruncated\":true,\"HandleSourceTableAltered\":true},\"PostProcessingRules\":null}"
+#        ReplicationTaskSettings=json.dumps(task_settings_json)
     )
     return(response)
 
@@ -297,10 +298,10 @@ table_mappings_json = {
 task_settings_json = {
   "TargetMetadata": {
     "TargetSchema": "",
-    "SupportLobs": true,
-    "FullLobMode": false,
+    "SupportLobs": "true",
+    "FullLobMode": "false",
     "LobChunkSize": 64,
-    "LimitedSizeLobMode": true,
+    "LimitedSizeLobMode": "true",
     "LobMaxSize": 3200,
     "InlineLobMaxSize": 0,
     "LoadMaxFileSize": 0,
@@ -310,20 +311,20 @@ task_settings_json = {
     "ParallelApplyThreads": 0,
     "ParallelApplyBufferSize": 100,
     "ParallelApplyQueuesPerThread": 1,    
-    "BatchApplyEnabled": false,
-    "TaskRecoveryTableEnabled": false
+    "BatchApplyEnabled": "false",
+    "TaskRecoveryTableEnabled": "false"
   },
   "FullLoadSettings": {
     "TargetTablePrepMode": "TRUNCATE",
-    "CreatePkAfterFullLoad": false,
-    "StopTaskCachedChangesApplied": false,
-    "StopTaskCachedChangesNotApplied": false,
+    "CreatePkAfterFullLoad": "false",
+    "StopTaskCachedChangesApplied": "false",
+    "StopTaskCachedChangesNotApplied": "false",
     "MaxFullLoadSubTasks": 8,
     "TransactionConsistencyTimeout": 600,
     "CommitRate": 10000
   },
   "Logging": {
-    "EnableLogging": true,
+    "EnableLogging": "true",
     "LogComponents": [
       {
         "Id": "SOURCE_CAPTURE",
@@ -348,16 +349,16 @@ task_settings_json = {
   "ControlTablesSettings": {
     "ControlSchema":"",
     "HistoryTimeslotInMinutes":5,
-    "HistoryTableEnabled": false,
-    "SuspendedTablesTableEnabled": false,
-    "StatusTableEnabled": false
+    "HistoryTableEnabled": "false",
+    "SuspendedTablesTableEnabled": "false",
+    "StatusTableEnabled": "false"
   },
   "StreamBufferSettings": {
     "StreamBufferCount": 3,
     "StreamBufferSizeInMB": 8
   },
   "ChangeProcessingTuning": { 
-    "BatchApplyPreserveTransaction": true, 
+    "BatchApplyPreserveTransaction": "true", 
     "BatchApplyTimeoutMin": 1, 
     "BatchApplyTimeoutMax": 30, 
     "BatchApplyMemoryLimit": 500, 
@@ -369,12 +370,12 @@ task_settings_json = {
     "StatementCacheSize": 50 
   },
   "ChangeProcessingDdlHandlingPolicy": {
-    "HandleSourceTableDropped": true,
-    "HandleSourceTableTruncated": true,
-    "HandleSourceTableAltered": true
+    "HandleSourceTableDropped": "true",
+    "HandleSourceTableTruncated": "true",
+    "HandleSourceTableAltered": "true"
   },
   "LoopbackPreventionSettings": {
-    "EnableLoopbackPrevention": true,
+    "EnableLoopbackPrevention": "true",
     "SourceSchema": "LOOP-DATA",
     "TargetSchema": "loop-data"
   },
@@ -394,7 +395,7 @@ task_settings_json = {
     }
   },
   "BeforeImageSettings": {
-    "EnableBeforeImage": false,
+    "EnableBeforeImage": "false",
     "FieldName": "",  
     "ColumnFilter": "pk-only"
   },
@@ -408,17 +409,17 @@ task_settings_json = {
     "TableErrorEscalationCount": 50,
     "RecoverableErrorCount": 0,
     "RecoverableErrorInterval": 5,
-    "RecoverableErrorThrottling": true,
+    "RecoverableErrorThrottling": "true",
     "RecoverableErrorThrottlingMax": 1800,
     "ApplyErrorDeletePolicy":"IGNORE_RECORD",
     "ApplyErrorInsertPolicy":"LOG_ERROR",
     "ApplyErrorUpdatePolicy":"LOG_ERROR",
     "ApplyErrorEscalationPolicy":"LOG_ERROR",
     "ApplyErrorEscalationCount": 0,
-    "FullLoadIgnoreConflicts": true
+    "FullLoadIgnoreConflicts": "true"
   },
   "ValidationSettings": {
-    "EnableValidation": true,
+    "EnableValidation": "true",
     "ValidationMode": "ROW_LEVEL",
     "ThreadCount": 5,
     "PartitionSize": 10000,
@@ -427,10 +428,10 @@ task_settings_json = {
     "RecordSuspendDelayInMinutes": 30,
     "MaxKeyColumnSize": 8096,
     "TableFailureMaxCount": 10000,
-    "ValidationOnly": false,
-    "HandleCollationDiff": false,
+    "ValidationOnly": "false",
+    "HandleCollationDiff": "false",
     "RecordFailureDelayLimitInMinutes": 1,
-    "SkipLobColumns": false,
+    "SkipLobColumns": "false",
     "ValidationPartialLobSize": 0,
     "ValidationQueryCdcDelaySeconds": 0
   }
