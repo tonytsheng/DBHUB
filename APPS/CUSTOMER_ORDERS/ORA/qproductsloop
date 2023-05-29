@@ -1,5 +1,5 @@
 while true
 do
-callora customer_orders Pass1234  ttsora20.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 q.products.sql 
+callora customer_orders Pass1234  ttsora50.ciushqttrpqx.us-east-2.rds.amazonaws.com ttsora10 q.products.sql 
 /home/ec2-user/DBHUB/SCRIPTLIB/sleepit 3
 done

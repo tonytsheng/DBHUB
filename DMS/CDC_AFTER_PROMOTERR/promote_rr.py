@@ -340,9 +340,9 @@ tgt_db_arn = db_status["DBInstances"][0]["DBInstanceArn"]
 logit (src_db + " : " + src_db_status + " : " + src_db_arn)
 logit (tgt_db + " : " + tgt_db_status + " : " + tgt_db_arn)
 
-# promote_rr = promote_read_replica(tgt_db)
-# logit ("Promoting Read Replica.")
-# time.sleep(60)
+promote_rr = promote_read_replica(tgt_db)
+logit ("Promoting Read Replica.")
+time.sleep(60)
 logit ("RR promoted.")
 
 tgt_db_status = get_database_status(tgt_db)
