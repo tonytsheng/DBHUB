@@ -275,7 +275,8 @@ def start_replication_task(reptaskid, scn):
 
 #------------#------------#------------#------------#------------#------------#
 # table mappings json
-#
+# will need a transformation rule [schema] for each schema on the source
+
 table_mappings_json = {
     "rules": [
         {
@@ -283,10 +284,21 @@ table_mappings_json = {
             "rule-id": "1",
             "rule-name": "1",
             "object-locator": {
-                "schema-name": "CUSTOMER_ORDERS",
+                "schema-name": "%",
                 "table-name": "%"
             },
             "rule-action": "include"
+            }, 
+        {
+            "rule-type": "transformation",
+            "rule-id": "2",
+            "rule-name": "2",
+            "rule-action": "rename",
+            "rule-target": "schema",
+            "object-locator": {
+                "schema-name": "CUSTOMER_ORDERS"
+                }, 
+            "value": "CUSTOMER_ORDERS" 
             }
     ]
 }
