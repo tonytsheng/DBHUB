@@ -17,7 +17,7 @@ table_mappings_json = {
          "rule-action": "rename",
          "rule-target": "schema",
          "object-locator": {
-             "schema-name": "ADMIN"
+             "schema-name": "CUSTOMER_ORDERS"
              },
          "value": "CUSTOMER_ORDERS"
          }
