@@ -1,7 +1,9 @@
 ## Intro
-One of the benefits of RDS databases is the Multi Availability Zone (MultiAZ) solution. Since RDS is a managed service, the ability to provision a primary database, with a standby database in a different availability zone, all without managing hardware or installing software is a feature that our customers love. MultiAZ databases help solve many of the typical high availability challenges our customers face. In some cases, MultiAZ databases do not provide enough high availability since both the primary and standby get database engine patches at the same time. 
+RDS databases provide a high availability solution with MultiAZ configurations. With these configurations, a standby database is kept in sync with a primary database via replication at the storage layer. Although this meets most high availability requirements, database engine patches are applied to both the primary and standby databases at the same time, which some customers may have issues with.
 
-In this post, we discuss using the combination of RDS Read Replicas and the Change Data Capture (CDC) functionality of the Database Migraton Service (DMS) to provide database minimal downtime. We will be using RDS for Oracle databases and leverage the functionality of DMS being able to start CDC and an Oracle log System Change Number (SCN).
+In this post, we discuss using the combination of promoting RDS Read Replicas and turning on Change Data Capture (CDC) at a certain transaction with the Database Migration Service (DMS). This allows us to keep transactions replicating from a source database to a standalone promoted former read replica which can then be brought offline as needed. This combination can provide a higher level of flexibility for database availability.
+
+
 
 ## Solution Overview
 RDS for Oracle databases can have up to 5 read replica databases and read replicas are a great solution to help scale load for read only transactions away from primary writer databases. Read replicas typically have latency of less than five seconds and are kept in sync with primary databases through Oracle Data Guard technology. Read replicas can also be configured to be MultiAZ just like primary databases. In this solution, we leverage read replicas because they are in sync with our primary database.
