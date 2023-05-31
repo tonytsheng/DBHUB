@@ -1,3 +1,5 @@
+## Create IAM policy and role
+```
 aws iam create-policy  --policy-name ttsheng-s3-exportPolicy --policy-document '{
     "Version": "2012-10-17",
     "Statement": [
@@ -33,5 +35,12 @@ aws iam create-role  --role-name rds-s3-export-role  --assume-role-policy-docume
    }'
 
 aws iam attach-role-policy  --policy-arn arn:aws:iam::070201068661:policy/ttsheng-s3-exportPolicy   --role-name rds-s3-export-role
+```
 
+## Choose which snapshot to export to specific S3 bucket
 in console, use role name rds-s3-export 
+
+## S3 export will show a status
+
+## Use Athena to query
+
