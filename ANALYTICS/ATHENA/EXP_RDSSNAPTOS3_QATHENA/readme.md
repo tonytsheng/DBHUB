@@ -43,4 +43,7 @@ in console, use role name rds-s3-export
 ## S3 export will show a status
 
 ## Use Athena to query
+create data source in athena - will need to fill out all the columns of the table
+query looks something like this
+select count(*) from "pg102s3exp-co-products" 
 
