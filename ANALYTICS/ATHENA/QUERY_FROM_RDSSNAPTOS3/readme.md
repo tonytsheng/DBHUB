@@ -38,9 +38,10 @@ aws iam attach-role-policy  --policy-arn arn:aws:iam::070201068661:policy/ttshen
 ```
 
 ## Choose which snapshot to export to specific S3 bucket
-in console, use role name rds-s3-export 
+in the RDS console, choose which snapshot to export, which destination bucket, and which role to use to export the data (rds-s3-export)
 
 ## S3 export will show a status
+Once this is complete, each database table will have one or more parquet files in your S3 bucket.
 
 ## Use Athena to query
 create data source in athena - will need to fill out all the columns of the table
