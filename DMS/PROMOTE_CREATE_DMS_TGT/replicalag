@@ -1,0 +1,6 @@
+aws cloudwatch get-metric-statistics --namespace "AWS/RDS" \
+--profile dba \
+--metric-name ReplicaLag --start-time $(date -d "-1 min" +%FT%TZ) \
+--end-time $(date +%FT%TZ) --period 60 \
+--dimensions Name=DBInstanceIdentifier,Value=ttsora10 \
+--statistics Maximum
