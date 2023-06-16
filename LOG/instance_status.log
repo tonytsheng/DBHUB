@@ -22152,3 +22152,59 @@ An error occurred (InvalidDBInstanceState) when calling the StopDBInstance opera
 docdb-2023-03-27-00-49-42
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb-2023-03-27-00-49-42 is in stopped state but expected it to be one of available.
+Wed Jun 14 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+docdb-2023-03-27-00-49-42
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb-2023-03-27-00-49-422
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb-2023-03-27-00-49-423
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+pg102
+DBINSTANCE	3057	True	us-east-2c	7	region	rds-ca-2019	True	False	arn:aws:rds:us-east-2:070201068661:db:pg102	db.m6g.xlarge	pg102	stopping	pg102	0	db-LYKLXOEPHQVAWYLP546OGFUPZA	False	postgres	12.11	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-LYKLXOEPHQVAWYLP546OGFUPZA	False	2021-05-04T20:29:47.313Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2023-06-14T22:54:32Z	postgresql-license	postgres	5000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	07:20-07:50	thu:03:34-thu:04:04	True	True	gp2
+DBPARAMETERGROUPS	tts-rds-pg12	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
+ENDPOINT	pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
++++ Clusters
+docdb-2023-03-27-00-49-42
+DBCLUSTER	1	False	1	2023-03-27T00:50:16.254Z	False	False	arn:aws:rds:us-east-2:070201068661:cluster:docdb-2023-03-27-00-49-42	docdb-2023-03-27-00-49-42	default.docdb5.0	default-vpc-0467e5c237261df36	cluster-SOE2GPJLCFPNEOVC77ZQ5LMQOE	False	2023-06-13T00:02:35.165Z	docdb-2023-03-27-00-49-42.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	docdb	provisioned	5.0.0	Z7L8695A82IZ6	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2023-06-14T22:58:03.047Z	mongodb	True	27017	00:00-00:30	sat:03:10-sat:03:40	docdb-2023-03-27-00-49-42.cluster-ro-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	available	True
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	docdb-2023-03-27-00-49-423	False	1
+DBCLUSTERMEMBERS	in-sync	docdb-2023-03-27-00-49-422	False	1
+DBCLUSTERMEMBERS	in-sync	docdb-2023-03-27-00-49-42	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+Thu Jun 15 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+docdb-2023-03-27-00-49-42
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb-2023-03-27-00-49-422
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb-2023-03-27-00-49-423
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+docdb-2023-03-27-00-49-42
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb-2023-03-27-00-49-42 is in stopped state but expected it to be one of available.

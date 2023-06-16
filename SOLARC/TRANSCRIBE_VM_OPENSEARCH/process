@@ -1,0 +1,44 @@
+#for f in `list`
+#do
+#push to s3
+#start job
+#done
+
+#for f in `list`
+#do
+#get json parse transcript
+#create load cli
+#done
+
+#jobname=100
+#for f in `cat list`
+#do
+#  aws s3 cp /home/ec2-user/data/voicemail/G/$f s3://ttsheng-voicemail
+#  aws transcribe start-transcription-job --transcription-job-name $jobname --media MediaFileUri=s3://ttsheng-voicemail/$f --language-code en-US --output-bucket-name ttsheng-voicemail
+#  let jobname=jobname+1
+#  echo $jobname
+#done
+### debug exit 
+
+#jobname=100
+#for f in `cat list`
+#do
+#  aws s3 cp s3://ttsheng-voicemail/${jobname}.json  .
+#  let jobname=jobname+1
+#  echo $jobname
+#done
+
+rm tmp.json
+
+jobname=100
+for f in `cat list`
+do
+  text=`jq ' .results | .transcripts' ${jobname}.json | sed "s#\[##g; s#\]##g; s#'##g" `
+  echo "{\"index\" : { } }" >> tmp.json
+  echo $text >> tmp.json
+#cat tmp.json
+#  curl -XPUT -u 'admin:Pass1234!234' 'https://search-ttsheng-opensearch-100-gxza6jvpr67ioemyyqqj7fkoxy.us-east-2.es.amazonaws.com/voicemail/_doc/${jobname}' -H 'Content-Type: application/json' -d @tmp.json
+  let jobname=jobname+1
+  echo $jobname
+done
+
