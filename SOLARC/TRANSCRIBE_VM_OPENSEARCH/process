@@ -1,3 +1,5 @@
+
+WORK_DIR=/home/ec2-user/data/voicemail
 #for f in `list`
 #do
 #push to s3
@@ -23,7 +25,7 @@
 #jobname=100
 #for f in `cat list`
 #do
-#  aws s3 cp s3://ttsheng-voicemail/${jobname}.json  .
+#  aws s3 cp s3://ttsheng-voicemail/${jobname}.json  ${WORK_DIR}
 #  let jobname=jobname+1
 #  echo $jobname
 #done
@@ -33,12 +35,13 @@ rm tmp.json
 jobname=100
 for f in `cat list`
 do
-  text=`jq ' .results | .transcripts' ${jobname}.json | sed "s#\[##g; s#\]##g; s#'##g" `
-  echo "{\"index\" : { } }" >> tmp.json
-  echo $text >> tmp.json
+  text=`jq ' .results | .transcripts' ${WORK_DIR}/${jobname}.json | sed "s#\[##g; s#\]##g; s#'##g" `
+  echo "{\"index\" : { } }" >> ${WORK_DIR}/tmp.json
+  echo $text >> ${WORK_DIR}/tmp.json
 #cat tmp.json
-#  curl -XPUT -u 'admin:Pass1234!234' 'https://search-ttsheng-opensearch-100-gxza6jvpr67ioemyyqqj7fkoxy.us-east-2.es.amazonaws.com/voicemail/_doc/${jobname}' -H 'Content-Type: application/json' -d @tmp.json
+#  curl -XPUT -u 'admin:Pass1234!234' 'https://search-ttsheng-opensearch-100-gxza6jvpr67ioemyyqqj7fkoxy.us-east-2.es.amazonaws.com/voicemail/_doc/${jobname}' -H 'Content-Type: application/json' --data-binary "@${WORK_DIR}/tmp.json"
   let jobname=jobname+1
   echo $jobname
 done
 
+rm ${WORK_DIR}/tmp.json
