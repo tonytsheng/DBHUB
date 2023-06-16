@@ -10,5 +10,5 @@ aws s3 cp s3://ttsheng-voicemail/job11.json  .
 ### OpenSearch
 Construct an input file for all the json and then load that into your OpenSearch cluster. See the process bash shell script for more details.
 ```
-curl -POST -u 'admin:Pass1234!234' 'https://search-ttsheng-opensearch-100-gxza6jvpr67ioemyyqqj7fkoxy.us-east-2.es.amazonaws.com/voicemail/_bulk' -H 'Content-Type: application/json' --data-binary "@small.json"
+curl -POST -u 'admin:Pass' 'https://search-ttsheng-opensearch-100-gxza6jvpr67ioemyyqqj7fkoxy.us-east-2.es.amazonaws.com/voicemail/_bulk' -H 'Content-Type: application/json' --data-binary "@small.json"
 ```
