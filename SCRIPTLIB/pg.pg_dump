@@ -1,2 +1,5 @@
 # ddl/schema only for a specific table
 pg_dump pg102 -h pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com -U postgres -t customer_orders.stores > customer_orders.stores.dmp -s
+
+PGPASSWORD="Pass" /usr/pgsql-12/bin/pg_dump --host=pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com --username=postgres --port=5432 --dbname=pg102 > pg102.dmp
+

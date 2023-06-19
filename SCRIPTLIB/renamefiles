@@ -1,0 +1,2 @@
+# bulk rename files that have a blank space
+for f in *\ *; do mv "$f" "${f// /_}"; done
