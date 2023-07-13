@@ -17,7 +17,7 @@ echo " commit; " >>/tmp/sql.$$
 echo " select count(*) from customer_orders.products; " >> /tmp/sql.$$
 echo "exit " >> /tmp/sql.$$
 
-cat /tmp/sql.$$
+#cat /tmp/sql.$$
 
 /home/ec2-user/DBHUB/BIN/callora $user $pw $host $db /tmp/sql.$$
 /home/ec2-user/DBHUB/BIN/callora $user $pw $host $db q.products.sql

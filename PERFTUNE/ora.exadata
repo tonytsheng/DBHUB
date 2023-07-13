@@ -2,4 +2,67 @@ optimizer_features_enable and optimizer_index_cost_adj parameter values
 
 smart scan
 
+-- from https://www.linkedin.com/pulse/migrating-exadata-workloads-aws-part-six-predicting-storage-ivanov/
+select snap_id, snap_time, 
+       round(EXA_physical_IOPS_total / snap_seconds) Exadata_IOPS,
+       round(AWS_physical_IOPS_total / snap_seconds) AWS_IOPS,
+       round(MB_read_write / snap_seconds) MB_per_second,
+       round(EXA_Mbytes_saved / snap_seconds) MB_saved_per_second,
+       round(EXA_Mbytes_eligible / snap_seconds) MB_eligible_per_second
+ from (
+      SELECT snap_id,
+             min(snap_time) snap_time,
+             AVG(ROUND(snap_interval * 1440)) snap_minutes, 
+             AVG(ROUND(snap_interval * 1440 * 60)) snap_seconds, 
+             -- total single block reads - storage independent
+             sum(delta_read_singlebl_requests+delta_write_singlebl_requests) single_block_IOPS_total,
+             -- multiblock reads as reported by Exadata       
+             sum(delta_read_multibl_requests+delta_write_multibl_requests) EXA_multiblock_IOPS_total,
+             -- multiblock reads as expected on AWS (256K read instead of 1M)
+             sum(delta_read_multibl_requests+delta_write_multibl_requests)*4 AWS_multiblock_IOPS_total,
+             -- total IOPS as reported by Exadata 
+             sum(delta_read_io_requests+delta_write_io_requests) EXA_physical_IOPS_total,       
+             -- Total IOPS expected on AWS - exadata single block IOPS plus (4 * exadata multiblock IOPS) as each 1 MB exadata IOP will turn int 4 x 256K IOP on AWS
+             sum(delta_read_multibl_requests+delta_write_multibl_requests)*4+sum(delta_read_singlebl_requests+delta_write_singlebl_requests) AWS_physical_IOPS_total,
+             --  raw bandwidth in MB
+             round(sum(delta_read_bytes+delta_write_bytes)/1024/1024) MB_read_write,
+             -- bytes saved by stirage index usage on exadata             
+             round(sum(delta_eligible_bytes)/1024/1024) EXA_Mbytes_eligible,
+             round(sum(delta_bytes_saved)/1024/1024) EXA_Mbytes_saved             
+        FROM (select s.snap_id, tm.INSTANCE_NUMBER,
+                     trunc(begin_interval_time, 'MI') snap_time,
+                     cast(end_interval_time AS date) - cast(begin_interval_time AS DATE) snap_interval,
+                     total_read_io_requests - lag(total_read_io_requests, 1) over(order by tm.instance_number, tm.snap_id) delta_read_io_requests,
+                     total_write_io_requests - lag(total_write_io_requests, 1) over(order by tm.instance_number, tm.snap_id) delta_write_io_requests,
+                     total_read_multibl_requests - lag(total_read_multibl_requests, 1) over(order by tm.instance_number, tm.snap_id) delta_read_multibl_requests,
+                     total_write_multibl_requests - lag(total_write_multibl_requests, 1) over(order by tm.instance_number, tm.snap_id) delta_write_multibl_requests,
+                     total_read_singlebl_requests - lag(total_read_singlebl_requests, 1) over(order by tm.instance_number, tm.snap_id) delta_read_singlebl_requests,
+                     total_write_singlebl_requests - lag(total_write_singlebl_requests, 1) over(order by tm.instance_number, tm.snap_id) delta_write_singlebl_requests,
+                     total_read_bytes - lag(total_read_bytes, 1) over(order by tm.instance_number, tm.snap_id) delta_read_bytes,
+                     total_write_bytes - lag(total_write_bytes, 1) over(order by tm.instance_number, tm.snap_id) delta_write_bytes,
+                     total_eligible_bytes - lag(total_eligible_bytes, 1) over(order by tm.instance_number, tm.snap_id) delta_eligible_bytes,
+                     total_IO_saved - lag(total_IO_saved, 1) over(order by tm.instance_number, tm.snap_id) delta_bytes_saved
+                from (select snap_id,t.INSTANCE_NUMBER,
+                             sum(decode(stat_name,'physical read total IO requests',value,0)) total_read_io_requests,
+                             sum(decode(stat_name,'physical write total IO requests',value,0)) total_write_io_requests,
+                             sum(decode(stat_name,'physical read total multi block requests',value,0)) total_read_multibl_requests,
+                             sum(decode(stat_name,'physical write total multi block requests',value,0)) total_write_multibl_requests,
+                             sum(decode(stat_name,'physical read total IO requests',value,'physical read total multi block requests',-1 * value,0)) total_read_singlebl_requests,
+                             sum(decode(stat_name,'physical write total IO requests',value,'physical write total multi block requests',-1 * value,0)) total_write_singlebl_requests,
+                             sum(decode(stat_name,'cell physical IO bytes saved by storage index',value,0)) total_IO_saved,                             
+                             sum(decode(stat_name,'cell physical IO bytes eligible for predicate offload',value,0)) total_eligible_bytes,
+                             sum(decode(stat_name,'physical read total bytes',value,0)) total_read_bytes,
+                             sum(decode(stat_name,'physical write total bytes',value,0)) total_write_bytes
+                        from DBA_HIST_SYSSTAT t
+                       group by snap_id, t.INSTANCE_NUMBER) tm,
+                     dba_hist_snapshot s
+               where s.snap_id = tm.snap_id
+                 and s.instance_number = tm.instance_number
+                 and s.begin_interval_time > trunc(sysdate) - 31
+                 and s.begin_interval_time < trunc(sysdate)
+                 )
+       GROUP BY snap_id
+  )
+       order by 2;
+
 
