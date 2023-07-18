@@ -5,6 +5,11 @@ In this post, we discuss using the combination of promoting RDS Read Replicas an
 
 
 ![Optional Text](slide01.jpg)
+![Optional Text](slide02.jpg)
+![Optional Text](slide03.jpg)
+![Optional Text](slide04.jpg)
+![Optional Text](slide05.jpg)
+![Optional Text](slide06.jpg)
 
 
 ## Solution Overview
