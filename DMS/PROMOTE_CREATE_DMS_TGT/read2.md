@@ -4,6 +4,8 @@ RDS databases provide a high availability solution with MultiAZ configurations. 
 In this post, we discuss using the combination of promoting RDS Read Replicas and turning on Change Data Capture (CDC) at a certain transaction with the Database Migration Service (DMS). This allows us to keep transactions replicating from a source database to a standalone promoted former read replica which can then be brought offline as needed. This combination can provide a higher level of flexibility for database availability.
 
 
+![Optional Text](slide01.jpg)
+
 
 ## Solution Overview
 RDS for Oracle databases can have up to 5 read replica databases and read replicas are a great solution to help scale load for read only transactions away from primary writer databases. Read replicas typically have latency of less than five seconds and are kept in sync with primary databases through Oracle Data Guard technology. Read replicas can also be configured to be MultiAZ just like primary databases. In this solution, we leverage read replicas because they are in sync with our primary database.
