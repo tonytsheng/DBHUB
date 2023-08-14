@@ -1,17 +1,15 @@
 ## Set up for Air Routes Demo
 
-### Set up an EC2 instance
+### Gremlin on an EC2 instance
 
-1. Install the Gremlin console on your EC2 instance
-https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-gremlin-console.html
-Create the correct neptune-remote.yaml file in the conf directory.
+1. Install the Gremlin console on your EC2 instance according to https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-gremlin-console.html. Create the correct neptune-remote.yaml file in the conf directory.
 
 2. Stage Air Route demo data into an S3 bucket
 
-3. Create/start your Neptune cluster.
-Ensure you have the appropriate IAM roles.
+3. Create/start your Neptune cluster.  Ensure you have the appropriate IAM roles.
 
 4. Load the Air Route data
+```
 curl -X POST \
     -H 'Content-Type: application/json' \
 https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d ' ## your neptune cluster
@@ -22,6 +20,7 @@ https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader 
       "region" : "us-east-2",
       "failOnError" : "FALSE"
     }'
+```
 
 5. Test connectivity from your EC2 instance into your Neptune cluster
 
