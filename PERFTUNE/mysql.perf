@@ -1,0 +1,10 @@
+mysql [(none)]> show full processlist;
+
+slow_query_log	enable/disable the slow query log
+slow_query_log_file	name and path of the slow query log file
+long_query_time	time in seconds/microseconds defining a slow query
+
+EXPLAIN SELECT * FROM categoriesG
+
+SELECT * FROM  mysql.general_log  WHERE command_type ='Query' LIMIT total;
+
