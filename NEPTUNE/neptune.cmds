@@ -1,3 +1,25 @@
+installing gremlin
+https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-gremlin-console.html
+
+add the right iam role to the neptune cluster
+https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-IAM-add-role-cluster.html
+
+loader
+see loadit script
+
+curl -G https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader
+{
+    "status" : "200 OK",
+    "payload" : {
+        "loadIds" : [
+            "33f4a50e-6980-4d70-b876-def749b2002d"
+        ]
+    }
+}
+
+
+
+
 curl -G https://nep2001-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:8182/loader
 {
     "status" : "200 OK",
