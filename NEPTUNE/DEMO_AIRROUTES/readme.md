@@ -48,4 +48,5 @@ gremlin> :exit
 [ec2-user@ip-10-0-2-111 apache-tinkerpop-gremlin-console-3.6.5]$
 ```
 
+TODO 6. Use the Neptune connector to enable Quicksight queries from your Graph database.
 
