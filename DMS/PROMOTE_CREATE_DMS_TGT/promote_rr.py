@@ -35,6 +35,7 @@
 #
 # ToDo
 #   some sort of error checking
+#   need to figure out replicating multiple schemas with DMS
 
 
 import boto3
