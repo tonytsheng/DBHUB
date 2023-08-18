@@ -10,5 +10,13 @@ from pg_stat_activity;
 
 select * from pg_stat_activity where datname = 'pg102';
 
+-- long running txs
+SELECT pid, datname, usename,
+state, backend_xmin
+FROM pg_stat_activity
+WHERE backend_xmin IS NOT NULL
+ORDER BY age(backend_xmin) DESC;
+
+
 \quit;
 
