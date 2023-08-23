@@ -86,7 +86,8 @@ Used TNSNAMES adapter to resolve the alias
 Attempting to contact (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCPS) (HOST = ttsora20.ciushqttrpqx.us-east-2.rds.amazonaws.com) (PORT = 2484))) (CONNECT_DATA = (SID = ttsora20)) (SECURITY = (SSL_SERVER_CERT_DN = C=US,ST=Washington,L=Seattle,O=Amazon.com,OU=RDS,CN=endpoint)))
 OK (20 msec)
 ```
-11. Test the connection using SQLPlus.
+Note that the test with tnsping was successful, the CN string is missing the correct database endpoint. 
+11. Test the connection using SQLPlus after fixing the CN string.
 ```
 [oracle@ip-10-1-0-15 admin]$ sqlplus admin/Pass1234@ttsora20_ssl
 
