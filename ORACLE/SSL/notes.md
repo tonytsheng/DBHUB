@@ -52,6 +52,11 @@ TNS-12560: TNS:protocol adapter error
 
 9. Run orapki commands.
 ```
+[oracle@ip-10-1-0-15 db_1]$ orapki wallet create -wallet $ORACLE_HOME/ssl_wallet -auto_login_only
+Oracle PKI Tool : Version 12.2.0.1.0
+Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Operation is successfully completed.
 [oracle@ip-10-1-0-15 ssl_wallet]$ orapki wallet add -wallet $ORACLE_HOME/ssl_wallet -trusted_cert -cert $ORACLE_HOME/ssl_wallet/rds-ca-2019-root.pem -auto_login_only
 Oracle PKI Tool : Version 12.2.0.1.0
 Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
