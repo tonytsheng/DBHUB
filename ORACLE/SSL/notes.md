@@ -57,6 +57,12 @@ Oracle PKI Tool : Version 12.2.0.1.0
 Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
 
 Operation is successfully completed.
+[oracle@ip-10-1-0-15 db_1]$ cd ssl_wallet/
+[oracle@ip-10-1-0-15 ssl_wallet]$ ls -l
+total 8
+-rw------- 1 oracle oinstall  194 Aug 23 16:41 cwallet.sso
+-rw------- 1 oracle oinstall    0 Aug 23 16:41 cwallet.sso.lck
+-rw-r--r-- 1 oracle oinstall 1456 Aug 23 16:40 rds-ca-2019-root.pem
 [oracle@ip-10-1-0-15 ssl_wallet]$ orapki wallet add -wallet $ORACLE_HOME/ssl_wallet -trusted_cert -cert $ORACLE_HOME/ssl_wallet/rds-ca-2019-root.pem -auto_login_only
 Oracle PKI Tool : Version 12.2.0.1.0
 Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
