@@ -86,15 +86,30 @@ Used TNSNAMES adapter to resolve the alias
 Attempting to contact (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCPS) (HOST = ttsora20.ciushqttrpqx.us-east-2.rds.amazonaws.com) (PORT = 2484))) (CONNECT_DATA = (SID = ttsora20)) (SECURITY = (SSL_SERVER_CERT_DN = C=US,ST=Washington,L=Seattle,O=Amazon.com,OU=RDS,CN=endpoint)))
 OK (20 msec)
 ```
-11. Note that the test with tnsping was successful, the CN string is missing the correct database endpoint. Test the connection using SQLPlus after fixing the CN string.
+11. Test both connections with SQLPlus.
 ```
-[oracle@ip-10-1-0-15 admin]$ sqlplus admin/Pass1234@ttsora20_ssl
+[oracle@ip-10-1-0-219 admin]$ sqlplus admin@ttsora20
 
-SQL*Plus: Release 12.2.0.1.0 Production on Wed Aug 23 16:45:35 2023
+SQL*Plus: Release 12.2.0.1.0 Production on Fri Aug 25 12:49:25 2023
 
 Copyright (c) 1982, 2016, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 23 2023 16:43:40 +00:00
+Enter password:
+Last Successful login time: Thu Aug 24 2023 17:13:38 +00:00
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+
+SQL> quit
+Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+[oracle@ip-10-1-0-219 admin]$ sqlplus admin@ttsora20_ssl
+
+SQL*Plus: Release 12.2.0.1.0 Production on Fri Aug 25 12:49:32 2023
+
+Copyright (c) 1982, 2016, Oracle.  All rights reserved.
+
+Enter password:
+Last Successful login time: Fri Aug 25 2023 12:49:27 +00:00
 
 Connected to:
 Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
