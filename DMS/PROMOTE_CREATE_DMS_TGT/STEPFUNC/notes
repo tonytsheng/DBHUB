@@ -1,0 +1,17 @@
+paste this code into a lambda
+
+it should look like this
+
+
+in the configuration tab
+the iam role should have:
+dms admin perms
+tts-promote-rr-role-ofgjnivd has what it needs
+
+step function role in iam has:
+AWSLambdaRole
+tts-dms-admin
+XRayAccessPolicy
+
+
+
