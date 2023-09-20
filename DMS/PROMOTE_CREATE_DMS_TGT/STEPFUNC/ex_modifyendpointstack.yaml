@@ -1,0 +1,385 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters: 
+  S3Endpoint:
+    Type: String
+  DMSTask:
+    Type: String
+  EventRuleScheduleExpression:
+    Type: String
+    Default: cron(0 2 * * ? *) # daily at 2am
+
+Resources: 
+  ModifyEndpointFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Description: Modifies an S3 DMS endpoint's BucketFolder property to include a date-partitioned folder structure for the current date.
+      FunctionName: DMS_Modify_Endpoint
+      Handler: index.lambda_handler
+      ReservedConcurrentExecutions: 1
+      Role: !GetAtt ModifyEndpointFunctionRole.Arn
+      Runtime: python3.9
+      Environment:
+        Variables:
+          ENDPOINT_ARN: !Ref S3Endpoint
+      Code:
+        ZipFile: |
+          import boto3
+          from datetime import date
+          import os
+
+          client = boto3.client('dms')
+
+          def lambda_handler(event, context):
+            endpoint_arn = os.environ.get('ENDPOINT_ARN')
+
+            bucket_folder_prefix = 'data'
+            partition_name = date.today().strftime("%Y/%m/%d")
+            
+            # Update endpoint BucketFolder to write data to date partition.
+            modify_endpoint_response = client.modify_endpoint(
+              EndpointArn=endpoint_arn,
+              S3Settings={
+                'BucketFolder': f'{bucket_folder_prefix}/{partition_name}'
+              }
+            )
+  
+            return {
+              'endpoint_status': modify_endpoint_response['Endpoint']['Status']
+            }
+  ModifyEndpointFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: AllowModifyEndpointDynamicPath
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: dms:ModifyEndpoint
+                Resource: !Ref S3Endpoint
+        - PolicyName: AllowCloudWatchLogs
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+  DescribeEndpointConnectionFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Description: Describes the connection of a DMS endpoint to determine whether the connection test has completed successfully.
+      FunctionName: DMS_Describe_Endpoint_Connection
+      Handler: index.lambda_handler
+      ReservedConcurrentExecutions: 1
+      Role: !GetAtt DescribeEndpointConnectionFunctionRole.Arn
+      Runtime: python3.9
+      Environment:
+        Variables:
+          ENDPOINT_ARN: !Ref S3Endpoint
+      Code:
+        ZipFile: |
+          import boto3
+          import os
+
+          client = boto3.client('dms')
+
+          def lambda_handler(event, context):
+            endpoint_arn = os.environ.get('ENDPOINT_ARN')
+
+            response = client.describe_connections(
+              Filters=[
+                {
+                  'Name': 'endpoint-arn',
+                  'Values': [
+                    endpoint_arn
+                  ],
+                },
+              ]
+            )
+            
+            for connection in response['Connections']:
+              if connection['EndpointArn'] == endpoint_arn:
+                return {
+                  'connection_status': connection['Status']
+                }
+                
+            raise Exception('Connection status in invalid state.')
+  DescribeEndpointConnectionFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: AllowDescribeConnections
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: dms:DescribeConnections
+                Resource: "*"
+        - PolicyName: AllowCloudWatchLogs
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+  StartTaskFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Description: Starts a full-load DMS task.
+      FunctionName: DMS_Start_Task
+      Handler: index.lambda_handler
+      ReservedConcurrentExecutions: 1
+      Role: !GetAtt StartTaskFunctionRole.Arn
+      Runtime: python3.9
+      Environment:
+        Variables:
+          TASK_ARN: !Ref DMSTask
+      Code:
+        ZipFile: |
+          import boto3
+          from datetime import date
+          import os
+
+          client = boto3.client('dms')
+
+          def lambda_handler(event, context):
+            task_arn = os.environ.get('TASK_ARN')
+
+            # Start replication task.
+            start_replication_task_response = client.start_replication_task(
+              ReplicationTaskArn=task_arn,
+              StartReplicationTaskType='reload-target'
+            )
+  
+            return {
+              'task_status': start_replication_task_response["ReplicationTask"]["Status"]
+            }
+  StartTaskFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: AllowStartDynamicReplicationTask
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: dms:StartReplicationTask
+                Resource: !Ref DMSTask
+        - PolicyName: AllowCloudWatchLogs
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+  TaskWorkflowStateMachine:
+    Type: AWS::StepFunctions::StateMachine
+    Properties: 
+      DefinitionString: |
+        {
+          "StartAt": "Invoke Modify Endpoint Lambda",
+          "States": {
+            "Invoke Modify Endpoint Lambda": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "OutputPath": "$.Payload",
+              "Parameters": {
+                "Payload.$": "$",
+                "FunctionName": "${MODIFY_ENDPOINT_LAMBDA_ARN}"
+              },
+              "Retry": [
+                {
+                  "ErrorEquals": [
+                    "Lambda.ServiceException",
+                    "Lambda.AWSLambdaException",
+                    "Lambda.SdkClientException"
+                  ],
+                  "IntervalSeconds": 2,
+                  "MaxAttempts": 6,
+                  "BackoffRate": 2
+                }
+              ],
+              "Next": "Wait 60s"
+            },
+            "Wait 60s": {
+              "Type": "Wait",
+              "Seconds": 60,
+              "Next": "Invoke Describe Connections Lambda"
+            },
+            "Invoke Describe Connections Lambda": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "OutputPath": "$.Payload",
+              "Parameters": {
+                "Payload.$": "$",
+                "FunctionName": "${DESCRIBE_CONNECTIONS_LAMBDA_ARN}"
+              },
+              "Retry": [
+                {
+                  "ErrorEquals": [
+                    "Lambda.ServiceException",
+                    "Lambda.AWSLambdaException",
+                    "Lambda.SdkClientException"
+                  ],
+                  "IntervalSeconds": 2,
+                  "MaxAttempts": 6,
+                  "BackoffRate": 2
+                }
+              ],
+              "Next": "Check Connection Status"
+            },
+            "Check Connection Status": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Variable": "$.connection_status",
+                  "StringEquals": "successful",
+                  "Next": "Invoke Start Replication Task Lambda"
+                },
+                {
+                  "Variable": "$.connection_status",
+                  "StringEquals": "testing",
+                  "Next": "Wait 60s"
+                },
+                {
+                  "Or": [
+                    {
+                      "Variable": "$.connection_status",
+                      "StringEquals": "failed"
+                    },
+                    {
+                      "Variable": "$.connection_status",
+                      "StringEquals": "deleting"
+                    }
+                  ],
+                  "Next": "Fail"
+                }
+              ],
+              "Default": "Fail"
+            },
+            "Invoke Start Replication Task Lambda": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "OutputPath": "$.Payload",
+              "Parameters": {
+                "Payload.$": "$",
+                "FunctionName": "${START_REPLICATION_TASK_LAMBDA_ARN}"
+              },
+              "Retry": [
+                {
+                  "ErrorEquals": [
+                    "Lambda.ServiceException",
+                    "Lambda.AWSLambdaException",
+                    "Lambda.SdkClientException"
+                  ],
+                  "IntervalSeconds": 2,
+                  "MaxAttempts": 6,
+                  "BackoffRate": 2
+                }
+              ],
+              "Next": "Success"
+            },
+            "Success": {
+              "Type": "Succeed"
+            },
+            "Fail": {
+              "Type": "Fail"
+            }
+          }
+        }
+      DefinitionSubstitutions: 
+        MODIFY_ENDPOINT_LAMBDA_ARN: !GetAtt ModifyEndpointFunction.Arn
+        DESCRIBE_CONNECTIONS_LAMBDA_ARN: !GetAtt DescribeEndpointConnectionFunction.Arn
+        START_REPLICATION_TASK_LAMBDA_ARN: !GetAtt StartTaskFunction.Arn
+      RoleArn: !GetAtt TaskWorkflowStateMachineRole.Arn
+  TaskWorkflowStateMachineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - states.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: AllowInvokeModifyEndpointWorkflowFunctions
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: lambda:InvokeFunction
+                Resource:
+                  - !GetAtt ModifyEndpointFunction.Arn
+                  - !GetAtt DescribeEndpointConnectionFunction.Arn
+                  - !GetAtt StartTaskFunction.Arn
+  ScheduledTaskWorkflowRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Description: Execute the TaskWorkflowStateMachine daily at 2am
+      ScheduleExpression: !Ref EventRuleScheduleExpression
+      State: ENABLED
+      Targets:
+      - Id: TaskWorkflowStateMachine
+        Arn: !Ref TaskWorkflowStateMachine
+        RoleArn: !GetAtt ScheduledTaskWorkflowRuleRole.Arn
+  ScheduledTaskWorkflowRuleRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - events.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: AllowExecuteTaskWorflowStateMachine
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action: states:StartExecution
+                Resource: !Ref TaskWorkflowStateMachine
+

@@ -1,0 +1,337 @@
+08/18/023 16:11:02
+Thread 1 advanced to log sequence 1313312 (LGWR switch),  current SCN: 358477925
+
+08/18/023 16:11:02
+  Current log# 4 seq# 1313312 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_4_j92p43t4_.log
+
+08/18/023 16:11:02
+ARC0 (PID:24407): Archived Log entry 1329077 added for T-1.S-1313311 ID 0xd2b1e1fd LAD:1
+
+08/18/023 16:15:59
+Thread 1 advanced to log sequence 1313313 (LGWR switch),  current SCN: 358478886
+
+08/18/023 16:15:59
+  Current log# 1 seq# 1313313 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_1_j92p41s3_.log
+
+08/18/023 16:15:59
+ARC1 (PID:24418): Archived Log entry 1329079 added for T-1.S-1313312 ID 0xd2b1e1fd LAD:1
+
+08/18/023 16:21:00
+Thread 1 advanced to log sequence 1313314 (LGWR switch),  current SCN: 358479576
+
+08/18/023 16:21:00
+  Current log# 2 seq# 1313314 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_2_j92p427g_.log
+
+08/18/023 16:21:00
+ARC2 (PID:24420): Archived Log entry 1329081 added for T-1.S-1313313 ID 0xd2b1e1fd LAD:1
+
+08/18/023 16:26:00
+Thread 1 advanced to log sequence 1313315 (LGWR switch),  current SCN: 358480246
+
+08/18/023 16:26:00
+  Current log# 3 seq# 1313315 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_3_j92p42sn_.log
+
+08/18/023 16:26:00
+ARC3 (PID:24422): Archived Log entry 1329083 added for T-1.S-1313314 ID 0xd2b1e1fd LAD:1
+
+08/18/023 16:31:00
+Thread 1 advanced to log sequence 1313316 (LGWR switch),  current SCN: 358480976
+
+08/18/023 16:31:00
+  Current log# 4 seq# 1313316 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_4_j92p43t4_.log
+
+08/18/023 16:31:00
+ARC0 (PID:24407): Archived Log entry 1329085 added for T-1.S-1313315 ID 0xd2b1e1fd LAD:1
+
+08/18/023 16:36:00
+Thread 1 advanced to log sequence 1313317 (LGWR switch),  current SCN: 358481646
+
+08/18/023 16:36:00
+  Current log# 1 seq# 1313317 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_1_j92p41s3_.log
+
+08/18/023 16:36:00
+ARC1 (PID:24418): Archived Log entry 1329087 added for T-1.S-1313316 ID 0xd2b1e1fd LAD:1
+
+08/18/023 16:41:01
+Thread 1 advanced to log sequence 1313318 (LGWR switch),  current SCN: 358482316
+
+08/18/023 16:41:01
+  Current log# 2 seq# 1313318 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_2_j92p427g_.log
+
+08/18/023 16:41:01
+ARC2 (PID:24420): Archived Log entry 1329089 added for T-1.S-1313317 ID 0xd2b1e1fd LAD:1
+
+08/18/023 16:46:01
+Thread 1 advanced to log sequence 1313319 (LGWR switch),  current SCN: 358483032
+
+08/18/023 16:46:01
+  Current log# 3 seq# 1313319 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_3_j92p42sn_.log
+
+08/18/023 16:46:01
+ARC3 (PID:24422): Archived Log entry 1329091 added for T-1.S-1313318 ID 0xd2b1e1fd LAD:1
+
+08/18/023 16:51:01
+Thread 1 advanced to log sequence 1313320 (LGWR switch),  current SCN: 358483700
+
+08/18/023 16:51:01
+  Current log# 4 seq# 1313320 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_4_j92p43t4_.log
+
+08/18/023 16:51:01
+ARC0 (PID:24407): Archived Log entry 1329093 added for T-1.S-1313319 ID 0xd2b1e1fd LAD:1
+
+08/18/023 16:56:01
+Thread 1 advanced to log sequence 1313321 (LGWR switch),  current SCN: 358484380
+
+08/18/023 16:56:01
+  Current log# 1 seq# 1313321 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_1_j92p41s3_.log
+
+08/18/023 16:56:01
+ARC1 (PID:24418): Archived Log entry 1329095 added for T-1.S-1313320 ID 0xd2b1e1fd LAD:1
+
+08/18/023 17:01:01
+Thread 1 advanced to log sequence 1313322 (LGWR switch),  current SCN: 358485473
+
+08/18/023 17:01:01
+  Current log# 2 seq# 1313322 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_2_j92p427g_.log
+
+08/18/023 17:01:01
+ARC2 (PID:24420): Archived Log entry 1329097 added for T-1.S-1313321 ID 0xd2b1e1fd LAD:1
+
+08/18/023 17:01:32
+
+
+***********************************************************************
+
+08/18/023 17:01:32
+
+Fatal NI connect error 12170.
+
+08/18/023 17:01:32
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 19.0.0.0.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 19.0.0.0.0 - Production
+
+08/18/023 17:01:32
+  Version 19.19.0.0.0
+
+08/18/023 17:01:32
+  Time: 18-AUG-2023 17:01:32
+
+08/18/023 17:01:32
+  Tracing not turned on.
+
+08/18/023 17:01:32
+  Tns error struct:
+
+08/18/023 17:01:32
+    ns main err code: 12535
+
+08/18/023 17:01:32
+
+
+08/18/023 17:01:32
+TNS-12535: TNS:operation timed out
+
+08/18/023 17:01:32
+    ns secondary err code: 12609
+
+08/18/023 17:01:32
+    nt main err code: 0
+
+08/18/023 17:01:32
+    nt secondary err code: 0
+
+08/18/023 17:01:32
+    nt OS err code: 0
+
+08/18/023 17:01:32
+  Client address: (ADDRESS=(PROTOCOL=tcp)(HOST=172.31.4.207)(PORT=1137))
+
+08/18/023 17:01:32
+TT03 (PID:30441): Error 12609 archiving LNO:1 to 'ttsora10_b'
+
+08/18/023 17:02:35
+Process termination requested for pid 28603 [source = rdbms], [info = 2] [request issued by pid: 23006, uid: 3001]
+
+08/18/023 17:03:39
+Starting background process NSV2
+
+08/18/023 17:03:39
+NSV2 started with pid=94, OS id=12852
+
+08/18/023 17:04:36
+Process termination requested for pid 12852 [source = rdbms], [info = 2] [request issued by pid: 23006, uid: 3001]
+
+08/18/023 17:04:37
+RSM0 (PID:28071): Using STANDBY_ARCHIVE_DEST parameter default value as /rdsdbdata/db/TTSORA10_A/arch/redolog [krsd.c:18221]
+
+08/18/023 17:04:37
+ALTER SYSTEM SET log_archive_dest_2='' SCOPE=BOTH;
+
+08/18/023 17:04:37
+Data Guard Broker executes SQL [alter system set log_archive_config='dg_config=(TTSORA10_A)']
+
+08/18/023 17:04:37
+ALTER SYSTEM SET log_archive_config='dg_config=(TTSORA10_A)' SCOPE=BOTH;
+
+08/18/023 17:04:37
+Starting background process NSV2
+
+08/18/023 17:04:37
+NSV2 started with pid=96, OS id=13892
+
+08/18/023 17:05:11
+RSM0: Killing process NSV2 (PID=13892)
+
+08/18/023 17:05:23
+TMON (PID:24322): Process (PID:24405) hung on an I/O to LAD:2 after 262 seconds with threshold of 240 at [krsu.c:10192]
+
+08/18/023 17:05:23
+TMON (PID:24322): WARN: Terminating process hung on an operation (PID:24405)
+
+08/18/023 17:05:28
+TMON (PID:24322): Killing 1 processes (PIDS:24405) (Process by index) in order to remove hung processes. Requested by OS process 24322
+
+08/18/023 17:05:28
+Process termination requested for pid 24405 [source = rdbms], [info = 2] [request issued by pid: 24322, uid: 3001]
+
+08/18/023 17:05:41
+
+
+***********************************************************************
+
+08/18/023 17:05:41
+
+Fatal NI connect error 12170, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(PORT=1137)(HOST=172.31.4.207)))(CONNECT_DATA=(SID=TTSORA10)(SERVER=DEDICATED)(CID=(PROGRAM=oracle)(HOST=ip-172-31-0-246)(USER=rdsdb))))
+
+08/18/023 17:05:41
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 19.0.0.0.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 19.0.0.0.0 - Production
+
+08/18/023 17:05:41
+  Version 19.19.0.0.0
+
+08/18/023 17:05:41
+  Time: 18-AUG-2023 17:05:41
+
+08/18/023 17:05:41
+  Tracing not turned on.
+
+08/18/023 17:05:41
+  Tns error struct:
+
+08/18/023 17:05:41
+    ns main err code: 12535
+
+08/18/023 17:05:41
+
+
+08/18/023 17:05:41
+TNS-12535: TNS:operation timed out
+
+08/18/023 17:05:41
+    ns secondary err code: 12560
+
+08/18/023 17:05:41
+    nt main err code: 505
+
+08/18/023 17:05:41
+
+
+08/18/023 17:05:41
+TNS-00505: Operation timed out
+
+08/18/023 17:05:41
+    nt secondary err code: 0
+
+08/18/023 17:05:41
+    nt OS err code: 0
+
+08/18/023 17:05:54
+TT04 (PID:14274): Gap Manager starting
+
+08/18/023 17:06:02
+Thread 1 advanced to log sequence 1313323 (LGWR switch),  current SCN: 358486181
+
+08/18/023 17:06:02
+  Current log# 3 seq# 1313323 mem# 0: /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_3_j92p42sn_.log
+
+08/18/023 17:06:02
+ARC2 (PID:24420): Archived Log entry 1329098 added for T-1.S-1313322 ID 0xd2b1e1fd LAD:1
+
+08/18/023 17:06:07
+DMON: NSV2 did not stop within 60 seconds, killing it now
+
+08/18/023 17:06:07
+Process termination requested for pid 13892 [source = rdbms], [info = 2] [request issued by pid: 23006, uid: 3001]
+
+08/18/023 17:06:09
+ALTER SYSTEM SET local_listener='(ADDRESS = (PROTOCOL = TCP)(HOST = 10.1.2.15)(PORT = 1521))' SCOPE=BOTH;
+
+08/18/023 17:06:12
+Completed: Data Guard Broker shutdown
+
+08/18/023 17:06:13
+ALTER SYSTEM SET dg_broker_start=FALSE SCOPE=BOTH;
+
+08/18/023 17:06:13
+.... (PID:14642): REDO_TRANSPORT_USER changed to < >
+
+08/18/023 17:06:13
+ALTER SYSTEM SET redo_transport_user=' ' SCOPE=BOTH;
+
+08/18/023 17:06:13
+JIT: pid 14644 requesting full stop
+
+08/18/023 17:06:13
+alter database drop logfile group 6
+
+08/18/023 17:06:13
+Deleted Oracle managed file /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_6_lfyzgdvb_.log
+
+08/18/023 17:06:13
+Completed: alter database drop logfile group 6
+
+08/18/023 17:06:13
+alter database drop logfile group 8
+
+08/18/023 17:06:13
+Deleted Oracle managed file /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_8_lfyzgfsr_.log
+
+08/18/023 17:06:13
+Completed: alter database drop logfile group 8
+
+08/18/023 17:06:13
+alter database drop logfile group 9
+
+08/18/023 17:06:13
+Deleted Oracle managed file /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_9_lfyzgg9y_.log
+
+08/18/023 17:06:13
+Completed: alter database drop logfile group 9
+
+08/18/023 17:06:13
+alter database drop logfile group 5
+
+08/18/023 17:06:13
+Deleted Oracle managed file /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_5_lfyzgddk_.log
+
+08/18/023 17:06:13
+Completed: alter database drop logfile group 5
+
+08/18/023 17:06:14
+alter database drop logfile group 7
+
+08/18/023 17:06:14
+Deleted Oracle managed file /rdsdbdata/db/TTSORA10_A/onlinelog/o1_mf_7_lfyzgfb8_.log
+
+08/18/023 17:06:14
+Completed: alter database drop logfile group 7
+
+
+107 rows selected.
+

@@ -1,5 +1,3 @@
-import json
-import boto3
 import base64
 import json
 import decimal
@@ -26,11 +24,6 @@ def lambda_handler(event, context):
         Port=1521,
         DatabaseName='ttsora20'
         )
-    #print(response)
-    endpt_arn=response["Endpoint"]["EndpointArn"]
     
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
-    }
-
+    endpt_arn=response["Endpoint"]["EndpointArn"]
+    return (endpt_arn)

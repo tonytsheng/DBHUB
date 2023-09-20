@@ -14,4 +14,41 @@ tts-dms-admin
 XRayAccessPolicy
 
 
+++ notes from the cft in the blog post
+
+1. lambda - invoke modify endpoint lambda
+config
+state name - invoke modify endpoint lambda
+integration type - optimized
+function name - arn
+payload - use state input as payload
+next state - wait 60s
+input 
+all defaults
+output
+check filter output with OutputPath
+$.Payload
+
+2. wait 60s
+
+3. lambda - invoke describe connections lambda
+output
+check filter output with OutputPath
+$.Payload
+
+4. check connection status
+rule 1 - $.connection_status == "successful"
+rule 2 - $.connection_status == "testing"
+rule 3 - $.connection_status == "failed" or $.connection_status == "deleting"
+default rule
+
+this connection_status string is in the lambda return 
+
+input
+all defaults
+output 
+all defaults
+
+
+
 
