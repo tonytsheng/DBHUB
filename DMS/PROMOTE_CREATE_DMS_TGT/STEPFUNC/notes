@@ -29,6 +29,11 @@ output
 check filter output with OutputPath
 $.Payload
 
+configuration -> permissions
+role name at the very top.
+edit to change this to an iam role that has the perms that you need
+tts-promote-rr-role-ofgjnivd - add dms/rds permissiosn to this
+
 2. wait 60s
 
 3. lambda - invoke describe connections lambda

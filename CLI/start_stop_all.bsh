@@ -1,21 +1,22 @@
 date
 ACTIONIN=$1
+PROFILE=$2
 RDSACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-instance
 CLUACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-cluster
 echo ${RDSACTION}
 
 echo "+++ Instances"
-for instance in `/usr/bin/aws --profile ec2 rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier' | sed s/\"//g `
+for instance in `/usr/bin/aws --profile ${PROFILE} rds describe-db-instances | jq ' .DBInstances[] | .DBInstanceIdentifier' | sed s/\"//g `
 do
     echo $instance
-    /usr/bin/aws --profile ec2 rds ${RDSACTION} --db-instance-identifier $instance --output text
+    /usr/bin/aws --profile ${PROFILE} rds ${RDSACTION} --db-instance-identifier $instance --output text
 done
 
 echo "+++ Clusters"
 
-for cluster in `/usr/bin/aws --profile ec2 rds describe-db-clusters | jq ' .DBClusters[]  | .DBClusterIdentifier' | sed s/\"//g `
+for cluster in `/usr/bin/aws --profile ${PROFILE} rds describe-db-clusters | jq ' .DBClusters[]  | .DBClusterIdentifier' | sed s/\"//g `
 do
     echo $cluster
-    /usr/bin/aws --profile ec2 rds ${CLUACTION} --db-cluster-identifier $cluster --output text
+    /usr/bin/aws --profile ${PROFILE} rds ${CLUACTION} --db-cluster-identifier $cluster --output text
 done
 
