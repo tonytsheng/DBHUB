@@ -1,0 +1,70 @@
+{
+  "Comment": "A description of my state machine",
+  "StartAt": "PromoteReadReplica",
+  "States": {
+    "PromoteReadReplica": {
+      "Type": "Task",
+      "Parameters": {
+        "DbInstanceIdentifier.$": "$.DbInstanceIdentifier"
+      },
+      "Resource": "arn:aws:states:::aws-sdk:rds:promoteReadReplica",
+      "Next": "Wait"
+    },
+    "Wait": {
+      "Type": "Wait",
+      "Seconds": 15,
+      "Next": "l_get_db_status"
+    },
+    "l_get_db_status": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "OutputPath": "$.Payload",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "arn:aws:lambda:us-east-2:012363508593:function:tts_get_db_status:$LATEST"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException",
+            "Lambda.TooManyRequestsException"
+          ],
+          "IntervalSeconds": 1,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "Choice"
+    },
+    "Choice": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.db_status",
+          "StringEquals": "available",
+          "Next": "Success"
+        },
+        {
+          "Not": {
+            "Variable": "$.db_status",
+            "StringEquals": "available"
+          },
+          "Next": "Wait"
+        }
+      ]
+    },
+    "Success": {
+      "Type": "Succeed"
+    }
+  }
+}
+
+
+## execute it with this json
+#
+{
+  "DbInstanceIdentifier": "ttsora20a"
+}
+

@@ -12,6 +12,14 @@ step function role in iam has:
 AWSLambdaRole
 tts-dms-admin
 XRayAccessPolicy
+to check this, Design/Code/Config to the right of the name of the step function,
+Click Config
+you will then see a drop down for an IAM role for Execution role
+tts_stepfunctions:
+amazon rds full
+aws lambdarole
+cloudwatchfull
+tts-dms-admin
 
 
 ++ notes from the cft in the blog post
