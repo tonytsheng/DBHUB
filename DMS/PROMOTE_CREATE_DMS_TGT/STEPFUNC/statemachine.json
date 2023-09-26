@@ -65,6 +65,9 @@
 ## execute it with this json
 #
 {
-  "DbInstanceIdentifier": "ttsora20a"
+  "DbInstanceIdentifier": "ttsora20a",
+  "EndpointIdentifier": "MyData",
+  "EndpointType": "target",
+  "EngineName": "oracle"
 }
 
