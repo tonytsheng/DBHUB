@@ -23681,3 +23681,46 @@ ENDPOINT	ttsora30.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
 OPTIONGROUPMEMBERSHIPS	default:oracle-ee-19	in-sync
 VPCSECURITYGROUPS	active	sg-09ce174e5979a7e5c
 +++ Clusters
+Tue Sep 26 23:00:01 UTC 2023
+Tue Sep 26 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+pg102
+oracad3-19c
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+oracad3restore
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3restore is not in available state.
+oracle19c-ec2-cad
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle19c-ec2-cad is not in available state.
+oracle-ec2-cad2
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle-ec2-cad2 is not in available state.
+postgresdemo
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+ttsora10
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
+ttsora20
+DBINSTANCE	20	False	us-east-2c	7	region	rds-ca-2019	AL32UTF8	True	False	arn:aws:rds:us-east-2:012363508593:db:ttsora20	db.m5.xlarge	ttsora20	stopping	TTSORA20	0	db-NCD4KUMDNCO2W5TODKQW7OT7PI	False	oracle-ee	19.0.0.0.ru-2023-07.rur-2023-07.r1	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-NCD4KUMDNCO2W5TODKQW7OT7PI	False	2023-08-28T01:46:33.329Z	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2023-09-26T22:53:46Z	bring-your-own-license	admin	1000	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	AL16UTF16	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	09:13-09:43	sat:03:31-sat:04:01	False	True	gp2
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-0dc155aace16a70a7	Complete	vpc-0dc155aace16a70a7
+SUBNETS	subnet-012cf41f2f59bb5e2	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-049f3da1c10794ca0	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-032fbba9675f5d50e	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	alert
+ENDPOINT	ttsora20.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	default:oracle-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-09ce174e5979a7e5c
++++ Clusters
