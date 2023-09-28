@@ -1,4 +1,9 @@
-#curl -X POST \
+## make sure you add the iam role to the cluster
+## Neptune console -> click on cluster
+## Actions -> Manage IAM roles
+## point to the writer node - that is where the IAM role gets added to
+#
+##curl -X POST \
 #    -H 'Content-Type: application/json' \
 #https://nep1001.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d '
 #    { 
@@ -11,7 +16,7 @@
 
 curl -X POST \
     -H 'Content-Type: application/json' \
-https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d '
+https://nep100-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d'
     { 
       "source" : "s3://ttsheng-nepload",
       "format" : "csv",  
@@ -19,3 +24,10 @@ https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader 
       "region" : "us-east-2", 
       "failOnError" : "FALSE"
     }'
+
+
+#nep100-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
+#https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d '
+
+#nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
+

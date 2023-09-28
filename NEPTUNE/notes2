@@ -1,0 +1,9 @@
+## get the counts of nodes by labels
+## note that this was after using the jupyter notebooks to load both 
+## a knowledge graph - authors, posts, titles
+## and a security graph - types of aws services
+
+gremlin> g.V().groupCount().by(label)
+==>{date=41, guardduty:detector=1, other=13, iam:role=14, ec2:network-interface=5, title=28, ec2:instance=3, commercial_item=2, iam:user=2, ec2:security-group=6, post=44, s3:bucket=4, tag=19, kms:key=1, image=1, ec2:vpc=1, author=41, rds:db=1, ec2:internet-gateway=1, events:rule=3, ec2:subnet=3, iam:instance-profile=2, iam:policy=12, organization=40, location=37, ec2:route-table=1, ec2:volume=3}
+gremlin>
+

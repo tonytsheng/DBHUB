@@ -23724,3 +23724,44 @@ ENDPOINT	ttsora20.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
 OPTIONGROUPMEMBERSHIPS	default:oracle-ee-19	in-sync
 VPCSECURITYGROUPS	active	sg-09ce174e5979a7e5c
 +++ Clusters
+Wed Sep 27 23:00:01 UTC 2023
+Wed Sep 27 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+nep100-instance-1
+oracad3-19c
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+oracad3restore
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3restore is not in available state.
+oracle19c-ec2-cad
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle19c-ec2-cad is not in available state.
+nep100
+oracle-ec2-cad2
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle-ec2-cad2 is not in available state.
+postgresdemo
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+ttsora10
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
+ttsora20
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Cannot stop or start the source instance for a Read-Replica
+ttsora20rr
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Cannot stop or start a Read-Replica target instance
++++ Clusters
