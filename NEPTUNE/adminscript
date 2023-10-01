@@ -1,0 +1,14 @@
+cluster_ep="https://nep100-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader"
+
+for loadId in $(curl --silent -G "${cluster_ep}?details=true" | jq '.payload.loadIds[]');
+do
+        clean_loadId=$(echo -n ${loadId} | tr -d '"')
+        time=$(date -d@$(curl --silent -G "${cluster_ep}/${clean_loadId}?details=true" | jq '.payload.overallStatus.startTime'))
+        echo -n $time '-'
+        echo -n ${clean_loadId}: $(curl --silent -G "${cluster_ep}/${clean_loadId}?details=true" | jq '.payload.overallStatus.status')
+        echo -n ',S3 LOCATION': $(curl --silent -G "${cluster_ep}/${clean_loadId}?details=true" | jq '.payload.overallStatus.fullUri')
+        echo -n ',ERRORS': $(curl --silent -G "${cluster_ep}/${clean_loadId}?details=truei&errors=true&page=1&errorsPerPage=3" | jq '.payload.errors.errorLogs')
+
+        echo
+done
+

@@ -1,0 +1,6 @@
+~id	~from	~to	~label
+1	5	4	cousin
+2	5	3	cousin
+3	1	2	spouse
+4	1	3	parent
+5	1	4	parent

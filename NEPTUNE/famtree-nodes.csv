@@ -1,0 +1,9 @@
+~id	~label	lname:string	fname:string	city:string	state:string
+1	person	sheng	deanna	columbia	md
+2	person	sheng	tony	columbia	md
+3	person	sheng	katie	los angeles	ca
+4	person	sheng	emily	los angeles	ca
+5	person	lovegren	chase	fairfield	ct
+6	person	lovegren 	doug	fairfield	ct
+7	person	lovegren	jackie	fairfield	ct
+8	person	lovegren	alana	fairfield	ct

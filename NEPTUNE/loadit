@@ -18,7 +18,7 @@ curl -X POST \
     -H 'Content-Type: application/json' \
 https://nep100-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d'
     { 
-      "source" : "s3://ttsheng-nepload",
+      "source" : "s3://ttsheng-nepload/",
       "format" : "csv",  
       "iamRoleArn" : "arn:aws:iam::070201068661:role/load-neptune-s3",
       "region" : "us-east-2", 
