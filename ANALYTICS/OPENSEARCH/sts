@@ -1,0 +1,33 @@
+https://vpc-opensearch100-bar7lj6vs3zhwhot7bbp2shlo4.us-east-2.es.amazonaws.com/
+
+## Under Security Configuration
+Modify the Access policy
+Effect: Allow where it says Deny by default
+
+Once the ngnix ec2 instance is configured, this allows access to the dashboard via the ec2 instance.
+https://hostname/_dashboards/app/login?
+
+curl -XPUT -u 'admin:Pass1@#4' 'https://vpc-opensearch100-bar7lj6vs3zhwhot7bbp2shlo4.us-east-2.es.amazonaws.com/movies/_doc/1' -d '{"director": "Burton, Tim", "genre": ["Comedy","Sci-Fi"], "year": 1996, "actor": ["Jack Nicholson","Pierce Brosnan","Sarah Jessica Parker"], "title": "Mars Attacks!"}' -H 'Content-Type: application/json'
+curl -XPOST -u 'admin:Pass1@#4' 'https://vpc-opensearch100-bar7lj6vs3zhwhot7bbp2shlo4.us-east-2.es.amazonaws.com/_bulk' --data-binary @bulk_movies.json -H 'Content-Type: application/json'
+
+curl -XGET -u 'admin:Pass1@#4' 'https://vpc-opensearch100-bar7lj6vs3zhwhot7bbp2shlo4.us-east-2.es.amazonaws.com/_search'
+
+curl -XDELETE -u 'admin:Pass1@#4' 'https://vpc-opensearch100-bar7lj6vs3zhwhot7bbp2shlo4.us-east-2.es.amazonaws.com/movies'
+
+PUT /my-movie-index
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 3,
+      "number_of_replicas": 1
+    }
+  }
+}
+
+GET /my-movie-index 
+
+POST /_bulk
+[data]
+
+GET /my-movie-index/_search
+

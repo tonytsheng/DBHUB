@@ -1,0 +1,528 @@
+Resources:
+  AmazonOpenSearchVPCE410071F:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      InstanceTenancy: default
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC
+  AmazonOpenSearchVPCPublicSubnet1SubnetE2AFA5F0:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.0.0/18
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+      AvailabilityZone:
+        Fn::Select:
+          - 0
+          - Fn::GetAZs: ""
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: aws-cdk:subnet-name
+          Value: Public
+        - Key: aws-cdk:subnet-type
+          Value: Public
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PublicSubnet1
+  AmazonOpenSearchVPCPublicSubnet1RouteTable52290507:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PublicSubnet1
+  AmazonOpenSearchVPCPublicSubnet1RouteTableAssociation9BE713D5:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: AmazonOpenSearchVPCPublicSubnet1RouteTable52290507
+      SubnetId:
+        Ref: AmazonOpenSearchVPCPublicSubnet1SubnetE2AFA5F0
+  AmazonOpenSearchVPCPublicSubnet1DefaultRoute6948F1C7:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId:
+        Ref: AmazonOpenSearchVPCPublicSubnet1RouteTable52290507
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        Ref: AmazonOpenSearchVPCIGW4C798B09
+    DependsOn:
+      - AmazonOpenSearchVPCVPCGW2121D339
+  AmazonOpenSearchVPCPublicSubnet1EIPB2D258D4:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PublicSubnet1
+  AmazonOpenSearchVPCPublicSubnet1NATGateway44A69C90:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId:
+        Fn::GetAtt:
+          - AmazonOpenSearchVPCPublicSubnet1EIPB2D258D4
+          - AllocationId
+      SubnetId:
+        Ref: AmazonOpenSearchVPCPublicSubnet1SubnetE2AFA5F0
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PublicSubnet1
+  AmazonOpenSearchVPCPublicSubnet2Subnet5141B8B4:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.64.0/18
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+      AvailabilityZone:
+        Fn::Select:
+          - 1
+          - Fn::GetAZs: ""
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: aws-cdk:subnet-name
+          Value: Public
+        - Key: aws-cdk:subnet-type
+          Value: Public
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PublicSubnet2
+  AmazonOpenSearchVPCPublicSubnet2RouteTable850557E2:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PublicSubnet2
+  AmazonOpenSearchVPCPublicSubnet2RouteTableAssociation7D8B4984:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: AmazonOpenSearchVPCPublicSubnet2RouteTable850557E2
+      SubnetId:
+        Ref: AmazonOpenSearchVPCPublicSubnet2Subnet5141B8B4
+  AmazonOpenSearchVPCPublicSubnet2DefaultRoute1B7F3F73:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId:
+        Ref: AmazonOpenSearchVPCPublicSubnet2RouteTable850557E2
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        Ref: AmazonOpenSearchVPCIGW4C798B09
+    DependsOn:
+      - AmazonOpenSearchVPCVPCGW2121D339
+  AmazonOpenSearchVPCPublicSubnet2EIPEFED62AA:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PublicSubnet2
+  AmazonOpenSearchVPCPublicSubnet2NATGateway582554D6:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId:
+        Fn::GetAtt:
+          - AmazonOpenSearchVPCPublicSubnet2EIPEFED62AA
+          - AllocationId
+      SubnetId:
+        Ref: AmazonOpenSearchVPCPublicSubnet2Subnet5141B8B4
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PublicSubnet2
+  AmazonOpenSearchVPCPrivateSubnet1Subnet4DBAC83F:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.128.0/18
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+      AvailabilityZone:
+        Fn::Select:
+          - 0
+          - Fn::GetAZs: ""
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: aws-cdk:subnet-name
+          Value: Private
+        - Key: aws-cdk:subnet-type
+          Value: Private
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PrivateSubnet1
+  AmazonOpenSearchVPCPrivateSubnet1RouteTable62BD3412:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PrivateSubnet1
+  AmazonOpenSearchVPCPrivateSubnet1RouteTableAssociationB725C81F:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: AmazonOpenSearchVPCPrivateSubnet1RouteTable62BD3412
+      SubnetId:
+        Ref: AmazonOpenSearchVPCPrivateSubnet1Subnet4DBAC83F
+  AmazonOpenSearchVPCPrivateSubnet1DefaultRoute0AF9B698:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId:
+        Ref: AmazonOpenSearchVPCPrivateSubnet1RouteTable62BD3412
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId:
+        Ref: AmazonOpenSearchVPCPublicSubnet1NATGateway44A69C90
+  AmazonOpenSearchVPCPrivateSubnet2SubnetD5B494C1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.192.0/18
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+      AvailabilityZone:
+        Fn::Select:
+          - 1
+          - Fn::GetAZs: ""
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: aws-cdk:subnet-name
+          Value: Private
+        - Key: aws-cdk:subnet-type
+          Value: Private
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PrivateSubnet2
+  AmazonOpenSearchVPCPrivateSubnet2RouteTableB4EEFEAC:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC/PrivateSubnet2
+  AmazonOpenSearchVPCPrivateSubnet2RouteTableAssociation266A02D9:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: AmazonOpenSearchVPCPrivateSubnet2RouteTableB4EEFEAC
+      SubnetId:
+        Ref: AmazonOpenSearchVPCPrivateSubnet2SubnetD5B494C1
+  AmazonOpenSearchVPCPrivateSubnet2DefaultRoute0F653DD4:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId:
+        Ref: AmazonOpenSearchVPCPrivateSubnet2RouteTableB4EEFEAC
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId:
+        Ref: AmazonOpenSearchVPCPublicSubnet2NATGateway582554D6
+  AmazonOpenSearchVPCIGW4C798B09:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/Amazon OpenSearch VPC
+  AmazonOpenSearchVPCVPCGW2121D339:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+      InternetGatewayId:
+        Ref: AmazonOpenSearchVPCIGW4C798B09
+  SecGrpOSWorkshopABFFDA69:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: AmazonOpenSearchStack/SecGrpOSWorkshop
+      GroupName: SecGrpOSWorkshop
+      SecurityGroupEgress:
+        - CidrIp: 0.0.0.0/0
+          Description: Allow all outbound traffic by default
+          IpProtocol: "-1"
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          Description: from 0.0.0.0/0:80
+          FromPort: 80
+          IpProtocol: tcp
+          ToPort: 80
+        - CidrIp: 0.0.0.0/0
+          Description: from 0.0.0.0/0:443
+          FromPort: 443
+          IpProtocol: tcp
+          ToPort: 443
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+  InstanceSSMCBFA3CF0:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+                Fn::Join:
+                  - ""
+                  - - ec2.
+                    - Ref: AWS::URLSuffix
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - Fn::Join:
+            - ""
+            - - "arn:"
+              - Ref: AWS::Partition
+              - :iam::aws:policy/service-role/AmazonEC2RoleforSSM
+  instanceInstanceSecurityGroup725C795D:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: AmazonOpenSearchStack/instance/InstanceSecurityGroup
+      SecurityGroupEgress:
+        - CidrIp: 0.0.0.0/0
+          Description: Allow all outbound traffic by default
+          IpProtocol: "-1"
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          Description: HTTPS
+          FromPort: 443
+          IpProtocol: tcp
+          ToPort: 443
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/instance
+      VpcId:
+        Ref: AmazonOpenSearchVPCE410071F
+  instanceInstanceProfile931F14E3:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - Ref: InstanceSSMCBFA3CF0
+  InstanceSSMDefaultPolicy6E4EFE93:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Action: es:*
+            Effect: Allow
+            Resource: "*"
+          - Action:
+              - 's3:GetObject*'
+              - 's3:GetBucket*'
+              - 's3:List*'
+            Effect: Allow
+            Resource: "*"
+        Version: "2012-10-17"
+      PolicyName: InstanceSSMDefaultPolicy6E4EFE93
+      Roles:
+        - Ref: InstanceSSMCBFA3CF0
+  instanceB7CCE687:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone:
+        Fn::Select:
+          - 0
+          - Fn::GetAZs: ""
+      IamInstanceProfile:
+        Ref: instanceInstanceProfile931F14E3
+      ImageId:
+        Ref: LinuxAmi
+      InstanceType: t3.small
+      SecurityGroupIds:
+        - Fn::GetAtt:
+            - instanceInstanceSecurityGroup725C795D
+            - GroupId
+      SubnetId:
+        Ref: AmazonOpenSearchVPCPublicSubnet1SubnetE2AFA5F0
+      Tags:
+        - Key: Name
+          Value: AmazonOpenSearchStack/instance
+      UserData:
+        Fn::Base64:
+            !Sub |
+                #!/bin/bash -xe
+                yum update -y
+                yum install jq -y
+                amazon-linux-extras install -y nginx1.12
+                aws s3 cp s3://ee-assets-prod-us-east-1/modules/c0aa4a9ec6424fe7b02c17cc3ea22622/v1/configupdate /usr/bin/
+                aws s3 cp s3://ee-assets-prod-us-east-1/modules/c0aa4a9ec6424fe7b02c17cc3ea22622/v1/nginx_opensearch_dashboards.conf.template /etc/nginx/conf.d/
+                openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt -subj /C=US/ST=./L=./O=./CN=.
+                chmod +x /usr/bin/configupdate
+    DependsOn:
+      - InstanceSSMCBFA3CF0
+      - AmazonOpenSearchVPCPublicSubnet1RouteTableAssociation9BE713D5
+      - AmazonOpenSearchVPCPublicSubnet1DefaultRoute6948F1C7
+  DataGenCognitoSetupLambdaFunc:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket:
+          Fn::Join:
+            - ""
+            - - aws-kdg-tools-
+              - Ref: AWS::Region
+        S3Key: datagen-cognito-setup.zip
+      Description: 'Creates a Cognito User Pool, Identity Pool, and a User.  Returns IDs to be used in the Kinesis Data Generator'
+      FunctionName: KinesisDataGeneratorCognitoSetup
+      Handler: createCognitoPool.createPoolAndUser
+      Role:
+        Fn::GetAtt:
+          - LambdaExecutionRole
+          - Arn
+      Runtime: nodejs18.x
+      Timeout: 60
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+        Version: 2012-10-17
+      Path: '/'
+      Policies:
+        - PolicyName: Root
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 'logs:CreateLogGroup'
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                Resource:
+                  - 'arn:aws:logs:*:*:log-group:/aws/lambda/KinesisDataGeneratorCognitoSetup*'
+              - Effect: Allow
+                Action:
+                  - 'cognito-idp:AdminConfirmSignUp'
+                  - 'cognito-idp:CreateUserPoolClient'
+                  - 'cognito-idp:AdminCreateUser'
+                Resource:
+                  - 'arn:aws:cognito-idp:*:*:userpool/*'
+              - Effect: Allow
+                Action:
+                  - 'cognito-idp:CreateUserPool'
+                  - 'cognito-identity:CreateIdentityPool'
+                  - 'cognito-identity:SetIdentityPoolRoles'
+                Resource:
+                  - '*'
+              - Effect: Allow
+                Action:
+                  - 'iam:UpdateAssumeRolePolicy'
+                  - 'iam:PassRole'
+                Resource:
+                  - Fn::GetAtt: [ AuthenticatedUserRole, Arn ]
+                  - Fn::GetAtt: [ UnauthenticatedUserRole, Arn ]
+  SetupCognitoCustom:
+    Type: Custom::DataGenCognitoSetupLambdaFunc
+    Properties:
+      ServiceToken:
+        Fn::GetAtt: [ DataGenCognitoSetupLambdaFunc, Arn ]
+      Region: !Ref AWS::Region
+      Username: !Ref Username
+      Password: !Ref Password
+      AuthRoleName: !Ref AuthenticatedUserRole
+      AuthRoleArn:
+        Fn::GetAtt: [ AuthenticatedUserRole, Arn ]
+      UnauthRoleName: !Ref UnauthenticatedUserRole
+      UnauthRoleArn:
+        Fn::GetAtt: [ UnauthenticatedUserRole, Arn ]
+  AuthenticatedUserRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated:
+                - cognito-identity.amazonaws.com
+            Action:
+              - sts:AssumeRoleWithWebIdentity
+      Path: '/'
+      Policies:
+        - PolicyName: root
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Action:
+                  - 'kinesis:DescribeStream'
+                  - 'kinesis:PutRecord'
+                  - 'kinesis:PutRecords'
+                Resource:
+                  - 'arn:aws:kinesis:*:*:stream/*'
+                Effect: Allow
+              - Action:
+                  - 'firehose:DescribeDeliveryStream'
+                  - 'firehose:PutRecord'
+                  - 'firehose:PutRecordBatch'
+                Resource:
+                  - 'arn:aws:firehose:*:*:deliverystream/*'
+                Effect: Allow
+              - Action:
+                  - 'ec2:DescribeRegions'
+                  - 'firehose:ListDeliveryStreams'
+                  - 'kinesis:ListStreams'
+                Resource:
+                  - '*'
+                Effect: Allow
+  UnauthenticatedUserRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated:
+                - cognito-identity.amazonaws.com
+            Action:
+              - sts:AssumeRoleWithWebIdentity
+      Path: '/'
+      Policies:
+        - PolicyName: root
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Deny
+                Action:
+                  - '*'
+                Resource:
+                  - '*'
+  FirehoseErrorBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName:
+        Fn::Sub:
+          - 'kinesis-firehose-errors-${RandomGUID}'
+          - RandomGUID: !Select [0, !Split ["-", !Select [2, !Split ["/", !Ref AWS::StackId ]]]]
+Parameters:
+  LinuxAmi:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+  Username:
+    Description: "The username of the user you want to create in Amazon Cognito."
+    Type: String
+    Default: admin
+  Password:
+    Description: "The password of the user you want to create in Amazon Cognito."
+    Type: String
+    Default: kdg123
+Outputs:
+  KinesisDataGeneratorUrl:
+    Description: 'The URL for your Kinesis Data Generator.'
+    Value:
+      Fn::Join:
+        - ""
+        - - https://awslabs.github.io/amazon-kinesis-data-generator/web/producer.html?
+          - Fn::GetAtt:
+            - SetupCognitoCustom
+            - Querystring
+  OpenSearchDashboardsURLviaJumphost:
+    Description: OpenSearch Dashboards URL via Jump host
+    Value:
+      Fn::Join:
+        - ""
+        - - https://
+          - Fn::GetAtt:
+              - instanceB7CCE687
+              - PublicIp
+
