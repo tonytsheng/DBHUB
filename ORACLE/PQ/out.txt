@@ -1,0 +1,292 @@
+ADMIN/ttsperf> set serveroutput on;
+ADMIN/ttsperf> set timing on;
+ADMIN/ttsperf> set linesize 200
+ADMIN/ttsperf> set pagesize 50
+ADMIN/ttsperf> set trim
+SP2-0265: trimout must be set ON or OFF
+ADMIN/ttsperf> show parameter parallel;
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+awr_pdb_max_parallel_slaves          integer     10
+containers_parallel_degree           integer     65535
+fast_start_parallel_rollback         string      LOW
+max_datapump_parallel_per_job        string      50
+optimizer_ignore_parallel_hints      boolean     FALSE
+parallel_adaptive_multi_user         boolean     FALSE
+parallel_degree_limit                string      CPU
+parallel_degree_policy               string      MANUAL
+parallel_execution_message_size      integer     16384
+parallel_force_local                 boolean     FALSE
+parallel_instance_group              string
+parallel_max_servers                 integer     80
+parallel_min_degree                  string      1
+parallel_min_percent                 integer     0
+parallel_min_servers                 integer     8
+parallel_min_time_threshold          string      AUTO
+parallel_servers_target              integer     32
+parallel_threads_per_cpu             integer     1
+recovery_parallelism                 integer     0
+ADMIN/ttsperf> drop table big;
+
+Table dropped.
+
+Elapsed: 00:00:00.04
+ADMIN/ttsperf> host(sleep 2);
+
+ADMIN/ttsperf>
+ADMIN/ttsperf> create table big as select * from all_objects;
+
+Table created.
+
+Elapsed: 00:00:00.31
+ADMIN/ttsperf> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+ADMIN/ttsperf> host(sleep 2);
+
+ADMIN/ttsperf> insert /*+ append */ into big select * from big;
+
+20523 rows created.
+
+Elapsed: 00:00:00.05
+ADMIN/ttsperf> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+ADMIN/ttsperf> host(sleep 2);
+
+ADMIN/ttsperf> insert /*+ append */ into big select * from big;
+
+41046 rows created.
+
+Elapsed: 00:00:00.05
+ADMIN/ttsperf> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+ADMIN/ttsperf> host(sleep 2);
+
+ADMIN/ttsperf> insert /*+ append */ into big select * from big;
+
+82092 rows created.
+
+Elapsed: 00:00:00.09
+ADMIN/ttsperf> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+ADMIN/ttsperf> host(sleep 2);
+
+ADMIN/ttsperf> insert /*+ append */ into big select * from big;
+
+164184 rows created.
+
+Elapsed: 00:00:00.16
+ADMIN/ttsperf> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.01
+ADMIN/ttsperf> host(sleep 2);
+
+ADMIN/ttsperf> insert /*+ append */ into big select * from big;
+
+328368 rows created.
+
+Elapsed: 00:00:00.36
+ADMIN/ttsperf> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+ADMIN/ttsperf> host(sleep 2);
+
+ADMIN/ttsperf> insert /*+ append */ into big select * from big;
+
+656736 rows created.
+
+Elapsed: 00:00:03.50
+ADMIN/ttsperf> commit;
+
+Commit complete.
+
+Elapsed: 00:00:00.00
+ADMIN/ttsperf> host(sleep 2);
+
+ADMIN/ttsperf>
+ADMIN/ttsperf> set autotrace on;
+ADMIN/ttsperf> select count(*) from big;
+
+  COUNT(*)
+----------
+   1313472
+
+Elapsed: 00:00:00.15
+
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3110421800
+
+-------------------------------------------------------------------
+| Id  | Operation          | Name | Rows  | Cost (%CPU)| Time     |
+-------------------------------------------------------------------
+|   0 | SELECT STATEMENT   |      |     1 |    99   (0)| 00:00:01 |
+|   1 |  SORT AGGREGATE    |      |     1 |            |          |
+|   2 |   TABLE ACCESS FULL| BIG  | 20523 |    99   (0)| 00:00:01 |
+-------------------------------------------------------------------
+
+
+Statistics
+----------------------------------------------------------
+          1  recursive calls
+          1  db block gets
+      21984  consistent gets
+      10984  physical reads
+        192  redo size
+        553  bytes sent via SQL*Net to client
+        386  bytes received via SQL*Net from client
+          2  SQL*Net roundtrips to/from client
+          0  sorts (memory)
+          0  sorts (disk)
+          1  rows processed
+
+ADMIN/ttsperf> select /*+ FULL(big) PARALLEL(big,2) */ count(*) from big;
+
+  COUNT(*)
+----------
+   1313472
+
+Elapsed: 00:00:00.04
+
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3605036845
+
+--------------------------------------------------------------------------------------------------------
+| Id  | Operation              | Name     | Rows  | Cost (%CPU)| Time     |    TQ  |IN-OUT| PQ Distrib |
+--------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT       |          |     1 |    55   (0)| 00:00:01 |        |      |            |
+|   1 |  SORT AGGREGATE        |          |     1 |            |          |        |      |            |
+|   2 |   PX COORDINATOR       |          |       |            |          |        |      |            |
+|   3 |    PX SEND QC (RANDOM) | :TQ10000 |     1 |            |          |  Q1,00 | P->S | QC (RAND)  |
+|   4 |     SORT AGGREGATE     |          |     1 |            |          |  Q1,00 | PCWP |            |
+|   5 |      PX BLOCK ITERATOR |          | 20523 |    55   (0)| 00:00:01 |  Q1,00 | PCWC |            |
+|   6 |       TABLE ACCESS FULL| BIG      | 20523 |    55   (0)| 00:00:01 |  Q1,00 | PCWP |            |
+--------------------------------------------------------------------------------------------------------
+
+Note
+-----
+   - Degree of Parallelism is 2 because of table property
+
+
+Statistics
+----------------------------------------------------------
+          7  recursive calls
+          0  db block gets
+      22305  consistent gets
+          0  physical reads
+        968  redo size
+        553  bytes sent via SQL*Net to client
+        419  bytes received via SQL*Net from client
+          2  SQL*Net roundtrips to/from client
+          0  sorts (memory)
+          0  sorts (disk)
+          1  rows processed
+
+ADMIN/ttsperf> select /*+ FULL(big) PARALLEL(big,4) */ count(*) from big;
+
+  COUNT(*)
+----------
+   1313472
+
+Elapsed: 00:00:00.04
+
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3605036845
+
+--------------------------------------------------------------------------------------------------------
+| Id  | Operation              | Name     | Rows  | Cost (%CPU)| Time     |    TQ  |IN-OUT| PQ Distrib |
+--------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT       |          |     1 |    28   (0)| 00:00:01 |        |      |            |
+|   1 |  SORT AGGREGATE        |          |     1 |            |          |        |      |            |
+|   2 |   PX COORDINATOR       |          |       |            |          |        |      |            |
+|   3 |    PX SEND QC (RANDOM) | :TQ10000 |     1 |            |          |  Q1,00 | P->S | QC (RAND)  |
+|   4 |     SORT AGGREGATE     |          |     1 |            |          |  Q1,00 | PCWP |            |
+|   5 |      PX BLOCK ITERATOR |          | 20523 |    28   (0)| 00:00:01 |  Q1,00 | PCWC |            |
+|   6 |       TABLE ACCESS FULL| BIG      | 20523 |    28   (0)| 00:00:01 |  Q1,00 | PCWP |            |
+--------------------------------------------------------------------------------------------------------
+
+Note
+-----
+   - Degree of Parallelism is 4 because of table property
+
+
+Statistics
+----------------------------------------------------------
+         13  recursive calls
+          0  db block gets
+      22633  consistent gets
+          0  physical reads
+       1804  redo size
+        553  bytes sent via SQL*Net to client
+        419  bytes received via SQL*Net from client
+          2  SQL*Net roundtrips to/from client
+          0  sorts (memory)
+          0  sorts (disk)
+          1  rows processed
+
+ADMIN/ttsperf> select /*+ FULL(big) PARALLEL(big,16) */ count(*) from big;
+
+  COUNT(*)
+----------
+   1313472
+
+Elapsed: 00:00:00.03
+
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 3605036845
+
+--------------------------------------------------------------------------------------------------------
+| Id  | Operation              | Name     | Rows  | Cost (%CPU)| Time     |    TQ  |IN-OUT| PQ Distrib |
+--------------------------------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT       |          |     1 |     7   (0)| 00:00:01 |        |      |            |
+|   1 |  SORT AGGREGATE        |          |     1 |            |          |        |      |            |
+|   2 |   PX COORDINATOR       |          |       |            |          |        |      |            |
+|   3 |    PX SEND QC (RANDOM) | :TQ10000 |     1 |            |          |  Q1,00 | P->S | QC (RAND)  |
+|   4 |     SORT AGGREGATE     |          |     1 |            |          |  Q1,00 | PCWP |            |
+|   5 |      PX BLOCK ITERATOR |          | 20523 |     7   (0)| 00:00:01 |  Q1,00 | PCWC |            |
+|   6 |       TABLE ACCESS FULL| BIG      | 20523 |     7   (0)| 00:00:01 |  Q1,00 | PCWP |            |
+--------------------------------------------------------------------------------------------------------
+
+Note
+-----
+   - Degree of Parallelism is 16 because of table property
+
+
+Statistics
+----------------------------------------------------------
+         49  recursive calls
+          0  db block gets
+      24326  consistent gets
+          0  physical reads
+       5544  redo size
+        553  bytes sent via SQL*Net to client
+        420  bytes received via SQL*Net from client
+          2  SQL*Net roundtrips to/from client
+          0  sorts (memory)
+          0  sorts (disk)
+          1  rows processed
+
+ADMIN/ttsperf> exit
+Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.20.0.0.0
+[ec2-user@ip-10-0-2-111 PQ]$
+

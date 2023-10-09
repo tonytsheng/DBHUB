@@ -31,3 +31,6 @@ POST /_bulk
 
 GET /my-movie-index/_search
 
+anomoly detection - random cut forest algorithm
+
+

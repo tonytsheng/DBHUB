@@ -18,13 +18,14 @@ fi
  
 CREDS="${USER}/${PW}"
 CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${HOST})(PORT=1521))(CONNECT_DATA=(SID=${SID})))"
-#echo $CONNSTR
+echo $CONNSTR
 
 if [ -z ${INFILE} ]; then
     sqlplus ${CONNSTR}
 else
     #suppress output if using an inputfile 
-    sqlplus -S ${CONNSTR} @${INFILE}
+#    sqlplus -S ${CONNSTR} @${INFILE}
+    sqlplus ${CONNSTR} @${INFILE}
 fi
 
 
