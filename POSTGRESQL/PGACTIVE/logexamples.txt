@@ -1,0 +1,25 @@
++++
+
+2023-10-13 18:08:21 UTC:10.0.2.111(46190):postgres@app:[600]:CONTEXT:  PL/pgSQL function _pgactive_begin_join_private(text,text,text,text,boolean,boolean,boolean) line 39 at RAISE
+	SQL statement "SELECT pgactive._pgactive_begin_join_private(
+	        caller := '',
+	        node_name := node_name,
+	        node_dsn := node_dsn,
+	        remote_dsn := join_using_dsn,
+	        bypass_collation_check := bypass_collation_check,
+	        bypass_node_identifier_creation := bypass_node_identifier_creation,
+	        bypass_user_tables_check := bypass_user_tables_check)"
+	PL/pgSQL function pgactive_join_group(text,text,text,integer,text[],boolean,boolean,boolean) line 43 at PERFORM
+	SQL statement "SELECT pgactive.pgactive_join_group(
+	        node_name := node_name,
+	        node_dsn := node_dsn,
+	        join_using_dsn := null,
+	        apply_delay := apply_delay,
+	        replication_sets := replication_sets,
+	        bypass_user_tables_check := true)"
+	PL/pgSQL function pgactive_create_group(text,text,integer,text[]) line 84 at PERFORM
+2023-10-13 18:08:21 UTC:10.0.2.111(46190):postgres@app:[600]:STATEMENT:  SELECT pgactive.pgactive_create_group(
+	    node_name := 'pg600-app',
+	    node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_pg600'
+	);
+2023-10-13 18:08:21 UTC:10.0.2.111(46190):postgres@app:[600]:ERROR:  could not connect to the server in replication mode: connection failed
