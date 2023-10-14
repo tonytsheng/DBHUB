@@ -50,6 +50,28 @@ app=> select * from inventory.products;
  942cf0c8-f0da-47ea-9015-0912f18206f6 | conditioner  | 2023-10-13 18:00:39.178119+00
 (3 rows)
 
+CREATE SERVER pgactive_server_pg500
+FOREIGN DATA WRAPPER pgactive_fdw
+OPTIONS (host 'pg500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
+CREATE USER MAPPING FOR postgres
+SERVER pgactive_server_pg500;
+
+CREATE SERVER pgactive_server_pg600
+FOREIGN DATA WRAPPER pgactive_fdw
+OPTIONS (host 'pg600.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
+CREATE USER MAPPING FOR postgres
+SERVER pgactive_server_pg600;
+
+SELECT pgactive.pgactive_create_group(
+    node_name := 'endpoint1-app',
+    node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_pg500'
+);
+SELECT pgactive.pgactive_wait_for_node_ready();
+
+
+app=> CREATE EXTENSION IF NOT EXISTS pgactive;
+CREATE EXTENSION
+
 app=> CREATE EXTENSION IF NOT EXISTS pgactive;
 CREATE EXTENSION
 app=> CREATE SERVER pgactive_server_pg500
@@ -111,3 +133,107 @@ SELECT pgactive.pgactive_create_group(
     node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_endpoint2'
     join_using_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_endpoint1'
 );
+
+app=> select * from pg_user_mappings;
+ umid  | srvid |          srvname          | umuser | usename  |             umoptions
+-------+-------+---------------------------+--------+----------+-----------------------------------
+ 16668 | 16667 | pgactive_server_pg500     |  16397 | postgres | {user=postgres,password=Pass1234}
+ 16670 | 16669 | pgactive_server_pg600     |  16397 | postgres | {user=postgres,password=Pass1234}
+ 16680 | 16679 | pgactive_server_endpoint1 |  16397 | postgres | {user=postgres,password=Pass1234}
+ 16682 | 16681 | pgactive_server_endpoint2 |  16397 | postgres | {user=postgres,password=Pass1234}
+(4 rows)
+
+
+app=> select * from pg_foreign_server;
+  oid  |          srvname          | srvowner | srvfdw | srvtype | srvversion | srvacl |                            srvopt
+ions
+-------+---------------------------+----------+--------+---------+------------+--------+----------------------------------
+--------------------------------
+ 16667 | pgactive_server_pg500     |    16397 |  16645 |         |            |        | {host=pg500.cyt4dgtj55oy.us-east-
+2.rds.amazonaws.com,dbname=app}
+ 16669 | pgactive_server_pg600     |    16397 |  16645 |         |            |        | {host=pg600.cyt4dgtj55oy.us-east-
+2.rds.amazonaws.com,dbname=app}
+ 16679 | pgactive_server_endpoint1 |    16397 |  16645 |         |            |        | {host=pg500.cyt4dgtj55oy.us-east-
+2.rds.amazonaws.com,dbname=app}
+ 16681 | pgactive_server_endpoint2 |    16397 |  16645 |         |            |        | {host=pg600.cyt4dgtj55oy.us-east-
+2.rds.amazonaws.com,dbname=app}
+(4 rows)
+
+
+app=> drop user mapping for postgres server pgactive_server_endpoint2;
+DROP USER MAPPING
+app=> drop server pgactive_server_endpoint2;
+DROP SERVER
+
+app=> select * from pg_user_mappings;
+ umid  | srvid |          srvname          | umuser | usename  |             umoptions
+-------+-------+---------------------------+--------+----------+-----------------------------------
+ 16668 | 16667 | pgactive_server_pg500     |  16397 | postgres | {user=postgres,password=Pass1234}
+ 16670 | 16669 | pgactive_server_pg600     |  16397 | postgres | {user=postgres,password=Pass1234}
+ 16680 | 16679 | pgactive_server_endpoint1 |  16397 | postgres | {user=postgres,password=Pass1234}
+(3 rows)
+
+app=> select * from pg_foreign_server;
+  oid  |          srvname          | srvowner | srvfdw | srvtype | srvversion | srvacl |                            srvopt
+ions
+-------+---------------------------+----------+--------+---------+------------+--------+----------------------------------
+--------------------------------
+ 16667 | pgactive_server_pg500     |    16397 |  16645 |         |            |        | {host=pg500.cyt4dgtj55oy.us-east-
+2.rds.amazonaws.com,dbname=app}
+ 16669 | pgactive_server_pg600     |    16397 |  16645 |         |            |        | {host=pg600.cyt4dgtj55oy.us-east-
+2.rds.amazonaws.com,dbname=app}
+ 16679 | pgactive_server_endpoint1 |    16397 |  16645 |         |            |        | {host=pg500.cyt4dgtj55oy.us-east-
+2.rds.amazonaws.com,dbname=app}
+(3 rows)
+
+
+app=> drop user mapping for postgres server pgactive_server_endpoint1;
+DROP USER MAPPING
+app=> drop server pgactive_server_endpoint1;
+DROP SERVER
+app=> drop user mapping for postgres server pgactive_server_pg500;
+DROP USER MAPPING
+app=> drop server pgactive_server_pg500;
+DROP SERVER
+app=> drop user mapping for postgres server pgactive_server_pg600;
+DROP USER MAPPING
+app=> drop server pgactive_server_pg600;
+DROP SERVER
+
+app=> select * from pg_user_mappings;
+ umid | srvid | srvname | umuser | usename | umoptions
+------+-------+---------+--------+---------+-----------
+(0 rows)
+
+app=> select * from pg_foreign_server;
+ oid | srvname | srvowner | srvfdw | srvtype | srvversion | srvacl | srvoptions
+-----+---------+----------+--------+---------+------------+--------+------------
+(0 rows)
+
+aws rds modify-db-parameter-group \
+ --db-parameter-group-name tts-pg15 \
+ --parameters '[{"ParameterName": "rds.custom_dns_resolution","ParameterValue": "1","ApplyMethod": "pending-reboot"}]' \
+ --profile ec2
+
+
+CREATE SERVER pgactive_server_endpoint1
+    FOREIGN DATA WRAPPER pgactive_fdw
+    OPTIONS (host 'pg500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
+CREATE USER MAPPING FOR postgres
+    SERVER pgactive_server_endpoint1
+    OPTIONS (user 'postgres', password 'Pass1234');
+
+-- connection info for endpoint2
+CREATE SERVER pgactive_server_endpoint2
+    FOREIGN DATA WRAPPER pgactive_fdw
+    OPTIONS (host 'pg600.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
+CREATE USER MAPPING FOR postgres
+    SERVER pgactive_server_node2
+    OPTIONS (user 'postgres', password 'Pass1234');
+
+SELECT pgactive.pgactive_create_group(
+    node_name := 'endpoint1-app',
+    node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_endpoint1'
+
+);
+SELECT pgactive.pgactive_wait_for_node_ready();
