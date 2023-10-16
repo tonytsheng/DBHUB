@@ -3,6 +3,7 @@
 - Instance versions 15.4-R2
 
 ++
+```
 CREATE DATABASE app;
 SELECT setting ~ 'pgactive' 
 FROM pg_catalog.pg_settings
@@ -52,6 +53,7 @@ app=> select * from inventory.products;
 
 app=> CREATE EXTENSION IF NOT EXISTS pgactive;
 CREATE EXTENSION
+```
 
 
 + node 1
