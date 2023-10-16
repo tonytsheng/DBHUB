@@ -2,7 +2,7 @@
 - Parameter group
 - Instance versions 15.4-R2
 
-++
+++ Set up application tables for node 1
 ```
 CREATE DATABASE app;
 SELECT setting ~ 'pgactive' 
@@ -56,7 +56,7 @@ CREATE EXTENSION
 ```
 
 
-+ node 1
+++ node 1
 ```
 CREATE SERVER pgactive_server_endpoint1
     FOREIGN DATA WRAPPER pgactive_fdw
