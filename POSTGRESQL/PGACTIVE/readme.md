@@ -57,6 +57,7 @@ CREATE EXTENSION
 
 
 + node 1
+```
 CREATE SERVER pgactive_server_endpoint1
     FOREIGN DATA WRAPPER pgactive_fdw
     OPTIONS (host 'pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
@@ -77,8 +78,10 @@ SELECT pgactive.pgactive_create_group
   ,node_dsn := 'host=pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com dbname=app port=5432 user=postgres password=Pass')
 ;
 SELECT pgactive.pgactive_wait_for_node_ready();
+```
 
 + node 2
+```
 CREATE SERVER pgactive_server_endpoint1
     FOREIGN DATA WRAPPER pgactive_fdw
     OPTIONS (host 'pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
@@ -99,49 +102,48 @@ SELECT pgactive.pgactive_join_group(node_name := 'endpoint2-app'
   , join_using_dsn := 'host=pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com dbname=app port=5432 user=postgres password=Pass');
 
 SELECT pgactive.pgactive_wait_for_node_ready();
+```
 
 + checking servers/user mappings
+```
 app=> select * from pg_user_mappings;
  umid  | srvid |          srvname          | umuser | usename  |             umoptions
 -------+-------+---------------------------+--------+----------+-----------------------------------
- 16668 | 16667 | pgactive_server_pg500     |  16397 | postgres | {user=postgres,password=Pass}
- 16670 | 16669 | pgactive_server_pg600     |  16397 | postgres | {user=postgres,password=Pass}
  16680 | 16679 | pgactive_server_endpoint1 |  16397 | postgres | {user=postgres,password=Pass}
  16682 | 16681 | pgactive_server_endpoint2 |  16397 | postgres | {user=postgres,password=Pass}
-(4 rows)
+(2 rows)
 
 app=> select * from pg_foreign_server;
   oid  |          srvname          | srvowner | srvfdw | srvtype | srvversion | srvacl |                            srvopt
 ions
 -------+---------------------------+----------+--------+---------+------------+--------+----------------------------------
 --------------------------------
- 16667 | pgactive_server_pg500     |    16397 |  16645 |         |            |        | {host=pg500.cyt4dgtj55oy.us-east-
-2.rds.amazonaws.com,dbname=app}
- 16669 | pgactive_server_pg600     |    16397 |  16645 |         |            |        | {host=pg600.cyt4dgtj55oy.us-east-
-2.rds.amazonaws.com,dbname=app}
  16679 | pgactive_server_endpoint1 |    16397 |  16645 |         |            |        | {host=pg500.cyt4dgtj55oy.us-east-
 2.rds.amazonaws.com,dbname=app}
-(3 rows)
-
+(1 row)
+```
 
 + dropping user mapping
-app=> drop user mapping for postgres server pgactive_server_endpoint2;
+```app=> drop user mapping for postgres server pgactive_server_endpoint2;
 DROP USER MAPPING
 app=> drop server pgactive_server_endpoint2;
 DROP SERVER
-
+```
 
 + monitoring lag
+```
 SELECT * FROM pgactive.pgactive_node_slots;
 SELECT
   node_name
   , last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid
   , last_sent_xact_at - last_applied_xact_at AS lag_time
 FROM pgactive.pgactive_node_slots;
-
+```
 
 + monitoring conflict resolution
+```
 SELECT * FROM pgactive.pgactive_conflict_history;
+```
 
 
 
