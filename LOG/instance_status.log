@@ -24613,3 +24613,144 @@ An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster op
 
 An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora20 is not in available state.
 +++ Clusters
+Sat Oct 14 23:00:01 UTC 2023
+Sat Oct 14 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+nep100-instance-1
+oracad3-19c
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+pg102
+oracad3restore
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3restore is not in available state.
+oracle19c-ec2-cad
+DBINSTANCE	3057	True	us-east-2c	7	region	rds-ca-2019	True	False	arn:aws:rds:us-east-2:070201068661:db:pg102	db.m6g.xlarge	pg102	stopping	pg102	0	db-LYKLXOEPHQVAWYLP546OGFUPZA	False	postgres	12.14	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-LYKLXOEPHQVAWYLP546OGFUPZA	False	2021-05-04T20:29:47.313Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2023-10-14T22:54:32Z	postgresql-license	postgres	5000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	07:20-07:50	thu:03:34-thu:04:04	True	True	gp2
+DBPARAMETERGROUPS	tts-rds-pg12	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
+ENDPOINT	pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+pg500
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle19c-ec2-cad is not in available state.
+oracle-ec2-cad2
+DBINSTANCE	200	True	us-east-2b	7	region	rds-ca-2019	True	False	arn:aws:rds:us-east-2:070201068661:db:pg500	db.m5d.large	pg500	stopping	0	db-7Q2LJBC6WR5CGCRYNDIUA6DPZQ	False	postgres	15.4	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-7Q2LJBC6WR5CGCRYNDIUA6DPZQ	False	2023-10-13T17:34:20.584Z	3000	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2023-10-14T22:54:32Z	postgresql-license	postgres	1000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	09:36-10:06	thu:03:43-thu:04:13	True	True	gp3
+DBPARAMETERGROUPS	tts-pg15	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
+ENDPOINT	pg500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-15	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+pg600
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle-ec2-cad2 is not in available state.
+postgresdemo
+DBINSTANCE	200	True	us-east-2b	7	region	rds-ca-2019	True	False	arn:aws:rds:us-east-2:070201068661:db:pg600	db.m5d.large	pg600	stopping	0	db-BJIWOE4KUTARLSN4FZ2MABDOI4	False	postgres	15.4	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-BJIWOE4KUTARLSN4FZ2MABDOI4	False	2023-10-13T17:35:50.045Z	3000	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2023-10-14T22:54:33Z	postgresql-license	postgres	1000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	06:09-06:39	tue:08:47-tue:09:17	False	True	gp3
+DBPARAMETERGROUPS	tts-pg15	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
+ENDPOINT	pg600.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-15	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
++++ Clusters
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+ttsora10
+nep100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
+ttsora20
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora20 is not in available state.
++++ Clusters
+Sun Oct 15 23:00:01 UTC 2023
+Sun Oct 15 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+nep100-instance-1
+oracad3-19c
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+pg102
+oracad3restore
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3restore is not in available state.
+pg500
+oracle19c-ec2-cad
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg500 is not in available state.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle19c-ec2-cad is not in available state.
+pg600
+oracle-ec2-cad2
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg600 is not in available state.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle-ec2-cad2 is not in available state.
++++ Clusters
+postgresdemo
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+ttsora10
+nep100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+DBINSTANCE	6155	True	us-east-2a	7	region	rds-ca-2019	AL32UTF8	True	False	arn:aws:rds:us-east-2:012363508593:db:ttsora10	db.r5.large	ttsora10	stopping	TTSORA10	0	db-MTRQCUF3YONVAEMLLV63NHJZMM	True	oracle-ee	19.0.0.0.ru-2023-07.rur-2023-07.r1	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-MTRQCUF3YONVAEMLLV63NHJZMM	False	2021-05-04T14:25:07.320Z	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2023-10-15T22:55:03Z	bring-your-own-license	admin	9000	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	AL16UTF16	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	10:10-10:40	mon:07:19-mon:07:49	True	True	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::012363508593:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS	ACTIVE
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::012363508593:role/ttsheng-rds-s3	ACTIVE
+DBPARAMETERGROUPS	ttsheng-oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-0dc155aace16a70a7	Complete	vpc-0dc155aace16a70a7
+SUBNETS	subnet-012cf41f2f59bb5e2	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-049f3da1c10794ca0	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-032fbba9675f5d50e	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	alert
+ENABLEDCLOUDWATCHLOGSEXPORTS	audit
+ENABLEDCLOUDWATCHLOGSEXPORTS	listener
+ENABLEDCLOUDWATCHLOGSEXPORTS	oemagent
+ENABLEDCLOUDWATCHLOGSEXPORTS	trace
+ENDPOINT	ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	tts-ora-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-09ce174e5979a7e5c
+ttsora20
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora20 is not in available state.
++++ Clusters

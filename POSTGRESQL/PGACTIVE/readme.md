@@ -50,99 +50,63 @@ app=> select * from inventory.products;
  942cf0c8-f0da-47ea-9015-0912f18206f6 | conditioner  | 2023-10-13 18:00:39.178119+00
 (3 rows)
 
-CREATE SERVER pgactive_server_pg500
-FOREIGN DATA WRAPPER pgactive_fdw
-OPTIONS (host 'pg500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
-CREATE USER MAPPING FOR postgres
-SERVER pgactive_server_pg500;
-
-CREATE SERVER pgactive_server_pg600
-FOREIGN DATA WRAPPER pgactive_fdw
-OPTIONS (host 'pg600.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
-CREATE USER MAPPING FOR postgres
-SERVER pgactive_server_pg600;
-
-SELECT pgactive.pgactive_create_group(
-    node_name := 'endpoint1-app',
-    node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_pg500'
-);
-SELECT pgactive.pgactive_wait_for_node_ready();
-
-
 app=> CREATE EXTENSION IF NOT EXISTS pgactive;
 CREATE EXTENSION
 
-app=> CREATE EXTENSION IF NOT EXISTS pgactive;
-CREATE EXTENSION
-app=> CREATE SERVER pgactive_server_pg500
-app->     FOREIGN DATA WRAPPER pgactive_fdw
-app->     OPTIONS (host 'pg500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
-CREATE SERVER
-app=> CREATE USER MAPPING FOR postgres
-app->     SERVER pgactive_server_pg500
-app->     OPTIONS (user 'postgres', password 'Pass1234');
-CREATE USER MAPPING
-app=>
-app=>
-app=>
-app=>
-app=> CREATE SERVER pgactive_server_pg600
-app->     FOREIGN DATA WRAPPER pgactive_fdw
-app->     OPTIONS (host 'pg600.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
-CREATE SERVER
-app=> CREATE USER MAPPING FOR postgres
-app->     SERVER pgactive_server_pg600
-app->     OPTIONS (user 'postgres', password 'Pass1234');
-CREATE USER MAPPING
 
--- run this on node 1 for node 1 credentials
-SELECT pgactive.pgactive_create_group(
-    node_name := 'pg500-app',
-    node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_pg500'
-    join_using_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_endpoint1
-);
-
-SELECT pgactive.pgactive_wait_for_node_ready();
-
-
++ node 1
 CREATE SERVER pgactive_server_endpoint1
     FOREIGN DATA WRAPPER pgactive_fdw
-    OPTIONS (host 'pg500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
+    OPTIONS (host 'pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
 CREATE USER MAPPING FOR postgres
     SERVER pgactive_server_endpoint1
-    OPTIONS (user 'postgres', password 'Pass1234');
+    OPTIONS (user 'postgres', password 'Pass');
 
 -- connection info for endpoint2
 CREATE SERVER pgactive_server_endpoint2
     FOREIGN DATA WRAPPER pgactive_fdw
-    OPTIONS (host 'pg600.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
+    OPTIONS (host 'pg902.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
 CREATE USER MAPPING FOR postgres
-    SERVER pgactive_server_endpoint2
-    OPTIONS (user 'postgres', password 'Pass1234');
+    SERVER pgactive_server_node2
+    OPTIONS (user 'postgres', password 'Pass');
 
-SELECT pgactive.pgactive_create_group(
-    node_name := 'endpoint1-app',
-    node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_endpoint1'
---    ,join_using_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_endpoint2'
-);
+SELECT pgactive.pgactive_create_group
+  (node_name := 'endpoint1-app'
+  ,node_dsn := 'host=pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com dbname=app port=5432 user=postgres password=Pass')
+;
 SELECT pgactive.pgactive_wait_for_node_ready();
 
++ node 2
+CREATE SERVER pgactive_server_endpoint1
+    FOREIGN DATA WRAPPER pgactive_fdw
+    OPTIONS (host 'pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
+CREATE USER MAPPING FOR postgres
+    SERVER pgactive_server_endpoint1
+    OPTIONS (user 'postgres', password 'Pass');
 
-SELECT pgactive.pgactive_create_group(
-    node_name := 'endpoint2-app',
-    node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_endpoint2'
-    join_using_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_endpoint1'
-);
+-- connection info for endpoint2
+CREATE SERVER pgactive_server_endpoint2
+    FOREIGN DATA WRAPPER pgactive_fdw
+    OPTIONS (host 'pg902.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
+CREATE USER MAPPING FOR postgres
+    SERVER pgactive_server_endpoint2
+    OPTIONS (user 'postgres', password 'Pass');
 
+SELECT pgactive.pgactive_join_group(node_name := 'endpoint2-app'
+  , node_dsn := 'host=pg902.cyt4dgtj55oy.us-east-2.rds.amazonaws.com dbname=app port=5432 user=postgres password=Pass'
+  , join_using_dsn := 'host=pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com dbname=app port=5432 user=postgres password=Pass');
+
+SELECT pgactive.pgactive_wait_for_node_ready();
+
++ checking servers/user mappings
 app=> select * from pg_user_mappings;
  umid  | srvid |          srvname          | umuser | usename  |             umoptions
 -------+-------+---------------------------+--------+----------+-----------------------------------
- 16668 | 16667 | pgactive_server_pg500     |  16397 | postgres | {user=postgres,password=Pass1234}
- 16670 | 16669 | pgactive_server_pg600     |  16397 | postgres | {user=postgres,password=Pass1234}
- 16680 | 16679 | pgactive_server_endpoint1 |  16397 | postgres | {user=postgres,password=Pass1234}
- 16682 | 16681 | pgactive_server_endpoint2 |  16397 | postgres | {user=postgres,password=Pass1234}
+ 16668 | 16667 | pgactive_server_pg500     |  16397 | postgres | {user=postgres,password=Pass}
+ 16670 | 16669 | pgactive_server_pg600     |  16397 | postgres | {user=postgres,password=Pass}
+ 16680 | 16679 | pgactive_server_endpoint1 |  16397 | postgres | {user=postgres,password=Pass}
+ 16682 | 16681 | pgactive_server_endpoint2 |  16397 | postgres | {user=postgres,password=Pass}
 (4 rows)
-
 
 app=> select * from pg_foreign_server;
   oid  |          srvname          | srvowner | srvfdw | srvtype | srvversion | srvacl |                            srvopt
@@ -155,85 +119,24 @@ ions
 2.rds.amazonaws.com,dbname=app}
  16679 | pgactive_server_endpoint1 |    16397 |  16645 |         |            |        | {host=pg500.cyt4dgtj55oy.us-east-
 2.rds.amazonaws.com,dbname=app}
- 16681 | pgactive_server_endpoint2 |    16397 |  16645 |         |            |        | {host=pg600.cyt4dgtj55oy.us-east-
-2.rds.amazonaws.com,dbname=app}
-(4 rows)
+(3 rows)
 
 
++ dropping user mapping
 app=> drop user mapping for postgres server pgactive_server_endpoint2;
 DROP USER MAPPING
 app=> drop server pgactive_server_endpoint2;
 DROP SERVER
 
-app=> select * from pg_user_mappings;
- umid  | srvid |          srvname          | umuser | usename  |             umoptions
--------+-------+---------------------------+--------+----------+-----------------------------------
- 16668 | 16667 | pgactive_server_pg500     |  16397 | postgres | {user=postgres,password=Pass1234}
- 16670 | 16669 | pgactive_server_pg600     |  16397 | postgres | {user=postgres,password=Pass1234}
- 16680 | 16679 | pgactive_server_endpoint1 |  16397 | postgres | {user=postgres,password=Pass1234}
-(3 rows)
 
-app=> select * from pg_foreign_server;
-  oid  |          srvname          | srvowner | srvfdw | srvtype | srvversion | srvacl |                            srvopt
-ions
--------+---------------------------+----------+--------+---------+------------+--------+----------------------------------
---------------------------------
- 16667 | pgactive_server_pg500     |    16397 |  16645 |         |            |        | {host=pg500.cyt4dgtj55oy.us-east-
-2.rds.amazonaws.com,dbname=app}
- 16669 | pgactive_server_pg600     |    16397 |  16645 |         |            |        | {host=pg600.cyt4dgtj55oy.us-east-
-2.rds.amazonaws.com,dbname=app}
- 16679 | pgactive_server_endpoint1 |    16397 |  16645 |         |            |        | {host=pg500.cyt4dgtj55oy.us-east-
-2.rds.amazonaws.com,dbname=app}
-(3 rows)
++ monitoring lag
+SELECT * FROM pgactive.pgactive_node_slots;
+SELECT
+  node_name
+  , last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid
+  , last_sent_xact_at - last_applied_xact_at AS lag_time
+FROM pgactive.pgactive_node_slots;
 
 
-app=> drop user mapping for postgres server pgactive_server_endpoint1;
-DROP USER MAPPING
-app=> drop server pgactive_server_endpoint1;
-DROP SERVER
-app=> drop user mapping for postgres server pgactive_server_pg500;
-DROP USER MAPPING
-app=> drop server pgactive_server_pg500;
-DROP SERVER
-app=> drop user mapping for postgres server pgactive_server_pg600;
-DROP USER MAPPING
-app=> drop server pgactive_server_pg600;
-DROP SERVER
++ monitoring conflict resolution
 
-app=> select * from pg_user_mappings;
- umid | srvid | srvname | umuser | usename | umoptions
-------+-------+---------+--------+---------+-----------
-(0 rows)
-
-app=> select * from pg_foreign_server;
- oid | srvname | srvowner | srvfdw | srvtype | srvversion | srvacl | srvoptions
------+---------+----------+--------+---------+------------+--------+------------
-(0 rows)
-
-aws rds modify-db-parameter-group \
- --db-parameter-group-name tts-pg15 \
- --parameters '[{"ParameterName": "rds.custom_dns_resolution","ParameterValue": "1","ApplyMethod": "pending-reboot"}]' \
- --profile ec2
-
-
-CREATE SERVER pgactive_server_endpoint1
-    FOREIGN DATA WRAPPER pgactive_fdw
-    OPTIONS (host 'pg500.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
-CREATE USER MAPPING FOR postgres
-    SERVER pgactive_server_endpoint1
-    OPTIONS (user 'postgres', password 'Pass1234');
-
--- connection info for endpoint2
-CREATE SERVER pgactive_server_endpoint2
-    FOREIGN DATA WRAPPER pgactive_fdw
-    OPTIONS (host 'pg600.cyt4dgtj55oy.us-east-2.rds.amazonaws.com', dbname 'app');
-CREATE USER MAPPING FOR postgres
-    SERVER pgactive_server_node2
-    OPTIONS (user 'postgres', password 'Pass1234');
-
-SELECT pgactive.pgactive_create_group(
-    node_name := 'endpoint1-app',
-    node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_endpoint1'
-
-);
-SELECT pgactive.pgactive_wait_for_node_ready();
