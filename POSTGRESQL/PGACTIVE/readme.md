@@ -80,7 +80,7 @@ SELECT pgactive.pgactive_create_group
 SELECT pgactive.pgactive_wait_for_node_ready();
 ```
 
-+ node 2
+++ node 2
 ```
 CREATE SERVER pgactive_server_endpoint1
     FOREIGN DATA WRAPPER pgactive_fdw
@@ -104,7 +104,7 @@ SELECT pgactive.pgactive_join_group(node_name := 'endpoint2-app'
 SELECT pgactive.pgactive_wait_for_node_ready();
 ```
 
-+ checking servers/user mappings
+++ checking servers/user mappings
 ```
 app=> select * from pg_user_mappings;
  umid  | srvid |          srvname          | umuser | usename  |             umoptions
@@ -123,14 +123,14 @@ ions
 (1 row)
 ```
 
-+ dropping user mapping
+++ dropping user mapping
 ```app=> drop user mapping for postgres server pgactive_server_endpoint2;
 DROP USER MAPPING
 app=> drop server pgactive_server_endpoint2;
 DROP SERVER
 ```
 
-+ monitoring lag
+++ monitoring lag
 ```
 SELECT * FROM pgactive.pgactive_node_slots;
 SELECT
@@ -140,7 +140,7 @@ SELECT
 FROM pgactive.pgactive_node_slots;
 ```
 
-+ monitoring conflict resolution
+++ monitoring conflict resolution
 ```
 SELECT * FROM pgactive.pgactive_conflict_history;
 ```
