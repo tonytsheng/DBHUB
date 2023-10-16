@@ -139,4 +139,7 @@ FROM pgactive.pgactive_node_slots;
 
 
 + monitoring conflict resolution
+SELECT * FROM pgactive.pgactive_conflict_history;
+
+
 
