@@ -134,12 +134,23 @@ DROP SERVER
 
 ++ monitoring lag
 ```
-SELECT * FROM pgactive.pgactive_node_slots;
-SELECT
-  node_name
-  , last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid
-  , last_sent_xact_at - last_applied_xact_at AS lag_time
-FROM pgactive.pgactive_node_slots;
+pg901:5432 postgres@app=> SELECT  node_name,  last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid,  last_sent_xact_at - last_applied_xact_at AS lag_time FROM pgactive.pgactive_node_slots;
+   node_name   | lag_xid |    lag_time
+---------------+---------+-----------------
+ endpoint2-app |       0 | 00:00:00.009459
+(1 row)
+
+pg901:5432 postgres@app=> SELECT  node_name,  last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid,  last_sent_xact_at - last_applied_xact_at AS lag_time FROM pgactive.pgactive_node_slots;
+   node_name   | lag_xid |    lag_time
+---------------+---------+-----------------
+ endpoint2-app |       0 | 00:00:00.009501
+(1 row)
+
+pg901:5432 postgres@app=> SELECT  node_name,  last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid,  last_sent_xact_at - last_applied_xact_at AS lag_time FROM pgactive.pgactive_node_slots;
+   node_name   | lag_xid |    lag_time
+---------------+---------+-----------------
+ endpoint2-app |       0 | 00:00:00.009419
+(1 row)
 ```
 
 ++ monitoring conflict resolution
