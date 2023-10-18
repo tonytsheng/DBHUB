@@ -23,3 +23,295 @@
 	    node_dsn := 'user_mapping=postgres pgactive_foreign_server=pgactive_server_pg600'
 	);
 2023-10-13 18:08:21 UTC:10.0.2.111(46190):postgres@app:[600]:ERROR:  could not connect to the server in replication mode: connection failed
+
+
+
++++
+
+2023-10-16 15:35:14 UTC:10.0.2.111(40954):postgres@app:[6324]:STATEMENT:  SELECT pgactive.pgactive_create_group
+	  (node_name := 'endpoint1-app'
+	  ,node_dsn := host 'pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com'
+	    dbname 'app' port 5432 user 'postgres' password 'Pass')
+	;
+2023-10-16 15:36:27 UTC:10.0.2.111(40954):postgres@app:[6324]:LOG:  node identity of node being created is (7290580660931475636,0,16446)
+2023-10-16 15:36:27 UTC:10.0.2.111(40954):postgres@app:[6324]:CONTEXT:  PL/pgSQL function _pgactive_begin_join_private(text,text,text,text,boolean,boolean,boolean) line 39 at RAISE
+	SQL statement "SELECT pgactive._pgactive_begin_join_private(
+	        caller := '',
+	        node_name := node_name,
+	        node_dsn := node_dsn,
+	        remote_dsn := join_using_dsn,
+	        bypass_collation_check := bypass_collation_check,
+	        bypass_node_identifier_creation := bypass_node_identifier_creation,
+	        bypass_user_tables_check := bypass_user_tables_check)"
+	PL/pgSQL function pgactive_join_group(text,text,text,integer,text[],boolean,boolean,boolean) line 43 at PERFORM
+	SQL statement "SELECT pgactive.pgactive_join_group(
+	        node_name := node_name,
+	        node_dsn := node_dsn,
+	        join_using_dsn := null,
+	        apply_delay := apply_delay,
+	        replication_sets := replication_sets,
+	        bypass_user_tables_check := true)"
+	PL/pgSQL function pgactive_create_group(text,text,integer,text[]) line 84 at PERFORM
+2023-10-16 15:36:27 UTC:10.0.2.111(40954):postgres@app:[6324]:STATEMENT:  SELECT pgactive.pgactive_create_group
+	  (node_name := 'endpoint1-app'
+	  ,node_dsn := 'host=pg901.cyt4dgtj55oy.us-east-2.rds.amazonaws.com dbname=app port=5432 user=postgres password=Pass')
+	;
+2023-10-16 15:38:15 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 15:38:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 54 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.409 s, sync=0.005 s, total=5.633 s; sync files=33, longest=0.004 s, average=0.001 s; distance=65590 kB, estimate=65698 kB
+2023-10-16 15:43:15 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 15:43:15 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.109 s, sync=0.004 s, total=0.123 s; sync files=3, longest=0.002 s, average=0.002 s; distance=131011 kB, estimate=131011 kB
+2023-10-16 15:48:16 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 15:48:16 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.107 s, sync=0.003 s, total=0.120 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=124463 kB
+2023-10-16 15:53:16 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 15:53:16 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.107 s, sync=0.003 s, total=0.119 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=118570 kB
+2023-10-16 15:58:16 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 15:58:16 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.107 s, sync=0.003 s, total=0.119 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=113267 kB
+2023-10-16 16:03:16 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:03:16 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=108494 kB
+2023-10-16 16:08:17 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:08:17 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.108 s, sync=0.004 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=104198 kB
+2023-10-16 16:13:17 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:13:17 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=100332 kB
+2023-10-16 16:18:18 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:18:18 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.108 s, sync=0.004 s, total=0.123 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=96852 kB
+2023-10-16 16:23:18 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:23:18 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.119 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=93720 kB
+2023-10-16 16:24:53 UTC:10.0.0.175(26654):postgres@app:[8861]:LOG:  logical decoding found consistent point at 0/9C000130
+2023-10-16 16:24:53 UTC:10.0.0.175(26654):postgres@app:[8861]:DETAIL:  There are no running transactions.
+2023-10-16 16:24:53 UTC:10.0.0.175(26654):postgres@app:[8861]:STATEMENT:  CREATE_REPLICATION_SLOT "pgactive_16446_7290593138872070119_0_16663__" LOGICAL pgactive
+2023-10-16 16:24:53 UTC:10.0.0.175(26654):postgres@app:[8861]:LOG:  exported logical decoding snapshot: "00000009-0000000A-1" with 0 transaction IDs
+2023-10-16 16:24:53 UTC:10.0.0.175(26654):postgres@app:[8861]:STATEMENT:  CREATE_REPLICATION_SLOT "pgactive_16446_7290593138872070119_0_16663__" LOGICAL pgactive
+2023-10-16 16:24:55 UTC:10.0.0.175(26652):postgres@app:[8860]:WARNING:  pgactive.skip_ddl_replication is set, ignoring explicit pgactive.pgactive_acquire_global_lock(...) call
+2023-10-16 16:24:55 UTC:10.0.0.175(26652):postgres@app:[8860]:CONTEXT:  SQL statement "SELECT pgactive.pgactive_acquire_global_lock('ddl_lock')"
+	PL/pgSQL function inline_code_block line 4 at PERFORM
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:LOG:  starting logical decoding for slot "pgactive_16446_7290593138872070119_0_16663__"
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:DETAIL:  Streaming transactions committing after 0/9C000168, reading WAL from 0/9C000130.
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:STATEMENT:  START_REPLICATION SLOT "pgactive_16446_7290593138872070119_0_16663__" LOGICAL 0/0 (pg_version '150004', pg_catversion '202209061', pgactive_version '20100',pgactive_variant 'pgactive', min_pgactive_version '20100', sizeof_int '4',sizeof_long '8', sizeof_datum '8', maxalign '8',float4_byval '0', float8_byval '1', integer_datetimes '0',bigendian '0', db_encoding 'UTF8', replication_sets '"default"', forward_changesets 't')
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:LOG:  logical decoding found consistent point at 0/9C000130
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:DETAIL:  There are no running transactions.
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:STATEMENT:  START_REPLICATION SLOT "pgactive_16446_7290593138872070119_0_16663__" LOGICAL 0/0 (pg_version '150004', pg_catversion '202209061', pgactive_version '20100',pgactive_variant 'pgactive', min_pgactive_version '20100', sizeof_int '4',sizeof_long '8', sizeof_datum '8', maxalign '8',float4_byval '0', float8_byval '1', integer_datetimes '0',bigendian '0', db_encoding 'UTF8', replication_sets '"default"', forward_changesets 't')
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:LOG:  could not receive data from client: Connection reset by peer
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:STATEMENT:  START_REPLICATION SLOT "pgactive_16446_7290593138872070119_0_16663__" LOGICAL 0/0 (pg_version '150004', pg_catversion '202209061', pgactive_version '20100',pgactive_variant 'pgactive', min_pgactive_version '20100', sizeof_int '4',sizeof_long '8', sizeof_datum '8', maxalign '8',float4_byval '0', float8_byval '1', integer_datetimes '0',bigendian '0', db_encoding 'UTF8', replication_sets '"default"', forward_changesets 't')
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:LOG:  unexpected EOF on standby connection
+2023-10-16 16:24:55 UTC:10.0.0.175(26772):postgres@app:[8878]:STATEMENT:  START_REPLICATION SLOT "pgactive_16446_7290593138872070119_0_16663__" LOGICAL 0/0 (pg_version '150004', pg_catversion '202209061', pgactive_version '20100',pgactive_variant 'pgactive', min_pgactive_version '20100', sizeof_int '4',sizeof_long '8', sizeof_datum '8', maxalign '8',float4_byval '0', float8_byval '1', integer_datetimes '0',bigendian '0', db_encoding 'UTF8', replication_sets '"default"', forward_changesets 't')
+2023-10-16 16:24:55 UTC:10.0.0.175(26802):postgres@app:[8882]:LOG:  starting logical decoding for slot "pgactive_16446_7290593138872070119_0_16663__"
+2023-10-16 16:24:55 UTC:10.0.0.175(26802):postgres@app:[8882]:DETAIL:  Streaming transactions committing after 0/9C0157E0, reading WAL from 0/9C002C38.
+2023-10-16 16:24:55 UTC:10.0.0.175(26802):postgres@app:[8882]:STATEMENT:  START_REPLICATION SLOT "pgactive_16446_7290593138872070119_0_16663__" LOGICAL 0/9C015C98 (pg_version '150004', pg_catversion '202209061', pgactive_version '20100',pgactive_variant 'pgactive', min_pgactive_version '20100', sizeof_int '4',sizeof_long '8', sizeof_datum '8', maxalign '8',float4_byval '0', float8_byval '1', integer_datetimes '0',bigendian '0', db_encoding 'UTF8', replication_sets '"default"')
+2023-10-16 16:24:55 UTC:10.0.0.175(26802):postgres@app:[8882]:LOG:  logical decoding found consistent point at 0/9C002C38
+2023-10-16 16:24:55 UTC:10.0.0.175(26802):postgres@app:[8882]:DETAIL:  There are no running transactions.
+2023-10-16 16:24:55 UTC:10.0.0.175(26802):postgres@app:[8882]:STATEMENT:  START_REPLICATION SLOT "pgactive_16446_7290593138872070119_0_16663__" LOGICAL 0/9C015C98 (pg_version '150004', pg_catversion '202209061', pgactive_version '20100',pgactive_variant 'pgactive', min_pgactive_version '20100', sizeof_int '4',sizeof_long '8', sizeof_datum '8', maxalign '8',float4_byval '0', float8_byval '1', integer_datetimes '0',bigendian '0', db_encoding 'UTF8', replication_sets '"default"')
+2023-10-16 16:24:55 UTC:10.0.0.175(26652):postgres@app:[8860]:WARNING:  pgactive.skip_ddl_replication is set, ignoring explicit pgactive.pgactive_acquire_global_lock(...) call
+2023-10-16 16:24:55 UTC:10.0.0.175(26652):postgres@app:[8860]:CONTEXT:  SQL statement "SELECT pgactive.pgactive_acquire_global_lock('ddl_lock')"
+	PL/pgSQL function inline_code_block line 4 at PERFORM
+2023-10-16 16:26:43 UTC:10.0.2.111(40954):postgres@app:[6324]:ERROR:  syntax error at or near "last_sent_xact_at" at character 87
+2023-10-16 16:26:43 UTC:10.0.2.111(40954):postgres@app:[6324]:STATEMENT:  SELECT
+	  node_name,
+	  last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid
+	  last_sent_xact_at - last_applied_xact_at AS lag_time
+	FROM pgactive.pgactive_node_slots;
+2023-10-16 16:26:44 UTC:10.0.2.111(40954):postgres@app:[6324]:ERROR:  syntax error at or near "last_sent_xact_at" at character 87
+2023-10-16 16:26:44 UTC:10.0.2.111(40954):postgres@app:[6324]:STATEMENT:  SELECT
+	  node_name,
+	  last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid
+	  last_sent_xact_at - last_applied_xact_at AS lag_time
+	FROM pgactive.pgactive_node_slots;
+2023-10-16 16:26:54 UTC:10.0.2.111(40954):postgres@app:[6324]:ERROR:  syntax error at or near "last_sent_xact_at" at character 87
+2023-10-16 16:26:54 UTC:10.0.2.111(40954):postgres@app:[6324]:STATEMENT:  SELECT
+	  node_name,
+	  last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid
+	  last_sent_xact_at - last_applied_xact_at AS lag_time
+	FROM pgactive.pgactive_node_slots;
+2023-10-16 16:27:05 UTC:10.0.2.111(40954):postgres@app:[6324]:ERROR:  syntax error at or near "last_sent_xact_at" at character 87
+2023-10-16 16:27:05 UTC:10.0.2.111(40954):postgres@app:[6324]:STATEMENT:  SELECT
+	  node_name,
+	  last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid
+	  last_sent_xact_at - last_applied_xact_at AS lag_time
+	FROM pgactive.pgactive_node_slots;
+2023-10-16 16:28:18 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:28:27 UTC::@:[394]:LOG:  checkpoint complete: wrote 86 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=8.351 s, sync=0.005 s, total=8.368 s; sync files=52, longest=0.003 s, average=0.001 s; distance=65662 kB, estimate=90914 kB
+2023-10-16 16:33:18 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:33:18 UTC::@:[394]:LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.307 s, sync=0.003 s, total=0.321 s; sync files=5, longest=0.002 s, average=0.001 s; distance=65410 kB, estimate=88364 kB
+2023-10-16 16:38:18 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:38:18 UTC::@:[394]:LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.308 s, sync=0.004 s, total=0.327 s; sync files=5, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=86081 kB
+2023-10-16 16:43:18 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:43:18 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.124 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=84027 kB
+2023-10-16 16:48:18 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:48:18 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.123 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=82177 kB
+2023-10-16 16:53:18 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:53:18 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=80513 kB
+2023-10-16 16:58:19 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 16:58:19 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.124 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=79015 kB
+2023-10-16 17:03:19 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:03:19 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.124 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=77667 kB
+2023-10-16 17:08:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:08:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.125 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=76454 kB
+2023-10-16 17:13:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:13:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=75362 kB
+2023-10-16 17:18:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:18:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=74380 kB
+2023-10-16 17:23:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:23:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.130 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=73495 kB
+2023-10-16 17:28:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:28:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.106 s, sync=0.003 s, total=0.120 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=72699 kB
+2023-10-16 17:33:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:33:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=71983 kB
+2023-10-16 17:38:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:38:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 9 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.710 s, sync=0.004 s, total=0.728 s; sync files=8, longest=0.002 s, average=0.001 s; distance=65544 kB, estimate=71339 kB
+2023-10-16 17:43:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:43:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 9 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.710 s, sync=0.004 s, total=0.726 s; sync files=7, longest=0.002 s, average=0.001 s; distance=65533 kB, estimate=70758 kB
+2023-10-16 17:48:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:48:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.309 s, sync=0.003 s, total=0.325 s; sync files=5, longest=0.002 s, average=0.001 s; distance=65530 kB, estimate=70236 kB
+2023-10-16 17:51:15 UTC:10.0.2.111(40954):postgres@app:[6324]:ERROR:  syntax error at or near "=" at character 20
+2023-10-16 17:51:15 UTC:10.0.2.111(40954):postgres@app:[6324]:STATEMENT:  update product_name='soap_node1' where product_name='soap';
+2023-10-16 17:53:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:53:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.208 s, sync=0.004 s, total=0.228 s; sync files=4, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=69766 kB
+2023-10-16 17:58:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 17:58:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 10 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.810 s, sync=0.004 s, total=0.827 s; sync files=7, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=69342 kB
+2023-10-16 18:03:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:03:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.124 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=68962 kB
+2023-10-16 18:08:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:08:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.125 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=68619 kB
+2023-10-16 18:13:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:13:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=68311 kB
+2023-10-16 18:18:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:18:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.123 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=68033 kB
+2023-10-16 18:23:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:23:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=67783 kB
+2023-10-16 18:28:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:28:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=67559 kB
+2023-10-16 18:33:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:33:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.108 s, sync=0.004 s, total=0.125 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=67356 kB
+2023-10-16 18:38:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:38:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.123 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=67174 kB
+2023-10-16 18:43:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:43:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.106 s, sync=0.003 s, total=0.119 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=67010 kB
+2023-10-16 18:48:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:48:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65535 kB, estimate=66863 kB
+2023-10-16 18:53:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:53:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.106 s, sync=0.003 s, total=0.119 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=66730 kB
+2023-10-16 18:58:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 18:58:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=66611 kB
+2023-10-16 19:03:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:03:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=66503 kB
+2023-10-16 19:08:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:08:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.123 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65535 kB, estimate=66406 kB
+2023-10-16 19:13:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:13:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.120 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=66319 kB
+2023-10-16 19:18:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:18:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.109 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=66241 kB
+2023-10-16 19:23:20 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:23:20 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=66170 kB
+2023-10-16 19:28:21 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:28:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.123 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=66107 kB
+2023-10-16 19:33:21 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:33:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.125 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=66050 kB
+2023-10-16 19:38:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:38:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65998 kB
+2023-10-16 19:43:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:43:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65535 kB, estimate=65952 kB
+2023-10-16 19:48:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:48:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65910 kB
+2023-10-16 19:53:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:53:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65873 kB
+2023-10-16 19:58:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 19:58:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65839 kB
+2023-10-16 20:03:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:03:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65809 kB
+2023-10-16 20:08:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:08:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=65781 kB
+2023-10-16 20:13:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:13:23 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=65757 kB
+2023-10-16 20:18:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:18:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.119 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65735 kB
+2023-10-16 20:23:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:23:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=65715 kB
+2023-10-16 20:28:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:28:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65697 kB
+2023-10-16 20:33:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:33:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=65681 kB
+2023-10-16 20:38:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:38:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=65666 kB
+2023-10-16 20:43:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:43:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.126 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=65653 kB
+2023-10-16 20:48:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:48:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.124 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65641 kB
+2023-10-16 20:53:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:53:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.126 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65535 kB, estimate=65631 kB
+2023-10-16 20:58:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 20:58:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.106 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65621 kB
+2023-10-16 21:03:22 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:03:22 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65613 kB
+2023-10-16 21:08:23 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:08:23 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=65605 kB
+2023-10-16 21:13:23 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:13:23 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65598 kB
+2023-10-16 21:18:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:18:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.109 s, sync=0.003 s, total=0.126 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65592 kB
+2023-10-16 21:23:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:23:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.125 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65586 kB
+2023-10-16 21:28:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:28:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.124 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65581 kB
+2023-10-16 21:33:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:33:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65577 kB
+2023-10-16 21:38:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:38:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65572 kB
+2023-10-16 21:43:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:43:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65569 kB
+2023-10-16 21:48:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:48:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=65565 kB
+2023-10-16 21:53:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:53:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65562 kB
+2023-10-16 21:58:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 21:58:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 11 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.911 s, sync=0.004 s, total=0.927 s; sync files=8, longest=0.002 s, average=0.001 s; distance=65549 kB, estimate=65561 kB
+2023-10-16 22:03:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:03:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 8 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.610 s, sync=0.004 s, total=0.626 s; sync files=7, longest=0.002 s, average=0.001 s; distance=65531 kB, estimate=65558 kB
+2023-10-16 22:08:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:08:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.207 s, sync=0.003 s, total=0.222 s; sync files=4, longest=0.002 s, average=0.001 s; distance=65526 kB, estimate=65555 kB
+2023-10-16 22:13:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:13:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=65553 kB
+2023-10-16 22:18:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:18:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65551 kB
+2023-10-16 22:23:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:23:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=65550 kB
+2023-10-16 22:28:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:28:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=65548 kB
+2023-10-16 22:33:24 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:33:24 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65547 kB
+2023-10-16 22:38:25 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:38:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65546 kB
+2023-10-16 22:43:25 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:43:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.124 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65545 kB
+2023-10-16 22:48:25 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:48:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.123 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65535 kB, estimate=65544 kB
+2023-10-16 22:53:25 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:53:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.003 s, total=0.121 s; sync files=3, longest=0.002 s, average=0.001 s; distance=65536 kB, estimate=65543 kB
+2023-10-16 22:58:25 UTC::@:[394]:LOG:  checkpoint starting: time
+2023-10-16 22:58:25 UTC::@:[394]:LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.107 s, sync=0.004 s, total=0.122 s; sync files=3, longest=0.002 s, average=0.002 s; distance=65536 kB, estimate=65542 kB
+2023-10-16 23:02:21 UTC::@:[392]:LOG:  starting PostgreSQL 15.4 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 7.3.1 20180712 (Red Hat 7.3.1-12), 64-bit
+2023-10-16 23:02:21 UTC::@:[392]:LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-10-16 23:02:21 UTC::@:[392]:LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-10-16 23:02:21 UTC::@:[396]:LOG:  database system was interrupted; last known up at 2023-10-16 22:58:25 UTC
+2023-10-16 23:02:21 UTC::@:[396]:LOG:  database system was not properly shut down; automatic recovery in progress
+2023-10-16 23:02:21 UTC::@:[396]:LOG:  recovered replication state of node 1 to 0/DC0009F0
+2023-10-16 23:02:21 UTC::@:[396]:LOG:  redo starts at 1/D4000390
+2023-10-16 23:02:21 UTC::@:[396]:LOG:  invalid record length at 1/D8000300: wanted 24, got 0
+2023-10-16 23:02:21 UTC::@:[396]:LOG:  redo done at 1/D80002D0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2023-10-16 23:02:21 UTC::@:[394]:LOG:  checkpoint starting: end-of-recovery immediate wait
+2023-10-16 23:02:21 UTC::@:[394]:LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.008 s, sync=0.004 s, total=0.024 s; sync files=4, longest=0.002 s, average=0.001 s; distance=65535 kB, estimate=65535 kB
+2023-10-16 23:02:21 UTC::@:[392]:LOG:  database system is ready to accept connections
+2023-10-16 23:02:21 UTC::@:[392]:LOG:  background worker "pgactive supervisor" (PID 400) exited with exit code 1
+2023-10-16 23:02:21.384 GMT [392] LOG:  skipping missing configuration file "/rdsdbdata/config/recovery.conf"
+2023-10-16 23:02:21.384 GMT [392] LOG:  skipping missing configuration file "/rdsdbdata/config/recovery.conf"
+2023-10-16 23:02:21 UTC::@:[392]:WARNING:  invalid configuration parameter name "rds.enable_pgactive", removing it
+2023-10-16 23:02:21 UTC::@:[392]:DETAIL:  "rds" is now a reserved prefix.
+2023-10-16 23:02:21 UTC::@:[392]:LOG:  redirecting log output to logging collector process
+2023-10-16 23:02:21 UTC::@:[392]:HINT:  Future log output will appear in directory "/rdsdbdata/log/error".
+2023-10-16 23:02:22 UTC::[unknown]@app:[410]:LOG:  unregistering per-db worker on node endpoint1-app (7290580660931475636,0,16446,) due to failure in connectability check
+2023-10-16 23:02:32 UTC::@:[392]:LOG:  received fast shutdown request
+2023-10-16 23:02:32 UTC::@:[392]:LOG:  aborting any active transactions
+2023-10-16 23:02:32 UTC::@:[392]:LOG:  background worker "pgactive supervisor" (PID 409) exited with exit code 1
+2023-10-16 23:02:32 UTC::@:[392]:LOG:  background worker "logical replication launcher" (PID 401) exited with exit code 1
+2023-10-16 23:02:32 UTC::@:[394]:LOG:  shutting down
+2023-10-16 23:02:32 UTC::@:[394]:LOG:  checkpoint starting: shutdown immediate
+2023-10-16 23:02:32 UTC::@:[394]:LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.010 s, sync=0.001 s, total=0.025 s; sync files=0, longest=0.000 s, average=0.000 s; distance=65535 kB, estimate=65535 kB
+2023-10-16 23:02:32 UTC::@:[392]:LOG:  database system is shut down

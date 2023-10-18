@@ -141,8 +141,31 @@ FROM pgactive.pgactive_node_slots;
 ```
 
 ++ monitoring conflict resolution
+After you generate conflicting in flight transactions, check the pgactive_conflict_history to check what has been resolved.
+
 ```
-SELECT * FROM pgactive.pgactive_conflict_history;
+pg901:5432 postgres@app=> select conflict_id
+  , local_conflict_time
+  , object_schema
+  , object_name
+  , local_conflict_time
+  , local_commit_time
+  , remote_commit_time
+  , conflict_type
+  , local_tuple
+  , remote_tuple 
+from pgactive.pgactive_conflict_history 
+where conflict_id=379;
+ conflict_id |      local_conflict_time      | object_schema | object_name |      local_conflict_time      |       local_commit_time       |      remote_commit_time       | conflict_type |
+                                                                      local_tuple                                                                                        |
+                                                   remote_tuple
+-------------+-------------------------------+---------------+-------------+-------------------------------+-------------------------------+-------------------------------+---------------+------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+         379 | 2023-10-18 16:00:09.756059+00 | inventory     | tx          | 2023-10-18 16:00:09.756059+00 | 2023-10-18 16:00:09.739496+00 | 2023-10-18 16:00:09.176023+00 | update_update | {"id":"c37df386-2
+9f9-4ced-8d43-632391a1de2b","txtype":"upsert","txowner":"XXX","siteid":"pg902.cyt4dgtj55oy.us-east-2.rds.amazonaws.com","created_at":"2023-10-18T15:10:26.654539+00:00"} | {"id":"c37df386-29f9-4ced-8d43-6323
+91a1de2b","txtype":"upsert","txowner":"YYY","siteid":"pg902.cyt4dgtj55oy.us-east-2.rds.amazonaws.com","created_at":"2023-10-18T15:10:26.654539+00:00"}
+(1 row)
 ```
 
 

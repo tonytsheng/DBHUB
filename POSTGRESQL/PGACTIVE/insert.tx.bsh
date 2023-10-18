@@ -1,0 +1,22 @@
+endpoint=$1
+#echo ${endpoint}
+
+
+export PGPASSWORD=Pass1234
+#/usr/pgsql-12/bin/psql --host=${endpoint} --port=5432 --username=postgres --dbname=app <<EQ | head -1 | awk -F' ' '{print $12}' | sed s/\"//g
+#\conninfo
+#EQ
+
+
+/usr/pgsql-12/bin/psql --host=${endpoint} --port=5432 --username=postgres --dbname=app <<EQ 
+insert into inventory.tx (txtype, txowner,siteid) 
+values 
+(
+  (    select txtype from inventory.txtype offset random() * (select count(*) from inventory.txtype) limit 1 )
+  , (    select last_name from inventory.employee offset random() * (select count(*) from inventory.employee) limit 1 )
+--  , 'ttsheng'
+  ,'${endpoint}');
+EQ
+
+
+
