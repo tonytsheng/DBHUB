@@ -6,7 +6,8 @@ Notes on using the pgactive extension for RDS for PostgreSQL. See https://aws.am
   - rds.custom_dns_resolution
 - Instance versions 15.4-R2
 
-## Set up application tables for node 1
+## Set up the applicaiton tables
+Do this on both Node 1 and Node 2. Note that I created another table called tx to test the conflict resolution later on. See the ddl.sql, ins.employee.sql, ins.txtype.sql and insert.tx.bsh scripts for more details.
 ```
 CREATE DATABASE app;
 SELECT setting ~ 'pgactive' 
