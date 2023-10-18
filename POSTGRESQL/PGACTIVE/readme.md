@@ -177,9 +177,7 @@ UPDATE 393
 pg902:5432 postgres@app=>* commit;
 COMMIT
 ```
-
-After you generate conflicting in flight transactions, check the pgactive_conflict_history to check what has been resolved.
-
+After you generate conflicting in flight transactions, check the pgactive_conflict_history to check what has been resolved. Note the query below is just for one single transaction that was in conflict, since the pgactive_conflict_history is organized by conflict_id.
 ```
 pg901:5432 postgres@app=> select conflict_id
   , local_conflict_time
