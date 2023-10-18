@@ -158,7 +158,26 @@ pg901:5432 postgres@app=> SELECT  node_name,  last_applied_xact_id::int - last_s
 (1 row)
 ```
 
-## Monitoring Conflict Resolution
+## Conflict Resolution
+Generating conflicting in flight transactions:
+```
+-- Node 1
+pg901:5432 postgres@app=> begin;
+BEGIN
+pg901:5432 postgres@app=>* update inventory.tx set txowner='XXX' where txowner='ttsheng';
+UPDATE 393
+pg901:5432 postgres@app=>* commit;
+COMMIT
+
+-- Node 2
+pg902:5432 postgres@app=> begin;
+BEGIN
+pg902:5432 postgres@app=>* update inventory.tx set txowner='YYY' where txowner='ttsheng';
+UPDATE 393
+pg902:5432 postgres@app=>* commit;
+COMMIT
+```
+
 After you generate conflicting in flight transactions, check the pgactive_conflict_history to check what has been resolved.
 
 ```
