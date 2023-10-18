@@ -159,7 +159,7 @@ pg901:5432 postgres@app=> SELECT  node_name,  last_applied_xact_id::int - last_s
 ```
 
 ## Conflict Resolution
-Generating conflicting in flight transactions:
+Generating conflicting in flight transactions. Execute both the commits on both nodes as close to each other as you can.
 ```
 -- Node 1
 pg901:5432 postgres@app=> begin;
