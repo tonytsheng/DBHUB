@@ -1,5 +1,7 @@
 ++ PreReqs
 - Parameter group
+  - rds.enable_pgactive
+  - rds.custom_dns_resolution
 - Instance versions 15.4-R2
 
 ++ Set up application tables for node 1
