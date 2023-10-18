@@ -1,10 +1,12 @@
-++ PreReqs
+## Using pgactive for active active RDS PostgreSQL replication
+Notes on using the pgactive extension for RDS for PostgreSQL. See https://aws.amazon.com/blogs/database/using-pgactive-active-active-replication-extension-for-postgresql-on-amazon-rds-for-postgresql/
+## PreReqs
 - Parameter group
   - rds.enable_pgactive
   - rds.custom_dns_resolution
 - Instance versions 15.4-R2
 
-++ Set up application tables for node 1
+## Set up application tables for node 1
 ```
 CREATE DATABASE app;
 SELECT setting ~ 'pgactive' 
@@ -58,7 +60,7 @@ CREATE EXTENSION
 ```
 
 
-++ node 1
+## Configure pgactive for Node 1
 ```
 CREATE SERVER pgactive_server_endpoint1
     FOREIGN DATA WRAPPER pgactive_fdw
@@ -82,7 +84,7 @@ SELECT pgactive.pgactive_create_group
 SELECT pgactive.pgactive_wait_for_node_ready();
 ```
 
-++ node 2
+## Configure pgactive for Node 2
 ```
 CREATE SERVER pgactive_server_endpoint1
     FOREIGN DATA WRAPPER pgactive_fdw
@@ -106,7 +108,7 @@ SELECT pgactive.pgactive_join_group(node_name := 'endpoint2-app'
 SELECT pgactive.pgactive_wait_for_node_ready();
 ```
 
-++ checking servers/user mappings
+## Checking Servers and User Mappings
 ```
 app=> select * from pg_user_mappings;
  umid  | srvid |          srvname          | umuser | usename  |             umoptions
@@ -125,14 +127,16 @@ ions
 (1 row)
 ```
 
-++ dropping user mapping
-```app=> drop user mapping for postgres server pgactive_server_endpoint2;
+## Dropping Servers and User Mappings
+```
+app=> drop user mapping for postgres server pgactive_server_endpoint2;
 DROP USER MAPPING
 app=> drop server pgactive_server_endpoint2;
 DROP SERVER
 ```
 
-++ monitoring lag
+## Monitoring Replication Lag
+Note this is from Node 1 -> Node 2
 ```
 pg901:5432 postgres@app=> SELECT  node_name,  last_applied_xact_id::int - last_sent_xact_id::int AS lag_xid,  last_sent_xact_at - last_applied_xact_at AS lag_time FROM pgactive.pgactive_node_slots;
    node_name   | lag_xid |    lag_time
@@ -153,7 +157,7 @@ pg901:5432 postgres@app=> SELECT  node_name,  last_applied_xact_id::int - last_s
 (1 row)
 ```
 
-++ monitoring conflict resolution
+## Monitoring Conflict Resolution
 After you generate conflicting in flight transactions, check the pgactive_conflict_history to check what has been resolved.
 
 ```
