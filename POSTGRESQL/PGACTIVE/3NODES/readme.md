@@ -31,9 +31,9 @@ Run the 0.nodeall_ddl.sql sql script on all 3 nodes. This creates an application
 
 ## Create the pgactive server groups on all 3 nodes, one at a time.
 Run the following scripts per node:
-On Node 1: 1.node1.cr8server_mapping.sql
-On Node 2: 1.node2.cr8server_mapping.sql
-On Node 3: 1.node3.cr8server_mapping.sql
+- On Node 1: 1.node1.cr8server_mapping.sql
+- On Node 2: 1.node2.cr8server_mapping.sql
+- On Node 3: 1.node3.cr8server_mapping.sql
 
 
 
