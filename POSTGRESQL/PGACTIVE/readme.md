@@ -1,5 +1,7 @@
 ## Using pgactive for active active RDS PostgreSQL replication
 Notes on using the pgactive extension for RDS for PostgreSQL. See https://aws.amazon.com/blogs/database/using-pgactive-active-active-replication-extension-for-postgresql-on-amazon-rds-for-postgresql/
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.Extensions.html#Appendix.PostgreSQL.CommonDBATasks.pgactive
+
 ## PreReqs
 - Parameter group
   - rds.enable_pgactive
