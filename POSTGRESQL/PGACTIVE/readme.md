@@ -93,7 +93,24 @@ pg5003:5432 postgres@app=> SELECT  node_name,  last_applied_xact_id::int - last_
 (2 rows)
 ```
 
-## Monitor Conflict Resolution
+## Test and Monitor Conflict Resolution
+Simulate a conflict for in flight transactions from two nodes. Try to issue the commit as close to the same time as you can.
+```
+pg5001:5432 postgres@app=> begin;
+BEGIN
+pg5001:5432 postgres@app=>* update inventory.products set product_name ='ORGANIC1' where product_name='organic';
+UPDATE 16
+pg5001:5432 postgres@app=>* commit;
+COMMIT
+
+pg5002:5432 postgres@app=> begin;
+BEGIN
+pg5002:5432 postgres@app=>* update inventory.products set product_name='ORGANIC2' where product_name='organic';
+UPDATE 16
+pg5002:5432 postgres@app=>* commit;
+COMMIT
+```
+Query the pgactive_conflict_history table from both nodes where the in flight transactions were committed. Note there are no conflicts on one of the nodes because pgactive uses the lastest time to resolve the conflict.
 ```
 pg5001:5432 postgres@app=>
 pg5001:5432 postgres@app=>  select conflict_id
