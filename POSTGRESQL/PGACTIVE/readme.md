@@ -67,7 +67,7 @@ SELECT pgactive.pgactive_join_group(node_name := 'endpoint3-app'
 SELECT pgactive.pgactive_wait_for_node_ready();
 ```
 ## Test Replication across all 3 nodes
-See the insert.products.bsh which uses the wordlist file.
+See the insert.products.bsh script which uses the wordlist file.
 
 ## Monitor Replication Lag
 ```
