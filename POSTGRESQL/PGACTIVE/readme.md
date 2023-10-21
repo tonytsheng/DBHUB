@@ -1,8 +1,8 @@
 ## Multi Writer Databases with RDS PostgreSQL and the pgactive Extension
-https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.Extensions.html#Appendix.PostgreSQL.CommonDBATasks.pgactive
-
-https://aws.amazon.com/blogs/database/using-pgactive-active-active-replication-extension-for-postgresql-on-amazon-rds-for-postgresql/
-
+Using the reference docs below, here are notes on setting up multi-writer databases across 3 RDS for PostgreSQL databases.
+See:
+- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.Extensions.html#Appendix.PostgreSQL.CommonDBATasks.pgactive
+- https://aws.amazon.com/blogs/database/using-pgactive-active-active-replication-extension-for-postgresql-on-amazon-rds-for-postgresql/
 
 ## Create databases
 Create 3 databases. Make sure to specify your appropriate:
@@ -67,6 +67,7 @@ SELECT pgactive.pgactive_join_group(node_name := 'endpoint3-app'
 SELECT pgactive.pgactive_wait_for_node_ready();
 ```
 ## Test Replication across all 3 nodes
+See the insert.products.bsh which uses the wordlist file.
 
 ## Monitor Replication Lag
 ```
