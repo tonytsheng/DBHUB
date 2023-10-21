@@ -110,7 +110,7 @@ UPDATE 16
 pg5002:5432 postgres@app=>* commit;
 COMMIT
 ```
-Query the pgactive_conflict_history table from both nodes where the in flight transactions were committed. Note there are no conflicts on one of the nodes because pgactive uses the lastest time to resolve the conflict.
+Query the pgactive_conflict_history table from both nodes where the in flight transactions were committed. Note there are no conflicts on one of the nodes because pgactive uses the latest time to resolve the conflict.
 ```
 pg5001:5432 postgres@app=>
 pg5001:5432 postgres@app=>  select conflict_id
