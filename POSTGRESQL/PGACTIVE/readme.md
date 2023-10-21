@@ -187,4 +187,8 @@ SELECT * FROM pgactive.pgactive_detach_nodes(ARRAY[‘node2-app']);
 SELECT * FROM pgactive.pgactive_remove();
 SELECT * FROM pgactive.pgactive_remove(true);
 ```
-
+## A Few Reminders
+- All tables require a primary key.
+- DDL is not replicated.
+- See the documentation for suggestions about sequences since they are not replicated.
+- Consider designing your application to be 'well partitioned' meaning that writes are isolated logically somehow.
