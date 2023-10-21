@@ -2,7 +2,7 @@ endpoint=$1
 #echo ${endpoint}
 
 
-export PGPASSWORD=Pass1234
+export PGPASSWORD=Pass
 #/usr/pgsql-12/bin/psql --host=${endpoint} --port=5432 --username=postgres --dbname=app <<EQ | head -1 | awk -F' ' '{print $12}' | sed s/\"//g
 #\conninfo
 #EQ
