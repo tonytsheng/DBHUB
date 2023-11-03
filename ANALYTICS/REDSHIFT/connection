@@ -1,0 +1,1 @@
+/usr/pgsql-12/bin/psql --host=redshift-cluster-1.cst0cjwllvlj.us-east-2.redshift.amazonaws.com --port=5439 --username=awsuser --dbname=dev
