@@ -1,0 +1,6 @@
+set -x
+
+# the db-subnet-group-name helps specify what vpc the database runs in
+
+aws rds create-db-instance  --db-name app  --db-instance-identifier pg1001  --allocated-storage 50  --db-instance-class db.m5d.large --engine postgres  --master-username postgres --master-user-password Pass1234  --db-subnet-group-name default-vpc-0467e5c237261df36  --availability-zone us-east-2b  --engine-version  15.4  --publicly-accessible   --enable-cloudwatch-logs-exports  postgresql  --profile ec2  --region us-east-2
+
