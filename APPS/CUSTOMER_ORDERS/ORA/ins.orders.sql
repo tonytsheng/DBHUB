@@ -5,7 +5,8 @@ values ( order_seq.nextval
   ,3
   ,1
   ,'COMPLETE',
-  (select order_img from orders where order_id=793)
+--  (select order_img from orders where order_id=793)
+  (select order_img from orders where order_id=695)
 );
 commit;
 select count(*) from orders;

@@ -1,2 +1,4 @@
-alter sequence order_seq increment by 5000
-/
+SELECT rdsadmin.rdsadmin_s3_tasks.download_from_s3(
+  p_bucket_name    =>  'ttsheng-misc-2',
+  p_directory_name =>  'DATA_PUMP_DIR')
+  AS TASK_ID FROM DUAL

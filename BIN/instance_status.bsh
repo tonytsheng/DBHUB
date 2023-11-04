@@ -4,4 +4,4 @@
 profile=$1  
 # ec2 | dba
 #
-aws rds describe-db-instances  --profile ${profile} | jq -r ' .DBInstances[] | (.DBInstanceIdentifier|tostring), (.DBInstanceStatus|tostring)  '
+aws rds describe-db-instances  --profile ${profile} | jq -r ' .DBInstances[] | (.DBInstanceIdentifier|tostring), (.DBInstanceStatus|tostring), (.AvailabilityZone|tostring)  '
