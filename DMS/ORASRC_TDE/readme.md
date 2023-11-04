@@ -1,7 +1,7 @@
 ##
-
+```
 aws rds create-db-instance --db-name ttsora99 --db-instance-identifier ttsora99 --engine oracle-ee --master-username admin --master-user-password Pass1234 --db-instance-class db.m5.large --allocated-storage 20 --profile dba --db-subnet-group-name "default-vpc-0dc155aace16a70a7" --availability-zone us-east-2a
-
+```
 ##
 Create new option group
 Add TDE option to it. [Should add S3_INTEGRATION too ]
@@ -38,8 +38,8 @@ ADMIN/ttsora99>
 ```
 Create database tables on the encrypted tablespace.
 Encrypt the column.
-Populate some data in there with blob data in the encrypted column.
-
+Populate some data in there with blob data in the encrypted column - did this with a dblink to another database.
+```
 CUSTOMER_ORDERS/ttsora99> desc customer_orders.orders
  Name                                      Null?    Type
  ----------------------------------------- -------- ----------------------------
@@ -49,8 +49,6 @@ CUSTOMER_ORDERS/ttsora99> desc customer_orders.orders
  ORDER_STATUS                              NOT NULL VARCHAR2(10 CHAR)
  STORE_ID                                  NOT NULL NUMBER(38)
  ORDER_IMG                                          BLOB ENCRYPT
-
-CUSTOMER_ORDERS/ttsora99>
 
 CUSTOMER_ORDERS/ttsora99> select count(*), (dbms_lob.getlength(order_img))/1024/1024 as SizeMB
     from customer_orders.orders
