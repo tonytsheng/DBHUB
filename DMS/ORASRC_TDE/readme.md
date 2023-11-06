@@ -8,16 +8,17 @@
 - orders is a single table in the schema with an encrypted column sitting on an encrypted tablespace
 - Use customer_orders for the DMS endpoint
 
-
 https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.Oracle.html#CHAP_Source.Oracle.Encryption
-
+- Get the location of the wallet
+```
 SQL> SELECT WRL_PARAMETER FROM V$ENCRYPTION_WALLET;
 
 WRL_PARAMETER
 --------------------------------------------------------------------------------
 /u01/app/oracle/admin/oradev/wallet/
-
-
+```
+- Find the object that is encrypted.
+```
 SQL> SELECT OBJECT_ID FROM ALL_OBJECTS WHERE OWNER='CUSTOMER_ORDERS' AND OBJECT_NAME='ORDERS' AND OBJECT_TYPE='TABLE';
 
  OBJECT_ID
@@ -29,9 +30,11 @@ SQL> SELECT MKEYID FROM SYS.ENC$ WHERE OBJ#=112359;
 MKEYID
 ----------------------------------------------------------------
 AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+```
+The trailing AAA characters is not part of the value.
 
-The trailing AAA characters is not part of the value
-
+Confirm tablespace encryption.
+```
 SQL> SELECT TABLESPACE_NAME, ENCRYPTED FROM dba_tablespaces;
 
 TABLESPACE_NAME                ENC
@@ -55,9 +58,11 @@ MASTERKEYID_BASE64
 --------------------------------------------------------------------------------
 CUSTOMER_ORDERS_ENC
 AdAI4ksPz0//v5j6Cjf8ZQ0=
+```
+The trailing '=' character is not part of the value.
 
-The trailing '=' character is not part of the value
-
+Get the password for the encryption keys.
+```
 [oracle@ip-10-0-2-188 wallet]$ mkstore -wrl /u01/app/oracle/admin/oradev/wallet/  -list
 Oracle Secret Store Tool : Version 12.2.0.1.0
 Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
@@ -77,8 +82,8 @@ Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
 Enter wallet password:
 ORACLE.SECURITY.DB.ENCRYPTION.AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA = AEMAASAAzz8dfB/n5MWRlEBxs6Ya3YAUQGHA4EVpvVIho0wBGMYDEAA9MiwNkiHGAkd9O6b3yCnhBQcAeHsLBg8DFQ==
 
+```
 Specify the TDE encryption key name for the Oracle source endpoint by setting the securityDbEncryptionName extra connection attribute.
-
 securityDbEncryptionName=ORACLE.SECURITY.DB.ENCRYPTION.AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 Provide the associated TDE password for this key on the console as part of the Oracle source's Password value. Use the following order to format the comma-separated password values, ended by the TDE password value [no ASM]
