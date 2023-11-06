@@ -1,67 +1,89 @@
-##
-- Create or procure a host with a self managed Oracle database on it.
-- Configure it for Oracle TDE.
-  - add wallet location to sqlnet.ora
+## Base config
+- Oracle running on an EC2 machine [Yoda Labs AMI]
+- TDE configured for this database
+- Put database into archivelog mode
+- Set db_recovery_file_dest_size
+- grant appropriate perms to customer_orders user
+- customer_orders schema
+- orders is a single table in the schema with an encrypted column sitting on an encrypted tablespace
+- Use customer_orders for the DMS endpoint
 
 
-mkdir /u01/app/oracle/admin/oradev/wallet/tde_seps
+https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.Oracle.html#CHAP_Source.Oracle.Encryption
 
-ADMINISTER KEY MANAGEMENT ADD SECRET 'Pass1234'
-FOR CLIENT 'TDE_WALLET'
-TO [LOCAL] AUTO_LOGIN KEYSTORE '/u01/app/oracle/admin/oradev/wallet/tde_seps';
+SQL> SELECT WRL_PARAMETER FROM V$ENCRYPTION_WALLET;
 
-  1  ADMINISTER KEY MANAGEMENT ADD SECRET 'Pass1234'
-  2  FOR CLIENT 'TDE_WALLET'
-  3* TO LOCAL AUTO_LOGIN KEYSTORE '/u01/app/oracle/admin/oradev/wallet/tde_seps'
-SYS/oradev> /
-
-SYS/oradev> ALTER SYSTEM SET EXTERNAL_KEYSTORE_CREDENTIAL_LOCATION = "/u01/app/oracle/admin/oradev/wallet/tde_seps" SCOPE = SPFILE;
-
-System altered.
-
-restart
-
-SYS/oradev> ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/admin/oradev/wallet' IDENTIFIED BY Pass1234;
-
-keystore altered.
-
-Note the files on the file system
-[oracle@ip-10-0-2-180 wallet]$ pwd
-/u01/app/oracle/admin/oradev/wallet
-[oracle@ip-10-0-2-180 wallet]$ ls -l
-total 8
--rw------- 1 oracle oinstall 2408 Nov  4 20:32 ewallet.p12
-drwxr-xr-x 2 oracle oinstall 4096 Nov  4 20:28 tde_seps
-[oracle@ip-10-0-2-180 wallet]$ cd tde_seps/
-[oracle@ip-10-0-2-180 tde_seps]$ ls -l
-total 8
--rw-r--r-- 1 oracle oinstall  150 Nov  4 20:28 afiedt.buf
--rw------- 1 oracle oinstall 3915 Nov  4 20:28 cwallet.sso
-
-create auto login for keystore
-
-SYS/oradev> ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE
-'/u01/app/oracle/admin/oradev/wallet/' IDENTIFIED BY Pass1234;
-  2
-keystore altered.
-
-ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN CONTAINER=ALL;
-
-create tablespace customer_orders_enc 
-datafile '/u01/app/oracle/oradata/oradev/customer_orders_enc.dbf' 
-size 100M autoextend on maxsize 1G extent management
-local segment
-space management
-auto encryption default storage (encrypt);
+WRL_PARAMETER
+--------------------------------------------------------------------------------
+/u01/app/oracle/admin/oradev/wallet/
 
 
+SQL> SELECT OBJECT_ID FROM ALL_OBJECTS WHERE OWNER='CUSTOMER_ORDERS' AND OBJECT_NAME='ORDERS' AND OBJECT_TYPE='TABLE';
 
+ OBJECT_ID
+----------
+    112359
 
-Create an encrypted tablespace.
-Create tables on the encrypted tablespace.
-Create the orders table with an encrypted column that is a BLOB datatype.
-Insert some rows into it.
+SQL> SELECT MKEYID FROM SYS.ENC$ WHERE OBJ#=112359;
 
+MKEYID
+----------------------------------------------------------------
+AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
+The trailing AAA characters is not part of the value
+
+SQL> SELECT TABLESPACE_NAME, ENCRYPTED FROM dba_tablespaces;
+
+TABLESPACE_NAME                ENC
+------------------------------ ---
+SYSTEM                         NO
+SYSAUX                         NO
+UNDOTBS1                       NO
+TEMP                           NO
+USERS                          NO
+CUSTOMER_ORDERS_ENC            YES
+
+6 rows selected.
+
+SQL> SELECT name,utl_raw.cast_to_varchar2( utl_encode.base64_encode('01'||substr(mkeyid,1,4))) || utl_raw.cast_to_varchar2( utl_encode.base64_encode(substr(mkeyid,5,length(mkeyid)))) masterkeyid_base64
+FROM (SELECT t.name, RAWTOHEX(x.mkid) mkeyid FROM v$tablespace t, x$kcbtek x WHERE t.ts#=x.ts#)
+WHERE name = 'CUSTOMER_ORDERS_ENC';
+  2    3
+NAME
+------------------------------
+MASTERKEYID_BASE64
+--------------------------------------------------------------------------------
+CUSTOMER_ORDERS_ENC
+AdAI4ksPz0//v5j6Cjf8ZQ0=
+
+The trailing '=' character is not part of the value
+
+[oracle@ip-10-0-2-188 wallet]$ mkstore -wrl /u01/app/oracle/admin/oradev/wallet/  -list
+Oracle Secret Store Tool : Version 12.2.0.1.0
+Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Enter wallet password:
+Oracle Secret Store entries:
+ORACLE.SECURITY.DB.ENCRYPTION.AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ORACLE.SECURITY.DB.ENCRYPTION.MASTERKEY
+ORACLE.SECURITY.ID.ENCRYPTION.
+ORACLE.SECURITY.KB.ENCRYPTION.
+ORACLE.SECURITY.KM.ENCRYPTION.AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+[oracle@ip-10-0-2-188 wallet]$ mkstore -wrl /u01/app/oracle/admin/oradev/wallet/  -viewEntry ORACLE.SECURITY.DB.ENCRYPTION.AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Oracle Secret Store Tool : Version 12.2.0.1.0
+Copyright (c) 2004, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Enter wallet password:
+ORACLE.SECURITY.DB.ENCRYPTION.AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA = AEMAASAAzz8dfB/n5MWRlEBxs6Ya3YAUQGHA4EVpvVIho0wBGMYDEAA9MiwNkiHGAkd9O6b3yCnhBQcAeHsLBg8DFQ==
+
+Specify the TDE encryption key name for the Oracle source endpoint by setting the securityDbEncryptionName extra connection attribute.
+
+securityDbEncryptionName=ORACLE.SECURITY.DB.ENCRYPTION.AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Provide the associated TDE password for this key on the console as part of the Oracle source's Password value. Use the following order to format the comma-separated password values, ended by the TDE password value [no ASM]
+This is in the endpoint attributes for the Password field
+Oracle_db_password,,AEMAASAAzz8dfB/n5MWRlEBxs6Ya3YAUQGHA4EVpvVIho0wBGMYDEAA9MiwNkiHGAkd9O6b3yCnhBQcAeHsLBg8DFQ==
+Pass,,AEMAASAAzz8dfB/n5MWRlEBxs6Ya3YAUQGHA4EVpvVIho0wBGMYDEAA9MiwNkiHGAkd9O6b3yCnhBQcAeHsLBg8DFQ==
 
 
