@@ -84,11 +84,14 @@ ORACLE.SECURITY.DB.ENCRYPTION.AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 ```
 Specify the TDE encryption key name for the Oracle source endpoint by setting the securityDbEncryptionName extra connection attribute.
+```
 securityDbEncryptionName=ORACLE.SECURITY.DB.ENCRYPTION.AdAI4ksPz0//v5j6Cjf8ZQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+```
 
 Provide the associated TDE password for this key on the console as part of the Oracle source's Password value. Use the following order to format the comma-separated password values, ended by the TDE password value [no ASM]
 This is in the endpoint attributes for the Password field
+```
 Oracle_db_password,,AEMAASAAzz8dfB/n5MWRlEBxs6Ya3YAUQGHA4EVpvVIho0wBGMYDEAA9MiwNkiHGAkd9O6b3yCnhBQcAeHsLBg8DFQ==
 Pass,,AEMAASAAzz8dfB/n5MWRlEBxs6Ya3YAUQGHA4EVpvVIho0wBGMYDEAA9MiwNkiHGAkd9O6b3yCnhBQcAeHsLBg8DFQ==
-
+```
 
