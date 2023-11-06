@@ -1,80 +1,67 @@
 ##
-```
-aws rds create-db-instance --db-name ttsora99 --db-instance-identifier ttsora99 --engine oracle-ee --master-username admin --master-user-password Pass1234 --db-instance-class db.m5.large --allocated-storage 20 --profile dba --db-subnet-group-name "default-vpc-0dc155aace16a70a7" --availability-zone us-east-2a
-```
-##
-Create new option group
-Add TDE option to it. [Should add S3_INTEGRATION too ]
-Modify instance to use that option group.
-Note - could not figure out how to do this in the cli.
-Error message that the option group was not assigned to a specific VPC.
-Reboot instance if needed to make sure it gets applied.
-aws rds add-option-to-option-group --option-group-name tts19-ssl  --apply-immediately --options OptionName=TDE  --profile dba
-
-##
-Check the status of the wallet.
-```
-ADMIN/ttsora99> SELECT * FROM v$encryption_wallet;
-
-WRL_TYPE
---------------------
-WRL_PARAMETER
---------------------------------------------------------------------------------
-STATUS                         WALLET_TYPE          WALLET_OR KEYSTORE FULLY_BAC
------------------------------- -------------------- --------- -------- ---------
-    CON_ID
-----------
-FILE
-/rdsdbbin/oracle/dbs/wallet/
-OPEN                           PASSWORD             SINGLE    NONE     NO
-         0
+- Create or procure a host with a self managed Oracle database on it.
+- Configure it for Oracle TDE.
+  - add wallet location to sqlnet.ora
 
 
-ADMIN/ttsora99> create tablespace customer_orders_enc encryption default storage (encrypt);
+mkdir /u01/app/oracle/admin/oradev/wallet/tde_seps
 
-Tablespace created.
+ADMINISTER KEY MANAGEMENT ADD SECRET 'Pass1234'
+FOR CLIENT 'TDE_WALLET'
+TO [LOCAL] AUTO_LOGIN KEYSTORE '/u01/app/oracle/admin/oradev/wallet/tde_seps';
 
-ADMIN/ttsora99>
-```
-Create database tables on the encrypted tablespace.
-Encrypt the column.
-Populate some data in there with blob data in the encrypted column - did this with a dblink to another database.
-```
-CUSTOMER_ORDERS/ttsora99> desc customer_orders.orders
- Name                                      Null?    Type
- ----------------------------------------- -------- ----------------------------
- ORDER_ID                                  NOT NULL NUMBER(38)
- ORDER_DATETIME                            NOT NULL TIMESTAMP(6)
- CUSTOMER_ID                               NOT NULL NUMBER(38)
- ORDER_STATUS                              NOT NULL VARCHAR2(10 CHAR)
- STORE_ID                                  NOT NULL NUMBER(38)
- ORDER_IMG                                          BLOB ENCRYPT
+  1  ADMINISTER KEY MANAGEMENT ADD SECRET 'Pass1234'
+  2  FOR CLIENT 'TDE_WALLET'
+  3* TO LOCAL AUTO_LOGIN KEYSTORE '/u01/app/oracle/admin/oradev/wallet/tde_seps'
+SYS/oradev> /
 
-CUSTOMER_ORDERS/ttsora99> select count(*), (dbms_lob.getlength(order_img))/1024/1024 as SizeMB
-    from customer_orders.orders
-    group by (dbms_lob.getlength(order_img))/1024/1024;
-  2    3
-  COUNT(*)     SIZEMB
----------- ----------
-        33 1.80327892
-      1102
-         1 .157166481
+SYS/oradev> ALTER SYSTEM SET EXTERNAL_KEYSTORE_CREDENTIAL_LOCATION = "/u01/app/oracle/admin/oradev/wallet/tde_seps" SCOPE = SPFILE;
 
-CUSTOMER_ORDERS/ttsora99> select order_id ,  (dbms_lob.getlength(order_img))/1024/1024 as SizeMB
-from customer_orders.orders
-where (dbms_lob.getlength(order_img))/1024/1024 > 1;
-  2    3
-  ORDER_ID     SIZEMB
----------- ----------
-       695 1.80327892
-      2012 1.80327892
-      2013 1.80327892
-      2014 1.80327892
-      2015 1.80327892
-      2016 1.80327892
-      2017 1.80327892
-      2018 1.80327892
-      2019 1.80327892
-      2020 1.80327892
-```
+System altered.
+
+restart
+
+SYS/oradev> ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/admin/oradev/wallet' IDENTIFIED BY Pass1234;
+
+keystore altered.
+
+Note the files on the file system
+[oracle@ip-10-0-2-180 wallet]$ pwd
+/u01/app/oracle/admin/oradev/wallet
+[oracle@ip-10-0-2-180 wallet]$ ls -l
+total 8
+-rw------- 1 oracle oinstall 2408 Nov  4 20:32 ewallet.p12
+drwxr-xr-x 2 oracle oinstall 4096 Nov  4 20:28 tde_seps
+[oracle@ip-10-0-2-180 wallet]$ cd tde_seps/
+[oracle@ip-10-0-2-180 tde_seps]$ ls -l
+total 8
+-rw-r--r-- 1 oracle oinstall  150 Nov  4 20:28 afiedt.buf
+-rw------- 1 oracle oinstall 3915 Nov  4 20:28 cwallet.sso
+
+create auto login for keystore
+
+SYS/oradev> ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE
+'/u01/app/oracle/admin/oradev/wallet/' IDENTIFIED BY Pass1234;
+  2
+keystore altered.
+
+ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN CONTAINER=ALL;
+
+create tablespace customer_orders_enc 
+datafile '/u01/app/oracle/oradata/oradev/customer_orders_enc.dbf' 
+size 100M autoextend on maxsize 1G extent management
+local segment
+space management
+auto encryption default storage (encrypt);
+
+
+
+
+Create an encrypted tablespace.
+Create tables on the encrypted tablespace.
+Create the orders table with an encrypted column that is a BLOB datatype.
+Insert some rows into it.
+
+
+
 
