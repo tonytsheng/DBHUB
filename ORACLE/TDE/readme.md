@@ -1,21 +1,25 @@
 ## TDE on self managed Oracle - use this to prove out some other stuff
 
 ## Set up sqlnet.ora
+- Add this to $ORACLE_HOME/network/admin/sqlnet.ora
+```
 ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/data/oracle/admin/prod9/wallet)) )
+```
 
 ## Database
+- Create keystore
 ```
--- create keystore
-SQL> ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/admin/oradev/wallet' IDENTIFIED BY "Pass1234";
+SQL> ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/admin/oradev/wallet' IDENTIFIED BY "Pass";
 
 keystore altered.
 
 SQL> HOST ls -ls /u01/app/oracle/admin/oradev/wallet
 total 4
 4 -rw------- 1 oracle oinstall 2408 Nov  6 14:01 ewallet.p12
-
--- open keystore
-SQL> ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY "Pass1234";
+```
+- Open Keystore
+```
+SQL> ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY "Pass";
 
 keystore altered.
 
@@ -23,8 +27,9 @@ SQL> SELECT con_id, key_id FROM v$encryption_keys;
 
 no rows selected
 ```
-- set key
-SQL> ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY "Pass1234" WITH BACKUP;
+- Set Key
+```
+SQL> ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY "Pass" WITH BACKUP;
 
 keystore altered.
 
@@ -53,9 +58,9 @@ FILE
 OPEN                           PASSWORD             SINGLE    NO
          0
 ```
-- set auto login
+- Set Auto Login
 ```
-SQL> ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/admin/oradev/wallet' IDENTIFIED BY "Pass1234";
+SQL> ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/admin/oradev/wallet' IDENTIFIED BY "Pass";
 
 keystore altered.
 
@@ -105,7 +110,9 @@ USERS                          NO
 CUSTOMER_ORDERS_ENC            YES
 
 6 rows selected.
-
+```
+- Restart database
+```
 SQL> shutdown immediate;
 Database closed.
 Database dismounted.
@@ -135,8 +142,10 @@ FILE
 OPEN                           AUTOLOGIN            SINGLE    NO
          0
 
-
-SQL> conn customer_orders/Pass1234
+```
+- Login as application owner and create table with encryption
+```
+SQL> conn customer_orders/Pass
 Connected.
 SQL> create table orders (
   order_id        integer
