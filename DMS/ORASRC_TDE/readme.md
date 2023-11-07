@@ -95,3 +95,4 @@ Oracle_db_password,,AEMAASAAzz8dfB/n5MWRlEBxs6Ya3YAUQGHA4EVpvVIho0wBGMYDEAA9MiwN
 Pass,,AEMAASAAzz8dfB/n5MWRlEBxs6Ya3YAUQGHA4EVpvVIho0wBGMYDEAA9MiwNkiHGAkd9O6b3yCnhBQcAeHsLBg8DFQ==
 ```
 
+- Adding a second non encrypted table to the source database works fine - the migration task picks it right up.
