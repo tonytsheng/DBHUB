@@ -11,6 +11,22 @@ copy customer from 's3://redshift-immersionday-labs/data/customer/customer.tbl.'
 iam_role default
 region 'us-west-2' lzop delimiter '|' COMPUPDATE PRESET;
 
+## Auto Query Rewrite
+Create a materialzed view:
+CREATE MATERIALIZED VIEW supplier_shipmode_agg
+AUTO REFRESH YES AS
+select l_suppkey, l_shipmode, datepart(year, L_SHIPDATE) l_shipyear,
+  SUM(L_QUANTITY)	TOTAL_QTY,
+  SUM(L_DISCOUNT) TOTAL_DISCOUNT,
+  SUM(L_TAX) TOTAL_TAX,
+  SUM(L_EXTENDEDPRICE) TOTAL_EXTENDEDPRICE  
+from LINEITEM
+group by 1,2,3;
+
+Another powerful feature of Materialized view is auto query rewrite. Amazon Redshift can automatically rewrite queries to use materialized views, even when the query doesn't explicitly reference a materialized view.
+
+Now, re-run your original query which references the lineitem table and see this query now executes faster because Redshift has re-written this query to leverage the materialized view instead of base table.
+
 redshift-cluster-1:5439 awsuser@dev=# explain
 dev-# select n_name, s_name, l_shipmode, SUM(L_QUANTITY) Total_Qty
 dev-# from lineitem
@@ -47,4 +63,8 @@ dev-# limit 1000;
 
 materialized view refresh is asynchronous - allow ~5 minutes
 
+
+## Spectrum
+Loaded a bunch of NY Pub taxi cab data from examples.
+Used Glue Crawler to recursively crawl the S3 bucket, creating a table in the Glue Data Catalog - ttsheng_nypub.
 
