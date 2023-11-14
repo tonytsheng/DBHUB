@@ -1,0 +1,5 @@
+while true
+do 
+callpg.nosecretsmgr postgres Pass1234 pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com pg102  q.orders.sql 
+/home/ec2-user/DBHUB/SCRIPTLIB/sleepit 3
+done

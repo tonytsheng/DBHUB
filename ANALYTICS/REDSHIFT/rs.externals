@@ -1,0 +1,9 @@
+svv_external_databases
+svv_external_schemas
+svv_external_tables
+svv_external_partitions
+svv_external_columns
+
+show external table adb305.ttsheng_nypub;
+
+

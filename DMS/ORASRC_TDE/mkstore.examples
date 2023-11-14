@@ -1,0 +1,40 @@
+L> grant select on sys.enc$ to system;
+
+Grant succeeded.
+
+SQL> select mkeyid from sys.enc$ where obj#=89925;    
+MKEYID----------------------------------------------------------------
+AQkJfTWKKU+Cv47Xi196TgkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
+
+[oracle@ip-172-31-3-233 dbhome_1]$ mkstore -wrl "/u01/app/oracle/product/11.2.0/dbhome_1/" -list
+Oracle Secret Store Tool : Version 11.2.0.4.0 - ProductionCopyright (c) 2004, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Enter wallet password:      
+Oracle Secret Store entries: 
+ORACLE.SECURITY.DB.ENCRYPTION.AQkJfTWKKU+Cv47Xi196TgkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ORACLE.SECURITY.DB.ENCRYPTION.MASTERKEYORACLE.SECURITY.TS.ENCRYPTION.BSf3bB90ikAgSJxHC0YxduACAwAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
+[oracle@ip-172-31-3-233 dbhome_1]$ mkstore -wrl "/u01/app/oracle/product/11.2.0/dbhome_1/" -viewEntry ORACLE.SECURITY.DB.ENCRYPTION.MASTERKEY
+Oracle Secret Store Tool : Version 11.2.0.4.0 - ProductionCopyright (c) 2004, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Enter wallet password:   
+ORACLE.SECURITY.DB.ENCRYPTION.MASTERKEY = AQkJfTWKKU+Cv47Xi196TgkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
+[oracle@ip-172-31-3-233 dbhome_1]$ mkstore -wrl "/u01/app/oracle/product/11.2.0/dbhome_1/" -viewEntry ORACLE.SECURITY.DB.ENCRYPTION.AQkJfTWKKU+Cv47Xi196TgkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Oracle Secret Store Tool : Version 11.2.0.4.0 - ProductionCopyright (c) 2004, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Enter wallet password:      
+ORACLE.SECURITY.DB.ENCRYPTION.AQkJfTWKKU+Cv47Xi196TgkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA = AEMAASAAZvUe9bzDXC7hmky+o7J74QMnfIObEGIc0Aq5/O82PqgDEADAKrRmuzx5hdywUml0ySKjBQcAeHUKCRUmMQ==
+
+[oracle@ip-172-31-3-233 dbhome_1]$ mkstore -wrl "/u01/app/oracle/product/11.2.0/dbhome_1/" -viewEntry ORACLE.SECURITY.TS.ENCRYPTION.BSf3bB90ikAgSJxHC0YxduACAwAAAAAAAAAAAAAAAAAAAAAAAAAA
+Oracle Secret Store Tool : Version 11.2.0.4.0 - ProductionCopyright (c) 2004, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Enter wallet password:            
+ORACLE.SECURITY.TS.ENCRYPTION.BSf3bB90ikAgSJxHC0YxduACAwAAAAAAAAAAAAAAAAAAAAAAAAAA = AEMAASAAC/etvzlK4fSt8mFMkGbkIRZ5C/OY7xBjBS00JLQfiZcDEAC32Gu4gQ11/5wo/9nqycb0BQcAeHUKCRUmMQ==
+
+
+[oracle@ip-172-31-3-233 dbhome_1]$
