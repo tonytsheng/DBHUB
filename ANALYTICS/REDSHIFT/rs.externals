@@ -6,4 +6,5 @@ svv_external_columns
 
 show external table adb305.ttsheng_nypub;
 
+search path isn't supported for external scheams and external tables
 

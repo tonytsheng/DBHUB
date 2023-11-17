@@ -1,0 +1,6 @@
+creates a db cluster with a primary db and two readable standby db instances
+with each db instance in a different az.
+
+When patching or doing a minor version upgrade on an Amazon RDS Multi-AZ DB cluster, the process begins by applying the patch to each of the readers in sequence. After the readers are upgraded, one of them becomes the new writer and the original writer becomes a reader. When the reader and writer switch roles, there is downtime. With Amazon RDS Multi-AZ DB clusters, that downtime is now typically less than 35 seconds. Much of this time is due to Domain Name System (DNS) propagation delays of the cluster endpoint. RDS Proxy senses the change in the role of the reader and writer directly and is not dependent on the DNS propagation that causes the 35 second delay. As a result, RDS Proxy when used with Amazon RDS Multi-AZ DB clusters typically results in a downtime of 1 second or less.
+
+https://aws.amazon.com/blogs/database/perform-minor-version-upgrades-with-a-downtime-of-1-second-or-less-with-amazon-rds-proxy-and-amazon-rds-multi-az-deployments-with-two-readable-standbys/
