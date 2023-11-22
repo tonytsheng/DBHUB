@@ -1,0 +1,12 @@
+drop user nypub;
+create tablespace nypub;
+create user nypub identified by "Pass" default tablespace nypub;
+grant create session to nypub;
+grant create any table to nypub;
+grant drop any table to nypub;
+grant unlimited tablespace to nypub;
+grant execute any procedure to nypub;
+grant alter any table to nypub;
+grant update any table to nypub;
+grant create any index to nypub;
+exit;
