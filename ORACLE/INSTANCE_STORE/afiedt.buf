@@ -1,2 +1,0 @@
-select file_name, tablespace_name from dba_temp_files
-/
