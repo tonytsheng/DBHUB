@@ -5,3 +5,5 @@ Network - can you ping, tnsping
 Application - where is the bottleneck, can you decouple and troubleshoot down to the lowest object, can you get the error on demand?
 
 strace -Tfe trace=open,read,write <cmd> 2> <outputfile>
+traceroute
+
