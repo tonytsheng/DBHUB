@@ -39,7 +39,7 @@ ADMIN/ttsora90> EXEC rdsadmin.rdsadmin_util.alter_default_temp_tablespace(tables
 PL/SQL procedure successfully completed.
 
 ```
-7. Check temp data files again.
+7. Check temp data files again. Note the different filesystem that the new temp file is located on - this is the NVMe storage volume on the RDS host.
 ```
 ADMIN/ttsora90> select file_name, tablespace_name from dba_temp_files;
 
