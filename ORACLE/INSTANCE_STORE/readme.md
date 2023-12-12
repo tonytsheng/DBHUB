@@ -1,12 +1,12 @@
 ## Instance Stores for RDS for Oracle
-1. Create the instance - note the instance sizes that have instance stores available.
+1. Create the instance - note the instance shapes that have instance stores available and choose one of them.
 ![Optional Text](instance_store_01.jpg)
 
-2. Create a parameter group that has the rds.instance_store_temp_size set.
+2. Create a parameter group that has the rds.instance_store_temp_size set. Note that you can also configure a flash cache in the instance store with parameter group settings - see the documentation for instructions.
 
 3. Assign the instance to the parameter group. Reboot the instance. Ensure the parameter group is in sync.
 
-4. List temp data files and the default temp tablespace.
+4. Confirm the default temp tablespace and wehre the temp data files are located.
 ```
 ADMIN/ttsora90> select file_name, tablespace_name from dba_temp_files;
 
@@ -39,7 +39,7 @@ ADMIN/ttsora90> EXEC rdsadmin.rdsadmin_util.alter_default_temp_tablespace(tables
 PL/SQL procedure successfully completed.
 
 ```
-7. Check temp data files again. Note the different filesystem that the new temp file is located on - this is the NVMe storage volume on the RDS host.
+7. Reconfirm the default temp tablespace and wehre the temp data files are located. Note the different filesystem - this is the NVMe storage volume on this RDS host.
 ```
 ADMIN/ttsora90> select file_name, tablespace_name from dba_temp_files;
 
