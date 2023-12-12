@@ -3,6 +3,8 @@ $ mongoimport --db test --collection inventory \
         --authenticationDatabase admin --username admin --password Pass \
         --drop --file DAT/inventory.crud.json
 
+mongoimport --file=airbnb.new1 --jsonArray --sslCAFile=/home/ec2-user/ssl/global-bundle.pem --verbose --username=docadmin --password=Pass --host=docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --authenticationDatabase=admin --ssl
+
 ## make sure input file is just json records:
 ## no commas, one json doc per row
 #{ "item": "journal", "qty": 25, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" }
@@ -16,6 +18,8 @@ $ mongoimport --db test --collection inventory \
 
 # csv file
 $ mongoimport -d tymongo -c test --type csv --file database2.csv --headerline
+
+mongoimport --file=QuickSightDemo_SaasSales.csv --type=csv --headerline --sslCAFile=/home/ec2-user/ssl/global-bundle.pem --verbose --username=docadmin --password=Pass --host=docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --authenticationDatabase=admin --ssl
 
 $ mongorestore --username=admin --password=Pass --authenticationDatabase=admin --archive=sampledata.archive 
 # shell commands
@@ -32,6 +36,8 @@ rs.status
 show databases
 show dbs
 show collections
+
+db.getName()
 
 s0:PRIMARY> db.adminCommand({listDatabases:1})
 {
