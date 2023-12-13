@@ -1,0 +1,1 @@
+mongo --ssl --host docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --sslCAFile /home/ec2-user/ssl/global-bundle.pem --username docadmin 
