@@ -1,9 +1,9 @@
 ## Console
 - Create
-- create instance based cluster with just primary instance
-- add replica
-- show endpoints 
-- best practice 
+  - create instance based cluster with just primary instance
+  - add replica
+  - show endpoints 
+- Best practice 
   - connect your apps to cluster endpoint
   - if there is a failure, cluster endpoint fails over appropriately
 
