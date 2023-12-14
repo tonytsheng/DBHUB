@@ -249,13 +249,75 @@ s0:PRIMARY> db.listingsAndReviews.aggregate( {$sortByCount: "$property_type"} )
 db.listings2.find({country_code: "USA"}, {item:1, country_code:1 })
 db.listings2.find({ country_code: { $in: ["USA", "NL"] }}, {item:1, country_code:1 });
 
-
-
-
-mongodb://username:password@sample-cluster.cluster-123456789012.us-east-1.docdb.amazonaws.com:27017/?replicaSet=rs0
-
-mongo shell does not support making connections to a replica set only to individual nodes
+## Cluster connecting
+- mongodb://username:password@sample-cluster.cluster-123456789012.us-east-1.docdb.amazonaws.com:27017/?replicaSet=rs0
+- mongo shell does not support making connections to a replica set only to individual nodes
 - you can code it yourself to figure out what is primary and replicas etc
 
+- python sample call:
+client = pymongo.MongoClient('mongodb://%s:%s@docdb100.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=/home/ec2-user/ssl/global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false' % (username, pw))
+
+## Failover
+# cluster health in python
+db_status = db.command({'replSetGetStatus'  :1 })
+
+# output from replSetGetStatus, primary is not up yet
+{u'set': u'rs0', u'ok': 1.0, u'myState': 1, 
+  u'members': [{u'uptime': 345.0, u'name': u'docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'self': True, u'state': 1, u'health': 1, u'stateStr': u'PRIMARY', u'_id': 0}], 
+  u'date': datetime.datetime(2023, 12, 14, 19, 59, 6), u'operationTime': Timestamp(1702583946, 1)}
+
+# secondary is up too
+{u'set': u'rs0', u'ok': 1.0, u'myState': 1, 
+  u'members': [{u'uptime': 354.0, u'name': u'docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'self': True, u'state': 1, u'health': 1, u'stateStr': u'PRIMARY', u'_id': 0}, 
+               {u'uptime': 354.0, u'name': u'docdb1002.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'state': 2, u'health': 1, u'stateStr': u'SECONDARY', u'_id': 1}], 
+  u'date': datetime.datetime(2023, 12, 14, 19, 59, 15), u'operationTime': Timestamp(1702583955, 1)}
+
+{u'set': u'rs0', u'ok': 1.0, u'myState': 1, 
+  u'members': [{u'uptime': 356.0, u'name': u'docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'self': True, u'state': 1, u'health': 1, u'stateStr': u'PRIMARY', u'_id': 0}, 
+               {u'uptime': 356.0, u'name': u'docdb1002.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'state': 2, u'health': 1, u'stateStr': u'SECONDARY', u'_id': 1}], 
+  u'date': datetime.datetime(2023, 12, 14, 19, 59, 17), u'operationTime': Timestamp(1702583957, 1)}
+
+# checking member status from CLI
+aws docdb describe-db-clusters --db-cluster-identifier docdb100 | jq ' .DBClusters[] | .DBClusterMembers '
+
+#normal status
+[
+  {
+    "DBInstanceIdentifier": "docdb1002",
+    "IsClusterWriter": false,
+    "DBClusterParameterGroupStatus": "in-sync",
+    "PromotionTier": 1
+  },
+  {
+    "DBInstanceIdentifier": "docdb100",
+    "IsClusterWriter": true,
+    "DBClusterParameterGroupStatus": "in-sync",
+    "PromotionTier": 1
+  }
+]
+# CLI failover cluster command
+aws docdb failover-db-cluster --db-cluster-identifier docdb100
+
+# when faiover is finished
+[
+  {
+    "DBInstanceIdentifier": "docdb1002",
+    "IsClusterWriter": true,
+    "DBClusterParameterGroupStatus": "in-sync",
+    "PromotionTier": 1
+  },
+  {
+    "DBInstanceIdentifier": "docdb100",
+    "IsClusterWriter": false,
+    "DBClusterParameterGroupStatus": "in-sync",
+    "PromotionTier": 1
+  }
+]
+
+# output from replSetGetStatus, primary and secondary have switched
+{u'set': u'rs0', u'ok': 1.0, u'myState': 1, 
+  u'members': [{u'uptime': 107.0, u'name': u'docdb1002.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'self': True, u'state': 1, u'health': 1, u'stateStr': u'PRIMARY', u'_id': 0}, 
+               {u'uptime': 107.0, u'name': u'docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'state': 2, u'health': 1, u'stateStr': u'SECONDARY', u'_id': 1}], 
+  u'date': datetime.datetime(2023, 12, 14, 20, 15, 4), u'operationTime': Timestamp(1702584904, 1)}
 
 
