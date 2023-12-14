@@ -320,4 +320,43 @@ aws docdb failover-db-cluster --db-cluster-identifier docdb100
                {u'uptime': 107.0, u'name': u'docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'state': 2, u'health': 1, u'stateStr': u'SECONDARY', u'_id': 1}], 
   u'date': datetime.datetime(2023, 12, 14, 20, 15, 4), u'operationTime': Timestamp(1702584904, 1)}
 
+# output from running failover
+# note 1002 is the primary in the first output
+# slight downtime - less than a minute - docs say typically within 30 seconds
+# and 100 is the primary in the third run
+397
+{u'set': u'rs0', u'ok': 1.0, u'myState': 1, u'members': [{u'uptime': 1072.0, u'name': u'docdb1002.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'self': True, u'state': 1, u'health': 1, u'stateStr': u'PRIMARY', u'_id': 0}, {u'uptime': 1072.0, u'name': u'docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'state': 2, u'health': 1, u'stateStr': u'SECONDARY', u'_id': 1}], u'date': datetime.datetime(2023, 12, 14, 20, 31, 9), u'operationTime': Timestamp(1702585869, 1)}
+Thu Dec 14 20:31:09 UTC 2023
+Traceback (most recent call last):
+  File "1.py", line 36, in <module>
+    col.insert_one({'hello':'Amazon DocumentDB'})
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/collection.py", line 749, in insert_one
+    session=session,
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/collection.py", line 659, in _insert
+    docs, ordered, check_keys, manipulate, write_concern, op_id, bypass_doc_val, session
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/collection.py", line 640, in _insert_one
+    self.__database.client._retryable_write(acknowledged, _insert_command, session)
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/mongo_client.py", line 1644, in _retryable_write
+    return self._retry_with_session(retryable, func, s, None)
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/mongo_client.py", line 1532, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/mongo_client.py", line 1565, in _retry_internal
+    return func(session, sock_info, retryable)
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/collection.py", line 635, in _insert_command
+    retryable_write=retryable_write,
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/pool.py", line 769, in command
+    self._raise_connection_failure(error)
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/pool.py", line 763, in command
+    exhaust_allowed=exhaust_allowed,
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/network.py", line 167, in command
+    reply = receive_message(sock_info, request_id)
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/network.py", line 225, in receive_message
+    _receive_data_on_socket(sock_info, 16, deadline)
+  File "/home/ec2-user/.local/lib/python2.7/site-packages/pymongo/network.py", line 303, in _receive_data_on_socket
+    raise AutoReconnect("connection closed")
+pymongo.errors.AutoReconnect: connection closed
+Thu Dec 14 20:31:11 UTC 2023
+398
+{u'set': u'rs0', u'ok': 1.0, u'myState': 1, u'members': [{u'uptime': 3.0, u'name': u'docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'self': True, u'state': 1, u'health': 1, u'stateStr': u'PRIMARY', u'_id': 0}, {u'uptime': 3.0, u'name': u'docdb1002.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017', u'state': 2, u'health': 1, u'stateStr': u'SECONDARY', u'_id': 1}], u'date': datetime.datetime(2023, 12, 14, 20, 31, 18), u'operationTime': Timestamp(1702585878, 1)}
+Thu Dec 14 20:31:19 UTC 2023
 
