@@ -252,3 +252,10 @@ db.listings2.find({ country_code: { $in: ["USA", "NL"] }}, {item:1, country_code
 
 
 
+mongodb://username:password@sample-cluster.cluster-123456789012.us-east-1.docdb.amazonaws.com:27017/?replicaSet=rs0
+
+mongo shell does not support making connections to a replica set only to individual nodes
+- you can code it yourself to figure out what is primary and replicas etc
+
+
+
