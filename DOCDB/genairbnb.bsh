@@ -1,0 +1,19 @@
+uuid=`cat /proc/sys/kernel/random/uuid`
+data=/home/ec2-user/data
+country=`awk -F',' '{print $1}' $data/refdata/country-codes_csv.csv | grep -v -e '^$' | shuf -n 1`
+PW=`aws secretsmanager get-secret-value --profile ec2 --secret-id docdb100 | jq --raw-output '.SecretString' | jq -r .password`
+
+#echo $country
+#echo $uuid
+
+sed "s/UUID/$uuid/g;s/COUNTRY/$country/g" $data/airbnb/single_listing.json > /tmp/singleairbnb.$$.json
+# cat /tmp/singleairbnb.$$.json
+# mongoimport --file=/tmp/singleairbnb.$$.json --collection=listings2 --sslCAFile=/home/ec2-user/ssl/global-bundle.pem \
+#   --verbose --username=docadmin --password=${PW} \
+#   --host=docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --authenticationDatabase=admin --ssl --jsonArray 
+mongoimport --file=/tmp/singleairbnb.$$.json --collection=listings2 --sslCAFile=/home/ec2-user/ssl/global-bundle.pem \
+  --username=docadmin --password=${PW} \
+  --host=docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --authenticationDatabase=admin --ssl --jsonArray 
+
+
+

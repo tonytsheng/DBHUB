@@ -3,8 +3,14 @@ $ mongoimport --db test --collection inventory \
         --authenticationDatabase admin --username admin --password Pass \
         --drop --file DAT/inventory.crud.json
 
+## import
 mongoimport --file=airbnb.new1 --jsonArray --sslCAFile=/home/ec2-user/ssl/global-bundle.pem --verbose --username=docadmin --password=Pass --host=docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --authenticationDatabase=admin --ssl
 
+mongoimport -d tymongo -c test --type csv --file database2.csv --headerline
+
+mongoimport --file=QuickSightDemo_SaasSales.csv --type=csv --headerline --sslCAFile=/home/ec2-user/ssl/global-bundle.pem --verbose --username=docadmin --password=Pass --host=docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --authenticationDatabase=admin --ssl
+
+mongoimport --file=/home/ec2-user/data/airbnb/listings.json  --collection=listings2 --sslCAFile=/home/ec2-user/ssl/global-bundle.pem --verbose --username=docadmin --password=Pass --host=docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --authenticationDatabase=admin --ssl --jsonArray
 ## make sure input file is just json records:
 ## no commas, one json doc per row
 #{ "item": "journal", "qty": 25, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" }
@@ -17,12 +23,9 @@ mongoimport --file=airbnb.new1 --jsonArray --sslCAFile=/home/ec2-user/ssl/global
 #{ "item": "paper", "qty": 100, "size": { "h": 8.5, "w": 11, "uom": "in" }, "status": "D" } ]
 
 # csv file
-$ mongoimport -d tymongo -c test --type csv --file database2.csv --headerline
 
-mongoimport --file=QuickSightDemo_SaasSales.csv --type=csv --headerline --sslCAFile=/home/ec2-user/ssl/global-bundle.pem --verbose --username=docadmin --password=Pass --host=docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --authenticationDatabase=admin --ssl
-
-$ mongorestore --username=admin --password=Pass --authenticationDatabase=admin --archive=sampledata.archive 
 # shell commands
+mongorestore --username=admin --password=Pass --authenticationDatabase=admin --archive=sampledata.archive 
 $ mongo
 db.help()
 
@@ -241,4 +244,11 @@ s0:PRIMARY> db.listingsAndReviews.aggregate( {$sortByCount: "$property_type"} )
 { "_id" : "Bungalow", "count" : 14 }
 { "_id" : "Resort", "count" : 11 }
 { "_id" : "Casa particular (Cuba)", "count" : 9 }
+
+# query by field return only id and country code fields
+db.listings2.find({country_code: "USA"}, {item:1, country_code:1 })
+db.listings2.find({ country_code: { $in: ["USA", "NL"] }}, {item:1, country_code:1 });
+
+
+
 
