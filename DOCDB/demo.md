@@ -44,6 +44,10 @@ db.runCommand({explain:
 - Migration
   - Native
   - DMS *
+create user
+limitations for docdb 
+ - document vs table mode - drop down when you create the source endpoint
+ - To use ongoing replication or CDC with Amazon DocumentDB, AWS DMS requires access to the Amazon DocumentDB cluster's change streams
   - Create indexes first before migrating the data.
 
 - Best Practices
