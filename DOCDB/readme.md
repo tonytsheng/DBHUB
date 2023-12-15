@@ -11,7 +11,6 @@ instead use docadmin
 mongo --ssl --host docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --sslCAFile /home/ec2-user/ssl/global-bundle.pem --username docadmin --password Pass
 ```
 
-
 ## Scaling
 - no sharding for instance based clusters - one primary
 - sharding for elastic clusters - see concepts from Aurora Limitless like request router
@@ -23,7 +22,7 @@ mongo --ssl --host docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --s
 ## Migration
 - dms
 - mongo native tools
-- 
+  - 
 ## Consistency
 - isolation
   - Reads from an Amazon DocumentDB instance only return data that is durable before the query begins. Reads never return data modified after the query begins execution nor are dirty reads possible under any circumstances.

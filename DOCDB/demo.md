@@ -11,9 +11,12 @@
   - Snapshots
   - Encryption
   - Parameter Groups
+    - audit_logs, profiler, tls, change_stream_log_retention_duration
   - Performance Insights
   - Log Exports - sidebar for CW
   - Maint Window
+    - versions - 2023:
+      - 12/13, 11/29, 11/21, 11/17, 11/6, 10/20, 9/25, 9/20, 9/15, 9/11, 8/3, 7/13, 6/7 
 
 - Failover
   - Each replica is assoc with a failover tier. When a failover occurs, primary instance fails over to replica with highest priority. If multiple replicas have same priority, primary fails over to tiers replica that is closest in size.
@@ -29,6 +32,19 @@
 
   - The advantage of connecting as a replica set is that it enables your SDK to discover the cluster topography automatically, including when instances are added or removed from the cluster. You can then use your cluster more efficiently by routing read requests to your replica instances.
 
+
+- Performance
+  - Performance Insights
+  - CW
+  - Explain plans *
+db.runCommand({explain:
+  { db.listings2.find({country_code: "USA"}) }
+})
+
+- Migration
+  - Native
+  - DMS *
+  - Create indexes first before migrating the data.
 
 - Best Practices
   - Deploy a cluster consisting of two more more instances in two AZs.
