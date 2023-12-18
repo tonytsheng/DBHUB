@@ -40,6 +40,12 @@
 db.runCommand({explain:
   { db.listings2.find({country_code: "USA"}) }
 })
+  - Run ycsb to load some data
+```
+./bin/ycsb load mongodb -s -P workloads/workloada -p recordcount=500000 -threads 100 -p mongodb.url="mongodb://docadmin:Pass@docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/admin"
+```
+    - Look at CW
+    - Failover
 
 - Migration
   - Native
@@ -54,5 +60,8 @@ limitations for docdb
   - Deploy a cluster consisting of two more more instances in two AZs.
     - For Production, three more instances across three AZs.
 
+- Misc
+  - Turn off TLS with a custom parameter group. Turn off the parameter, assign cluster to the group, reboot cluster.
+  - Makes it easier with ycsb.
 
 
