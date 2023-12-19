@@ -1,3 +1,4 @@
+## run with python doc_connect.py  
 import pymongo
 import sys
 import boto3

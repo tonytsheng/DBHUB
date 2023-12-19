@@ -378,4 +378,7 @@ db.adminCommand({
 # terminate query based on the op
 db.adminCommand({killOp: 1, op: 24646});
 
+db.serverStatus().connections
+
+db.collection.drop()
 

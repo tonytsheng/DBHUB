@@ -42,8 +42,17 @@ db.runCommand({explain:
 })
   - Run ycsb to load some data
 ```
-./bin/ycsb load mongodb -s -P workloads/workloada -p recordcount=500000 -threads 100 -p mongodb.url="mongodb://docadmin:Pass@docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/admin"
+# original call
+#./bin/ycsb load mongodb -s -P workloads/workloada -p recordcount=500000 -threads 100 -p mongodb.url="mongodb://docadmin:Pass@docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/admin"
+
+./bin/ycsb load mongodb -s -P workloads/workloada -p recordcount=500000 -threads 100 -p mongodb.url="mongodb://docadmin:Pass@docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/admin?replicaSet=rs0"
+
+"mongodb://docadmin:Pass@docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/?replicaSet=rs0"
+"mongodb://docadmin:Pass@docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/admin/?replicaSet=rs0"
+"mongodb://docadmin:Pass@docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred"
 ```
+  - 50K docs took about 5 minutes
+  - 100K docs took about 7 minutes
     - Look at CW
     - Failover
 

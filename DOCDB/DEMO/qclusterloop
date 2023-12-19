@@ -1,0 +1,9 @@
+while true
+do
+date
+aws docdb describe-db-clusters --db-cluster-identifier docdb100 | jq ' .DBClusters[] | .DBClusterMembers '
+aws docdb describe-db-clusters --db-cluster-identifier docdb100 | jq ' .DBClusters[] | .Status '
+/home/ec2-user/DBHUB/SCRIPTLIB/sleepit 5
+done
+
+

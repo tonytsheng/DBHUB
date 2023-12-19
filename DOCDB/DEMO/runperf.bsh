@@ -1,0 +1,13 @@
+set -x
+
+export PW=`aws secretsmanager get-secret-value --profile ec2 --secret-id docdb100 | jq --raw-output '.SecretString' | jq -r .password`
+export ycsb_dir=/home/ec2-user/data/ycsb/ycsb-0.17.0
+
+/home/ec2-user/DBHUB/DOCDB/callmongo <<EQ
+  use ycsb;
+  db.usertable.drop();
+EQ
+
+#exit
+
+${ycsb_dir}/bin/ycsb load mongodb -s -P ${ycsb_dir}/workloads/workloada -p recordcount=1000000 -threads 100 -p mongodb.url="mongodb://docadmin:${PW}@docdb100.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/admin?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
