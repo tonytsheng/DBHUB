@@ -28197,3 +28197,58 @@ VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
 nep100
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+Tue Dec 19 23:00:01 UTC 2023
+Tue Dec 19 23:00:01 UTC 2023
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+docdb100
+oracad3-19c
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb1002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+oracad3restore
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+nep100-instance-1
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3restore is not in available state.
+oracle19c-ec2-cad
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle19c-ec2-cad is not in available state.
+oracle-ec2-cad2
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle-ec2-cad2 is not in available state.
+postgresdemo
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+docdb100
+ttsora10
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
+DBCLUSTER	1	False	1	2023-12-12T14:53:08.678Z	False	False	arn:aws:rds:us-east-2:070201068661:cluster:docdb100	docdb100	tts-docdb-parameters	default-vpc-0467e5c237261df36	cluster-573K5OSM7LITBRTNA4QD6Y7XHU	True	2023-12-18T14:29:02.030Z	docdb100.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	docdb	provisioned	5.0.0	Z7L8695A82IZ6	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2023-12-19T22:58:24.623Z	docadmin	True	27017	00:00-00:30	tue:06:37-tue:07:07	docdb100.cluster-ro-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	available	True
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	docdb100	True	1
+DBCLUSTERMEMBERS	in-sync	docdb1002	False	1
+ENABLEDCLOUDWATCHLOGSEXPORTS	audit
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
++++ Clusters
+nep100
+DBCLUSTER	1	False	1	2023-09-27T17:11:57.681Z	True	False	arn:aws:rds:us-east-2:070201068661:cluster:nep100	nep100	default.neptune1.2	default-vpc-0467e5c237261df36	cluster-ACZEUCS6XWYRTFHG2DHUOEANQE	False	2023-12-18T04:37:59.682Z	nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	neptune	provisioned	1.2.0.2	Z18MU2VX5LLW0S	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2023-12-19T22:56:47.233Z	admin	False	8182	04:29-04:59	tue:05:09-tue:05:39	nep100.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	available	True
+ASSOCIATEDROLES	arn:aws:iam::070201068661:role/load-neptune-s3	ACTIVE
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	nep100-instance-1	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55

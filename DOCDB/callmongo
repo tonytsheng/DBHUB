@@ -2,4 +2,4 @@ export PW=`aws secretsmanager get-secret-value --profile ec2 --secret-id docdb10
 
 
 #mongo --ssl --host docdb100.cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --sslCAFile /home/ec2-user/ssl/global-bundle.pem --username docadmin --password ${PW}
-mongo --host docdb100.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --username docadmin --password ${PW}
+mongo --quiet --host docdb100.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017 --username docadmin --password ${PW}
