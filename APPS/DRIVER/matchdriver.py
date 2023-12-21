@@ -74,48 +74,13 @@ def get_secret():
     return (username, password, engine , host, port, dbname)
 
 username, pw, engine, host, port, dbname = get_secret()
-#print (engine)
+print (engine)
 
-match engine:
-    case "oracle":
-        # print (username)
-        db_dsn = host + ":" + port + "/" + dbname
-        print (db_dsn)
-
-        retry_flag = True
-        retry_count = 0
-        max_retries = 25
-        ora_sel=('select * from dba_directories')
-        data_inserted = False
-
-        while retry_flag and retry_count < max_retries:
-            try:
-               client = cx_Oracle.connect(user=username, password=pw, dsn=db_dsn)
-               cur = client.cursor()
-               cur.execute(ora_sel)
-               records = cur.fetchall()
-               for row in records:
-                   print (row)
-               client.commit()
-               data_inserted = True
-               now = datetime.now()
-               print (now.strftime("%Y.%m.%d %H:%M:%S"))
-               print (retry_count)
-               time.sleep(2)
-            except cx_Oracle.Error as error:
-               print(error)
-               print("retrying..." + str(retry_count))
-               retry_count += 1
-               time.sleep(5) # wait for 5 seconds between retries
-               if retry_count < max_retries:
-                   try:
-                       client = cx_Oracle.connect(user=username, password=pw, dsn=db_dsn)
-                       cur = client.cursor()
-                   except Exception as e:
-                       print(e)
-            #cur.close()
-    case _:
-        print ('no engine match')
+switch (engine) {
+    case oracle:
+        print('oracle');
+        break;
+        }
 
 
 

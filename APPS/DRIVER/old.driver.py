@@ -46,31 +46,36 @@ print (db_dsn)
 
 ora_sel=('select * from dba_directories')
 data_inserted = False
-while True:
-  while not data_inserted:
-    try:
-       client = cx_Oracle.connect(user=username
+try:
+#    print("Attempting to connect...")
+    client = cx_Oracle.connect(user=username
              , password=pw
              , dsn=db_dsn)
-       cur = client.cursor()
-       cur.execute(ora_sel)
-       records = cur.fetchall()
-       for row in records:
-           print (row)
-       client.commit()
-       data_inserted = True
-    except cx_Oracle.Error as error:
-     print(error)
-     time.sleep(5) # wait for 5 seconds between retries
-     retry_count += 1
-     if retry_count > 100:
-       print(f"Retry count exceeded on record {i}, quitting")
-       break
-     else:
-        # continue to next record if the data was inserted
-        continue
-        print ('else')
-    # retry count was exceeded; break the for loop.
-     break
-
+    cur = client.cursor()
+    i = 0
+    while True or retry_flag:
+        try:
+            cur.execute(ora_sel)
+            records = cur.fetchall()
+            for row in records:
+                print (row)
+            i += 1
+            print(retry_flag)
+            now = datetime.now()
+            print (now.strftime("%Y.%m.%d %H:%M:%S"))
+            time.sleep(3)
+        except cx_Oracle.DatabaseError as e:
+            print(retry_flag)
+            print("ConnectionFailure seen: " + str(e))
+            print(sys.stdout)
+            traceback.print_exc(file = sys.stdout)
+            print("Retrying...")
+            retry_count = retry_count + 1
+            time.sleep(3)
+    print("Done...")
+except Exception as e:
+    print("Exception seen: " + str(e))
+    traceback.print_exc(file = sys.stdout)
+finally:
+    client.close()
 
