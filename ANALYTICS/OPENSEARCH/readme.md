@@ -13,6 +13,10 @@
 - Defaults for encryption options
 - Create
 
+## Changing access policy
+- Cluster - Security configuration - Edit
+- Change Deny to Allow
+
 ## Create Kinesis Data Firehose Delivery Stream
 See steps under ../KINESIS/readme.md for connecting KDFH to OpenSearch
 
