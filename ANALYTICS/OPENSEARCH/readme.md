@@ -7,9 +7,12 @@
 - ebs storage, gp3
 - 10 mb ebs storage per node
 - disable fine grained access control
+- Can make cluster public
 - Configure domain access policy
   - elements - allow your ip address 
-  - Allow any IPs, including from your EC2 instance for example
+  - Allow your EC2 instance to run curl, python, etc
+  - Add your laptop to access the dashboards
+    -       "aws:SourceIp": "3.143.249.228/32"
 - Defaults for encryption options
 - Create
 
@@ -17,12 +20,23 @@
 - Cluster - Security configuration - Edit
 - Change Deny to Allow
 
+## Add another node
+- Let it run through the Dry Run analysis
+- If there are no errors, click Save and then cluster goes into Processing
+
 ## Create Kinesis Data Firehose Delivery Stream
 See steps under ../KINESIS/readme.md for connecting KDFH to OpenSearch
 
 ## Log Generator
 
-## OpenSearch cli queries
+## OpenSearch health
+```
+curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/_cluster/health?pretty=true"
+curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/_aliases?pretty=true"
+
+```
+
+## OpenSearch index specific queries
 ```
 curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/weblogs-*/_search?q=get' | jq
 curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/weblogs*/_search?q=host:80.127.116.96' | jq
@@ -39,6 +53,14 @@ curl -XGET -u 'admin:Pass' \
   'https://search-ttsheng-opensearch-100-gxza6jvpr67ioemyyqqj7fkoxy.us-east-2.es.amazonaws.com/voicemail/_search?q-get'
 curl -X DELETE -u 'admin:Pass' \
 'https://search-ttsheng-opensearch-100-gxza6jvpr67ioemyyqqj7fkoxy.us-east-2.es.amazonaws.com/voicemail/'
+
+#insert single doc
+curl -XPOST 'https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_doc/1' -d '{"title":"test", "Album":"test","Lyric":"test"}'  -H 'Content-Type: application/json'
+# count docs
+curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_count?pretty=true"
+# query keyword
+curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_search?q=magic&pretty"
+curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_search?q=sad&pretty"
 
 ```
 

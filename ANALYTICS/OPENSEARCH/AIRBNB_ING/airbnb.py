@@ -94,9 +94,9 @@ client = OpenSearch(
     connection_class = RequestsHttpConnection
 )
 
-with open('/home/ec2-user/data/taylor2.csv') as f:
+with open('/home/ec2-user/data/airbnb/washingtondc_listings.csv') as f:
     reader = csv.DictReader(f)
-    helpers.bulk(client, reader, index='swift')
+    helpers.bulk(client, reader, index='airbnb')
 #    for row in reader:
 #        print (row['Album'])
        
