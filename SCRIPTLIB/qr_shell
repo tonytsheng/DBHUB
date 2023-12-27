@@ -24,3 +24,7 @@ echo
    let c=c+1
 done
 
+
+#combine two files on comma delimted as long as lines match
+paste -d ',' t2.json sentiment1 > taylor2.json
+

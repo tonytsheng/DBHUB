@@ -63,6 +63,19 @@ curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazona
 curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_search?q=magic&pretty"
 curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_search?q=sad&pretty"
 
+## bulk load from json file
+curl  -H "Content-Type: application/json" -XPOST "https://search-os200-3upgw4tibkrffdnhn6irnvfwoa.us-east-2.es.amazonaws.com/_bulk" --data-binary @taylor2.json
+# json must look like:
+{"index" : { "_index" : "idxname", "_id" : 1000 }}
+{json stuff}
+{"index" : { "_index" : "idxname", "_id" : 1001 }}
+{json stuff}
+
+## delete index
+curl  -X DELETE "https://search-os200-3upgw4tibkrffdnhn6irnvfwoa.us-east-2.es.amazonaws.com/taylor2"
+{"acknowledged":true}
+
+
 ```
 
 ## Dashboard
