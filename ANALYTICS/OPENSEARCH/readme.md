@@ -66,7 +66,6 @@ curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazona
 ```
 
 ## Dashboard
-
 Once your data has been loaded with KDFH:
 - go to your dashboard
 - on the left, click Stack Management
@@ -74,5 +73,9 @@ Once your data has been loaded with KDFH:
 - enter your index pattern name, click Create Index pattern
 - go back to Dashboard..Discover
 - your index pattern that you just created should now show up in the dropdown in the left panel
+After loading data [Swift, Airbnb] in bulk:
+- Dashboards Management
+  - Index patterns
+    - Create index pattern
 
 

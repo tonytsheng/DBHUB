@@ -79,7 +79,7 @@ def get_secret():
 #print (engine)
 
 client = boto3.client('opensearch')
-host="search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com" # no trailing slash at end of host field
+host="search-os200-3upgw4tibkrffdnhn6irnvfwoa.us-east-2.es.amazonaws.com" # no trailing slash at end of host field
 service = 'es'
 credentials = boto3.Session().get_credentials()
 region='us-east-2'
