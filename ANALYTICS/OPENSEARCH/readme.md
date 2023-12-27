@@ -84,9 +84,9 @@ aws opensearch create-domain --domain-name mylogs --engine-version OpenSearch_2.
 ```
 
 ## Dashboard
-Once your data has been loaded with KDFH:
+Once your data has been loaded, create an index for the dashboard:
 - go to your dashboard
-- on the left, click Stack Management
+- on the left, click Dashboards Management
 - on the left, click Index Patterns
 - enter your index pattern name, click Create Index pattern
 - go back to Dashboard..Discover
