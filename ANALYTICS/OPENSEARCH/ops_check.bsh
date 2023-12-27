@@ -1,0 +1,6 @@
+endpt=$1
+
+curl -XGET "${endpt}/_cluster/health?pretty=true"
+curl -XGET "${endpt}/_aliases?pretty=true"
+curl -XGET "${endpt}/_cat/indices?v"
+
