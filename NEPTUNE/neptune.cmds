@@ -4,7 +4,13 @@ https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-gremlin-consol
 add the right iam role to the neptune cluster
 https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-IAM-add-role-cluster.html
 
-loader
+## Overall Status
+curl https:///nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status
+
+-- query status
+curl https:///nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin/status
+
+## Loader
 see loadit script
 
 curl -G https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader
