@@ -4,8 +4,8 @@ date
 aws docdb describe-db-clusters --db-cluster-identifier docdb100 | jq ' .DBClusters[] | .DBClusterMembers '
 aws docdb describe-db-clusters --db-cluster-identifier docdb100 | jq ' .DBClusters[] | .Status '
 ../callmongo <<EQ
-  use test;
-  db.test.count();
+  use ycsb;
+  db.usertable.count();
 EQ
 echo ""
 /home/ec2-user/DBHUB/SCRIPTLIB/sleepit 5
