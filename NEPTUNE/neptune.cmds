@@ -389,11 +389,31 @@ gremlin>
 
 
 ## twitter queries
+# data model:
+# the label is 'User'
+# the field is 'name'
+# the label is 'Tweet'
+# the field is 'text'
+
+g.V().hasLabel('User')
+g.V().hasLabel('Tweet')
+g.E().hasLabel('Follows')
+g.E().hasLabel('Retweets')
+g.E().hasLabel('Likes')
+
+
+
 g.V().has('name', 'Theo Rowe').out('Likes').label()
+g.V().has('name', 'Theo Rowe').in('Follows').values('name')
 g.V().has('name', 'Theo Rowe').out('Retweets', 'Likes')
 g.V().has('name', 'Theo Rowe').out('Retweets', 'Likes').values('text')
 g.V().has('name', 'Theo Rowe').out('Retweets', 'Likes').out().values('name')
 g.V().has('name','Theo Rowe').repeat(out().simplePath()).until(has('name','Angelo Herman')).limit(10).path().by('name')
+
+g.V().has('text', 'Rich gifts wax poor when givers prove unkind.').valueMap()
+g.V().has('text', 'Rich gifts wax poor when givers prove unkind.').out().label()
+
+
 ## when creating the data in excel, make sure it saves to csv and not unicode
 ## routes need to be modeled in both direction - child->parent and parent->child
 

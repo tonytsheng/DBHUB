@@ -1,0 +1,15 @@
+date
+ACTIONIN=$1
+PROFILE=$2
+#RDSACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-instance
+CLUACTION=$(echo "$ACTIONIN" | tr '[:upper:]' '[:lower:]')-db-cluster
+echo ${RDSACTION}
+
+echo "+++ Clusters"
+
+for cluster in `/usr/bin/aws --profile ${PROFILE} neptune describe-db-clusters | jq ' .DBClusters[]  | .DBClusterIdentifier' | sed s/\"//g `
+do
+    echo $cluster
+    /usr/bin/aws --profile ${PROFILE} neptune ${CLUACTION} --db-cluster-identifier $cluster --output text
+done
+
