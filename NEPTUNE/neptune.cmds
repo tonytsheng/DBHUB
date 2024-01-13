@@ -135,6 +135,15 @@ Fetch	aggregate, path, project, properties, store, values, valueMap
 Reduce	count, dedup
 fold/unfold - display as lines or across a single line
 
+g=graph.traversal()
+g.V()
+g.V(1)
+g.V(1).values('name')
+g.V(1).outE('knows')
+g.V(1).outE('knows').inV().values('name')
+g.V(1).out('knows').values('name') --  same as above
+
+
 gremlin> g.V().label().groupCount()
 ==>{continent=7, country=237, version=1, airport=3497}
 gremlin> g.V().has('code', 'ORD').valueMap(true)
