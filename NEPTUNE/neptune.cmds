@@ -137,11 +137,11 @@ fold/unfold - display as lines or across a single line
 
 g=graph.traversal()
 g.V()
-g.V(1)
-g.V(1).values('name')
-g.V(1).outE('knows')
-g.V(1).outE('knows').inV().values('name')
-g.V(1).out('knows').values('name') --  same as above
+g.V('1')
+g.V('1').values('name')
+g.V('1').outE('knows')
+g.V('1').outE('knows').inV().values('name')
+g.V('1').out('knows').values('name') --  same as above
 
 
 gremlin> g.V().label().groupCount()
@@ -422,6 +422,8 @@ g.V().has('name','Theo Rowe').repeat(out().simplePath()).until(has('name','Angel
 g.V().has('text', 'Rich gifts wax poor when givers prove unkind.').valueMap()
 g.V().has('text', 'Rich gifts wax poor when givers prove unkind.').out().label()
 
+
+g.V().has('city','Atlanta').outE()
 
 ## when creating the data in excel, make sure it saves to csv and not unicode
 ## routes need to be modeled in both direction - child->parent and parent->child
