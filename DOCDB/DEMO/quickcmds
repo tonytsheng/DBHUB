@@ -1,0 +1,7 @@
+db.adminCommand({listDatabases:1})
+use ycsb
+db.usertable.count()
+
+use test
+db.test.count()
+
