@@ -11,7 +11,7 @@ from gremlin_python.driver.driver_remote_connection import DriverRemoteConnectio
 #print ("query: " + user_query )
 
 graph = Graph()
-remoteConn = DriverRemoteConnection('wss://nep1002.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin','g')
+remoteConn = DriverRemoteConnection('wss://nep100.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin','g')
 g = graph.traversal().withRemote(remoteConn)
 
 result = g.V().has('code', 'BWI').valueMap(True).next()
