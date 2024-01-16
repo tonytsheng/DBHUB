@@ -27,16 +27,17 @@ remoteConn = DriverRemoteConnection('wss://nep100.cluster-ro-cyt4dgtj55oy.us-eas
 g = graph.traversal().withRemote(remoteConn)
 
 #result = g.V().has('code', 'BWI').valueMap(True).next()
-result = g.V().has('code','BWI').out().path().by('code')
+#result = g.V().has('code','BWI').out().path().by('code')
 
-for r in result:
-    print ('+++ query:' ,  r)
-print ('+++')
+#for r in result:
+#    print ('+++ query:' ,  r)
+#print ('+++')
 
 #result2 = g.addE('route').from('BWI').to('ATL')
 #result2 = g.addE('route').from(_.V('BWI')).to(_.V('ATL'))
-result2 = g.addV('airport').property('name','TEST').property('code','YYY')
-result2 = g.addE('BWI', 'YYY','route')
+#result2 = g.addV('airport').property('name','TEST').property('code','YYY')
+#result2 = g.V().has('code', 'BWI').addE('route').to(V().has('code', 'KVO')).iterate()
+result2  = g.V().has('code', 'BWI').addE('route').to(V().has('code', 'KVO'))
 print (result2)
 
 

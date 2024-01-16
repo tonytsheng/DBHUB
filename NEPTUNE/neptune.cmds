@@ -362,6 +362,9 @@ gremlin> g.V().has('country','US').values('runways').fold()
 gremlin> g.V().has('country','US').values('runways').dedup().fold()
 ==>[3, 2, 1, 4, 5, 6, 7]
 
+# get codes for all vertices
+g.V().values('code').fold()
+
 ## fold vs unfold
 gremlin>  g.V().has('country','US').values('runways').dedup().fold()
 ==>[3, 2, 1, 4, 5, 6, 7]
@@ -426,6 +429,7 @@ g.V().has('text', 'Rich gifts wax poor when givers prove unkind.').out().label()
 g.V().has('city','Atlanta').outE()
 
 # add edge
+g.V().has('code', 'BWI').addE('route').to(V().has('code', 'YYY'))
 g.V().has('code', 'BWI').addE('route').to(V().has('code', 'YYY'))
 # confirm the route
 g.V().has('code','BWI').out().has('code','YYY')
