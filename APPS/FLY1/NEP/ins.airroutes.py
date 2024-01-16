@@ -35,6 +35,7 @@ print ('+++')
 
 #result2 = g.addE('route').from('BWI').to('ATL')
 #result2 = g.addE('route').from(_.V('BWI')).to(_.V('ATL'))
+result2 = g.addV('airport').property('name','TEST').property('code','YYY')
 result2 = g.addE('BWI', 'YYY','route')
 print (result2)
 

@@ -425,6 +425,14 @@ g.V().has('text', 'Rich gifts wax poor when givers prove unkind.').out().label()
 
 g.V().has('city','Atlanta').outE()
 
+# add edge
+g.V().has('code', 'BWI').addE('route').to(V().has('code', 'YYY'))
+# confirm the route
+g.V().has('code','BWI').out().has('code','YYY')
+g.V().has('code','BWI').out().has('code','YYY').valueMap()
+
+
+
 ## when creating the data in excel, make sure it saves to csv and not unicode
 ## routes need to be modeled in both direction - child->parent and parent->child
 
