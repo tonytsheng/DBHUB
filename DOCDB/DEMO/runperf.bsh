@@ -10,4 +10,4 @@ EQ
 
 #exit
 
-${ycsb_dir}/bin/ycsb load mongodb -s -P ${ycsb_dir}/workloads/workloada -p recordcount=3000000 -threads 300 -p mongodb.url="mongodb://docadmin:${PW}@docdb100.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/admin?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
+${ycsb_dir}/bin/ycsb load mongodb -s -P ${ycsb_dir}/workloads/workloada -p recordcount=7000000 -threads 500 -p mongodb.url="mongodb://docadmin:${PW}@docdb100.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com:27017/admin?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
