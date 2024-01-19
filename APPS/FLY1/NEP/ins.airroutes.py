@@ -9,6 +9,7 @@ from gremlin_python.structure.graph import Graph
 from gremlin_python.process.graph_traversal import __
 from gremlin_python.process.strategies import *
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+from random import randint
 
 #user_query = sys.argv[1]
 #print ("query: " + user_query )
@@ -37,14 +38,24 @@ g = graph.traversal().withRemote(remoteConn)
 
 from_id = '6'
 to_id = '1450'
+distance = randint(0,99999)
 #g.V(from_id).addE('route').to(__.V(to_id)).property('distance', 99999).next() -- works
 #g.V().has('code','BWI').addE('route').to(__.V(to_id)).property('distance', 99999).next() -- works
-g.V().has('code','BWI').addE('route').to(__.V().has('code','YYY')).property('distance', 99999).next() 
 
-result = g.V().has('code','BWI').out().has('code','YYY').valueMap()
+# want to do two inserts but one of them is always BWI as departure
+# building the graph
+
+g.V().has('code','BWI').addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
+g.V().has('code',DEP).addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
+
+#result = g.V().has('code','BWI').out().has('code','YYY').valueMap()
+i=0
+result = g.V().has('code','BWI').out().path().by('code')
 for r in result:
-    print ('+++ query:' ,  r)
-print ('+++')
+    i += 1
+#    print (r)
+#    print (i)
+print (i)
 
 remoteConn.close()
 

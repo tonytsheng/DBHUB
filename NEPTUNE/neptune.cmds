@@ -1,10 +1,10 @@
-installing gremlin
+## Installing gremlin
 https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-gremlin-console.html
 
-add the right iam role to the neptune cluster
+-- add the right iam role to the neptune cluster
 https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-IAM-add-role-cluster.html
 
-## Overall Status
+## Status
 curl https:///nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status
 
 -- query status
@@ -122,7 +122,10 @@ curl -G https://nep2001-instance-1.czzdit7hfndz.us-east-2.neptune.amazonaws.com:
             "insertErrors" : 0
         }
     }
-}[ec2-user@ip-172-31-20-159 NEP]$
+}
+
+## when creating the data in excel, make sure it saves to csv and not unicode
+## routes need to be modeled in both direction - child->parent and parent->child
 
 ## call gremlin for interactive query
 /home/ec2-user/rpms/apache-tinkerpop-gremlin-console-3.4.10/bin/gremlin.sh
@@ -191,98 +194,8 @@ gremlin>  g.V().has('code','ORD').out().path().by('code')
 ==>path[ORD, ANC]
 ==>path[ORD, AUS]
 ==>path[ORD, BNA]
-==>path[ORD, BOS]
-==>path[ORD, BWI]
-==>path[ORD, DCA]
-==>path[ORD, DFW]
-==>path[ORD, FLL]
-==>path[ORD, IAD]
-==>path[ORD, IAH]
-==>path[ORD, JFK]
-==>path[ORD, LAX]
-==>path[ORD, LGA]
-==>path[ORD, MCO]
-==>path[ORD, MIA]
-==>path[ORD, MSP]
-==>path[ORD, PBI]
-==>path[ORD, PHX]
-==>path[ORD, RDU]
-==>path[ORD, SEA]
-==>path[ORD, SFO]
-==>path[ORD, SJC]
-==>path[ORD, TPA]
-==>path[ORD, SAN]
-==>path[ORD, SNA]
-==>path[ORD, SLC]
-==>path[ORD, LAS]
-==>path[ORD, DEN]
-==>path[ORD, HPN]
-==>path[ORD, SAT]
-==>path[ORD, MSY]
-==>path[ORD, EWR]
-==>path[ORD, CID]
-==>path[ORD, HNL]
-==>path[ORD, ELP]
-==>path[ORD, SJU]
-==>path[ORD, CLE]
-==>path[ORD, OAK]
-==>path[ORD, TUS]
-==>path[ORD, PHL]
-==>path[ORD, DTW]
-==>path[ORD, YYZ]
-==>path[ORD, YVR]
-==>path[ORD, LHR]
-==>path[ORD, LGW]
-==>path[ORD, CDG]
-==>path[ORD, FRA]
-==>path[ORD, NRT]
-==>path[ORD, DXB]
-==>path[ORD, DEL]
-==>path[ORD, DUB]
-==>path[ORD, HKG]
-==>path[ORD, AKL]
-==>path[ORD, PEK]
-==>path[ORD, PVG]
-==>path[ORD, FCO]
-==>path[ORD, AMS]
-==>path[ORD, BCN]
-==>path[ORD, MAD]
-==>path[ORD, VIE]
-==>path[ORD, ZRH]
-==>path[ORD, YOW]
-==>path[ORD, BRU]
-==>path[ORD, MUC]
-==>path[ORD, RSW]
-==>path[ORD, MAN]
-==>path[ORD, YUL]
-==>path[ORD, YEG]
-==>path[ORD, VCE]
-==>path[ORD, ARN]
-==>path[ORD, YYC]
-==>path[ORD, HND]
-==>path[ORD, DOH]
-==>path[ORD, MXP]
-==>path[ORD, ATH]
-==>path[ORD, BUD]
-==>path[ORD, ICN]
-==>path[ORD, GRU]
-==>path[ORD, MEX]
-==>path[ORD, WAW]
-==>path[ORD, ADD]
-==>path[ORD, PIT]
-==>path[ORD, PWM]
-==>path[ORD, PDX]
-==>path[ORD, OKC]
-==>path[ORD, ONT]
-==>path[ORD, ROC]
-==>path[ORD, RST]
-==>path[ORD, IST]
-==>path[ORD, YHZ]
-==>path[ORD, AUH]
-==>path[ORD, YWG]
-==>path[ORD, CPH]
-==>path[ORD, CLT]
 ...
+
 gremlin> g.V().has('code', 'BWI').valueMap(true)
 ==>{country=[US], code=[BWI], longest=[10502], city=[Baltimore], id=6, lon=[-76.66829681], label=airport, type=[airport], elev=[143], icao=[KBWI], region=[US-MD], runways=[3], lat=[39.17539978], desc=[Baltimore/Washington International Airport]}
 gremlin>  g.V().has('code', 'ORD').valueMap(true).unfold()
@@ -301,8 +214,6 @@ gremlin>  g.V().has('code', 'ORD').valueMap(true).unfold()
 ==>lat=[41.97859955]
 ==>desc=[Chicago O'Hare International Airport]
 gremlin>  g.E().has('code', 'ORD').valueMap(true).unfold()
-
-
 
 SQL - select country,count(country) from airports group by country;
 g.V().hasLabel('airport').groupCount().by('country')
@@ -356,7 +267,7 @@ gremlin> g.V('3').out().limit(5).path().by(values('code','city').fold())
 
 ## how many runways in airports in the US
 gremlin> g.V().has('country','US').values('runways').fold()
-==>[3, 3, 2, 3, 2, 3, 3, 1, 1, 2, 1, 1, 2, 2, 2, 2, 3, 3, 2, 2, 1, 2, 2, 3, 2, 4, 2, 3, 2, 3, 5, 1, 3, 4, 1, 3, 2, 2, 2, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 3, 3, 1, 2, 4, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 1, 1, 3, 1, 4, 2, 2, 2, 2, 4, 2, 3, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 1, 3, 3, 1, 3, 2, 2, 2, 2, 2, 3, 1, 3, 2, 3, 3, 3, 4, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 3, 2, 2, 2, 2, 2, 1, 2, 1, 1, 1, 3, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 2, 3, 4, 3, 6, 3, 4, 2, 1, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 3, 3, 1, 3, 2, 3, 2, 2, 2, 1, 2, 3, 3, 1, 2, 2, 2, 3, 3, 4, 4, 2, 1, 1, 3, 1, 2, 1, 2, 2, 3, 1, 2, 1, 2, 2, 1, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 3, 1, 3, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 3, 2, 2, 4, 2, 2, 1, 2, 3, 2, 2, 2, 2, 3, 1, 2, 3, 4, 1, 2, 2, 1, 2, 1, 1, 2, 2, 1, 1, 2, 1, 1, 2, 2, 1, 1, 1, 1, 1, 2, 1, 2, 4, 3, 2, 2, 2, 2, 3, 1, 3, 4, 3, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 4, 3, 4, 7, 2, 3, 2, 2, 3, 4, 2, 2, 3, 1, 2, 3, 2, 3, 3, 2, 1, 4, 2, 3, 2, 3, 4, 2, 3, 2, 1, 3, 2, 3, 3, 4, 4, 4, 3, 3, 5, 1, 1, 1, 1, 1, 3, 1, 1, 1, 2, 3, 1, 2, 1, 2, 1, 3, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 3, 2, 2, 2, 3, 3, 2, 1, 2, 1, 2, 1, 2, 3, 2, 2, 3, 3, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 3, 2, 2, 3, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 2, 2, 3, 2, 2, 3, 2, 1, 2, 3, 4, 1, 1, 5, 1, 3, 2, 3, 1, 1, 2, 1, 1, 1, 2, 2, 5, 7, 6, 4, 3, 2, 2, 3, 3, 2, 2, 2, 3, 1, 2, 3, 2, 1, 2, 2, 2, 3, 2, 2, 2, 1, 2, 2, 3, 1, 2, 3, 2, 4, 4, 2, 4, 2, 1, 1, 1, 1, 2, 2, 2, 1, 1, 2, 2, 3, 1, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 4, 3, 2, 2, 2, 2, 4, 3, 2, 3, 2, 2, 1, 2, 3, 2, 2, 1, 4, 2, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 2, 2, 3, 1, 1, 1, 2, 2, 2, 1, 2, 3, 2, 4, 3, 1, 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 2, 1, 2, 1, 2, 2, 1, 3, 6, 3, 4, 1, 4, 2, 1, 1, 2, 1, 1, 1, 4, 4, 3, 3, 3, 4, 3]
+==>[3, 3, 2, 3, 2, 3, 3, 1, 1, 2, 1, 1, 2, 2, 2, ..... ]
 
 ## distinct runways in airports in the US - dedup
 gremlin> g.V().has('country','US').values('runways').dedup().fold()
@@ -377,6 +288,75 @@ gremlin>  g.V().has('country','US').values('runways').dedup().unfold()
 ==>6
 ==>7
 
+gremlin> g.E()
+==>e[28c69112-0972-3a2d-5771-81da197c6e0d][6-route->320]
+==>e[12c69114-d831-4b27-b519-3d3812c92203][6-route->34]
+==>e[36c69112-2a1f-1551-c122-79a50ca5b6c1][6-route->255]
+==>e[6cc69115-bb74-e4e5-c191-fd25d89f71b5][6-route->240]
+==>e[22c69115-06d1-c020-9fee-dc3ed33e40c9][6-route->524]
+==>e[68c69111-97c6-68a6-49a8-b4e8a81c60ca][6-route->362]
+==>e[56c69115-cea6-3723-2007-1be625b68747][6-route->1216]
+==>e[1ec69115-7327-bdc8-1829-e1e453f87b85][6-route->881]
+==>e[dcc69112-0647-4740-9767-8c5db8caf10e][6-route->251]
+
+gremlin> g.E('28c69112-0972-3a2d-5771-81da197c6e0d').valueMap()
+==>{distance=99999}
+
+gremlin> g.E().valueMap()
+==>{distance=5212}
+==>{distance=99999}
+==>{distance=2810}
+
+# adding edges - python code - see code in APPS dir
+g.V(from_id).addE('route').to(__.V(to_id)).property('distance', 99999).next() -- works
+g.V().has('code','BWI').addE('route').to(__.V(to_id)).property('distance', 99999).next() -- works
+g.V().has('code','BWI').addE('route').to(__.V().has('code',ARR)).property('distance', 99999).next() -- vertices need to be there
+
+gremlin> g.E().has('distance',99999)
+==>e[28c69112-0972-3a2d-5771-81da197c6e0d][6-route->320]
+==>e[36c69112-2a1f-1551-c122-79a50ca5b6c1][6-route->255]
+==>e[22c69115-06d1-c020-9fee-dc3ed33e40c9][6-route->524]
+==>e[1ec69115-7327-bdc8-1829-e1e453f87b85][6-route->881]
+
+gremlin> g.E().has('distance',99999).valueMap()
+==>{distance=99999}
+==>{distance=99999}
+==>{distance=99999}
+==>{distance=99999}
+
+## from the jupyter notebook
+# how many outgoing routes each airport has where the key is the airport code
+g.V().hasLabel('airport').
+  group().
+    by('code').
+    by(out().count()).
+  order(local).
+    by(values,desc).
+  unfold().
+  limit(20)
+
+# path from BWI to WLG
+g.V().has('airport','code','BWI').
+  repeat(out().simplePath()).
+  until(has('code','WLG')).
+  limit(5).
+  path().
+    by('code')
+
+# BWI to WLG and get distances
+g.V().has('airport','code','BWI').
+  repeat(outE().inV().simplePath()).
+  until(has('code','WLG')).
+  limit(5).
+  path().
+    by('code').
+    by('distance')
+
+# selection on routes from the graph
+# displays a graph in the notebook
+g.V().outE().inV().path().by('code').by().limit(200)
+
+## Experimenting with other graphs
 gremlin> g.V().has('lname','sheng').out().path().by('fname')
 ==>path[deanna, tony]
 ==>path[deanna, katie]
@@ -428,17 +408,11 @@ g.V().has('text', 'Rich gifts wax poor when givers prove unkind.').out().label()
 
 g.V().has('city','Atlanta').outE()
 
-# add edge
-g.V().has('code', 'BWI').addE('route').to(V().has('code', 'YYY'))
-g.V().has('code', 'BWI').addE('route').to(V().has('code', 'YYY'))
-# confirm the route
-g.V().has('code','BWI').out().has('code','YYY')
-g.V().has('code','BWI').out().has('code','YYY').valueMap()
 
 
+# drop all edges
+g.E().drop()
 
-## when creating the data in excel, make sure it saves to csv and not unicode
-## routes need to be modeled in both direction - child->parent and parent->child
 
 # initiate reset
 curl -X POST -H 'Content-Type: application/json' https://nep100-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/system -d '{ "action" : "initiateDatabaseReset" }'
