@@ -24,7 +24,7 @@ print (DEP)
 print (ARR)
 
 graph = Graph()
-remoteConn = DriverRemoteConnection('wss://nep100.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin','g')
+remoteConn = DriverRemoteConnection('wss://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin','g')
 g = graph.traversal().withRemote(remoteConn)
 
 #result = g.V().has('code', 'BWI').valueMap(True).next()

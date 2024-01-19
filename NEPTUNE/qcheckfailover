@@ -1,0 +1,8 @@
+while true
+do
+date
+aws neptune describe-db-clusters --db-cluster-identifier nep100 | jq ' .DBClusters[] | .DBClusterMembers '
+aws neptune describe-db-clusters --db-cluster-identifier nep100 | jq ' .DBClusters[] | .Status '
+/home/ec2-user/DBHUB/SCRIPTLIB/sleepit 5
+done
+
