@@ -29,17 +29,22 @@ g = graph.traversal().withRemote(remoteConn)
 #result = g.V().has('code', 'BWI').valueMap(True).next()
 #result = g.V().has('code','BWI').out().path().by('code')
 
-#for r in result:
-#    print ('+++ query:' ,  r)
-#print ('+++')
-
 #result2 = g.addE('route').from('BWI').to('ATL')
 #result2 = g.addE('route').from(_.V('BWI')).to(_.V('ATL'))
 #result2 = g.addV('airport').property('name','TEST').property('code','YYY')
-#result2 = g.V().has('code', 'BWI').addE('route').to(V().has('code', 'KVO')).iterate()
-result2  = g.V().has('code', 'BWI').addE('route').to(V().has('code', 'KVO'))
-print (result2)
+#result2 = g.V().has('code', 'BWI').addE('route').to(V().has('code', 'YYY')).iterate()
+#print (result2)
 
+from_id = '6'
+to_id = '1450'
+#g.V(from_id).addE('route').to(__.V(to_id)).property('distance', 99999).next() -- works
+#g.V().has('code','BWI').addE('route').to(__.V(to_id)).property('distance', 99999).next() -- works
+g.V().has('code','BWI').addE('route').to(__.V().has('code','YYY')).property('distance', 99999).next() 
+
+result = g.V().has('code','BWI').out().has('code','YYY').valueMap()
+for r in result:
+    print ('+++ query:' ,  r)
+print ('+++')
 
 remoteConn.close()
 
