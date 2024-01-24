@@ -11,3 +11,4 @@ DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
 
 aws rds create-db-instance --db-name ttsora99 --db-instance-identifier ttsora99 --engine oracle-ee --master-username admin --master-user-password Pass1234 --db-instance-class db.m5.large --allocated-storage 20 --profile dba --db-subnet-group-name "default-vpc-0dc155aace16a70a7" --availability-zone us-east-2a
 
+aws rds delete-db-instance --db-instance-identifier ttsora99a --profile dba --skip-final-snapshot
