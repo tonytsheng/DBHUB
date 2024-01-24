@@ -1,0 +1,2107 @@
+2024-01-24T15:05:14.241595+00:00
+Starting ORACLE instance (normal) (OS id: 3979)
+2024-01-24T15:05:14.251274+00:00
+****************************************************
+ Sys-V shared memory will be used for creating SGA 
+ ****************************************************
+2024-01-24T15:05:14.259828+00:00
+**********************************************************************
+2024-01-24T15:05:14.259866+00:00
+Dump of system resources acquired for SHARED GLOBAL AREA (SGA) 
+
+2024-01-24T15:05:14.259934+00:00
+ Per process system memlock (soft) limit = 31G
+2024-01-24T15:05:14.259966+00:00
+ Expected per process system memlock (soft) limit to lock
+ instance MAX SHARED GLOBAL AREA (SGA) into memory: 23G
+2024-01-24T15:05:14.260029+00:00
+ Available system pagesizes:
+  4K, 2048K 
+2024-01-24T15:05:14.260089+00:00
+ Supported system pagesize(s):
+2024-01-24T15:05:14.260121+00:00
+  PAGESIZE  AVAILABLE_PAGES  EXPECTED_PAGES  ALLOCATED_PAGES  ERROR(s)
+2024-01-24T15:05:14.260194+00:00
+     2048K            11842           11842            11842        NONE
+2024-01-24T15:05:14.260226+00:00
+ Reason for not supporting certain system pagesizes: 
+2024-01-24T15:05:14.260258+00:00
+  4K - Large pagesizes only
+2024-01-24T15:05:14.260305+00:00
+**********************************************************************
+2024-01-24T15:05:17.821094+00:00
+PGA_AGGREGATE_TARGET specified is high
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_ora_3979.trc  (incident=1):
+ORA-00700: soft internal error, arguments: [pga physmem limit], [4129991680], [2547202048], [], [], [], [], [], [], [], [], []
+Incident details in: /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/incident/incdir_1/TTSORA99_ora_3979_i1.trc
+LICENSE_MAX_SESSION = 0
+LICENSE_SESSIONS_WARNING = 0
+2024-01-24T15:05:19.947662+00:00
+Initial number of CPU is 4
+Number of processor cores in the system is 2
+Number of processor sockets in the system is 1
+Shared memory segment for instance monitoring created
+Capability Type : Network 
+capabilities requested : 7 detected : 0 Simulated : 0
+Capability Type : Runtime Environment 
+capabilities requested : 400000FF detected : 40000000 Simulated : 0
+Capability Type : Engineered Systems 
+capabilities requested : F detected : 0 Simulated : 0
+Capability Type : Database Test 
+capabilities requested : 3 detected : 0 Simulated : 0
+Capability Type : Database Editions 
+capabilities requested : 1CC detected : 8 Simulated : 0
+.... (PID:): Enable RFS client [kcrlc.c:604]
+Autotune of undo retention is turned on. 
+IMODE=BR
+ILAT =554
+LICENSE_MAX_USERS = 0
+SYS auditing is enabled
+NOTE: remote asm mode is local (mode 0x1; from cluster type)
+2024-01-24T15:05:21.131769+00:00
+NOTE: Using default ASM root directory ASM
+NOTE: remote asm mode is local (mode 0x1; from cluster type)
+NOTE: Cluster configuration type = NONE [2]
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.21.0.0.0.
+ORACLE_HOME:    /rdsdbbin/oracle
+System name:	Linux
+Node name:	ip-172-31-0-140
+Release:	4.1.12-124.81.2.el7uek.x86_64
+Version:	#2 SMP Tue Dec 5 16:19:14 PST 2023
+Machine:	x86_64
+Using parameter settings in server-side spfile /rdsdbbin/oracle/dbs/spfileTTSORA99.ora
+WARNING: there are one or more recursive spfile references which should be removed from /rdsdbbin/oracle/dbs/spfileTTSORA99.ora
+System parameters with non-default values:
+  processes                = 3347
+  use_large_pages          = "ONLY"
+  spfile                   = "/rdsdbbin/oracle/dbs/spfileTTSORA99.ora"
+  filesystemio_options     = "setall"
+  max_idle_blocker_time    = 0
+  sga_target               = 23680M
+  memory_target            = 0
+  control_files            = "/rdsdbdata/db/TTSORA99_B/controlfile/control-01.ctl"
+  log_file_name_convert    = "x"
+  log_file_name_convert    = "x"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc1.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc2.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc3.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc4.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc5.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc6.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc7.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc8.dbf"
+  db_flash_cache_size      = 0, 0, 0, 0, 0, 0, 0, 0
+  compatible               = "19.0.0"
+  log_archive_dest_1       = "location="/rdsdbdata/db/TTSORA99_B/arch/redolog", valid_for=(ALL_LOGFILES,ALL_ROLES)"
+  log_archive_min_succeed_dest= 1
+  log_archive_trace        = 0
+  log_archive_format       = "-%s-%t-%r.arc"
+  redo_transport_user      = "RDS_DATAGUARD"
+  log_archive_max_processes= 4
+  archive_lag_target       = 300
+  db_create_file_dest      = "/rdsdbdata/db"
+  db_recovery_file_dest_size= 1G
+  standby_file_management  = "AUTO"
+  undo_tablespace          = "UNDO_T1"
+  heat_map                 = "OFF"
+  db_block_checking        = "MEDIUM"
+  recyclebin               = "OFF"
+  DBFIPS_140               = FALSE
+  local_listener           = "(ADDRESS = (PROTOCOL = TCP)(PORT = 1521)(HOST = 10.1.2.202))"
+  local_listener           = "(ADDRESS = (PROTOCOL = TCP)(PORT = 1137)(HOST = 172.31.0.140))"
+  job_queue_processes      = 50
+  _kolfuseslf              = TRUE
+  audit_file_dest          = "/rdsdbdata/admin/TTSORA99/adump"
+  db_name                  = "TTSORA99"
+  db_unique_name           = "TTSORA99_B"
+  open_cursors             = 300
+  pga_aggregate_target     = 4033195K
+  max_string_size          = "STANDARD"
+  _disable_directory_link_check= TRUE
+  dg_broker_start          = TRUE
+  dg_broker_config_file1   = "/rdsdbdata/config/dr1TTSORA99.dat"
+  dg_broker_config_file2   = "/rdsdbdata/config/dr2TTSORA99.dat"
+  diagnostic_dest          = "/rdsdbdata/log"
+  enable_pluggable_database= FALSE
+2024-01-24T15:05:21.664528+00:00
+============================================================
+NOTE: PatchLevel of this instance 0
+============================================================
+2024-01-24T15:05:22.617181+00:00
+Starting background process PMON
+2024-01-24T15:05:25.718412+00:00
+PMON started with pid=2, OS id=4167 
+2024-01-24T15:05:25.719371+00:00
+Starting background process CLMN
+2024-01-24T15:05:25.730446+00:00
+CLMN started with pid=3, OS id=4175 
+Starting background process PSP0
+2024-01-24T15:05:25.741904+00:00
+PSP0 started with pid=4, OS id=4179 
+Starting background process VKTM
+2024-01-24T15:05:26.776892+00:00
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_vktm_4184.trc  (incident=42):
+ORA-00800: soft external error, arguments: [Set Priority Failed], [VKTM], [Check traces and OS configuration], [Check Oracle document and MOS notes], []
+Incident details in: /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/incident/incdir_42/TTSORA99_vktm_4184_i42.trc
+2024-01-24T15:05:26.777895+00:00
+Error attempting to elevate VKTM's priority: no further priority changes will be attempted for this process
+VKTM started with pid=5, OS id=4184 
+2024-01-24T15:05:26.797868+00:00
+Starting background process GEN0
+VKTM running at (100ms) precision 
+2024-01-24T15:05:26.810249+00:00
+GEN0 started with pid=6, OS id=4190 
+Starting background process MMAN
+2024-01-24T15:05:26.821452+00:00
+MMAN started with pid=7, OS id=4194 
+Starting background process GEN1
+2024-01-24T15:05:26.936987+00:00
+GEN1 started with pid=9, OS id=4200_4201 
+Starting background process DIAG
+2024-01-24T15:05:26.946623+00:00
+DIAG started with pid=11, OS id=4203 
+Starting background process OFSD
+2024-01-24T15:05:26.947695+00:00
+Dumping diagnostic data in directory=[cdmp_20240124150526], requested by (instance=1, osid=3979), summary=[incident=1].
+2024-01-24T15:05:26.962671+00:00
+OFSD started with pid=12, OS id=4205_4206 
+Starting background process DBRM
+2024-01-24T15:05:26.963269+00:00
+Oracle running with ofslib:'Oracle File Server Library' version=2 inc=1
+Starting background process VKRM
+2024-01-24T15:05:26.981998+00:00
+DBRM started with pid=14, OS id=4208 
+2024-01-24T15:05:26.991169+00:00
+VKRM started with pid=15, OS id=4212 
+Starting background process SVCB
+2024-01-24T15:05:27.002144+00:00
+SVCB started with pid=16, OS id=4214 
+Starting background process PMAN
+2024-01-24T15:05:27.015688+00:00
+PMAN started with pid=17, OS id=4216 
+Starting background process DIA0
+2024-01-24T15:05:27.025879+00:00
+DIA0 started with pid=18, OS id=4220 
+Starting background process DBW0
+2024-01-24T15:05:27.051797+00:00
+DBW0 started with pid=19, OS id=4222 
+Starting background process LGWR
+2024-01-24T15:05:27.062588+00:00
+LGWR started with pid=20, OS id=4226 
+Starting background process CKPT
+2024-01-24T15:05:27.073952+00:00
+CKPT started with pid=21, OS id=4230 
+Starting background process SMON
+2024-01-24T15:05:27.084353+00:00
+LGWR slave LG00 created with pid=22, OS pid=4234
+2024-01-24T15:05:27.096556+00:00
+SMON started with pid=23, OS id=4236 
+LGWR slave LG01 created with pid=24, OS pid=4240
+Starting background process SMCO
+2024-01-24T15:05:27.116619+00:00
+SMCO started with pid=25, OS id=4242 
+Starting background process RECO
+2024-01-24T15:05:27.132961+00:00
+RECO started with pid=26, OS id=4244 
+Starting background process LREG
+2024-01-24T15:05:27.153880+00:00
+LREG started with pid=28, OS id=4248 
+Starting background process PXMN
+2024-01-24T15:05:27.179201+00:00
+PXMN started with pid=30, OS id=4254 
+Starting background process DMON
+2024-01-24T15:05:27.192998+00:00
+DMON started with pid=31, OS id=4256 
+Starting background process FENC
+2024-01-24T15:05:27.203515+00:00
+FENC started with pid=32, OS id=4258 
+Starting background process MMON
+Starting background process MMNL
+2024-01-24T15:05:27.219599+00:00
+MMON started with pid=33, OS id=4262 
+2024-01-24T15:05:27.228564+00:00
+MMNL started with pid=34, OS id=4264 
+Starting background process TMON
+2024-01-24T15:05:27.237776+00:00
+TMON started with pid=35, OS id=4266 
+ORACLE_BASE from environment = /rdsdbbin
+2024-01-24T15:05:27.244997+00:00
+Spfile /rdsdbbin/oracle/dbs/spfileTTSORA99.ora is in old pre-11 format and compatible >= 11.0.0; converting to new H.A.R.D. compliant format.
+2024-01-24T15:05:27.352419+00:00
+ALTER DATABASE   MOUNT
+2024-01-24T15:05:30.025746+00:00
+PGA_AGGREGATE_LIMIT specified is high
+2024-01-24T15:05:30.025937+00:00
+WARNING: pga_aggregate_limit value is too high for the
+amount of physical memory on the system
+  PGA_AGGREGATE_LIMIT is 10041 MB
+  PGA_AGGREGATE_TARGET is 3938 MB.
+  physical memory size is 31709 MB
+  limit based on physical memory and SGA usage is 4858 MB
+  SGA_TARGET is 23680 MB
+Using default pga_aggregate_limit of 10041 MB
+2024-01-24T15:05:31.378084+00:00
+Changing di2dbun from TTSORA99_A to TTSORA99_B
+.... (PID:4267): Redo network throttle feature is disabled at mount time
+2024-01-24T15:05:31.419868+00:00
+Successful mount of redo thread 1, with mount id 346021367
+2024-01-24T15:05:31.421907+00:00
+Database mounted in Exclusive Mode
+Lost write protection disabled
+.... (PID:4267): Using STANDBY_ARCHIVE_DEST parameter default value as /rdsdbdata/db/TTSORA99_B/arch/redolog [krsd.c:18326]
+Create Relation IPS_PACKAGE_UNPACK_HISTORY
+Completed: ALTER DATABASE   MOUNT
+2024-01-24T15:05:31.964023+00:00
+alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_system_lm5f6owg_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_system_lm5f6owg_.dbf'
+2024-01-24T15:05:32.034715+00:00
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/datafile/o1_mf_system_lm5f6owg_.dbf
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_system_lm5f6owg_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_system_lm5f6owg_.dbf'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_sysaux_lm5f6qsl_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_sysaux_lm5f6qsl_.dbf'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/datafile/o1_mf_sysaux_lm5f6qsl_.dbf
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_sysaux_lm5f6qsl_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_sysaux_lm5f6qsl_.dbf'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_undo_t1_lm5f6rgd_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_undo_t1_lm5f6rgd_.dbf'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/datafile/o1_mf_undo_t1_lm5f6rgd_.dbf
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_undo_t1_lm5f6rgd_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_undo_t1_lm5f6rgd_.dbf'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_users_lm5f6rog_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_users_lm5f6rog_.dbf'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/datafile/o1_mf_users_lm5f6rog_.dbf
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_users_lm5f6rog_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_users_lm5f6rog_.dbf'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_rdsadmin_lm5gm2q7_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_rdsadmin_lm5gm2q7_.dbf'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/datafile/o1_mf_rdsadmin_lm5gm2q7_.dbf
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_rdsadmin_lm5gm2q7_.dbf' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_rdsadmin_lm5gm2q7_.dbf'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_temp_lv28o02s_.tmp' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_temp_lv28o02s_.tmp'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/datafile/o1_mf_temp_lv28o02s_.tmp
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/datafile/o1_mf_temp_lv28o02s_.tmp' to '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_temp_lv28o02s_.tmp'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_4_lv28r0ov_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_4_lv28r0ov_.log'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_4_lv28r0ov_.log
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_4_lv28r0ov_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_4_lv28r0ov_.log'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_3_lv28qzoy_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_3_lv28qzoy_.log'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_3_lv28qzoy_.log
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_3_lv28qzoy_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_3_lv28qzoy_.log'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_2_lv28qz4o_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_2_lv28qz4o_.log'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_2_lv28qz4o_.log
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_2_lv28qz4o_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_2_lv28qz4o_.log'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_1_lv28qynt_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_1_lv28qynt_.log'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_1_lv28qynt_.log
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_1_lv28qynt_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_1_lv28qynt_.log'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_5_lv29hopy_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_5_lv29hopy_.log'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_5_lv29hopy_.log
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_5_lv29hopy_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_5_lv29hopy_.log'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_6_lv29hpft_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_6_lv29hpft_.log'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_6_lv29hpft_.log
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_6_lv29hpft_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_6_lv29hpft_.log'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_7_lv29hq2v_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_7_lv29hq2v_.log'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_7_lv29hq2v_.log
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_7_lv29hq2v_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_7_lv29hq2v_.log'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_8_lv29hqvo_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_8_lv29hqvo_.log'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_8_lv29hqvo_.log
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_8_lv29hqvo_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_8_lv29hqvo_.log'
+alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_9_lv29hrvw_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_9_lv29hrvw_.log'
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_9_lv29hrvw_.log
+Completed: alter database rename file '/rdsdbdata/db/TTSORA99_A/onlinelog/o1_mf_9_lv29hrvw_.log' to '/rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_9_lv29hrvw_.log'
+2024-01-24T15:05:35.192881+00:00
+Starting Data Guard Broker (DMON)
+Starting background process INSV
+2024-01-24T15:05:35.203140+00:00
+INSV started with pid=8, OS id=4323 
+2024-01-24T15:06:00.243794+00:00
+TMON (PID:4266): STARTING ARCH PROCESSES
+Starting background process ARC0
+2024-01-24T15:06:00.253109+00:00
+ARC0 started with pid=32, OS id=5451 
+Starting background process ARC1
+Starting background process ARC2
+2024-01-24T15:06:00.262680+00:00
+ARC1 started with pid=37, OS id=5453 
+2024-01-24T15:06:00.271937+00:00
+ARC2 started with pid=38, OS id=5455 
+Starting background process ARC3
+2024-01-24T15:06:00.280424+00:00
+ARC3 started with pid=39, OS id=5457 
+TMON (PID:4266): ARC0: Archival started
+TMON (PID:4266): ARC1: Archival started
+TMON (PID:4266): ARC2: Archival started
+2024-01-24T15:06:00.280713+00:00
+ARC2 (PID:5455): Becoming a 'no FAL' ARCH
+ARC2 (PID:5455): Becoming the 'no SRL' ARCH
+2024-01-24T15:06:00.290789+00:00
+TMON (PID:4266): ARC3: Archival started
+TMON (PID:4266): STARTING ARCH PROCESSES COMPLETE
+2024-01-24T15:06:00.299986+00:00
+TT00 (PID:5459): Gap Manager starting
+2024-01-24T15:06:58.680664+00:00
+alter database disable block change tracking
+2024-01-24T15:06:58.820902+00:00
+Disable change tracking error 19759
+Stopping change tracking
+ORA-19759 signalled during: alter database disable block change tracking...
+2024-01-24T15:06:59.045375+00:00
+alter database clear logfile group 1
+Clearing online log 1 of thread 1 sequence number 5
+Completed: alter database clear logfile group 1
+2024-01-24T15:07:00.088475+00:00
+alter database clear logfile group 4
+Clearing online log 4 of thread 1 sequence number 4
+2024-01-24T15:07:01.122505+00:00
+Completed: alter database clear logfile group 4
+2024-01-24T15:07:01.224297+00:00
+alter database clear logfile group 3
+Clearing online log 3 of thread 1 sequence number 3
+Completed: alter database clear logfile group 3
+2024-01-24T15:07:03.116474+00:00
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE CANCEL
+ORA-1665 signalled during: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE CANCEL...
+2024-01-24T15:07:03.446606+00:00
+Warning: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE has been deprecated.
+Warning: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE has been deprecated.
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE DISCONNECT FROM SESSION
+ORA-1665 signalled during: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE DISCONNECT FROM SESSION...
+2024-01-24T15:07:03.763392+00:00
+ALTER SYSTEM SET local_listener='(ADDRESS = (PROTOCOL = TCP)(HOST = 10.1.2.202)(PORT = 1521))','(ADDRESS = (PROTOCOL = TCP)(HOST = 172.31.0.140)(PORT = 1137))' SCOPE=BOTH;
+2024-01-24T15:07:05.502935+00:00
+Completed: Data Guard Broker shutdown
+2024-01-24T15:07:06.512755+00:00
+ALTER SYSTEM SET dg_broker_start=FALSE SCOPE=BOTH;
+2024-01-24T15:07:06.627493+00:00
+Starting background process DMON
+2024-01-24T15:07:06.634644+00:00
+ALTER SYSTEM SET dg_broker_start=TRUE SCOPE=BOTH;
+2024-01-24T15:07:06.640490+00:00
+DMON started with pid=31, OS id=7108 
+2024-01-24T15:07:09.640912+00:00
+Starting Data Guard Broker (DMON)
+Starting background process INSV
+2024-01-24T15:07:09.650886+00:00
+INSV started with pid=42, OS id=7168 
+2024-01-24T15:07:14.234800+00:00
+ALTER DATABASE CONVERT TO PHYSICAL STANDBY
+2024-01-24T15:07:14.234863+00:00
+ALTER DATABASE CONVERT TO PHYSICAL STANDBY (TTSORA99)
+2024-01-24T15:07:14.327304+00:00
+Clearing standby activation ID 345978810 (0x149f37ba)
+The primary database controlfile was created using the
+'MAXLOGFILES 16' clause.
+There is space for up to 12 standby redo logfiles
+Use the following SQL commands on the standby database to create
+standby redo logfiles that match the primary database:
+ALTER DATABASE ADD STANDBY LOGFILE 'srl1.f' SIZE 134217728;
+ALTER DATABASE ADD STANDBY LOGFILE 'srl2.f' SIZE 134217728;
+ALTER DATABASE ADD STANDBY LOGFILE 'srl3.f' SIZE 134217728;
+ALTER DATABASE ADD STANDBY LOGFILE 'srl4.f' SIZE 134217728;
+ALTER DATABASE ADD STANDBY LOGFILE 'srl5.f' SIZE 134217728;
+.... (PID:7184): Database role changed from PRIMARY to PHYSICAL STANDBY [kcvs.c:8978]
+.... (PID:7184): RT: Role transition work is not done
+**********************************************************************
+WARNING: The LOG_ARCHIVE_CONFIG parameter has NOT been defined but
+remote Data Guard destinations have been configured.  Oracle strongly
+recommends that this parameter is set when using Data Guard as
+described in the Data Guard manuals.
+**********************************************************************
+.... (PID:7184): Redo network throttle feature is disabled at mount time
+Physical Standby Database mounted.
+2024-01-24T15:07:14.406308+00:00
+In-memory operation on ADG is currently only supported on Engineered systems and PaaS.
+inmemory_adg_enabled is turned off automatically.
+Please contact our support team for EXADATA solutions
+CONVERT TO PHYSICAL STANDBY: Complete - Database mounted as physical standby
+Completed: ALTER DATABASE CONVERT TO PHYSICAL STANDBY
+2024-01-24T15:07:14.725917+00:00
+Warning: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE has been deprecated.
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE DISCONNECT FROM SESSION
+2024-01-24T15:07:14.735667+00:00
+Attempt to start background Managed Standby Recovery process (TTSORA99)
+Starting background process MRP0
+2024-01-24T15:07:14.744518+00:00
+MRP0 started with pid=43, OS id=7198 
+2024-01-24T15:07:14.745251+00:00
+Background Managed Standby Recovery process started (TTSORA99)
+2024-01-24T15:07:19.850865+00:00
+ Started logmerger process
+2024-01-24T15:07:19.861770+00:00
+PR00 (PID:7204): Managed Standby Recovery starting Real Time Apply
+2024-01-24T15:07:19.937010+00:00
+Parallel Media Recovery started with 4 slaves
+2024-01-24T15:07:19.955235+00:00
+Stopping change tracking
+2024-01-24T15:07:19.979774+00:00
+TT02 (PID:7215): Waiting for all non-current ORLs to be archived
+2024-01-24T15:07:19.979855+00:00
+TT02 (PID:7215): All non-current ORLs have been archived
+TT02 (PID:7215): Clearing ORL LNO:2 /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_2_lv28qz4o_.log
+Clearing online log 2 of thread 1 sequence number 6
+2024-01-24T15:07:20.058992+00:00
+PR00 (PID:7204): Media Recovery Waiting for T-1.S-6
+PR00 (PID:7204): FAL: Error fetching gap sequence, no FAL server specified
+2024-01-24T15:07:20.750838+00:00
+Completed: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE DISCONNECT FROM SESSION
+2024-01-24T15:07:21.043814+00:00
+TT02 (PID:7215): Clearing ORL LNO:2 complete
+2024-01-24T15:07:22.065846+00:00
+TT02 (PID:7215): Waiting for all non-current ORLs to be archived
+2024-01-24T15:07:22.065951+00:00
+TT02 (PID:7215): All non-current ORLs have been archived
+2024-01-24T15:07:27.440023+00:00
+Data Guard Broker executes SQL [alter system set log_archive_config='dg_config=(TTSORA99_B)']
+DMON (PID:7108): Enable RFS client [krsr.c:18129]
+2024-01-24T15:07:27.450814+00:00
+ALTER SYSTEM SET log_archive_config='dg_config=(TTSORA99_B)' SCOPE=BOTH;
+Data Guard Broker executes SQL [alter system set log_archive_config='dg_config=(TTSORA99_B,TTSORA99_A)']
+2024-01-24T15:07:27.468348+00:00
+ALTER SYSTEM SET log_archive_config='dg_config=(TTSORA99_B,TTSORA99_A)' SCOPE=BOTH;
+Starting background process NSV0
+2024-01-24T15:07:27.477541+00:00
+NSV0 started with pid=8, OS id=7325 
+2024-01-24T15:07:31.477182+00:00
+Starting background process RSM0
+2024-01-24T15:07:31.486265+00:00
+RSM0 started with pid=50, OS id=7331 
+2024-01-24T15:07:35.566069+00:00
+ALTER SYSTEM SET fal_server='ttsora99_a' SCOPE=BOTH;
+2024-01-24T15:07:35.630460+00:00
+ rfs (PID:7413): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is Foreground (PID:8100)
+2024-01-24T15:07:35.638419+00:00
+ rfs (PID:7415): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is ASYNC (PID:17074)
+2024-01-24T15:07:35.643010+00:00
+ rfs (PID:7413): Disable RFS client [kcrlc.c:1526]
+2024-01-24T15:07:35.645614+00:00
+ rfs (PID:7415): Primary database is in MAXIMUM PERFORMANCE mode
+2024-01-24T15:07:35.698004+00:00
+ rfs (PID:7415): Selected LNO:5 for T-1.S-8 dbid 345978021 branch 1159109247
+2024-01-24T15:07:35.771790+00:00
+ rfs (PID:7422): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is FAL (PID:8108)
+2024-01-24T15:07:35.771886+00:00
+ rfs (PID:7424): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is FAL (PID:8106)
+2024-01-24T15:07:35.794109+00:00
+ rfs (PID:7422): Opened log for T-1.S-7 dbid 345978021 branch 1159109247
+2024-01-24T15:07:35.800189+00:00
+ rfs (PID:7424): Opened log for T-1.S-6 dbid 345978021 branch 1159109247
+2024-01-24T15:07:35.818619+00:00
+ rfs (PID:7422): Archived Log entry 5 added for B-1159109247.T-1.S-7 ID 0x149f37ba LAD:1
+2024-01-24T15:07:35.826633+00:00
+ rfs (PID:7424): Archived Log entry 6 added for B-1159109247.T-1.S-6 ID 0x149f37ba LAD:1
+2024-01-24T15:07:36.179976+00:00
+PR00 (PID:7204): Media Recovery Log /rdsdbdata/db/TTSORA99_B/arch/redolog-6-1-1159109247.arc
+2024-01-24T15:07:36.430991+00:00
+PR00 (PID:7204): Media Recovery Log /rdsdbdata/db/TTSORA99_B/arch/redolog-7-1-1159109247.arc
+PR00 (PID:7204): Media Recovery Waiting for T-1.S-8 (in transit)
+2024-01-24T15:07:36.619778+00:00
+Recovery of Online Redo Log: Thread 1 Group 5 Seq 8 Reading mem 0
+  Mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_5_lv29hopy_.log
+2024-01-24T15:07:37.479715+00:00
+ARC2 (PID:5455): Archived Log entry 7 added for T-1.S-8 ID 0x149f37ba LAD:1
+2024-01-24T15:07:37.512403+00:00
+ rfs (PID:7482): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is ASYNC (PID:17072)
+ rfs (PID:7482): Primary database is in MAXIMUM PERFORMANCE mode
+2024-01-24T15:07:37.528511+00:00
+PR00 (PID:7204): Media Recovery Waiting for T-1.S-9
+2024-01-24T15:07:37.548700+00:00
+ rfs (PID:7482): Selected LNO:5 for T-1.S-9 dbid 345978021 branch 1159109247
+2024-01-24T15:07:38.544547+00:00
+Recovery of Online Redo Log: Thread 1 Group 5 Seq 9 Reading mem 0
+  Mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_5_lv29hopy_.log
+2024-01-24T15:07:38.981234+00:00
+ALTER SYSTEM SET fal_server='ttsora99_a' SCOPE=BOTH;
+2024-01-24T15:07:55.322970+00:00
+ALTER SYSTEM SET fal_server='ttsora99_a' SCOPE=BOTH;
+2024-01-24T15:08:11.687801+00:00
+ALTER SYSTEM SET fal_server='ttsora99_a' SCOPE=BOTH;
+2024-01-24T15:08:28.026120+00:00
+ALTER SYSTEM SET fal_server='ttsora99_a' SCOPE=BOTH;
+2024-01-24T15:08:48.081632+00:00
+ALTER SYSTEM SET job_queue_processes=0 SCOPE=MEMORY;
+2024-01-24T15:08:48.186390+00:00
+ALTER SYSTEM SET aq_tm_processes=0 SCOPE=MEMORY;
+2024-01-24T15:08:48.186892+00:00
+ALTER SYSTEM SET aq_tm_processes=0 SCOPE=MEMORY;
+Shutting down ORACLE instance (immediate) (OS id: 8103)
+2024-01-24T15:08:48.196279+00:00
+Shutdown is initiated by sqlplus@ip-172-31-0-140 (TNS V1-V3).
+2024-01-24T15:08:50.965885+00:00
+Stopping background process SMCO
+2024-01-24T15:08:50.966072+00:00
+Process termination requested for pid 4214 [source = rdbms], [info = 2] [request issued by pid: 8103, uid: 3001]
+Shutting down instance: further logons disabled
+Stopping background process MMNL
+Stopping background process MMON
+2024-01-24T15:08:52.115912+00:00
+PR00 (PID:7204): MRP0: Background Media Recovery cancelled with status 16037
+2024-01-24T15:08:52.116807+00:00
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_pr00_7204.trc:
+ORA-16037: user requested cancel of managed recovery operation
+PR00 (PID:7204): Managed Standby Recovery not using Real Time Apply
+Recovery interrupted!
+Recovered data files to a consistent state at change 478569
+Stopping change tracking
+2024-01-24T15:08:52.309391+00:00
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_pr00_7204.trc:
+ORA-16037: user requested cancel of managed recovery operation
+2024-01-24T15:08:52.430957+00:00
+Background Media Recovery process shutdown (TTSORA99)
+2024-01-24T15:08:53.117114+00:00
+License high water mark = 12
+2024-01-24T15:08:54.117783+00:00
+
+Data Pump shutdown on PDB: 0 in progress
+2024-01-24T15:08:54.118638+00:00
+Process termination requested for pid 7482 [source = rdbms], [info = 2] [request issued by pid: 8103, uid: 3001]
+2024-01-24T15:08:54.118680+00:00
+Process termination requested for pid 7424 [source = rdbms], [info = 2] [request issued by pid: 8103, uid: 3001]
+2024-01-24T15:08:54.118732+00:00
+Process termination requested for pid 7422 [source = rdbms], [info = 2] [request issued by pid: 8103, uid: 3001]
+2024-01-24T15:08:54.118821+00:00
+Process termination requested for pid 7413 [source = rdbms], [info = 2] [request issued by pid: 8103, uid: 3001]
+2024-01-24T15:08:54.119168+00:00
+Process termination requested for pid 7381 [source = rdbms], [info = 2] [request issued by pid: 8103, uid: 3001]
+2024-01-24T15:08:56.118569+00:00
+ALTER DATABASE CLOSE NORMAL
+2024-01-24T15:08:56.121424+00:00
+Stopping Emon pool
+ORA-1109 signalled during: ALTER DATABASE CLOSE NORMAL...
+ALTER DATABASE DISMOUNT
+Shutting down archive processes
+2024-01-24T15:08:56.122384+00:00
+TT00 (PID:5459): Gap Manager exiting
+Archiving is disabled
+2024-01-24T15:08:56.222663+00:00
+ARC3 (PID:5457): ARCH shutting down
+2024-01-24T15:08:56.222710+00:00
+ARC1 (PID:5453): ARCH shutting down
+2024-01-24T15:08:56.222720+00:00
+ARC3 (PID:5457): Archival stopped
+2024-01-24T15:08:56.222755+00:00
+ARC0 (PID:5451): ARCH shutting down
+2024-01-24T15:08:56.222767+00:00
+ARC1 (PID:5453): Archival stopped
+2024-01-24T15:08:56.222810+00:00
+ARC0 (PID:5451): Archival stopped
+2024-01-24T15:08:56.223718+00:00
+ARC2 (PID:5455): ARCH shutting down
+ARC2 (PID:5455): Archival stopped
+2024-01-24T15:08:57.222884+00:00
+Shutting down Data Guard Broker processes
+2024-01-24T15:09:00.222781+00:00
+Completed: Data Guard Broker shutdown
+2024-01-24T15:09:01.230052+00:00
+Completed: ALTER DATABASE DISMOUNT
+2024-01-24T15:09:01.231126+00:00
+.... (PID:8103): Archival disabled due to shutdown: 1089
+Shutting down archive processes
+Archiving is disabled
+2024-01-24T15:09:02.231562+00:00
+
+IM on ADG: Start of Empty Journal 
+
+IM on ADG: End of Empty Journal 
+JIT: pid 8103 requesting stop
+Shutting down Data Guard Broker processes
+.... (PID:8103): Archival disabled due to shutdown: 1089
+Shutting down archive processes
+Archiving is disabled
+2024-01-24T15:09:02.257758+00:00
+Stopping background process VKTM
+2024-01-24T15:09:02.258842+00:00
+JIT: pid 8103 requesting stop
+2024-01-24T15:09:11.364536+00:00
+Instance shutdown complete (OS id: 8103)
+2024-01-24T15:09:25.956851+00:00
+Starting ORACLE instance (normal) (OS id: 9009)
+2024-01-24T15:09:25.960979+00:00
+****************************************************
+ Sys-V shared memory will be used for creating SGA 
+ ****************************************************
+2024-01-24T15:09:25.961985+00:00
+**********************************************************************
+2024-01-24T15:09:25.962020+00:00
+Dump of system resources acquired for SHARED GLOBAL AREA (SGA) 
+
+2024-01-24T15:09:25.962081+00:00
+ Per process system memlock (soft) limit = 31G
+2024-01-24T15:09:25.962114+00:00
+ Expected per process system memlock (soft) limit to lock
+ instance MAX SHARED GLOBAL AREA (SGA) into memory: 23G
+2024-01-24T15:09:25.962176+00:00
+ Available system pagesizes:
+  4K, 2048K 
+2024-01-24T15:09:25.962236+00:00
+ Supported system pagesize(s):
+2024-01-24T15:09:25.962267+00:00
+  PAGESIZE  AVAILABLE_PAGES  EXPECTED_PAGES  ALLOCATED_PAGES  ERROR(s)
+2024-01-24T15:09:25.962339+00:00
+     2048K            11842           11842            11842        NONE
+2024-01-24T15:09:25.962371+00:00
+ Reason for not supporting certain system pagesizes: 
+2024-01-24T15:09:25.962403+00:00
+  4K - Large pagesizes only
+2024-01-24T15:09:25.962434+00:00
+**********************************************************************
+2024-01-24T15:09:29.023277+00:00
+PGA_AGGREGATE_TARGET specified is high
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_ora_9009.trc  (incident=26779):
+ORA-00700: soft internal error, arguments: [pga physmem limit], [4129991680], [2547202048], [], [], [], [], [], [], [], [], []
+Incident details in: /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/incident/incdir_26779/TTSORA99_ora_9009_i26779.trc
+LICENSE_MAX_SESSION = 0
+LICENSE_SESSIONS_WARNING = 0
+2024-01-24T15:09:29.706357+00:00
+Initial number of CPU is 4
+Number of processor cores in the system is 2
+Number of processor sockets in the system is 1
+Capability Type : Network 
+capabilities requested : 7 detected : 0 Simulated : 0
+Capability Type : Runtime Environment 
+capabilities requested : 400000FF detected : 40000000 Simulated : 0
+Capability Type : Engineered Systems 
+capabilities requested : F detected : 0 Simulated : 0
+Capability Type : Database Test 
+capabilities requested : 3 detected : 0 Simulated : 0
+Capability Type : Database Editions 
+capabilities requested : 1CC detected : 8 Simulated : 0
+.... (PID:): Enable RFS client [kcrlc.c:604]
+Autotune of undo retention is turned on. 
+IMODE=BR
+ILAT =554
+LICENSE_MAX_USERS = 0
+SYS auditing is enabled
+NOTE: remote asm mode is local (mode 0x1; from cluster type)
+NOTE: Using default ASM root directory ASM
+NOTE: remote asm mode is local (mode 0x1; from cluster type)
+NOTE: Cluster configuration type = NONE [2]
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.21.0.0.0.
+ORACLE_HOME:    /rdsdbbin/oracle
+System name:	Linux
+Node name:	ip-172-31-0-140
+Release:	4.1.12-124.81.2.el7uek.x86_64
+Version:	#2 SMP Tue Dec 5 16:19:14 PST 2023
+Machine:	x86_64
+Using parameter settings in server-side spfile /rdsdbbin/oracle/dbs/spfileTTSORA99.ora
+WARNING: there are one or more recursive spfile references which should be removed from /rdsdbbin/oracle/dbs/spfileTTSORA99.ora
+System parameters with non-default values:
+  processes                = 3347
+  use_large_pages          = "ONLY"
+  spfile                   = "/rdsdbbin/oracle/dbs/spfileTTSORA99.ora"
+  filesystemio_options     = "setall"
+  max_idle_blocker_time    = 0
+  sga_target               = 23680M
+  memory_target            = 0
+  control_files            = "/rdsdbdata/db/TTSORA99_B/controlfile/control-01.ctl"
+  log_file_name_convert    = "x"
+  log_file_name_convert    = "x"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc1.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc2.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc3.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc4.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc5.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc6.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc7.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc8.dbf"
+  db_flash_cache_size      = 0, 0, 0, 0, 0, 0, 0, 0
+  compatible               = "19.0.0"
+  log_archive_dest_1       = "location="/rdsdbdata/db/TTSORA99_B/arch/redolog", valid_for=(ALL_LOGFILES,ALL_ROLES)"
+  log_archive_min_succeed_dest= 1
+  log_archive_trace        = 0
+  log_archive_format       = "-%s-%t-%r.arc"
+  redo_transport_user      = "RDS_DATAGUARD"
+  log_archive_max_processes= 4
+  archive_lag_target       = 300
+  db_create_file_dest      = "/rdsdbdata/db"
+  db_recovery_file_dest_size= 1G
+  standby_file_management  = "AUTO"
+  undo_tablespace          = "UNDO_T1"
+  heat_map                 = "OFF"
+  db_block_checking        = "MEDIUM"
+  recyclebin               = "OFF"
+  DBFIPS_140               = FALSE
+  local_listener           = "(ADDRESS = (PROTOCOL = TCP)(PORT = 1521)(HOST = 10.1.2.202))"
+  local_listener           = "(ADDRESS = (PROTOCOL = TCP)(PORT = 1137)(HOST = 172.31.0.140))"
+  job_queue_processes      = 50
+  _kolfuseslf              = TRUE
+  audit_file_dest          = "/rdsdbdata/admin/TTSORA99/adump"
+  db_name                  = "TTSORA99"
+  db_unique_name           = "TTSORA99_B"
+  open_cursors             = 300
+  pga_aggregate_target     = 4033195K
+  max_string_size          = "STANDARD"
+  _disable_directory_link_check= TRUE
+  dg_broker_start          = TRUE
+  dg_broker_config_file1   = "/rdsdbdata/config/dr1TTSORA99.dat"
+  dg_broker_config_file2   = "/rdsdbdata/config/dr2TTSORA99.dat"
+  diagnostic_dest          = "/rdsdbdata/log"
+  enable_pluggable_database= FALSE
+2024-01-24T15:09:29.997049+00:00
+============================================================
+NOTE: PatchLevel of this instance 0
+============================================================
+Starting background process PMON
+2024-01-24T15:09:33.024077+00:00
+PMON started with pid=2, OS id=9021 
+2024-01-24T15:09:33.025141+00:00
+Starting background process CLMN
+2024-01-24T15:09:33.037450+00:00
+CLMN started with pid=3, OS id=9027 
+Starting background process PSP0
+2024-01-24T15:09:33.050288+00:00
+PSP0 started with pid=4, OS id=9031 
+Starting background process VKTM
+2024-01-24T15:09:34.085727+00:00
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_vktm_9036.trc  (incident=26820):
+ORA-00800: soft external error, arguments: [Set Priority Failed], [VKTM], [Check traces and OS configuration], [Check Oracle document and MOS notes], []
+Incident details in: /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/incident/incdir_26820/TTSORA99_vktm_9036_i26820.trc
+2024-01-24T15:09:34.086755+00:00
+Error attempting to elevate VKTM's priority: no further priority changes will be attempted for this process
+VKTM started with pid=5, OS id=9036 
+2024-01-24T15:09:34.106877+00:00
+Starting background process GEN0
+VKTM running at (100ms) precision 
+2024-01-24T15:09:34.119023+00:00
+GEN0 started with pid=6, OS id=9042 
+Starting background process MMAN
+2024-01-24T15:09:34.130554+00:00
+MMAN started with pid=7, OS id=9046 
+Starting background process GEN1
+2024-01-24T15:09:34.154436+00:00
+GEN1 started with pid=9, OS id=9052_9053 
+Starting background process DIAG
+2024-01-24T15:09:34.165059+00:00
+DIAG started with pid=11, OS id=9055 
+Starting background process OFSD
+2024-01-24T15:09:34.166499+00:00
+Dumping diagnostic data in directory=[cdmp_20240124150934], requested by (instance=1, osid=9009), summary=[incident=26779].
+2024-01-24T15:09:34.187485+00:00
+OFSD started with pid=12, OS id=9057_9058 
+Starting background process DBRM
+2024-01-24T15:09:34.188357+00:00
+Oracle running with ofslib:'Oracle File Server Library' version=2 inc=1
+2024-01-24T15:09:34.199933+00:00
+DBRM started with pid=14, OS id=9060 
+Starting background process VKRM
+2024-01-24T15:09:34.210553+00:00
+VKRM started with pid=15, OS id=9064 
+Starting background process SVCB
+2024-01-24T15:09:34.221894+00:00
+SVCB started with pid=16, OS id=9066 
+Starting background process PMAN
+Starting background process DIA0
+2024-01-24T15:09:34.245878+00:00
+PMAN started with pid=17, OS id=9068 
+2024-01-24T15:09:34.256654+00:00
+DIA0 started with pid=18, OS id=9072 
+Starting background process DBW0
+2024-01-24T15:09:34.286281+00:00
+DBW0 started with pid=19, OS id=9074 
+Starting background process LGWR
+Starting background process CKPT
+2024-01-24T15:09:34.299530+00:00
+LGWR started with pid=20, OS id=9078 
+2024-01-24T15:09:34.312928+00:00
+CKPT started with pid=21, OS id=9082 
+Starting background process SMON
+2024-01-24T15:09:34.324996+00:00
+LGWR slave LG00 created with pid=22, OS pid=9086
+2024-01-24T15:09:34.338664+00:00
+SMON started with pid=23, OS id=9088 
+Starting background process SMCO
+LGWR slave LG01 created with pid=24, OS pid=9092
+2024-01-24T15:09:34.359809+00:00
+SMCO started with pid=25, OS id=9094 
+Starting background process RECO
+2024-01-24T15:09:34.370416+00:00
+RECO started with pid=26, OS id=9096 
+Starting background process LREG
+2024-01-24T15:09:34.395762+00:00
+LREG started with pid=28, OS id=9100 
+Starting background process PXMN
+2024-01-24T15:09:34.416885+00:00
+PXMN started with pid=30, OS id=9106 
+Starting background process DMON
+2024-01-24T15:09:34.428321+00:00
+DMON started with pid=31, OS id=9108 
+Starting background process FENC
+2024-01-24T15:09:34.442395+00:00
+FENC started with pid=32, OS id=9110 
+Starting background process MMON
+Starting background process MMNL
+2024-01-24T15:09:34.454752+00:00
+MMON started with pid=33, OS id=9114 
+2024-01-24T15:09:34.464717+00:00
+MMNL started with pid=32, OS id=9116 
+Starting background process TMON
+2024-01-24T15:09:34.475276+00:00
+TMON started with pid=34, OS id=9118 
+ORACLE_BASE from environment = /rdsdbbin
+2024-01-24T15:09:34.476993+00:00
+Spfile /rdsdbbin/oracle/dbs/spfileTTSORA99.ora is in old pre-11 format and compatible >= 11.0.0; converting to new H.A.R.D. compliant format.
+2024-01-24T15:09:34.517105+00:00
+ALTER DATABASE   MOUNT
+2024-01-24T15:09:37.219754+00:00
+PGA_AGGREGATE_LIMIT specified is high
+2024-01-24T15:09:37.219855+00:00
+WARNING: pga_aggregate_limit value is too high for the
+amount of physical memory on the system
+  PGA_AGGREGATE_LIMIT is 10041 MB
+  PGA_AGGREGATE_TARGET is 3938 MB.
+  physical memory size is 31709 MB
+  limit based on physical memory and SGA usage is 4858 MB
+  SGA_TARGET is 23680 MB
+Using default pga_aggregate_limit of 10041 MB
+2024-01-24T15:09:38.580888+00:00
+**********************************************************************
+WARNING: The LOG_ARCHIVE_CONFIG parameter has NOT been defined but
+remote Data Guard destinations have been configured.  Oracle strongly
+recommends that this parameter is set when using Data Guard as
+described in the Data Guard manuals.
+**********************************************************************
+.... (PID:9119): Redo network throttle feature is disabled at mount time
+2024-01-24T15:09:38.600546+00:00
+Successful mount of redo thread 1, with mount id 346001134
+2024-01-24T15:09:38.605264+00:00
+.... (PID:9119): Database role set to PHYSICAL STANDBY [kcvfdb.c:9522]
+Physical Standby Database mounted.
+.... (PID:9119): STARTING ARCH PROCESSES
+2024-01-24T15:09:38.615336+00:00
+TT00 (PID:9173): Gap Manager starting
+Starting background process ARC0
+2024-01-24T15:09:38.625736+00:00
+ARC0 started with pid=38, OS id=9175 
+2024-01-24T15:09:38.635959+00:00
+.... (PID:9119): ARC0: Archival started
+.... (PID:9119): STARTING ARCH PROCESSES COMPLETE
+2024-01-24T15:09:38.636130+00:00
+ARC0 (PID:9175): Becoming a 'no FAL' ARCH
+2024-01-24T15:09:38.636328+00:00
+In-memory operation on ADG is currently only supported on Engineered systems and PaaS.
+inmemory_adg_enabled is turned off automatically.
+Please contact our support team for EXADATA solutions
+Lost write protection disabled
+2024-01-24T15:09:38.637132+00:00
+TMON (PID:9118): STARTING ARCH PROCESSES
+.... (PID:9119): Using STANDBY_ARCHIVE_DEST parameter default value as /rdsdbdata/db/TTSORA99_B/arch/redolog [krsd.c:18326]
+Starting background process ARC1
+2024-01-24T15:09:38.647263+00:00
+ARC1 started with pid=40, OS id=9179 
+Starting background process ARC2
+2024-01-24T15:09:38.657260+00:00
+ARC2 started with pid=41, OS id=9181 
+Starting background process ARC3
+2024-01-24T15:09:38.667266+00:00
+ARC3 started with pid=42, OS id=9183 
+TMON (PID:9118): ARC1: Archival started
+TMON (PID:9118): ARC2: Archival started
+TMON (PID:9118): ARC3: Archival started
+TMON (PID:9118): STARTING ARCH PROCESSES COMPLETE
+Completed: ALTER DATABASE   MOUNT
+2024-01-24T15:09:39.241987+00:00
+alter database archivelog
+Completed: alter database archivelog
+2024-01-24T15:09:39.689737+00:00
+ALTER DATABASE OPEN READ ONLY
+2024-01-24T15:09:39.690034+00:00
+Data Guard Broker initializing...
+2024-01-24T15:09:42.426831+00:00
+Starting Data Guard Broker (DMON)
+Starting background process INSV
+2024-01-24T15:09:42.436333+00:00
+INSV started with pid=35, OS id=9235 
+2024-01-24T15:09:46.444105+00:00
+Starting background process NSV0
+2024-01-24T15:09:46.453019+00:00
+NSV0 started with pid=43, OS id=9247 
+2024-01-24T15:09:46.695398+00:00
+Data Guard Broker initialization complete
+Smart fusion block transfer is disabled:
+  instance mounted in exclusive mode.
+Buffer Cache Full DB Caching mode changing from FULL CACHING DISABLED to FULL CACHING ENABLED 
+Endian type of dictionary set to little
+Undo initialization finished serial:0 start:398328 end:398328 diff:0 ms (0.0 seconds)
+Dictionary check beginning
+Dictionary check complete
+krt_recreate_tf: updating cf with non-local file /rdsdbdata/db/TTSORA99_B/datafile/o1_mf_temp_lv28o02s_.tmp
+Database Characterset is AL32UTF8
+No Resource Manager plan active
+.... (PID:9231): Disable RFS client [kcrlc.c:623]
+replication_dependency_tracking turned off (no async multimaster replication found)
+2024-01-24T15:09:47.992821+00:00
+Unable to obtain current patch information as the database or pluggable database was opened for read-only access.
+===========================================================
+Dumping current patch information
+===========================================================
+Unable to obtain current patch information due to error: 16000
+===========================================================
+2024-01-24T15:09:48.105443+00:00
+Physical standby database opened for read only access.
+Completed: ALTER DATABASE OPEN READ ONLY
+2024-01-24T15:09:50.198945+00:00
+Starting background process RSM0
+2024-01-24T15:09:50.214231+00:00
+RSM0 started with pid=53, OS id=9341 
+2024-01-24T15:09:50.253401+00:00
+ rfs (PID:9340): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is Foreground (PID:8100)
+2024-01-24T15:09:50.258664+00:00
+ rfs (PID:9346): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is ASYNC (PID:17591)
+2024-01-24T15:09:50.260224+00:00
+ rfs (PID:9340): Enable RFS client [krsr.c:5757]
+2024-01-24T15:09:50.263029+00:00
+ rfs (PID:9346): Primary database is in MAXIMUM PERFORMANCE mode
+2024-01-24T15:09:54.229634+00:00
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE DISCONNECT  NODELAY
+2024-01-24T15:09:54.234633+00:00
+Attempt to start background Managed Standby Recovery process (TTSORA99)
+Starting background process MRP0
+2024-01-24T15:09:54.244804+00:00
+MRP0 started with pid=55, OS id=9408 
+2024-01-24T15:09:54.245549+00:00
+Background Managed Standby Recovery process started (TTSORA99)
+2024-01-24T15:09:54.266842+00:00
+ rfs (PID:9410): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is ASYNC (PID:17591)
+2024-01-24T15:09:54.269369+00:00
+ rfs (PID:9412): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is Foreground (PID:8100)
+2024-01-24T15:09:54.269727+00:00
+ rfs (PID:9410): Primary database is in MAXIMUM PERFORMANCE mode
+2024-01-24T15:09:59.280408+00:00
+ Started logmerger process
+2024-01-24T15:09:59.369945+00:00
+
+IM on ADG: Start of Empty Journal 
+
+IM on ADG: End of Empty Journal 
+PR00 (PID:9422): Managed Standby Recovery starting Real Time Apply
+2024-01-24T15:09:59.426250+00:00
+Parallel Media Recovery started with 4 slaves
+2024-01-24T15:09:59.444389+00:00
+Stopping change tracking
+2024-01-24T15:09:59.511508+00:00
+Recovery of Online Redo Log: Thread 1 Group 5 Seq 9 Reading mem 0
+  Mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_5_lv29hopy_.log
+2024-01-24T15:10:00.267755+00:00
+Completed: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE DISCONNECT  NODELAY
+2024-01-24T15:10:19.470260+00:00
+ALTER SYSTEM SET dg_broker_start=TRUE SCOPE=BOTH;
+2024-01-24T15:10:20.950887+00:00
+Data Guard Broker executes SQL [alter system set log_archive_config='dg_config=(TTSORA99_B)']
+2024-01-24T15:10:20.961633+00:00
+ALTER SYSTEM SET log_archive_config='dg_config=(TTSORA99_B)' SCOPE=BOTH;
+Data Guard Broker executes SQL [alter system set log_archive_config='dg_config=(TTSORA99_B,TTSORA99_A)']
+2024-01-24T15:10:20.978749+00:00
+ALTER SYSTEM SET log_archive_config='dg_config=(TTSORA99_B,TTSORA99_A)' SCOPE=BOTH;
+2024-01-24T15:10:21.459539+00:00
+Warning: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE has been deprecated.
+Warning: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE has been deprecated.
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE DISCONNECT FROM SESSION
+2024-01-24T15:10:21.978038+00:00
+ALTER SYSTEM SET fal_server='ttsora99_a' SCOPE=BOTH;
+2024-01-24T15:10:22.046886+00:00
+ rfs (PID:9740): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is ASYNC (PID:17591)
+2024-01-24T15:10:22.048912+00:00
+ rfs (PID:9742): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is Foreground (PID:8100)
+2024-01-24T15:10:22.049635+00:00
+ rfs (PID:9740): Primary database is in MAXIMUM PERFORMANCE mode
+2024-01-24T15:10:22.118594+00:00
+ rfs (PID:9740): Selected LNO:5 for T-1.S-9 dbid 345978021 branch 1159109247
+2024-01-24T15:10:22.142781+00:00
+ALTER SYSTEM SET fal_server='' SCOPE=BOTH;
+2024-01-24T15:10:24.462764+00:00
+ORA-1153 signalled during: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE USING CURRENT LOGFILE DISCONNECT FROM SESSION...
+2024-01-24T15:12:40.747328+00:00
+ARC3 (PID:9183): Archived Log entry 8 added for T-1.S-9 ID 0x149f37ba LAD:1
+2024-01-24T15:12:40.779386+00:00
+PR00 (PID:9422): Media Recovery Waiting for T-1.S-10
+2024-01-24T15:12:40.792103+00:00
+ rfs (PID:10493): krsr_rfs_atc: Identified database type as 'PHYSICAL STANDBY': Client is ASYNC (PID:17589)
+ rfs (PID:10493): Primary database is in MAXIMUM PERFORMANCE mode
+2024-01-24T15:12:40.820298+00:00
+ rfs (PID:10493): Selected LNO:5 for T-1.S-10 dbid 345978021 branch 1159109247
+2024-01-24T15:12:41.794811+00:00
+Recovery of Online Redo Log: Thread 1 Group 5 Seq 10 Reading mem 0
+  Mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_5_lv29hopy_.log
+2024-01-24T15:15:16.200225+00:00
+Successfully added datafile 6 to media recovery
+Datafile #6: '/rdsdbdata/db/TTSORA99_B/datafile/o1_mf_customer_lv2bd3dl_.dbf'
+2024-01-24T15:17:44.034068+00:00
+ rfs (PID:10493): Selected LNO:6 for T-1.S-11 dbid 345978021 branch 1159109247
+2024-01-24T15:17:44.080347+00:00
+ARC1 (PID:9179): Archived Log entry 9 added for T-1.S-10 ID 0x149f37ba LAD:1
+2024-01-24T15:17:44.086811+00:00
+PR00 (PID:9422): Media Recovery Waiting for T-1.S-11 (in transit)
+2024-01-24T15:17:44.089832+00:00
+Recovery of Online Redo Log: Thread 1 Group 6 Seq 11 Reading mem 0
+  Mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_6_lv29hpft_.log
+2024-01-24T15:19:38.493445+00:00
+Control autobackup written to DISK device
+
+handle '/rdsdbbin/oracle/dbs/c-345978021-20240124-00'
+
+2024-01-24T15:22:41.359382+00:00
+ rfs (PID:10493): Selected LNO:5 for T-1.S-12 dbid 345978021 branch 1159109247
+2024-01-24T15:22:41.369676+00:00
+ARC3 (PID:9183): Archived Log entry 10 added for T-1.S-11 ID 0x149f37ba LAD:1
+2024-01-24T15:22:41.409664+00:00
+PR00 (PID:9422): Media Recovery Waiting for T-1.S-12 (in transit)
+2024-01-24T15:22:41.413046+00:00
+Recovery of Online Redo Log: Thread 1 Group 5 Seq 12 Reading mem 0
+  Mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_5_lv29hopy_.log
+2024-01-24T15:26:01.872752+00:00
+Completed: Data Guard Broker shutdown
+2024-01-24T15:26:02.883542+00:00
+ALTER SYSTEM SET dg_broker_start=FALSE SCOPE=BOTH;
+2024-01-24T15:26:03.082636+00:00
+ALTER SYSTEM RESET dg_broker_config_file1 SCOPE=SPFILE;
+2024-01-24T15:26:03.114984+00:00
+ALTER SYSTEM RESET dg_broker_config_file2 SCOPE=SPFILE;
+2024-01-24T15:26:03.306234+00:00
+ALTER SYSTEM SET local_listener='(ADDRESS = (PROTOCOL = TCP)(HOST = 10.1.2.202)(PORT = 1521))' SCOPE=BOTH;
+2024-01-24T15:26:04.739085+00:00
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE CANCEL
+2024-01-24T15:26:04.741901+00:00
+PR00 (PID:9422): MRP0: Background Media Recovery cancelled with status 16037
+2024-01-24T15:26:04.742025+00:00
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_pr00_9422.trc:
+ORA-16037: user requested cancel of managed recovery operation
+PR00 (PID:9422): Managed Standby Recovery not using Real Time Apply
+Recovery interrupted!
+Recovered data files to a consistent state at change 483195
+Stopping change tracking
+2024-01-24T15:26:04.870755+00:00
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_pr00_9422.trc:
+ORA-16037: user requested cancel of managed recovery operation
+2024-01-24T15:26:04.991884+00:00
+Background Media Recovery process shutdown (TTSORA99)
+2024-01-24T15:26:05.742919+00:00
+Managed Standby Recovery Canceled (TTSORA99)
+Completed: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE CANCEL
+2024-01-24T15:26:05.846472+00:00
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE FINISH
+2024-01-24T15:26:05.849762+00:00
+Terminal Recovery requested in process 14967
+.... (PID:14967): The Time Management Interface (TMI) is being enabled for role transition
+.... (PID:14967): information.  This will result in messages beingoutput to the alert log
+.... (PID:14967): file with the prefix 'TMI: '.  This is being enabled to make the timing of
+.... (PID:14967): the various stages of the role transition available for diagnostic purposes.
+.... (PID:14967): This output will end when the role transition is complete.
+TMI: adbdrv termRecovery BEGIN 2024-01-24 15:26:05.851991
+2024-01-24T15:26:05.853807+00:00
+Attempt to do a Terminal Recovery (TTSORA99)
+TMI: adbdrv termRecovery END 2024-01-24 15:26:05.853815
+2024-01-24T15:26:05.853899+00:00
+Media Recovery Start: Managed Standby Recovery (TTSORA99)
+ Started logmerger process
+2024-01-24T15:26:05.878553+00:00
+
+IM on ADG: Start of Empty Journal 
+
+IM on ADG: End of Empty Journal 
+PR00 (PID:14969): Managed Standby Recovery not using Real Time Apply
+2024-01-24T15:26:05.937710+00:00
+Parallel Media Recovery started with 4 slaves
+2024-01-24T15:26:05.958516+00:00
+Stopping change tracking
+PR00 (PID:14969): Media Recovery Waiting for T-1.S-12 (in transit)
+2024-01-24T15:26:07.043441+00:00
+PR00 (PID:14969): Killing 2 processes (PIDS:10493,9742) (all RFS, wait for I/O) in order to disallow current and future RFS connections. Requested by OS process 14969
+2024-01-24T15:26:07.043690+00:00
+Process termination requested for pid 10493 [source = rdbms], [info = 2] [request issued by pid: 14969, uid: 3001]
+2024-01-24T15:26:07.043694+00:00
+Process termination requested for pid 9742 [source = rdbms], [info = 2] [request issued by pid: 14969, uid: 3001]
+2024-01-24T15:26:09.047399+00:00
+PR00 (PID:14969): Begin: SRL archival
+PR00 (PID:14969): End: SRL archival
+PR00 (PID:14969): Terminal Recovery timestamp is '01/24/2024 15:26:09'
+PR00 (PID:14969): Terminal Recovery: applying standby redo logs.
+PR00 (PID:14969): Terminal Recovery: thread 1 seq# 12 redo required
+2024-01-24T15:26:09.104870+00:00
+PR00 (PID:14969): Terminal Recovery: 
+2024-01-24T15:26:09.109857+00:00
+Recovery of Online Redo Log: Thread 1 Group 5 Seq 12 Reading mem 0
+  Mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_5_lv29hopy_.log
+2024-01-24T15:26:09.203873+00:00
+Incomplete Recovery applied until change 483196 time 01/24/2024 15:26:03
+2024-01-24T15:26:09.207101+00:00
+Media Recovery Complete (TTSORA99)
+Terminal Recovery: successful completion
+PR00 (PID:14969): Forcing ARSCN to IRSCN for TR SCN:0x0000000000075f7c
+PR00 (PID:14969): Attempt to set limbo arscn SCN:0x0000000000075f7c irscn SCN:0x0000000000075f7c
+PR00 (PID:14969): Resetting standby activation ID 345978810 (0x149f37ba)
+Stopping change tracking
+Completed: ALTER DATABASE RECOVER MANAGED STANDBY DATABASE FINISH
+2024-01-24T15:26:09.934930+00:00
+ALTER DATABASE COMMIT TO SWITCHOVER TO PRIMARY WITH SESSION SHUTDOWN
+2024-01-24T15:26:09.935009+00:00
+ALTER DATABASE SWITCHOVER TO PRIMARY (TTSORA99)
+2024-01-24T15:26:09.935283+00:00
+Maximum wait for role transition is 15 minutes.
+TMI: kcv_commit_to_so_to_primary wait for MRP to finish BEGIN 2024-01-24 15:26:09.935294
+TMI: kcv_commit_to_so_to_primary wait for MRP to finish END 2024-01-24 15:26:09.935368
+TMI: kcv_commit_to_so_to_primary Switchover from physical BEGIN 2024-01-24 15:26:09.937870
+2024-01-24T15:26:10.940899+00:00
+Stopping background process MMNL
+Stopping background process MMON
+2024-01-24T15:26:11.040745+00:00
+Stopping Emon pool
+CLOSE: killing server sessions.
+2024-01-24T15:26:11.128666+00:00
+Process termination requested for pid 9066 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.129394+00:00
+Process termination requested for pid 9693 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.129437+00:00
+Process termination requested for pid 9268 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.129722+00:00
+Process termination requested for pid 9262 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.130661+00:00
+Process termination requested for pid 9264 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.131274+00:00
+Process termination requested for pid 9266 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.131541+00:00
+Process termination requested for pid 9256 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.132059+00:00
+Process termination requested for pid 9260 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.132248+00:00
+Process termination requested for pid 9258 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.133897+00:00
+Process termination requested for pid 9254 [source = rdbms], [info = 2] [request issued by pid: 15004, uid: 3001]
+2024-01-24T15:26:11.158992+00:00
+Active process 9334 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W002)', waiting for 'Space Manager: slave idle wait'
+
+Active process 9104 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W001)', waiting for 'Space Manager: slave idle wait'
+
+Active process 9416 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W004)', waiting for 'Space Manager: slave idle wait'
+
+Active process 9693 user 'rdsdb' program 'oracle@ip-172-31-0-140', waiting for 'SQL*Net message from client'
+
+Active process 9404 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W003)', waiting for 'Space Manager: slave idle wait'
+
+Active process 9098 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W000)', waiting for 'Space Manager: slave idle wait'
+
+Active process 9334 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W002)', waiting for 'Space Manager: slave idle wait'
+
+Active process 9104 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W001)', waiting for 'Space Manager: slave idle wait'
+
+Active process 9416 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W004)', waiting for 'Space Manager: slave idle wait'
+
+Active process 9693 user 'rdsdb' program 'oracle@ip-172-31-0-140', waiting for 'SQL*Net message from client'
+
+Active process 9404 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W003)', waiting for 'Space Manager: slave idle wait'
+
+Active process 9098 user 'rdsdb' program 'oracle@ip-172-31-0-140 (W000)', waiting for 'Space Manager: slave idle wait'
+
+2024-01-24T15:26:14.318773+00:00
+CLOSE: all sessions shutdown successfully.
+2024-01-24T15:26:15.324636+00:00
+
+IM on ADG: Start of Empty Journal 
+
+IM on ADG: End of Empty Journal 
+Stopping Emon pool
+Entire Buffer Cache invalidation started
+Entire Buffer Cache invalidation completed
+2024-01-24T15:26:15.735743+00:00
+Restarting dead background process SVCB
+Starting background process SVCB
+Backup controlfile written to trace file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_ora_15004.trc
+2024-01-24T15:26:15.745309+00:00
+SVCB started with pid=8, OS id=15011 
+Standby terminal recovery start SCN: 483195
+RESETLOGS after incomplete recovery UNTIL CHANGE 483196 time 01/24/2024 15:26:03
+.... (PID:15004): ORL pre-clearing operation disabled by switchover
+Online log /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_1_lv28qynt_.log: Thread 1 Group 1 was previously cleared
+Online log /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_2_lv28qz4o_.log: Thread 1 Group 2 was previously cleared
+Online log /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_3_lv28qzoy_.log: Thread 1 Group 3 was previously cleared
+Online log /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_4_lv28r0ov_.log: Thread 1 Group 4 was previously cleared
+Standby became primary SCN: 483194
+2024-01-24T15:26:15.794334+00:00
+Setting recovery target incarnation to 4
+2024-01-24T15:26:15.809044+00:00
+.... (PID:15004): RT: Role transition work is not done
+.... (PID:15004): The Time Management Interface (TMI) is being enabled for role transition
+.... (PID:15004): information.  This will result in messages beingoutput to the alert log
+.... (PID:15004): file with the prefix 'TMI: '.  This is being enabled to make the timing of
+.... (PID:15004): the various stages of the role transition available for diagnostic purposes.
+.... (PID:15004): This output will end when the role transition is complete.
+.... (PID:15004): Redo network throttle feature is disabled at mount time
+2024-01-24T15:26:15.846806+00:00
+.... (PID:15004): Database role cleared from PHYSICAL STANDBY [kcvs.c:1117]
+Switchover: Complete - Database mounted as primary
+TMI: kcv_commit_to_so_to_primary Switchover from physical END 2024-01-24 15:26:15.848729
+Completed: ALTER DATABASE COMMIT TO SWITCHOVER TO PRIMARY WITH SESSION SHUTDOWN
+2024-01-24T15:26:16.244537+00:00
+ALTER SYSTEM SET job_queue_processes=0 SCOPE=MEMORY;
+2024-01-24T15:26:16.245133+00:00
+ALTER SYSTEM SET aq_tm_processes=0 SCOPE=MEMORY;
+2024-01-24T15:26:16.245421+00:00
+ALTER SYSTEM SET aq_tm_processes=0 SCOPE=MEMORY;
+Shutting down ORACLE instance (immediate) (OS id: 15029)
+2024-01-24T15:26:16.255526+00:00
+Shutdown is initiated by sqlplus@ip-172-31-0-140 (TNS V1-V3).
+2024-01-24T15:26:18.745030+00:00
+Shutting down instance: further logons disabled
+License high water mark = 12
+2024-01-24T15:26:18.745455+00:00
+
+Data Pump shutdown on PDB: 0 in progress
+2024-01-24T15:26:18.746292+00:00
+Process termination requested for pid 9414 [source = rdbms], [info = 2] [request issued by pid: 15029, uid: 3001]
+2024-01-24T15:26:20.758327+00:00
+ALTER DATABASE CLOSE NORMAL
+2024-01-24T15:26:20.758412+00:00
+Stopping Emon pool
+ORA-1109 signalled during: ALTER DATABASE CLOSE NORMAL...
+ALTER DATABASE DISMOUNT
+Shutting down archive processes
+2024-01-24T15:26:20.759272+00:00
+TT00 (PID:9173): Gap Manager exiting
+Archiving is disabled
+2024-01-24T15:26:20.859550+00:00
+ARC3 (PID:9183): ARCH shutting down
+2024-01-24T15:26:20.859554+00:00
+ARC1 (PID:9179): ARCH shutting down
+2024-01-24T15:26:20.859638+00:00
+ARC3 (PID:9183): Archival stopped
+2024-01-24T15:26:20.859642+00:00
+ARC1 (PID:9179): Archival stopped
+2024-01-24T15:26:20.859652+00:00
+ARC0 (PID:9175): ARCH shutting down
+2024-01-24T15:26:20.859702+00:00
+ARC0 (PID:9175): Archival stopped
+2024-01-24T15:26:20.862561+00:00
+ARC2 (PID:9181): ARCH shutting down
+ARC2 (PID:9181): Archival stopped
+2024-01-24T15:26:21.870898+00:00
+Completed: ALTER DATABASE DISMOUNT
+2024-01-24T15:26:21.871989+00:00
+.... (PID:15029): Archival disabled due to shutdown: 1089
+Shutting down archive processes
+Archiving is disabled
+2024-01-24T15:26:22.872554+00:00
+JIT: pid 15029 requesting stop
+.... (PID:15029): Archival disabled due to shutdown: 1089
+Shutting down archive processes
+Archiving is disabled
+JIT: pid 15029 requesting stop
+2024-01-24T15:26:22.920715+00:00
+Stopping background process VKTM
+2024-01-24T15:26:30.978081+00:00
+Instance shutdown complete (OS id: 15029)
+2024-01-24T15:26:50.684471+00:00
+Starting ORACLE instance (normal) (OS id: 15768)
+2024-01-24T15:26:50.688708+00:00
+****************************************************
+ Sys-V shared memory will be used for creating SGA 
+ ****************************************************
+2024-01-24T15:26:50.689704+00:00
+**********************************************************************
+2024-01-24T15:26:50.689759+00:00
+Dump of system resources acquired for SHARED GLOBAL AREA (SGA) 
+
+2024-01-24T15:26:50.689823+00:00
+ Per process system memlock (soft) limit = 31G
+2024-01-24T15:26:50.689856+00:00
+ Expected per process system memlock (soft) limit to lock
+ instance MAX SHARED GLOBAL AREA (SGA) into memory: 23G
+2024-01-24T15:26:50.689918+00:00
+ Available system pagesizes:
+  4K, 2048K 
+2024-01-24T15:26:50.689979+00:00
+ Supported system pagesize(s):
+2024-01-24T15:26:50.690010+00:00
+  PAGESIZE  AVAILABLE_PAGES  EXPECTED_PAGES  ALLOCATED_PAGES  ERROR(s)
+2024-01-24T15:26:50.690086+00:00
+     2048K            11842           11842            11842        NONE
+2024-01-24T15:26:50.690118+00:00
+ Reason for not supporting certain system pagesizes: 
+2024-01-24T15:26:50.690150+00:00
+  4K - Large pagesizes only
+2024-01-24T15:26:50.690181+00:00
+**********************************************************************
+2024-01-24T15:26:53.749640+00:00
+PGA_AGGREGATE_TARGET specified is high
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_ora_15768.trc  (incident=53557):
+ORA-00700: soft internal error, arguments: [pga physmem limit], [4129991680], [2547202048], [], [], [], [], [], [], [], [], []
+Incident details in: /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/incident/incdir_53557/TTSORA99_ora_15768_i53557.trc
+LICENSE_MAX_SESSION = 0
+LICENSE_SESSIONS_WARNING = 0
+2024-01-24T15:26:54.424268+00:00
+Initial number of CPU is 4
+Number of processor cores in the system is 2
+Number of processor sockets in the system is 1
+Capability Type : Network 
+capabilities requested : 7 detected : 0 Simulated : 0
+Capability Type : Runtime Environment 
+capabilities requested : 400000FF detected : 40000000 Simulated : 0
+Capability Type : Engineered Systems 
+capabilities requested : F detected : 0 Simulated : 0
+Capability Type : Database Test 
+capabilities requested : 3 detected : 0 Simulated : 0
+Capability Type : Database Editions 
+capabilities requested : 1CC detected : 8 Simulated : 0
+.... (PID:): Enable RFS client [kcrlc.c:604]
+Autotune of undo retention is turned on. 
+IMODE=BR
+ILAT =554
+LICENSE_MAX_USERS = 0
+SYS auditing is enabled
+NOTE: remote asm mode is local (mode 0x1; from cluster type)
+NOTE: Using default ASM root directory ASM
+NOTE: remote asm mode is local (mode 0x1; from cluster type)
+NOTE: Cluster configuration type = NONE [2]
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.21.0.0.0.
+ORACLE_HOME:    /rdsdbbin/oracle
+System name:	Linux
+Node name:	ip-172-31-0-140
+Release:	4.1.12-124.81.2.el7uek.x86_64
+Version:	#2 SMP Tue Dec 5 16:19:14 PST 2023
+Machine:	x86_64
+Using parameter settings in server-side spfile /rdsdbbin/oracle/dbs/spfileTTSORA99.ora
+WARNING: there are one or more recursive spfile references which should be removed from /rdsdbbin/oracle/dbs/spfileTTSORA99.ora
+System parameters with non-default values:
+  processes                = 3347
+  use_large_pages          = "ONLY"
+  spfile                   = "/rdsdbbin/oracle/dbs/spfileTTSORA99.ora"
+  filesystemio_options     = "setall"
+  max_idle_blocker_time    = 0
+  sga_target               = 23680M
+  memory_target            = 0
+  control_files            = "/rdsdbdata/db/TTSORA99_B/controlfile/control-01.ctl"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc1.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc2.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc3.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc4.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc5.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc6.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc7.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc8.dbf"
+  db_flash_cache_size      = 0, 0, 0, 0, 0, 0, 0, 0
+  compatible               = "19.0.0"
+  log_archive_dest_1       = "location="/rdsdbdata/db/TTSORA99_B/arch/redolog", valid_for=(ALL_LOGFILES,ALL_ROLES)"
+  log_archive_format       = "-%s-%t-%r.arc"
+  archive_lag_target       = 300
+  db_create_file_dest      = "/rdsdbdata/db"
+  db_recovery_file_dest_size= 1G
+  standby_file_management  = "AUTO"
+  undo_tablespace          = "UNDO_T1"
+  heat_map                 = "OFF"
+  db_block_checking        = "MEDIUM"
+  recyclebin               = "OFF"
+  DBFIPS_140               = FALSE
+  local_listener           = "(ADDRESS = (PROTOCOL = TCP)(PORT = 1521)(host=10.1.2.202))"
+  job_queue_processes      = 50
+  _kolfuseslf              = TRUE
+  audit_file_dest          = "/rdsdbdata/admin/TTSORA99/adump"
+  db_name                  = "TTSORA99"
+  db_unique_name           = "TTSORA99_B"
+  open_cursors             = 300
+  pga_aggregate_target     = 4033195K
+  max_string_size          = "STANDARD"
+  _disable_directory_link_check= TRUE
+  dg_broker_config_file1   = "/rdsdbdata/config/dr1TTSORA99.dat"
+  dg_broker_config_file2   = "/rdsdbdata/config/dr2TTSORA99.dat"
+  diagnostic_dest          = "/rdsdbdata/log"
+  enable_pluggable_database= FALSE
+2024-01-24T15:26:54.714525+00:00
+============================================================
+NOTE: PatchLevel of this instance 0
+============================================================
+2024-01-24T15:26:55.462282+00:00
+Starting background process PMON
+2024-01-24T15:26:58.476276+00:00
+PMON started with pid=2, OS id=15828 
+2024-01-24T15:26:58.477283+00:00
+Starting background process CLMN
+2024-01-24T15:26:58.489168+00:00
+CLMN started with pid=3, OS id=15834 
+Starting background process PSP0
+2024-01-24T15:26:58.502775+00:00
+PSP0 started with pid=4, OS id=15839 
+Starting background process VKTM
+2024-01-24T15:26:59.537207+00:00
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_vktm_15843.trc  (incident=53598):
+ORA-00800: soft external error, arguments: [Set Priority Failed], [VKTM], [Check traces and OS configuration], [Check Oracle document and MOS notes], []
+Incident details in: /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/incident/incdir_53598/TTSORA99_vktm_15843_i53598.trc
+2024-01-24T15:26:59.538202+00:00
+Error attempting to elevate VKTM's priority: no further priority changes will be attempted for this process
+VKTM started with pid=5, OS id=15843 
+2024-01-24T15:26:59.557622+00:00
+Starting background process GEN0
+VKTM running at (100ms) precision 
+2024-01-24T15:26:59.569104+00:00
+GEN0 started with pid=6, OS id=15850 
+Starting background process MMAN
+2024-01-24T15:26:59.579502+00:00
+MMAN started with pid=7, OS id=15854 
+Starting background process GEN1
+2024-01-24T15:26:59.608460+00:00
+GEN1 started with pid=9, OS id=15860_15861 
+Starting background process DIAG
+2024-01-24T15:26:59.618104+00:00
+DIAG started with pid=11, OS id=15863 
+Starting background process OFSD
+2024-01-24T15:26:59.619367+00:00
+Dumping diagnostic data in directory=[cdmp_20240124152659], requested by (instance=1, osid=15768), summary=[incident=53557].
+2024-01-24T15:26:59.637901+00:00
+OFSD started with pid=12, OS id=15865_15866 
+Starting background process DBRM
+2024-01-24T15:26:59.638702+00:00
+Oracle running with ofslib:'Oracle File Server Library' version=2 inc=1
+2024-01-24T15:26:59.649154+00:00
+DBRM started with pid=14, OS id=15868 
+Starting background process VKRM
+2024-01-24T15:26:59.658186+00:00
+VKRM started with pid=15, OS id=15872 
+Starting background process SVCB
+2024-01-24T15:26:59.667719+00:00
+SVCB started with pid=16, OS id=15874 
+Starting background process PMAN
+Starting background process DIA0
+2024-01-24T15:26:59.685144+00:00
+PMAN started with pid=17, OS id=15876 
+2024-01-24T15:26:59.694183+00:00
+DIA0 started with pid=18, OS id=15880 
+Starting background process DBW0
+2024-01-24T15:26:59.718391+00:00
+DBW0 started with pid=19, OS id=15882 
+Starting background process LGWR
+2024-01-24T15:26:59.729460+00:00
+LGWR started with pid=20, OS id=15886 
+Starting background process CKPT
+2024-01-24T15:26:59.740917+00:00
+CKPT started with pid=21, OS id=15890 
+Starting background process SMON
+2024-01-24T15:26:59.751253+00:00
+LGWR slave LG00 created with pid=22, OS pid=15894
+2024-01-24T15:26:59.763508+00:00
+SMON started with pid=23, OS id=15896 
+LGWR slave LG01 created with pid=24, OS pid=15900
+Starting background process SMCO
+2024-01-24T15:26:59.784007+00:00
+SMCO started with pid=25, OS id=15902 
+Starting background process RECO
+2024-01-24T15:26:59.798869+00:00
+RECO started with pid=26, OS id=15904 
+Starting background process LREG
+2024-01-24T15:26:59.819203+00:00
+LREG started with pid=28, OS id=15908 
+Starting background process PXMN
+2024-01-24T15:26:59.839188+00:00
+PXMN started with pid=30, OS id=15914 
+Starting background process FENC
+2024-01-24T15:26:59.852203+00:00
+FENC started with pid=31, OS id=15916 
+Starting background process MMON
+Starting background process MMNL
+2024-01-24T15:26:59.863996+00:00
+MMON started with pid=32, OS id=15920 
+2024-01-24T15:26:59.873974+00:00
+MMNL started with pid=31, OS id=15922 
+Starting background process TMON
+2024-01-24T15:26:59.884302+00:00
+TMON started with pid=33, OS id=15924 
+ORACLE_BASE from environment = /rdsdbbin
+2024-01-24T15:26:59.885901+00:00
+Spfile /rdsdbbin/oracle/dbs/spfileTTSORA99.ora is in old pre-11 format and compatible >= 11.0.0; converting to new H.A.R.D. compliant format.
+2024-01-24T15:26:59.948589+00:00
+ALTER DATABASE   MOUNT
+2024-01-24T15:27:02.672586+00:00
+PGA_AGGREGATE_LIMIT specified is high
+2024-01-24T15:27:02.672690+00:00
+WARNING: pga_aggregate_limit value is too high for the
+amount of physical memory on the system
+  PGA_AGGREGATE_LIMIT is 10041 MB
+  PGA_AGGREGATE_TARGET is 3938 MB.
+  physical memory size is 31709 MB
+  limit based on physical memory and SGA usage is 4858 MB
+  SGA_TARGET is 23680 MB
+Using default pga_aggregate_limit of 10041 MB
+2024-01-24T15:27:03.985792+00:00
+.... (PID:15925): RT: Role transition work is not done
+.... (PID:15925): The Time Management Interface (TMI) is being enabled for role transition
+.... (PID:15925): information.  This will result in messages beingoutput to the alert log
+.... (PID:15925): file with the prefix 'TMI: '.  This is being enabled to make the timing of
+.... (PID:15925): the various stages of the role transition available for diagnostic purposes.
+.... (PID:15925): This output will end when the role transition is complete.
+.... (PID:15925): Redo network throttle feature is disabled at mount time
+2024-01-24T15:27:04.008555+00:00
+Successful mount of redo thread 1, with mount id 346011139
+2024-01-24T15:27:04.012806+00:00
+Database mounted in Exclusive Mode
+Lost write protection disabled
+.... (PID:15925): Using STANDBY_ARCHIVE_DEST parameter default value as /rdsdbdata/db/TTSORA99_B/arch/redolog [krsd.c:18326]
+TMI: adbdrv MOUNT END 2024-01-24 15:27:04.081014
+Completed: ALTER DATABASE   MOUNT
+2024-01-24T15:27:04.196228+00:00
+alter database end backup
+ORA-1142 signalled during: alter database end backup...
+2024-01-24T15:27:04.715147+00:00
+alter database noarchivelog
+Completed: alter database noarchivelog
+2024-01-24T15:27:05.297166+00:00
+alter database open
+2024-01-24T15:27:05.297246+00:00
+TMI: adbdrv open database BEGIN 2024-01-24 15:27:05.297188
+Smart fusion block transfer is disabled:
+  instance mounted in exclusive mode.
+Buffer Cache Full DB Caching mode changing from FULL CACHING DISABLED to FULL CACHING ENABLED 
+Endian type of dictionary set to little
+2024-01-24T15:27:05.391216+00:00
+Assigning activation ID 346011139 (0x149fb603)
+2024-01-24T15:27:05.399505+00:00
+TT00 (PID:16034): Gap Manager starting
+2024-01-24T15:27:05.404719+00:00
+Redo log for group 1, sequence 1 is not located on DAX storage
+Thread 1 opened at log sequence 1
+  Current log# 1 seq# 1 mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_1_lv28qynt_.log
+Successful open of redo thread 1
+2024-01-24T15:27:05.427835+00:00
+MTTR advisory is disabled because FAST_START_MTTR_TARGET is not set
+Stopping change tracking
+Undo initialization recovery: Parallel FPTR failed: start:1437017 end:1437019 diff:2 ms (0.0 seconds)
+Undo initialization recovery: err:0 start: 1437016 end: 1437043 diff: 27 ms (0.0 seconds)
+[16028] Successfully onlined Undo Tablespace 2.
+Undo initialization online undo segments: err:0 start: 1437043 end: 1437098 diff: 55 ms (0.1 seconds)
+Undo initialization finished serial:0 start:1437016 end:1437105 diff:89 ms (0.1 seconds)
+Dictionary check beginning
+Dictionary check complete
+Database Characterset is AL32UTF8
+No Resource Manager plan active
+2024-01-24T15:27:06.472626+00:00
+joxcsys_required_dirobj_exists: directory object exists with required path /rdsdbbin/oracle/javavm/admin/, pid 16028 cid 0
+replication_dependency_tracking turned off (no async multimaster replication found)
+LOGSTDBY: Validating controlfile with logical metadata
+LOGSTDBY: Validation complete
+Starting background process AQPC
+2024-01-24T15:27:06.813167+00:00
+AQPC started with pid=40, OS id=16064 
+TMI: adbdrv open database END 2024-01-24 15:27:07.108409
+Starting background process CJQ0
+2024-01-24T15:27:07.138707+00:00
+CJQ0 started with pid=47, OS id=16078 
+Completed: alter database open
+2024-01-24T15:27:07.803754+00:00
+QPI: opatch file present, opatch
+QPI: qopiprep.bat file present
+2024-01-24T15:27:22.121878+00:00
+Shared IO Pool defaulting to 128MB. Trying to get it from Buffer Cache for process 15920.
+2024-01-24T15:27:23.391274+00:00
+===========================================================
+Dumping current patch information
+===========================================================
+Patch Id: 29585399
+Unique Patch Id: 22840393
+Patch Description: OCW RELEASE UPDATE 19.3.0.0.0 (29585399)
+Patch Apply Time: 2019-04-18T07:21:33Z
+Patch Type: Release Update
+
+Patch Id: 35643107
+Unique Patch Id: 25405995
+Patch Description: Database Release Update : 19.21.0.0.231017 (35643107)
+Patch Apply Time: 2023-10-20T16:22:09Z
+Patch Type: Release Update
+
+Patch Id: 35648110
+Unique Patch Id: 25365038
+Patch Description: OJVM RELEASE UPDATE: 19.21.0.0.231017 (35648110)
+Patch Apply Time: 2023-10-20T16:28:40Z
+Patch Type: Release Update
+
+Patch Id: 28730253
+Unique Patch Id: 25363755
+Patch Description: SUPPORT NEW ERA REIWA FOR JAPANESE IMPERIAL CALENDAR
+Patch Apply Time: 2023-10-20T16:29:54Z
+This patch overlays patches: 35643107
+Bugs Fixed: 28730253
+
+Patch Id: 29213893
+Unique Patch Id: 25362849
+Patch Description: DBMS_STATS FAILING WITH ERROR ORA-01422 WHEN GATHERING STATS FOR USER$ TABLE
+Patch Apply Time: 2023-10-20T16:30:58Z
+This patch overlays patches: 35643107
+Bugs Fixed: 29213893
+
+Patch Id: 33125873
+Unique Patch Id: 25362755
+Patch Description: MAKE CACHE GLOBAL OBJECT INVALIDATION CIC NON-SERIALIZE FOR BETTER PERFORMANCE
+Patch Apply Time: 2023-10-20T16:31:51Z
+This patch overlays patches: 35643107
+Bugs Fixed: 33125873
+
+Patch Id: 35239280
+Unique Patch Id: 25191509
+Patch Description: DSTV42 UPDATE - TZDATA2023C - NEED OJVM FIX
+Patch Apply Time: 2023-10-20T16:32:57Z
+Bugs Fixed: 12565410,12949919,14112098,15897884,16799766,17443054,18759260,
+19397646,20875943,22037067,22873666,23614160,24701882,25173172,25881271,
+27015468,28127287,28852334,29997959,31335142,32327208,33613833,34006650,
+34533150,34699616,35099674,35239280
+===========================================================
+2024-01-24T15:27:39.866541+00:00
+alter database drop logfile group 6
+2024-01-24T15:27:39.874870+00:00
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_6_lv29hpft_.log
+Completed: alter database drop logfile group 6
+2024-01-24T15:27:40.021980+00:00
+alter database drop logfile group 8
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_8_lv29hqvo_.log
+Completed: alter database drop logfile group 8
+2024-01-24T15:27:40.185785+00:00
+alter database drop logfile group 9
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_9_lv29hrvw_.log
+Completed: alter database drop logfile group 9
+2024-01-24T15:27:40.339133+00:00
+alter database drop logfile group 5
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_5_lv29hopy_.log
+Completed: alter database drop logfile group 5
+2024-01-24T15:27:40.498135+00:00
+alter database drop logfile group 7
+Deleted Oracle managed file /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_7_lv29hq2v_.log
+Completed: alter database drop logfile group 7
+2024-01-24T15:27:40.748985+00:00
+.... (PID:16686): REDO_TRANSPORT_USER changed to < >
+2024-01-24T15:27:40.756356+00:00
+ALTER SYSTEM SET redo_transport_user=' ' SCOPE=BOTH;
+2024-01-24T15:27:41.026354+00:00
+JIT: pid 16688 requesting full stop
+2024-01-24T15:28:01.472151+00:00
+ALTER SYSTEM SET local_listener='(address=(protocol=tcp)(host=)(port=1521))' SCOPE=SPFILE;
+2024-01-24T15:28:01.619381+00:00
+ALTER SYSTEM SET DBFIPS_140=FALSE SCOPE=SPFILE;
+2024-01-24T15:28:01.842877+00:00
+ALTER SYSTEM SET db_flash_cache_file='/rdslocalstorage/dsfc1.dbf','/rdslocalstorage/dsfc2.dbf','/rdslocalstorage/dsfc3.dbf','/rdslocalstorage/dsfc4.dbf','/rdslocalstorage/dsfc5.dbf','/rdslocalstorage/dsfc6.dbf','/rdslocalstorage/dsfc7.dbf','/rdslocalstorage/dsfc8.dbf' SCOPE=SPFILE;
+2024-01-24T15:28:02.017948+00:00
+ALTER SYSTEM RESET redo_transport_user SCOPE=SPFILE SID='*';
+2024-01-24T15:28:02.126388+00:00
+ALTER SYSTEM RESET DBFIPS_140 SCOPE=SPFILE SID='*';
+2024-01-24T15:28:02.239150+00:00
+ALTER SYSTEM SET local_listener='(ADDRESS=(PROTOCOL=TCP)(HOST=10.1.2.202)(PORT=1521))' SCOPE=BOTH;
+2024-01-24T15:29:19.954872+00:00
+Stopping background process CJQ0
+2024-01-24T15:29:19.955709+00:00
+ALTER SYSTEM SET job_queue_processes=0 SCOPE=MEMORY;
+2024-01-24T15:29:19.988316+00:00
+Process termination requested for pid 16343 [source = rdbms], [info = 2] [request issued by pid: 16337, uid: 3001]
+2024-01-24T15:29:19.988375+00:00
+ALTER SYSTEM SET aq_tm_processes=0 SCOPE=MEMORY;
+2024-01-24T15:29:19.988918+00:00
+ALTER SYSTEM SET aq_tm_processes=0 SCOPE=MEMORY;
+Shutting down ORACLE instance (immediate) (OS id: 17478)
+2024-01-24T15:29:19.998032+00:00
+Shutdown is initiated by sqlplus@ip-172-31-0-140 (TNS V1-V3).
+2024-01-24T15:29:21.827893+00:00
+Stopping background process SMCO
+Shutting down instance: further logons disabled
+Stopping background process MMNL
+Stopping background process MMON
+2024-01-24T15:29:23.160955+00:00
+License high water mark = 3
+2024-01-24T15:29:23.165691+00:00
+
+Data Pump shutdown on PDB: 0 in progress
+2024-01-24T15:29:23.166566+00:00
+Process termination requested for pid 16111 [source = rdbms], [info = 2] [request issued by pid: 17478, uid: 3001]
+2024-01-24T15:29:25.176618+00:00
+ALTER DATABASE CLOSE NORMAL
+2024-01-24T15:29:25.199276+00:00
+Stopping Emon pool
+2024-01-24T15:29:26.207035+00:00
+
+IM on ADG: Start of Empty Journal 
+
+IM on ADG: End of Empty Journal 
+Stopping Emon pool
+Closing sequence subsystem (1577614209).
+Stopping change tracking
+2024-01-24T15:29:26.231405+00:00
+Shutting down archive processes
+2024-01-24T15:29:26.231536+00:00
+TT00 (PID:16034): Gap Manager exiting
+Archiving is disabled
+2024-01-24T15:29:26.331862+00:00
+Thread 1 closed at log sequence 1
+Successful close of redo thread 1
+Completed: ALTER DATABASE CLOSE NORMAL
+ALTER DATABASE DISMOUNT
+Shutting down archive processes
+Archiving is disabled
+Completed: ALTER DATABASE DISMOUNT
+2024-01-24T15:29:27.360091+00:00
+.... (PID:17478): Archival disabled due to shutdown: 1089
+Shutting down archive processes
+Archiving is disabled
+2024-01-24T15:29:28.360703+00:00
+JIT: pid 17478 requesting stop
+.... (PID:17478): Archival disabled due to shutdown: 1089
+Shutting down archive processes
+Archiving is disabled
+JIT: pid 17478 requesting stop
+2024-01-24T15:29:28.425725+00:00
+Stopping background process VKTM
+2024-01-24T15:29:35.530996+00:00
+Instance shutdown complete (OS id: 17478)
+2024-01-24T15:29:47.625826+00:00
+Starting ORACLE instance (normal) (OS id: 18157)
+2024-01-24T15:29:47.630358+00:00
+****************************************************
+ Sys-V shared memory will be used for creating SGA 
+ ****************************************************
+2024-01-24T15:29:47.631392+00:00
+**********************************************************************
+2024-01-24T15:29:47.631452+00:00
+Dump of system resources acquired for SHARED GLOBAL AREA (SGA) 
+
+2024-01-24T15:29:47.631518+00:00
+ Per process system memlock (soft) limit = 31G
+2024-01-24T15:29:47.631564+00:00
+ Expected per process system memlock (soft) limit to lock
+ instance MAX SHARED GLOBAL AREA (SGA) into memory: 23G
+2024-01-24T15:29:47.631642+00:00
+ Available system pagesizes:
+  4K, 2048K 
+2024-01-24T15:29:47.631702+00:00
+ Supported system pagesize(s):
+2024-01-24T15:29:47.631734+00:00
+  PAGESIZE  AVAILABLE_PAGES  EXPECTED_PAGES  ALLOCATED_PAGES  ERROR(s)
+2024-01-24T15:29:47.631821+00:00
+     2048K            11842           11842            11842        NONE
+2024-01-24T15:29:47.631853+00:00
+ Reason for not supporting certain system pagesizes: 
+2024-01-24T15:29:47.631885+00:00
+  4K - Large pagesizes only
+2024-01-24T15:29:47.631917+00:00
+**********************************************************************
+2024-01-24T15:29:50.694163+00:00
+PGA_AGGREGATE_TARGET specified is high
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_ora_18157.trc  (incident=80335):
+ORA-00700: soft internal error, arguments: [pga physmem limit], [4129991680], [2547202048], [], [], [], [], [], [], [], [], []
+Incident details in: /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/incident/incdir_80335/TTSORA99_ora_18157_i80335.trc
+LICENSE_MAX_SESSION = 0
+LICENSE_SESSIONS_WARNING = 0
+2024-01-24T15:29:51.376193+00:00
+Initial number of CPU is 4
+Number of processor cores in the system is 2
+Number of processor sockets in the system is 1
+Capability Type : Network 
+capabilities requested : 7 detected : 0 Simulated : 0
+Capability Type : Runtime Environment 
+capabilities requested : 400000FF detected : 40000000 Simulated : 0
+Capability Type : Engineered Systems 
+capabilities requested : F detected : 0 Simulated : 0
+Capability Type : Database Test 
+capabilities requested : 3 detected : 0 Simulated : 0
+Capability Type : Database Editions 
+capabilities requested : 1CC detected : 8 Simulated : 0
+.... (PID:): Enable RFS client [kcrlc.c:604]
+Autotune of undo retention is turned on. 
+IMODE=BR
+ILAT =554
+LICENSE_MAX_USERS = 0
+SYS auditing is enabled
+NOTE: remote asm mode is local (mode 0x1; from cluster type)
+NOTE: Using default ASM root directory ASM
+NOTE: remote asm mode is local (mode 0x1; from cluster type)
+NOTE: Cluster configuration type = NONE [2]
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.21.0.0.0.
+ORACLE_HOME:    /rdsdbbin/oracle
+System name:	Linux
+Node name:	ip-172-31-0-140
+Release:	4.1.12-124.81.2.el7uek.x86_64
+Version:	#2 SMP Tue Dec 5 16:19:14 PST 2023
+Machine:	x86_64
+Using parameter settings in server-side spfile /rdsdbbin/oracle/dbs/spfileTTSORA99.ora
+WARNING: there are one or more recursive spfile references which should be removed from /rdsdbbin/oracle/dbs/spfileTTSORA99.ora
+System parameters with non-default values:
+  processes                = 3347
+  use_large_pages          = "ONLY"
+  spfile                   = "/rdsdbbin/oracle/dbs/spfileTTSORA99.ora"
+  filesystemio_options     = "setall"
+  max_idle_blocker_time    = 0
+  sga_target               = 23680M
+  memory_target            = 0
+  control_files            = "/rdsdbdata/db/TTSORA99_B/controlfile/control-01.ctl"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc1.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc2.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc3.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc4.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc5.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc6.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc7.dbf"
+  db_flash_cache_file      = "/rdslocalstorage/dsfc8.dbf"
+  db_flash_cache_size      = 0, 0, 0, 0, 0, 0, 0, 0
+  compatible               = "19.0.0"
+  log_archive_dest_1       = "location="/rdsdbdata/db/TTSORA99_B/arch/redolog", valid_for=(ALL_LOGFILES,ALL_ROLES)"
+  log_archive_format       = "-%s-%t-%r.arc"
+  archive_lag_target       = 300
+  db_create_file_dest      = "/rdsdbdata/db"
+  db_recovery_file_dest_size= 1G
+  standby_file_management  = "AUTO"
+  undo_tablespace          = "UNDO_T1"
+  heat_map                 = "OFF"
+  db_block_checking        = "MEDIUM"
+  recyclebin               = "OFF"
+  DBFIPS_140               = FALSE
+  local_listener           = "(address=(protocol=tcp)(host=10.1.2.202)(port=1521))"
+  job_queue_processes      = 50
+  _kolfuseslf              = TRUE
+  audit_file_dest          = "/rdsdbdata/admin/TTSORA99/adump"
+  db_name                  = "TTSORA99"
+  db_unique_name           = "TTSORA99_B"
+  open_cursors             = 300
+  pga_aggregate_target     = 4033195K
+  max_string_size          = "STANDARD"
+  _disable_directory_link_check= TRUE
+  dg_broker_config_file1   = "/rdsdbdata/config/dr1TTSORA99.dat"
+  dg_broker_config_file2   = "/rdsdbdata/config/dr2TTSORA99.dat"
+  diagnostic_dest          = "/rdsdbdata/log"
+  enable_pluggable_database= FALSE
+2024-01-24T15:29:51.669560+00:00
+============================================================
+NOTE: PatchLevel of this instance 0
+============================================================
+2024-01-24T15:29:52.232711+00:00
+Starting background process PMON
+2024-01-24T15:29:55.248109+00:00
+PMON started with pid=2, OS id=18202 
+2024-01-24T15:29:55.249162+00:00
+Starting background process CLMN
+2024-01-24T15:29:55.260635+00:00
+CLMN started with pid=3, OS id=18214 
+Starting background process PSP0
+2024-01-24T15:29:55.272453+00:00
+PSP0 started with pid=4, OS id=18218 
+Starting background process VKTM
+2024-01-24T15:29:56.307285+00:00
+Errors in file /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/trace/TTSORA99_vktm_18223.trc  (incident=80376):
+ORA-00800: soft external error, arguments: [Set Priority Failed], [VKTM], [Check traces and OS configuration], [Check Oracle document and MOS notes], []
+Incident details in: /rdsdbdata/log/diag/rdbms/ttsora99_b/TTSORA99/incident/incdir_80376/TTSORA99_vktm_18223_i80376.trc
+2024-01-24T15:29:56.308402+00:00
+Error attempting to elevate VKTM's priority: no further priority changes will be attempted for this process
+VKTM started with pid=5, OS id=18223 
+2024-01-24T15:29:56.329313+00:00
+Starting background process GEN0
+VKTM running at (100ms) precision 
+2024-01-24T15:29:56.346247+00:00
+GEN0 started with pid=6, OS id=18229 
+Starting background process MMAN
+2024-01-24T15:29:56.356308+00:00
+MMAN started with pid=7, OS id=18233 
+Starting background process GEN1
+2024-01-24T15:29:56.377987+00:00
+GEN1 started with pid=9, OS id=18239_18240 
+Starting background process DIAG
+2024-01-24T15:29:56.388081+00:00
+DIAG started with pid=11, OS id=18242 
+Starting background process OFSD
+2024-01-24T15:29:56.389469+00:00
+Dumping diagnostic data in directory=[cdmp_20240124152956], requested by (instance=1, osid=18157), summary=[incident=80335].
+2024-01-24T15:29:56.405419+00:00
+OFSD started with pid=12, OS id=18244_18245 
+Starting background process DBRM
+2024-01-24T15:29:56.406270+00:00
+Oracle running with ofslib:'Oracle File Server Library' version=2 inc=1
+2024-01-24T15:29:56.417642+00:00
+DBRM started with pid=14, OS id=18247 
+Starting background process VKRM
+2024-01-24T15:29:56.427389+00:00
+VKRM started with pid=15, OS id=18251 
+Starting background process SVCB
+2024-01-24T15:29:56.437677+00:00
+SVCB started with pid=16, OS id=18253 
+Starting background process PMAN
+2024-01-24T15:29:56.450600+00:00
+PMAN started with pid=17, OS id=18255 
+Starting background process DIA0
+Starting background process DBW0
+2024-01-24T15:29:56.465318+00:00
+DIA0 started with pid=18, OS id=18259 
+2024-01-24T15:29:56.480661+00:00
+DBW0 started with pid=19, OS id=18261 
+Starting background process LGWR
+2024-01-24T15:29:56.492970+00:00
+LGWR started with pid=20, OS id=18265 
+Starting background process CKPT
+2024-01-24T15:29:56.505068+00:00
+CKPT started with pid=21, OS id=18269 
+Starting background process SMON
+2024-01-24T15:29:56.515870+00:00
+LGWR slave LG00 created with pid=22, OS pid=18273
+2024-01-24T15:29:56.528123+00:00
+SMON started with pid=23, OS id=18275 
+LGWR slave LG01 created with pid=24, OS pid=18279
+Starting background process SMCO
+2024-01-24T15:29:56.548176+00:00
+SMCO started with pid=25, OS id=18281 
+Starting background process RECO
+2024-01-24T15:29:56.557995+00:00
+RECO started with pid=26, OS id=18283 
+Starting background process LREG
+2024-01-24T15:29:56.584452+00:00
+LREG started with pid=28, OS id=18287 
+Starting background process PXMN
+2024-01-24T15:29:56.608880+00:00
+PXMN started with pid=30, OS id=18293 
+Starting background process FENC
+2024-01-24T15:29:56.619943+00:00
+FENC started with pid=31, OS id=18295 
+Starting background process MMON
+Starting background process MMNL
+2024-01-24T15:29:56.631922+00:00
+MMON started with pid=32, OS id=18299 
+2024-01-24T15:29:56.640449+00:00
+MMNL started with pid=31, OS id=18301 
+Starting background process TMON
+2024-01-24T15:29:56.649802+00:00
+TMON started with pid=33, OS id=18303 
+ORACLE_BASE from environment = /rdsdbbin
+2024-01-24T15:29:56.651296+00:00
+Spfile /rdsdbbin/oracle/dbs/spfileTTSORA99.ora is in old pre-11 format and compatible >= 11.0.0; converting to new H.A.R.D. compliant format.
+2024-01-24T15:29:56.718513+00:00
+ALTER DATABASE   MOUNT
+2024-01-24T15:29:59.460018+00:00
+PGA_AGGREGATE_LIMIT specified is high
+2024-01-24T15:29:59.460195+00:00
+WARNING: pga_aggregate_limit value is too high for the
+amount of physical memory on the system
+  PGA_AGGREGATE_LIMIT is 10041 MB
+  PGA_AGGREGATE_TARGET is 3938 MB.
+  physical memory size is 31709 MB
+  limit based on physical memory and SGA usage is 4858 MB
+  SGA_TARGET is 23680 MB
+Using default pga_aggregate_limit of 10041 MB
+2024-01-24T15:30:00.749854+00:00
+.... (PID:18304): Redo network throttle feature is disabled at mount time
+2024-01-24T15:30:00.765042+00:00
+Successful mount of redo thread 1, with mount id 346012852
+2024-01-24T15:30:00.766953+00:00
+Database mounted in Exclusive Mode
+Lost write protection disabled
+.... (PID:18304): Using STANDBY_ARCHIVE_DEST parameter default value as /rdsdbdata/db/TTSORA99_B/arch/redolog [krsd.c:18326]
+Completed: ALTER DATABASE   MOUNT
+2024-01-24T15:30:00.940611+00:00
+alter database end backup
+ORA-1142 signalled during: alter database end backup...
+2024-01-24T15:30:01.444609+00:00
+alter database archivelog
+Completed: alter database archivelog
+2024-01-24T15:30:02.041262+00:00
+alter database open
+Smart fusion block transfer is disabled:
+  instance mounted in exclusive mode.
+Buffer Cache Full DB Caching mode changing from FULL CACHING DISABLED to FULL CACHING ENABLED 
+Endian type of dictionary set to little
+2024-01-24T15:30:02.099265+00:00
+LGWR (PID:18265): STARTING ARCH PROCESSES
+2024-01-24T15:30:02.107520+00:00
+TT00 (PID:18492): Gap Manager starting
+Starting background process ARC0
+2024-01-24T15:30:02.117305+00:00
+ARC0 started with pid=37, OS id=18494 
+2024-01-24T15:30:02.127400+00:00
+LGWR (PID:18265): ARC0: Archival started
+LGWR (PID:18265): STARTING ARCH PROCESSES COMPLETE
+2024-01-24T15:30:02.127524+00:00
+ARC0 (PID:18494): Becoming a 'no FAL' ARCH
+ARC0 (PID:18494): Becoming the 'no SRL' ARCH
+2024-01-24T15:30:02.133852+00:00
+Redo log for group 1, sequence 1 is not located on DAX storage
+Thread 1 opened at log sequence 1
+  Current log# 1 seq# 1 mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_1_lv28qynt_.log
+Successful open of redo thread 1
+2024-01-24T15:30:02.154716+00:00
+MTTR advisory is disabled because FAST_START_MTTR_TARGET is not set
+Stopping change tracking
+Undo initialization recovery: Parallel FPTR complete: start:1613677 end:1613680 diff:3 ms (0.0 seconds)
+Undo initialization recovery: err:0 start: 1613677 end: 1613680 diff: 3 ms (0.0 seconds)
+[18490] Successfully onlined Undo Tablespace 2.
+Undo initialization online undo segments: err:0 start: 1613680 end: 1613746 diff: 66 ms (0.1 seconds)
+Undo initialization finished serial:0 start:1613677 end:1613755 diff:78 ms (0.1 seconds)
+Database Characterset is AL32UTF8
+No Resource Manager plan active
+joxcsys_required_dirobj_exists: directory object exists with required path /rdsdbbin/oracle/javavm/admin/, pid 18490 cid 0
+replication_dependency_tracking turned off (no async multimaster replication found)
+2024-01-24T15:30:03.126833+00:00
+TMON (PID:18303): STARTING ARCH PROCESSES
+Starting background process ARC1
+2024-01-24T15:30:03.137960+00:00
+ARC1 started with pid=39, OS id=18503 
+Starting background process ARC2
+2024-01-24T15:30:03.149973+00:00
+ARC2 started with pid=40, OS id=18505 
+Starting background process ARC3
+2024-01-24T15:30:03.162134+00:00
+ARC3 started with pid=41, OS id=18507 
+TMON (PID:18303): ARC1: Archival started
+TMON (PID:18303): ARC2: Archival started
+2024-01-24T15:30:03.164816+00:00
+Starting background process AQPC
+TMON (PID:18303): ARC3: Archival started
+TMON (PID:18303): STARTING ARCH PROCESSES COMPLETE
+2024-01-24T15:30:03.175769+00:00
+AQPC started with pid=42, OS id=18509 
+Starting background process CJQ0
+Completed: alter database open
+2024-01-24T15:30:03.461134+00:00
+CJQ0 started with pid=46, OS id=18517 
+2024-01-24T15:30:04.148771+00:00
+QPI: opatch file present, opatch
+QPI: qopiprep.bat file present
+2024-01-24T15:30:10.215009+00:00
+Shared IO Pool defaulting to 128MB. Trying to get it from Buffer Cache for process 18299.
+2024-01-24T15:30:11.432171+00:00
+===========================================================
+Dumping current patch information
+===========================================================
+Patch Id: 29585399
+Unique Patch Id: 22840393
+Patch Description: OCW RELEASE UPDATE 19.3.0.0.0 (29585399)
+Patch Apply Time: 2019-04-18T07:21:33Z
+Patch Type: Release Update
+
+Patch Id: 35643107
+Unique Patch Id: 25405995
+Patch Description: Database Release Update : 19.21.0.0.231017 (35643107)
+Patch Apply Time: 2023-10-20T16:22:09Z
+Patch Type: Release Update
+
+Patch Id: 35648110
+Unique Patch Id: 25365038
+Patch Description: OJVM RELEASE UPDATE: 19.21.0.0.231017 (35648110)
+Patch Apply Time: 2023-10-20T16:28:40Z
+Patch Type: Release Update
+
+Patch Id: 28730253
+Unique Patch Id: 25363755
+Patch Description: SUPPORT NEW ERA REIWA FOR JAPANESE IMPERIAL CALENDAR
+Patch Apply Time: 2023-10-20T16:29:54Z
+This patch overlays patches: 35643107
+Bugs Fixed: 28730253
+
+Patch Id: 29213893
+Unique Patch Id: 25362849
+Patch Description: DBMS_STATS FAILING WITH ERROR ORA-01422 WHEN GATHERING STATS FOR USER$ TABLE
+Patch Apply Time: 2023-10-20T16:30:58Z
+This patch overlays patches: 35643107
+Bugs Fixed: 29213893
+
+Patch Id: 33125873
+Unique Patch Id: 25362755
+Patch Description: MAKE CACHE GLOBAL OBJECT INVALIDATION CIC NON-SERIALIZE FOR BETTER PERFORMANCE
+Patch Apply Time: 2023-10-20T16:31:51Z
+This patch overlays patches: 35643107
+Bugs Fixed: 33125873
+
+Patch Id: 35239280
+Unique Patch Id: 25191509
+Patch Description: DSTV42 UPDATE - TZDATA2023C - NEED OJVM FIX
+Patch Apply Time: 2023-10-20T16:32:57Z
+Bugs Fixed: 12565410,12949919,14112098,15897884,16799766,17443054,18759260,
+19397646,20875943,22037067,22873666,23614160,24701882,25173172,25881271,
+27015468,28127287,28852334,29997959,31335142,32327208,33613833,34006650,
+34533150,34699616,35099674,35239280
+===========================================================
+2024-01-24T15:30:48.354166+00:00
+alter database /*rds_sys_hm_util*/  backup controlfile to '/rdsdbdata/tmp/backup_control_file' reuse
+Completed: alter database /*rds_sys_hm_util*/  backup controlfile to '/rdsdbdata/tmp/backup_control_file' reuse
+alter database /*rds_sys_hm_util*/  begin backup
+Completed: alter database /*rds_sys_hm_util*/  begin backup
+alter database /*rds_sys_hm_util*/  end backup
+Completed: alter database /*rds_sys_hm_util*/  end backup
+2024-01-24T15:30:48.925951+00:00
+Thread 1 advanced to log sequence 2 (LGWR switch),  current SCN: 486213
+  Current log# 2 seq# 2 mem# 0: /rdsdbdata/db/TTSORA99_B/onlinelog/o1_mf_2_lv28qz4o_.log
+2024-01-24T15:30:49.273994+00:00
+ARC1 (PID:18503): Archived Log entry 11 added for T-1.S-1 ID 0x149fb603 LAD:1

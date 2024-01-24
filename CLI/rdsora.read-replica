@@ -1,0 +1,4 @@
+aws rds create-db-instance-read-replica --db-instance-identifier ttsora10c --source-db-instance-identifier ttsora10 --profile dba --db-instance-class db.r5.xlarge
+
+aws rds promote-read-replica --db-instance-identifier ttsora99a --profile dba
+

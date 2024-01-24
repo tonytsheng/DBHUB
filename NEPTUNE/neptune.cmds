@@ -356,6 +356,10 @@ g.V().has('airport','code','BWI').
 # displays a graph in the notebook
 g.V().outE().inV().path().by('code').by().limit(200)
 
+g.V().outE().inV().path().by('code').by().limit(200)
+
+
+
 ## Experimenting with other graphs
 gremlin> g.V().has('lname','sheng').out().path().by('fname')
 ==>path[deanna, tony]
