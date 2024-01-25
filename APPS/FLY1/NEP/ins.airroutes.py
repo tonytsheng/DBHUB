@@ -15,7 +15,7 @@ from random import randint
 #print ("query: " + user_query )
 
 WDIR='/home/ec2-user/DBHUB/APPS/FLY1/'
-INFILE=WDIR+'air-routes-latest-nodes.csv'
+INFILE=WDIR+'airports-large-nodes.csv'
 
 #cmd='/bin/grep large_airport ' + INFILE + ' | /usr/bin/shuf -n1 | /usr/bin/awk -F\',\' \'{print $10}\' '
 cmd='/usr/bin/shuf -n1 ' + INFILE + ' | /usr/bin/awk -F\',\' \'{print $4}\' '
@@ -29,12 +29,14 @@ graph = Graph()
 remoteConn = DriverRemoteConnection('wss://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin','g')
 g = graph.traversal().withRemote(remoteConn)
 
-# want to do two inserts but one of them is always BWI as departure
+# want to do X inserts but one of them is always BWI as departure
 # building the graph
 g.V().has('code','BWI').addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
+DEP = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+ARR = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
 g.V().has('code',DEP).addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
-g.V().has('code',DEP).addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
-g.V().has('code',DEP).addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
+DEP = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+ARR = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
 g.V().has('code',DEP).addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
 
 i=0

@@ -355,10 +355,19 @@ g.V().has('airport','code','BWI').
 # selection on routes from the graph
 # displays a graph in the notebook
 g.V().outE().inV().path().by('code').by().limit(200)
-
 g.V().outE().inV().path().by('code').by().limit(200)
 
+# distance greater than X and order by distance
+g.V().hasLabel('airport').outE('route').has('distance',gt(8000)).order().by('distance').valueMap().path()
 
+# gets the DEP airport vertex id
+g.V().hasLabel('airport').outE('route').has('distance',gt(8000)).order().by('distance').inV()
+
+# path from DEP to ARR
+g.V().has('airport','code','BWI').out().has('code','DEN').path().by('code')
+
+# count of routes
+g.V().hasLabel('airport').order().by(out().count(),desc).project("Airport","Routes").by('city').by(out().count())
 
 ## Experimenting with other graphs
 gremlin> g.V().has('lname','sheng').out().path().by('fname')
