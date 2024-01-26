@@ -30577,3 +30577,74 @@ nep100
 +++ Clusters
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+Thu Jan 25 23:00:01 UTC 2024
+Thu Jan 25 23:00:01 UTC 2024
+Thu Jan 25 23:00:01 UTC 2024
+
++++ Clusters
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+docdb100
+docdb100
+oracad3-19c
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb100 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+nep100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+docdb1002
+oracad3restore
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3restore is not in available state.
+nep100-instance-1
+oracle19c-ec2-cad
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle19c-ec2-cad is not in available state.
+nep100-instance-1-read-replica
+oracle-ec2-cad2
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracle-ec2-cad2 is not in available state.
+pg102
+pegasus2
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+DBINSTANCE	200	False	us-east-2b	7	region	rds-ca-2019	AL32UTF8	True	False	arn:aws:rds:us-east-2:012363508593:db:pegasus2	db.m6i.xlarge	pegasus2	stopping	ORCL	0	db-NCRWYBVJWNSW2KRXW2PYABELOE	False	oracle-ee	19.0.0.0.ru-2023-10.rur-2023-10.r1	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-NCRWYBVJWNSW2KRXW2PYABELOE	False	2024-01-09T19:27:20.777Z	12000	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2024-01-25T22:55:50Z	bring-your-own-license	admin	1000	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	AL16UTF16	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	05:46-06:16	thu:07:02-thu:07:32	False	True	gp3
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-08d3785e6a2bbd5c3	Complete	vpc-08d3785e6a2bbd5c3
+SUBNETS	subnet-03d09664bf9ab2953	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-035c7fb0c52017209	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-0d0aa0200431e2968	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0ab7c5e5d534ce48a	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+ENDPOINT	pegasus2.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	default:oracle-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-0584f8a3f3e872ee9
+postgresdemo
+docdb100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+ttsora10
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb100 is in stopped state but expected it to be one of available.
+nep100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
++++ Clusters
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.

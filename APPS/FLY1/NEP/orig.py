@@ -10,7 +10,6 @@ from gremlin_python.process.graph_traversal import __
 from gremlin_python.process.strategies import *
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 from random import randint
-import array as arr
 
 #user_query = sys.argv[1]
 #print ("query: " + user_query )
@@ -20,24 +19,30 @@ INFILE=WDIR+'airports-large-nodes.csv'
 
 #cmd='/bin/grep large_airport ' + INFILE + ' | /usr/bin/shuf -n1 | /usr/bin/awk -F\',\' \'{print $10}\' '
 cmd='/usr/bin/shuf -n1 ' + INFILE + ' | /usr/bin/awk -F\',\' \'{print $4}\' '
+DEP = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+ARR = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+AIR1 = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+AIR2 = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+AIR3 = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+#print (DEP)
+#print (ARR)
+distance = randint(0,99999)
 
 graph = Graph()
 remoteConn = DriverRemoteConnection('wss://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin','g')
 g = graph.traversal().withRemote(remoteConn)
 
-hops = randint(1,5)
-for r in range(1,4):
-    print(r)
-    distance = randint(0,99999)
-    DEP = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
-    ARR = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
-    PREV = ARR
-    print (DEP, ARR, PREV)
-
 # want to do X inserts but one of them is always BWI as departure
 # building the graph
-    g.V().has('code',DEP).addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
-    g.V().has('code','BWI').addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
+g.V().has('code',AIR1).addE('route').to(__.V().has('code',AIR2)).property('distance', distance).next() 
+g.V().has('code',AIR2).addE('route').to(__.V().has('code',AIR3)).property('distance', distance).next() 
+g.V().has('code','BWI').addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
+DEP = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+ARR = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+g.V().has('code',DEP).addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
+DEP = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+ARR = subprocess.run(cmd, shell=True, capture_output=True, text=True ).stdout.strip("\n")
+g.V().has('code',DEP).addE('route').to(__.V().has('code',ARR)).property('distance', distance).next() 
 
 i=0
 result = g.V().has('code','BWI').out().path().by('code')

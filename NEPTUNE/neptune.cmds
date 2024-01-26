@@ -344,6 +344,7 @@ g.V().has('airport','code','BWI').
     by('code')
 
 # BWI to WLG and get distances
+* demo
 g.V().has('airport','code','BWI').
   repeat(outE().inV().simplePath()).
   until(has('code','WLG')).
@@ -354,11 +355,14 @@ g.V().has('airport','code','BWI').
 
 # selection on routes from the graph
 # displays a graph in the notebook
+* demo
 g.V().outE().inV().path().by('code').by().limit(200)
 g.V().outE().inV().path().by('code').by().limit(200)
 
 # distance greater than X and order by distance
+* demo
 g.V().hasLabel('airport').outE('route').has('distance',gt(8000)).order().by('distance').valueMap().path()
+TODO display airport codes
 
 # gets the DEP airport vertex id
 g.V().hasLabel('airport').outE('route').has('distance',gt(8000)).order().by('distance').inV()
@@ -368,6 +372,11 @@ g.V().has('airport','code','BWI').out().has('code','DEN').path().by('code')
 
 # count of routes
 g.V().hasLabel('airport').order().by(out().count(),desc).project("Airport","Routes").by('city').by(out().count())
+g.V().hasLabel('airport').order().by(out().count(),desc).project("Airport","Routes").by('code').by(out().count())
+
+# one stop from BWI
+* demo
+g.V().has('airport','code','BWI').out().out().valueMap()
 
 ## Experimenting with other graphs
 gremlin> g.V().has('lname','sheng').out().path().by('fname')
