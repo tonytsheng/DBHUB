@@ -1,0 +1,25 @@
+echo ":import com.amazonaws.auth.DefaultAWSCredentialsProviderChain" > /tmp/nep200.txt
+echo ":import com.amazonaws.neptune.auth.NeptuneNettyHttpSigV4Signer" >> /tmp/nep200.txt
+k1=`grep -A3 default ~/.aws/credentials | grep aws_access_key_id    | awk -F'=' '{print $2}'`
+k2=`grep -A3 default ~/.aws/credentials | grep aws_secret_access_key| awk -F'=' '{print $2}'`
+
+echo "System.setProperty(\"aws.accessKeyId\",\"(${k1})\")" | sed 's/ //g' >> /tmp/nep200.txt
+echo "System.setProperty(\"aws.secretKey\",\"(${k2})\")"   | sed 's/ //g' >> /tmp/nep200.txt
+
+
+echo "cluster = Cluster.build(\"(nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com)\")  \ " >> /tmp/nep200.txt
+echo "                 .enableSsl(true) \ " >> /tmp/nep200.txt
+echo "                 .handshakeInterceptor { r ->  \ " >> /tmp/nep200.txt
+echo "                   def sigV4Signer = new NeptuneNettyHttpSigV4Signer(\"(us-east-2)\", \ " >> /tmp/nep200.txt
+echo "                                   new DefaultAWSCredentialsProviderChain()); \ " >> /tmp/nep200.txt
+echo "                   sigV4Signer.signRequest(r); \ " >> /tmp/nep200.txt
+echo "                   return r; } \ " >> /tmp/nep200.txt
+echo "                 .create() " >> /tmp/nep200.txt
+
+echo ":remote connect tinkerpop.server cluster" >> /tmp/nep200.txt
+echo ":remote console" >> /tmp/nep200.txt
+
+cat /tmp/nep200.txt
+
+#cd ~/rpms/apache-tinkerpop-gremlin-console-3.6.5 
+#bin/gremlin.sh  -i /tmp/nep200.txt

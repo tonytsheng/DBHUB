@@ -443,5 +443,53 @@ curl -X POST -H 'Content-Type: application/json' https://nep100-instance-1.cyt4d
 curl -X POST -H 'Content-Type: application/json' https://nep100-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/system -d '{ "action" : "performDatabaseReset" , "token":"acc57082-ed42-0794-4370-8b5ecf0f9e55"}'
 
 
+## IAM DB authentication
+https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connect-command-line.html
+- need to use awscurl
+- pip3 install awscurl
+- export AWS_ACCESS_KEY_ID
+- export AWS_SECRET_ACCES_KEY
+awscurl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status --region us-east-2 --service neptune-db
+
+
+# error
+gremlin> :install com.amazonaws amazon-neptune-sigv4-signer 2.4.0
+==>Error grabbing Grapes -- [download failed: commons-codec#commons-codec;1.15!commons-codec.jar]
+
+move or remove ~/.groovy and ~/.m2
+run install again
+also can run 
+:plugin list
+to see other plugins
+
+gremlin> :install com.amazonaws amazon-neptune-sigv4-signer 2.4.0
+==>Loaded: [com.amazonaws, amazon-neptune-sigv4-signer, 2.4.0]
+gremlin> :import com.amazonaws.auth.DefaultAWSCredentialsProviderChain
+==>com.amazonaws.auth.DefaultAWSCredentialsProviderChain
+gremlin> :import com.amazonaws.neptune.auth.NeptuneNettyHttpSigV4Signer
+==>com.amazonaws.auth.DefaultAWSCredentialsProviderChain, com.amazonaws.neptune.auth.NeptuneNettyHttpSigV4Signer
+System.setProperty("aws.accessKeyId","(your access key)")
+System.setProperty("aws.secretKey","(your secret key)")
+
+cluster = Cluster.build("(host name)")  \
+                 .enableSsl(true) \
+                 .handshakeInterceptor { r ->  \
+                   def sigV4Signer = new NeptuneNettyHttpSigV4Signer("(Amazon region)", \
+                                     new DefaultAWSCredentialsProviderChain()); \
+                   sigV4Signer.signRequest(r); \
+                   return r; } \
+                 .create()
+
+:remote connect tinkerpop.server cluster
+:remote console
+
+calling neptunesigv4.py
+https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connecting-python.html
+make sure to export AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, SERVICE_REGION
+
+execute:
+python3 neptunesigv4.py -ho your-neptune-endpoint -p 8182 -a GET -q gremlin -d "g.V().count()"
+python3 neptunesigv4.py -ho your-neptune-endpoint -p 8182 -a POST -q gremlin -d "g.V().count()"
+python3 neptunesigv4.py -ho your-neptune-endpoint -p 8182 -a GET -q status
 
 
