@@ -1,0 +1,5 @@
+host=$1
+sed s/HOST/${host}/g noiam.template > /tmp/noiam.txt
+cat /tmp/noiam.txt
+
+~/rpms/apache-tinkerpop-gremlin-console-3.6.5/bin/gremlin.sh  -i /tmp/noiam.txt
