@@ -1,0 +1,9 @@
+cluster = Cluster.build("HOST")  \
+.enableSsl(true) \
+.handshakeInterceptor { r ->  \
+def sigV4Signer = new NeptuneNettyHttpSigV4Signer("us-east-2", \
+new DefaultAWSCredentialsProviderChain()); \
+sigV4Signer.signRequest(r); \
+return r; } \
+.create()
+
