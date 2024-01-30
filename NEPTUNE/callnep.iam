@@ -1,18 +1,16 @@
-
-
 host=$1
 
-echo ":import com.amazonaws.auth.DefaultAWSCredentialsProviderChain" > /tmp/nep200.txt
-echo ":import com.amazonaws.neptune.auth.NeptuneNettyHttpSigV4Signer" >> /tmp/nep200.txt
+echo ":import com.amazonaws.auth.DefaultAWSCredentialsProviderChain" > /tmp/nepiam.txt
+echo ":import com.amazonaws.neptune.auth.NeptuneNettyHttpSigV4Signer" >> /tmp/nepiam.txt
 k1=`grep -A3 default ~/.aws/credentials | grep aws_access_key_id    | awk -F'=' '{print $2}'`
 k2=`grep -A3 default ~/.aws/credentials | grep aws_secret_access_key| awk -F'=' '{print $2}'`
 
-echo "System.setProperty(\"aws.accessKeyId\", \"${k1}\")" | sed 's/ //g' >> /tmp/nep200.txt
-echo "System.setProperty(\"aws.secretKey\",   \"${k2}\")" | sed 's/ //g' >> /tmp/nep200.txt
-sed s/HOST/${host}/g sigv4.template >> /tmp/nep200.txt
-echo ":remote connect tinkerpop.server cluster" >> /tmp/nep200.txt
-echo ":remote console" >> /tmp/nep200.txt
+echo "System.setProperty(\"aws.accessKeyId\", \"${k1}\")" | sed 's/ //g' >> /tmp/nepiam.txt
+echo "System.setProperty(\"aws.secretKey\",   \"${k2}\")" | sed 's/ //g' >> /tmp/nepiam.txt
+sed s/HOST/${host}/g TEMPLATES/template.iam >> /tmp/nepiam.txt 
+echo ":remote connect tinkerpop.server cluster" >> /tmp/nepiam.txt
+echo ":remote console" >> /tmp/nepiam.txt
 
-#cat /tmp/nep200.txt
+#cat /tmp/nepiam.txt
 
-~/rpms/apache-tinkerpop-gremlin-console-3.6.5/bin/gremlin.sh  -i /tmp/nep200.txt
+~/rpms/apache-tinkerpop-gremlin-console-3.6.5/bin/gremlin.sh  -i /tmp/nepiam.txt

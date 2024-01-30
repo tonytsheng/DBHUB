@@ -1,0 +1,5 @@
+hosts: [HOST]
+port: 8182
+connectionPool: { enableSsl: true }
+serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphBinaryMessageSerializerV1,
+  config: { serializeResultToString: true }}
