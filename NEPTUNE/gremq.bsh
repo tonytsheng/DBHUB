@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+SERVER=nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
+QUERY="g.V().count()"
+/home/ec2-user/rpms/apache-tinkerpop-gremlin-console-3.6.5/bin/gremlin.sh -e query.groovy "$SERVER" "$QUERY"

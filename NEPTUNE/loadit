@@ -36,6 +36,23 @@ https://nep100-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/load
       "failOnError" : "FALSE"
     }'
 
+awscurl -X POST \
+    -H 'Content-Type: application/json' \
+https://nep200-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d'
+    {
+      "source" : "s3://ttsheng-nepload/AirRoutes/",
+      "format" : "csv",
+      "iamRoleArn" : "arn:aws:iam::070201068661:role/load-neptune-s3",
+      "region" : "us-east-2",
+      "failOnError" : "FALSE"
+    }'  \ 
+--region us-east-2 --service neptune-db
+
+
+
+#nep100-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
+#https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/loader -d '
+
 
 
 #nep100-instance-1.cyt4dgtj55oy.us-east-2.neptune.amazonaws.com

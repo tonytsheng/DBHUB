@@ -13,6 +13,6 @@ sed s/HOST/${host}/g sigv4.template >> /tmp/nep200.txt
 echo ":remote connect tinkerpop.server cluster" >> /tmp/nep200.txt
 echo ":remote console" >> /tmp/nep200.txt
 
-cat /tmp/nep200.txt
+#cat /tmp/nep200.txt
 
 ~/rpms/apache-tinkerpop-gremlin-console-3.6.5/bin/gremlin.sh  -i /tmp/nep200.txt

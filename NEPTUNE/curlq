@@ -1,0 +1,9 @@
+set -x
+
+Q=$1
+#echo ${Q}
+
+cmd="https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/gremlin -d '\''{\"gremlin\":\"${Q}\"}' "
+echo $cmd
+
+curl -X POST ${cmd}
