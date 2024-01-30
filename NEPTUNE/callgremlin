@@ -1,4 +1,2 @@
-cd ~/rpms/apache-tinkerpop-gremlin-console-3.6.5 
-bin/gremlin.sh  -i /home/ec2-user/DBHUB/NEPTUNE/remote.txt
-#:remote connect tinkerpop.server conf/neptune-remote.yaml
-#:remote console
+cd /home/ec2-user/rpms/apache-tinkerpop-gremlin-console-3.6.5/
+bin/gremlin.sh  -i /home/ec2-user/rpms/apache-tinkerpop-gremlin-console-3.6.5/conf/remote-nep100.txt
