@@ -137,6 +137,12 @@ sudo yum install -y mongodb-org-shell
 #dns hostnames enabled
 #dns resolution enabled
 
+# neptune
+apache tinkerpop
+https://pypi.org/project/gremlinpython/
+download gremlinpython zip file
+python3 -m pip install ./downloads/SomeProject-1.0.4.tar.gz
+
 ## efs
 # might need thse packages
 sudo yum install nfs-utils
