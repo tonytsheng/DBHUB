@@ -7,7 +7,7 @@ k2=`grep -A3 default ~/.aws/credentials | grep aws_secret_access_key| awk -F'=' 
 
 echo "System.setProperty(\"aws.accessKeyId\", \"${k1}\")" | sed 's/ //g' >> /tmp/nepiam.txt
 echo "System.setProperty(\"aws.secretKey\",   \"${k2}\")" | sed 's/ //g' >> /tmp/nepiam.txt
-sed s/HOST/${host}/g TEMPLATES/template.iam >> /tmp/nepiam.txt 
+sed s/HOST/${host}/g /home/ec2-user/DBHUB/NEPTUNE/TEMPLATES/template.iam >> /tmp/nepiam.txt 
 echo ":remote connect tinkerpop.server cluster" >> /tmp/nepiam.txt
 echo ":remote console" >> /tmp/nepiam.txt
 

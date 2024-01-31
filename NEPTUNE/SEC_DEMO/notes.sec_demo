@@ -1,40 +1,41 @@
-Talk Track Demo - Neptune Security
+# Talk Track Demo - Neptune Security
 
-Intro
+## Intro
+- Have two clusters
+- Two ways to access based on whether IAM is enabled or not
+- Show nep100 and nep200 in the console
+- All of this is outlined in our documentation
+- I also have the AWSCLI installed on this ec2 instance and as part of that 
+    have the credentials for the cli saved on this instance. This includes 
+    the what is known as the AWS Access Key ID and the AWS Secret Access Key  
+    both of which are needed when you connect to an IAM enabled Neptune cluster.
+    We will show you how these are used.
+- Show links at the end
+- working dir - ~/DBHUB/NEPTUNE/SEC_DEMO
 
-Have two clusters
-Two ways to access based on whether IAM is enabled or not
-Show nep100 and nep200 in the console
-All of this is outlined in our documentation
-Show links at the end
-working dir - ~/DBHUB/NEPTUNE/SEC_DEMO
+## curl and awscurl
+- curl for nep100
+  - curl https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status | jq
+- curl missing auth for nep200
+  - curl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status | jq
+- awscurl missing auth for nep200
+  - awscurl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status --region us-east-2 --service neptune-db | jq
+    - setvars - export AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY
+    - make sure to clear the screen right after anytime the keys are displayed 
+    - awscurl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status --region us-east-2 --service neptune-db | jq
+    - export AWS_SECRET_ACCESS_KEY to empty [not AWS_ACCESS_KEY]
+    - can also use awscurl to get to nep100
 
-Curl and awscurl
-
-* curl for nep100
-    *  curl https://nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status | jq
-* curl missing auth for nep200
-    *  curl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status | jq
-* awscurl missing auth for nep200
-    * awscurl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status --region us-east-2 --service neptune-db | jq
-    * setvars - export AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY
-    * make sure to clear the screen right after anytime the keys are displayed 
-    * awscurl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status --region us-east-2 --service neptune-db | jq
-    * export AWS_SECRET_ACCESS_KEY to empty [not AWS_ACCESS_KEY]
-    * can also use awscurl to get to nep100
-
-gremlin console
-
-* straight forward to get to nep100
+## gremlin console
+- straight forward to get to nep100
   - ./callnep.noiam nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
-* must get to nep200 with
-    * env vars
-    * bash script to programmatically build the cluster connection string
+- must get to nep200 with
+  - env vars
+  - bash script to programmatically build the cluster connection string
   - ./callnep.iam nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
 
-Reference Links
-
-awscurl on an ec2 instance - https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connect-command-line.html
-gremlin console with sig 4 signing - https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connecting-gremlin-console.html
-Signature V4 Algorithm - https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
+## Reference Links
+- Signature V4 Algorithm - https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
+- awscurl on an ec2 instance - https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connect-command-line.html
+- gremlin console with sig 4 signing - https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connecting-gremlin-console.html
 

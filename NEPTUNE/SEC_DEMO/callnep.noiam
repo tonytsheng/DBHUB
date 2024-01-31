@@ -1,6 +1,6 @@
 host=$1
-sed s/HOST/${host}/g TEMPLATES/template.noiam.yaml > /tmp/${host}.yaml
-sed s/HOST/${host}/g TEMPLATES/remote.noiam.txt > /tmp/${host}.remote.txt
+sed s/HOST/${host}/g /home/ec2-user/DBHUB/NEPTUNE/TEMPLATES/template.noiam.yaml > /tmp/${host}.yaml
+sed s/HOST/${host}/g /home/ec2-user/DBHUB/NEPTUNE/TEMPLATES/remote.noiam.txt > /tmp/${host}.remote.txt
 
 mv /tmp/${host}.yaml ~/rpms/apache-tinkerpop-gremlin-console-3.6.5/conf
 mv /tmp/${host}.remote.txt ~/rpms/apache-tinkerpop-gremlin-console-3.6.5/conf
