@@ -20,7 +20,7 @@
   - curl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status | jq
 - awscurl missing auth for nep200
   - awscurl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status --region us-east-2 --service neptune-db | jq
-    - setvars - export AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY
+    - . ./setvars - export AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY
     - make sure to clear the screen right after anytime the keys are displayed 
     - awscurl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status --region us-east-2 --service neptune-db | jq
     - export AWS_SECRET_ACCESS_KEY to empty [not AWS_ACCESS_KEY]

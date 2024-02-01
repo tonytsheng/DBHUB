@@ -5,12 +5,5 @@ sed s/HOST/${host}/g /home/ec2-user/DBHUB/NEPTUNE/TEMPLATES/remote.noiam.txt > /
 mv /tmp/${host}.yaml ~/rpms/apache-tinkerpop-gremlin-console-3.6.5/conf
 mv /tmp/${host}.remote.txt ~/rpms/apache-tinkerpop-gremlin-console-3.6.5/conf
 
-#echo "+++"
-#cat ~/rpms/apache-tinkerpop-gremlin-console-3.6.5/conf/${host}.yaml
-#echo "+++"
-#cat ~/rpms/apache-tinkerpop-gremlin-console-3.6.5/conf/${host}.remote.txt
-
-#echo "+++"
-
 cd ~/rpms/apache-tinkerpop-gremlin-console-3.6.5
 bin/gremlin.sh  -i conf/${host}.remote.txt
