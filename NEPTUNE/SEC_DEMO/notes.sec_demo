@@ -20,19 +20,26 @@
   - curl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status | jq
 - awscurl missing auth for nep200
   - awscurl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status --region us-east-2 --service neptune-db | jq
-    - . ./setvars - export AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY
-    - make sure to clear the screen right after anytime the keys are displayed 
+    - . ./setvars - export AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY from the aws cli configure command
     - awscurl https://nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com:8182/status --region us-east-2 --service neptune-db | jq
     - export AWS_SECRET_ACCESS_KEY to empty [not AWS_ACCESS_KEY]
     - can also use awscurl to get to nep100
 
 ## gremlin console
 - straight forward to get to nep100
-  - ./callnep.noiam nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
-- must get to nep200 with
-  - env vars
+  - gremlin uses a remote file and a yaml file for iam disabled clusters
+  - ./callgremlin.noiam nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
+  - cat callgremlin.noiam
+  - cat ~/rpms/apache-tinkerpop-gremlin-console-3.6.5/conf/nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com.remote.txt
+  - cat ~/rpms/apache-tinkerpop-gremlin-console-3.6.5/conf/nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com.yaml
+
+- to connect to nep200 
+  - gremlin can use just a remote file for iam enabled clusters
+  - get keys from aws cli configure command and put into a config file
   - bash script to programmatically build the cluster connection string
-  - ./callnep.iam nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
+  - ./callgremlin.iam nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com
+  - cat callgremlin.iam
+  - cat /home/ec2-user/DBHUB/NEPTUNE/TEMPLATES/template.iam
 
 ## Reference Links
 - Signature V4 Algorithm - https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html

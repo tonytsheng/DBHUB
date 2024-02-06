@@ -1,15 +1,16 @@
 host=$1
 
-echo ":import com.amazonaws.auth.DefaultAWSCredentialsProviderChain" > /tmp/nepiam.txt
-echo ":import com.amazonaws.neptune.auth.NeptuneNettyHttpSigV4Signer" >> /tmp/nepiam.txt
-k1=`grep -A3 default ~/.aws/credentials | grep aws_access_key_id    | awk -F'=' '{print $2}'`
-k2=`grep -A3 default ~/.aws/credentials | grep aws_secret_access_key| awk -F'=' '{print $2}'`
+echo ":import com.amazonaws.auth.DefaultAWSCredentialsProviderChain"      > /tmp/nepiam.txt
+echo ":import com.amazonaws.neptune.auth.NeptuneNettyHttpSigV4Signer"    >> /tmp/nepiam.txt
 
-echo "System.setProperty(\"aws.accessKeyId\", \"${k1}\")" | sed 's/ //g' >> /tmp/nepiam.txt
-echo "System.setProperty(\"aws.secretKey\",   \"${k2}\")" | sed 's/ //g' >> /tmp/nepiam.txt
+k1=$(aws configure get default.aws_access_key_id)
+k2=$(aws configure get default.aws_secret_access_key)
+
+echo "System.setProperty(\"aws.accessKeyId\", \"${k1}\")"                >> /tmp/nepiam.txt
+echo "System.setProperty(\"aws.secretKey\",   \"${k2}\")"                >> /tmp/nepiam.txt
 sed s/HOST/${host}/g /home/ec2-user/DBHUB/NEPTUNE/TEMPLATES/template.iam >> /tmp/nepiam.txt 
-echo ":remote connect tinkerpop.server cluster" >> /tmp/nepiam.txt
-echo ":remote console" >> /tmp/nepiam.txt
+echo ":remote connect tinkerpop.server cluster"                          >> /tmp/nepiam.txt
+echo ":remote console"                                                   >> /tmp/nepiam.txt
 
 #cat /tmp/nepiam.txt
 
