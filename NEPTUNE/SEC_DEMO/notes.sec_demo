@@ -1,5 +1,7 @@
 # Talk Track Demo - Neptune Security
 
+
+** open search is availble - integration with neptune isn't
 ## Intro
 - Have two clusters
 - Two ways to access based on whether IAM is enabled or not
@@ -26,6 +28,7 @@
     - can also use awscurl to get to nep100
 
 ## gremlin console
+# graph - airroutes example
 - straight forward to get to nep100
   - gremlin uses a remote file and a yaml file for iam disabled clusters
   - ./callgremlin.noiam nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com

@@ -943,7 +943,7 @@ RETURNS trigger
 AS
 $BODY$
 BEGIN
-   New.customer_id := nextval('seq_customers$def_on_null');
+   New.customer_id := nextval('customer_orders.seq_customers$def_on_null');
    RETURN NEW;
 END;
 $BODY$
@@ -956,7 +956,7 @@ RETURNS trigger
 AS
 $BODY$
 BEGIN
-   New.inventory_id := nextval('seq_inventory$def_on_null');
+   New.inventory_id := nextval('customer_orders.seq_inventory$def_on_null');
    RETURN NEW;
 END;
 $BODY$
@@ -969,7 +969,7 @@ RETURNS trigger
 AS
 $BODY$
 BEGIN
-   New.order_id := nextval('seq_orders$def_on_null');
+   New.order_id := nextval('customer_orders.seq_orders$def_on_null');
    RETURN NEW;
 END;
 $BODY$
@@ -982,7 +982,7 @@ RETURNS trigger
 AS
 $BODY$
 BEGIN
-   New.product_id := nextval('seq_products$def_on_null');
+   New.product_id := nextval('customer_orders.seq_products$def_on_null');
    RETURN NEW;
 END;
 $BODY$
@@ -995,7 +995,7 @@ RETURNS trigger
 AS
 $BODY$
 BEGIN
-   New.shipment_id := nextval('seq_shipments$def_on_null');
+   New.shipment_id := nextval('customer_orders.seq_shipments$def_on_null');
    RETURN NEW;
 END;
 $BODY$
@@ -1008,7 +1008,7 @@ RETURNS trigger
 AS
 $BODY$
 BEGIN
-   New.store_id := nextval('seq_stores$def_on_null');
+   New.store_id := nextval('customer_orders.seq_stores$def_on_null');
    RETURN NEW;
 END;
 $BODY$

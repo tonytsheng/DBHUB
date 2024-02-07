@@ -1,4 +1,4 @@
-hammerdb
+~/rpms/Hammer/hammerdbcli
 
 source pg_prepare.tcl
 source pg_run.tcl 

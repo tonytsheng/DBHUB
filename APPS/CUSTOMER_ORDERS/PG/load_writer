@@ -1,0 +1,16 @@
+while true
+do
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql &
+callpg.nosecretsmgr  postgres Pass1234 aur100.cluster-cyt4dgtj55oy.us-east-2.rds.amazonaws.com aur100 ins.orders.sql 
+sleep 1
+done
+
