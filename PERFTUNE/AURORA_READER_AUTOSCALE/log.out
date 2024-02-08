@@ -1,0 +1,141 @@
+pghost: aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 50 duration: 300 dbName: aur100
+pghost: aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 50 duration: 300 dbName: aur100
+pghost: aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 50 duration: 300 dbName: aur100
+transaction type: multiple scripts
+scaling factor: 1
+query mode: simple
+number of clients: 50
+number of threads: 8
+duration: 300 s
+number of transactions actually processed: 47
+latency average = 231.104 ms
+tps = 216.353267 (including connections establishing)
+tps = 236.806832 (excluding connections establishing)
+SQL script 1: <builtin: select only>
+ - weight: 1 (targets 50.0% of total)
+ - 47 transactions (100.0% of total, tps = 216.353267)
+ - latency average = 20.215 ms
+ - latency stddev = 11.802 ms
+SQL script 2: /home/ec2-user/DBHUB/PERFTUNE/AURORA_READER_AUTOSCALE/tx_group1.sql
+ - weight: 1 (targets 50.0% of total)
+ - 0 transactions (0.0% of total, tps = 0.000000)
+pghost: aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 50 duration: 300 dbName: aur100
+transaction type: multiple scripts
+scaling factor: 1
+query mode: simple
+number of clients: 50
+number of threads: 8
+duration: 300 s
+number of transactions actually processed: 37
+latency average = 231.050 ms
+tps = 216.403572 (including connections establishing)
+tps = 244.842808 (excluding connections establishing)
+SQL script 1: <builtin: select only>
+ - weight: 1 (targets 50.0% of total)
+ - 37 transactions (100.0% of total, tps = 216.403572)
+ - latency average = 6.733 ms
+ - latency stddev = 6.212 ms
+SQL script 2: /home/ec2-user/DBHUB/PERFTUNE/AURORA_READER_AUTOSCALE/tx_group1.sql
+ - weight: 1 (targets 50.0% of total)
+ - 0 transactions (0.0% of total, tps = 0.000000)
+pghost: aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 50 duration: 300 dbName: aur100
+transaction type: multiple scripts
+scaling factor: 1
+query mode: simple
+number of clients: 50
+number of threads: 8
+duration: 300 s
+number of transactions actually processed: 53
+latency average = 178.008 ms
+tps = 280.886453 (including connections establishing)
+tps = 319.274876 (excluding connections establishing)
+SQL script 1: <builtin: select only>
+ - weight: 1 (targets 50.0% of total)
+ - 53 transactions (100.0% of total, tps = 280.886453)
+ - latency average = 7.985 ms
+ - latency stddev = 4.311 ms
+SQL script 2: /home/ec2-user/DBHUB/PERFTUNE/AURORA_READER_AUTOSCALE/tx_group1.sql
+ - weight: 1 (targets 50.0% of total)
+ - 0 transactions (0.0% of total, tps = 0.000000)
+pghost: aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 50 duration: 300 dbName: aur100
+transaction type: multiple scripts
+scaling factor: 1
+query mode: simple
+number of clients: 50
+number of threads: 8
+duration: 300 s
+number of transactions actually processed: 46
+latency average = 154.880 ms
+tps = 322.829908 (including connections establishing)
+tps = 369.323697 (excluding connections establishing)
+SQL script 1: <builtin: select only>
+ - weight: 1 (targets 50.0% of total)
+ - 46 transactions (100.0% of total, tps = 322.829908)
+ - latency average = 3.921 ms
+ - latency stddev = 2.195 ms
+SQL script 2: /home/ec2-user/DBHUB/PERFTUNE/AURORA_READER_AUTOSCALE/tx_group1.sql
+ - weight: 1 (targets 50.0% of total)
+ - 0 transactions (0.0% of total, tps = 0.000000)
+pghost: aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 50 duration: 300 dbName: aur100
+transaction type: multiple scripts
+scaling factor: 1
+query mode: simple
+number of clients: 50
+number of threads: 8
+duration: 300 s
+number of transactions actually processed: 963622
+latency average = 15.567 ms
+tps = 3211.836890 (including connections establishing)
+tps = 3212.033543 (excluding connections establishing)
+SQL script 1: <builtin: select only>
+ - weight: 1 (targets 50.0% of total)
+ - 481657 transactions (50.0% of total, tps = 1605.405149)
+ - latency average = 6.755 ms
+ - latency stddev = 45.165 ms
+SQL script 2: /home/ec2-user/DBHUB/PERFTUNE/AURORA_READER_AUTOSCALE/tx_group1.sql
+ - weight: 1 (targets 50.0% of total)
+ - 481804 transactions (50.0% of total, tps = 1605.895113)
+ - latency average = 20.068 ms
+ - latency stddev = 82.195 ms
+pghost: aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 50 duration: 300 dbName: aur100
+transaction type: multiple scripts
+scaling factor: 1
+query mode: simple
+number of clients: 50
+number of threads: 8
+duration: 300 s
+number of transactions actually processed: 1025723
+latency average = 14.625 ms
+tps = 3418.841762 (including connections establishing)
+tps = 3419.040520 (excluding connections establishing)
+SQL script 1: <builtin: select only>
+ - weight: 1 (targets 50.0% of total)
+ - 512856 transactions (50.0% of total, tps = 1709.402549)
+ - latency average = 6.431 ms
+ - latency stddev = 51.239 ms
+SQL script 2: /home/ec2-user/DBHUB/PERFTUNE/AURORA_READER_AUTOSCALE/tx_group1.sql
+ - weight: 1 (targets 50.0% of total)
+ - 512669 transactions (50.0% of total, tps = 1708.779258)
+ - latency average = 18.979 ms
+ - latency stddev = 92.380 ms
+pghost: aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com pgport: 5432 nclients: 90 duration: 600 dbName: aur100
+transaction type: multiple scripts
+scaling factor: 1
+query mode: simple
+number of clients: 90
+number of threads: 20
+duration: 600 s
+number of transactions actually processed: 2459853
+latency average = 21.954 ms
+tps = 4099.535315 (including connections establishing)
+tps = 4099.757301 (excluding connections establishing)
+SQL script 1: <builtin: select only>
+ - weight: 1 (targets 50.0% of total)
+ - 1229465 transactions (50.0% of total, tps = 2048.998532)
+ - latency average = 9.537 ms
+ - latency stddev = 40.525 ms
+SQL script 2: /home/ec2-user/DBHUB/PERFTUNE/AURORA_READER_AUTOSCALE/tx_group1.sql
+ - weight: 1 (targets 50.0% of total)
+ - 1229633 transactions (50.0% of total, tps = 2049.278517)
+ - latency average = 29.687 ms
+ - latency stddev = 72.581 ms
