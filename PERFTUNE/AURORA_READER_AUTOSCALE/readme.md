@@ -23,6 +23,6 @@ keep the metric at or close to the target value
 - Example: 200 connections average across the cluster
 
 
-!(aur00.jpg)
+![Optional Text](aur00.jpg)
 
 
