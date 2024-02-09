@@ -22,7 +22,19 @@ available Aurora Replicas for your DB cluster.
 keep the metric at or close to the target value
 - Example: 200 connections average across the cluster
 
-
+## Adding replicas
 ![Optional Text](aur00.jpg)
+![Optional Text](aur01.jpg)
+
+## CloudWatch metrics
+Note that the first image is the exact metric the policy is monitoring. The second image is database connections average by the second.
+![Optional Text](aur03.jpg)
+![Optional Text](aur04.jpg)
+
+## Scaling In
+![Optional Text](aur07.jpg)
+
+
+
 
 
