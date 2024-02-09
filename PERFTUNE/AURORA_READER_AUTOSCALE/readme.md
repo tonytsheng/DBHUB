@@ -22,7 +22,7 @@ available Aurora Replicas for your DB cluster.
 keep the metric at or close to the target value
 - Example: 200 connections average across the cluster
 
-## Adding replicas
+## Scaling in
 ![Optional Text](aur00.jpg)
 ![Optional Text](aur01.jpg)
 
