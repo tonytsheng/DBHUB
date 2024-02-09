@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli ttsheng-dbpw`
 
 # postgreSQL connection environment variables
 export BENCHMARK_HOST=aurdb1-instance-1.cyt4dgtj55oy.us-east-2.rds.amazonaws.com

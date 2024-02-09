@@ -1,19 +1,19 @@
 #!/bin/bash
 
-#DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli`
+DB_PW=`/home/ec2-user/DBHUB/BIN/getsecret.cli ttsheng-dbpw`
 
 # postgreSQL connection environment variables
 export BENCHMARK_HOST=aur100.cluster-ro-cyt4dgtj55oy.us-east-2.rds.amazonaws.com
 export BENCHMARK_PORT=5432
 export BENCHMARK_DB=aur100
-export PGPASSWORD=Pass1234
+export PGPASSWORD=${DB_PW}
 export BENCHMARK_USER=postgres
 # pgbench control environment variables
 export BENCHMARK_CONNECTIONS=90
 export BENCHMARK_THREADS=20
 export BENCHMARK_SQL_FILE=/home/ec2-user/DBHUB/PERFTUNE/AURORA_READER_AUTOSCALE/tx_group1.sql 
 # time in seconds to run test
-export BENCHMARK_TIME=600
+export BENCHMARK_TIME=1800
 # run the benchmark test
 cd /home/ec2-user/DBHUB/PERFTUNE/AURORA_READER_AUTOSCALE
 
