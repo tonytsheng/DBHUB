@@ -31799,3 +31799,308 @@ An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster op
 nep200
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+Fri Feb  9 23:00:01 UTC 2024
+Fri Feb  9 23:00:01 UTC 2024
+Fri Feb  9 23:00:01 UTC 2024
+
++++ Clusters
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+aur100
+aur100-instance-1
+oracad3-19c
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aur100 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+docdb100
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+pegasus2
+aur100-rr01
+DBCLUSTER	1	1	2023-12-12T14:53:08.678Z	False	False	arn:aws:rds:us-east-2:070201068661:cluster:docdb100	docdb100	tts-docdb-parameters	default-vpc-0467e5c237261df36	cluster-573K5OSM7LITBRTNA4QD6Y7XHU	True	2024-02-07T23:37:42.821Z	docdb100.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	docdb	5.0.0	Z7L8695A82IZ6	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-02-09T22:55:08.550Z	docadmin	True	27017	00:00-00:30	tue:06:37-tue:07:07	docdb100.cluster-ro-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	available	True
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	docdb1002	True	1
+DBCLUSTERMEMBERS	in-sync	docdb100	False	1
+ENABLEDCLOUDWATCHLOGSEXPORTS	audit
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pegasus2 is not in available state.
+nep100
+aur100-rr02
+postgresdemo
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+nep200
+ttsora10
+docdb100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
++++ Clusters
+docdb1002
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+nep100-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep100-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+aur100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aur100 is in stopped state but expected it to be one of available.
+docdb100
+DBCLUSTER	1	False	1	2023-12-12T14:53:08.678Z	False	False	arn:aws:rds:us-east-2:070201068661:cluster:docdb100	docdb100	tts-docdb-parameters	default-vpc-0467e5c237261df36	cluster-573K5OSM7LITBRTNA4QD6Y7XHU	True	2024-02-07T23:37:42.821Z	docdb100.cluster-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	docdb	provisioned	5.0.0	Z7L8695A82IZ6	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-02-09T22:55:08.550Z	docadmin	True	27017	00:00-00:30	tue:06:37-tue:07:07	docdb100.cluster-ro-cyt4dgtj55oy.us-east-2.docdb.amazonaws.com	available	True
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	docdb1002	True	1
+DBCLUSTERMEMBERS	in-sync	docdb100	False	1
+ENABLEDCLOUDWATCHLOGSEXPORTS	audit
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+nep100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+Sat Feb 10 23:00:01 UTC 2024
+
++++ Clusters
+Sat Feb 10 23:00:01 UTC 2024
+Sat Feb 10 23:00:01 UTC 2024
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+aur100
+aur100-instance-1
+oracad3-19c
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aur100 is in stopped state but expected it to be one of available.
+docdb100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+pegasus2
+aur100-rr01
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb100 is in stopped state but expected it to be one of available.
+nep100
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aur100-rr02
+DBINSTANCE	200	False	us-east-2b	7	region	rds-ca-2019	AL32UTF8	True	False	arn:aws:rds:us-east-2:012363508593:db:pegasus2	db.m6i.xlarge	pegasus2	stopping	ORCL	0	db-NCRWYBVJWNSW2KRXW2PYABELOE	False	oracle-ee	19.0.0.0.ru-2023-10.rur-2023-10.r1	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-NCRWYBVJWNSW2KRXW2PYABELOE	False	2024-01-09T19:27:20.777Z	12000	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2024-02-10T22:55:54Z	bring-your-own-license	admin	1000	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	AL16UTF16	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	05:46-06:16	thu:07:02-thu:07:32	False	True	gp3
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-08d3785e6a2bbd5c3	Complete	vpc-08d3785e6a2bbd5c3
+SUBNETS	subnet-03d09664bf9ab2953	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-035c7fb0c52017209	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-0d0aa0200431e2968	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0ab7c5e5d534ce48a	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+ENDPOINT	pegasus2.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	default:oracle-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-0584f8a3f3e872ee9
+postgresdemo
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+docdb100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+ttsora10
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb1002
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
++++ Clusters
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+nep100-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep100-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+aur100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aur100 is in stopped state but expected it to be one of available.
+docdb100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb100 is in stopped state but expected it to be one of available.
+nep100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+Sun Feb 11 23:00:01 UTC 2024
+Sun Feb 11 23:00:01 UTC 2024
+Sun Feb 11 23:00:01 UTC 2024
+stop-db-instance
++++ Instances
+
++++ Clusters
+stop-db-instance
++++ Instances
+aur100
+oracad3-19c
+aur100-instance-1
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aur100 is in stopped state but expected it to be one of available.
+docdb100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+pegasus2
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aur100-rr01
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb100 is in stopped state but expected it to be one of available.
+nep100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pegasus2 is not in available state.
+postgresdemo
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+aur100-rr02
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+ttsora10
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: aurora-postgresql DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+docdb100
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
++++ Clusters
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+docdb1002
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: docdb DB instances are not eligible for stopping and starting.
+nep100-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep100-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+aur100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster aur100 is in stopped state but expected it to be one of available.
+docdb100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster docdb100 is in stopped state but expected it to be one of available.
+nep100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+Mon Feb 12 23:00:01 UTC 2024
+Mon Feb 12 23:00:01 UTC 2024
+
++++ Clusters
+Mon Feb 12 23:00:01 UTC 2024
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+nep100
+nep100-instance-1
+oracad3-19c
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+nep100-instance-1-read-replica
+pegasus2
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pegasus2 is not in available state.
+nep200-instance-1
+postgresdemo
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+ttsora10
+nep200-instance-1-read-replica
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
++++ Clusters
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+nep100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.

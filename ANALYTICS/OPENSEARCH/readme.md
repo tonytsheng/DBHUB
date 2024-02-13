@@ -72,6 +72,10 @@ curl  -H "Content-Type: application/json" -XPOST "https://search-os200-3upgw4tib
 {json stuff}
 ```
 
+- idxname must be all lower case
+- loader creates the index
+
+
 ## Delete Index
 ```
 curl  -X DELETE "https://search-os200-3upgw4tibkrffdnhn6irnvfwoa.us-east-2.es.amazonaws.com/taylor2"
