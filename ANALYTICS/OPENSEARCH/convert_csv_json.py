@@ -5,8 +5,8 @@
 import csv
 import json
 
-INFILE="/home/ec2-user/data/LogGenerator/20240213-141109.log"
-OUTFILE="/home/ec2-user/data/LogGenerator/20240213-141109.json"
+INFILE="/home/ec2-user/data/LogGenerator/20240213-143739.log"
+OUTFILE="/home/ec2-user/data/LogGenerator/20240213-143739.json"
 # change in and out file
 
 csvfile = open(INFILE, 'r')
@@ -26,5 +26,5 @@ for row in reader:
 
     json.dump(row, jsonfile)
     jsonfile.write('\n')
-    count=count+1
+    count += 1
 
