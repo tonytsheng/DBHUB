@@ -41,9 +41,9 @@ def MakeLog(startLine, numLines):
     yy = str(randint (2010,2024))
     mm = str(randint (1,12))
     dd = str(randint (1,31))
-    hh = str(randint (0,23))
-    mi = str(randint (0,59))
-    ss = str(randint (0,59))
+    hh = str(randint (00,23))
+    mi = str(randint (00,59))
+    ss = str(randint (00,59))
     ts = (yy+mm+dd+'T'+hh+':'+mm+':'+ss)
     print (ts)
 

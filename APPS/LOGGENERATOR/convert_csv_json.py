@@ -5,8 +5,8 @@
 import csv
 import json
 
-INFILE="/home/ec2-user/data/LogGenerator/20240213-143739.log"
-OUTFILE="/home/ec2-user/data/LogGenerator/20240213-143739.json"
+INFILE="20240214-022238.log"
+OUTFILE="20240214-022238.json"
 # change in and out file
 
 csvfile = open(INFILE, 'r')
@@ -16,7 +16,7 @@ jsonfile = open(OUTFILE, 'w')
 count=1
 # modify index count as needed
 
-fieldnames = ("InvoiceNo","StockCode","Description","Quantity","InvoiceDate","UnitPrice","CustomerID","Country")
+fieldnames = ("InvoiceNo","StockCode","Description","Quantity","UnitPrice","CustomerID","Country","InvoiceDate")
 # field names to match input file
 
 reader = csv.DictReader( csvfile, fieldnames)
