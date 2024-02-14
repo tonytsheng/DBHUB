@@ -1,0 +1,100 @@
+{"index" : { "_index" : "logger", "_id" : 1}}
+{"InvoiceNo": "536412", "StockCode": "22629", "Description": "SPACEBOY LUNCH BOX ", "Quantity": "1", "UnitPrice": "1.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 2}}
+{"InvoiceNo": "536412", "StockCode": "21245", "Description": "GREEN POLKADOT PLATE ", "Quantity": "1", "UnitPrice": "1.69", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 3}}
+{"InvoiceNo": "536412", "StockCode": "21244", "Description": "BLUE POLKADOT PLATE ", "Quantity": "1", "UnitPrice": "1.69", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 4}}
+{"InvoiceNo": "536412", "StockCode": "21242", "Description": "RED RETROSPOT PLATE ", "Quantity": "1", "UnitPrice": "1.69", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 5}}
+{"InvoiceNo": "536412", "StockCode": "21243", "Description": "PINK  POLKADOT PLATE ", "Quantity": "1", "UnitPrice": "1.69", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 6}}
+{"InvoiceNo": "536412", "StockCode": "22327", "Description": "ROUND SNACK BOXES SET OF 4 SKULLS", "Quantity": "1", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 7}}
+{"InvoiceNo": "536412", "StockCode": "22273", "Description": "FELTCRAFT DOLL MOLLY", "Quantity": "1", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 8}}
+{"InvoiceNo": "536412", "StockCode": "22940", "Description": "FELTCRAFT CHRISTMAS FAIRY", "Quantity": "3", "UnitPrice": "4.25", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 9}}
+{"InvoiceNo": "536412", "StockCode": "22652", "Description": "TRAVEL SEWING KIT", "Quantity": "5", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 10}}
+{"InvoiceNo": "536412", "StockCode": "22759", "Description": "SET OF 3 NOTEBOOKS IN PARCEL", "Quantity": "1", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 11}}
+{"InvoiceNo": "536412", "StockCode": "21880", "Description": "RED RETROSPOT TAPE", "Quantity": "10", "UnitPrice": "0.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 12}}
+{"InvoiceNo": "536412", "StockCode": "21738", "Description": "COSY SLIPPER SHOES SMALL  RED ", "Quantity": "1", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 13}}
+{"InvoiceNo": "536412", "StockCode": "22077", "Description": "6 RIBBONS RUSTIC CHARM", "Quantity": "1", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 14}}
+{"InvoiceNo": "536412", "StockCode": "85049E", "Description": "SCANDINAVIAN REDS RIBBONS", "Quantity": "3", "UnitPrice": "1.25", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 15}}
+{"InvoiceNo": "536412", "StockCode": "22961", "Description": "JAM MAKING SET PRINTED", "Quantity": "24", "UnitPrice": "1.45", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 16}}
+{"InvoiceNo": "536412", "StockCode": "21448", "Description": "12 DAISY PEGS IN WOOD BOX", "Quantity": "2", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 17}}
+{"InvoiceNo": "536412", "StockCode": "22837", "Description": "HOT WATER BOTTLE BABUSHKA ", "Quantity": "3", "UnitPrice": "4.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 18}}
+{"InvoiceNo": "536412", "StockCode": "22749", "Description": "FELTCRAFT PRINCESS CHARLOTTE DOLL", "Quantity": "2", "UnitPrice": "3.75", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 19}}
+{"InvoiceNo": "536412", "StockCode": "22940", "Description": "FELTCRAFT CHRISTMAS FAIRY", "Quantity": "1", "UnitPrice": "4.25", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 20}}
+{"InvoiceNo": "536412", "StockCode": "22749", "Description": "FELTCRAFT PRINCESS CHARLOTTE DOLL", "Quantity": "1", "UnitPrice": "3.75", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 21}}
+{"InvoiceNo": "536412", "StockCode": "22077", "Description": "6 RIBBONS RUSTIC CHARM", "Quantity": "2", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 22}}
+{"InvoiceNo": "536412", "StockCode": "21738", "Description": "COSY SLIPPER SHOES SMALL  RED ", "Quantity": "2", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 23}}
+{"InvoiceNo": "536412", "StockCode": "85049E", "Description": "SCANDINAVIAN REDS RIBBONS", "Quantity": "1", "UnitPrice": "1.25", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 24}}
+{"InvoiceNo": "536412", "StockCode": "22243", "Description": "5 HOOK HANGER RED MAGIC TOADSTOOL", "Quantity": "6", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 25}}
+{"InvoiceNo": "536412", "StockCode": "22141", "Description": "CHRISTMAS CRAFT TREE TOP ANGEL", "Quantity": "1", "UnitPrice": "2.1", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 26}}
+{"InvoiceNo": "536412", "StockCode": "22144", "Description": "CHRISTMAS CRAFT LITTLE FRIENDS", "Quantity": "2", "UnitPrice": "2.1", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 27}}
+{"InvoiceNo": "536412", "StockCode": "22243", "Description": "5 HOOK HANGER RED MAGIC TOADSTOOL", "Quantity": "3", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 28}}
+{"InvoiceNo": "536412", "StockCode": "22077", "Description": "6 RIBBONS RUSTIC CHARM", "Quantity": "7", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 29}}
+{"InvoiceNo": "536412", "StockCode": "21448", "Description": "12 DAISY PEGS IN WOOD BOX", "Quantity": "1", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 30}}
+{"InvoiceNo": "536412", "StockCode": "22759", "Description": "SET OF 3 NOTEBOOKS IN PARCEL", "Quantity": "5", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 31}}
+{"InvoiceNo": "536412", "StockCode": "22242", "Description": "5 HOOK HANGER MAGIC TOADSTOOL", "Quantity": "5", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 32}}
+{"InvoiceNo": "536412", "StockCode": "85049E", "Description": "SCANDINAVIAN REDS RIBBONS", "Quantity": "12", "UnitPrice": "1.25", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 33}}
+{"InvoiceNo": "536412", "StockCode": "21731", "Description": "RED TOADSTOOL LED NIGHT LIGHT", "Quantity": "5", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 34}}
+{"InvoiceNo": "536412", "StockCode": "22243", "Description": "5 HOOK HANGER RED MAGIC TOADSTOOL", "Quantity": "1", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 35}}
+{"InvoiceNo": "536412", "StockCode": "21739", "Description": "COSY SLIPPER SHOES SMALL GREEN", "Quantity": "2", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 36}}
+{"InvoiceNo": "536412", "StockCode": "21738", "Description": "COSY SLIPPER SHOES SMALL  RED ", "Quantity": "5", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 37}}
+{"InvoiceNo": "536412", "StockCode": "22271", "Description": "FELTCRAFT DOLL ROSIE", "Quantity": "2", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 38}}
+{"InvoiceNo": "536412", "StockCode": "22273", "Description": "FELTCRAFT DOLL MOLLY", "Quantity": "1", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 39}}
+{"InvoiceNo": "536412", "StockCode": "22274", "Description": "FELTCRAFT DOLL EMILY", "Quantity": "2", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 40}}
+{"InvoiceNo": "536412", "StockCode": "22749", "Description": "FELTCRAFT PRINCESS CHARLOTTE DOLL", "Quantity": "1", "UnitPrice": "3.75", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 41}}
+{"InvoiceNo": "536412", "StockCode": "22751", "Description": "FELTCRAFT PRINCESS OLIVIA DOLL", "Quantity": "2", "UnitPrice": "3.75", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 42}}
+{"InvoiceNo": "536412", "StockCode": "21034", "Description": "REX CASH+CARRY JUMBO SHOPPER", "Quantity": "1", "UnitPrice": "0.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 43}}
+{"InvoiceNo": "536412", "StockCode": "22273", "Description": "FELTCRAFT DOLL MOLLY", "Quantity": "2", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 44}}
+{"InvoiceNo": "536412", "StockCode": "22568", "Description": "FELTCRAFT CUSHION OWL", "Quantity": "3", "UnitPrice": "3.75", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 45}}
+{"InvoiceNo": "536412", "StockCode": "22141", "Description": "CHRISTMAS CRAFT TREE TOP ANGEL", "Quantity": "1", "UnitPrice": "2.1", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 46}}
+{"InvoiceNo": "536412", "StockCode": "22144", "Description": "CHRISTMAS CRAFT LITTLE FRIENDS", "Quantity": "1", "UnitPrice": "2.1", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 47}}
+{"InvoiceNo": "536412", "StockCode": "22570", "Description": "FELTCRAFT CUSHION RABBIT", "Quantity": "3", "UnitPrice": "3.75", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 48}}
+{"InvoiceNo": "536412", "StockCode": "22569", "Description": "FELTCRAFT CUSHION BUTTERFLY", "Quantity": "2", "UnitPrice": "3.75", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 49}}
+{"InvoiceNo": "536412", "StockCode": "21448", "Description": "12 DAISY PEGS IN WOOD BOX", "Quantity": "1", "UnitPrice": "1.65", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}
+{"index" : { "_index" : "logger", "_id" : 50}}
+{"InvoiceNo": "536412", "StockCode": "22086", "Description": "PAPER CHAIN KIT 50'S CHRISTMAS ", "Quantity": "1", "UnitPrice": "2.95", "CustomerID": "17920", "Country": "United Kingdom", "InvoiceDate": "2018-1-10T13:1:33"}

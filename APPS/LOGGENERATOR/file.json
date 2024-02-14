@@ -1,0 +1,100 @@
+{"index" : { "_index" : "logger", "_id" : 1}}
+{"InvoiceNo": "536823", "StockCode": "22508", "Description": "DOORSTOP RETROSPOT HEART", "Quantity": "4", "UnitPrice": "3.75", "CustomerID": "13011", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 2}}
+{"InvoiceNo": "536823", "StockCode": "82494L", "Description": "WOODEN FRAME ANTIQUE WHITE ", "Quantity": "6", "UnitPrice": "2.95", "CustomerID": "13011", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 3}}
+{"InvoiceNo": "536823", "StockCode": "85014A", "Description": "BLACK/BLUE POLKADOT UMBRELLA", "Quantity": "3", "UnitPrice": "5.95", "CustomerID": "13011", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 4}}
+{"InvoiceNo": "536824", "StockCode": "85123A", "Description": "WHITE HANGING HEART T-LIGHT HOLDER", "Quantity": "160", "UnitPrice": "2.55", "CustomerID": "13798", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 5}}
+{"InvoiceNo": "C536825", "StockCode": "22617", "Description": "BAKING SET SPACEBOY DESIGN", "Quantity": "-1", "UnitPrice": "4.95", "CustomerID": "15384", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 6}}
+{"InvoiceNo": "C536825", "StockCode": "22197", "Description": "SMALL POPCORN HOLDER", "Quantity": "-2", "UnitPrice": "0.85", "CustomerID": "15384", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 7}}
+{"InvoiceNo": "C536826", "StockCode": "35004B", "Description": "SET OF 3 BLACK FLYING DUCKS", "Quantity": "-2", "UnitPrice": "4.65", "CustomerID": "17924", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 8}}
+{"InvoiceNo": "C536826", "StockCode": "35004B", "Description": "SET OF 3 BLACK FLYING DUCKS", "Quantity": "-3", "UnitPrice": "4.65", "CustomerID": "17924", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 9}}
+{"InvoiceNo": "C536827", "StockCode": "21527", "Description": "RED RETROSPOT TRADITIONAL TEAPOT ", "Quantity": "-3", "UnitPrice": "6.95", "CustomerID": "13408", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 10}}
+{"InvoiceNo": "C536828", "StockCode": "22832", "Description": "BROCANTE SHELF WITH HOOKS", "Quantity": "-1", "UnitPrice": "10.75", "CustomerID": "14264", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 11}}
+{"InvoiceNo": "C536828", "StockCode": "84946", "Description": "ANTIQUE SILVER TEA GLASS ETCHED", "Quantity": "-3", "UnitPrice": "1.25", "CustomerID": "14264", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 12}}
+{"InvoiceNo": "C536829", "StockCode": "71477", "Description": "COLOUR GLASS. STAR T-LIGHT HOLDER", "Quantity": "-1", "UnitPrice": "3.25", "CustomerID": "13295", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 13}}
+{"InvoiceNo": "536830", "StockCode": "84077", "Description": "WORLD WAR 2 GLIDERS ASSTD DESIGNS", "Quantity": "2880", "UnitPrice": "0.18", "CustomerID": "16754", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 14}}
+{"InvoiceNo": "536830", "StockCode": "21915", "Description": "RED  HARMONICA IN BOX ", "Quantity": "1400", "UnitPrice": "1.06", "CustomerID": "16754", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 15}}
+{"InvoiceNo": "536831", "StockCode": "84880", "Description": "WHITE WIRE EGG HOLDER", "Quantity": "12", "UnitPrice": "4.95", "CustomerID": "16029", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 16}}
+{"InvoiceNo": "536831", "StockCode": "22207", "Description": "FRYING PAN UNION FLAG", "Quantity": "48", "UnitPrice": "3.75", "CustomerID": "16029", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 17}}
+{"InvoiceNo": "536831", "StockCode": "21929", "Description": "JUMBO BAG PINK VINTAGE PAISLEY", "Quantity": "100", "UnitPrice": "1.65", "CustomerID": "16029", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 18}}
+{"InvoiceNo": "536831", "StockCode": "21928", "Description": "JUMBO BAG SCANDINAVIAN PAISLEY", "Quantity": "100", "UnitPrice": "1.65", "CustomerID": "16029", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 19}}
+{"InvoiceNo": "536832", "StockCode": "21927", "Description": "BLUE/CREAM STRIPE CUSHION COVER ", "Quantity": "24", "UnitPrice": "1.25", "CustomerID": "16634", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 20}}
+{"InvoiceNo": "536832", "StockCode": "21925", "Description": "UNION STRIPE CUSHION COVER ", "Quantity": "12", "UnitPrice": "1.25", "CustomerID": "16634", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 21}}
+{"InvoiceNo": "536832", "StockCode": "71477", "Description": "COLOUR GLASS. STAR T-LIGHT HOLDER", "Quantity": "4", "UnitPrice": "3.25", "CustomerID": "16634", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 22}}
+{"InvoiceNo": "536832", "StockCode": "21733", "Description": "RED HANGING HEART T-LIGHT HOLDER", "Quantity": "6", "UnitPrice": "2.95", "CustomerID": "16634", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 23}}
+{"InvoiceNo": "536832", "StockCode": "22763", "Description": "KEY CABINET MA CAMPAGNE", "Quantity": "2", "UnitPrice": "9.95", "CustomerID": "16634", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 24}}
+{"InvoiceNo": "536832", "StockCode": "22863", "Description": "SOAP DISH BROCANTE", "Quantity": "6", "UnitPrice": "2.95", "CustomerID": "16634", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 25}}
+{"InvoiceNo": "536832", "StockCode": "84406B", "Description": "CREAM CUPID HEARTS COAT HANGER", "Quantity": "8", "UnitPrice": "3.25", "CustomerID": "16634", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 26}}
+{"InvoiceNo": "536832", "StockCode": "85066", "Description": "CREAM SWEETHEART MINI CHEST", "Quantity": "2", "UnitPrice": "12.75", "CustomerID": "16634", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 27}}
+{"InvoiceNo": "536833", "StockCode": "85123A", "Description": "WHITE HANGING HEART T-LIGHT HOLDER", "Quantity": "6", "UnitPrice": "2.95", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 28}}
+{"InvoiceNo": "536833", "StockCode": "84970S", "Description": "HANGING HEART ZINC T-LIGHT HOLDER", "Quantity": "12", "UnitPrice": "0.85", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 29}}
+{"InvoiceNo": "536833", "StockCode": "20749", "Description": "ASSORTED COLOUR MINI CASES", "Quantity": "2", "UnitPrice": "7.95", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 30}}
+{"InvoiceNo": "536833", "StockCode": "15060B", "Description": "FAIRY CAKE DESIGN UMBRELLA", "Quantity": "4", "UnitPrice": "3.75", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 31}}
+{"InvoiceNo": "536833", "StockCode": "85014B", "Description": "RED RETROSPOT UMBRELLA", "Quantity": "3", "UnitPrice": "5.95", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 32}}
+{"InvoiceNo": "536833", "StockCode": "22464", "Description": "HANGING METAL HEART LANTERN", "Quantity": "12", "UnitPrice": "1.65", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 33}}
+{"InvoiceNo": "536833", "StockCode": "22465", "Description": "HANGING METAL STAR LANTERN", "Quantity": "12", "UnitPrice": "1.65", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 34}}
+{"InvoiceNo": "536833", "StockCode": "22785", "Description": "SQUARECUSHION COVER PINK UNION FLAG", "Quantity": "4", "UnitPrice": "6.75", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 35}}
+{"InvoiceNo": "536833", "StockCode": "71053", "Description": "WHITE METAL LANTERN", "Quantity": "4", "UnitPrice": "3.75", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 36}}
+{"InvoiceNo": "536833", "StockCode": "22969", "Description": "HOMEMADE JAM SCENTED CANDLES", "Quantity": "12", "UnitPrice": "1.45", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 37}}
+{"InvoiceNo": "536833", "StockCode": "22810", "Description": "SET OF 6 T-LIGHTS SNOWMEN", "Quantity": "6", "UnitPrice": "2.95", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 38}}
+{"InvoiceNo": "536833", "StockCode": "22186", "Description": "RED STAR CARD HOLDER", "Quantity": "6", "UnitPrice": "2.95", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 39}}
+{"InvoiceNo": "536833", "StockCode": "22187", "Description": "GREEN CHRISTMAS TREE CARD HOLDER", "Quantity": "4", "UnitPrice": "4.25", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 40}}
+{"InvoiceNo": "536833", "StockCode": "22141", "Description": "CHRISTMAS CRAFT TREE TOP ANGEL", "Quantity": "6", "UnitPrice": "2.1", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 41}}
+{"InvoiceNo": "536833", "StockCode": "22144", "Description": "CHRISTMAS CRAFT LITTLE FRIENDS", "Quantity": "6", "UnitPrice": "2.1", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 42}}
+{"InvoiceNo": "536833", "StockCode": "22121", "Description": "NOEL WOODEN BLOCK LETTERS ", "Quantity": "3", "UnitPrice": "5.95", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 43}}
+{"InvoiceNo": "536833", "StockCode": "21364", "Description": "PEACE SMALL WOOD LETTERS", "Quantity": "2", "UnitPrice": "6.75", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 44}}
+{"InvoiceNo": "536833", "StockCode": "22573", "Description": "STAR WOODEN CHRISTMAS DECORATION", "Quantity": "12", "UnitPrice": "0.85", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 45}}
+{"InvoiceNo": "536833", "StockCode": "22576", "Description": "SWALLOW WOODEN CHRISTMAS DECORATION", "Quantity": "12", "UnitPrice": "0.85", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 46}}
+{"InvoiceNo": "536833", "StockCode": "22578", "Description": "WOODEN STAR CHRISTMAS SCANDINAVIAN", "Quantity": "12", "UnitPrice": "0.85", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 47}}
+{"InvoiceNo": "536833", "StockCode": "22593", "Description": "CHRISTMAS GINGHAM STAR", "Quantity": "12", "UnitPrice": "0.85", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 48}}
+{"InvoiceNo": "536833", "StockCode": "22595", "Description": "CHRISTMAS GINGHAM HEART", "Quantity": "12", "UnitPrice": "0.85", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 49}}
+{"InvoiceNo": "536833", "StockCode": "35961", "Description": "FOLKART ZINC HEART CHRISTMAS DEC", "Quantity": "12", "UnitPrice": "0.85", "CustomerID": "18239", "Country": "United Kingdom"}
+{"index" : { "_index" : "logger", "_id" : 50}}
+{"InvoiceNo": "536833", "StockCode": "22334", "Description": "DINOSAUR PARTY BAG + STICKER SET", "Quantity": "8", "UnitPrice": "1.65", "CustomerID": "18239", "Country": "United Kingdom"}
