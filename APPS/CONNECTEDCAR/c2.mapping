@@ -11,8 +11,7 @@
       "type": "text"
     },
     "metadata_generatedAt" : {
-      "type" : "date",
-      "format": "MM/dd/YYYY hh:mm"
+      "type" : "date"
     }
   }
   }
