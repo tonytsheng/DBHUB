@@ -1,0 +1,33 @@
+curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c2/_doc" -H 'Content-Type: application/json' -d '
+{"metadata_generatedAt": "10/08/2019 04:48",
+ "metadata_recordGeneratedBy": "ASU",
+ "metadata_logFileName": "rxMsg_1508341730_2001_470_11_456_226_adff_fe05_14b1.csv"
+}
+'
+
+curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c2/_doc" -H 'Content-Type: application/json' -d '
+{"metadata_generatedAt": "10/18/2020 03:48",
+ "metadata_recordGeneratedBy": "OBU",
+ "metadata_logFileName": "rxMsg_1730_2001_470_11_456_226_adff_fe05_14b1.csv"
+}
+'
+
+curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c2/_doc" -H 'Content-Type: application/json' -d '
+{"metadata_generatedAt": "10/18/2021 03:48",
+ "metadata_recordGeneratedBy": "DEC",
+ "metadata_logFileName": "rxMsg_1508341730_2001_470_11_456_226_adfe05_14b1.csv"
+}
+'
+
+curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c2/_doc" -H 'Content-Type: application/json' -d '
+{"metadata_generatedAt": "10/18/2022 03:48",
+ "metadata_recordGeneratedBy": "AUS",
+ "metadata_logFileName": "rxMsg_1508341730_2001_4711_456_226_adff_fe05_14b1.csv"
+}
+'
+curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c2/_doc" -H 'Content-Type: application/json' -d '
+{"metadata_generatedAt": "10/18/2023 03:48",
+ "metadata_recordGeneratedBy": "ORD",
+ "metadata_logFileName": "rxMsg_15341730_2001_470_11_456_226_adff_fe05_14b1.csv"
+}
+'
