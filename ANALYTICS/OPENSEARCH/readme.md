@@ -38,6 +38,7 @@ curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazona
 
 
 ## Create index explicitly
+```
 curl  -XPUT 'https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/?pretty=true' -H 'Content-Type: application/json' -d @"c2.mapping"
 c2.mapping:
 {
@@ -59,14 +60,17 @@ c2.mapping:
   }
   }
 }
+```
 
 # insert a doc
+```
 curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c2/_doc" -H 'Content-Type: application/json' -d '
  {"metadata_generatedAt": "10/18/2017 03:48",
   "metadata_recordGeneratedBy": "OBU",
   "metadata_logFileName": "rxMsg_1508341730_2001_470_11_456_226_adff_fe05_14b1.csv"
  }
 '
+```
 
 ## Bulk load from json file
 ```
