@@ -68,6 +68,18 @@ curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazo
  }
 '
 
+## Bulk load from json file
+```
+curl  -H "Content-Type: application/json" -XPOST "https://search-os200-3upgw4tibkrffdnhn6irnvfwoa.us-east-2.es.amazonaws.com/_bulk" --data-binary @taylor2.json
+# json must look like:
+{"index" : { "_index" : "idxname", "_id" : 1000 }}
+{json stuff}
+{"index" : { "_index" : "idxname", "_id" : 1001 }}
+{json stuff}
+```
+
+- idxname must be all lower case
+- loader creates the index
 
 
 ## OpenSearch index specific queries
@@ -97,22 +109,7 @@ curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazona
 curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_search?q=magic&pretty"
 curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_search?q=sad&pretty"
 
-
 ```
-
-## Bulk load from json file
-```
-curl  -H "Content-Type: application/json" -XPOST "https://search-os200-3upgw4tibkrffdnhn6irnvfwoa.us-east-2.es.amazonaws.com/_bulk" --data-binary @taylor2.json
-# json must look like:
-{"index" : { "_index" : "idxname", "_id" : 1000 }}
-{json stuff}
-{"index" : { "_index" : "idxname", "_id" : 1001 }}
-{json stuff}
-```
-
-- idxname must be all lower case
-- loader creates the index
-
 
 ## Delete Index
 ```
