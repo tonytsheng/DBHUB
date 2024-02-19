@@ -39,8 +39,8 @@ curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazona
 
 ## Create index explicitly
 ```
-curl  -XPUT 'https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/?pretty=true' -H 'Content-Type: application/json' -d @"c2.mapping"
-c2.mapping:
+curl  -XPUT 'https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/?pretty=true' -H 'Content-Type: application/json' -d @"c1.mapping"
+c1.mapping:
 {
   "settings": {
     "index": {
@@ -63,8 +63,9 @@ c2.mapping:
 ```
 
 # insert a doc
+Note this matches the index built above especially for the metadata_generatedAt field
 ```
-curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c2/_doc" -H 'Content-Type: application/json' -d '
+curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/_doc" -H 'Content-Type: application/json' -d '
  {"metadata_generatedAt": "10/18/2017 03:48",
   "metadata_recordGeneratedBy": "OBU",
   "metadata_logFileName": "rxMsg_1508341730_2001_470_11_456_226_adff_fe05_14b1.csv"
@@ -80,8 +81,9 @@ curl  -H "Content-Type: application/json" -XPOST "https://search-os200-3upgw4tib
 {json stuff}
 {"index" : { "_index" : "idxname", "_id" : 1001 }}
 {json stuff}
-```
+curl  -H "Content-Type: application/json" -XPOST "https://search-os200-3upgw4tibkrffdnhn6irnvfwoa.us-east-2.es.amazonaws.com/_bulk" --data-binary @taylor2.json
 
+```
 - idxname must be all lower case
 - loader creates the index
 
@@ -90,6 +92,10 @@ curl  -H "Content-Type: application/json" -XPOST "https://search-os200-3upgw4tib
 ```
 # return all data from index c2
 curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c2/_search?pretty=true&q=*:*"
+
+# see mapping of index
+curl  -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c2/_mapping?pretty=true"
+
 curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/weblogs-*/_search?q=get' | jq
 curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/weblogs*/_search?q=host:80.127.116.96' | jq
 curl -XGET 'https://search-tts-os-300-tdlizichjv6yimvvoj4cnexaua.us-east-2.es.amazonaws.com/weblogs*/_search?q=response:400' | jq
@@ -112,6 +118,38 @@ curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazona
 # query keyword
 curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_search?q=magic&pretty"
 curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/swift/_search?q=sad&pretty"
+
+```
+
+Date specific queries
+````
+curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/_search" -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "range": {
+      "metadata_generatedAt": {
+        "gte": "01/01/2024",
+        "lte": "12/31/2024",
+        "format": "MM/dd/yyyy",
+        "relation" : "within"       
+      }
+    }
+  }
+}'
+
+curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/_search?pretty=true" -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "range": {
+      "metadata_generatedAt": {
+        "gte": "10/04/2024 03:00:00",
+        "lte": "10/05/2024 12:00:00",
+        "format": "MM/dd/yyyy HH:mm:ss",
+        "relation" : "within"
+      }
+    }
+  }
+}'
 
 ```
 
@@ -138,5 +176,30 @@ After loading data [Swift, Airbnb] in bulk:
 - Dashboards Management
   - Index patterns
     - Create index pattern
+
+## Troubleshooting
+- Enable logs
+- Why is my cluster yellow
+  - The primary shards for all indices are allocated to nodes in your cluster. However, one ore more replica shards aren't allocated to any of the nodes
+  - List the unassigned shard:
+```    
+curl -XGET 'domain-endpoint/_cat/shards?h=index,shard,prirep,state,unassigned.reason' | grep UNASSIGNED
+```
+  - Get details for why
+```
+curl -XGET 'domain-endpoint/_cluster/allocation/explain?pretty' -H 'Content-Type:application/json' -d'{
+     "index": "<index name>",
+     "shard": <shardId>,
+     "primary": <true or false>
+}
+```
+- Not enough nodes to allocate to the shards
+- Low disk space or disk skew
+- High JVM memory pressure
+  - Reduce JVM memory pressure first
+- Tips to bring cluster back to green
+  - Increase default shard retry value from 5 to higher
+  - Deactivate and activate replica shard
+  - Manually retry the unassigned shards
 
 
