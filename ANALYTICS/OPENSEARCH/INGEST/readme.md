@@ -9,3 +9,7 @@
   - c1.gendata - create a series of test data
   - c1.json - output file from c1.gendata to use with the bulk loader
   - curl  -H "Content-Type: application/json" -XPOST "<ENDPOINT>/_bulk" --data-binary @c1.json
+- conncar
+  - mapping/gendata/etc
+  - raw data from connected car sample data
+

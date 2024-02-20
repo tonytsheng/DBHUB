@@ -1,0 +1,24 @@
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 2,
+      "number_of_replicas": 1
+    }
+  },
+  "mappings": {
+    "properties" : {
+    "messageId": {
+      "type": "text"
+    },
+    "metadata_generatedAt" : {
+      "type" : "date",
+      "format": "MM/dd/yyyy HH:mm"
+    },
+    "metadata_receivedAt" : {
+      "type" : "date",
+      "format": "MM/dd/yyyy HH:mm"
+    }
+  }
+  }
+}
+

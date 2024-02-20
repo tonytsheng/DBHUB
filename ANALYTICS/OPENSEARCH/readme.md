@@ -55,7 +55,7 @@ c1.mapping:
     },
     "metadata_generatedAt" : {
       "type" : "date",
-      "format": "MM/dd/YYYY hh:mm:ss"
+      "format": "MM/dd/yyyy hh:mm:ss"
     }
   }
   }
@@ -121,7 +121,7 @@ curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazona
 
 ```
 
-Date specific queries
+## Date specific queries
 ````
 curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/_search?pretty=true" -H 'Content-Type: application/json' -d'
 {
@@ -154,6 +154,8 @@ curl  -X DELETE "https://search-os200-3upgw4tibkrffdnhn6irnvfwoa.us-east-2.es.am
 ## CLI
 ```
 aws opensearch create-domain --domain-name mylogs --engine-version OpenSearch_2.11 --cluster-config  InstanceType=r6g.large.search,InstanceCount=2 --ebs-options EBSEnabled=true,VolumeType=gp3,VolumeSize=100,Iops=3500,Throughput=125 --access-policies '{"Version": "2012-10-17", "Statement": [{"Action": "es:*", "Principal":"*","Effect": "Allow", "Condition": {"IpAddress":{"aws:SourceIp":["3.143.249.228/32", "myip/32"]}}}]}'
+
+aws opensearch describe-domains --domain-names os100 | jq ' .DomainStatusList[] | .ClusterConfig '
 ```
 
 ## Dashboard
@@ -193,5 +195,7 @@ curl -XGET 'domain-endpoint/_cluster/allocation/explain?pretty' -H 'Content-Type
   - Increase default shard retry value from 5 to higher
   - Deactivate and activate replica shard
   - Manually retry the unassigned shards
-
+- "Message":"Request size exceeded 10485760 bytes"
+  - Instance size too small - https://docs.aws.amazon.com/opensearch-service/latest/developerguide/limits.html
+  - Maximum size of http request payloads - all t2/3s have 10MiB https payload limit
 

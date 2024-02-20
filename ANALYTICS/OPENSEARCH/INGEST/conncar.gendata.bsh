@@ -1,0 +1,33 @@
+# generate data for opensearch
+# three fields
+# timestamp, airport code, uuid
+
+
+rm conncar.json
+rm /tmp/conncar.*
+
+total=$1
+
+for (( NUM=1; NUM<${total}; NUM ++ )); do
+  IATA1=`shuf -n 1 /home/ec2-user/DBHUB/APPS/FLY1/ORA/ins.airport.sql | awk -F',' '{print $4}' | sed  "s/'//g; s/)//g; s/;//g; s/ //g"`
+  IATA2=`shuf -n 1 /home/ec2-user/DBHUB/APPS/FLY1/ORA/ins.airport.sql | awk -F',' '{print $4}' | sed  "s/'//g; s/)//g; s/;//g; s/ //g"`
+  TS1=`shuf -n1 -i$(date -d '2020-01-01' '+%s')-$(date -d '2024-01-01' '+%s') | xargs -I{} date -d '@{}' '+%Y-%m-%d %H:%m:%S'`
+  TS2=`shuf -n1 -i$(date -d '2020-01-01' '+%s')-$(date -d '2024-01-01' '+%s') | xargs -I{} date -d '@{}' '+%Y-%m-%d %H:%m:%S'`
+  UU=`uuidgen`
+  ID=`echo $RANDOM %25 | head -c5`
+  RANDINT1=`echo $RANDOM %1000 | head -c5 | sed 's| %||g'`
+  RANDINT7=`echo $RANDOM %25 | head -c5   | sed 's| %||g'`
+  echo "{\"index\" : { \"_index\" : \"conncar\", \"_id\" : ${ID}}}" > /tmp/conncar.$$
+  #  change the index name as appropriate in the line above
+  #  echo "{\"metadata_generatedAt\": \"${TIMESTAMP}\", \"metadata_recordGeneratedBy\": \"${CODE}\", \"metadata_logFileName\": \"${UU}\"}"
+
+  sed "s|TS1|$TS1|g;  \
+       s|TS2|$TS2|g;  \
+       s|RANDINT1|$RANDINT1|g;  \
+       s|RANDINT7|$RANDINT7|g;  \
+       s|IATA1|$IATA1|g;  \
+       s|IATA2|$IATA2|g;" \
+       conncar.template >> /tmp/conncar.$$
+  sed 's| %||g' /tmp/conncar.$$ >> /tmp/conncar.json
+done
+
