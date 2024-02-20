@@ -1,0 +1,14 @@
+# random timestamp between two dates
+TIMESTAMP=`shuf -n1 -i$(date -d '2020-01-01' '+%s')-$(date -d '2024-01-01' '+%s') | xargs -I{} date -d '@{}' '+%Y-%m-%d %H:%m:%S'`
+
+# random airport code
+shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/airports-large-nodes.csv | awk -F',' '{print $4}'
+
+# random string
+head /dev/urandom | tr -dc A-Za-z0-9 | head -c10
+
+# get uuid
+uuidgen
+
+# random number 
+echo $RANDOM %25 | head -c2
