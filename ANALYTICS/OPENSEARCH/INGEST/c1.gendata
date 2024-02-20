@@ -1,0 +1,21 @@
+# generate data for opensearch
+# three fields
+# timestamp, airport code, uuid
+
+
+total=$1
+
+for (( NUM=1; NUM<${total}; NUM ++ )); do
+  CODE=`shuf -n 1 /home/ec2-user/DBHUB/APPS/FLY1/ORA/ins.airport.sql | awk -F',' '{print $4}' | sed  "s/'//g; s/)//g; s/;//g; s/ //g"`
+  TIMESTAMP=`shuf -n1 -i$(date -d '2020-01-01' '+%s')-$(date -d '2024-01-01' '+%s') | xargs -I{} date -d '@{}' '+%Y-%m-%d %H:%m:%S'`
+  UU=`uuidgen`
+  echo "{\"index\" : { \"_index\" : \"c1\", \"_id\" : ${NUM}}}"
+  #  change the index name as appropriate in the line above
+  echo "{\"metadata_generatedAt\": \"${TIMESTAMP}\", \"metadata_recordGeneratedBy\": \"${CODE}\", \"metadata_logFileName\": \"${UU}\"}"
+done
+
+
+
+
+
+

@@ -55,7 +55,7 @@ c1.mapping:
     },
     "metadata_generatedAt" : {
       "type" : "date",
-      "format": ["MM/dd/YYYY hh:mm"]
+      "format": "MM/dd/YYYY hh:mm:ss"
     }
   }
   }
@@ -66,7 +66,7 @@ c1.mapping:
 Note this matches the index built above especially for the metadata_generatedAt field
 ```
 curl  -XPOST "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/_doc" -H 'Content-Type: application/json' -d '
- {"metadata_generatedAt": "10/18/2017 03:48",
+ {"metadata_generatedAt": "10/18/2017 03:48:52",
   "metadata_recordGeneratedBy": "OBU",
   "metadata_logFileName": "rxMsg_1508341730_2001_470_11_456_226_adff_fe05_14b1.csv"
  }
@@ -123,20 +123,6 @@ curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazona
 
 Date specific queries
 ````
-curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/_search" -H 'Content-Type: application/json' -d'
-{
-  "query": {
-    "range": {
-      "metadata_generatedAt": {
-        "gte": "01/01/2024",
-        "lte": "12/31/2024",
-        "format": "MM/dd/yyyy",
-        "relation" : "within"       
-      }
-    }
-  }
-}'
-
 curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/_search?pretty=true" -H 'Content-Type: application/json' -d'
 {
   "query": {
@@ -152,6 +138,12 @@ curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazona
 }'
 
 ```
+
+## Working with date fields
+- Create the index explicitly with the date field formatted 
+- Load data either in bulk or interactively with the correct formatted date
+- The issue is that OS can create the index with a string instead of a date
+- In the OS dashboard, go to Stack Management..Index Patterns and create an index pattern on your collection. It should find the date field correctly.
 
 ## Delete Index
 ```
