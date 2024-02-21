@@ -122,7 +122,7 @@ curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazona
 ```
 
 ## Date specific queries
-````
+```
 curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/c1/_search?pretty=true" -H 'Content-Type: application/json' -d'
 {
   "query": {
@@ -136,7 +136,6 @@ curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazona
     }
   }
 }'
-
 ```
 
 ## Working with date fields
