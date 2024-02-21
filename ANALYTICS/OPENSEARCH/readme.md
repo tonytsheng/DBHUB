@@ -199,3 +199,51 @@ curl -XGET 'domain-endpoint/_cluster/allocation/explain?pretty' -H 'Content-Type
   - Instance size too small - https://docs.aws.amazon.com/opensearch-service/latest/developerguide/limits.html
   - Maximum size of http request payloads - all t2/3s have 10MiB https payload limit
 
+## Snapshots
+create s3 bucket
+create iam role
+register a repository to keep the manual snapshots
+
+curl -PUT "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/_snapshot/os100.1"
+'{
+  "type": "s3",
+  "settings": {
+    "bucket": "ttsheng-os-snaps",
+    "region": "us-east-2",
+    "role_arn": "arn:aws:iam::070201068661:role/admin"
+  }
+}'
+
+- take a snap
+  - snaps not done from the console
+curl -XGET 'domain-endpoint/_snapshot/_status'
+curl -XPUT 'domain-endpoint/_snapshot/repository-name/snapshot-name'
+
+- to restore a snap
+  - identify the repository
+    - curl -XGET 'domain-endpoint/_snapshot?pretty'
+  - see all the snaps
+    - curl -XGET 'domain-endpoint/_snapshot/repository-name/_all?pretty'
+  - delete all the indexes
+    -  curl -XDELETE 'domain-endpoint/_all'
+  - or delete the single index
+    - curl -XDELETE 'domain-endpoint/index-name'
+  - restore
+    - restore single index
+    curl -XPOST 'domain-endpoint/_snapshot/cs-automated/2020-snapshot/_restore' \
+-d '{"indices": "my-index"}' \
+-H 'Content-Type: application/json'
+
+   - restore all indexes except the dashboarrds and fgac indexes
+curl -XPOST 'domain-endpoint/_snapshot/cs-automated/2020-snapshot/_restore' \
+-d '{"indices": "-.kibana*,-.opendistro*"}' \
+-H 'Content-Type: application/json'
+
+
+## Misc
+- JVM memory pressure
+- JVM garbage collection
+- JVM thread pool
+
+
+

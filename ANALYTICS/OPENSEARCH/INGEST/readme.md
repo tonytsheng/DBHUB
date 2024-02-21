@@ -12,4 +12,5 @@
 - conncar
   - mapping/gendata/etc
   - raw data from connected car sample data
+  - note the template and then substituions to generate data
 
