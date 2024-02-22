@@ -170,6 +170,18 @@ After loading data [Swift, Airbnb] in bulk:
   - Index patterns
     - Create index pattern
 
+## Cluster Sizing
+- Choosing number of shards
+https://docs.aws.amazon.com/opensearch-service/latest/developerguide/sizing-domains.html#bp-sharding
+goal is to distribute an index evenly across all data nodes in the cluster but not too large or numerous
+keep shard size between 
+10-30 GiB for search
+30-50 GiB for write heavy such as log analytics
+
+For example, suppose you have 66 GiB of data. You don't expect that number to increase over time, and you want to keep your shards around 30 GiB each. Your number of shards therefore should be approximately 66 * 1.1 / 30 = 3. You can generalize this calculation as follows:
+
+(Source data + room to grow) * (1 + indexing overhead) / desired shard size = approximate number of primary shards
+
 ## Troubleshooting
 - Enable logs
 - Why is my cluster yellow
@@ -188,8 +200,12 @@ curl -XGET 'domain-endpoint/_cluster/allocation/explain?pretty' -H 'Content-Type
 ```
 - Not enough nodes to allocate to the shards
 - Low disk space or disk skew
-- High JVM memory pressure
+- JVM memory pressure
+https://repost.aws/knowledge-center/opensearch-high-jvm-memory-pressure
+https://docs.aws.amazon.com/opensearch-service/latest/developerguide/handling-errors.html#handling-errors-red-cluster-status-heavy-processing-load
+
   - Reduce JVM memory pressure first
+
 - Tips to bring cluster back to green
   - Increase default shard retry value from 5 to higher
   - Deactivate and activate replica shard
@@ -197,6 +213,10 @@ curl -XGET 'domain-endpoint/_cluster/allocation/explain?pretty' -H 'Content-Type
 - "Message":"Request size exceeded 10485760 bytes"
   - Instance size too small - https://docs.aws.amazon.com/opensearch-service/latest/developerguide/limits.html
   - Maximum size of http request payloads - all t2/3s have 10MiB https payload limit
+
+
+- JVM garbage collection
+- JVM thread pool
 
 ## Snapshots
 create s3 bucket
@@ -240,9 +260,79 @@ curl -XPOST 'domain-endpoint/_snapshot/cs-automated/2020-snapshot/_restore' \
 
 
 ## Misc
-- JVM memory pressure
-- JVM garbage collection
-- JVM thread pool
+- Shards/Replicas
+  - number of shards is not updatable - specify this during index creation - index.number_of_shards - optionally increase shard size
+  - number of replicas is updatable - specify index.number_of_replicas after creation
+  - <my-index>/_settings
+- Storage tiers
+  - hot = instance + data volume
+  - warm = instance + cache volume + s3
+  - cold = s3
+  - indices on ultrawarm are read only
+  - indices in cold storage are not searchable but can be attached to ultrawarm nodes at ny time
+  - run migration api for each index to move between hot and warm
+    - POST _ultrawarm/migration/<my-index>/_warm
+    - POST _ultrawarm/migration/<my-index>/_hot
 
+- Nodes
+  - dedicated master nodes are responsible for resource managemetn and task management acros the cluster
+    - size of master node increases according to cluster size, number of indexes and number of shards
+  - t2/t3 not recommended for production
+  - 3 node recommended for availability
+  - if master node fails, other master eligible nodes elect new master node
+    - when election, greater than half the number of master eligible nodes must be available - quorum based decision making
+    - this is why rec for 3 dedicated master nodes
+
+- Sizing
+  - caveat of load test
+  - allocate 1.5 vCPUs per active shard
+  - for high frequency indexing and search, allocate 2vCPU per 100 GiB of storage 
+    - 8 GiB memory per 100 GiB of storage
+    - shard sie near 50 GiB
+  - walk through sizing exercise
+    - under docs in best practices - https://docs.aws.amazon.com/opensearch-service/latest/developerguide/sizing-domains.html
+
+- Perf Monitoring
+  - problems with indexing
+    - node
+      - ThreadpoolWriteRejected, CoordinatingWriteRejected, PrimaryWriteRejected, ReplicaWriteRejected
+      - ThreadpoolWriteQueue
+      - IndexingRate, IndexingLatency
+    - cluster
+      - ClusterIndexWritesBlocked 
+  - problems with search
+    - nodes
+      - ThreadPoolSearchRejected, SearchRate, SearchLatency
+  - overall resources
+    - nodes
+      - CPUUtilization, WarmCPUUtilization, MasterCPUUtilization
+      - JVMMemoryPressure, WarmJVMMemoryPressure, MasterJVMMemoryPressure
+      - FreeStorageSpace - if this is 0, write requests are blocked
+      - JVMGCOldCollectionCount, JVMGCOldCollectionTime
+    - cluster
+      - ReadLatency, WriteLatency
+      - ReadThroughput, WriteThroughput
+      - ReadIOPS, WriteIOPS
+      - DiskQueueDepth
+  - index perspective
+    - SegmentCount, Shards.active
+    - HotStorageSpaceUtilization
+
+- Query Perf Tips
+  - take advantage of instance store
+  - allocate mroe memory to file system cache
+  - avoid complicated document structure
+  - reduce number of fields to search
+    - copy_to on PUT - first and last to full_name
+  - include range field as a term in the document
+  - select type of numerical data according to purpose - range, ranking, etc
+  - index sorting - top ranking, can stop search process halfway by disabling number of search results - track_total_hits is false
+- Index Perf Tips
+  - use bulk
+  - adjust refresh interval - default is 1 second - reduce frequency of segment creation
+    - reduces merge frequency
+  - disable replicas - when full load is a common operation - balance with redundancy
+  - auto generated id - collison checking during document creation is skipped
+  - separate indexing and search workloads - cross cluster replication
 
 
