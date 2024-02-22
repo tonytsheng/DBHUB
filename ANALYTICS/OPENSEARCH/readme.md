@@ -81,8 +81,6 @@ curl  -H "Content-Type: application/json" -XPOST "https://search-os200-3upgw4tib
 {json stuff}
 {"index" : { "_index" : "idxname", "_id" : 1001 }}
 {json stuff}
-curl  -H "Content-Type: application/json" -XPOST "https://search-os200-3upgw4tibkrffdnhn6irnvfwoa.us-east-2.es.amazonaws.com/_bulk" --data-binary @taylor2.json
-
 ```
 - idxname must be all lower case
 - loader creates the index
@@ -172,11 +170,11 @@ After loading data [Swift, Airbnb] in bulk:
 
 ## Cluster Sizing
 - Choosing number of shards
-https://docs.aws.amazon.com/opensearch-service/latest/developerguide/sizing-domains.html#bp-sharding
-goal is to distribute an index evenly across all data nodes in the cluster but not too large or numerous
-keep shard size between 
-10-30 GiB for search
-30-50 GiB for write heavy such as log analytics
+  - https://docs.aws.amazon.com/opensearch-service/latest/developerguide/sizing-domains.html#bp-sharding
+  - goal is to distribute an index evenly across all data nodes in the cluster but not too large or numerous
+  - keep shard size between 
+    - 10-30 GiB for search
+    - 30-50 GiB for write heavy such as log analytics
 
 For example, suppose you have 66 GiB of data. You don't expect that number to increase over time, and you want to keep your shards around 30 GiB each. Your number of shards therefore should be approximately 66 * 1.1 / 30 = 3. You can generalize this calculation as follows:
 
@@ -201,11 +199,9 @@ curl -XGET 'domain-endpoint/_cluster/allocation/explain?pretty' -H 'Content-Type
 - Not enough nodes to allocate to the shards
 - Low disk space or disk skew
 - JVM memory pressure
-https://repost.aws/knowledge-center/opensearch-high-jvm-memory-pressure
-https://docs.aws.amazon.com/opensearch-service/latest/developerguide/handling-errors.html#handling-errors-red-cluster-status-heavy-processing-load
-
-  - Reduce JVM memory pressure first
-
+  - https://repost.aws/knowledge-center/opensearch-high-jvm-memory-pressure
+  - https://docs.aws.amazon.com/opensearch-service/latest/developerguide/handling-errors.html#handling-errors-red-cluster-status-heavy-processing-load
+- Reduce JVM memory pressure first
 - Tips to bring cluster back to green
   - Increase default shard retry value from 5 to higher
   - Deactivate and activate replica shard
@@ -213,16 +209,14 @@ https://docs.aws.amazon.com/opensearch-service/latest/developerguide/handling-er
 - "Message":"Request size exceeded 10485760 bytes"
   - Instance size too small - https://docs.aws.amazon.com/opensearch-service/latest/developerguide/limits.html
   - Maximum size of http request payloads - all t2/3s have 10MiB https payload limit
-
-
 - JVM garbage collection
 - JVM thread pool
 
 ## Snapshots
-create s3 bucket
-create iam role
-register a repository to keep the manual snapshots
-
+- create s3 bucket
+- create iam role
+- register a repository to keep the manual snapshots
+```
 curl -PUT "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/_snapshot/os100.1"
 '{
   "type": "s3",
@@ -232,12 +226,12 @@ curl -PUT "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaw
     "role_arn": "arn:aws:iam::070201068661:role/admin"
   }
 }'
-
-- take a snap
-  - snaps not done from the console
+```
+- snaps not done from the console
+```
 curl -XGET 'domain-endpoint/_snapshot/_status'
 curl -XPUT 'domain-endpoint/_snapshot/repository-name/snapshot-name'
-
+```
 - to restore a snap
   - identify the repository
     - curl -XGET 'domain-endpoint/_snapshot?pretty'
