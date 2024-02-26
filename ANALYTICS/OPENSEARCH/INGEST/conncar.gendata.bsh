@@ -8,10 +8,10 @@ rm /tmp/conncar.json.$$
 total=$1
 
 for (( NUM=1; NUM<${total}; NUM ++ )); do
-  IATA1=`shuf -n 1 /home/ec2-user/DBHUB/APPS/FLY1/ORA/ins.airport.sql | awk -F',' '{print $4}' | sed  "s/'//g; s/)//g; s/;//g; s/ //g"`
-  IATA2=`shuf -n 1 /home/ec2-user/DBHUB/APPS/FLY1/ORA/ins.airport.sql | awk -F',' '{print $4}' | sed  "s/'//g; s/)//g; s/;//g; s/ //g"`
-  TS1=`shuf -n1 -i$(date -d '2010-01-01' '+%s')-$(date -d '2011-01-01' '+%s') | xargs -I{} date -d '@{}' '+%Y-%m-%d %H:%m:%S'`
-  TS2=`shuf -n1 -i$(date -d '2010-01-01' '+%s')-$(date -d '2011-01-01' '+%s') | xargs -I{} date -d '@{}' '+%Y-%m-%d %H:%m:%S'`
+  IATA1=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/top100busyairports.csv | awk -F',' '{print $6}' | awk -F'/' '{print $1}'`
+  IATA2=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/top100busyairports.csv | awk -F',' '{print $6}' | awk -F'/' '{print $1}'`
+  TS1=`shuf -n1 -i$(date -d '2024-01-01' '+%s')-$(date -d '2024-01-26' '+%s') | xargs -I{} date -d '@{}' '+%Y-%m-%d %H:%m:%S'`
+  TS2=`shuf -n1 -i$(date -d '2024-01-26' '+%s')-$(date -d '2024-02-26' '+%s') | xargs -I{} date -d '@{}' '+%Y-%m-%d %H:%m:%S'`
   UU=`uuidgen`
   ID=`echo $RANDOM %25 | head -c5`
   RANDINT1=`echo $RANDOM %1000 | head -c5 | sed 's| %||g'`

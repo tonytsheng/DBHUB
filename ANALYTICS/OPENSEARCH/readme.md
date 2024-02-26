@@ -252,4 +252,14 @@ curl -XPOST 'domain-endpoint/_snapshot/cs-automated/2020-snapshot/_restore' \
 -d '{"indices": "-.kibana*,-.opendistro*"}' \
 -H 'Content-Type: application/json'
 
+## CLI
+aws opensearch update-domain-config --cluster-config  --no-dry-run
+{
+  "InstanceType": "t3.medium.search"
+  # "InstanceType": "m5.large.search"
+}
+
+## Dashboard Sample
+
+![Optional Text](os100_dash.jpg)
 
