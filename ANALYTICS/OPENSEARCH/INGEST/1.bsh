@@ -1,0 +1,4 @@
+FNAME=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/names_girl.txt`
+LNAME=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/names_boy.txt`
+NAME="${FNAME} ${LNAME}"
+echo $NAME

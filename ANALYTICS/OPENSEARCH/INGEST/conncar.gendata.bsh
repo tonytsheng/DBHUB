@@ -16,6 +16,7 @@ for (( NUM=1; NUM<${total}; NUM ++ )); do
   ID=`echo $RANDOM %25 | head -c5`
   RANDINT1=`echo $RANDOM %1000 | head -c5 | sed 's| %||g'`
   RANDINT7=`echo $RANDOM %25 | head -c5   | sed 's| %||g'`
+  NAME=`cat /home/ec2-user/DBHUB/APPS/REFDATA/names_girl.txt /home/ec2-user/DBHUB/APPS/REFDATA/names_boy.txt | shuf -n 1`
   echo "{\"index\" : { \"_index\" : \"conncar\", \"_id\" : \"${UU}\"}}" > /tmp/conncar.$$
   #  change the index name as appropriate in the line above
   #  echo "{\"metadata_generatedAt\": \"${TIMESTAMP}\", \"metadata_recordGeneratedBy\": \"${CODE}\", \"metadata_logFileName\": \"${UU}\"}"
@@ -24,6 +25,7 @@ for (( NUM=1; NUM<${total}; NUM ++ )); do
        s|TS2|$TS2|g;  \
        s|RANDINT1|$RANDINT1|g;  \
        s|RANDINT7|$RANDINT7|g;  \
+       s|NAME1|$NAME|g;  \
        s|IATA1|$IATA1|g;  \
        s|IATA2|$IATA2|g;" \
        conncar.template >> /tmp/conncar.$$

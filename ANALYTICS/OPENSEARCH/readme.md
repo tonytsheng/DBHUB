@@ -136,6 +136,21 @@ curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazona
 }'
 ```
 
+## Other query stuff
+```
+curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/conncar/conncar/_search?pretty=true" -H 'Content-Type: application/json' -d'
+{
+  "_source": ["metadata_recordGeneratedBy"],
+  "query": {
+    "match": { "metadata_recordGeneratedBy": "SEA" }
+  }
+}
+'
+
+
+
+```
+
 ## Working with date fields
 - Create the index explicitly with the date field formatted 
 - Load data either in bulk or interactively with the correct formatted date
@@ -254,6 +269,8 @@ curl -XPOST 'domain-endpoint/_snapshot/cs-automated/2020-snapshot/_restore' \
 
 ## CLI
 ```
+aws opensearch describe-domains --domain-names os100
+
 aws opensearch update-domain-config --cluster-config  --no-dry-run
 {
   "InstanceType": "t3.medium.search"
