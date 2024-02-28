@@ -1,0 +1,15 @@
+# generate test data 
+
+# random airport code
+IATA1=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/top100busyairports.csv | awk -F',' '{print $6}' | awk -F'/' '{print $1}'`
+
+# date within a range
+TS1=`shuf -n1 -i$(date -d '2024-01-01' '+%s')-$(date -d '2024-01-26' '+%s') | xargs -I{} date -d '@{}' '+%Y-%m-%d %H:%m:%S'`
+
+# random integer
+
+RANDINT1=`echo $RANDOM %1000 | head -c5 | sed 's| %||g'`
+
+# random girl|boy name
+NAME=`cat /home/ec2-user/DBHUB/APPS/REFDATA/names_girl.txt /home/ec2-user/DBHUB/APPS/REFDATA/names_boy.txt | shuf -n 1`
+
