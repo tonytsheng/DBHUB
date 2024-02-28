@@ -34,6 +34,42 @@ See steps under ../KINESIS/readme.md for connecting KDFH to OpenSearch
 curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/_cluster/health?pretty=true"
 curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/_aliases?pretty=true"
 curl -XGET "https://search-os110-c464qrmmf637vk7iy3jaijtzdq.us-east-2.es.amazonaws.com/_cat/indices?v"
+% curl  -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/_cat/indices"
+green open .opendistro-reports-definitions kGlSpXd1QD6TRYIdaP-d3Q 1 2       0 0    624b    208b
+green open conncar                         lLACjx3ORzSe4gfoJZoltA 2 1 1732895 0 804.6mb   402mb
+green open .opendistro-reports-instances   EYJcp1u9T0eG9-DkItoG5g 1 2       0 0    624b    208b
+green open .kibana_1                       PD2yg2vKS0O8twjqoMbZtA 1 2      45 8 157.6kb  52.5kb
+green open c1                              SQXZllrbQneoCb514zMZxA 2 1     594 4 327.5kb 163.7kb
+green open c2                              3mNWki9JRvSMNpN8KFicng 2 1    2500 0   2.4mb   1.2mb
+
+% curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/_cluster/health/conncar?pretty=true"
+{
+  "cluster_name" : "070201068661:os100",
+  "status" : "green",
+  "timed_out" : false,
+  "number_of_nodes" : 3,
+  "number_of_data_nodes" : 3,
+  "discovered_master" : true,
+  "active_primary_shards" : 2,
+  "active_shards" : 4,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 0,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 100.0
+}
+
+# size of shards
+% curl  -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/_cat/shards?v" | grep conncar
+conncar                         1     r      STARTED 866430 206.1mb x.x.x.x 8baded6a4871a6761858c5a056cd1753
+conncar                         1     p      STARTED 866430 200.9mb x.x.x.x 071526ad709dad1f42038f222b9670be
+conncar                         0     p      STARTED 866465 201.1mb x.x.x.x  ca6103dbc3ad14de619ee32ff18cd2ba
+conncar                         0     r      STARTED 866465 216.2mb x.x.x.x 071526ad709dad1f42038f222b9670be
+
+
 ```
 
 
@@ -274,8 +310,8 @@ aws opensearch update-domain-config --cluster-config  --no-dry-run
 ## Opensearchsql
 https://github.com/opensearch-project/sql
 
-select travelerdataframe_name, metadata_recordGeneratedBy, metadata_generatedAt from conncar where travelerdataframe_name != '' and metadata_recordGeneratedBy = 'SYD';
 ```
+select travelerdataframe_name, metadata_recordGeneratedBy, metadata_generatedAt from conncar where travelerdataframe_name != '' and metadata_recordGeneratedBy = 'SYD';
 fetched rows / total rows = 200/200
 +--------------------------+------------------------------+------------------------+
 | travelerdataframe_name   | metadata_recordGeneratedBy   | metadata_generatedAt   |
@@ -289,11 +325,10 @@ fetched rows / total rows = 200/200
 | Liliana                  | SYD                          | 2024-01-08 02:01:13    |
 | Nolan                    | SYD                          | 2024-01-23 18:01:50    |
 | Austin                   | SYD                          | 2024-01-11 05:01:51    |
-```
 
 opensearchsql https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/ -q "select travelerdataframe_name, metadata_recordGeneratedBy, metadata_generatedAt from conncar where travelerdataframe_name != ''"
+```
 
-## Dashboard Sample
-
+## CloudWatch Dashboard Sample
 ![Optional Text](os100_dash.jpg)
 
