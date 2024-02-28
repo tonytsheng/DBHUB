@@ -143,6 +143,9 @@ https://pypi.org/project/gremlinpython/
 download gremlinpython zip file
 python3 -m pip install ./downloads/SomeProject-1.0.4.tar.gz
 
+# opensearch
+pip3 install opensearchsql
+
 ## efs
 # might need thse packages
 sudo yum install nfs-utils

@@ -138,14 +138,7 @@ curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazona
 
 ## Other query stuff
 ```
-curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/conncar/conncar/_search?pretty=true" -H 'Content-Type: application/json' -d'
-{
-  "_source": ["metadata_recordGeneratedBy"],
-  "query": {
-    "match": { "metadata_recordGeneratedBy": "SEA" }
-  }
-}
-'
+curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/conncar/conncar/_search?pretty=true" -H 'Content-Type: application/json' -d' { "query": { "match": { "metadata_recordGeneratedBy": "SEA" } } } '
 
 
 
@@ -277,6 +270,29 @@ aws opensearch update-domain-config --cluster-config  --no-dry-run
   # "InstanceType": "m5.large.search"
 }
 ```
+
+## Opensearchsql
+https://github.com/opensearch-project/sql
+
+select travelerdataframe_name, metadata_recordGeneratedBy, metadata_generatedAt from conncar where travelerdataframe_name != '' and metadata_recordGeneratedBy = 'SYD';
+```
+fetched rows / total rows = 200/200
++--------------------------+------------------------------+------------------------+
+| travelerdataframe_name   | metadata_recordGeneratedBy   | metadata_generatedAt   |
+|--------------------------+------------------------------+------------------------|
+| Serenity                 | SYD                          | 2024-01-08 20:01:09    |
+| Willow                   | SYD                          | 2024-01-01 10:01:03    |
+| Charlotte                | SYD                          | 2024-01-01 21:01:59    |
+| Iris                     | SYD                          | 2024-01-05 04:01:25    |
+| Nathan                   | SYD                          | 2024-01-23 22:01:44    |
+| Emilia                   | SYD                          | 2024-01-09 17:01:24    |
+| Liliana                  | SYD                          | 2024-01-08 02:01:13    |
+| Nolan                    | SYD                          | 2024-01-23 18:01:50    |
+| Austin                   | SYD                          | 2024-01-11 05:01:51    |
+```
+
+opensearchsql https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/ -q "select travelerdataframe_name, metadata_recordGeneratedBy, metadata_generatedAt from conncar where travelerdataframe_name != ''"
+
 ## Dashboard Sample
 
 ![Optional Text](os100_dash.jpg)
