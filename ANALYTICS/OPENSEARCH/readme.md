@@ -295,7 +295,7 @@ curl -XPUT 'domain-endpoint/_snapshot/repository-name/snapshot-name'
 curl -XPOST 'domain-endpoint/_snapshot/cs-automated/2020-snapshot/_restore' \
 -d '{"indices": "-.kibana*,-.opendistro*"}' \
 -H 'Content-Type: application/json'
-
+```
 ## CLI
 ```
 aws opensearch describe-domains --domain-names os100
@@ -327,6 +327,32 @@ fetched rows / total rows = 200/200
 | Austin                   | SYD                          | 2024-01-11 05:01:51    |
 
 opensearchsql https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/ -q "select travelerdataframe_name, metadata_recordGeneratedBy, metadata_generatedAt from conncar where travelerdataframe_name != ''"
+```
+## Perf Tuning
+```
+[ec2-user@ip-10-0-2-111 ~]$ curl  -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/conncar/_settings?pretty=true"
+{
+  "conncar" : {
+    "settings" : {
+      "index" : {
+        "creation_date" : "1708448861964",
+        "number_of_shards" : "2",
+        "number_of_replicas" : "1",
+        "uuid" : "lLACjx3ORzSe4gfoJZoltA",
+        "version" : {
+          "created" : "135248027"
+        },
+        "provided_name" : "conncar"
+      }
+    }
+  }
+}
+
+[ec2-user@ip-10-0-2-111 ~]$ curl  -XPUT "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/conncar/_settings"  -H 'Content-Type: application/json' -d ' {
+    "index" : {
+        "refresh_interval" : "60s"
+    }
+}'
 ```
 
 ## CloudWatch Dashboard Sample

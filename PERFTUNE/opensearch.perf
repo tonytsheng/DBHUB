@@ -1,0 +1,25 @@
+See CW Metrics in quip
+
+- increase refresh_interval to 60 seconds or more - default is 1 second
+curl  -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/conncar/_settings?pretty=true"
+
+curl  -XPUT "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/conncar/_settings"  -H 'Content-Type: application/json' -d ' {
+    "index" : {
+        "refresh_interval" : "60s"
+    }
+}'
+
+- ensure right number of shards - _settings
+- change replica to zero during ingest and reactivate after load - _settings
+curl  -XPUT "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/conncar/_settings"  -H 'Content-Type: application/json' -d ' {
+    "index" : {
+        "number_of_replicas" : "1"
+    }
+}'
+
+- find optimal bulk request size - note some instance types limit bulk requests to 10MiB
+- use instances with nvme volumes
+- reduce response size - for bulk load
+curl -XPOST "es-endpoint/index-name/type-name/_bulk?pretty&filter_path=-took,-items.index._index,-items.index._type" --data_binary 
+- increase value of index.translog.flush_threshold_size
+
