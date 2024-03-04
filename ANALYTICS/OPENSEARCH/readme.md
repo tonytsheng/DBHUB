@@ -358,3 +358,6 @@ opensearchsql https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazo
 ## CloudWatch Dashboard Sample
 ![Optional Text](os100_dash.jpg)
 
+## Upgrade
+![Optional Text](osupg01.jpg)
+
