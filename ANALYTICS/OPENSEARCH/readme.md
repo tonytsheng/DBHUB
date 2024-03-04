@@ -287,6 +287,7 @@ curl -XPUT 'domain-endpoint/_snapshot/repository-name/snapshot-name'
     - curl -XDELETE 'domain-endpoint/index-name'
   - restore
     - restore single index
+```
     curl -XPOST 'domain-endpoint/_snapshot/cs-automated/2020-snapshot/_restore' \
 -d '{"indices": "my-index"}' \
 -H 'Content-Type: application/json'
