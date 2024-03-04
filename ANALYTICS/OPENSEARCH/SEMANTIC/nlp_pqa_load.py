@@ -48,7 +48,11 @@ from opensearchpy import OpenSearch, RequestsHttpConnection, helpers
 from requests_aws4auth import AWS4Auth
 from tqdm.contrib.concurrent import process_map
 from multiprocessing import cpu_count
+import json
 import pandas as pd
+import torch
+from transformers import AutoTokenizer, AutoModel
+from transformers import DistilBertTokenizer, DistilBertModel
 
 #SECRET=(sys.argv[1])
 
@@ -98,95 +102,60 @@ client = OpenSearch(
 #    for row in reader:
 #        print (row['Album'])
 
-query={
-  "size": 10,
-  "query": {
-    "match": {
-      "question_text": "does this work with xbox?"
-    }
-  }
-}
-res = client.search(index="headset_pqa", body=query)
-query_result=[]
-for hit in res['hits']['hits']:
-    row=[hit['_id'],hit['_score'],hit['_source']['question_text'],hit['_source']['answers'][0]['answer_text']]
-    query_result.append(row)
 
-query_result_df = pd.DataFrame(data=query_result,columns=["_id","_score","question","answer"])
-print(query_result_df)
-print ('+++')
+#model_name = "distilbert-base-uncased"
+#model_name = "sentence-transformers/msmarco-distilbert-base-dot-prod-v3"
+model_name = "sentence-transformers/distilbert-base-nli-stsb-mean-tokens"
 
 
-query={
-  "size": 10,
-  "query": {
-    "multi_match": {
-      "query": "does this work with xbox?",
-      "fields": ["question_text","bullet_point*", "answers.answer_text", "item_name"]
-    }
-  }
-}
+#Mean Pooling - Take attention mask into account for correct averaging
+def mean_pooling(model_output, attention_mask):
+    token_embeddings = model_output[0] #First element of model_output contains all token embeddings
+    input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
+    sum_embeddings = torch.sum(token_embeddings * input_mask_expanded, 1)
+    sum_mask = torch.clamp(input_mask_expanded.sum(1), min=1e-9)
+    return sum_embeddings / sum_mask
 
-res = client.search(index="headset_pqa", body=query)
-query_result=[]
-for hit in res['hits']['hits']:
-    row=[hit['_id'],hit['_score'],hit['_source']['question_text'],hit['_source']['answers'][0]['answer_text']]
-    query_result.append(row)
 
-query_result_df = pd.DataFrame(data=query_result,columns=["_id","_score","question","answer"])
-print(query_result_df)
-print ('+++')
+def sentence_to_vector(raw_inputs):
+    tokenizer = DistilBertTokenizer.from_pretrained(model_name)
+    model = DistilBertModel.from_pretrained(model_name)
+    inputs_tokens = tokenizer(raw_inputs, padding=True, return_tensors="pt")
 
-query={
-  "size": 10,
-  "query": {
-    "multi_match": {
-      "query": "does this work with xbox?",
-      "fields": ["question_text^2", "bullet_point*", "answers.answer_text^2", "item_name^1.5"]
-    }
-  }
-}
+    with torch.no_grad():
+        outputs = model(**inputs_tokens)
 
-res = client.search(index="headset_pqa", body=query)
-query_result=[]
-for hit in res['hits']['hits']:
-    row=[hit['_id'],hit['_score'],hit['_source']['question_text'],hit['_source']['answers'][0]['answer_text']]
-    query_result.append(row)
+    sentence_embeddings = mean_pooling(outputs, inputs_tokens['attention_mask'])
+    return sentence_embeddings
 
-query_result_df = pd.DataFrame(data=query_result,columns=["_id","_score","question","answer"])
-print(query_result_df)
-print ('+++')
+def load_pqa(file_name,number_rows=1000):
+    qa_list = []
+    df = pd.DataFrame(columns=('question', 'answer'))
+    with open(file_name) as f:
+        i=0
+        for line in f:
+            data = json.loads(line)
+            df.loc[i] = [data['question_text'],data['answers'][0]['answer_text']]
+            i+=1
+            if(i == number_rows):
+                break
+    return df
 
-query={
-  "query": {
-    "bool": {
-      "must": [
-        {
-          "multi_match": {
-            "query": "does this work with xbox?",
-            "fields": [ "question_text^2", "bullet_point*", "answers.answer_text^2","item_name^2"]
-          }
-        }
-      ],
-      "should": [
-        {
-          "term": {
-            "answer_aggregated.keyword": {
-              "value": "neutral"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
 
-res = client.search(index="headset_pqa", body=query)
-query_result=[]
-for hit in res['hits']['hits']:
-    row=[hit['_id'],hit['_score'],hit['_source']['question_text'],hit['_source']['answers'][0]['answer_text']]
-    query_result.append(row)
+qa_list = load_pqa('/home/ec2-user/data/amazon-pqa/amazon_pqa_headsets.json',number_rows=1000)
+print(qa_list)
 
-query_result_df = pd.DataFrame(data=query_result,columns=["_id","_score","question","answer"])
-print(query_result_df)
-print ('+++')
+vector_sentences = sentence_to_vector(qa_list["question"].tolist())
+print(vector_sentences)
+
+i = 0
+for c in qa_list["question"].tolist():
+    content=c
+    vector=vector_sentences[i].tolist()
+    answer=qa_list["answer"][i]
+    i+=1
+    client.index(index='nlp_pqa',body={"question_vector": vector, "question": content,"answer":answer})
+
+res = client.search(index="nlp_pqa", body={"query": {"match_all": {}}})
+print("Records found: %d." % res['hits']['total']['value'])
+

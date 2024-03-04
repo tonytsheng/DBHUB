@@ -145,6 +145,9 @@ python3 -m pip install ./downloads/SomeProject-1.0.4.tar.gz
 
 # opensearch
 pip3 install opensearchsql
+pip3 install torch
+pip3 install tqdm
+
 
 ## efs
 # might need thse packages

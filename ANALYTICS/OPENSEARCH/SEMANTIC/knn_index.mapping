@@ -1,6 +1,6 @@
 {
     "settings": {
-        "index.knn": True,
+        "index.knn": true,
         "index.knn.space_type": "cosinesimil",
         "analysis": {
           "analyzer": {
@@ -16,15 +16,15 @@
             "question_vector": {
                 "type": "knn_vector",
                 "dimension": 768,
-                "store": True
+                "store": true
             },
             "question": {
                 "type": "text",
-                "store": True
+                "store": true
             },
             "answer": {
                 "type": "text",
-                "store": True
+                "store": true
             }
         }
     }
