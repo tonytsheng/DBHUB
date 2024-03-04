@@ -1,0 +1,31 @@
+{
+    "settings": {
+        "index.knn": True,
+        "index.knn.space_type": "cosinesimil",
+        "analysis": {
+          "analyzer": {
+            "default": {
+              "type": "standard",
+              "stopwords": "_english_"
+            }
+          }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "question_vector": {
+                "type": "knn_vector",
+                "dimension": 768,
+                "store": True
+            },
+            "question": {
+                "type": "text",
+                "store": True
+            },
+            "answer": {
+                "type": "text",
+                "store": True
+            }
+        }
+    }
+}
