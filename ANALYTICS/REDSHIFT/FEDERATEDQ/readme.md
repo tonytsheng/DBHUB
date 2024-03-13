@@ -41,15 +41,45 @@ CREATE VIEW lineitem_all AS
 CREATE EXTERNAL SCHEMA rdspg102
 FROM POSTGRES
 DATABASE 'pg102' SCHEMA 'human_resources'
-URI 'pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com'
+URI 'pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com' PORT 5432
 IAM_ROLE 'arn:aws:iam::070201068661:role/ttsheng_rol_redshift_secrets'
 SECRET_ARN 'arn:aws:secretsmanager:us-east-2:070201068661:secret:pg102-secret-IZWCR2';
 
-rs101:5439 awsuser@dev=# select count(*) from rdspg102.countries;
-ERROR:  timeout expired
+CREATE EXTERNAL SCHEMA rdspg102_1
+FROM POSTGRES
+DATABASE 'pg102' SCHEMA 'human_resources'
+URI 'pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com' PORT 5432
+IAM_ROLE 'arn:aws:iam::070201068661:role/ttsheng_rol_redshift_secrets'
+SECRET_ARN 'arn:aws:secretsmanager:us-east-2:070201068661:secret:pg102-secret-IZWCR2';
 ```
 
+## Create a locally run Postgresql database on ec2 instance - self maanged
+```
+CREATE EXTERNAL SCHEMA ttsheng_db
+FROM POSTGRES
+DATABASE 'ttsheng_db'
+URI 'ip-10-0-2-111.us-east-2.compute.internal' PORT 5432
+IAM_ROLE 'arn:aws:iam::070201068661:role/ttsheng_rol_redshift_secrets'
+SECRET_ARN 'arn:aws:secretsmanager:us-east-2:070201068661:secret:pg102-secret-IZWCR2';
 
+```
 
+## Troubleshooting
+- Ehanced VPC only necessary if queriees to RDS instances located in a peered VPC.
+
+- IAM role not associated with RS cluster
+```
+ERROR:  Failed to incorporate external table "rdspg102_1"."countries" into local catalog. Error=exception name : UnauthorizedException, error type : 136, message: The requested role arn:aws:iam::070201068661:role/ttsheng-redshift-etc is not associated to cluster, should retry : 0
+```
+
+- Can't access SecretsMgr
+Open TCP 443 outbound rule in SecurityGroup that Redshift Cluster is running in.
+```
+ERROR:  Failed to incorporate external table "rdspg102"."countries" into local catalog. Error=: curlCode: 28, Timeout was reached
+ERROR:  Failed to incorporate external table "rdspg102_1"."countries" into local catalog. Error=: curlCode: 7, Couldn't connect to server
+```
+
+https://spaeder.io/2020/04/20/aws-redshift-federated-querying-from-postgres/
+https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-refusal-failure-issues.html
 
 
