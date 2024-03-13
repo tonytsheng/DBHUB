@@ -3,6 +3,9 @@
 https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US
 
 
+## Login
+psql "host=rs101.cst0cjwllvlj.us-east-2.redshift.amazonaws.com user=awsuser dbname=dev port=5439 password=Pass"
+
 ## From the Redshift Workshop
 make sure that the iam role assigned to the cluster has been set as default
 then when you do the copy command:

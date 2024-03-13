@@ -39,7 +39,7 @@ do
   echo "{\"index\" : { } }" >> ${WORK_DIR}/tmp.json
   echo $text >> ${WORK_DIR}/tmp.json
 #cat tmp.json
-#  curl -XPUT -u 'admin:Pass1234!234' 'https://search-ttsheng-opensearch-100-gxza6jvpr67ioemyyqqj7fkoxy.us-east-2.es.amazonaws.com/voicemail/_doc/${jobname}' -H 'Content-Type: application/json' --data-binary "@${WORK_DIR}/tmp.json"
+#  curl -XPUT -u 'admin:Pass' 'https://search-ttsheng-opensearch-100-gxza6jvpr67ioemyyqqj7fkoxy.us-east-2.es.amazonaws.com/voicemail/_doc/${jobname}' -H 'Content-Type: application/json' --data-binary "@${WORK_DIR}/tmp.json"
   let jobname=jobname+1
   echo $jobname
 done

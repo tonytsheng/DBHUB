@@ -1,4 +1,7 @@
 1 create an external schema that points to aurora
+https://docs.aws.amazon.com/redshift/latest/dg/federated_query_example.html
+turn on Enhanced VPC networking for your cluster when you create it - you cannot modify this after you create it
+```
 CREATE EXTERNAL SCHEMA apg
 FROM POSTGRES
 DATABASE 'database-1' SCHEMA 'myschema'
@@ -27,4 +30,26 @@ CREATE VIEW lineitem_all AS
   UNION ALL SELECT * FROM public.lineitem 
   UNION ALL SELECT * FROM apg.lineitem 
      with no schema binding;
+```
+
+## Create external schema to RDS PG [not Aurora like above]
+- create iam policy
+- create role and attach policy
+- assign iam role to redshift cluster
+  - https://docs.aws.amazon.com/redshift/latest/dg/federated-create-secret-iam-role.html
+```
+CREATE EXTERNAL SCHEMA rdspg102
+FROM POSTGRES
+DATABASE 'pg102' SCHEMA 'human_resources'
+URI 'pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com'
+IAM_ROLE 'arn:aws:iam::070201068661:role/ttsheng_rol_redshift_secrets'
+SECRET_ARN 'arn:aws:secretsmanager:us-east-2:070201068661:secret:pg102-secret-IZWCR2';
+
+rs101:5439 awsuser@dev=# select count(*) from rdspg102.countries;
+ERROR:  timeout expired
+```
+
+
+
+
 
