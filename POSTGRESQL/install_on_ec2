@@ -1,0 +1,23 @@
+https://medium.com/@pantaanish/setting-up-postgresql-on-an-ec2-instance-a-step-by-step-guide-9be2e3348fdb
+
+start up ec2 instance from the console
+sudo amazon-linux-extras enable postgresql14
+sudo yum install postgresql-server -y
+sudo postgresql-setup initdb
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+sudo systemctl status postgresql
+sudo -u postgres psql
+CREATE USER yourusername WITH PASSWORD 'yourpassword';
+CREATE DATABASE yourdatabase;
+GRANT ALL PRIVILEGES ON DATABASE yourdatabase TO yourusername;
+sudo vi /var/lib/pgsql/data/postgresql.conf
+  listen_adresses = '*'
+sudo vi /var/lib/pgsql/data/pg_hba.conf
+  host all all 0.0.0.0/0  md5
+sudo systemctl restart postgresql
+
+access from another dbhub
+   /usr/pgsql-12/bin/psql --host=ip-10-0-0-25.us-east-2.compute.internal --port=5432 --username=postgres --db_name=ttsheng_db
+
+

@@ -53,7 +53,16 @@ IAM_ROLE 'arn:aws:iam::070201068661:role/ttsheng_rol_redshift_secrets'
 SECRET_ARN 'arn:aws:secretsmanager:us-east-2:070201068661:secret:pg102-secret-IZWCR2';
 ```
 
-## Create a locally run Postgresql database on ec2 instance - self maanged
+## Connect to a self managed Postgresql database on ec2 
+create your database
+the connect string looks like this: jdbc:postgresql://ip-10-0-0-25.us-east-2.compute.internal:5432/ttsheng_db
+
+Check that your Redshift cluster can access the aws glue data catalog
+https://docs.aws.amazon.com/redshift/latest/mgmt/query-editor-v2-glue.html
+SHOW SCHEMAS FROM DATABASE awsdatacatalog;
+
+The associated IAM role(s) with the Redshift Cluster should include one of the AmazonRedshiftQueryEditorV2* policies.
+
 ```
 CREATE EXTERNAL SCHEMA ttsheng_db
 FROM POSTGRES
