@@ -218,3 +218,5 @@ cd $HOME
 git clone https://github.com/rupa/z.git
 echo '. $HOME/z/z.sh' >> ~/.zshrc
 echo 'source ~/.zshrc' >> ~/.bash_profile
+
+sudo yum search string 

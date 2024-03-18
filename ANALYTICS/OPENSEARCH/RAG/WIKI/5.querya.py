@@ -17,7 +17,7 @@ import pandas as pd
 from opensearchpy import helpers
 import json
 from openai import OpenAI
-from langchain.embeddings import BedrockEmbeddings
+from langchain_community.embeddings.bedrock import BedrockEmbeddings
 from langchain.vectorstores import OpenSearchVectorSearch
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
@@ -32,7 +32,6 @@ bedrock_model_id="anthropic.claude-v2"
 def get_bedrock_client(region):
     bedrock_client = boto3.client("bedrock", region)
     return bedrock_client
-
 
 def create_langchain_vector_embedding_using_bedrock(bedrock_client, bedrock_embedding_model_id):
     bedrock_embeddings_client = BedrockEmbeddings(
@@ -89,5 +88,5 @@ res = client.search(index=index_name, body={
 print(res["hits"]["hits"][0]["_source"]["text"])
 
 
-#bedrock_client = get_bedrock_client(region)
+bedrock_client = get_bedrock_client(region)
 #bedrock_llm = create_bedrock_llm(bedrock_client, bedrock_model_id)
