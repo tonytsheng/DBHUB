@@ -34051,3 +34051,308 @@ An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster op
 nep200
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+Thu Mar 14 23:00:01 UTC 2024
+Thu Mar 14 23:00:01 UTC 2024
+Thu Mar 14 23:00:01 UTC 2024
+
++++ Clusters
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+nep100-instance-1
+oracad3-19c
+nep100
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep100-instance-1-read-replica
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+pegasus2
+nep200
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pegasus2 is not in available state.
+nep200-instance-1
+postgresdemo
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+nep200-instance-1-read-replica
+shwrad-database-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance shwrad-database-1 is not in available state.
+pg102
+ttsora10
+DBINSTANCE	6155	True	us-east-2a	7	region	rds-ca-rsa2048-g1	AL32UTF8	True	False	arn:aws:rds:us-east-2:012363508593:db:ttsora10	db.r5.large	ttsora10	stopping	TTSORA10	0	db-MTRQCUF3YONVAEMLLV63NHJZMM	True	oracle-ee	19.0.0.0.ru-2023-07.rur-2023-07.r1	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-MTRQCUF3YONVAEMLLV63NHJZMM	False	2021-05-04T14:25:07.320Z	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2024-03-14T22:57:39Z	bring-your-own-license	admin	9000	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	AL16UTF16	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	10:10-10:40	mon:07:19-mon:07:49	False	True	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::012363508593:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS	ACTIVE
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::012363508593:role/ttsheng-rds-s3	ACTIVE
+DBPARAMETERGROUPS	ttsheng-oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-0dc155aace16a70a7	Complete	vpc-0dc155aace16a70a7
+SUBNETS	subnet-012cf41f2f59bb5e2	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-049f3da1c10794ca0	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-032fbba9675f5d50e	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	alert
+ENABLEDCLOUDWATCHLOGSEXPORTS	audit
+ENABLEDCLOUDWATCHLOGSEXPORTS	listener
+ENABLEDCLOUDWATCHLOGSEXPORTS	oemagent
+ENABLEDCLOUDWATCHLOGSEXPORTS	trace
+ENDPOINT	ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	tts-ora-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-09ce174e5979a7e5c
+DBINSTANCE	3057	True	us-east-2c	7	region	rds-ca-rsa2048-g1	True	False	arn:aws:rds:us-east-2:070201068661:db:pg102	db.m6g.xlarge	pg102	stopping	pg102	0	db-LYKLXOEPHQVAWYLP546OGFUPZA	False	postgres	12.14	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-LYKLXOEPHQVAWYLP546OGFUPZA	False	2021-05-04T20:29:47.313Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-03-14T22:54:31Z	postgresql-license	postgres	5000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	07:20-07:50	thu:03:34-thu:04:04	True	True	gp2
+DBPARAMETERGROUPS	tts-rds-pg12	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
+ENDPOINT	pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
++++ Clusters
++++ Clusters
+nep100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+Fri Mar 15 23:00:01 UTC 2024
+Fri Mar 15 23:00:01 UTC 2024
+Fri Mar 15 23:00:01 UTC 2024
+
++++ Clusters
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+nep100
+nep100-instance-1
+oracad3-19c
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200
+pegasus2
+nep100-instance-1-read-replica
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pegasus2 is not in available state.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+postgresdemo
+nep200-instance-1
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+shwrad-database-1
+nep200-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+DBINSTANCE	200	False	us-east-2a	7	region	rds-ca-rsa2048-g1	AL32UTF8	True	False	arn:aws:rds:us-east-2:012363508593:db:shwrad-database-1	db.m6i.xlarge	shwrad-database-1	stopping	ORCL	0	db-CZPWYWMG2RKVMGMFFMRCGZMPHE	False	oracle-ee	19.0.0.0.ru-2024-01.rur-2024-01.r1	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-CZPWYWMG2RKVMGMFFMRCGZMPHE	False	2024-02-20T17:13:27.479Z	12000	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2024-03-15T22:54:20Z	bring-your-own-license	admin	1000	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	AL16UTF16	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	09:37-10:07	thu:04:52-thu:05:22	False	True	gp3
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-09ce3f4e10725046e	Complete	vpc-09ce3f4e10725046e
+SUBNETS	subnet-0917090db55821ee6	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0d53c8b62c18537b7	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-0c47f9abf405f9f2b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-091d396f5c16a70c3	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+ENDPOINT	shwrad-database-1.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	default:oracle-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-0eaeb67ba5b3f1e46
+ttsora10
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
++++ Clusters
++++ Clusters
+nep100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+Sat Mar 16 23:00:01 UTC 2024
+Sat Mar 16 23:00:01 UTC 2024
+stop-db-instance
++++ Instances
+Sat Mar 16 23:00:01 UTC 2024
+stop-db-instance
++++ Instances
+
++++ Clusters
+nep100-instance-1
+nep100
+oracad3-19c
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200
+nep100-instance-1-read-replica
+DBINSTANCE	200	False	us-east-2c	7	region	rds-ca-rsa2048-g1	AL32UTF8	True	False	arn:aws:rds:us-east-2:012363508593:db:oracad3-19c	db.m5.xlarge	oracad3-19c	stopping	ORCL	0	db-5WLJO2R75XFENY3ZCIBGL4LLLI	False	oracle-ee	19.0.0.0.ru-2021-07.rur-2021-07.r1	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-5WLJO2R75XFENY3ZCIBGL4LLLI	False	2021-12-03T16:45:45.326Z	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2024-03-16T22:52:57Z	bring-your-own-license	admin	1000	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	AL16UTF16	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	04:14-04:44	thu:07:03-thu:07:33	False	True	gp2
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-09b0ee8aaf87bf47f	Complete	vpc-09b0ee8aaf87bf47f
+SUBNETS	subnet-0f07a9c6b6c11126b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-0822d8b60a0609f71	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	oracad3-19c.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	default:oracle-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-086b027dcd0030866
+pegasus2
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1
+DBINSTANCE	200	False	us-east-2b	7	region	rds-ca-rsa2048-g1	AL32UTF8	True	False	arn:aws:rds:us-east-2:012363508593:db:pegasus2	db.m6i.xlarge	pegasus2	stopping	ORCL	0	db-NCRWYBVJWNSW2KRXW2PYABELOE	False	oracle-ee	19.0.0.0.ru-2023-10.rur-2023-10.r1	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-NCRWYBVJWNSW2KRXW2PYABELOE	False	2024-01-09T19:27:20.777Z	12000	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2024-03-16T22:55:41Z	bring-your-own-license	admin	1000	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	AL16UTF16	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	05:46-06:16	thu:07:02-thu:07:32	False	True	gp3
+DBPARAMETERGROUPS	default.oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-08d3785e6a2bbd5c3	Complete	vpc-08d3785e6a2bbd5c3
+SUBNETS	subnet-03d09664bf9ab2953	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-035c7fb0c52017209	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-0d0aa0200431e2968	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0ab7c5e5d534ce48a	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+ENDPOINT	pegasus2.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	default:oracle-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-0584f8a3f3e872ee9
+postgresdemo
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+DBINSTANCE	400	True	us-east-2a	7	region	rds-ca-rsa2048-g1	True	False	arn:aws:rds:us-east-2:012363508593:db:postgresdemo	db.m6i.large	postgresdemo	stopping	0	db-VKAW2M627FICT2ES42ZASIH4KA	False	postgres	13.10	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-VKAW2M627FICT2ES42ZASIH4KA	False	2023-01-09T19:46:28.128Z	3000	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2024-03-16T22:54:32Z	postgresql-license	postgres	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	07:52-08:22	sun:10:23-sun:10:53	False	True	io1
+DBPARAMETERGROUPS	default.postgres13	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-09b0ee8aaf87bf47f	Complete	vpc-09b0ee8aaf87bf47f
+SUBNETS	subnet-0f07a9c6b6c11126b	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-0822d8b60a0609f71	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENDPOINT	postgresdemo.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-13	in-sync
+VPCSECURITYGROUPS	active	sg-03d0a0098e1f2088a
+shwrad-database-1
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance shwrad-database-1 is not in available state.
+ttsora10
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
++++ Clusters
+nep100
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep100 is in stopped state but expected it to be one of available.
+nep200
+
+An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+Sun Mar 17 23:00:01 UTC 2024
+Sun Mar 17 23:00:01 UTC 2024
+Sun Mar 17 23:00:01 UTC 2024
+
++++ Clusters
+stop-db-instance
++++ Instances
+stop-db-instance
++++ Instances
+nep100
+nep100-instance-1
+oracad3-19c
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+nep100-instance-1-read-replica
+pegasus2
+DBCLUSTER	1	1	2023-09-27T17:11:57.681Z	True	False	arn:aws:rds:us-east-2:070201068661:cluster:nep100	nep100	default.neptune1.2	default-vpc-0467e5c237261df36	cluster-ACZEUCS6XWYRTFHG2DHUOEANQE	False	2024-03-16T04:38:04.861Z	nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	neptune	1.2.0.2	Z18MU2VX5LLW0S	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-03-17T22:55:26.833Z	admin	True	8182	04:29-04:59	tue:05:09-tue:05:39	nep100.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	available	True
+ASSOCIATEDROLES	arn:aws:iam::070201068661:role/load-neptune-s3	ACTIVE
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	nep100-instance-1-read-replica	False	1
+DBCLUSTERMEMBERS	in-sync	nep100-instance-1	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+nep200
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pegasus2 is not in available state.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+postgresdemo
+nep200-instance-1
+DBCLUSTER	1	1	2024-01-28T19:47:53.217Z	True	False	arn:aws:rds:us-east-2:070201068661:cluster:nep200	nep200	default.neptune1.3	default-vpc-0467e5c237261df36	cluster-DOV7MFFKJHQCSFGZPJEHNCVCWU	False	2024-03-16T04:51:49.588Z	nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	neptune	1.3.0.0	Z18MU2VX5LLW0S	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-03-17T22:57:22.184Z	admin	True	8182	04:41-05:11	tue:09:21-tue:09:51	nep200.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	available	True
+ASSOCIATEDROLES	arn:aws:iam::070201068661:role/load-neptune-s3	ACTIVE
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	nep200-instance-1-read-replica	False	1
+DBCLUSTERMEMBERS	in-sync	nep200-instance-1	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+nep200-instance-1-read-replica
+shwrad-database-1
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance shwrad-database-1 is not in available state.
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+ttsora10
+pg102
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance ttsora10 is not in available state.
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pg102 is not in available state.
++++ Clusters
++++ Clusters
+nep100
+DBCLUSTER	1	False	1	2023-09-27T17:11:57.681Z	True	False	arn:aws:rds:us-east-2:070201068661:cluster:nep100	nep100	default.neptune1.2	default-vpc-0467e5c237261df36	cluster-ACZEUCS6XWYRTFHG2DHUOEANQE	False	2024-03-16T04:38:04.861Z	nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	neptune	provisioned	1.2.0.2	Z18MU2VX5LLW0S	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-03-17T22:55:26.833Z	admin	True	8182	04:29-04:59	tue:05:09-tue:05:39	nep100.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	available	True
+ASSOCIATEDROLES	arn:aws:iam::070201068661:role/load-neptune-s3	ACTIVE
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	nep100-instance-1-read-replica	False	1
+DBCLUSTERMEMBERS	in-sync	nep100-instance-1	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+nep200
+DBCLUSTER	1	False	1	2024-01-28T19:47:53.217Z	True	False	arn:aws:rds:us-east-2:070201068661:cluster:nep200	nep200	default.neptune1.3	default-vpc-0467e5c237261df36	cluster-DOV7MFFKJHQCSFGZPJEHNCVCWU	False	2024-03-16T04:51:49.588Z	nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	neptune	provisioned	1.3.0.0	Z18MU2VX5LLW0S	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-03-17T22:57:22.184Z	admin	True	8182	04:41-05:11	tue:09:21-tue:09:51	nep200.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	available	True
+ASSOCIATEDROLES	arn:aws:iam::070201068661:role/load-neptune-s3	ACTIVE
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	nep200-instance-1-read-replica	False	1
+DBCLUSTERMEMBERS	in-sync	nep200-instance-1	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
