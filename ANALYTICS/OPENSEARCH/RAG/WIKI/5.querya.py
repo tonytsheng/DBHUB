@@ -10,18 +10,23 @@ import string
 import time
 import json
 import csv
-#from elasticsearch import Elasticsearch, helpers
+from elasticsearch import Elasticsearch, helpers
 from opensearchpy import OpenSearch, RequestsHttpConnection, helpers
 from requests_aws4auth import AWS4Auth
 import pandas as pd
 from opensearchpy import helpers
 import json
 from openai import OpenAI
-from langchain_community.embeddings.bedrock import BedrockEmbeddings
-from langchain.vectorstores import OpenSearchVectorSearch
+from botocore.client import Config
+from langchain_community.embeddings import BedrockEmbeddings
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
-from langchain.llms.bedrock import Bedrock
+from langchain.vectorstores import OpenSearchVectorSearch
+
+#from langchain.vectorstores import OpenSearchVectorSearch
+#from langchain.chains import RetrievalQA
+#from langchain.prompts import PromptTemplate
+#from langchain.llms.bedrock import Bedrock
 
 #wikipedia_dataframe = pd.read_csv("data/vector_database_wikipedia_articles_embedded.csv")
 #wikipedia_dataframe.head()
@@ -30,7 +35,7 @@ index_name = "openai_wikipedia_index"
 bedrock_model_id="anthropic.claude-v2"
 
 def get_bedrock_client(region):
-    bedrock_client = boto3.client("bedrock", region)
+    bedrock_client = boto3.client("bedrock-runtime", region)
     return bedrock_client
 
 def create_langchain_vector_embedding_using_bedrock(bedrock_client, bedrock_embedding_model_id):
@@ -54,6 +59,16 @@ def dataframe_to_bulk_actions(df):
             }
         }
 
+def create_opensearch_vector_search_client(index_name, bedrock_embeddings_client, opensearch_endpoint, _is_aoss=False):
+    docsearch = OpenSearchVectorSearch(
+        index_name=index_name,
+        embedding_function=bedrock_embeddings_client,
+        opensearch_url=f"https://{opensearch_endpoint}",
+#        http_auth=(index_name, opensearch_password),
+        is_aoss=_is_aoss
+    )
+    return docsearch
+
 
 client = boto3.client('opensearch')
 host="search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com" # no trailing slash at end of host field
@@ -71,7 +86,6 @@ client = OpenSearch(
     connection_class = RequestsHttpConnection
 )
 
-
 res = client.search(index=index_name, body={
     "_source": {
         "excludes": ["title_vector", "content_vector"]
@@ -87,6 +101,40 @@ res = client.search(index=index_name, body={
 
 print(res["hits"]["hits"][0]["_source"]["text"])
 
+bedrock_client = boto3.client('bedrock', 'us-east-1')
+print (bedrock_client)
+bedrock_llm = create_langchain_vector_embedding_using_bedrock(bedrock_client, bedrock_model_id)
+print (bedrock_llm)
 
-bedrock_client = get_bedrock_client(region)
-#bedrock_llm = create_bedrock_llm(bedrock_client, bedrock_model_id)
+prompt_template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. don't include harmful content
+
+{context}
+
+Question: {question}
+Answer:"""
+PROMPT = PromptTemplate(
+    template=prompt_template, input_variables=["context", "question"]
+)
+
+bedrock_embedding_model_id="amazon.titan-embed-text-v1"
+bedrock_embeddings_client = create_langchain_vector_embedding_using_bedrock(bedrock_client, bedrock_embedding_model_id)
+
+opensearch_endpoint="search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com"
+opensearch_vector_search_client = create_opensearch_vector_search_client(index_name, bedrock_embeddings_client, opensearch_endpoint)
+
+qa = RetrievalQA.from_chain_type(llm=bedrock_llm,
+                                     chain_type="stuff",
+                                     retriever=opensearch_vector_search_client.as_retriever(),
+                                     return_source_documents=True,
+                                     chain_type_kwargs={"prompt": PROMPT, "verbose": True},
+                                     verbose=True)
+
+response = qa(question, return_only_outputs=False)
+
+source_documents = response.get('source_documents')
+for d in source_documents:
+    print("With the following similar content from OpenSearch:\n{d.page_content}\n")
+    print("Text: {d.metadata['text']}")
+    print("The answer from Bedrock {bedrock_model_id} is: {response.get('result')}")
+
+
