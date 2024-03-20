@@ -25,9 +25,9 @@ CONNSTR="--host=${HOST} --port=5432 --username=${USER} --dbname=${DB} "
 # echo $CONNSTR
 
 if [ -z ${INFILE} ]; then
-    /usr/pgsql-12/bin/psql ${CONNSTR}
+    /usr/binbin/psql ${CONNSTR}
 else
-    /usr/pgsql-12/bin/psql/psql ${CONNSTR} -f ${INFILE}
+    /usr/bin/psql ${CONNSTR} -f ${INFILE}
 fi
 
 
