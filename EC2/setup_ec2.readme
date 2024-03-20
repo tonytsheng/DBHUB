@@ -4,6 +4,8 @@ git pull git@github.com:tonytsheng/DBHUB.git master
 
 git clone git@github.com:tonytsheng/DBHUB.git DBHUB
 
+git config --global --edit
+# fix email address
 
 ## modify inbound rules for security group
 # make sure ec2 and database is in the same security group
