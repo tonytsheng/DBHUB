@@ -33,8 +33,9 @@ export ORACLE_HOME=/opt/oracle/instantclient_19_9
 export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9
 export PATH=$ORACLE_HOME:$PATH
 
-## install this rpm
+## install this rpm if you get weird ora connection errors
 sudo yum install libaio-0.3.112-1.el8.x86_64
+sudo yum install libnsl.x86_64 
 
 ## set up tnsnames.ora in $ORACLE_HOME/network/admin
 
