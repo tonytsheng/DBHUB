@@ -93,12 +93,12 @@ res = client.search(index=index_name, body={
     "query": {
         "match": {
             "text": {
-                "query": "Pizza"
+                "query": "Taylor Swift"
             }
         }
     }
 })
-
+#print(res)
 print(res["hits"]["hits"][0]["_source"]["text"])
 
 bedrock_client = boto3.client('bedrock', 'us-east-1')

@@ -34409,3 +34409,40 @@ An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster op
 nep200
 
 An error occurred (InvalidDBClusterStateFault) when calling the StopDBCluster operation: DbCluster nep200 is in stopped state but expected it to be one of available.
+Wed Mar 20 17:54:45 UTC 2024
+stop-db-instance
++++ Instances
+oracad3-19c
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance oracad3-19c is not in available state.
+pegasus2
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance pegasus2 is not in available state.
+postgresdemo
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance postgresdemo is not in available state.
+shwrad-database-1
+
+An error occurred (InvalidDBInstanceState) when calling the StopDBInstance operation: Instance shwrad-database-1 is not in available state.
+ttsora10
+DBINSTANCE	6155	True	us-east-2a	7	region	rds-ca-rsa2048-g1	AL32UTF8	True	False	arn:aws:rds:us-east-2:012363508593:db:ttsora10	db.r5.large	ttsora10	stopping	TTSORA10	0	db-MTRQCUF3YONVAEMLLV63NHJZMM	False	True	oracle-ee	19.0.0.0.ru-2023-07.rur-2023-07.r1	arn:aws:logs:us-east-2:012363508593:log-group:RDSOSMetrics:log-stream:db-MTRQCUF3YONVAEMLLV63NHJZMM	False	2021-05-04T14:25:07.320000+00:00	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	2024-03-20T17:49:01+00:00	bring-your-own-license	admin	9000	60	arn:aws:iam::012363508593:role/rds-monitoring-role	False	AL16UTF16	IPV4	True	arn:aws:kms:us-east-2:012363508593:key/ad59594d-35d2-4122-88ec-59bd8c8e58cf	7	10:10-10:40	mon:07:19-mon:07:49	False	True	gp2
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::012363508593:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS	ACTIVE
+ASSOCIATEDROLES	S3_INTEGRATION	arn:aws:iam::012363508593:role/ttsheng-rds-s3	ACTIVE
+CERTIFICATEDETAILS	rds-ca-rsa2048-g1	2025-02-12T21:46:29+00:00
+DBPARAMETERGROUPS	ttsheng-oracle-ee-19	in-sync
+DBSUBNETGROUP	Created from the RDS Management Console	default-vpc-0dc155aace16a70a7	Complete	vpc-0dc155aace16a70a7
+SUBNETS	subnet-012cf41f2f59bb5e2	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+SUBNETS	subnet-049f3da1c10794ca0	Active
+SUBNETAVAILABILITYZONE	us-east-2a
+SUBNETS	subnet-032fbba9675f5d50e	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	alert
+ENABLEDCLOUDWATCHLOGSEXPORTS	audit
+ENABLEDCLOUDWATCHLOGSEXPORTS	listener
+ENABLEDCLOUDWATCHLOGSEXPORTS	oemagent
+ENABLEDCLOUDWATCHLOGSEXPORTS	trace
+ENDPOINT	ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
+OPTIONGROUPMEMBERSHIPS	tts-ora-ee-19	in-sync
+VPCSECURITYGROUPS	active	sg-09ce174e5979a7e5c
++++ Clusters
