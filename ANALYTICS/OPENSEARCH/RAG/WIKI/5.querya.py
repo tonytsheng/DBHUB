@@ -21,17 +21,37 @@ from botocore.client import Config
 from langchain_community.embeddings import BedrockEmbeddings
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
-from langchain.vectorstores import OpenSearchVectorSearch
 from pydantic import BaseModel
+
+import boto3
+import json
+import os
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.llms.bedrock import Bedrock
+from tqdm.autonotebook import tqdm
+from langchain.embeddings.openai import OpenAIEmbeddings
+import numpy as np
+import numpy as np
+from langchain.text_splitter import CharacterTextSplitter, RecursiveCharacterTextSplitter
+from urllib.request import urlretrieve
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFDirectoryLoader
+from langchain_community.vectorstores import Pinecone
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import BedrockEmbeddings
+from langchain.chains.question_answering import load_qa_chain
+from langchain_community.vectorstores import OpenSearchVectorSearch
 
 #wikipedia_dataframe = pd.read_csv("data/vector_database_wikipedia_articles_embedded.csv")
 #wikipedia_dataframe.head()
 
 index_name = "openai_wikipedia_index"
-bedrock_model_id="anthropic.claude-v2:1"
+#bedrock_model_id="anthropic.claude-v2:1"
+#bedrock_model_id="anthropic.claude-v2"
+bedrock_model_id="amazon.titan-text-lite-v1"
 
 def get_bedrock_client(region):
-    bedrock_client = boto3.client("bedrock-runtime", region)
+    bedrock_client = boto3.client("bedrock-runtime", "us-east-1")
     return bedrock_client
 
 def create_langchain_vector_embedding_using_bedrock(bedrock_client, bedrock_embedding_model_id):
@@ -39,21 +59,6 @@ def create_langchain_vector_embedding_using_bedrock(bedrock_client, bedrock_embe
         client=bedrock_client,
         model_id=bedrock_embedding_model_id)
     return bedrock_embeddings_client
-
-#def dataframe_to_bulk_actions(df):
-#    for index, row in df.iterrows():
-#        yield {
-#            "_index": index_name,
-#            "_id": row['id'],
-#            "_source": {
-#                'url' : row["url"],
-#                'title' : row["title"],
-#                'text' : row["text"],
-#                'title_vector' : json.loads(row["title_vector"]),
-#                'content_vector' : json.loads(row["content_vector"]),
-#                'vector_id' : row["vector_id"]
-#            }
-#        }
 
 def create_opensearch_vector_search_client(index_name, bedrock_embeddings_client, opensearch_endpoint, _is_aoss=False):
     docsearch = OpenSearchVectorSearch(
@@ -65,7 +70,10 @@ def create_opensearch_vector_search_client(index_name, bedrock_embeddings_client
     )
     return docsearch
 
+### main
 
+bedrock_embedding_model_id="amazon.titan-embed-text-v1"
+opensearch_endpoint="search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com"
 client = boto3.client('opensearch')
 host="search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com" # no trailing slash at end of host field
 service = 'es'
@@ -122,18 +130,18 @@ template =  """You are a human assist that is expert with our app.
 TEMPLATE = PromptTemplate.from_template(template)
 print("::: Template = " + str(TEMPLATE))
 
-bedrock_embedding_model_id="amazon.titan-embed-text-v1"
 bedrock_embeddings_client = create_langchain_vector_embedding_using_bedrock(bedrock_client, bedrock_embedding_model_id)
-opensearch_endpoint="search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com"
 opensearch_vector_search_client = create_opensearch_vector_search_client(index_name, bedrock_embeddings_client, opensearch_endpoint)
+print("::: bedrock embeddings client = " + str(bedrock_embeddings_client))
+print("::: aos vector client  = " + str(opensearch_vector_search_client))
 
 print ("before qa")
-#qa = RetrievalQA.from_chain_type(bedrock_llm,
-#                                     chain_type="stuff",
-#                                     retriever=opensearch_vector_search_client.as_retriever(),
-#                                     return_source_documents=True,
-#                                     chain_type_kwargs={"prompt": PROMPT, "verbose": True},
-#                                     verbose=True)
+qa = RetrievalQA.from_chain_type(bedrock_llm,
+                                     chain_type="stuff",
+                                     retriever=opensearch_vector_search_client.as_retriever(),
+                                     return_source_documents=True,
+                                     chain_type_kwargs={"prompt": PROMPT, "verbose": True},
+                                     verbose=True)
 
 chain_type_kwargs={ "prompt": TEMPLATE,
     "verbose": False
@@ -146,6 +154,8 @@ qa = RetrievalQA.from_chain_type(
     chain_type_kwargs=chain_type_kwargs,
     verbose=True
 )
+
+
 
 response = qa(question, return_only_outputs=False)
 

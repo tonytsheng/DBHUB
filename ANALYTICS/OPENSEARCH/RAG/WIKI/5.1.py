@@ -26,10 +26,10 @@ from pydantic import BaseModel
 from langchain_community.vectorstores import OpenSearchVectorSearch
 
 index_name = "openai_wikipedia_index"
-bedrock_model_id="anthropic.claude-v2:1"
+bedrock_model_id="anthropic.claude-v2"
 
 def get_bedrock_client(region):
-    bedrock_client = boto3.client("bedrock-runtime", region)
+    bedrock_client = boto3.client("bedrock-runtime", "us-east-1")
     return bedrock_client
 
 def create_langchain_vector_embedding_using_bedrock(bedrock_client, bedrock_embedding_model_id):
@@ -53,9 +53,8 @@ client = boto3.client('opensearch')
 host="search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com" # no trailing slash at end of host field
 service = 'es'
 credentials = boto3.Session().get_credentials()
-region='us-east-2'
 awsauth = AWS4Auth(credentials.access_key, credentials.secret_key,
-                   region, service, session_token=credentials.token)
+                   "ue-east-2", service, session_token=credentials.token)
 
 bedrock_client = boto3.client('bedrock', 'us-east-1')
 print ("::: bedrock_client = " + str(bedrock_client))

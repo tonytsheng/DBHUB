@@ -52,9 +52,10 @@ index_mapping= {
 
 client = boto3.client('opensearch')
 host="search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com" # no trailing slash at end of host field
+host="vpc-aos500-xahuwxrebnk77ylrj5gnmoit64.us-east-1.es.amazonaws.com/_dashboards"
 service = 'es'
 credentials = boto3.Session().get_credentials()
-region='us-east-2'
+region='us-east-1'
 awsauth = AWS4Auth(credentials.access_key, credentials.secret_key,
                    region, service, session_token=credentials.token)
 

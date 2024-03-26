@@ -13,6 +13,30 @@
   - Allow your EC2 instance to run curl, python, etc
   - Add your laptop to access the dashboards
     -       "aws:SourceIp": "3.143.249.228/32"
+    - see:
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "es:*",
+      "Resource": "arn:aws:es:us-east-2:070201068661:domain/os100/*",
+      "Condition": {
+        "IpAddress": {
+          "aws:SourceIp": [
+            "3.143.249.228",
+            "71.179.85.192",
+            "18.222.101.119",
+            "3.16.38.63"
+          ]
+        }
+      }
+    }
+  ]
+}
 - Defaults for encryption options
 - Create
 
