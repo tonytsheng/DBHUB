@@ -137,6 +137,7 @@ print("::: aos vector client  = " + str(opensearch_vector_search_client))
 
 print ("before qa")
 qa = RetrievalQA.from_chain_type(bedrock_llm,
+                                 # ^^ error in what is getting sent
                                      chain_type="stuff",
                                      retriever=opensearch_vector_search_client.as_retriever(),
                                      return_source_documents=True,
