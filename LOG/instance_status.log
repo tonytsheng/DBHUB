@@ -34446,3 +34446,90 @@ ENDPOINT	ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	1521
 OPTIONGROUPMEMBERSHIPS	tts-ora-ee-19	in-sync
 VPCSECURITYGROUPS	active	sg-09ce174e5979a7e5c
 +++ Clusters
+Wed Mar 27 01:40:33 UTC 2024
+stop-db-instance
++++ Instances
+Traceback (most recent call last):
+  File "/usr/bin/aws", line 19, in <module>
+    import awscli.clidriver
+ModuleNotFoundError: No module named 'awscli'
++++ Clusters
+Traceback (most recent call last):
+  File "/usr/bin/aws", line 19, in <module>
+    import awscli.clidriver
+ModuleNotFoundError: No module named 'awscli'
+-bash: 00: command not found
+Wed Mar 27 01:44:51 UTC 2024
+stop-db-instance
++++ Instances
+Traceback (most recent call last):
+  File "/usr/bin/aws", line 19, in <module>
+    import awscli.clidriver
+ModuleNotFoundError: No module named 'awscli'
++++ Clusters
+Traceback (most recent call last):
+  File "/usr/bin/aws", line 19, in <module>
+    import awscli.clidriver
+ModuleNotFoundError: No module named 'awscli'
+Wed Mar 27 01:45:59 UTC 2024
+stop-db-instance
++++ Instances
+Traceback (most recent call last):
+  File "/usr/bin/aws", line 19, in <module>
+    import awscli.clidriver
+ModuleNotFoundError: No module named 'awscli'
++++ Clusters
+Traceback (most recent call last):
+  File "/usr/bin/aws", line 19, in <module>
+    import awscli.clidriver
+ModuleNotFoundError: No module named 'awscli'
+Wed Mar 27 01:47:45 UTC 2024
+stop-db-instance
++++ Instances
+nep100-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep100-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+nep200-instance-1-read-replica
+
+An error occurred (InvalidParameterCombination) when calling the StopDBInstance operation: neptune DB instances are not eligible for stopping and starting.
+pg102
+DBINSTANCE	3057	True	us-east-2c	7	region	rds-ca-rsa2048-g1	True	False	arn:aws:rds:us-east-2:070201068661:db:pg102	db.m6g.xlarge	pg102	stopping	pg102	0	db-LYKLXOEPHQVAWYLP546OGFUPZA	False	False	postgres	12.17	arn:aws:logs:us-east-2:070201068661:log-group:RDSOSMetrics:log-stream:db-LYKLXOEPHQVAWYLP546OGFUPZA	False	2021-05-04T20:29:47.313Z	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-03-27T01:44:32Z	postgresql-license	postgres	5000	60	arn:aws:iam::070201068661:role/rds-monitoring-role	False	IPV4	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	7	07:20-07:50	thu:03:34-thu:04:04	True	True	gp2
+CERTIFICATEDETAILS	rds-ca-rsa2048-g1	2025-03-10T00:19:27Z
+DBPARAMETERGROUPS	tts-rds-pg12	in-sync
+DBSUBNETGROUP	Created from the Neptune Management Console	default-vpc-0467e5c237261df36	Complete	vpc-0467e5c237261df36
+SUBNETS	subnet-091ce2b4f8d3fca76	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0bf0aafaa5c0521ff	Active
+SUBNETAVAILABILITYZONE	us-east-2b
+SUBNETS	subnet-0808b6c26e6ff6694	Active
+SUBNETAVAILABILITYZONE	us-east-2c
+ENABLEDCLOUDWATCHLOGSEXPORTS	postgresql
+ENABLEDCLOUDWATCHLOGSEXPORTS	upgrade
+ENDPOINT	pg102.cyt4dgtj55oy.us-east-2.rds.amazonaws.com	Z2XHWR1WZ565X2	5432
+OPTIONGROUPMEMBERSHIPS	default:postgres-12	in-sync
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
++++ Clusters
+nep100
+DBCLUSTER	1	False	1	2023-09-27T17:11:57.681Z	True	False	arn:aws:rds:us-east-2:070201068661:cluster:nep100	nep100	default.neptune1.2	default-vpc-0467e5c237261df36	cluster-ACZEUCS6XWYRTFHG2DHUOEANQE	False	2024-03-25T04:37:25.947Z	nep100.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	neptune	provisioned	1.2.0.2	Z18MU2VX5LLW0S	False	False	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-03-27T01:45:28.778Z	admin	True	IPV4	8182	04:29-04:59	tue:05:09-tue:05:39	nep100.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	available	True
+ASSOCIATEDROLES	arn:aws:iam::070201068661:role/load-neptune-s3	ACTIVE
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	nep100-instance-1-read-replica	False	1
+DBCLUSTERMEMBERS	in-sync	nep100-instance-1	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55
+nep200
+DBCLUSTER	1	False	1	2024-01-28T19:47:53.217Z	True	False	arn:aws:rds:us-east-2:070201068661:cluster:nep200	nep200	default.neptune1.3	default-vpc-0467e5c237261df36	cluster-DOV7MFFKJHQCSFGZPJEHNCVCWU	False	2024-03-25T04:50:32.283Z	nep200.cluster-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	neptune	provisioned	1.3.0.0	Z18MU2VX5LLW0S	False	True	arn:aws:kms:us-east-2:070201068661:key/cd3a8f47-964f-4bbd-9197-babe038dc52e	2024-03-27T01:44:11.438Z	admin	True	IPV4	8182	04:41-05:11	tue:09:21-tue:09:51	nep200.cluster-ro-cyt4dgtj55oy.us-east-2.neptune.amazonaws.com	available	True
+ASSOCIATEDROLES	arn:aws:iam::070201068661:role/load-neptune-s3	ACTIVE
+AVAILABILITYZONES	us-east-2b
+AVAILABILITYZONES	us-east-2c
+AVAILABILITYZONES	us-east-2a
+DBCLUSTERMEMBERS	in-sync	nep200-instance-1-read-replica	False	1
+DBCLUSTERMEMBERS	in-sync	nep200-instance-1	True	1
+VPCSECURITYGROUPS	active	sg-0ec060f989b5efc55

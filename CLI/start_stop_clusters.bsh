@@ -7,9 +7,9 @@ echo ${RDSACTION}
 
 echo "+++ Clusters"
 
-for cluster in `/usr/bin/aws --profile ${PROFILE} neptune describe-db-clusters | jq ' .DBClusters[]  | .DBClusterIdentifier' | sed s/\"//g `
+for cluster in `/home/ec2-user/.local/bin/aws --profile ${PROFILE} neptune describe-db-clusters | jq ' .DBClusters[]  | .DBClusterIdentifier' | sed s/\"//g `
 do
     echo $cluster
-    /usr/bin/aws --profile ${PROFILE} neptune ${CLUACTION} --db-cluster-identifier $cluster --output text
+    /home/ec2-user/.local/bin/aws --profile ${PROFILE} neptune ${CLUACTION} --db-cluster-identifier $cluster --output text
 done
 

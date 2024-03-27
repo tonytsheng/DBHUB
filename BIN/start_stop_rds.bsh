@@ -11,18 +11,18 @@ put_msg()
 
 waitforstatus(){
   STATUS=$1
-  CHECK=`/usr/bin/aws rds describe-db-instances --db-instance-identifier ${INSTANCE} --profile ec2 | jq -r '.DBInstances [] | .DBInstanceStatus'`
+  CHECK=`aws rds describe-db-instances --db-instance-identifier ${INSTANCE} --profile ec2 | jq -r '.DBInstances [] | .DBInstanceStatus'`
   while [[ ${CHECK} != ${STATUS} ]]
   do
     put_msg ${CHECK}
     sleep 30
-    CHECK=`/usr/bin/aws rds describe-db-instances --db-instance-identifier ${INSTANCE} --profile ec2 | jq -r '.DBInstances [] | .DBInstanceStatus'`
+    CHECK=`aws rds describe-db-instances --db-instance-identifier ${INSTANCE} --profile ec2 | jq -r '.DBInstances [] | .DBInstanceStatus'`
   done 
   put_msg ${CHECK}
 }
 
 ## MAIN
-/usr/bin/aws rds ${ACTION} --db-instance-identifier ${INSTANCE} --profile ec2 --output text
+aws rds ${ACTION} --db-instance-identifier ${INSTANCE} --profile ec2 --output text
 
 if [[ "${ACTIONIN}" == "start" ]]; then
   waitforstatus "available"
