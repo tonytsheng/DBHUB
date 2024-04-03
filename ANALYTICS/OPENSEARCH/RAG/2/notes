@@ -1,0 +1,32 @@
+delete cdk* s3 bucket
+delete cdk* cfn stack
+
+restart
++ run fri 1
+:33:37 PM | CREATE_FAILED        | AWS::Lambda::Function          | llmbdwranglerdev6785E518
+Resource handler returned message: "User: arn:aws:sts::070201068661:assumed-role/cdk-hnb659fds-cfn-exec-role-070201068661-us-east-1/AWSCloudFormation is not authorized to perform: lambda:GetLayerVersion on resource: arn:aws:lambda:us-east-1:336392948345:layer:AWSDataWrangler-Python39:3 because no resource-based policy allows the lambda:GetLayerVersion action (Serv
+ice: Lambda, Status Code: 403, Request ID: 92228b0a-8a91-42a0-a3ae-cd730d57053e)" (RequestToken: bb8f5dba-c78f-e5f5-9cd3-75d490b23b6b, HandlerErrorCode: AccessDenied)
+
+
+ ❌  ApiGwLlmsLambdadevStack failed: Error: The stack named ApiGwLlmsLambdadevStack failed creation, it may need to be manually deleted from the AWS console: ROLLBACK_COMPLETE: Resource handler returned message: "User: arn:aws:sts::070201068661:assumed-role/cdk-hnb659fds-cfn-exec-role-070201068661-us-east-1/AWSCloudFormation is not authorized to perform: lambda:GetLayerVersion on resource: arn:aws:lambda:us-east-1:336392948345:layer:AWSDataWrangler-Python39:3 because no resource-based policy allows the lambda:GetLayerVersion action (Service: Lambda, Status Code: 403, Request ID: 92228b0a-8a91-42a0-a3ae-cd730d57053e)" (RequestToken: bb8f5dba-c78f-e5f5-9cd3-75d490b23b6b, HandlerErrorCode: AccessDenied)
+    at FullCloudFormationDeployment.monitorDeployment (/usr/local/lib/node_modules/aws-cdk/lib/index.js:426:10236)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.deployStack2 [as deployStack] (/usr/local/lib/node_modules/aws-cdk/lib/index.js:429:153380)
+    at async /usr/local/lib/node_modules/aws-cdk/lib/index.js:429:137002
+
+ ❌ Deployment failed: Error: The stack named ApiGwLlmsLambdadevStack failed creation, it may need to be manually deleted from the AWS console: ROLLBACK_COMPLETE: Resource handler returned message: "User: arn:aws:sts::070201068661:assumed-role/cdk-hnb659fds-cfn-exec-role-070201068661-us-east-1/AWSCloudFormation is not authorized to perform: lambda:GetLayerVersion on resource: arn:aws:lambda:us-east-1:336392948345:layer:AWSDataWrangler-Python39:3 because no resource-based policy allows the lambda:GetLayerVersion action (Service: Lambda, Status Code: 403, Request ID: 92228b0a-8a91-42a0-a3ae-cd730d57053e)" (RequestToken: bb8f5dba-c78f-e5f5-9cd3-75d490b23b6b, HandlerErrorCode: AccessDenied)
+    at FullCloudFormationDeployment.monitorDeployment (/usr/local/lib/node_modules/aws-cdk/lib/index.js:426:10236)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.deployStack2 [as deployStack] (/usr/local/lib/node_modules/aws-cdk/lib/index.js:429:153380)
+    at async /usr/local/lib/node_modules/aws-cdk/lib/index.js:429:137002
+
+The stack named ApiGwLlmsLambdadevStack failed creation, it may need to be manually deleted from the AWS console: ROLLBACK_COMPLETE: Resource handler returned message: "User: arn:aws:sts::070201068661:assumed-role/cdk-hnb659fds-cfn-exec-role-070201068661-us-east-1/AWSCloudFormation is not authorized to perform: lambda:GetLayerVersion on resource: arn:aws:lambda:us-east-1:336392948345:layer:AWSDataWrangler-Python39:3 because no resource-based policy allows the lambda:GetLayerVersion action (Service: Lambda, Status Code: 403, Request ID: 92228b0a-8a91-42a0-a3ae-cd730d57053e)" (RequestToken: bb8f5dba-c78f-e5f5-9cd3-75d490b23b6b, HandlerErrorCode: AccessDenied)
+
++ fri run 2
+same error as above
+
++ fri run 3
+delete bucket
+delete stacks
+
+run each  command from creator.sh by hand to look for AWSCloudFormation role in IAM
