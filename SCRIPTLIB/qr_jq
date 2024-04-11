@@ -1,3 +1,5 @@
 output | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, '
 
 aws rds describe-db-instances --db-instance-identifier ttsora10 --profile dba | jq ' .DBInstances[] | .DBInstanceIdentifier, .DBInstanceStatus  , .Endpoint.Address'
+
+aws rds describe-db-instances --db-instance-identifier ttsora10 --profile dba | jq ' .DBInstances[] | {id: .DBInstanceIdentifier , status: .DBInstanceStatus  , MultiAZ: .MultiAZ, Address: .Endpoint.Address, Source: .ReadReplicaSourceDBInstanceIdentifier} '

@@ -1,4 +1,5 @@
 date
 nslookup ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com | grep -v '#' | grep Address | awk -F':' '{print $2}' | sed 's/ //g'
-aws rds describe-db-instances --db-instance-identifier ttsora10 --profile dba | jq ' .DBInstances[] | .DBInstanceIdentifier, .DBInstanceStatus  , .Endpoint.Address'
+aws rds describe-db-instances --db-instance-identifier ttsora10 --profile dba | jq ' .DBInstances[] | {id: .DBInstanceIdentifier , status: .DBInstanceStatus  , MultiAZ: .MultiAZ, Address: .Endpoint.Address, Source: .ReadReplicaSourceDBInstanceIdentifier} '
+aws rds describe-db-instances --db-instance-identifier ttsora10c --profile dba | jq ' .DBInstances[] | {id: .DBInstanceIdentifier , status: .DBInstanceStatus  , MultiAZ: .MultiAZ, Address: .Endpoint.Address, Source: .ReadReplicaSourceDBInstanceIdentifier} '
 
