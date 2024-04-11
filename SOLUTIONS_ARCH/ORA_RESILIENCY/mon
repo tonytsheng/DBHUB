@@ -1,3 +1,4 @@
-output | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, '
-
+date
+nslookup ttsora10.ciushqttrpqx.us-east-2.rds.amazonaws.com | grep -v '#' | grep Address | awk -F':' '{print $2}' | sed 's/ //g'
 aws rds describe-db-instances --db-instance-identifier ttsora10 --profile dba | jq ' .DBInstances[] | .DBInstanceIdentifier, .DBInstanceStatus  , .Endpoint.Address'
+

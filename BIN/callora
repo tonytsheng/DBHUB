@@ -1,9 +1,9 @@
 #set -x
-USER=$1
-PW=$2
-HOST=$3
-SID=$4
-INFILE=$5
+#USER=$1
+#PW=$2
+#HOST=$3
+#SID=$4
+#INFILE=$5
 
 usage(){
     echo "Usage:"
@@ -11,21 +11,30 @@ usage(){
     exit 1
 }
 
-if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${HOST} ] || [ -z ${SID} ]; then
-    usage
-    exit 1
-fi
- 
-CREDS="${USER}/${PW}"
-CONNSTR="${CREDS}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${HOST})(PORT=1521))(CONNECT_DATA=(SID=${SID})))"
-echo $CONNSTR
+while getopts u:p:h:d:f:s flag
+do 
+  case "${flag}" in
+    u) user=${OPTARG};; 
+    p) pw=${OPTARG};;
+    h) host=${OPTARG};;
+    d) sid=${OPTARG};;
+    f) infile=${OPTARG};;
+  esac
+done
 
-if [ -z ${INFILE} ]; then
-    sqlplus ${CONNSTR}
-else
-    #suppress output if using an inputfile 
-#    sqlplus -S ${CONNSTR} @${INFILE}
-    sqlplus ${CONNSTR} @${INFILE}
+#if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${HOST} ] || [ -z ${SID} ]; then
+#    usage
+#    exit 1
+#fi
+ 
+creds="${user}/${pw}"
+connstr="${creds}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${host})(PORT=1521))(CONNECT_DATA=(SID=${sid})))"
+#echo $CONNSTR
+
+if [ -z ${infile} ] ; then
+    sqlplus ${connstr}
+  else
+    sqlplus -S ${connstr} @${infile}
 fi
 
 
