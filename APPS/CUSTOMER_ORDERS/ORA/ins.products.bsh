@@ -19,8 +19,9 @@ echo "exit " >> /tmp/sql.$$
 
 #cat /tmp/sql.$$
 
-/home/ec2-user/DBHUB/BIN/callora $user $pw $host $db /tmp/sql.$$
-/home/ec2-user/DBHUB/BIN/callora $user $pw $host $db q.products.sql
+/home/ec2-user/DBHUB/BIN/callora -u $user -p $pw -h $host -d $db -f /tmp/sql.$$
+/home/ec2-user/DBHUB/BIN/callora -u $user -p $pw -h $host -d $db -f q.products.sql
+#/home/ec2-user/DBHUB/BIN/callora $user $pw $host $db q.products.sql
 
 rm /tmp/sql.$$
 

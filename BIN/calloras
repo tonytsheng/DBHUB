@@ -1,4 +1,9 @@
 #set -x
+#USER=$1
+#PW=$2
+#HOST=$3
+#SID=$4
+#INFILE=$5
 
 usage(){
     echo "Usage:"
@@ -24,10 +29,10 @@ done
  
 creds="${user}/${pw}"
 connstr="${creds}@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${host})(PORT=1521))(CONNECT_DATA=(SID=${sid})))"
-echo $CONNSTR
+#echo $CONNSTR
 
 if [ -z ${infile} ] ; then
-    sqlplus ${connstr}
+    sqlplus -S ${connstr}
   else
     sqlplus -S ${connstr} @${infile}
 fi
