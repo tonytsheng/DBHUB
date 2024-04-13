@@ -32,6 +32,8 @@
 # decide on whether to keep loop in code for resiliency demos
 # mongo/docdb doesn't have a database name stored in secretsmanager
 
+import subprocess
+import os
 import logging
 import traceback
 import pymongo
@@ -46,6 +48,7 @@ import time
 import json
 import cx_Oracle
 import psycopg2
+import random
 
 SECRET=(sys.argv[1])
 
@@ -70,20 +73,25 @@ def get_secret():
     dbname   = database_secrets['dbname']
     return (username, password, engine , host, port, dbname)
 
+def get_iata():
+    lines = open('/home/ec2-user/DBHUB/APPS/REFDATA/iata.dat').read().splitlines()
+    myline =random.choice(lines)
+#    print(myline)
+    return (myline)
+
+
 username, pw, engine, host, port, dbname = get_secret()
 #print (engine)
 
 if engine == "oracle":
     # print (username)
     db_dsn = host + ":" + port + "/" + dbname
-    print (db_dsn)
+    print(db_dsn)
 
     retry_flag = True
     retry_count = 0
     max_retries = 25
-#    ora_sel=('select * from dba_directories')
-    ora_sel=(' select product_id, product_name, image_last_updated from (select PRODUCT_ID,PRODUCT_NAME, IMAGE_LAST_UPDATED from customer_orders.products where image_last_updated is not null order by IMAGE_LAST_UPDATED desc) h1 where rownum <=10 order by rownum')
-    ora_ins=
+    ora_sel=("select product_id, product_name, to_char(image_last_updated ,'MM/DD/YYYY HH:MI:SS') from (select PRODUCT_ID,PRODUCT_NAME, IMAGE_LAST_UPDATED from customer_orders.products where image_last_updated is not null order by IMAGE_LAST_UPDATED desc) h1 where rownum <=10 order by rownum")
     data_inserted = False
 
     while retry_flag and retry_count < max_retries:
@@ -95,6 +103,13 @@ if engine == "oracle":
              for row in records:
                 print (row)
              client.commit()
+
+             lines = open('/home/ec2-user/DBHUB/APPS/REFDATA/iata.dat').read().splitlines()
+             iata =random.choice(lines)
+             ora_ins="insert into customer_orders.products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE,PRODUCT_DETAILS, IMAGE_LAST_UPDATED) values ( customer_orders.products_seq.nextval ,:in_iata , NULL , NULL , sysdate) "
+             cur.execute(ora_ins, in_iata=iata)
+             client.commit()
+
              data_inserted = True
              now = datetime.now()
              print (now.strftime("%Y.%m.%d %H:%M:%S"))
