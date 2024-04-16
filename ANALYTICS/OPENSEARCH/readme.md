@@ -284,6 +284,8 @@ curl -XGET 'domain-endpoint/_cluster/allocation/explain?pretty' -H 'Content-Type
 - create s3 bucket
 - create iam role
 - register a repository to keep the manual snapshots
+- don't need to do this for automated snaps
+  - For domains running OpenSearch or Elasticsearch 5.3 and later, OpenSearch Service takes hourly automated snapshots and retains up to 336 of them for 14 days. Hourly snapshots are less disruptive because of their incremental nature. They also provide a more recent recovery point in case of domain problems
 ```
 curl -PUT "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/_snapshot/os100.1"
 '{
@@ -299,7 +301,40 @@ curl -PUT "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaw
 ```
 curl -XGET 'domain-endpoint/_snapshot/_status'
 curl -XPUT 'domain-endpoint/_snapshot/repository-name/snapshot-name'
+
+curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/_snapshot?pretty=true"
+{
+  "cs-automated-enc" : {
+    "type" : "s3"
+  }
+}
+
+curl -XGET "https://search-os100-r2nzbuvapidbpw36nzem54ma7q.us-east-2.es.amazonaws.com/_snapshot/cs-automated-enc/_all?pretty=true"
+ {
+    "snapshot" : "2024-04-13t01-55-20.17a45474-f514-b725-6c44-bc38e19be2c5",
+    "uuid" : "RUebCI9MS8qkYUgdIqoA2Q",
+    "version_id" : 136327827,
+    "version" : "2.11.0",
+    "remote_store_index_shallow_copy" : false,
+    "indices" : [ "c1", "swift", "conncar", ".opendistro-reports-definitions", ".opendistro-reports-instances", ".kibana_1", "knn_index", "openai_wikipedia_index", "headset_pqa", ".opensearch-observability", "aoss-index", ".plugins-ml-config", "nlp_pqa", ".opensearch-sap-log-types-config", ".kibana_2", "c2" ],
+    "data_streams" : [ ],
+    "include_global_state" : true,
+    "state" : "SUCCESS",
+    "start_time" : "2024-04-13T01:55:19.971Z",
+    "start_time_in_millis" : 1712973319971,
+    "end_time" : "2024-04-13T01:55:25.378Z",
+    "end_time_in_millis" : 1712973325378,
+    "duration_in_millis" : 5407,
+    "failures" : [ ],
+    "shards" : {
+      "total" : 47,
+      "failed" : 0,
+      "successful" : 47
+    }
+  }
 ```
+
+
 - to restore a snap
   - identify the repository
     - curl -XGET 'domain-endpoint/_snapshot?pretty'

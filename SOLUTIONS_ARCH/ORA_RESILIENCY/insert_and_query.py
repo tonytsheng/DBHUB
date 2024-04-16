@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 ## multi database engine driver used to illustrate
 ## connection retry logic 
 ## use this when demonstrating failover
@@ -91,7 +92,7 @@ if engine == "oracle":
     retry_flag = True
     retry_count = 0
     max_retries = 25
-    ora_sel=("select product_id, product_name, to_char(image_last_updated ,'MM/DD/YYYY HH:MI:SS') from (select PRODUCT_ID,PRODUCT_NAME, IMAGE_LAST_UPDATED from customer_orders.products where image_last_updated is not null order by IMAGE_LAST_UPDATED desc) h1 where rownum <=10 order by rownum")
+    ora_sel=("select product_id, product_name, to_char(image_last_updated ,'MM/DD/YYYY HH24:MI:SS') from (select PRODUCT_ID,PRODUCT_NAME, IMAGE_LAST_UPDATED from customer_orders.products where image_last_updated is not null order by IMAGE_LAST_UPDATED desc) h1 where rownum <=10 order by rownum")
     data_inserted = False
 
     while retry_flag and retry_count < max_retries:
@@ -126,7 +127,8 @@ if engine == "oracle":
                    cur = client.cursor()
                 except Exception as e:
                    print(e)
-         #cur.close()
+                   cur.close()
+#        cur.close()
 
 ### postgres
 elif engine == "postgres":

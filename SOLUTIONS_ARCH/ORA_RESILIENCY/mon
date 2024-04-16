@@ -1,5 +1,9 @@
+while true
+do
 date
 nslookup ttsora20.ciushqttrpqx.us-east-2.rds.amazonaws.com | grep -v '#' | grep Address | awk -F':' '{print $2}' | sed 's/ //g'
 aws rds describe-db-instances --db-instance-identifier ttsora20 --profile dba | jq ' .DBInstances[] | {id: .DBInstanceIdentifier , status: .DBInstanceStatus  , MultiAZ: .MultiAZ, Address: .Endpoint.Address, Source: .ReadReplicaSourceDBInstanceIdentifier} '
 aws rds describe-db-instances --db-instance-identifier ttsora20c --profile dba | jq ' .DBInstances[] | {id: .DBInstanceIdentifier , status: .DBInstanceStatus  , MultiAZ: .MultiAZ, Address: .Endpoint.Address, Source: .ReadReplicaSourceDBInstanceIdentifier} '
+sleepit 3
+done
 
