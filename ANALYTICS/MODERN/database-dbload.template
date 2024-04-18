@@ -1,0 +1,276 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "TBD",
+	"Parameters": {
+		"DefaultPassword": {
+			"Type": "String",
+			"NoEcho": true
+		},
+		"AuroraHost": {
+			"Type": "String"
+		},
+		"DBSubnet1": {
+			"Type": "String"
+		},
+		"DBSubnet2": {
+			"Type": "String"
+		},
+		"VPCId": {
+			"Type": "String"
+		},
+		"NestedStackBucketName": {
+			"Type": "String"
+		},
+		"NestedStackBucketPrefix": {
+			"Type": "String"
+		},
+		"Version": {
+			"Type": "String"
+		}
+	},
+	"Resources": {
+		"LambdaSecurityGroup": {
+			"Type": "AWS::EC2::SecurityGroup",
+			"Properties": {
+				"GroupDescription": "Security group for Lambda",
+				"GroupName": "Lambda Security Group",
+				"VpcId": {
+					"Ref": "VPCId"
+				},
+				"SecurityGroupEgress": [
+					{
+						"IpProtocol": "tcp",
+						"FromPort": "3306",
+						"ToPort": "3306",
+						"CidrIp": "10.0.0.0/20"
+					},
+					{
+						"IpProtocol": "-1",
+						"FromPort": "-1",
+						"ToPort": "-1",
+						"CidrIp": "0.0.0.0/0"
+					}
+				]
+			}
+		},
+		"LoadDataLambdaFunction": {
+			"Type": "AWS::Lambda::Function",
+			"DependsOn": "DBLambdaExecutionRole",
+			"Properties": {
+				"Description": {
+					"Fn::Sub": "Create and load database"
+				},
+				"Handler": "initdb.lambda_handler",
+				"Role": {
+					"Fn::GetAtt": [
+						"DBLambdaExecutionRole",
+						"Arn"
+					]
+				},
+				"Timeout": 360,
+				"Runtime": "python3.9",
+				"Code": {
+					"S3Bucket": {
+						"Fn::Sub": "${NestedStackBucketName}-${AWS::Region}"
+					},
+					"S3Key": {
+						"Fn::Join": [
+							"",
+							[
+								{
+									"Ref": "NestedStackBucketPrefix"
+								},{
+									"Ref": "Version"
+								},
+								"/source/initdb.zip"
+							]
+						]
+					}
+				},
+				"VpcConfig": {
+					"SecurityGroupIds": [
+						{
+							"Ref": "LambdaSecurityGroup"
+						}
+					],
+					"SubnetIds": [
+						{
+							"Ref": "DBSubnet1"
+						},
+						{
+							"Ref": "DBSubnet2"
+						}
+					]
+				}
+			}
+		},
+		"CDCLambdaFunction": {
+			"Type": "AWS::Lambda::Function",
+			"DependsOn": "DBLambdaExecutionRole",
+			"Properties": {
+				"Description": {
+					"Fn::Sub": "Insert record for CDC"
+				},
+				"Handler": "cdc.lambda_handler",
+				"FunctionName": "GenerateCDCRecord",
+				"Role": {
+					"Fn::GetAtt": [
+						"DBLambdaExecutionRole",
+						"Arn"
+					]
+				},
+				"Timeout": 360,
+				"Runtime": "python3.9",
+				"Environment": {
+					"Variables": {
+						"PW": {
+							"Ref": "DefaultPassword"
+						},
+						"HOST": {
+							"Ref": "AuroraHost"
+						}
+					}
+				},
+				"Code": {
+					"S3Bucket": {
+						"Fn::Sub": "${NestedStackBucketName}-${AWS::Region}"
+					},
+					"S3Key": {
+						"Fn::Join": [
+							"",
+							[
+								{
+									"Ref": "NestedStackBucketPrefix"
+								},{
+									"Ref": "Version"
+								},
+								"/source/cdc.zip"
+							]
+						]
+					}
+				},
+				"VpcConfig": {
+					"SecurityGroupIds": [
+						{
+							"Ref": "LambdaSecurityGroup"
+						}
+					],
+					"SubnetIds": [
+						{
+							"Ref": "DBSubnet1"
+						},
+						{
+							"Ref": "DBSubnet2"
+						}
+					]
+				}
+			}
+		},
+		"S3CustomResource": {
+			"Type": "Custom::S3CustomResource",
+			"DependsOn": "LoadDataLambdaFunction",
+			"Properties": {
+				"ServiceToken": {
+					"Fn::GetAtt": [
+						"LoadDataLambdaFunction",
+						"Arn"
+					]
+				},
+				"host": {
+					"Ref": "AuroraHost"
+				},
+				"pw": {
+					"Ref": "DefaultPassword"
+				},
+				"data_source_prefix": {
+					"Fn::Sub": "${Version}/"
+				},
+				"data_source_bucket": {
+					"Fn::Sub": "${NestedStackBucketName}-${AWS::Region}"
+				},
+				"data_source_region": {
+					"Fn::Sub": "${AWS::Region}"
+				}
+			}
+		},
+		"DBLambdaExecutionRole": {
+			"Type": "AWS::IAM::Role",
+			"Properties": {
+				"RoleName": "DBLambdaExecutionRole",
+				"AssumeRolePolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Principal": {
+								"Service": [
+									"lambda.amazonaws.com"
+								]
+							},
+							"Action": [
+								"sts:AssumeRole"
+							]
+						}
+					]
+				},
+				"ManagedPolicyArns": [
+					"arn:aws:iam::aws:policy/AmazonS3FullAccess",
+					"arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+				],
+				"Policies": [
+					{
+						"PolicyName": "ImportPolicy",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
+								{
+									"Sid": "",
+									"Effect": "Allow",
+									"Action": [
+										"logs:CreateLogGroup",
+										"logs:CreateLogStream",
+										"logs:PutLogEvents"
+									],
+									"Resource": [
+										{
+											"Fn::Sub": "arn:aws:logs:*:${AWS::AccountId}:*"
+										}
+									]
+								},
+								{
+									"Effect": "Allow",
+									"Action": [
+										"logs:CreateLogStream",
+										"logs:PutLogEvents"
+									],
+									"Resource": [
+										{
+											"Fn::Sub": "arn:aws:logs:*:${AWS::AccountId}:log-group:*:*"
+										}
+									]
+								},
+								{
+									"Effect": "Allow",
+									"Action": [
+										"ec2:CreateNetworkInterface",
+										"ec2:DeleteNetworkInterface",
+										"ec2:DescribeNetworkInterfaces"
+									],
+									"Resource": "*"
+								}
+							]
+						}
+					}
+				],
+				"Path": "/"
+			}
+		}
+	},
+	"Outputs": {
+		"LambdaSecurityGroup": {
+			"Value": {
+				"Ref": "LambdaSecurityGroup"
+			}
+		}
+	}
+}

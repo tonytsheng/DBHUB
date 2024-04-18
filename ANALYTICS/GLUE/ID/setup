@@ -1,0 +1,13 @@
+export URL=https://static.us-east-1.prod.workshops.aws/public/c9b4eabe-d66f-466f-836c-2d81c13c2558/static/0/
+
+var1=$(echo $URL | grep -oP "s/.*?/" | cut -c 3-38)
+
+echo 'https://static.us-east-1.prod.workshops.aws/public/'${var1}'/static/download/howtostart/awseevnt/s3-and-local-file/pycountry_convert.zip'
+
+export BUCKET_NAME=ttsheng-glueid
+aws s3 cp --recursive ~/data/glue-workshop/code/ s3://${BUCKET_NAME}/script/
+aws s3 cp --recursive ~/data/glue-workshop/data/ s3://${BUCKET_NAME}/input/
+aws s3 cp --recursive ~/data/glue-workshop/library/ s3://${BUCKET_NAME}/library/
+aws s3 cp --recursive s3://covid19-lake/rearc-covid-19-testing-data/json/states_daily/ s3://${BUCKET_NAME}/input/lab5/json/
+aws s3 cp --recursive ~/data/glue-workshop/airflow/ s3://${BUCKET_NAME}/airflow/
+

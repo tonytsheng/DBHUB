@@ -1,0 +1,363 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "Modern Data Architecture Immersion Day - Database",
+	"Parameters": {
+		"ParticipantAssumedRoleArn": {
+			"Type": "String",
+			"Description": "ARN for the user who will be completing this workshop. Note: This may be different than the user executing this template. "
+		},
+		"DefaultPassword": {
+			"Type": "String",
+			"Description": "Default password, for the purposes of the workshop only.",
+			"NoEcho": true
+		}, 
+		"NestedStackBucketName": {
+			"Type": "String",
+			"Description": "Name of the bucket for storing nested CloudFormation templates."
+		},
+		"NestedStackBucketPrefix": {
+			"Type": "String",
+			"Description": "Prefix of the bucket for storing nested CloudFormation templates"
+		},
+		"Version": {
+			"Type": "String"
+		}
+	},
+	"Conditions": {},
+	"Resources": {
+		"VPCStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Database-vpc.template"
+						]
+					]
+				}
+			}
+		},
+		"AuroraStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Database-aurora.template"
+						]
+					]
+				},
+				"Parameters": {
+					"DBSubnet1": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet1"
+						]
+					},
+					"DBSubnet2": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet2"
+						]
+					},
+					"VPCId": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.VPCId"
+						]
+					},
+					"DefaultPassword": {
+						"Ref": "DefaultPassword"
+					},
+					"NestedStackBucketName": {
+						"Ref": "NestedStackBucketName"
+					},
+					"NestedStackBucketPrefix": {
+						"Ref": "NestedStackBucketPrefix"
+					},
+					"Version": {
+						"Ref": "Version"
+					}
+				}
+			}
+		},
+		"RedshiftStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Database-redshift.template"
+						]
+					]
+				},
+				"Parameters": {
+					"VpcId": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.VPCId"
+						]
+					},
+					"DBSubnet1": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet1"
+						]
+					},
+					"DBSubnet2": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet2"
+						]
+					},
+					"DefaultPassword": {
+						"Ref": "DefaultPassword"
+					}
+				}
+			}
+		},
+		"RedshiftServerlessStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Database-redshift-serveless.template"
+						]
+					]
+				},
+				"Parameters": {
+					"VpcId": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.VPCId"
+						]
+					},
+					"DBSubnet1": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet1"
+						]
+					},
+					"DBSubnet2": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet2"
+						]
+					},
+					"DBSubnet3": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet3"
+						]
+					},
+					"DefaultPassword": {
+						"Ref": "DefaultPassword"
+					}
+				}
+			}
+		},
+		"DMSStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Database-dms.template"
+						]
+					]
+				},
+				"Parameters": {
+					"DBSubnet1": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet1"
+						]
+					},
+					"DBSubnet2": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet2"
+						]
+					},
+					"VPCId": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.VPCId"
+						]
+					},
+					"DBSubnet1AZ": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet1AZ"
+						]
+					},
+					"DBSubnet2AZ": {
+						"Fn::GetAtt": [
+							"VPCStack",
+							"Outputs.DBSubnet2AZ"
+						]
+					}
+				}
+			}
+		}
+	},
+	"Outputs": {
+		"VPC": {
+			"Value": {
+				"Fn::GetAtt": [
+					"VPCStack",
+					"Outputs.VPCId"
+				]
+			}
+		},
+		"AuroraSubnet1": {
+			"Value": {
+				"Fn::GetAtt": [
+					"VPCStack",
+					"Outputs.DBSubnet1"
+				]
+			}
+		},
+		"AuroraSubnet2": {
+			"Value": {
+				"Fn::GetAtt": [
+					"VPCStack",
+					"Outputs.DBSubnet2"
+				]
+			}
+		},
+		"AuroraSubnet1AZ": {
+			"Value": {
+				"Fn::GetAtt": [
+					"VPCStack",
+					"Outputs.DBSubnet1AZ"
+				]
+			}
+		},
+		"AuroraSubnet2AZ": {
+			"Value": {
+				"Fn::GetAtt": [
+					"VPCStack",
+					"Outputs.DBSubnet2AZ"
+				]
+			}
+		},
+		"AuroraEndpoint": {
+			"Value": {
+				"Fn::GetAtt": [
+					"AuroraStack",
+					"Outputs.AuroraEndpoint"
+				]
+			}
+		},
+		"AuroraSecretARN": {
+			"Value": {
+				"Fn::GetAtt": [
+					"AuroraStack",
+					"Outputs.AuroraSecretARN"
+				]
+			}
+		},
+		"AuroraSecurityGroup": {
+			"Value": {
+				"Fn::GetAtt": [
+					"AuroraStack",
+					"Outputs.AuroraSecurityGroup"
+				]
+			}
+		},
+		"LambdaSecurityGroup": {
+			"Value": {
+				"Fn::GetAtt": [
+					"AuroraStack",
+					"Outputs.LambdaSecurityGroup"
+				]
+			}
+		},
+		"RedshiftServerlessNamespace": {
+			"Value": {
+				"Fn::GetAtt": [
+					"RedshiftServerlessStack",
+					"Outputs.ServerlessNamespace"
+				]
+			}
+		},
+		"RedshiftServerlessWorkgroup": {
+			"Value": {
+				"Fn::GetAtt": [
+					"RedshiftServerlessStack",
+					"Outputs.ServerlessWorkgroup"
+				]
+			}
+		},
+		"RedshiftEndpointAddress": {
+			"Value": {
+				"Fn::GetAtt": [
+					"RedshiftStack",
+					"Outputs.RedshiftEndpointAddress"
+				]
+			}
+		}
+	}
+}

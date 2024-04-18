@@ -1,0 +1,125 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "Set up DMS resources",
+	"Parameters": {
+		"DBSubnet1": {
+			"Type": "String"
+		},
+		"DBSubnet2": {
+			"Type": "String"
+		},
+		"VPCId": {
+			"Type": "String"
+		},
+		"DBSubnet1AZ": {
+			"Type": "String"
+		},
+		"DBSubnet2AZ": {
+			"Type": "String"
+		}
+	},
+	"Resources": {
+		"DMSReplicationSubnetGroup": {
+			"Type": "AWS::DMS::ReplicationSubnetGroup",
+			"DependsOn": "DMSVpcRole",
+			"Properties": {
+				"ReplicationSubnetGroupDescription": "Subnets available for DMS",
+				"SubnetIds": [
+					{
+						"Ref": "DBSubnet1"
+					},
+					{
+						"Ref": "DBSubnet2"
+					}
+				]
+			}
+		},
+		"DMSCloudwatchRole": {
+			"Type": "AWS::IAM::Role",
+			"Properties": {
+				"RoleName": "dms-cloudwatch-logs-role",
+				"AssumeRolePolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Principal": {
+								"Service": [
+									"dms.amazonaws.com"
+								]
+							},
+							"Action": [
+								"sts:AssumeRole"
+							]
+						}
+					]
+				},
+				"ManagedPolicyArns": [
+					"arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"
+				],
+				"Path": "/"
+			}
+		},
+		"DMSVpcRole": {
+			"Type": "AWS::IAM::Role",
+			"Properties": {
+				"RoleName": "dms-vpc-role",
+				"AssumeRolePolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Principal": {
+								"Service": [
+									"dms.amazonaws.com"
+								]
+							},
+							"Action": [
+								"sts:AssumeRole"
+							]
+						}
+					]
+				},
+				"ManagedPolicyArns": [
+					"arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
+				],
+				"Path": "/"
+			}
+		},
+		"DMSSecurityGroup": {
+			"Type": "AWS::EC2::SecurityGroup",
+			"DependsOn": "DMSVpcRole",
+			"Properties": {
+				"GroupDescription": "Security group for DMS Instance",
+				"GroupName": "DMS Security Group",
+				"VpcId": {
+					"Ref": "VPCId"
+				}
+			}
+		},
+		"DMSReplicationInstance": {
+			"Type": "AWS::DMS::ReplicationInstance",
+			"Properties": {
+				"AvailabilityZone": {
+					"Ref": "DBSubnet1AZ"
+				},
+				"PubliclyAccessible": false,
+				"ReplicationInstanceClass": "dms.c5.xlarge",
+				"ReplicationInstanceIdentifier": "aurora-s3-repinstance",
+				"ReplicationSubnetGroupIdentifier": {
+					"Ref": "DMSReplicationSubnetGroup"
+				},
+				"VpcSecurityGroupIds": [
+					{
+						"Ref": "DMSSecurityGroup"
+					}
+				]
+			},
+			"DependsOn": [
+				"DMSReplicationSubnetGroup",
+				"DMSSecurityGroup",
+				"DMSVpcRole"
+			]
+		}
+	}
+}

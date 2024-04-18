@@ -1,0 +1,549 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "Modern Data Architecture Immersion Day - Foundational Resources",
+	"Parameters": {
+		"ParticipantAssumedRoleArn": {
+			"Type": "String",
+			"Description": "ARN for the user who will be completing this workshop. Note: This may be different than the user executing this template. "
+		},
+		"DefaultPassword": {
+			"Type": "String",
+			"Description": "Default password, for the purposes of the workshop only.",
+			"NoEcho": true
+		},
+		"DeploymentType": {
+			"Type": "String",
+			"AllowedValues": [
+				"WorkshopStudio",
+				"Other"
+			],
+			"Default": "Other"
+		},
+		"NestedStackBucketName": {
+			"Type": "String",
+			"Description": "Name of the bucket for storing nested CloudFormation templates."
+		},
+		"NestedStackBucketPrefix": {
+			"Type": "String",
+			"Description": "Prefix of the bucket for storing nested CloudFormation templates"
+		},
+		"Version": {
+			"Type": "String"
+		}
+	},
+	"Conditions": {},
+	"Resources": {
+		"IamStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Foundation-IAM.template"
+						]
+					]
+				},
+				"Parameters": {
+					"ParticipantAssumedRoleArn": {
+						"Ref": "ParticipantAssumedRoleArn"
+					},
+					"DatalakeBucketName": {
+						"Fn::Sub": "${AWS::AccountId}-${AWS::Region}-datalake"
+					},
+					"NestedStackBucketName": {
+						"Ref": "NestedStackBucketName"
+					},
+					"NestedStackBucketPrefix": {
+						"Ref": "NestedStackBucketPrefix"
+					},
+					"Version": {
+						"Ref": "Version"
+					}
+				}
+			}
+		},
+		"KeyStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"DependsOn": "IamStack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Foundation-keys-",
+							{
+								"Ref": "DeploymentType"
+							},
+							".template"
+						]
+					]
+				},
+				"Parameters": {
+					"ParticipantAssumedRoleArn": {
+						"Ref": "ParticipantAssumedRoleArn"
+					}
+				}
+			}
+		},
+		"BucketStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"DependsOn": "KeyStack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Foundation-buckets.template"
+						]
+					]
+				},
+				"Parameters": {
+					"BucketNameParam": {
+						"Fn::Sub": "${AWS::AccountId}-${AWS::Region}-datalake"
+					},
+					"LakeEncryptionKey": {
+						"Fn::GetAtt": [
+							"KeyStack",
+							"Outputs.KMSKeyArn"
+						]
+					},
+					"NestedStackBucketName": {
+						"Ref": "NestedStackBucketName"
+					},
+					"NestedStackBucketPrefix": {
+						"Ref": "NestedStackBucketPrefix"
+					},
+					"Version": {
+						"Ref": "Version"
+					}
+				}
+			}
+		},
+		"AthenaStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"DependsOn": "KeyStack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Foundation-athena.template"
+						]
+					]
+				},
+				"Parameters": {
+					"KMSKeyArn": {
+						"Fn::GetAtt": [
+							"KeyStack",
+							"Outputs.KMSKeyArn"
+						]
+					}
+				}
+			}
+		},
+		"MLStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Foundation-ml.yaml"
+						]
+					]
+				},
+				"Parameters": {
+					"NestedStackBucketName": {
+						"Ref": "NestedStackBucketName"
+					},
+					"NestedStackBucketPrefix": {
+						"Ref": "NestedStackBucketPrefix"
+					},
+					"Version": {
+						"Ref": "Version"
+					}
+				}
+			}
+		},
+		"KinesisStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"DependsOn": "KeyStack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Foundation-kinesis.template"
+						]
+					]
+				},
+				"Parameters": {
+					"KMSKeyArn": {
+						"Fn::GetAtt": [
+							"KeyStack",
+							"Outputs.KMSKeyArn"
+						]
+					}
+				}
+			}
+		},
+		"GlueStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"DependsOn": [
+				"KeyStack",
+				"DataLakeSettings",
+				"BucketStack"
+			],
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Foundation-glue.template"
+						]
+					]
+				},
+				"Parameters": {
+					"KMSKeyParam": {
+						"Fn::GetAtt": [
+							"KeyStack",
+							"Outputs.KMSKeyArn"
+						]
+					},
+					"BucketNameParam": {
+						"Fn::Sub": "${AWS::AccountId}-${AWS::Region}-datalake"
+					},
+					"ParticipantAssumedRoleArn": {
+						"Ref": "ParticipantAssumedRoleArn"
+					},
+					"NestedStackBucketName": {
+						"Ref": "NestedStackBucketName"
+					},
+					"NestedStackBucketPrefix": {
+						"Ref": "NestedStackBucketPrefix"
+					},
+					"Version": {
+						"Ref": "Version"
+					}
+				}
+			}
+		},
+		"StepFunctionStack": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Foundation-stepfunctions.template"
+						]
+					]
+				},
+				"Parameters": {
+					"ParticipantAssumedRoleArn": {
+						"Ref": "ParticipantAssumedRoleArn"
+					},
+					"NestedStackBucketName": {
+						"Ref": "NestedStackBucketName"
+					},
+					"NestedStackBucketPrefix": {
+						"Ref": "NestedStackBucketPrefix"
+					},
+					"Version": {
+						"Ref": "Version"
+					}
+				}
+			}
+		},
+		"DataLakeSettings": {
+			"Type": "AWS::LakeFormation::DataLakeSettings",
+			"Properties": {
+				"Admins": [
+					{
+						"DataLakePrincipalIdentifier": {
+							"Ref": "ParticipantAssumedRoleArn"
+						}
+					},
+					{
+						"DataLakePrincipalIdentifier": {
+							"Fn::GetAtt": [
+								"StepFunctionStack",
+								"Outputs.StepFunctionExecutionRoleArn"
+							]
+						}
+					},
+					{
+						"DataLakePrincipalIdentifier": {
+							"Fn::Sub": "arn:aws:iam::${AWS::AccountId}:role/WSSystemRole"
+						}
+					}
+				],
+				"CreateDatabaseDefaultPermissions": [
+					{
+						"Principal": {
+							"DataLakePrincipalIdentifier": "IAM_ALLOWED_PRINCIPALS"
+						},
+						"Permissions": [
+							"ALL"
+						]
+					}
+				],
+				"CreateTableDefaultPermissions": [
+					{
+						"Principal": {
+							"DataLakePrincipalIdentifier": "IAM_ALLOWED_PRINCIPALS"
+						},
+						"Permissions": [
+							"ALL"
+						]
+					}
+				]
+			}
+		},
+		"DataLakeResourcesRaw": {
+			"Type": "AWS::LakeFormation::Resource",
+			"Properties": {
+				"ResourceArn": {
+					"Fn::GetAtt": [
+						"BucketStack",
+						"Outputs.RawBucketARN"
+					]
+				},
+				"UseServiceLinkedRole": false,
+				"RoleArn": {
+					"Fn::GetAtt": [
+						"IamStack",
+						"Outputs.GlueExecutionRoleArn"
+					]
+				}
+			}
+		},
+		"DataLakeResourcesStage": {
+			"Type": "AWS::LakeFormation::Resource",
+			"Properties": {
+				"ResourceArn": {
+					"Fn::GetAtt": [
+						"BucketStack",
+						"Outputs.StageBucketARN"
+					]
+				},
+				"UseServiceLinkedRole": false,
+				"RoleArn": {
+					"Fn::GetAtt": [
+						"IamStack",
+						"Outputs.GlueExecutionRoleArn"
+					]
+				}
+			}
+		},
+		"DataLakeResourcesAnalytics": {
+			"Type": "AWS::LakeFormation::Resource",
+			"Properties": {
+				"ResourceArn": {
+					"Fn::GetAtt": [
+						"BucketStack",
+						"Outputs.AnalyticsBucketARN"
+					]
+				},
+				"UseServiceLinkedRole": false,
+				"RoleArn": {
+					"Fn::GetAtt": [
+						"IamStack",
+						"Outputs.GlueExecutionRoleArn"
+					]
+				}
+			}
+		},
+		"DataLakeResourcesProducts": {
+			"Type": "AWS::LakeFormation::Resource",
+			"Properties": {
+				"ResourceArn": {
+					"Fn::GetAtt": [
+						"BucketStack",
+						"Outputs.ProductsBucketARN"
+					]
+				},
+				"UseServiceLinkedRole": false,
+				"RoleArn": {
+					"Fn::GetAtt": [
+						"IamStack",
+						"Outputs.GlueExecutionRoleArn"
+					]
+				}
+			}
+		},
+		"DataLakeAthenaOutputResources": {
+			"Type": "AWS::LakeFormation::Resource",
+			"Properties": {
+				"ResourceArn": {
+					"Fn::GetAtt": [
+						"AthenaStack",
+						"Outputs.AthenaBucketARN"
+					]
+				},
+				"UseServiceLinkedRole": false,
+				"RoleArn": {
+					"Fn::GetAtt": [
+						"IamStack",
+						"Outputs.GlueExecutionRoleArn"
+					]
+				}
+			}
+		}
+	},
+	"Outputs": {
+		"RawBucketName": {
+			"Value": {
+				"Fn::GetAtt": [
+					"BucketStack",
+					"Outputs.RawBucketName"
+				]
+			}
+		},
+		"StageBucketName": {
+			"Value": {
+				"Fn::GetAtt": [
+					"BucketStack",
+					"Outputs.StageBucketName"
+				]
+			}
+		},
+		"AnalyticsBucketName": {
+			"Value": {
+				"Fn::GetAtt": [
+					"BucketStack",
+					"Outputs.AnalyticsBucketName"
+				]
+			}
+		},
+		"DMSExecutionRoleArn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"IamStack",
+					"Outputs.DMSExecutionRoleArn"
+				]
+			}
+		},
+		"LambdaExecutionRoleArn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"IamStack",
+					"Outputs.LambdaExecutionRoleArn"
+				]
+			}
+		},
+		"FirehoseExecutionRoleArn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"IamStack",
+					"Outputs.FirehoseExecutionRoleArn"
+				]
+			}
+		},
+		"RedshiftExecutionRoleArn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"IamStack",
+					"Outputs.RedshiftExecutionRoleArn"
+				]
+			}
+		},
+		"AthenaSpillBucketName": {
+			"Value": {
+				"Fn::GetAtt": [
+					"AthenaStack",
+					"Outputs.AthenaSpillBucketName"
+				]
+			}
+		}
+	}
+}

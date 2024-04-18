@@ -1,0 +1,582 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "Modern Data Architecture Immersion Day ",
+	"Parameters": {
+		"ParticipantAssumedRoleArn": {
+			"Type": "String",
+			"Description": "ARN for the user who will be completing this workshop. Note: This may be different than the user executing this template. "
+		},
+		"NestedStackBucketName": {
+			"Type": "String",
+			"Description": "Name of the bucket for storing nested CloudFormation templates.",
+			"Default": "moderndataarchitecture-immersionday-assets"
+		},
+		"NestedStackBucketPrefix": {
+			"Type": "String",
+			"Description": "Prefix of the bucket for storing nested CloudFormation templates",
+			"Default": ""
+		},
+		"Version": {
+			"Type": "String",
+			"Default": "v4_4"
+		},
+		"DefaultPassword": {
+			"Type": "String",
+			"Description": "Default password, for the purposes of the workshop only.",
+			"NoEcho": true
+		},
+		"DeploymentType": {
+			"Type": "String",
+			"AllowedValues": [
+				"WorkshopStudio",
+				"Other"
+			],
+			"Default": "Other"
+		}
+	},
+	"Resources": {
+		"Foundation": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Foundation.template"
+						]
+					]
+				},
+				"Parameters": {
+					"ParticipantAssumedRoleArn": {
+						"Ref": "ParticipantAssumedRoleArn"
+					},
+					"DefaultPassword": {
+						"Ref": "DefaultPassword"
+					},
+					"DeploymentType": {
+						"Ref": "DeploymentType"
+					},
+					"NestedStackBucketName": {
+						"Ref": "NestedStackBucketName"
+					},
+					"NestedStackBucketPrefix": {
+						"Ref": "NestedStackBucketPrefix"
+					},
+					"Version": {
+						"Ref": "Version"
+					}
+				}
+			}
+		},
+		"Database": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/Database.template"
+						]
+					]
+				},
+				"Parameters": {
+					"ParticipantAssumedRoleArn": {
+						"Ref": "ParticipantAssumedRoleArn"
+					},
+					"DefaultPassword": {
+						"Ref": "DefaultPassword"
+					},
+					"NestedStackBucketName": {
+						"Ref": "NestedStackBucketName"
+					},
+					"NestedStackBucketPrefix": {
+						"Ref": "NestedStackBucketPrefix"
+					},
+					"Version": {
+						"Ref": "Version"
+					}
+				}
+			}
+		},
+		"OpenSearch": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": {
+					"Fn::Join": [
+						"",
+						[
+							"https://s3.amazonaws.com/",
+							{
+								"Ref": "NestedStackBucketName"
+							},
+							"/",
+							{
+								"Ref": "NestedStackBucketPrefix"
+							},
+							{
+								"Ref": "Version"
+							},
+							"/templates/OpenSearch.template"
+						]
+					]
+				},
+				"Parameters": {
+					"DefaultPassword": {
+						"Ref": "DefaultPassword"
+					},
+					"NestedStackBucketName": {
+						"Ref": "NestedStackBucketName"
+					},
+					"NestedStackBucketPrefix": {
+						"Ref": "NestedStackBucketPrefix"
+					},
+					"Version": {
+						"Ref": "Version"
+					}
+				}
+			}
+		},
+		"ParameterRawBucketName": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "RawBucketName",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Foundation",
+						"Outputs.RawBucketName"
+					]
+				}
+			}
+		},
+		"ParameterStageBucketName": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "StageBucketName",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Foundation",
+						"Outputs.StageBucketName"
+					]
+				}
+			}
+		},
+		"ParameterAnalyticsBucketName": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "AnalyticsBucketName",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Foundation",
+						"Outputs.AnalyticsBucketName"
+					]
+				}
+			}
+		},
+		"ParameterDMSExecutionRoleArn": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "DMSExecutionRoleArn",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Foundation",
+						"Outputs.DMSExecutionRoleArn"
+					]
+				}
+			}
+		},
+		"ParameterRedshiftExecutionRoleArn": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "RedshiftExecutionRoleArn",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Foundation",
+						"Outputs.RedshiftExecutionRoleArn"
+					]
+				}
+			}
+		},
+		"ParameterAthenaSpillBucketName": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "AthenaSpillBucketName",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Foundation",
+						"Outputs.AthenaSpillBucketName"
+					]
+				}
+			}
+		},
+		"ParameterLambdaExecutionRoleArn": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "LambdaExecutionRoleArn",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Foundation",
+						"Outputs.LambdaExecutionRoleArn"
+					]
+				}
+			}
+		},
+		"ParameterFirehoseExecutionRoleArn": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "FirehoseExecutionRoleArn",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Foundation",
+						"Outputs.FirehoseExecutionRoleArn"
+					]
+				}
+			}
+		},
+		"ParameterAuroraEndpoint": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "AuroraEndpoint",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.AuroraEndpoint"
+					]
+				}
+			}
+		},
+		"ParameterAuroraSecretARN": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "AuroraSecretARN",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.AuroraSecretARN"
+					]
+				}
+			}
+		},
+		"ParameterAuroraSecurityGroup": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "AuroraSecurityGroup",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.AuroraSecurityGroup"
+					]
+				}
+			}
+		},
+		"ParameterAuroraSubnet1": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "AuroraSubnet1",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.AuroraSubnet1"
+					]
+				}
+			}
+		},
+		"ParameterDatabaseVPC": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "DatabaseVPC",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.VPC"
+					]
+				}
+			}
+		},
+		"ParameterAuroraSubnet2": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "AuroraSubnet2",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.AuroraSubnet2"
+					]
+				}
+			}
+		},
+		"ParameterLambdaSecurityGroup": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "LambdaSecurityGroup",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.LambdaSecurityGroup"
+					]
+				}
+			}
+		},
+		"ParameterRedshiftEndpointAddress": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "RedshiftEndpointAddress",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.RedshiftEndpointAddress"
+					]
+				}
+			}
+		},
+		"ParameterRedshiftServerlessWorkgroup": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "RedshiftServerlessWorkgroup",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.RedshiftServerlessWorkgroup"
+					]
+				}
+			}
+		},
+		"ParameterRedshiftServerlessNamespace": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "RedshiftServerlessNamespace",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"Database",
+						"Outputs.RedshiftServerlessNamespace"
+					]
+				}
+			}
+		},
+		"ParameterOpenSearchDomainDashboard": {
+			"Type": "AWS::SSM::Parameter",
+			"Properties": {
+				"Name": "OpenSearchDomainDashboard",
+				"Type": "String",
+				"Value": {
+					"Fn::GetAtt": [
+						"OpenSearch",
+						"Outputs.OpenSearchDomainDashboard"
+					]
+				}
+			}
+		},
+		"MDADefaultPassword": {
+			"Type": "AWS::SecretsManager::Secret",
+			"Properties": {
+				"Name": "Secret",
+				"Description": "MDADefaultPassword",
+				"SecretString": {
+					"Fn::Join": [
+						"",
+						[
+							"{\"password\":\"",
+							{
+								"Ref": "DefaultPassword"
+							},
+							"\"}"
+						]
+					]
+				}
+			}
+		}
+	},
+	"Outputs": {
+		"RawBucketName": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Foundation",
+					"Outputs.RawBucketName"
+				]
+			}
+		},
+		"StageBucketName": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Foundation",
+					"Outputs.StageBucketName"
+				]
+			}
+		},
+		"AnalyticsBucketName": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Foundation",
+					"Outputs.AnalyticsBucketName"
+				]
+			}
+		},
+		"DMSExecutionRoleArn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Foundation",
+					"Outputs.DMSExecutionRoleArn"
+				]
+			}
+		},
+		"RedshiftExecutionRoleArn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Foundation",
+					"Outputs.RedshiftExecutionRoleArn"
+				]
+			}
+		},
+		"AthenaSpillBucketName": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Foundation",
+					"Outputs.AthenaSpillBucketName"
+				]
+			}
+		},
+		"LambdaExecutionRoleArn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Foundation",
+					"Outputs.LambdaExecutionRoleArn"
+				]
+			}
+		},
+		"FirehoseExecutionRoleArn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Foundation",
+					"Outputs.FirehoseExecutionRoleArn"
+				]
+			}
+		},
+		"AuroraEndpoint": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.AuroraEndpoint"
+				]
+			}
+		},
+		"AuroraSecretARN": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.AuroraSecretARN"
+				]
+			}
+		},
+		"AuroraSecurityGroup": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.AuroraSecurityGroup"
+				]
+			}
+		},
+		"AuroraSubnet1": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.AuroraSubnet1"
+				]
+			}
+		},
+		"DatabaseVPC": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.VPC"
+				]
+			}
+		},
+		"AuroraSubnet2": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.AuroraSubnet2"
+				]
+			}
+		},
+		"LambdaSecurityGroup": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.LambdaSecurityGroup"
+				]
+			}
+		},
+		"RedshiftServerlessNamespace": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.RedshiftServerlessNamespace"
+				]
+			}
+		},
+		"RedshiftServerlessWorkgroup": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.RedshiftServerlessWorkgroup"
+				]
+			}
+		},
+		"RedshiftEndpointAddress": {
+			"Value": {
+				"Fn::GetAtt": [
+					"Database",
+					"Outputs.RedshiftEndpointAddress"
+				]
+			}
+		},
+		"OpenSearchDomainDashboard": {
+			"Value": {
+				"Fn::GetAtt": [
+					"OpenSearch",
+					"Outputs.OpenSearchDomainDashboard"
+				]
+			}
+		}
+	}
+}

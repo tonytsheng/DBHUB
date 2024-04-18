@@ -1,0 +1,101 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Parameters": {
+		"DefaultPassword": {
+			"Type": "String",
+			"Description": "Default password for the immersion day, for the purposes of the workshop only."
+		}
+	},
+	"Resources": {
+		"OpenSearchServiceDomain": {
+			"Type": "AWS::OpenSearchService::Domain",
+			"Metadata": {
+				"AWS::CloudFormation::Designer": {
+					"id": "cad9468b-ef70-448c-a6d4-f2f16c725d89"
+				}
+			},
+			"Properties": {
+				"DomainName": "aws-mda-aos-cluster",
+				"EngineVersion": "OpenSearch_1.0",
+				"ClusterConfig": {
+					"DedicatedMasterEnabled": true,
+					"InstanceCount": "2",
+					"ZoneAwarenessEnabled": true,
+					"InstanceType": "r6g.large.search",
+					"DedicatedMasterType": "r6g.large.search",
+					"DedicatedMasterCount": "3"
+				},
+				"DomainEndpointOptions": {
+					"EnforceHTTPS": true
+				},
+				"EBSOptions": {
+					"EBSEnabled": true,
+					"Iops": "0",
+					"VolumeSize": "20",
+					"VolumeType": "gp2"
+				},
+				"AccessPolicies": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Principal": {
+								"AWS": "*"
+							},
+							"Action": "es:*",
+							"Resource": {
+								"Fn::Sub": "arn:aws:es:${AWS::Region}:${AWS::AccountId}:domain/aws-mda-aos-cluster/*"
+							}
+						}
+					]
+				},
+				"AdvancedSecurityOptions": {
+					"Enabled": true,
+					"InternalUserDatabaseEnabled": true,
+					"MasterUserOptions": {
+						"MasterUserName": "admin",
+						"MasterUserPassword": {
+							"Ref": "DefaultPassword"
+						}
+					}
+				},
+				"NodeToNodeEncryptionOptions": {
+					"Enabled": true
+				},
+				"EncryptionAtRestOptions": {
+					"Enabled": true
+				},
+				"AdvancedOptions": {
+					"rest.action.multi.allow_explicit_index": true,
+					"override_main_response_version": true
+				}
+			}
+		}
+	},
+	"Outputs": {
+		"Arn": {
+			"Value": {
+				"Fn::GetAtt": [
+					"OpenSearchServiceDomain",
+					"Arn"
+				]
+			}
+		},
+		"DomainEndpoint": {
+			"Value": {
+				"Fn::Join": [
+					"",
+					[
+						{
+							"Fn::GetAtt": [
+								"OpenSearchServiceDomain",
+								"DomainEndpoint"
+							]
+						},
+						"/_dashboards/"
+					]
+				]
+			}
+		}
+	}
+}
