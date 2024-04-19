@@ -4,7 +4,7 @@
 # Lab 1
 - Creating crawlers - csv and json.
 
-# Lab 2
+# Lab 2 - Glue Studio and Spark Jobs/Notebooks
 - Spark revolves around the concept of a resilient distributed dataset (RDD), which is a fault-tolerant collection of elements that can be operated on in parallel. There are two ways to create RDDs: parallelizing an existing collection in your driver program, or referencing a dataset in an external storage system, such as a shared filesystem, HDFS, HBase, or any data source offering a Hadoop InputFormat.
 
  
@@ -51,3 +51,8 @@ While most Spark operations work on RDDs containing any type of objects, a few s
 
 In Python, these operations work on RDDs containing built-in Python tuples such as (1, 2). Simply create such tuples and then call your desired operation.
 
+# Dataframe
+- Spark createOrReplaceTempView()
+How does the createOrReplaceTempView() method work in Spark and what is it used for? One of the main advantages of Apache Spark is working with SQL along with DataFrame/Dataset API. So if you are comfortable with SQL, you can create a temporary view on DataFrame/Dataset by using createOrReplaceTempView() and using SQL to select and manipulate the data.
+
+A Temporary view in Spark is similar to a real SQL table that contains rows and columns but the view is not materialized into files. In this article, we will be discussing what is createOrReplaceTempView() and how to use it to create a temporary view and run Spark SQL queries.
