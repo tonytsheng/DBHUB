@@ -56,3 +56,11 @@ In Python, these operations work on RDDs containing built-in Python tuples such 
 How does the createOrReplaceTempView() method work in Spark and what is it used for? One of the main advantages of Apache Spark is working with SQL along with DataFrame/Dataset API. So if you are comfortable with SQL, you can create a temporary view on DataFrame/Dataset by using createOrReplaceTempView() and using SQL to select and manipulate the data.
 
 A Temporary view in Spark is similar to a real SQL table that contains rows and columns but the view is not materialized into files. In this article, we will be discussing what is createOrReplaceTempView() and how to use it to create a temporary view and run Spark SQL queries.
+
+
+# EC2 Setup
+pip3 install jupyter
+
+
+
+
