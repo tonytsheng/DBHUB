@@ -1,0 +1,7 @@
+pip3 install opensearch-benchmark
+
+opensearch-benchmark --help
+
+https://opensearch.org/docs/latest/benchmark/quickstart/
+
+
