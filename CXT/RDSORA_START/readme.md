@@ -15,10 +15,10 @@
   - When Read Replicas are configured, the primary and replica databases must stay up and running. Be cognizant of running this configuration in Dev/Test since you cannot shut them down in off hours.
   - Both Multi-AZ and Read Replica configurations are easily done via the console or CLI, versus 18 pages of configuration instructions.
 # Parameter and Option Groups
-    * Parameters are done via parameter groups instead of modifying individual spfiles on the instance. Option groups are for adding specific database options to your instances.
-    * In both cases, these groups can span numerous instances so take care of how you manage this. It takes a little getting used to. Parameter groups are also tied to snapshots.
-* Instance sizing
-    * The larger the instance shape, the higher the network bandwidth and IOPS capacity. Keep this in mind as you test your workloads. You can look at IOPS via Cloudwatch [which is the main service for thousands of metrics across all AWS services]. If your IOPS are plateaued, you may be hitting an instance versus a database limitation. See https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html
+- Parameters are done via parameter groups instead of modifying individual spfiles on the instance. Option groups are for adding specific database options to your instances.
+- In both cases, these groups can span numerous instances so take care of how you manage this. It takes a little getting used to. Parameter groups are also tied to snapshots.
+# Instance sizing
+- The larger the instance shape, the higher the network bandwidth and IOPS capacity. Keep this in mind as you test your workloads. You can look at IOPS via Cloudwatch [which is the main service for thousands of metrics across all AWS services]. If your IOPS are plateaued, you may be hitting an instance versus a database limitation. See https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html
 
 
 
