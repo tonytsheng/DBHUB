@@ -1,0 +1,1019 @@
+#!/bin/bash 
+
+###################################################################
+#Script Name	:dms-report                                                                                              
+#Description	:AWS DMS diagnostic script for troubleshooting
+#Args           :                                                                                           
+#Author       	:AWS DMS DBE                                                
+################################################################### 
+printf "\033c";
+helpFunction()
+{
+  printf "";
+  printf "Usage: dms-report -t ReplicationTaskArn\n";
+  printf "\n-r aws-region";
+  printf "\n-n y to perform network testing only (y =  yes)";
+  printf "\n-l to list DMS tasks only ";
+  #printf "List of available replication task ARN:\n";
+  #errorMsg=(`aws dms describe-replication-tasks --query "*[].[ReplicationTaskArn]"`);
+  #printf "${errorMsg}";
+  printf "\n";
+  exit 1;
+}
+
+listTask()
+{
+if [ -z "$awsDefaultRegion" ]
+then
+   printf "\nrequired --r aws-region";
+else
+
+listTaskCNT=(`aws --region $awsDefaultRegion dms describe-replication-tasks --query "*[].[ReplicationTaskIdentifier]" --output json | jq length`);
+
+num=0;
+
+
+if [ ${listTaskCNT} -gt 0 ];
+then
+printf "\nAWS Region: ${awsDefaultRegion}";
+printf "\nTotal TaskARNs: ${listTaskCNT}";
+
+printf "\n[Num]\t[TaskName]%40s[Status]";
+while [ $num -lt $listTaskCNT ]
+do
+
+lTasks=(`aws --region $awsDefaultRegion dms describe-replication-tasks | jq -r '(.ReplicationTasks['${num}'] | "\(.ReplicationTaskIdentifier) \(.ReplicationTaskArn) \(.Status) ")'`);
+
+taskName=${lTasks[0]} taskARN=${lTasks[1]} taskStatus=${lTasks[2]};
+
+((objSpace=40-${#taskName}));
+
+printf "\n$num\t${taskName}%${objSpace}s${taskStatus}";
+printf "\n>>>>>> Sample call: dms-report -r $awsDefaultRegion -t $taskARN ";
+printf "\n";
+  num=$(($num+1));
+
+done
+else
+	printf "\nNo tasksARN found in ${awsDefaultRegion}";
+	printf "\n";
+	exit 1;
+fi
+
+exit 1;
+fi
+}
+optstring=":h:t:r:d:n:l";
+
+while [ $# -gt 0 ];
+do
+        case "$1" in
+        -t|-task|--task) repTaskARN="$2" ;;
+    -r|-region|--region) awsDefaultRegion="$2";;
+    -d|-debug|--debug) debug="$2";;
+    -n|-network|--network) netTesting="$2";;
+    -l|-list|--list) listTask;;
+    -h|-help|--help) helpFunction ;;
+    *) echo "$0: Must supply an argument to -$OPTARG."; exit 1;;
+    ?) helpFunction ;;
+    esac
+shift
+shift
+done
+NOW=$(date +"%m-%d-%Y");
+printf "\n########";
+printf "\n#";
+printf "\n#";
+printf "\n#\tAWS DMS Diagnostic";
+printf "\n#\tDate: ${NOW}";
+printf "\n#";
+printf "\n#";
+
+if [ -z "$repTaskARN" ]
+then
+        printf "Parameters are empty\n";
+    helpFunction;
+fi
+
+if [ -z "$awsDefaultRegion" ]
+then
+	if [ ${repTaskARN} != "" ]; 
+	then
+awsDefaultRegion=(`cut -d : -f 4 <<< $repTaskARN`);
+	fi
+fi
+
+  printf "\n#\taws region: ${awsDefaultRegion}";
+  printf "\n#";
+  printf "\n#";
+  printf "\n########";
+### ReplicationTaskIdentifier
+arr=(`aws --region $awsDefaultRegion dms describe-replication-tasks --query "*[?ReplicationTaskArn=='"$repTaskARN"'].[SourceEndpointArn, TargetEndpointArn,ReplicationTaskArn, ReplicationInstanceArn, ReplicationTaskIdentifier]" --output text | sed -e 's/\t/ /g'`);
+
+source=${arr[0]} target=${arr[1]} repTaskArn=${arr[2]} repInstArn=${arr[3]} repTaskID=${arr[4]};
+
+rep=(`aws --region $awsDefaultRegion dms describe-replication-instances --query "*[?ReplicationInstanceArn=='"$repInstArn"'].[ReplicationInstanceClass, AvailabilityZone, EngineVersion, ReplicationInstancePrivateIpAddress, InstanceCreateTime, ReplicationSubnetGroup.VpcId, ReplicationInstancePublicIpAddress, PubliclyAccessible]" --output text | sed -e 's/\t/ /g'`);
+
+repInstClass=${rep[0]} repAZone=${rep[1]} repEngineVer=${rep[2]} repPrivIP=${rep[3]} repCreateDate=${rep[4]} repVPCId=${rep[5]} repPubIP=${rep[6]} repPubAccess=${rep[7]};
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\n aws --region $awsDefaultRegion dms describe-replication-instances --query \"*[?ReplicationInstanceArn=='\"$repInstArn\"'].[ReplicationInstanceClass, AvailabilityZone, EngineVersion, ReplicationInstancePrivateIpAddress, InstanceCreateTime, ReplicationSubnetGroup.VpcId, ReplicationInstancePublicIpAddress, PubliclyAccessible]\" --output text | sed -e 's/\\\\t/ /g'";
+fi
+
+
+if [ -z "$arr" ]
+then
+        exit 1;
+fi
+
+
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\naws --region $awsDefaultRegion dms describe-replication-tasks --query \"*[?ReplicationTaskArn=='\"${repTaskARN}\"'].[SourceEndpointArn, TargetEndpointArn,ReplicationTaskArn, ReplicationInstanceArn, ReplicationTaskIdentifier]\" --output text | sed -e 's/\\\\t/ /g'";
+printf "\n";
+fi
+
+#repTables=(`aws dms describe-table-statistics --replication-task-arn ${repTaskArn} --query "*[].[SchemaName, TableName, FullLoadStartTime, FullLoadEndTime, LastUpdateTime, TableState]" --output text | sed -e 's/\t/ /g'`);
+
+#repTables=(`aws dms describe-table-statistics --replication-task-arn ${repTaskArn} | jq -r '(.TableStatistics[] | "\(.SchemaName) \(.TableName) \(.FullLoadStartTime) \(.FullLoadEndTime) \(.LastUpdateTime) \(.TableState)")'`);
+
+
+sourceEndpoint=(`aws --region $awsDefaultRegion dms describe-endpoints --query "*[?EndpointArn=='"${source}"'].[DatabaseName, EndpointArn, EndpointIdentifier, EndpointType, EngineName, ServerName, Port, Status,*.SecretsManagerSecretId]" --output text | sed -e 's/\t/ /g'`);
+
+
+sourceDB=${sourceEndpoint[0]} sourceId=${sourceEndpoint[2]} sourceType=${sourceEndpoint[3]} sourceEngine=${sourceEndpoint[4]} sourceStatus=${sourceEndpoint[7]}, sourceSecret=${sourceEndpoint[8]};
+
+
+if [ "${sourceEngine}" == "kinesis" ] || [ "${sourceEngine}" == "s3" ]
+then
+
+    	sourceServer="${sourceEngine}.${awsDefaultRegion}.amazonaws.com" sourcePort="443" sourcepacketTest="1000";
+
+
+else
+    	sourceServer=${sourceEndpoint[5]} sourcePort=${sourceEndpoint[6]} sourcepacketTest="8000";
+
+fi
+
+if [ "${sourceEngine}" == "kafka" ]
+then
+
+ sourceBroker=(`aws --region $awsDefaultRegion dms describe-endpoints --query "*[?EndpointArn=='"${source}"'].[KafkaSettings.Broker]" --output text`);
+ #printf "\n${sourceBroker}";
+ arrSBrokerIn=(${sourceBroker//,/ });
+ sourceServer=${arrSBrokerIn%%:*} sourcePort=${arrSBrokerIn##*:};
+ 
+
+fi
+
+
+#printf "\n${sourceSecret}";
+if [ ! -z ${sourceSecret} ]
+then
+	srcSecret=(`aws --region $awsDefaultRegion secretsmanager get-secret-value --secret-id $sourceSecret --query "SecretString" --output text | jq -r '("\(.username) \(.host) \(.port)")'`);
+	#srcSecret=(`aws --region us-east-1 secretsmanager get-secret-value --secret-id $sourceSecret --query "SecretString" --output text `);
+#printf "\ntest:${srcSecret[2]}";
+sourceServer=${srcSecret[1]} sourcePort=${srcSecret[2]};
+
+fi
+
+
+targetEndpoint=(`aws --region $awsDefaultRegion dms describe-endpoints --query "*[?EndpointArn=='"${target}"'].[DatabaseName, EndpointArn, EndpointIdentifier, EndpointType, EngineName, ServerName, Port, Status,*.SecretsManagerSecretId]" --output text | sed -e 's/\t/ /g'`);
+
+targetDB=${targetEndpoint[0]} targetId=${targetEndpoint[2]} targetType=${targetEndpoint[3]} targetEngine=${targetEndpoint[4]} targetStatus=${targetEndpoint[7]}, targetSecret=${targetEndpoint[8]};
+
+if [ "${targetEngine}" == "kinesis" ] || [ "${targetEngine}" == "s3" ]
+then
+
+	targetServer="${targetEngine}.${awsDefaultRegion}.amazonaws.com" targetPort="443" targetpacketTest="1000";
+        
+
+else
+	targetServer=${targetEndpoint[5]} targetPort=${targetEndpoint[6]} targetpacketTest="8000";
+
+fi
+
+if [ "${targetEngine}" == "kafka" ] 
+then
+
+ targetBroker=(`aws --region $awsDefaultRegion dms describe-endpoints --query "*[?EndpointArn=='"${target}"'].[KafkaSettings.Broker]" --output text`);
+ #printf "\n${targetBroker}";
+ arrTBrokerIn=(${targetBroker//,/ });
+ targetServer=${arrTBrokerIn%%:*} targetPort=${arrTBrokerIn##*:};
+ #for brokerNode in ${arrBrokerIn[@]};
+#do
+ #printf "\n${brokerNode%%:*} port: ${brokerNode##*:}";
+
+#done;
+
+fi
+
+
+if [ ! -z ${targetSecret} ]
+then
+        tgtSecret=(`aws --region $awsDefaultRegion secretsmanager get-secret-value --secret-id $targetSecret --query "SecretString" --output text | jq -r '("\(.username) \(.host) \(.port)")'`);
+        #tgtSecret=(`aws --region us-east-1 secretsmanager get-secret-value --secret-id $targetSecret --query "SecretString" --output text `);
+#printf "\ntest:${tgtSecret[2]}";
+targetServer=${tgtSecret[1]} targetPort=${tgtSecret[2]};
+
+fi
+
+if [ "${netTesting}" == "y" ]
+then
+	printf "\n\e[6;33m==== DMS DIAG Info ====\e[0m";
+	diagEc2=(`aws --region $awsDefaultRegion ec2 describe-instances --query "Reservations[].Instances[?PrivateDnsName=='ip-172-31-36-204.ap-south-1.compute.internal'].[InstanceId, MetadataOptions.HttpTokens, Placement.AvailabilityZone]" --output text `);
+	diagInstId=${diagEc2[0]} diagHttpToken=${diagEc2[1]} diagEc2Az=${diagEc2[2]};
+
+if [ "${debug}" == "y" ]
+then
+	printf "\nTokenEc2=${diagInstId} ${diagHttpToken} ${diagEc2Az}";
+fi
+
+if [ "${diagHttpToken}" == "required" ]
+then
+	
+awsToken=(`curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 600"`);
+Token=${awsToken[0]};
+#awsToken=(${awsToken//: command not found/ });
+
+
+if [ ! -z ${awsToken} ]
+then
+	geToken=(`curl -s -H "X-aws-ec2-metadata-token: ${Token}" http://169.254.169.254/latest/meta-data/`);
+
+if [ "${debug}" == "y" ]
+then
+	printf "\nTokenEc2=${awsToken}";
+	printf "\ngenToken=${genToken}";
+	printf "\ncurl -H "X-aws-ec2-metadata-token: ${Token}" -sS http://169.254.169.254/latest/meta-data/public-ipv4";
+fi
+
+else
+printf "\n Unable to generate metadata token to check metadata service http://169.254.169.254";
+exit 1;
+
+fi
+
+        publicDiagIP=$(curl -H "X-aws-ec2-metadata-token: ${Token}" -sS http://169.254.169.254/latest/meta-data/public-ipv4);
+        privateDiagIP=$(curl -H "X-aws-ec2-metadata-token: ${Token}" -sS http://169.254.169.254/latest/meta-data/local-ipv4);
+        instanceDiagID=$(curl -H "X-aws-ec2-metadata-token: ${Token}" -sS http://169.254.169.254/latest/meta-data/instance-id);
+   instanceMAC=$(curl -H "X-aws-ec2-metadata-token: ${Token}" -sS http://169.254.169.254/latest/meta-data/mac);
+   instanceType=$(curl -H "X-aws-ec2-metadata-token: ${Token}" -sS http://169.254.169.254/latest/meta-data/instance-type);
+   instanceSecGroup=$(curl -H "X-aws-ec2-metadata-token: ${Token}" -sS http://169.254.169.254/latest/meta-data/security-groups);
+   instanceAWSRegion=$(curl -H "X-aws-ec2-metadata-token: ${Token}" -sS http://169.254.169.254/latest/meta-data/placement/region);
+   instanceVPCIdtmp=(`curl -H "X-aws-ec2-metadata-token: ${Token}" -sS http://169.254.169.254/latest/meta-data/network/interfaces/macs/${instanceMAC}/vpc-id`);
+
+
+else
+	publicDiagIP=$(curl -sS http://169.254.169.254/latest/meta-data/public-ipv4);
+	privateDiagIP=$(curl -sS http://169.254.169.254/latest/meta-data/local-ipv4);
+	instanceDiagID=$(curl -sS http://169.254.169.254/latest/meta-data/instance-id);
+   instanceMAC=$(curl -sS http://169.254.169.254/latest/meta-data/mac);
+   instanceType=$(curl -sS http://169.254.169.254/latest/meta-data/instance-type);
+   instanceSecGroup=$(curl -sS http://169.254.169.254/latest/meta-data/security-groups);
+   instanceAWSRegion=$(curl -sS http://169.254.169.254/latest/meta-data/placement/region);
+   instanceVPCIdtmp=(`curl -sS http://169.254.169.254/latest/meta-data/network/interfaces/macs/${instanceMAC}/vpc-id`);
+
+fi
+	   instanceVPCId=${instanceVPCIdtmp[0]};
+       	printf "\nPublic IP: ${publicDiagIP}";
+  printf "\nPrivate IP: ${privateDiagIP}";
+ printf "\nInstance ID: ${instanceDiagID}";
+printf "\nInstance MAC: ${instanceMAC}"; 
+printf "\nInstane Type: ${instanceType}";
+printf "\nInstance Sec Group: ${instanceSecGroup}";
+printf "\nInstance AWS Region: ${instanceAWSRegion}";
+printf "\nInstance VPC Id: ${instanceVPCId}";
+printf "\nInstance Availability Zone: ${diagEc2Az}";
+printf "\n";
+
+
+if [ "${instanceAWSRegion}" != "${awsDefaultRegion}" ]
+then
+	printf "\nThis DMS Diag instance is located in ${instanceAWSRegion} region and not in the same region as DMS replication instance (${awsDefaultRegion})."
+fi
+if [ "${instanceVPCId}" != "${repVPCId}" ]
+then
+  printf "\nDMS Diag instance VPC (${instanceVPCId}) and DMS replication instance VPC (${repVPCId}) are two different VPC environment.";
+
+fi
+if [ "${instanceVPCId}" != "${repVPCId}" ] || [ "${instanceAWSRegion}" != "${awsDefaultRegion}" ]
+then
+	printf "\n>>>>> Recommend to cancel this test by pressing <CTRL><C> keys. Retry again with a new DMS Diag instance created in the same AWS Region and VPC environment as DMS RI. Otherwise the following network test might yield irrelevant results or errors due to cross region settings and restrictions."
+
+fi
+printf "\n";
+
+   printf "\n\e[6;33m==== Network Packet Check ====\e[0m";
+   hpingRI=(`hping3 -S -p 80 -c 10 169.254.169.254 2>&1 | grep --line-buffered "packet loss\|Unable" | sed -e 's/\t/ /g'`);
+   printf "\n1.) Check DMS EC2 MetaData service";
+   printf "\nSample call: hping3 -S -p 80 -c 10 169.254.169.254";
+   printf "\n>>>>>Result: %s" "${hpingRI[*]}";
+ if [ ${hpingRI[2]} == "resolve" ];
+   then
+        printf "\n     Unable to reach remote DMS Metadata Service 169.254.169.254. Please check the gateway setting for this VPC and try again after resolving the issue."
+   fi
+
+   if [ "${hpingRI[6]//[\'\%\']}" == 0 ] && [ ${hpingRI[3]} > 0 ];
+   then
+	   printf "\n     Looks good with no issue. <<<<<";
+   fi
+
+      if [ "${hpingRI[6]//[\'\%\']}" > 0 ] && [ ${hpingRI[3]} > 0 ] && [ "${hpingRI[6]//[\'\%\']}" != 0 ];
+   then
+        printf "\n     Detected ${hpingRI[6]//[\'\%\']}%% packet lost when trying to communicate with a remote host. Please check remote host, firewall, routing table, VPC security and MTU settings."
+   fi
+
+    if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\nhping3 -S -p 80 -c 10 169.254.169.254 2>&1 | grep --line-buffered \"packet loss\|Unable\" | sed -e 's/\t/ /g'";
+   printf "\n";
+   fi
+
+   printf "\n";
+
+if [ "${sourceEngine}" == "kafka" ]
+then
+
+   printf "\n2.) Check each Kafka broker source nodes";
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:";
+
+fi
+
+for brokerSNode in ${arrSBrokerIn[@]};
+ do
+
+  sourceServer = "${brokerSNode%%:*}" sourcePort = "${brokerSNode##*:}";
+if [ "${debug}" == "y" ]   
+then
+  printf "\nhping3 -S -p ${sourcePort} -c 10 ${sourceServer} 2>&1 | grep --line-buffered \"packet loss\|Unable\" | sed -e 's/\t/ /g'";
+
+fi
+   
+   printf "\nSample call: hping3 -S -p ${sourcePort} -c 10 ${sourceServer}";
+   hpingSource=(`hping3 -S -p ${sourcePort} -c 10 ${sourceServer} 2>&1 | grep --line-buffered "packet loss\|Unable" | sed -e 's/\t/ /g'`);
+   printf "\n>>>>>Result: %s" "${hpingSource[*]}";
+
+   if [ ${hpingSource[2]} == "resolve" ];
+   then
+       	printf "\n     Remote host might be offline or does not exist in DNS. Please check and try again after resolving the issue."
+   fi
+   if [ "${hpingSource[6]//[\'\%\']}" == 0 ] && [ ${hpingSource[3]} > 0 ];
+   then
+           printf "\n     Looks good with no issue. <<<<<";
+   fi
+      if [ ${hpingSource[6]//[\'\%\']} > 0 ] && [ ${hpingSource[3]} > 0 ] && [ "${hpingSource[6]//[\'\%\']}" != 0 ];
+   then
+       	printf "\n     Detected ${hpingSource[6]//[\'\%\']}%% packet lost when trying to communicate with a remote host. Please check remote host, firewall, routing table, VPC security and MTU settings."
+   fi 
+
+
+ done;
+
+else   
+   hpingSource=(`hping3 -S -p ${sourcePort} -c 10 ${sourceServer} 2>&1 | grep --line-buffered "packet loss\|Unable" | sed -e 's/\t/ /g'`);
+   printf "\n2.) Check Source Endpoint (${sourceServer}:${sourcePort})";
+   printf "\nSample call: hping3 -S -p ${sourcePort} -c 10 ${sourceServer}";
+   printf "\n>>>>>Result: %s" "${hpingSource[*]}";
+
+   if [ ${hpingSource[2]} == "resolve" ];
+   then
+        printf "\n     Remote host might be offline or does not exist in DNS. Please check and try again after resolving the issue."
+   fi
+   if [ "${hpingSource[6]//[\'\%\']}" == 0 ] && [ ${hpingSource[3]} > 0 ];
+   then
+	   printf "\n     Looks good with no issue. <<<<<";
+   fi
+      if [ ${hpingSource[6]//[\'\%\']} > 0 ] && [ ${hpingSource[3]} > 0 ] && [ "${hpingSource[6]//[\'\%\']}" != 0 ];
+   then
+        printf "\n     Detected ${hpingSource[6]//[\'\%\']}%% packet lost when trying to communicate with a remote host. Please check remote host, firewall, routing table, VPC security and MTU settings."
+   fi
+
+
+ if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\nhping3 -S -p ${sourcePort} -c 10 ${sourceServer} 2>&1 | grep --line-buffered \"packet loss\|Unable\" | sed -e 's/\t/ /g'";
+   printf "\n";
+   fi
+
+fi
+
+   printf "\n";
+
+if [ "${targetEngine}" == "kafka" ]
+then
+
+   printf "\n3.) Check each Kafka broker target nodes";
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+
+fi
+
+for brokerTNode in ${arrTBrokerIn[@]};
+ do
+  targetServer="${brokerTNode%%:*}" targetPort="${brokerTNode##*:}";
+
+  hpingTarget=(`hping3 -S -p ${targetPort} -c 10 ${targetServer} 2>&1 | grep --line-buffered "packet loss\|Unable" | sed -e 's/\t/ /g'`);
+ 
+   printf "\nSample call: hping3 -S -p ${targetPort} -c 10 ${targetServer}";
+   printf "\n>>>>>Result: %s" "${hpingTarget[*]}";
+ if [ ${hpingTarget[2]} == "resolve" ];
+   then
+       	printf "\n     Remote host might be offline or does not exist in DNS. Please check and try again after resolving the issue."
+ fi
+   if [ "${hpingTarget[6]//[\'\%\']}" == 0 ] && [ ${hpingTarget[3]} > 0 ];
+   then
+           printf "\n     Looks good with no issue. <<<<<";
+   fi
+   if [ "${hpingTarget[6]//[\'\%\']}" > 0 ] && [ ${hpingTarget[3]} > 0 ] && [ "${hpingTarget[6]//[\'\%\']}" != 0 ];
+   then
+       	printf "\n     Detected ${hpingTarget[6]//[\'\%\']}%% packet lost when trying to communicate with a remote host. Please check remote host, firewall, routing table, VPC security and MTU settings."
+   fi
+
+ if [ "${debug}" == "y" ]
+then
+
+  printf "\nhping3 -S -p ${targetPort} -c 10 ${targetServer} 2>&1 | grep --line-buffered \"packet loss\|Unable\" | sed -e 's/\t/ /g'";
+   
+   fi
+
+
+done;
+
+else   
+
+   hpingTarget=(`hping3 -S -p ${targetPort} -c 10 ${targetServer} 2>&1 | grep --line-buffered "packet loss\|Unable" | sed -e 's/\t/ /g'`);
+   printf "\n3.) Check Target endpoint (${targetServer}:${targetPort})";
+   printf "\nSample call: hping3 -S -p ${targetPort} -c 10 ${targetServer}"; 
+   printf "\n>>>>>Result: %s" "${hpingTarget[*]}";
+ if [ ${hpingTarget[2]} == "resolve" ];
+   then
+        printf "\n     Remote host might be offline or does not exist in DNS. Please check and try again after resolving the issue."
+ fi 
+   if [ "${hpingTarget[6]//[\'\%\']}" == 0 ] && [ ${hpingTarget[3]} > 0 ];
+   then
+	   printf "\n     Looks good with no issue. <<<<<";
+   fi
+   if [ "${hpingTarget[6]//[\'\%\']}" > 0 ] && [ ${hpingTarget[3]} > 0 ] && [ "${hpingTarget[6]//[\'\%\']}" != 0 ];
+   then
+        printf "\n     Detected ${hpingTarget[6]//[\'\%\']}%% packet lost when trying to communicate with a remote host. Please check remote host, firewall, routing table, VPC security and MTU settings."
+   fi
+   
+ if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\nhping3 -S -p ${targetPort} -c 10 ${targetServer} 2>&1 | grep --line-buffered \"packet loss\|Unable\" | sed -e 's/\t/ /g'";
+   printf "\n";
+   fi
+
+fi
+
+
+   printf "\n";
+
+   printf "\n==== End network packet check ====";
+   printf "\n";
+   printf "\n";
+
+   printf "\n\e[6;33m==== Network Latency Check ====\e[0m";
+   hpingRI=(`hping3 -S -p 80 -c 10 -d 8000 169.254.169.254 2>&1 | grep --line-buffered "round-trip\|Unable" | sed -e 's/\t/ /g'`);
+   printf "\n1.) Check DMS MetaData Service";
+   printf "\nSample call: hping3 -S -p 80 -c 10 -d 8000 169.254.169.254";
+   printf "\n>>>>>Result: %s" "${hpingRI[*]}";
+ if [ ${hpingRI[2]} == "resolve" ];
+   then
+        printf "\n     Unable to reach remove DMS MetaData Service 169.254.169.254. Please check gateway and try again after resolving the issue."
+   fi
+   if [ "${hpingRI[3]}" == "0.0/0.0/0.0" ];
+   then
+	printf "\n     Unable to check network latency due to connectivity issues with the remote host. Please try again when a packet is lost. Unable to check network latency due to connectivity issues with the remote host. Please try again when packet loss decreases."
+   fi
+      if [ "${hpingRI[3]}" != "0.0/0.0/0.0" ] && [ ${hpingRI[2]} != "resolve" ];
+   then
+	      if [ "$(echo "${hpingRI[3]##*\/} < 100.0" | bc)" -eq 1 ];
+       then
+	printf "\n     Looks good with no issue. <<<<<";
+       else
+        printf "\n    ${hpingRI[3]##*\/} .ms of network latency was detected. Recommend reviewing the MTU test result. Try testing again after creating the DMS RI in an AWS Region that is closer to the endpoint, or have your network specialist check the networking.";
+
+       fi
+   fi
+      if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\nhping3 -S -p 80 -c 10 -d 10000 169.254.169.254 2>&1 | grep --line-buffered \"round-trip\|Unable\" | sed -e 's/\t/ /g'";
+   printf "\n";
+   fi
+   printf "\n";
+
+
+if [ "${sourceEngine}" == "kafka" ]
+then
+
+   printf "\n2.) Check each Kafka broker source nodes";
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:";
+
+fi
+
+for brokerSNode in ${arrSBrokerIn[@]};
+ do
+
+  sourceServer="${brokerSNode%%:*}" sourcePort="${brokerSNode##*:}";
+   hpingSource=(`hping3 -S -p ${sourcePort} -c 10 -d ${sourcepacketTest} ${sourceServer} 2>&1 | grep --line-buffered "round-trip\|Unable" | sed -e 's/\t/ /g'`);
+
+   printf "\nSample call: hping3 -S -p ${sourcePort} -c 10 -d ${sourcepacketTest} ${sourceServer}";
+   printf "\n>>>>>Result: %s" "${hpingSource[*]}";
+   #printf "\nhping3 -S -p ${sourcePort} -c 10 -d ${sourcepacketTest} ${sourceServer} 2>&1 | grep --line-buffered \"round-trip\|Unable\" | sed -e 's/\t/ /g'";f [ ${hpingSource[2]} == "resolve" ];
+   if [ ${hpingSource[2]} == "resolve" ];
+   then
+       	printf "\n     Remote host might be offline or does not exist in DNS. Please check and try again after resolving the issue."
+   fi
+
+   if [ "${hpingSource[3]}" == "0.0/0.0/0.0" ];
+   then
+       	printf "\n     Unable to check network latency due to connectivity problems with the remote host. Please try again when packet is lost reduced."
+    fi
+   
+   if [ "${hpingSource[3]}" != "0.0/0.0/0.0" ] && [ ${hpingSource[2]} != "resolve" ];
+   then
+      if [ "$(echo "${hpingSource[3]##*\/} < 100.0" | bc)" -eq 1 ];
+       then
+	printf "\n     Looks good with no issue. <<<<<";
+       else
+        printf "\n    ${hpingSource[3]##*\/} ms network latency detected. Recommend reviewing MTU test results. Try testing again after creating the DMS RI in AWS Region that is closer to the endpoint or have your network specialist check networking.";
+
+       fi
+   fi
+
+
+
+if [ "${debug}" == "y" ]
+then
+    printf "\nhping3 -S -p ${sourcePort} -c 10 -d ${sourcepacketTest} ${sourceServer} 2>&1 | grep --line-buffered \"round-trip\|Unable\" | sed -e 's/\t/ /g'";
+
+fi  
+
+done;
+
+else
+   hpingSource=(`hping3 -S -p ${sourcePort} -c 10 -d ${sourcepacketTest} ${sourceServer} 2>&1 | grep --line-buffered "round-trip\|Unable" | sed -e 's/\t/ /g'`);
+   printf "\n2.) Check Source Endpoint (${sourceServer}:${sourcePort})";
+   printf "\nSample call: hping3 -S -p ${sourcePort} -c 10 -d ${sourcepacketTest} ${sourceServer}";
+   printf "\n>>>>>Result: %s" "${hpingSource[*]}";
+ #printf "\nhping3 -S -p ${sourcePort} -c 10 -d ${sourcepacketTest} ${sourceServer} 2>&1 | grep --line-buffered \"round-trip\|Unable\" | sed -e 's/\t/ /g'";f [ ${hpingSource[2]} == "resolve" ];
+ if [ ${hpingSource[2]} == "resolve" ]; 
+  then
+        printf "\n     Remote host might be offline or does not exist in DNS. Please check and try again after resolving the issue."
+   fi
+   if [ "${hpingSource[3]}" == "0.0/0.0/0.0" ];
+   then
+        printf "\n     Unable to check network latency due to connectivity problems with the remote host. Please try again when packet is lost reduced."
+    fi
+       if [ "${hpingSource[3]}" != "0.0/0.0/0.0" ] && [ ${hpingSource[2]} != "resolve" ];
+   then
+	#printf "\n     Looks good with no issue. <<<<<";
+
+       if [ "$(echo "${hpingSource[3]##*\/} < 100.0" | bc)" -eq 1 ];
+       then
+	printf "\n     Looks good with no issue. <<<<<";
+       else
+	printf "\n    ${hpingSource[3]##*\/} ms network latency detected. Recommend reviewing MTU test results. Try testing again after creating the DMS RI in AWS Region that is closer to the endpoint or have  your network specialist check networking.";
+
+       fi
+
+   fi
+
+
+      if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\nhping3 -S -p ${sourcePort} -c 10 -d ${sourcepacketTest} ${sourceServer} 2>&1 | grep --line-buffered \"round-trip\|Unable\" | sed -e 's/\t/ /g'";
+   printf "\n";
+   fi
+
+fi
+
+printf "\n";
+
+if [ "${targetEngine}" == "kafka" ]
+then
+
+   printf "\n3.) Check each Kafka broker target nodes";
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+
+fi
+
+for brokerTNode in ${arrTBrokerIn[@]};
+ do
+
+
+targetServer="${brokerTNode%%:*}" targetPort="${brokerTNode##*:}";
+
+  hpingTarget=(`hping3 -S -p ${targetPort} -c 10 -d ${targetpacketTest} ${targetServer} 2>&1 | grep --line-buffered "round-trip\|Unable" | sed -e 's/\t/ /g'`);
+  
+   printf "\nSample call: hping3 -S -p ${targetPort} -c 10 -d ${targetpacketTest} ${targetServer}";
+   printf "\n>>>>>Result: %s" "${hpingTarget[*]}";
+ if [ ${hpingTarget[2]} == "resolve" ];
+   then
+       	printf "\n     Remote host might be offline or does not exist in DNS. Please check and try again after resolving the issue."
+   fi
+   if [ "${hpingTarget[3]}" == "0.0/0.0/0.0" ];
+   then
+       	printf "\n     Unable to check network latency due to connectivity problems with the remote host. Please try again when the packet is lost and reduced."
+    fi
+       if [ "${hpingTarget[3]}" != "0.0/0.0/0.0" ] && [ ${hpingTarget[2]} != "resolve" ];
+   then
+      if [ "$(echo "${hpingTarget[3]##*\/} < 100.0" | bc)" -eq 1 ];
+       then
+	printf "\n     Looks good with no issue. <<<<<";
+       else
+       	printf "\n    ${hpingTarget[3]##*\/} ms network latency detected. Recommend reviewing MTU test results. Try testing again after creating the DMS RI in AWS Region that is closer to the endpoint or have your network specialist check networking.";
+
+       fi
+   fi
+    printf "\n";
+
+   if [ "${debug}" == "y" ]
+then
+  printf "\nhping3 -S -p ${targetPort} -c 10 -d ${targetpacketTest} ${targetServer} 2>&1 | grep --line-buffered \"round-trip\|Unable\" | sed -e 's/\t/ /g'";
+
+   fi
+
+done;
+
+else
+
+   printf "\n";
+   hpingTarget=(`hping3 -S -p ${targetPort} -c 10 -d ${targetpacketTest} ${targetServer} 2>&1 | grep --line-buffered "round-trip\|Unable" | sed -e 's/\t/ /g'`);
+   printf "\n3.) Check Target endpoint (${targetServer}:${targetPort})";
+   printf "\nSample call: hping3 -S -p ${targetPort} -c 10 -d ${targetpacketTest} ${targetServer}";
+   printf "\n>>>>>Result: %s" "${hpingTarget[*]}";
+ if [ ${hpingTarget[2]} == "resolve" ];
+   then
+        printf "\n     Remote host might be offline or does not exist in DNS. Please check and try again after resolving the issue."
+   fi
+   if [ "${hpingTarget[3]}" == "0.0/0.0/0.0" ];
+   then
+        printf "\n     Unable to check network latency due to connectivity problems with the remote host. Please try again when the packet is lost and reduced."
+    fi
+       if [ "${hpingTarget[3]}" != "0.0/0.0/0.0" ] && [ ${hpingTarget[2]} != "resolve" ];
+   then
+
+       if [ "$(echo "${hpingTarget[3]##*\/} < 100.0" | bc)" -eq 1 ];
+       then
+	printf "\n     Looks good with no issue. <<<<<";
+       else
+        printf "\n    ${hpingTarget[3]##*\/} ms network latency detected. Recommend reviewing MTU test results. Try testing again after creating the DMS RI in AWS Region that is closer to the endpoint or have your network specialist check networking.";
+
+       fi
+
+   fi
+   printf "\n";
+
+   if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\nhping3 -S -p ${targetPort} -c 10 -d ${targetpacketTest} ${targetServer} 2>&1 | grep --line-buffered \"round-trip\|Unable\" | sed -e 's/\t/ /g'";
+   printf "\n";
+   fi
+
+
+fi
+
+
+
+   printf "\n==== End network latency check ====";
+   printf "\n";
+   printf "\n";
+
+   printf "\n\e[6;33m==== Network MTU Check ====\e[0m";
+   printf "\n1.) Check DMS MetaData Service ";
+   printf "\nSample call: tracepath -p 80 169.254.169.254";
+
+if [ ${hpingRI[0]} != "Unable" ];
+then
+traceRI=(`tracepath -p 80 169.254.169.254 2>&1 | grep --line-buffered "LOCALHOST\|Resume" | sed 's/1?://g' |sed 's/[^0-9]*//g'`)
+   if [ ${traceRI[0]} != ${traceRI[1]} ];
+ then
+   printf "\n>>>>>Result: local MTU (${traceRI[0]}) does not match remote MTU (${traceRI[1]}) ";
+   printf "\n     Recommend adjusting MTU and try check again. <<<<<";
+   printf "\n";   
+else
+printf "\n>>>>>Result: MTU setting looks good. Local MTU (${traceRI[0]}) matches remote MTU (${traceRI[1]}) <<<<<";
+printf "\n";
+printf "\n";
+fi
+else
+ printf "\n>>>>>Result: unable to connect to a remote host. Please check the gateway, VPC routing table and security.";
+ printf "\n";
+fi
+
+
+
+ if [ "${sourceEngine}" == "kafka" ]
+then
+
+   printf "\n2.) Check each Kafka broker source nodes";
+
+
+for brokerSNode in ${arrSBrokerIn[@]};
+ do
+
+  sourceServer="${brokerSNode%%:*}" sourcePort="${brokerSNode##*:}";
+
+   printf "\nSample call: tracepath -p ${sourcePort} ${sourceServer}";
+if [ ${hpingSource[0]} != "Unable" ];
+then
+traceSource=(`tracepath -p ${sourcePort} ${sourceServer} 2>&1 | grep --line-buffered "LOCALHOST\|Resume" | sed 's/1?://g' |sed 's/[^0-9]*//g'`)
+   if [ ${traceSource[0]} != ${traceSource[1]} ];
+ then
+   printf "\n>>>>>Result: local MTU (${traceSource[0]}) does not match remote MTU (${traceSource[1]}) ";
+   printf "\n     Recommend adjusting MTU and try check again. <<<<<";
+   printf "\n";
+else
+printf "\n>>>>>Result: MTU setting looks good. Local MTU (${traceSource[0]}) matches remote MTU (${traceSource[1]}) <<<<<";
+printf "\n";
+printf "\n";
+fi
+else
+ printf "\n>>>>>Result: unable to connect to a remote host. Please check the gateway, VPC routing table and security.";
+ printf "\n";
+fi
+
+
+done;
+else
+
+
+   printf "\n2.) Check Source endpoint (${sourceServer}:${sourcePort})";
+   printf "\nSample call: tracepath -p ${sourcePort} ${sourceServer}";
+if [ ${hpingSource[0]} != "Unable" ];
+then
+traceSource=(`tracepath -p ${sourcePort} ${sourceServer} 2>&1 | grep --line-buffered "LOCALHOST\|Resume" | sed 's/1?://g' |sed 's/[^0-9]*//g'`)
+   if [ ${traceSource[0]} != ${traceSource[1]} ];
+ then
+   printf "\n>>>>>Result: local MTU (${traceSource[0]}) does not match remote MTU (${traceSource[1]}) ";
+   printf "\n     Recommend adjusting MTU and try check again. <<<<<";
+   printf "\n";   
+else
+printf "\n>>>>>Result: MTU setting looks good. Local MTU (${traceSource[0]}) matches remote MTU (${traceSource[1]}) <<<<<";
+printf "\n";
+printf "\n";
+fi
+else
+ printf "\n>>>>>Result: unable to connect to a remote host. Please check the gateway, VPC routing table and security.";
+ printf "\n";
+fi
+  
+
+fi
+
+
+
+
+if [ "${targetEngine}" == "kafka" ]
+then
+
+   printf "\n3.) Check each Kafka broker target nodes";
+
+
+for brokerTNode in ${arrTBrokerIn[@]};
+ do
+
+  targetServer="${brokerTNode%%:*}" targetPort="${brokerTNode##*:}";
+
+   printf "\nSample call: tracepath -p ${targetPort} ${targetServer}";
+if [ ${hpingTarget[0]} != "Unable" ];
+then
+traceTarget=(`tracepath -p ${targetPort} ${targetServer} 2>&1 | grep --line-buffered "LOCALHOST\|Resume" | sed 's/1?://g' |sed 's/[^0-9]*//g'`)
+
+   if [ ${traceTarget[0]} != ${traceTarget[1]} ] ;
+then
+   printf "\n>>>>>Result: local MTU (${traceTarget[0]}) does not match remote MTU (${traceTarget[1]}) ";
+   printf "\n     Recommend adjusting MTU and try check again. <<<<<";
+   printf "\n";
+   else
+printf "\n>>>>>Result: MTU setting looks good. Local MTU (${traceTarget[0]}) matches remote MTU (${traceTarget[1]}) <<<<<";
+printf "\n";
+printf "\n";
+fi
+else
+ printf "\n>>>>>Result: unable to connect to a remote host. Please check the gateway, VPC routing table and security.";
+ printf "\n";
+fi
+
+
+done;
+else
+
+   printf "\n3.) Check Target endpoint (${targetServer}:${targetPort})";
+   printf "\nSample call: tracepath -p ${targetPort} ${targetServer}";
+if [ ${hpingTarget[0]} != "Unable" ];
+then   
+traceTarget=(`tracepath -p ${targetPort} ${targetServer} 2>&1 | grep --line-buffered "LOCALHOST\|Resume" | sed 's/1?://g' |sed 's/[^0-9]*//g'`)
+
+   if [ ${traceTarget[0]} != ${traceTarget[1]} ] ;
+then
+   printf "\n>>>>>Result: local MTU (${traceTarget[0]}) does not match remote MTU (${traceTarget[1]}) ";
+   printf "\n     Recommend adjusting MTU and try check again. <<<<<";
+   printf "\n";
+   else
+printf "\n>>>>>Result: MTU setting looks good. Local MTU (${traceTarget[0]}) matches remote MTU (${traceTarget[1]}) <<<<<";
+printf "\n";
+printf "\n";
+fi
+else
+ printf "\n>>>>>Result: unable to connect to a remote host. Please check the gateway, VPC routing table and security.";
+ printf "\n";
+fi
+
+fi
+
+   printf "\n==== End network MTU check ====";
+printf "\n";
+
+
+
+exit;
+
+fi
+
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\naws --region $awsDefaultRegion dms describe-endpoints --query \"*[?EndpointArn=='\"${source}\"'].[DatabaseName, EndpointArn, EndpointIdentifier, EndpointType, EngineName, ServerName, Port, Status]\" --output text | sed -e 's/\\\\t/ /g'";
+printf "\n sourceDB=${sourceEndpoint[0]} sourceId=${sourceEndpoint[2]} sourceType=${sourceEndpoint[3]} sourceEngine=${sourceEndpoint[4]} sourceServer=${sourceEndpoint[5]} sourcePort=${sourceEndpoint[6]} sourceStatus=${sourceEndpoint[7]} ";
+printf "\n 1: ${sourceEndpoint[1]}";
+printf "\n 0: ${sourceEndpoint[0]}";
+fi
+
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug:"
+  printf "\n aws --region $awsDefaultRegion dms describe-endpoints --query \"*[?EndpointArn=='\"${target}\"'].[DatabaseName, EndpointArn, EndpointIdentifier, EndpointType, EngineName, ServerName, Port, Status]\" --output text | sed -e 's/\\\\t/ /g'";
+printf "\ntargetDB=${targetEndpoint[0]} targetId=${targetEndpoint[2]} targetType=${targetEndpoint[3]} targetEngine=${targetEndpoint[4]} targetServer=${targetEndpoint[5]} targetPort=${targetEndpoint[6]} targetStatus=${targetEndpoint[7]}";
+printf "\n 1:${targetEndpoint[1]}";
+printf "\n 0:${targetEndpoint[0]}";
+fi
+
+sourceTCPTest=(`nc -z -v -w5 ${sourceServer} ${sourcePort} 2>&1 | grep --line-buffered ${sourcePort} | sed -e 's/Ncat: Connected to //g' | cut -d: -f1`);
+
+targetTCPTest=(`nc -z -v -w5 ${targetServer} ${targetPort} 2>&1 | grep --line-buffered ${targetPort} | sed -e 's/Ncat: Connected to //g' | cut -d: -f1`);
+
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug (target):"
+  printf "\n nc -z -v -w5 ${targetServer} ${targetPort} 2>&1 | grep --line-buffered ${targetPort} | sed -e 's/Ncat: Connected to //g' | cut -d: -f1";
+fi
+
+
+if [ "${debug}" == "y" ]
+then
+  printf "\n";
+  printf "\nDebug (source):"
+  printf "\n nc -z -v -w5 ${sourceServer} ${sourcePort} 2>&1 | grep --line-buffered ${sourcePort} | sed -e 's/Ncat: Connected to //g' | cut -d: -f1";
+
+fi
+
+
+if (test "${targetTCPTest}")
+ then 
+	targetIP="${targetTCPTest} << IP and TCP Port are Good";
+	targetIPPortCheck=(`sudo nmap ${targetTCPTest} -p ${targetPort} --script path-mtu | grep 'latency\|path-mtu' | sed -e 's/|_path-mtu\: /Workable /g'`);
+ else 
+	targetIP=">>>> Unable to access ${targetServer}"; 
+fi
+
+
+
+
+if (test "${sourceTCPTest}")
+ then 
+	sourceIP="${sourceTCPTest} << IP and TCP Port are GOOD";
+ 	sourceIPPortCheck=(`sudo nmap ${sourceTCPTest} -p ${sourcePort} --script path-mtu | grep 'latency\|path-mtu' | sed -e 's/|_path-mtu\: /Workable /g'`);
+ 
+ else sourceIP=">>>> Unable to access ${sourceServer}"; 
+fi
+
+printf "\n\e[6;33m==== DMS Task Check ====\e[0m";
+printf "\n";
+#printf '_%0.s' {1..110}; 
+printf "\n[DMS Replication ID]   ${repTaskID}";
+printf "\n[DMS Replication Task] ${repTaskARN}";
+printf "\n[Replication Instance] ${repInstArn}";
+printf "\n";
+
+printf "\n[RepInstanceClass]%5s${repInstClass}";
+printf "\n[RepAvailabilityZone]%5s${repAZone}";
+printf "\n[RepEngineVersion]%5s${repEngineVer}";
+printf "\n[RepPrivateIP]%5s${repPrivIP}";
+printf "\n[RepPublicIP]%5s${repPubIP}";
+printf "\n[RepCreateDate]%5s${repCreateDate}";
+printf "\n[RepVPCId]%5s${repVPCId}";
+
+((sep=${#source}-3));
+((sepDB=${#source}-${#sourceDB}+5));
+((sepID=${#source}-${#sourceId}+5));
+((sepEng=${#source}-${#sourceEngine}+5));
+((sepSvr=${#source}-${#sourceServer}+5));
+((sepPrt=${#source}-${#sourcePort}+5));
+((sepStatus=${#source}-${#sourceStatus}+5));
+((sepIP=${#source}-${#sourceIP}+5));
+printf "\n%16s";
+printf '=%0.s' {1..30}; 
+printf " ${sourceType} ";
+printf '=%0.s' {1..30}; 
+printf "\n[Endpoints]%5s${source}";
+printf "\n[ID]%12s${sourceId}";
+printf "\n[Server]%8s${sourceServer}";
+printf "\n[TCP-Port]%6s${sourcePort}";
+printf "\n[IP-Test]%7s${sourceIP}";
+printf "\n[Network-Check] ${sourceIPPortCheck}";
+printf "\n[Engine]%8s${sourceEngine}";
+printf "\n[DB]%12s${sourceDB}";
+printf "\n[Status]%8s${sourceStatus}";
+printf "\n";
+printf "\n%16s";
+printf '=%0.s' {1..30}; 
+printf " ${targetType} ";
+printf '=%0.s' {1..30}; 
+printf "\n[Endpoints]%5s${target}";
+printf "\n[ID]%12s${targetId}";
+printf "\n[Server]%8s${targetServer}";
+printf "\n[TCP-Port]%6s${targetPort}";
+printf "\n[IP-Test]%7s${targetIP}";
+printf "\n[Network-Check] ${targetIPPortCheck}";
+printf "\n[Engine]%8s${targetEngine}";
+printf "\n[DB]%12s${targetDB}";
+printf "\n[Status]%8s${targetStatus}";
+printf "\n";
+printf "\n%16s";
+printf '=%0.s' {1..30}; 
+printf " Full Load ";
+printf '=%0.s' {1..30}; 
+
+repTableCNT=(`aws --region $awsDefaultRegion dms describe-table-statistics --replication-task-arn ${repTaskArn} | jq -r '(.[] | length)'`);
+
+num=0;
+
+if (test "${repTableCNT}");
+then
+
+printf "\n[Table]%40s[Duration]%8s[Rows]%5s[lastUpdate]%16s[Status]";
+while [ $num -lt $repTableCNT ]
+do
+ 
+repTables=(`aws --region $awsDefaultRegion dms describe-table-statistics --replication-task-arn ${repTaskArn} | jq -r '(.TableStatistics['${num}'] | "\(.SchemaName) \(.TableName) \(.FullLoadStartTime) \(.FullLoadEndTime) \(.LastUpdateTime) \(.TableState) \(.FullLoadRows)")'`);
+
+schema=${repTables[0]} table=${repTables[1]} fullStartTime=${repTables[2]} fullEndTime=${repTables[3]} lastUpdate=${repTables[4]} objState=${repTables[6]} rowCnt=${repTables[7]};
+
+d1=(`date -d "$fullEndTime" +%s`);
+d2=(`date -d "$fullStartTime" +%s`);
+duration=(`date -u -d@$((d1-d2)) +"%H:%M:%S"`);
+#printf "\nDatediff=${duration}";
+((objSpace=40-${#schema}-${#table}));
+
+printf "\n${schema}.${table}%${objSpace}s${duration}%8s${rowCnt}%5s${lastUpdate}%16s${objState}";
+
+  num=$(($num+1));
+
+done
+fi
+
+printf "\n";
+

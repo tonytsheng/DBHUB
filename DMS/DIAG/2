@@ -1,0 +1,325 @@
+---
+# Regions currently supported: https://docs.aws.amazon.com/dms/latest/userguide/CHAP_SupportAmi.html#CHAP_SupportAmi_AmiIDs. To launch the CloudFormation stack to a different region, you can copy the existing AMI to that region and add region and the AMI ID to the CloudFormation template as the following format.
+
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: 'Create an EC2 with networking testing environment and script via DMS networking test AMI https://docs.aws.amazon.com/dms/latest/userguide/CHAP_SupportAmi.html
+  This example creates an EC2 security group for the instance to give you SSH access. 
+  **WARNING** This template creates an Amazon EC2 instance. You will be billed for the AWS resources used if you create a stack
+  from this template.'
+
+Parameters:
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: Must be the name of an existing EC2 KeyPair.
+  InstanceType:
+    Description: EC2 instance type for the networking testing environment
+    Type: String
+    Default: t3.micro # currently support free tier
+    AllowedValues: [t3.nano, t3.micro, t3.small, t3.medium, t3.large, t3.xlarge, t3.2xlarge]
+    ConstraintDescription: Must be a valid EC2 instance type.
+  SSHLocation:
+    Description: The IP address range that can be used to SSH to the EC2 instances
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    Default: 0.0.0.0/0
+    AllowedPattern: (\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})
+    ConstraintDescription: Must be a valid IP CIDR range of the form x.x.x.x/x.
+  DMSReplicationInstance:
+    Description: The ARN of the DMS instance to test. Create this CloudFormation Stack in the same region of the DMS instance. Check https://docs.aws.amazon.com/dms/latest/userguide/CHAP_SupportAmi.html for the regions supported.
+    Type: String
+    ConstraintDescription: Must be a valid AWS DMS ARN. 
+
+Resources:
+  EC2ExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal: 
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
+
+  EC2RunScriptPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: !Join
+        - '-'
+        -
+          - CFN
+          - !Ref AWS::StackName
+          - EC2RunScriptPolicy
+      Roles: [ !Ref EC2ExecutionRole ]
+      PolicyDocument:
+        Statement:
+        - Sid: ec2RunScriptDescDMS
+          Effect: Allow
+          Action:
+            - dms:DescribeEndpoints # permissions to return information about the endpoints for your account in current AWS Region
+            - dms:DescribeReplicationInstances # permissions to return information about replication instances for your account in the current region
+            - dms:DescribeReplicationTasks # permissions to return information about replication tasks for your account in the current region
+          Resource: [ '*' ]
+        - Sid: ec2RunScriptDescTaskStats
+          Effect: Allow
+          Action:
+            - dms:DescribeTableStatistics # permissions to return table statistics on the database migration task, including table name, rows inserted, rows updated, and rows deleted
+          Resource: 
+            - !Join
+              - ':'
+              -
+                - 'arn:aws:dms'
+                - !Ref AWS::Region
+                - !Ref AWS::AccountId
+                - 'task:*'
+        - Sid: lambdaGetSecretValue
+          Effect: Allow
+          Action:
+            - secretsmanager:GetSecretValue # permissions to retrieve host name and TCP port information from specific secrets manager key 
+          Resource:
+            - !Join
+                  - ':'
+                  - 
+                    - arn:aws:secretsmanager:*
+                    - !Ref AWS::AccountId
+                    - secret:*
+
+  EC2ExecutionRoleInstanceProfile: 
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles: 
+        - !Ref EC2ExecutionRole
+  
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal: 
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: !Join
+          - '-'
+          -
+            - CFN
+            - !Ref AWS::StackName
+            - lambdalogtocloudwatch
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: arn:aws:logs:*:*:*
+        - PolicyName: !Join
+          - '-'
+          -
+            - CFN
+            - !Ref AWS::StackName
+            - lambdaDescribeDMS
+          PolicyDocument: 
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - dms:DescribeReplicationInstances
+                Resource: '*'
+        - PolicyName: !Join
+          - '-'
+          -
+            - CFN
+            - !Ref AWS::StackName
+            - lambdaDescribeAMI
+          PolicyDocument: 
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - ec2:DescribeImages
+                Resource: '*'
+
+  LambdaFunctionGetDMSConfig:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        ZipFile: !Sub |
+          import json
+          import cfnresponse
+          import logging
+          import traceback
+          import boto3
+          import botocore
+          from operator import itemgetter
+          logger = logging.getLogger()
+          logger.setLevel(logging.INFO)
+          def handler(event, context):
+              try:
+                  #boto3.session.Session().get_available_services()
+                  logger.info(boto3.__version__)
+                  logger.info(botocore.__version__)
+                  logger.info('------ event ------')
+                  logger.info(str(event))
+                  logger.info('------ context ------')
+                  logger.info(str(context))
+                  responseData = {}
+                  if event['RequestType'] == 'Delete':
+                      responseData['CustStatus'] = 'it is Delete'
+                      logger.info(str(responseData['CustStatus']))
+                      cfnresponse.send(event, context, cfnresponse.SUCCESS, responseData)
+                  elif event['RequestType'] == 'Update' or event['RequestType'] == 'Create':
+                      responseData['CustStatus'] = 'update or Create'
+                      logger.info(str(responseData['CustStatus']))
+                      logger.info('boto3 setup')
+                      ### Check DMS network configurations
+                      dms_client = boto3.client('dms')
+                      response = dms_client.describe_replication_instances(
+                          Filters=[
+                              {
+                                  'Name': 'replication-instance-arn',
+                                  'Values': [
+                                      '${DMSReplicationInstance}',
+                                  ]
+                              },
+                          ]
+                      )
+                      ### Check the latest AMI
+                      OWNER = '343299325021'
+                      ec2_client = boto3.client('ec2', region_name = '${AWS::Region}')
+                      response_ami = ec2_client.describe_images(
+                          Filters=[
+                              {
+                                  'Name': 'name',
+                                  'Values': [
+                                      'DMS-DIAG-AMI*'
+                                  ]
+                              },{
+                                  'Name': 'is-public',
+                                  'Values': [
+                                      'true'
+                                  ]
+                              },
+                          ],
+                          Owners=[
+                              OWNER
+                          ]
+                      )
+                      ## Get AMI in the region
+                      if len(response_ami['Images']) > 0:
+                          amis = sorted(response_ami['Images'], key=itemgetter('CreationDate'), reverse=True)
+                          responseData['amiId'] = amis[0]['ImageId']
+                      else: 
+                          logger.info('No DMS Diagnostic AMI found in region '+ '${AWS::Region}' + '. Create this CloudFormation stack at the same region as the replication instance to test. See https://docs.aws.amazon.com/dms/latest/userguide/CHAP_SupportAmi.html for the regions supported.')
+                          cfnresponse.send(event, context, cfnresponse.FAILED, {})
+                      ### Get DMS network configurations
+                      if len(response['ReplicationInstances']) > 0:
+                          responseData['CustStatus'] = 'DMS instance exists'
+                          logger.info(str(responseData['CustStatus']))
+                          responseData['AvailabilityZone'] = response['ReplicationInstances'][0]['AvailabilityZone']
+                          responseData['VpcId'] = response['ReplicationInstances'][0]['ReplicationSubnetGroup']['VpcId']
+                          responseData['SubnetIdentifier'] = ''
+                          for subnet in response['ReplicationInstances'][0]['ReplicationSubnetGroup']['Subnets']:
+                              if subnet['SubnetAvailabilityZone']['Name'] == response['ReplicationInstances'][0]['AvailabilityZone']:
+                                  responseData['SubnetIdentifier'] = subnet['SubnetIdentifier']
+                                  break
+                          responseData['VpcSecurityGroupIds'] = []
+                          for sg in response['ReplicationInstances'][0]['VpcSecurityGroups']:
+                              responseData['VpcSecurityGroupIds'].append(sg['VpcSecurityGroupId'])
+                          logger.info(responseData)
+                          cfnresponse.send(event, context, cfnresponse.SUCCESS, responseData)
+                  else:
+                      responseData['CustStatus'] = 'else: '+str(event['RequestType'])
+                      logger.info(str(responseData['CustStatus']))
+                      cfnresponse.send(event, context, cfnresponse.SUCCESS, responseData)
+              except Exception:
+                  logger.info(traceback.print_exc())
+                  cfnresponse.send(event, context, cfnresponse.FAILED, {})
+              finally:
+                  return
+      Handler: index.handler
+      Runtime: python3.8
+      Timeout: 30
+      ReservedConcurrentExecutions: 3
+      Role: !GetAtt
+        - LambdaExecutionRole
+        - Arn
+  
+  MyDMSConfig:
+    Type: Custom::MyDMSConfig
+    Version: 1.0
+    Properties:
+      ServiceToken: !GetAtt
+        - LambdaFunctionGetDMSConfig
+        - Arn
+
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref 'SSHLocation'
+          Description: Allow inbound traffic from the CIDR specified to the CloudFormation stack for SSH into the DMS Diagnostic EC2 instance 
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 32768
+          ToPort: 60999
+          CidrIp: !Ref 'SSHLocation'
+          Description: Allow outbound traffic to the CIDR specified to the CloudFormation stack
+      VpcId: !GetAtt 
+        - MyDMSConfig
+        - VpcId ## responseData['VpcId'] from lambda
+
+  EC2Instance:
+    DependsOn: MyDMSConfig
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref 'InstanceType'
+      SecurityGroupIds: !Split
+        - ","
+        - !Sub
+          - "${dmsSg},${InstanceSecurityGroup}"
+          - dmsSg: !Join [",",!GetAtt [MyDMSConfig, VpcSecurityGroupIds]] ## responseData['VpcSecurityGroupIds'] from lambda  
+      KeyName: !Ref 'KeyName'
+      ImageId: !GetAtt
+        - MyDMSConfig
+        - amiId  ## responseData['amiId'] from lambda
+      SubnetId: !GetAtt
+        - MyDMSConfig
+        - SubnetIdentifier ## responseData['SubnetIdentifier'] from lambda
+      IamInstanceProfile: !Ref 'EC2ExecutionRoleInstanceProfile'
+      Tags:
+        - Key: Name
+          Value: !Join
+            - '-'
+            -
+              - CFN
+              - !Ref AWS::StackName
+              - DMSNetworkingDiagnostic
+
+Outputs:
+  InstanceId:
+    Description: InstanceId of the newly created EC2 instance
+    Value: !Ref 'EC2Instance'
+  AZ:
+    Description: Availability Zone of the newly created EC2 instance
+    Value: !GetAtt [EC2Instance, AvailabilityZone]
+  PublicDNS:
+    Description: Public DNSName of the newly created EC2 instance
+    Value: !GetAtt [EC2Instance, PublicDnsName]
+  PublicIP:
+    Description: Public IP address of the newly created EC2 instance
+    Value: !GetAtt [EC2Instance, PublicIp]
