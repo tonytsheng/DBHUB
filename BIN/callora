@@ -17,6 +17,11 @@ do
   esac
 done
 
+echo ${user}
+echo ${pw}
+echo ${host}
+echo ${sid}
+
 #if [ -z ${USER} ] || [ -z ${PW} ] || [ -z ${HOST} ] || [ -z ${SID} ]; then
 #    usage
 #    exit 1
