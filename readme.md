@@ -1,4 +1,4 @@
-<img width="85" alt="map-user" src="https://img.shields.io/badge/views-036-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-011-green">
+<img width="85" alt="map-user" src="https://img.shields.io/badge/views-076-green"> <img width="125" alt="map-user" src="https://img.shields.io/badge/unique visits-011-green">
 
 ## Thanks
 Thanks for stopping by. This repo represents almost 30 years of database engineering experience and has been my go to place to store things out of my head for the past 2 years or so. So, it is my best work lol.
