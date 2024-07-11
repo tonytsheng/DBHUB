@@ -4,6 +4,7 @@
 
 + create rds postgresql in us-west-2
   - aws rds create-db-instance  --db-name pgrag --db-instance-identifier pgrag  --allocated-storage 50  --db-instance-class db.m5d.large --engine postgres  --master-username postgres --master-user-password Pass --db-subnet-group-name default-vpc-02ae294a0559bfea0  --engine-version  15.4  --publicly-accessible   --enable-cloudwatch-logs-exports  postgresql  --profile ec2  --region us-west-2
+  - open up 5432 security group in default vpc security group
 
 + create a cloud9 env us-west-2
   - public subnet must have enabled assign auto ip
