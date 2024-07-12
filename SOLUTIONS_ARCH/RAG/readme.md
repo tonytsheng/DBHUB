@@ -21,7 +21,7 @@ We are going to use an instance of Cloud9 to run the application code. Create a 
 ```
 sudo dnf install postgresql15.x86_64 postgresql15-server -y
 ```
-- Export the set of PG environment variables using the RDS instance that you just created. Also create the .env file.
+- Export the set of PG environment variables using the RDS instance that you just created. 
 ```
 export PGUSER
 export PGPASSWORD
