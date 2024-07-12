@@ -21,7 +21,6 @@ We are going to use an instance of Cloud9 to run the application code. Create a 
 ```
 sudo dnf install postgresql15.x86_64 postgresql15-server -y
 ```
-- Make sure you can access the RDS instance from the cloud9 instance.
 - Export the set of PG environment variables using the RDS instance that you just created. Also create the .env file.
 ```
 export PGUSER
@@ -61,8 +60,8 @@ run the app.py with streamlit
 streamlit run app.py --server.port 8080
 ```
 ## from cloud9, use the Show App menu drop down, but use firefox for this
-  - upload an Aurora FAQ pdf
-  - ask the app questions in natural language
+- Upload an Aurora FAQ pdf.
+- Ask the app questions in natural language.
 
 
 ![alt text](https://static.us-east-1.prod.workshops.aws/public/baa20ca5-b5e4-434d-9590-9a692e7127ba/static/Retrieval_Augmented_Generation/RAG_APG.png)
