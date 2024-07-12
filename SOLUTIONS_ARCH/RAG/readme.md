@@ -28,7 +28,15 @@ export PGPASSWORD
 export PGHOST
 export PGPORT
 export PGDATABASE
-
+```
+- Clone the github repo. Install libraries from the requirements file.
+```
+cd ~/environment
+git clone https://github.com/aws-samples/aurora-postgresql-pgvector
+python3 -m pip install -r requirements.txt
+```
+- Create a .env file
+```
 cd ~/environment/aurora-postgresql-pgvector/02_RetrievalAugmentedGeneration/02_QuestionAnswering_Bedrock_LLMs
 cat > .env << EOF
 PGVECTOR_USER='$PGUSER'
@@ -40,12 +48,6 @@ EOF
 cat .env
 ```
 - Make sure you can access the RDS instance from the cloud9 instance.
-- Clone the github repo. Install libraries from the requirements file.
-```
-cd ~/environment
-git clone https://github.com/aws-samples/aurora-postgresql-pgvector
-python3 -m pip install -r requirements.txt
-```
 ## Clean up any existing langchain tables.
 ```
 psql
