@@ -8,7 +8,7 @@ Note that everything runs out of us-west-2.
 Grant Amazon and Anthropic model access to Bedrock in your account. 
 
 ## RDS Setup
-Create an RDS for PostgreSQL instance in the us-west-2 region. 
+Create an RDS for PostgreSQL instance in the us-west-2 region. Note that we are using RDS for PostgreSQL instead of Aurora.
 ```
 aws rds create-db-instance  --db-name pgrag --db-instance-identifier pgrag  --allocated-storage 50  --db-instance-class db.m5d.large --engine postgres  --master-username postgres --master-user-password Pass --db-subnet-group-name default-vpc-02ae294a0559bfea0  --engine-version  15.4  --publicly-accessible   --enable-cloudwatch-logs-exports  postgresql  --profile ec2  --region us-west-2
 ```
