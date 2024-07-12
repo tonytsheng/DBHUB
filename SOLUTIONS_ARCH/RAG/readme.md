@@ -1,4 +1,4 @@
-## GenAI Use Case with RDS for PostgreSQL and pgvector. 
+## RAG GenAI Use Case with RDS for PostgreSQL and pgvector. 
 Notes here for a slightly modified lab taken originally from https://catalog.workshops.aws/pgvector/en-US/4-retrieval-augmented-generation
 
 ## Region
