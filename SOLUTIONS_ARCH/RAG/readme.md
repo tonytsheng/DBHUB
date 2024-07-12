@@ -13,23 +13,15 @@ Create an RDS for PostgreSQL instance in the us-west-2 region. Note that we are 
 aws rds create-db-instance  --db-name pgrag --db-instance-identifier pgrag  --allocated-storage 50  --db-instance-class db.m5d.large --engine postgres  --master-username postgres --master-user-password Pass --db-subnet-group-name default-vpc-02ae294a0559bfea0  --engine-version  15.4  --publicly-accessible   --enable-cloudwatch-logs-exports  postgresql  --profile ec2  --region us-west-2
 ```
 
-open up 5432 security group in the default vpc security group
-
 ## Cloud9 Set up
 We are going to use an instance of Cloud9 to run the application code. Create a cloud9 environment in us-west-2. 
 - Choose ssh as the connection type.
 - Your public subnet must have enabled assign auto ip.
-- Run the following set up stesp in the lab.
-- Clone the github repo. Install libraries from the requirements file.
-```
-cd ~/environment
-git clone https://github.com/aws-samples/aurora-postgresql-pgvector
-python3 -m pip install -r requirements.txt
-```
 - Install postgresql libraries.
 ```
 sudo dnf install postgresql15.x86_64 postgresql15-server -y
 ```
+- Make sure you can access the RDS instance from the cloud9 instance.
 - Export the set of PG environment variables using the RDS instance that you just created. Also create the .env file.
 ```
 export PGUSER
@@ -47,6 +39,13 @@ PGVECTOR_PORT=$PGPORT
 PGVECTOR_DATABASE='$PGDATABASE'
 EOF
 cat .env
+```
+- Make sure you can access the RDS instance from the cloud9 instance.
+- Clone the github repo. Install libraries from the requirements file.
+```
+cd ~/environment
+git clone https://github.com/aws-samples/aurora-postgresql-pgvector
+python3 -m pip install -r requirements.txt
 ```
 ## Clean up any existing langchain tables.
 ```
