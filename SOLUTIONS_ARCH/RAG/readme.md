@@ -61,11 +61,13 @@ cd ~/environment/aurora-postgresql-pgvector/02_RetrievalAugmentedGeneration/02_Q
 run the app.py with streamlit
 streamlit run app.py --server.port 8080
 ```
-## from cloud9, use the Show App menu drop down, but use firefox for this
+## Interact with the app - use Firefox.
+- From the cloud9 IDE, click the Show App menu drop down.
 - Upload an Aurora FAQ pdf.
-- Ask the app questions in natural language.
+- Ask the app questions in natural language such as, "What is Amazon Aurora?"
 
-
+## Reference Architecture
+- RDS for PostgreSQL is used instead of Aurora.
 ![alt text](https://static.us-east-1.prod.workshops.aws/public/baa20ca5-b5e4-434d-9590-9a692e7127ba/static/Retrieval_Augmented_Generation/RAG_APG.png)
 
 
