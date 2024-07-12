@@ -26,6 +26,6 @@
   - ask the app questions in natural language
 
 
-! [alt text](https://static.us-east-1.prod.workshops.aws/public/baa20ca5-b5e4-434d-9590-9a692e7127ba/static/Retrieval_Augmented_Generation/RAG_APG.png)
+![alt text](https://static.us-east-1.prod.workshops.aws/public/baa20ca5-b5e4-434d-9590-9a692e7127ba/static/Retrieval_Augmented_Generation/RAG_APG.png)
 
 
