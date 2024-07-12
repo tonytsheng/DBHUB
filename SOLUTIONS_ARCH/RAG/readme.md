@@ -31,7 +31,12 @@ sudo dnf install postgresql15.x86_64 postgresql15-server -y
 ```
 - Export the set of PG environment variables using the RDS instance that you just created. Also create the .env file.
 ```
-export PGUSER, PGPASSWORD, PGHOST, PGPORT, PGDATABASE
+export PGUSER
+export PGPASSWORD
+export PGHOST
+export PGPORT
+export PGDATABASE
+
 cd ~/environment/aurora-postgresql-pgvector/02_RetrievalAugmentedGeneration/02_QuestionAnswering_Bedrock_LLMs
 cat > .env << EOF
 PGVECTOR_USER='$PGUSER'
