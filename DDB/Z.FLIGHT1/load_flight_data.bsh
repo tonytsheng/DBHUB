@@ -16,40 +16,40 @@ printenv
 
 print_msg "Requesting current flight info"
 # curl "http://api.aviationstack.com/v1/flights?access_key=cd1ac0711cea6e4539c43d322fc1ccd8" | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, .arrival.delay, .departure.iata, .departure.delay, .flight_status  ' | awk '/2021/{if (x)print x;x="";}{x=(!x)?$0:x","$0;}END{print x;}' >  DAT/flight.${TIMESTAMP}.csv
-curl "http://api.aviationstack.com/v1/flights?access_key=cd1ac0711cea6e4539c43d322fc1ccd8" | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, .departure.iata, .flight_status  ' | awk '/2021/{if (x)print x;x="";}{x=(!x)?$0:x","$0;}END{print x;}' | grep -v null >  ~/DBHUB/DYN/DAT/flight.${TIMESTAMP}.csv
+curl "http://api.aviationstack.com/v1/flights?access_key=cd1ac0711cea6e4539c43d322fc1ccd8" | jq ' .data[] | .flight_date, .flight.iata, .arrival.iata, .departure.iata, .flight_status  ' | awk '/2021/{if (x)print x;x="";}{x=(!x)?$0:x","$0;}END{print x;}' | grep -v null >  ~/DBHUB/DDB/DAT/flight.${TIMESTAMP}.csv
 
 #awk -F',' '{printf "    flight_resp = put_flight(%s, %s, %s, %s, %s, %s, %s ) \n",$1, $2, $3, $4, $5, $6, $7  }' DAT/flight.${TIMESTAMP}.csv | sed s/null/\"\"/g > DAT/insert.${TIMESTAMP}.py
-awk -F',' '{printf "    flight_resp = put_flight(%s, %s, %s, %s, %s  ) \n",$1, $2, $3, $4, $5   }' ~/DBHUB/DYN/DAT/flight.${TIMESTAMP}.csv | sed s/null/\"\"/g > ~/DBHUB/DYN/DAT/insert.${TIMESTAMP}.py
+awk -F',' '{printf "    flight_resp = put_flight(%s, %s, %s, %s, %s  ) \n",$1, $2, $3, $4, $5   }' ~/DBHUB/DDB/DAT/flight.${TIMESTAMP}.csv | sed s/null/\"\"/g > ~/DBHUB/DDB/DAT/insert.${TIMESTAMP}.py
 
-cp ~/DBHUB/DYN/insert.template.py ~/DBHUB/DYN/insert.py
-cat ~/DBHUB/DYN/DAT/insert.${TIMESTAMP}.py >> ~/DBHUB/DYN/insert.py
+cp ~/DBHUB/DDB/insert.template.py ~/DBHUB/DDB/insert.py
+cat ~/DBHUB/DDB/DAT/insert.${TIMESTAMP}.py >> ~/DBHUB/DDB/insert.py
 
-echo "    print(\"Put flight succeeded:\")" >> ~/DBHUB/DYN/insert.py
-echo "    pprint(flight_resp)" >> ~/DBHUB/DYN/insert.py
-echo "# snippet-end:[dynamodb.python.codeexample.MoviesItemOps01]" >> ~/DBHUB/DYN/insert.py
-echo "" >> ~/DBHUB/DYN/insert.py
-echo "os.system('aws --profile ec2 dynamodb scan --table-name flight --select \"COUNT\"')" >> ~/DBHUB/DYN/insert.py
+echo "    print(\"Put flight succeeded:\")" >> ~/DBHUB/DDB/insert.py
+echo "    pprint(flight_resp)" >> ~/DBHUB/DDB/insert.py
+echo "# snippet-end:[dynamodb.python.codeexample.MoviesItemOps01]" >> ~/DBHUB/DDB/insert.py
+echo "" >> ~/DBHUB/DDB/insert.py
+echo "os.system('aws --profile ec2 dynamodb scan --table-name flight --select \"COUNT\"')" >> ~/DBHUB/DDB/insert.py
 print_msg "Inserting into Dynamo"
-/usr/bin/python3 ~/DBHUB/DYN/insert.py
+/usr/bin/python3 ~/DBHUB/DDB/insert.py
 
 # upload to s3
 print_msg "Uploading CSV to S3"
 
-sed "s/\"//g" ~/DBHUB/DYN/DAT/flight.${TIMESTAMP}.csv > ~/DBHUB/DYN/DAT/flight.${TIMESTAMP}.1.csv
-aws --profile ec2 s3 cp ~/DBHUB/DYN/DAT/flight.${TIMESTAMP}.1.csv  s3://ttsheng-flightimp
+sed "s/\"//g" ~/DBHUB/DDB/DAT/flight.${TIMESTAMP}.csv > ~/DBHUB/DDB/DAT/flight.${TIMESTAMP}.1.csv
+aws --profile ec2 s3 cp ~/DBHUB/DDB/DAT/flight.${TIMESTAMP}.1.csv  s3://ttsheng-flightimp
 
 # create manifest for Quicksight
 print_msg "Generating manifest file"
-cp ~/DBHUB/DYN/MAN/manifest.head ~/DBHUB/DYN/MAN/manifest.${TIMESTAMP}
+cp ~/DBHUB/DDB/MAN/manifest.head ~/DBHUB/DDB/MAN/manifest.${TIMESTAMP}
 for l in `aws --profile ec2 s3 ls ttsheng-flightimp | awk -F' '  '{printf "\"https://ttsheng-ing.s3.amazonaws.com/%s\"\n",$4}' | sed '$!s/$/,/'`;do
-    echo $l >> ~/DBHUB/DYN/MAN/manifest.${TIMESTAMP}
+    echo $l >> ~/DBHUB/DDB/MAN/manifest.${TIMESTAMP}
 done
-cat ~/DBHUB/DYN/MAN/manifest.foot >> ~/DBHUB/DYN/MAN/manifest.${TIMESTAMP}
+cat ~/DBHUB/DDB/MAN/manifest.foot >> ~/DBHUB/DDB/MAN/manifest.${TIMESTAMP}
 
 # create data set in Quicksight
 
 print_msg "Manifest file below"
-cat ~/DBHUB/DYN/MAN/manifest.${TIMESTAMP}
+cat ~/DBHUB/DDB/MAN/manifest.${TIMESTAMP}
 
-rm ~/DBHUB/DYN/DAT/flight.${TIMESTAMP}.csv ~/DBHUB/DYN/DAT/flight.${TIMESTAMP}.1.csv ~/DBHUB/DYN/DAT/insert.${TIMESTAMP}.py ~/DBHUB/DYN/MAN/manifest.${TIMESTAMP}
+rm ~/DBHUB/DDB/DAT/flight.${TIMESTAMP}.csv ~/DBHUB/DDB/DAT/flight.${TIMESTAMP}.1.csv ~/DBHUB/DDB/DAT/insert.${TIMESTAMP}.py ~/DBHUB/DDB/MAN/manifest.${TIMESTAMP}
 
