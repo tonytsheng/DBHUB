@@ -2,7 +2,7 @@ count=0
 c=1
 total=100000
 year=$1
-outfile=$2
+outfile=$1
 while [ ${c} -lt 200000 ]
 do
 
@@ -12,13 +12,15 @@ do
     airline=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/airlinecode`
     flightnumber=`echo $RANDOM %25 | head -c2`
 
-    DEP=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/iata.dat`
-    ARR=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/iata.dat`
+    DEP=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/airports-large-nodes.csv | awk -F',' '{print $4}'`
+    ARR=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/airports-large-nodes.csv | awk -F',' '{print $4}'`
     STATUS=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/status`
-    TIMESTAMP=`date -d "$((RANDOM%1+${year}))-$((RANDOM%12+1))-$((RANDOM%28+1)) $((RANDOM%23+1)):$((RANDOM%59+1)):$((RANDOM%59+1)) " '+%Y-%m-%d %H:%m:%S'`
+
+    # hardcoding 2024 for the year, january for the month, and 31 days for the day
+    TIMESTAMP=`date -d "$((RANDOM%1+2024))-$((RANDOM%1+1))-$((RANDOM%31+1)) $((RANDOM%23+1)):$((RANDOM%59+1)):$((RANDOM%59+1)) " '+%Y-%m-%d %H:%m:%S'`
 
 #echo "    flight_resp = put_flight (\"$TIMESTAMP\", \"$flightno\", \"$DEP\", \"$ARR\", \"$STATUS\") "
-    echo "\"$TIMESTAMP\", \"$airline$flightnumber\", \"$DEP\", \"$ARR\", \"$STATUS\" "  >> $outfile
+    echo "\"$TIMESTAMP\", \"$airline$flightnumber\", \"$DEP\", \"$ARR\", \"$STATUS\" "  
     let c=c+1
 done
 
