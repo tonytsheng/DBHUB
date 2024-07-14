@@ -15,9 +15,9 @@ do
     DEP=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/iata.dat`
     ARR=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/iata.dat`
     STATUS=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/status`
-    TIMESTAMP=`date -d "$((RANDOM%1+${year}))-$((RANDOM%12+1))-$((RANDOM%28+1)) " '+%Y-%m-%d'`
+    TIMESTAMP=`date -d "$((RANDOM%1+${year}))-$((RANDOM%12+1))-$((RANDOM%28+1)) $((RANDOM%23+1)):$((RANDOM%59+1)):$((RANDOM%59+1)) " '+%Y-%m-%d %H:%m:%S'`
 
-    #echo "    flight_resp = put_flight (\"$TIMESTAMP\", \"$flightno\", \"$DEP\", \"$ARR\", \"$STATUS\") "
+#echo "    flight_resp = put_flight (\"$TIMESTAMP\", \"$flightno\", \"$DEP\", \"$ARR\", \"$STATUS\") "
     echo "\"$TIMESTAMP\", \"$airline$flightnumber\", \"$DEP\", \"$ARR\", \"$STATUS\" "  >> $outfile
     let c=c+1
 done
