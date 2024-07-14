@@ -1,0 +1,1 @@
+arn:aws:iam::768455386038:role/amazon-dynamodb-labs-DDBReplicationRole-1CXA5HGRUSUOK

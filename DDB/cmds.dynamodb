@@ -1,0 +1,371 @@
+dynamodb = boto3.setup_default_session(profile_name='ec2')
+
+aws dynamodb describe-table --table-name logfile --query "Table.TableStatus"
+
+aws --profile ec2 dynamodb put-item \
+  --table-name flight \
+  --item '{
+    "flight_number": {"S":"FJ1392"},
+    "flight_date": {"S":"2021-09-10"},
+    "dep": {"S":"NAN"},
+    "arr": {"S":"HKG"},
+    "status": {"S":"scheduled"}
+}' \
+--return-consumed-capacity TOTAL
+
+
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+
+# "2021-09-10", "FJ1392", "NAN", "", "HKG", "", "scheduled"
+
+
+aws --profile ec2 dynamodb scan --table-name flight --select "COUNT" 
+# run this after creating a global table
+aws dynamodb scan --region ap-southeast-2 --table-name flight --select "COUNT"
+
+aws dynamodb query --table-name flight \
+  --key-condition-expression "flight_date =:flight_date" \
+  --expression-attribute-values '{ ":flight_date" : { "S": "2021-10-09"} }'
+
+aws dynamodb query --region us-east-2 --table-name flight \
+  --key-condition-expression "flight_date =:flight_date AND flight_number =:flight_number" \
+  --expression-attribute-values '{ ":flight_date" : { "S": "2021-10-09"},
+                                   ":flight_number" : {"S": "ZO4040"}}'
+
+aws dynamodb list-tables
+
+aws dynamodb describe-table --table-name logfile
+
+aws dynamodb scan --table-name battle-royale --select COUNT --return-consumed-capacity TOTAL
+
+:~/DBHUB/DYN/LAB/application (master) $ aws dynamodb describe-table --table-name battle-royale
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "PK",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "SK",
+                "AttributeType": "S"
+            }
+        ],
+        "TableName": "battle-royale",
+        "KeySchema": [
+            {
+                "AttributeName": "PK",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "SK",
+                "KeyType": "RANGE"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": 1640630358.779,
+        "ProvisionedThroughput": {
+            "LastIncreaseDateTime": 1640630433.151,
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 100,
+            "WriteCapacityUnits": 100
+        },
+        "TableSizeBytes": 0,
+        "ItemCount": 0,
+        "TableArn": "arn:aws:dynamodb:us-east-2:070201068661:table/battle-royale",
+        "TableId": "550ab8d0-ea0d-441d-b1c0-bf7542b525dd"
+    }
+}
+:~/DBHUB/DYN/LAB/application (master) $ aws dynamodb describe-table --table-name battle-royale --query "Table.TableStatus"
+"ACTIVE"
+:~/DBHUB/DYN/LAB/application (master) $ aws dynamodb describe-table --table-name battle-royale --query "Table.CreationDateTime"
+1640630358.779
+:~/DBHUB/DYN (master) $ aws dynamodb describe-table --table-name battle-royale --query "Table.ProvisionedThroughput.WriteCapacityUnits"
+100
+:~/DBHUB/DYN/LAB/scripts (master) $ aws dynamodb describe-table --table-name battle-royale --query "Table.GlobalSecondaryIndexes[].IndexStatus"
+[
+    "CREATING"
+]
+
+
+##### python function below
+## note that 'map' is a reserved word
+def find_open_games_by_map(map_name):
+    resp = dynamodb.query(
+        TableName='battle-royale',
+        IndexName="OpenGamesIndex",
+        KeyConditionExpression="#map = :map",
+        ExpressionAttributeNames={
+            "#map": "map"
+        },
+        ExpressionAttributeValues={
+            ":map": { "S": map_name },
+        },
+        ScanIndexForward=True
+    )
+
+    games = [Game(item) for item in resp['Items']]
+
+    return games
+
+##### equivalant query cli command
+## note that 'map' is a reserved word
+:~/DBHUB/DYN (master) $ aws dynamodb query --table-name battle-royale --index-name OpenGamesIndex --key-condition-expression  "#map=:map" --expression-attribute-names '{ "#map" : "map"}' --expression-attribute-values '{ ":map" : { "S": "Green Grasslands"} } '
+{
+    "Items": [
+        {
+            "creator": {
+                "S": "jennifer32"
+            },
+            "people": {
+                "N": "1"
+            },
+            "map": {
+                "S": "Green Grasslands"
+            },
+            "create_time": {
+                "S": "2019-04-14T12:48:59"
+            },
+            "SK": {
+                "S": "#METADATA#14c7f97e-8354-4ddf-985f-074970818215"
+            },
+            "PK": {
+                "S": "GAME#14c7f97e-8354-4ddf-985f-074970818215"
+            },
+            "game_id": {
+                "S": "14c7f97e-8354-4ddf-985f-074970818215"
+            },
+            "open_timestamp": {
+                "S": "2019-04-14T12:48:59"
+            }
+        },
+        {
+            "creator": {
+                "S": "victoriapatrick"
+            },
+            "people": {
+                "N": "17"
+            },
+            "map": {
+                "S": "Green Grasslands"
+            },
+            "create_time": {
+                "S": "2019-04-15T05:34:34"
+            },
+            "SK": {
+                "S": "#METADATA#3d4285f0-e52b-401a-a59b-112b38c4a26b"
+            },
+            "PK": {
+                "S": "GAME#3d4285f0-e52b-401a-a59b-112b38c4a26b"
+            },
+            "game_id": {
+                "S": "3d4285f0-e52b-401a-a59b-112b38c4a26b"
+            },
+            "open_timestamp": {
+                "S": "2019-04-15T05:34:34"
+            }
+        },
+        {
+            "creator": {
+                "S": "pboyd"
+            },
+            "people": {
+                "N": "46"
+            },
+            "map": {
+                "S": "Green Grasslands"
+            },
+            "create_time": {
+                "S": "2019-04-15T12:55:44"
+            },
+            "SK": {
+                "S": "#METADATA#683680f0-02b0-4e5e-a36a-be4e00fc93f3"
+            },
+            "PK": {
+                "S": "GAME#683680f0-02b0-4e5e-a36a-be4e00fc93f3"
+            },
+            "game_id": {
+                "S": "683680f0-02b0-4e5e-a36a-be4e00fc93f3"
+            },
+            "open_timestamp": {
+                "S": "2019-04-15T12:55:44"
+            }
+        },
+        {
+            "creator": {
+                "S": "jackparks"
+            },
+            "people": {
+                "N": "34"
+            },
+            "map": {
+                "S": "Green Grasslands"
+            },
+            "create_time": {
+                "S": "2019-04-16T00:41:18"
+            },
+            "SK": {
+                "S": "#METADATA#0ab37cf1-fc60-4d93-b72b-89335f759581"
+            },
+            "PK": {
+                "S": "GAME#0ab37cf1-fc60-4d93-b72b-89335f759581"
+            },
+            "game_id": {
+                "S": "0ab37cf1-fc60-4d93-b72b-89335f759581"
+            },
+            "open_timestamp": {
+                "S": "2019-04-16T00:41:18"
+            }
+        }
+    ],
+    "Count": 4,
+    "ScannedCount": 4,
+    "ConsumedCapacity": null
+}
+
+## projection expression to limit attributes to return
+## note that map is a reserved word
+:~/DBHUB/DYN/LAB/application (master) $ aws dynamodb query --table-name battle-royale --index-name OpenGamesIndex --key-condition-expression  "#map=:map" --expression-attribute-names '{ "#map" : "map"}' --expression-attribute-values '{ ":map" : { "S": "Green Grasslands"} } ' --projection-expression 'open_timestamp, game_id, #map'
+{
+    "Items": [
+        {
+            "map": {
+                "S": "Green Grasslands"
+            },
+            "game_id": {
+                "S": "14c7f97e-8354-4ddf-985f-074970818215"
+            },
+            "open_timestamp": {
+                "S": "2019-04-14T12:48:59"
+            }
+        },
+        {
+            "map": {
+                "S": "Green Grasslands"
+            },
+            "game_id": {
+                "S": "3d4285f0-e52b-401a-a59b-112b38c4a26b"
+            },
+            "open_timestamp": {
+                "S": "2019-04-15T05:34:34"
+            }
+        },
+        {
+            "map": {
+                "S": "Green Grasslands"
+            },
+            "game_id": {
+                "S": "683680f0-02b0-4e5e-a36a-be4e00fc93f3"
+            },
+            "open_timestamp": {
+                "S": "2019-04-15T12:55:44"
+            }
+        },
+        {
+            "map": {
+                "S": "Green Grasslands"
+            },
+            "game_id": {
+                "S": "0ab37cf1-fc60-4d93-b72b-89335f759581"
+            },
+            "open_timestamp": {
+                "S": "2019-04-16T00:41:18"
+            }
+        }
+    ],
+    "Count": 4,
+    "ScannedCount": 4,
+    "ConsumedCapacity": null
+}
+
+## Lab/Demo commands
+aws dynamodb scan  --table-name battle-royale --projection-expression "username, game_id" --return-consumed-capacity TOTAL
+
+aws dynamodb scan  --table-name battle-royale --index-name UserGameIndex --projection-expression "username, game_id" --return-consumed-capacity TOTAL
+
+aws dynamodb query --table-name battle-royale --index-name UserGameIndex --projection-expression "username, game_id" --return-consumed-capacity TOTAL --expression-attribute-values '{ ":username" : { "S": "angelaoliver"} } ' --key-condition-expression  "username=:username"
+
+aws dynamodb scan --table-name battle-royale --projection-expression "PK, game_id" --return-consumed-capacity TOTAL
+
+aws dynamodb query --table-name battle-royale --projection-expression "PK, game_id" --return-consumed-capacity TOTAL --expression-attribute-values '{ ":PK" : { "S": "GAME#3a816c56-53e9-4d42-a76d-fa4af24b9842"} } ' --key-condition-expression  "PK=:PK"
+
+
+# DynamoDB to csv
+aws dynamodb scan --table-name my-table --select ALL_ATTRIBUTES --page-size 500 --max-items 100000 --output json | jq -r '.Items' | jq -r '(.[0] | keys_unsorted) as $keys | $keys, map([.[ $keys[] ].S])[] | @csv' 
+
+
+aws dynamodb query --table-name flight   \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"   \
+  --return-consumed-capacity TOTAL   \
+  --expression-attribute-values '{ ":flight_date" : { "S": "2021-10-30"} } '   \
+  --key-condition-expression  "flight_date=:flight_date"
+
+aws dynamodb query --table-name flight   \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"   \
+  --return-consumed-capacity TOTAL   \
+  --expression-attribute-values '{ ":departure_airport" : { "S": "MEL"} } '   \
+  --key-condition-expression  "departure_airport=:departure_airport"
+
+An error occurred (ValidationException) when calling the Query operation: Query condition missed key schema element: flight_date
+# No GSI to query on departure_airport
+# Add a GSI on PK:departure_airport, SK:flight_date
+# see index being created by describe-table
+
+aws dynamodb query --table-name flight     \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"     \
+  --return-consumed-capacity TOTAL     \
+  --expression-attribute-values '{ ":departure_airport" : { "S": "MEL"} } '     \
+  --key-condition-expression  "departure_airport=:departure_airport" \
+  --index-name departure_airport-flight_date-index
+# returns 752 rows
+# note GSI is PK:departure_airport, SK:flight_date
+# note GSI can have different pk and sk from the base table
+# LSI must have same pk as base table but can have different sk
+
+aws dynamodb query --table-name flight     \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"     \
+  --return-consumed-capacity TOTAL     \
+  --expression-attribute-values '{ ":arrival_airport" : { "S": "MEL"} } '     \
+  --key-condition-expression  "arrival_airport=:arrival_airport"
+
+An error occurred (ValidationException) when calling the Query operation: Query condition missed key schema element: flight_date
+
+aws dynamodb query --table-name flight   \
+  --projection-expression "flight_date, flight_number, flight_status, departure_airport"   \
+  --return-consumed-capacity TOTAL   \
+  --expression-attribute-values '{ ":flight_date" : { "S": "2021-10-30"} } '   \
+  --key-condition-expression  "flight_date=:flight_date" \
+  --index-name departure_airport-flight_date-index
+An error occurred (ValidationException) when calling the Query operation: Query condition missed key schema element: departure_airport
+
+aws dynamodb update-table \
+    --table-name flight \
+    --attribute-definitions AttributeName=arrival_airport,AttributeType=S \
+    --global-secondary-index-updates \
+        "[{\"Create\":{\"IndexName\": \"arrival_airport-index\",\"KeySchema\":[{\"AttributeName\":\"arrival_airport\",\"KeyType\":\"HASH\"}], \
+        \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
+# can also do this through console or python script
+
+aws dynamodb update-table --table-name 'logfile' --stream-specification StreamEnabled=true,StreamViewType=NEW_IMAGE
+
+aws lambda create-function --function-name cancelled_lambda --zip-file fileb://function.zip --handler cancelled_flight.lambda_handler --timeout 60 --runtime python3.7 --role arn:aws:iam::070201068661:role/ttsheng-lambda-dynamodb-role
+
+aws lambda create-event-source-mapping --function-name ddbreplica_lambda --enabled --batch-size 100 --starting-position TRIM_HORIZON --event-source-arn arn:aws:dynamodb:us-east-2:070201068661:table/logfile/stream/2022-01-06T00:56:38.634
+
+aws lambda create-event-source-mapping --function-name cancelled_lambda --enabled --batch-size 100 --starting-position TRIM_HORIZON --event-source-arn arn:aws:dynamodb:us-east-2:070201068661:table/flight/stream/2021-12-09T16:17:02.414
+
+aws dynamodb create-table \
+    --table-name tab1 \
+    --attribute-definitions \
+        AttributeName=p,AttributeType=S \
+        AttributeName=r,AttributeType=S \
+    --key-schema \
+        AttributeName=p,KeyType=HASH \
+        AttributeName=r,KeyType=RANGE \
+    --provisioned-throughput \
+        ReadCapacityUnits=10,WriteCapacityUnits=5
+
+
+aws dynamodb query --table-name Music  \ 
+--key-condition-expression "ArtistName=:Artist and SongName=:Songtitle" 
+
