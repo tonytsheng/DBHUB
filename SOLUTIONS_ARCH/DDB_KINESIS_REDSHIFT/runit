@@ -1,0 +1,4 @@
+./1.gen_flight_data.bsh >> t1.out
+python3 2.csv_load_flight.py flight t1.out
+rm t1.out
+
