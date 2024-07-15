@@ -19,7 +19,7 @@ Run your ingest process for a few minutes. Check the Monitoring tab on the strea
 
 6. Set up streaming ingestion from Kinesis Data Streams
 Redshift uses a materalized view which is updated directly from the stream when REFRESH is run.
-
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -45,25 +45,27 @@ Redshift uses a materalized view which is updated directly from the stream when 
         }
     ]
 }
-
+```
 6. Add IAM role to Redshift cluster.
 Or in my case, take existing IAM role and add Kinesis Admin to it.
 Then add the IAM role to the Redshift cluster.
 
 6. Login to Redshift cluster
-```psql "host=redshift-cluster-1.cst0cjwllvlj.us-east-2.redshift.amazonaws.com user=awsuser dbname=dev port=5439 password=Pass"
+```
+psql "host=redshift-cluster-1.cst0cjwllvlj.us-east-2.redshift.amazonaws.com user=awsuser dbname=dev port=5439 password=Pass"
 ```
 
 7. Create external schema
+```
 drop schema demo_schema;
 
 CREATE EXTERNAL SCHEMA demo_schema
 FROM KINESIS
 IAM_ROLE 'arn:aws:iam::1234:role/ttsheng-redshift-etc' ;
-
-
+```
 
 8. Create MV
+```
 drop materialized view demo_stream_vw;
 
 CREATE MATERIALIZED VIEW demo_stream_vw AS
@@ -76,5 +78,6 @@ CREATE MATERIALIZED VIEW demo_stream_vw AS
 
 
 refresh materialized view demo_stream_vw;
+```
 
 
