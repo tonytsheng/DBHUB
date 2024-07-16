@@ -78,6 +78,84 @@ CREATE MATERIALIZED VIEW demo_stream_vw AS
 
 
 refresh materialized view demo_stream_vw;
+INFO:  Materialized view demo_stream_vw was incrementally updated successfully.
+REFRESH
+-- you can also create a materialized view with auto refresh
 ```
+
+9. Select count from the view. Select * from the view.
+```
+ approximate_arrival_timestamp |          partition_key           |       shard_id       |                     sequence_numbe
+r                      |
+
+
+                     payload
+
+
+
+-------------------------------+----------------------------------+----------------------+-----------------------------------
+-----------------------+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-------------------------
+ 2024-07-15 02:39:26.136       | 68406A366BD60300C59F519142163A14 | shardId-000000000000 | 4965393457740317227003640323652322
+9901717376203382325250 | {"awsRegion":"us-east-2","eventID":"f89436e0-627d-4d37-9879-42f86249aa83","eventName":"INSERT","user
+Identity":null,"recordFormat":"application/json","tableName":"flight","dynamodb":{"ApproximateCreationDateTime":1721011165891
+550,"Keys":{"flight_date":{"S":"2024-01-23 04:01:53"},"flight_number":{"S":" \"BA28\""}},"NewImage":{"arr":{"S":" \"TZX\""},"
+flight_number":{"S":" \"BA28\""},"status":{"S":" \"CANCELLED\" "},"dep":{"S":" \"PEE\""},"flight_date":{"S":"2024-01-23 04:01
+:53"}},"SizeBytes":137,"ApproximateCreationDateTimePrecision":"MICROSECOND"},"eventSource":"aws:dynamodb"}
+ 2024-07-15 02:39:26.137       | 3F434FB798726BE01C2AD3335E9F9B79 | shardId-000000000000 | 4965393457740317227003640323652564
+7753356605461731737602 | {"awsRegion":"us-east-2","eventID":"3af8d9d2-5644-4f50-b8bf-2f2fbab3f9c2","eventName":"INSERT","user
+Identity":null,"recordFormat":"application/json","tableName":"flight","dynamodb":{"ApproximateCreationDateTime":1721011165902
+277,"Keys":{"flight_date":{"S":"2024-01-08 03:01:09"},"flight_number":{"S":" \"AS22\""}},"NewImage":{"arr":{"S":" \"YYT\""},"
+flight_number":{"S":" \"AS22\""},"status":{"S":" \"DEPARTED\" "},"dep":{"S":" \"TYS\""},"flight_date":{"S":"2024-01-08 03:01:
+09"}},"SizeBytes":136,"ApproximateCreationDateTimePrecision":"MICROSECOND"},"eventSource":"aws:dynamodb"}
+
+dev=# select json_serialize (payload) from demo_stream_vw;
+
+
+                                                                                                                      json_se
+rialize
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+-
+ {"awsRegion":"us-east-2","eventID":"f89436e0-627d-4d37-9879-42f86249aa83","eventName":"INSERT","userIdentity":null,"recordFo
+rmat":"application/json","tableName":"flight","dynamodb":{"ApproximateCreationDateTime":1721011165891550,"Keys":{"flight_date
+":{"S":"2024-01-23 04:01:53"},"flight_number":{"S":" \"BA28\""}},"NewImage":{"arr":{"S":" \"TZX\""},"flight_number":{"S":" \"
+BA28\""},"status":{"S":" \"CANCELLED\" "},"dep":{"S":" \"PEE\""},"flight_date":{"S":"2024-01-23 04:01:53"}},"SizeBytes":137,"
+ApproximateCreationDateTimePrecision":"MICROSECOND"},"eventSource":"aws:dynamodb"}
+ {"awsRegion":"us-east-2","eventID":"3af8d9d2-5644-4f50-b8bf-2f2fbab3f9c2","eventName":"INSERT","userIdentity":null,"recordFo
+rmat":"application/json","tableName":"flight","dynamodb":{"ApproximateCreationDateTime":1721011165902277,"Keys":{"flight_date
+":{"S":"2024-01-08 03:01:09"},"flight_number":{"S":" \"AS22\""}},"NewImage":{"arr":{"S":" \"YYT\""},"flight_number":{"S":" \"
+AS22\""},"status":{"S":" \"DEPARTED\" "},"dep":{"S":" \"TYS\""},"flight_date":{"S":"2024-01-08 03:01:09"}},"SizeBytes":136,"A
+pproximateCreationDateTimePrecision":"MICROSECOND"},"eventSource":"aws:dynamodb"}
+ {"awsRegion":"us-east-2","eventID":"75d273d4-86e9-4dd2-b0a6-e13885cfaf7e","eventName":"INSERT","userIdentity":null,"recordFo
+rmat":"application/json","tableName":"flight","dynamodb":{"ApproximateCreationDateTime":1721011165912948,"Keys":{"flight_date
+":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":" \"AC31\""}},"NewImage":{"arr":{"S":" \"FRA\""},"flight_number":{"S":" \"
+AC31\""},"status":{"S":" \"ARRIVED\" "},"dep":{"S":" \"NCL\""},"flight_date":{"S":"2024-01-19 05:01:49"}},"SizeBytes":135,"Ap
+proximateCreationDateTimePrecision":"MICROSECOND"},"eventSource":"aws:dynamodb"}
+```
+
+select 
+substring(a."payload"."dynamodb"."Keys"."pk"."S"::varchar, position('#' in "payload"."dynamodb"."Keys"."pk"."S"::varchar)) as flight_date
+from demo_stream_vw;
+
+select 
+substring(a."payload"."dynamodb"."Keys"."S"::varchar) as flight_date
+from demo_stream_vw;
+
+
+
+10. Do whatever you want from the view into a real table.
 
 
