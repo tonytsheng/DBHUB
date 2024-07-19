@@ -166,6 +166,8 @@ mateCreationDateTimePrecision":"MICROSECOND"}
 
 ```
 
+dev=# select approximate_arrival_timestamp, "payload"."dynamodb"."NewImage" from demo_stream_vw;
+
 10. Do whatever you want from the view into a real table.
 
 
