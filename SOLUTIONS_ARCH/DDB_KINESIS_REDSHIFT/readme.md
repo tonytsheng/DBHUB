@@ -144,17 +144,27 @@ rmat":"application/json","tableName":"flight","dynamodb":{"ApproximateCreationDa
 ":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":" \"AC31\""}},"NewImage":{"arr":{"S":" \"FRA\""},"flight_number":{"S":" \"
 AC31\""},"status":{"S":" \"ARRIVED\" "},"dep":{"S":" \"NCL\""},"flight_date":{"S":"2024-01-19 05:01:49"}},"SizeBytes":135,"Ap
 proximateCreationDateTimePrecision":"MICROSECOND"},"eventSource":"aws:dynamodb"}
+
+dev=# select approximate_arrival_timestamp, "payload"."dynamodb" from demo_stream_vw;
+approximate_arrival_timestamp |
+                                                                                                                        dynamodb
+
+
+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------
+ 2024-07-15 02:39:26.136       | {"ApproximateCreationDateTime":1721011165891550,"Keys":{"flight_date":{"S":"2024-01-23 04:01:53"},"flight_number":{"S":" \"BA28\""}},"NewImage":{
+"arr":{"S":" \"TZX\""},"flight_number":{"S":" \"BA28\""},"status":{"S":" \"CANCELLED\" "},"dep":{"S":" \"PEE\""},"flight_date":{"S":"2024-01-23 04:01:53"}},"SizeBytes":137,"Appro
+ximateCreationDateTimePrecision":"MICROSECOND"}
+ 2024-07-15 02:39:26.137       | {"ApproximateCreationDateTime":1721011165902277,"Keys":{"flight_date":{"S":"2024-01-08 03:01:09"},"flight_number":{"S":" \"AS22\""}},"NewImage":{
+"arr":{"S":" \"YYT\""},"flight_number":{"S":" \"AS22\""},"status":{"S":" \"DEPARTED\" "},"dep":{"S":" \"TYS\""},"flight_date":{"S":"2024-01-08 03:01:09"}},"SizeBytes":136,"Approx
+imateCreationDateTimePrecision":"MICROSECOND"}
+ 2024-07-15 02:39:26.137       | {"ApproximateCreationDateTime":1721011165912948,"Keys":{"flight_date":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":" \"AC31\""}},"NewImage":{
+"arr":{"S":" \"FRA\""},"flight_number":{"S":" \"AC31\""},"status":{"S":" \"ARRIVED\" "},"dep":{"S":" \"NCL\""},"flight_date":{"S":"2024-01-19 05:01:49"}},"SizeBytes":135,"Approxi
+mateCreationDateTimePrecision":"MICROSECOND"}
+
 ```
-
-select 
-substring(a."payload"."dynamodb"."Keys"."pk"."S"::varchar, position('#' in "payload"."dynamodb"."Keys"."pk"."S"::varchar)) as flight_date
-from demo_stream_vw;
-
-select 
-substring(a."payload"."dynamodb"."Keys"."S"::varchar) as flight_date
-from demo_stream_vw;
-
-
 
 10. Do whatever you want from the view into a real table.
 

@@ -17,3 +17,23 @@ FROM information_schema.tables
 WHERE table_type = 'BASE TABLE'
 AND table_schema NOT IN ('pg_catalog', 'information_schema');
 
+-- materialized views
+
+dev=# select table_name, view_definition from information_schema.views where table_name like 'd%';
+      table_name      |               view_definition
+----------------------+---------------------------------------------
+ domain_constraints   |
+ domain_udt_usage     |
+ domains              |
+ data_type_privileges |
+ demo_stream_vw       | CREATE MATERIALIZED VIEW demo_stream_vw AS +
+                      |     SELECT approximate_arrival_timestamp,  +
+                      |     partition_key,                         +
+                      |     shard_id,                              +
+                      |     sequence_number,                       +
+                      |     json_parse(kinesis_data) as payload    +
+                      |     FROM demo_schema."ddb-rs";
+
+
+CTE - common table expressions - WITH clause
+https://www.postgresql.org/docs/current/queries-with.html
