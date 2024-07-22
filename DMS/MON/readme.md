@@ -17,5 +17,9 @@ aws cloudwatch list-dashboards
 aws cloudwatch delete-dashboards <YOUR DASHBOARD NAME>
 ```
 
-2. code
+2. Some sample bash scripts to pull table statistics.
+mon2.bsh
+mon_rep_load.bsh
+
+
 
