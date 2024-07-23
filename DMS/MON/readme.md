@@ -23,7 +23,7 @@ This dashboard watches the following metrics:
 - FullLoadThroughputRowsTarget
 - FullLoadThroughputRowsSource
 
-deploy with the command:
+Deploy with the command:
 ```
 aws cloudwatch put-dashboard  --cli-input-json file://<YOUR FILE>.json
 ## more helpful commands:
@@ -32,8 +32,8 @@ aws cloudwatch delete-dashboards <YOUR DASHBOARD NAME>
 ```
 
 2. Some sample bash scripts to pull table statistics.
-mon2.bsh
-mon_rep_load.bsh
+- mon2.bsh
+- mon_rep_load.bsh
 
 
 
