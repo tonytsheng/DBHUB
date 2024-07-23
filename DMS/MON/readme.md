@@ -25,7 +25,7 @@ This dashboard watches the following metrics:
 
 Deploy with the command:
 ```
-aws cloudwatch put-dashboard  --cli-input-json file://<YOUR FILE>.json
+aws cloudwatch put-dashboard --cli-input-json file://<YOUR FILE>.json
 ## more helpful commands:
 aws cloudwatch list-dashboards
 aws cloudwatch delete-dashboards <YOUR DASHBOARD NAME>
