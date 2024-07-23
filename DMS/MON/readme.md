@@ -1,13 +1,27 @@
 ## Some Tools to Monitor DMS
 
 1. CloudWatch dashboard
-copy the dmswatch.json file to your own.
-substitute values in this file for your own:
-- region
+Copy the dmswatch.json file to your own. Substitute values in this file for your own:
+- Region
 - ReplicationInstanceIdentifier
 - ReplicationInstanceExternalResourceId
 - ReplicationTaskIdentifier
 - DashboardName
+
+This dashboard watches the following metrics:
+- SwapUsage
+- FreeableMemory
+- MemoryUsage
+- CPUUtilization
+- WriteThroughput
+- CDCLatencyTarget
+- CDCLatencySource
+- CDCChangesDiskSource
+- CDCChangesDiskTarget
+- WriteIOPS
+- ReadIOPS
+- FullLoadThroughputRowsTarget
+- FullLoadThroughputRowsSource
 
 deploy with the command:
 ```
