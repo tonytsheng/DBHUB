@@ -1,3 +1,5 @@
+SET enable_case_sensitive_identifier to TRUE;
+
 create table customers (id smallint, details super);
 
 insert into customers values (4, JSON_PARSE('{"name":"John", "age":31, "city":"New York"}'));
@@ -120,3 +122,47 @@ insert into customers (details) values (JSON_PARSE('{"created_date":"17210111658
 insert into customers (details) values (JSON_PARSE('{"created_date":"2024-09-01","Keys":{"flight_date":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":"AC31"}}}' ));
 insert into customers (details) values (JSON_PARSE('{"created_date":1721011165891550,"Keys":{"flight_date":"2024-01-19 05:01:49","flight_number":"AC31"}}' ));
 insert into customers (details) values (JSON_PARSE('{"created_date":1721011165891550,"flight_date":"2024-01-19 05:01:49","flight_number":"AC31"}' ));
+
+dev=# SET enable_case_sensitive_identifier to TRUE;
+SET
+dev=# select * from customers;
+ id |                                                       details
+----+---------------------------------------------------------------------------------------------------------------------
+  1 | {"created_date":1721011165891550,"Keys":{"flight_date":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":"AC31"}}}
+  2 | {"created_date":"1721011165891550","Keys":{"flight_date":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":"AC31"}}}
+  3 | {"created_date":"2024-09-01","Keys":{"flight_date":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":"AC31"}}}
+  4 | {"created_date":1721011165891550,"Keys":{"flight_date":"2024-01-19 05:01:49","flight_number":"AC31"}}
+  5 | {"created_date":1721011165891550,"flight_date":"2024-01-19 05:01:49","flight_number":"AC31"}
+(5 rows)
+
+dev=# select details.created_date from customers;
+    created_date
+--------------------
+ 1721011165891550
+ "1721011165891550"
+ "2024-09-01"
+ 1721011165891550
+ 1721011165891550
+(5 rows)
+
+dev=# select details.created_date, details."Keys" from customers;
+    created_date    |                                   Keys
+--------------------+--------------------------------------------------------------------------
+ 1721011165891550   | {"flight_date":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":"AC31"}}
+ "1721011165891550" | {"flight_date":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":"AC31"}}
+ "2024-09-01"       | {"flight_date":{"S":"2024-01-19 05:01:49"},"flight_number":{"S":"AC31"}}
+ 1721011165891550   | {"flight_date":"2024-01-19 05:01:49","flight_number":"AC31"}
+ 1721011165891550   |
+(5 rows)
+
+dev=# select details.created_date, details."Keys"."flight_date" from customers;
+    created_date    |         flight_date
+--------------------+-----------------------------
+ 1721011165891550   | {"S":"2024-01-19 05:01:49"}
+ "1721011165891550" | {"S":"2024-01-19 05:01:49"}
+ "2024-09-01"       | {"S":"2024-01-19 05:01:49"}
+ 1721011165891550   | "2024-01-19 05:01:49"
+ 1721011165891550   |
+(5 rows)
+
+
