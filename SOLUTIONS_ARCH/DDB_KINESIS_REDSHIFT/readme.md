@@ -242,7 +242,10 @@ COND"},"eventSource":"aws:dynamodb"}
 ":{"S":" \"AS22\""},"status":{"S":" \"DEPARTED\" "},"dep":{"S":" \"TYS\""},"flight_date":{"S":"2024-01-08 03:01:09"}},"SizeBytes":136,"ApproximateCreationDateTimePrecision":"MICROSEC
 OND"},"eventSource":"aws:dynamodb"}
                        |  "YYT"
-dev=# select count(*), payload."dynamodb"."NewImage"."arr"."S"::varchar  from demo_stream_vw group by payload."dynamodb"."NewImage"."arr"."S"::varchar order by payload."dynamodb"."NewImage"."arr"."S"::varchar ;
+dev=# select count(*), payload."dynamodb"."NewImage"."arr"."S"::varchar  
+from demo_stream_vw 
+group by payload."dynamodb"."NewImage"."arr"."S"::varchar 
+order by payload."dynamodb"."NewImage"."arr"."S"::varchar ;
  count |   S
 -------+--------
     41 |  "AAL"
@@ -274,7 +277,46 @@ dev=# select count(*), payload."dynamodb"."NewImage"."arr"."S"::varchar  from de
     45 |  "ATH"
     43 |  "ATL"
     36 |  "ATQ"
+
+dev=# select distinct date_part(day, approximate_arrival_timestamp) from demo_stream_vw;
+ pgdate_part
+-------------
+          15
+          16
+(2 rows)
+
+-- Used Redshift Q to generate this query as a template
+SELECT
+  EXTRACT(
+    HOUR
+    FROM
+      arrival_ts
+  ) AS hour,
+  arr,
+  COUNT(*) AS count
+FROM
+  public.airflight
+GROUP BY
+  hour,
+  arr
+
+SELECT
+  EXTRACT( HOUR FROM approximate_arrival_timestamp) AS hour
+  , payload."dynamodb"."NewImage"."arr"."S"::varchar as arrival
+  , COUNT(*) AS count
+FROM
+  demo_stream_vw
+GROUP BY
+  hour
+  , arrival
+ORDER BY
+  hour
+  , arrival;
+-- put this into a stored proc that runs once an hour
 ```
+
+
+
 
 10. Do whatever you want from the view into a real table.
 
