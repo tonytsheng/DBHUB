@@ -17,7 +17,8 @@ do
     STATUS=`shuf -n 1 /home/ec2-user/DBHUB/APPS/REFDATA/status`
 
     # hardcoding 2024 for the year, january for the month, and 31 days for the day
-    TIMESTAMP=`date -d "$((RANDOM%1+2024))-$((RANDOM%1+1))-$((RANDOM%31+1)) $((RANDOM%23+1)):$((RANDOM%59+1)):$((RANDOM%59+1)) " '+%Y-%m-%d %H:%m:%S'`
+#    TIMESTAMP=`date -d "$((RANDOM%1+2024))-$((RANDOM%1+1))-$((RANDOM%31+1)) $((RANDOM%23+1)):$((RANDOM%59+1)):$((RANDOM%59+1)) " '+%Y-%m-%d %H:%m:%S'`
+    TIMESTAMP=`date '+%Y-%m-%d %H:%m:%S'`
 
 #echo "    flight_resp = put_flight (\"$TIMESTAMP\", \"$flightno\", \"$DEP\", \"$ARR\", \"$STATUS\") "
     echo "\"$TIMESTAMP\", \"$airline$flightnumber\", \"$DEP\", \"$ARR\", \"$STATUS\" "  
