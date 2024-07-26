@@ -1,0 +1,4 @@
+-bash: /home/ec2-user/DBHUB/SOLUTIONS_ARCH/DDB_KINESIS_REDSHIFT/runit.bsh: No such file or directory
+/home/ec2-user/DBHUB/SOLUTIONS_ARCH/DDB_KINESIS_REDSHIFT/runit: line 3: unexpected EOF while looking for matching `]'
+row: 100 in 17.02026057243347
+RowCount: 199, Total seconds: 37.641480922698975

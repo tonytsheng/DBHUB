@@ -29,3 +29,17 @@ ORDER BY
   , arrival;
 
 
+
+SELECT
+  EXTRACT( DAY FROM approximate_arrival_timestamp) AS day_of_month
+  , payload."dynamodb"."NewImage"."status"."S"::varchar as status
+  , COUNT(*) AS count
+FROM
+  demo_stream_vw
+GROUP BY
+  day_of_month
+  , status
+ORDER BY
+  count desc,
+  status
+  , day_of_month;

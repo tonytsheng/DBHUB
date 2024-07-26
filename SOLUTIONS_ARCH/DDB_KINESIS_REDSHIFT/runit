@@ -1,4 +1,8 @@
-./1.gen_flight_data.bsh >> t1.out
-python3 2.csv_load_flight.py flight t1.out
-rm t1.out
+date
+
+HERE=/home/ec2-user/DBHUB/SOLUTIONS_ARCH/DDB_KINESIS_REDSHIFT
+
+${HERE}/1.gen_flight_data.bsh >> ${HERE}/t1.out
+python3 ${HERE}/2.csv_load_flight.py flight ${HERE}/t1.out
+rm ${HERE}/t1.out
 
