@@ -48,12 +48,17 @@ pg102=> SELECT name,setting FROM pg_settings WHERE name IN ('wal_level','rds.log
 (2 rows)
 ```
 
-3. Create test replication tables on the source and target. Create them in the public schema at least for testing.
+3. Create test replication tables on the source and target. Create them in the same schema, in this case, public. 
 ```
 pg102=> CREATE TABLE public.reptab1 (slno int primary key);
 CREATE TABLE
 pg102=> CREATE TABLE public.reptab2 (name varchar(20));
 CREATE TABLE
+postgres=# CREATE TABLE reptab1 (slno int primary key);
+CREATE TABLE
+postgres=# CREATE TABLE reptab2 (name varchar(20));
+CREATE TABLE
+
 ```
 
 4. Load data into the source tables.
