@@ -57,6 +57,7 @@ CREATE TABLE
 ```
 
 4. Load data into the source tables.
+```
 pg102=> INSERT INTO public.reptab1 VALUES (generate_series(1,1000));
 INSERT 0 1000
 pg102=> INSERT INTO public.reptab2 SELECT SUBSTR ('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',((random()*(36-1)+1)::integer),1) FROM generate_series(1,50);
@@ -66,7 +67,7 @@ pg102=> select count(*) from public.reptab1;
 -------
   1000
 (1 row)
-
+```
 5. Create a publication on the source database.
 ```
 pg102=> CREATE PUBLICATION testpub FOR TABLE public.reptab1, public.reptab2;
@@ -112,8 +113,7 @@ postgres=# SELECT count(*) FROM reptab2;
 (1 row)
 ```
 
-
-
-
-
-
+8. Clean up
+- On the target, DROP SUBSCRIPTION testsub;
+- On the source, DROP PUBLICATION testpub;
+- Modify rds.logical_replication to 0 in the custom parameter group that is attached to the source database instance.
