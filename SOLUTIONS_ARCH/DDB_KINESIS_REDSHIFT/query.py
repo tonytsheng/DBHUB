@@ -7,7 +7,7 @@ from botocore.client import Config
  
 print('Loading function')
 
-secret_name=os.environ['SecretId'] # getting SecretId from Environment varibales
+#secret_name=os.environ['SecretId'] # getting SecretId from Environment varibales
 session = boto3.session.Session()
 region = session.region_name
 
@@ -18,7 +18,7 @@ client = session.client(
     )
 
 get_secret_value_response = client.get_secret_value(
-        SecretId=redshift-cluster-1-secret
+        SecretId='redshift-clu-1-secret'
     )
 secret_arn=get_secret_value_response['ARN']
 
@@ -27,6 +27,8 @@ secret = get_secret_value_response['SecretString']
 secret_json = json.loads(secret)
 
 cluster_id=secret_json['dbClusterIdentifier']
+print (secret_json)
+print (cluster_id)
 
 # Initializing Botocore client
 bc_session = bc.get_session()
@@ -43,7 +45,7 @@ client_redshift = session.client("redshift-data", config = config)
 def lambda_handler(event, context):
     print("Entered lambda_handler")
 
-    query_str = "create table public.lambda_func (id int);"
+    query_str = "select count(*) from demo_stream_vw; "
     try:
         result = client_redshift.execute_statement(Database= 'dev', SecretArn= secret_arn, Sql= query_str, ClusterIdentifier= cluster_id)
         print("API successfully executed")

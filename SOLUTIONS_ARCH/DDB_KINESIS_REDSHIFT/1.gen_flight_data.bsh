@@ -3,7 +3,7 @@ c=1
 total=100
 year=$1
 outfile=$1
-while [ ${c} -lt 500 ]
+while [ ${c} -lt 50 ]
 do
 
     seatnumber=`echo $RANDOM %25 | head -c2`
