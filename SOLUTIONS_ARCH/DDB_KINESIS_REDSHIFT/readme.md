@@ -319,4 +319,4 @@ ORDER BY
 ```
 10. Do whatever you want from the view into a real table.
 
-
+11. Build a custom CloudWatch dashboard for your Kinesis stream for monitoring.
