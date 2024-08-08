@@ -4,8 +4,9 @@ https://repost.aws/knowledge-center/rds-postgresql-use-logical-replication
 
 PostgreSQL uses a publication-subscription model so on the source database, you will create a publication and on the target you will subscribe to this publication.
 
-1. Build a self managed PostgreSQL database running on an ec2 instance for your target.
+1. Build a self managed PostgreSQL database running on an EC2 instance for your target.
 See https://hbayraktar.medium.com/how-to-install-postgresql-15-on-amazon-linux-2023-a-step-by-step-guide-57eebb7ad9fc
+Once your EC2 machine has been configured:
 ```
 % sudo -i -u postgres psql
 CREATE USER ttsheng WITH PASSWORD 'password';
@@ -19,8 +20,7 @@ psql -h localhost -U ttsheng -d pg900
 pg900=> create table t1 (col1 int);
 CREATE TABLE
 ```
-- ensure that everything works with it
-- ensure you can connect from outside the local host
+  - ensure you can connect from outside the local host
 ```
 [ec2-user@ip-10-0-0-92 ~]$ psql -h ec2-18-222-129-83.us-east-2.compute.amazonaws.com -U ttsheng -d pg900
 Password for user ttsheng:
@@ -38,10 +38,7 @@ pg900=> \q
 ```
 
 2. Configure your RDS for Postgresql database for replication.
-- modify custom parameter group
-set rds.logical_replication to 1 
-[if you restored your RDS instance from another one, the database name will be the same as the original.]
-confirm this is correct.
+- Modify your custom parameter group setting rds.logical_replication to 1.  Confirm this is correct.
 ```
 pg102=> SELECT name,setting FROM pg_settings WHERE name IN ('wal_level','rds.logical_replication');
           name           | setting
