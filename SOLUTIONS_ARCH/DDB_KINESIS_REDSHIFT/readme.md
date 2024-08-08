@@ -1,5 +1,7 @@
 ## DynamoDB - Kinesis - Redshift
 Modified architecture from https://aws.amazon.com/blogs/big-data/near-real-time-analytics-using-amazon-redshift-streaming-ingestion-with-amazon-kinesis-data-streams-and-amazon-dynamodb/
+https://repost.aws/knowledge-center/redshift-lambda-function-queries
+
 0. Create the DynamoDB table.
 0.flight.cr8table - this is an aws cli command
 
@@ -166,6 +168,7 @@ mateCreationDateTimePrecision":"MICROSECOND"}
 
 dev=# SET enable_case_sensitive_identifier to TRUE;
 SET
+##    ^ this makes all the json queries work
 dev=# select * from demo_stream_vw;
  approximate_arrival_timestamp |          partition_key           |       shard_id       |                     sequence_number                      |
 
@@ -314,10 +317,6 @@ ORDER BY
   , arrival;
 -- put this into a stored proc that runs once an hour
 ```
-
-
-
-
 10. Do whatever you want from the view into a real table.
 
 
