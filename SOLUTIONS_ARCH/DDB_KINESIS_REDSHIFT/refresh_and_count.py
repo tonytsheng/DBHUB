@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import psycopg2
 import os
 import json
@@ -5,6 +7,10 @@ import boto3
 import botocore
 import botocore.session as bc
 from botocore.client import Config
+import datetime
+
+now = datetime.datetime.now()
+TIMESTAMP = now.strftime("%d.%m.%Y %H:%M:%S")
 
 session = boto3.session.Session()
 region = session.region_name
@@ -40,28 +46,12 @@ cur = con.cursor()
 
 cur.execute("""
 SET enable_case_sensitive_identifier to TRUE;
-
 refresh materialized view demo_stream_vw;
-
 SELECT count(*) FROM demo_stream_vw;
-
-SELECT
-  EXTRACT( DAY FROM approximate_arrival_timestamp) AS day_of_month
-  , payload."dynamodb"."NewImage"."status"."S"::varchar as status
-  , COUNT(*) AS count
-FROM
-  demo_stream_vw
-GROUP BY
-  day_of_month
-  , status
-ORDER BY
-  count desc,
-  status
-  , day_of_month;
-
 """)
 res=cur.fetchall()
-print (res)
+
+print (TIMESTAMP + " after mat_view refresh: " + str(res))
 
 cur.close()
 con.close()

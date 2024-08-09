@@ -919,3 +919,76 @@ row: 400 in 2.1695809364318848
 RowCount: 499, Total seconds: 25.381107807159424
 Thu Aug  8 19:16:22 UTC 2024
 RowCount: 49, Total seconds: 0.41002869606018066
+Thu Aug  8 20:00:02 UTC 2024
+RowCount: 49, Total seconds: 0.43398499488830566
+Thu Aug  8 21:00:02 UTC 2024
+RowCount: 49, Total seconds: 7.196652173995972
+Thu Aug  8 22:00:01 UTC 2024
+RowCount: 49, Total seconds: 7.582463979721069
+Thu Aug  8 23:00:02 UTC 2024
+RowCount: 49, Total seconds: 7.700396537780762
+Fri Aug  9 00:00:02 UTC 2024
+RowCount: 49, Total seconds: 7.568382740020752
+[(49378,)]
+Traceback (most recent call last):
+  File "/home/ec2-user/DBHUB/SOLUTIONS_ARCH/DDB_KINESIS_REDSHIFT/refresh_and_count.py", line 49, in <module>
+    print ("after mat_view refresh: " + res)
+TypeError: can only concatenate str (not "list") to str
+Traceback (most recent call last):
+  File "/home/ec2-user/DBHUB/SOLUTIONS_ARCH/DDB_KINESIS_REDSHIFT/refresh_and_count.py", line 49, in <module>
+    print ("after mat_view refresh: " + str(res))
+TypeError: can only concatenate str (not "list") to str
+after mat_view refresh: [(49378,)]
+after mat_view refresh: [(49378,)]
+after mat_view refresh: [(49378,)]
+after mat_view refresh: [(49378,)]
+Fri Aug  9 01:00:02 UTC 2024
+after mat_view refresh: [(49401,)]
+row: 100 in 13.70432186126709
+RowCount: 199, Total seconds: 38.64738702774048
+after mat_view refresh: [(49577,)]
+after mat_view refresh: [(49577,)]
+after mat_view refresh: [(49577,)]
+after mat_view refresh: [(49577,)]
+after mat_view refresh: [(49577,)]
+Fri Aug  9 02:00:01 UTC 2024
+after mat_view refresh: [(49602,)]
+row: 100 in 14.067487716674805
+RowCount: 199, Total seconds: 38.57691669464111
+after mat_view refresh: [(49776,)]
+Fri Aug  9 03:00:01 UTC 2024
+row: 100 in 13.777401208877563
+RowCount: 199, Total seconds: 38.784984827041626
+Fri Aug  9 04:00:01 UTC 2024
+row: 100 in 13.766095876693726
+RowCount: 199, Total seconds: 38.75403833389282
+after mat_view refresh: [(50174,)]
+Fri Aug  9 05:00:02 UTC 2024
+row: 100 in 17.06980037689209
+RowCount: 199, Total seconds: 37.70317625999451
+Fri Aug  9 06:00:02 UTC 2024
+row: 100 in 13.784180879592896
+RowCount: 199, Total seconds: 37.58779263496399
+Fri Aug  9 07:00:02 UTC 2024
+row: 100 in 17.002931594848633
+RowCount: 199, Total seconds: 37.596253395080566
+Fri Aug  9 08:00:02 UTC 2024
+row: 100 in 13.772636651992798
+RowCount: 199, Total seconds: 37.5678026676178
+after mat_view refresh: [(50970,)]
+Fri Aug  9 09:00:01 UTC 2024
+row: 100 in 13.76144289970398
+RowCount: 199, Total seconds: 38.563575744628906
+Fri Aug  9 10:00:01 UTC 2024
+row: 100 in 13.77682375907898
+RowCount: 199, Total seconds: 37.57325315475464
+Fri Aug  9 11:00:01 UTC 2024
+row: 100 in 14.08231234550476
+RowCount: 199, Total seconds: 38.59753751754761
+Fri Aug  9 12:00:01 UTC 2024
+row: 100 in 16.936182498931885
+RowCount: 199, Total seconds: 38.84231686592102
+after mat_view refresh: [(51766,)]
+Fri Aug  9 13:00:01 UTC 2024
+row: 100 in 14.065893411636353
+RowCount: 199, Total seconds: 38.95038843154907
